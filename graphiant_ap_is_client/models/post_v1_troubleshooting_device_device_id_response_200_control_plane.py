@@ -1,0 +1,126 @@
+from typing import TYPE_CHECKING, Any, TypeVar, Union
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.post_v1_troubleshooting_device_device_id_response_200_control_plane_control_transitions_item import (
+        PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneControlTransitionsItem,
+    )
+    from ..models.post_v1_troubleshooting_device_device_id_response_200_control_plane_management_transitions_item import (
+        PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneManagementTransitionsItem,
+    )
+
+
+T = TypeVar("T", bound="PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlane")
+
+
+@_attrs_define
+class PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlane:
+    """
+    Attributes:
+        control_transitions (Union[Unset,
+            list['PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneControlTransitionsItem']]):
+        management_transitions (Union[Unset,
+            list['PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneManagementTransitionsItem']]):
+        status (Union[Unset, str]):  Example: TYPE_ENUM.
+    """
+
+    control_transitions: Union[
+        Unset, list["PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneControlTransitionsItem"]
+    ] = UNSET
+    management_transitions: Union[
+        Unset, list["PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneManagementTransitionsItem"]
+    ] = UNSET
+    status: Union[Unset, str] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        control_transitions: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.control_transitions, Unset):
+            control_transitions = []
+            for control_transitions_item_data in self.control_transitions:
+                control_transitions_item = control_transitions_item_data.to_dict()
+                control_transitions.append(control_transitions_item)
+
+        management_transitions: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.management_transitions, Unset):
+            management_transitions = []
+            for management_transitions_item_data in self.management_transitions:
+                management_transitions_item = management_transitions_item_data.to_dict()
+                management_transitions.append(management_transitions_item)
+
+        status = self.status
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if control_transitions is not UNSET:
+            field_dict["controlTransitions"] = control_transitions
+        if management_transitions is not UNSET:
+            field_dict["managementTransitions"] = management_transitions
+        if status is not UNSET:
+            field_dict["status"] = status
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.post_v1_troubleshooting_device_device_id_response_200_control_plane_control_transitions_item import (
+            PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneControlTransitionsItem,
+        )
+        from ..models.post_v1_troubleshooting_device_device_id_response_200_control_plane_management_transitions_item import (
+            PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneManagementTransitionsItem,
+        )
+
+        d = src_dict.copy()
+        control_transitions = []
+        _control_transitions = d.pop("controlTransitions", UNSET)
+        for control_transitions_item_data in _control_transitions or []:
+            control_transitions_item = (
+                PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneControlTransitionsItem.from_dict(
+                    control_transitions_item_data
+                )
+            )
+
+            control_transitions.append(control_transitions_item)
+
+        management_transitions = []
+        _management_transitions = d.pop("managementTransitions", UNSET)
+        for management_transitions_item_data in _management_transitions or []:
+            management_transitions_item = (
+                PostV1TroubleshootingDeviceDeviceIdResponse200ControlPlaneManagementTransitionsItem.from_dict(
+                    management_transitions_item_data
+                )
+            )
+
+            management_transitions.append(management_transitions_item)
+
+        status = d.pop("status", UNSET)
+
+        post_v1_troubleshooting_device_device_id_response_200_control_plane = cls(
+            control_transitions=control_transitions,
+            management_transitions=management_transitions,
+            status=status,
+        )
+
+        post_v1_troubleshooting_device_device_id_response_200_control_plane.additional_properties = d
+        return post_v1_troubleshooting_device_device_id_response_200_control_plane
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

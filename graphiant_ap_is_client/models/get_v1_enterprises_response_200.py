@@ -1,0 +1,74 @@
+from typing import TYPE_CHECKING, Any, TypeVar, Union
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+
+from ..types import UNSET, Unset
+
+if TYPE_CHECKING:
+    from ..models.get_v1_enterprises_response_200_enterprises_item import GetV1EnterprisesResponse200EnterprisesItem
+
+
+T = TypeVar("T", bound="GetV1EnterprisesResponse200")
+
+
+@_attrs_define
+class GetV1EnterprisesResponse200:
+    """
+    Attributes:
+        enterprises (Union[Unset, list['GetV1EnterprisesResponse200EnterprisesItem']]):
+    """
+
+    enterprises: Union[Unset, list["GetV1EnterprisesResponse200EnterprisesItem"]] = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        enterprises: Union[Unset, list[dict[str, Any]]] = UNSET
+        if not isinstance(self.enterprises, Unset):
+            enterprises = []
+            for enterprises_item_data in self.enterprises:
+                enterprises_item = enterprises_item_data.to_dict()
+                enterprises.append(enterprises_item)
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if enterprises is not UNSET:
+            field_dict["enterprises"] = enterprises
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: dict[str, Any]) -> T:
+        from ..models.get_v1_enterprises_response_200_enterprises_item import GetV1EnterprisesResponse200EnterprisesItem
+
+        d = src_dict.copy()
+        enterprises = []
+        _enterprises = d.pop("enterprises", UNSET)
+        for enterprises_item_data in _enterprises or []:
+            enterprises_item = GetV1EnterprisesResponse200EnterprisesItem.from_dict(enterprises_item_data)
+
+            enterprises.append(enterprises_item)
+
+        get_v1_enterprises_response_200 = cls(
+            enterprises=enterprises,
+        )
+
+        get_v1_enterprises_response_200.additional_properties = d
+        return get_v1_enterprises_response_200
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties
