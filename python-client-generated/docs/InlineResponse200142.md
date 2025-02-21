@@ -1,0 +1,9 @@
+# InlineResponse200142
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**versions** | [**list[InlineResponse200113DraftVersionInfo]**](InlineResponse200113DraftVersionInfo.md) |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+

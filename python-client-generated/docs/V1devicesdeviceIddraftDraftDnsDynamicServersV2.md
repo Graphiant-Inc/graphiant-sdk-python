@@ -1,0 +1,10 @@
+# V1devicesdeviceIddraftDraftDnsDynamicServersV2
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**circuit** | **str** |  | [optional] 
+**servers** | **list[object]** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
