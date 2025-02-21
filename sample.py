@@ -12,7 +12,7 @@ configuration = swagger_client.Configuration()
 api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
 
 try:
-    body = swagger_client.AuthLoginBody(username="due@graphiant.com", password="Demo123!")
+    body = swagger_client.AuthLoginBody(username="due@graphiant.com", password="XXX")
     api_response = api_instance.v1_auth_login_post(body=body, _preload_content=False)
 
     token = loads(api_response.data).get("token")
