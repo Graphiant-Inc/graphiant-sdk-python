@@ -17,8 +17,8 @@ try:
 
     token = loads(api_response.data).get("token")
     print(token)
-#    authorization = 'Bearer ' + token
-#    api_response = api_instance.v1_edges_summary_get(authorization=authorization)
-#    print(api_response)
+    authorization = 'Bearer ' + token
+    api_response = api_instance.v1_edges_summary_get(authorization=authorization)
+    print(api_response)
 except ApiException as e:
     print("Exception: %s\n" % e)
