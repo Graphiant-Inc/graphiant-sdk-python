@@ -1,2 +1,2 @@
-# gcsdk-python
-Python SDK for GCS API
+# graphiant-sdk-python
+Python SDK for Graphiant NaaS
