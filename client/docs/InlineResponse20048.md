@@ -1,0 +1,11 @@
+# InlineResponse20048
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**cursor_ref** | **str** |  | [optional] 
+**logs** | [**list[InlineResponse20048Logs]**](InlineResponse20048Logs.md) |  | [optional] 
+**total_logs** | **str** |  | [optional] 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
