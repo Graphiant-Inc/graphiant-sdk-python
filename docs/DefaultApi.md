@@ -1,4 +1,4 @@
-# swagger_client.DefaultApi
+# graphiant_sdk.DefaultApi
 
 All URIs are relative to *https://api.dev.graphiant.io*
 
@@ -485,19 +485,19 @@ Method | HTTP request | Description
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AccountEmailBody() # AccountEmailBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AccountEmailBody() # AccountEmailBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -537,19 +537,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AccountInfoBody() # AccountInfoBody |   **Field Descriptions**:<br/>  - __firstName__: __(Optional)__ <br/>   - __lastName__: __(Optional)__ <br/>   - __timeZone__: __(Optional)__ <br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AccountInfoBody() # AccountInfoBody |   **Field Descriptions**:<br/>  - __firstName__: __(Optional)__ <br/>   - __lastName__: __(Optional)__ <br/>   - __timeZone__: __(Optional)__ <br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -589,19 +589,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MfaConfirmationBody() # MfaConfirmationBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MfaConfirmationBody() # MfaConfirmationBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -642,18 +642,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -692,18 +692,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -743,19 +743,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AccountMfaBody() # AccountMfaBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AccountMfaBody() # AccountMfaBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -798,19 +798,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AccountPasswordBody() # AccountPasswordBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AccountPasswordBody() # AccountPasswordBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -850,19 +850,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ActivityLogsBody() # ActivityLogsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ActivityLogsBody() # ActivityLogsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -903,18 +903,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -954,20 +954,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 alarm_id = 'alarm_id_example' # str | Unique ID for an alarm.
-body = swagger_client.AlarmmuteAlarmIdBody() # AlarmmuteAlarmIdBody |   **Field Descriptions**:<br/>  - __mute__: Flag to specify if you want to mute/unmute the notifications.<br/>   (optional)
+body = graphiant_sdk.AlarmmuteAlarmIdBody() # AlarmmuteAlarmIdBody |   **Field Descriptions**:<br/>  - __mute__: Flag to specify if you want to mute/unmute the notifications.<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1008,18 +1008,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1059,18 +1059,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1112,19 +1112,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AppsAppsummaryBody() # AppsAppsummaryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AppsAppsummaryBody() # AppsAppsummaryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1165,19 +1165,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AppsBandwidthBody() # AppsBandwidthBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AppsBandwidthBody() # AppsBandwidthBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1220,18 +1220,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 body = NULL # object |   **Field Descriptions**:<br/>  - __numApps__: The maximum number of apps to return (100 if left empty)<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -1277,18 +1277,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 body = NULL # object |   **Field Descriptions**:<br/>  - __numApps__: The maximum number of apps to return (100 if left empty)<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -1334,19 +1334,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AppsVisualizationBody() # AppsVisualizationBody |   **Field Descriptions**:<br/>  - __circuitName__: Circuit name is specified if circuit apps utilization data is desired.<br/>  - __slaClass__: SLA class is specified if queue apps utilization data is desired. Circuit name must be provided.<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AppsVisualizationBody() # AppsVisualizationBody |   **Field Descriptions**:<br/>  - __circuitName__: Circuit name is specified if circuit apps utilization data is desired.<br/>  - __slaClass__: SLA class is specified if queue apps utilization data is desired. Circuit name must be provided.<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1387,19 +1387,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AuditCompleteBody() # AuditCompleteBody |   **Field Descriptions**:<br/>  - __activity__: The _what_ of the audited event<br/>  - __actor__: The _who_ of the audited event<br/>  - __category__: Category string of for the event.<br/>  - __reason__: A reason for the status<br/>  - __status__: The status of the audited event<br/>  - __info__: Service specific information<br/>  - __service__: The name of the service that produced the event.<br/>  - __spanId__: 8 bytes (base64 encoded) identifier for the span audited.<br/>  - __traceId__: 16 bytes (base64 encoded) identifier for the trace audited.<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AuditCompleteBody() # AuditCompleteBody |   **Field Descriptions**:<br/>  - __activity__: The _what_ of the audited event<br/>  - __actor__: The _who_ of the audited event<br/>  - __category__: Category string of for the event.<br/>  - __reason__: A reason for the status<br/>  - __status__: The status of the audited event<br/>  - __info__: Service specific information<br/>  - __service__: The name of the service that produced the event.<br/>  - __spanId__: 8 bytes (base64 encoded) identifier for the span audited.<br/>  - __traceId__: 16 bytes (base64 encoded) identifier for the trace audited.<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1440,19 +1440,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AuditInitBody() # AuditInitBody |   **Field Descriptions**:<br/>  - __activity__: The _what_ of the audited event<br/>  - __actor__: The _who_ of the audited event<br/>  - __category__: Category string of for the event.<br/>  - __reason__: A reason for the status<br/>  - __status__: The status of the audited event<br/>  - __info__: Service specific information<br/>  - __service__: The name of the service that produced the event.<br/>  - __spanId__: 8 bytes (base64 encoded) identifier for the span audited.<br/>  - __traceId__: 16 bytes (base64 encoded) identifier for the trace audited.<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AuditInitBody() # AuditInitBody |   **Field Descriptions**:<br/>  - __activity__: The _what_ of the audited event<br/>  - __actor__: The _who_ of the audited event<br/>  - __category__: Category string of for the event.<br/>  - __reason__: A reason for the status<br/>  - __status__: The status of the audited event<br/>  - __info__: Service specific information<br/>  - __service__: The name of the service that produced the event.<br/>  - __spanId__: 8 bytes (base64 encoded) identifier for the span audited.<br/>  - __traceId__: 16 bytes (base64 encoded) identifier for the trace audited.<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1493,19 +1493,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AuditLogsBody() # AuditLogsBody |   **Field Descriptions**:<br/>  - __field__: Field to search<br/>  - __values__: Multiple values are treated as OR<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AuditLogsBody() # AuditLogsBody |   **Field Descriptions**:<br/>  - __field__: Field to search<br/>  - __values__: Multiple values are treated as OR<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1546,18 +1546,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1597,13 +1597,13 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-body = swagger_client.AuthGcsBody() # AuthGcsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi()
+body = graphiant_sdk.AuthGcsBody() # AuthGcsBody |  (optional)
 relay_state = 'relay_state_example' # str |  (optional)
 
 try:
@@ -1643,18 +1643,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1694,13 +1694,13 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-body = swagger_client.LoginCallbackBody() # LoginCallbackBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi()
+body = graphiant_sdk.LoginCallbackBody() # LoginCallbackBody |  (optional)
 
 try:
     api_instance.v1_auth_login_callback_post(body=body)
@@ -1738,13 +1738,13 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-body = swagger_client.AuthLoginBody() # AuthLoginBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi()
+body = graphiant_sdk.AuthLoginBody() # AuthLoginBody |  (optional)
 relay_state = 'relay_state_example' # str |  (optional)
 
 try:
@@ -1784,12 +1784,12 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 email = 'email_example' # str |  (optional)
 
 try:
@@ -1828,12 +1828,12 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 email = 'email_example' # str |  (optional)
 relay_state = 'relay_state_example' # str |  (optional)
 
@@ -1874,13 +1874,13 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-body = swagger_client.LoginSpaBody() # LoginSpaBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi()
+body = graphiant_sdk.LoginSpaBody() # LoginSpaBody |  (optional)
 
 try:
     api_instance.v1_auth_login_spa_post(body=body)
@@ -1918,12 +1918,12 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -1962,18 +1962,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2012,18 +2012,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2062,13 +2062,13 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
-body = swagger_client.AuthMfaBody() # AuthMfaBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi()
+body = graphiant_sdk.AuthMfaBody() # AuthMfaBody |  (optional)
 relay_state = 'relay_state_example' # str |  (optional)
 
 try:
@@ -2108,18 +2108,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2161,18 +2161,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2214,18 +2214,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 current_path = 'current_path_example' # str |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2266,18 +2266,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2316,18 +2316,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2366,12 +2366,12 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2410,18 +2410,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -2465,18 +2465,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2516,18 +2516,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2567,18 +2567,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2618,19 +2618,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.BackbonehealthOverviewBody() # BackbonehealthOverviewBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.BackbonehealthOverviewBody() # BackbonehealthOverviewBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -2671,18 +2671,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2724,18 +2724,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2777,18 +2777,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2830,18 +2830,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2883,18 +2883,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2936,18 +2936,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -2989,18 +2989,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3042,18 +3042,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3095,18 +3095,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3148,18 +3148,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3201,18 +3201,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3254,18 +3254,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3307,18 +3307,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3360,18 +3360,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3413,18 +3413,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3466,12 +3466,12 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 command = 'command_example' # str | 
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
@@ -3514,12 +3514,12 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -3560,18 +3560,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 bucket_app_name = 'bucket_app_name_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3615,18 +3615,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -3668,18 +3668,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3722,18 +3722,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -3777,20 +3777,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.GlobalIdBody() # GlobalIdBody |  (optional)
+body = graphiant_sdk.GlobalIdBody() # GlobalIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -3834,19 +3834,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssurancesGlobalBody() # AssurancesGlobalBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssurancesGlobalBody() # AssurancesGlobalBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -3889,18 +3889,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -3942,18 +3942,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 afi_name = 'afi_name_example' # str | Valid configured BGP AfiSafi (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4007,18 +4007,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 last = 56 # int |  (optional)
@@ -4066,18 +4066,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -4119,18 +4119,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 address = 'address_example' # str | BGP Nbr address (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4180,18 +4180,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 address = 'address_example' # str | BGP Nbr address (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4241,18 +4241,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 last = 56 # int |  (optional)
@@ -4300,18 +4300,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4363,18 +4363,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4428,18 +4428,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4491,18 +4491,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4554,18 +4554,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4617,18 +4617,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -4678,18 +4678,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -4739,18 +4739,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -4802,18 +4802,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 vrf_names = NULL # list[object] | Valid configured VRF name (optional)
@@ -4859,18 +4859,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4922,18 +4922,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -4987,18 +4987,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -5050,18 +5050,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -5113,18 +5113,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 area_id = 'area_id_example' # str | Valid configured Area ID (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
@@ -5176,18 +5176,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -5237,18 +5237,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -5298,18 +5298,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 instance_name = 'instance_name_example' # str | Valid configured OSPF Instance name (optional)
@@ -5361,18 +5361,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 vrf_names = NULL # list[object] | Valid configured VRF name (optional)
@@ -5418,18 +5418,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 vrf_name = NULL # list[object] | Valid configured VRF names (optional)
@@ -5475,18 +5475,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 vrf_name = 'vrf_name_example' # str | Valid configured VRF names (optional)
@@ -5532,18 +5532,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 vrf_name = 'vrf_name_example' # str | Valid configured VRF names (optional)
@@ -5589,19 +5589,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.BgpRoutecountBody() # BgpRoutecountBody |   **Field Descriptions**:<br/>  - __deviceId__: Valid configured device ID > 0<br/>  - __vrfName__: Valid configured VRF names<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.BgpRoutecountBody() # BgpRoutecountBody |   **Field Descriptions**:<br/>  - __deviceId__: Valid configured device ID > 0<br/>  - __vrfName__: Valid configured VRF names<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -5644,18 +5644,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -5699,18 +5699,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -5752,19 +5752,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DeviceSnapshotBody1() # DeviceSnapshotBody1 |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DeviceSnapshotBody1() # DeviceSnapshotBody1 |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -5806,19 +5806,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DeviceSnapshotBody() # DeviceSnapshotBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DeviceSnapshotBody() # DeviceSnapshotBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -5860,18 +5860,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 snapshot_id = 'snapshot_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -5912,18 +5912,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -5965,18 +5965,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6018,18 +6018,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6071,19 +6071,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DevicesBringupBody() # DevicesBringupBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DevicesBringupBody() # DevicesBringupBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -6125,19 +6125,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.BringupTokenBody() # BringupTokenBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.BringupTokenBody() # BringupTokenBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -6178,18 +6178,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -6230,18 +6230,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6285,18 +6285,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6340,18 +6340,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6395,20 +6395,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
-body = swagger_client.DeviceIdConfigBody() # DeviceIdConfigBody |  (optional)
+body = graphiant_sdk.DeviceIdConfigBody() # DeviceIdConfigBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -6452,18 +6452,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6507,18 +6507,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6562,18 +6562,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6616,18 +6616,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6671,20 +6671,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
-body = swagger_client.DeviceIdDraftBody() # DeviceIdDraftBody |   **Field Descriptions**:<br/>  - __defaultOriginate__: __(Optional)__ Set when default route needs to be advertised in BGP domain<br/>   - __maxPrefix__: __(Optional)__ Maximum number of prefixes that can be received from neighbor<br/>   - __multiHop__: __(Optional)__ Set when EBGP multi-hop functionality is enabled<br/>   - __sendCommunity__: __(Optional)__ Flag for sending standard, extended, and large communities<br/>   - __adminDistance__: __(Optional)__ Administrative Distance for routes installed<br/>    (optional)
+body = graphiant_sdk.DeviceIdDraftBody() # DeviceIdDraftBody |   **Field Descriptions**:<br/>  - __defaultOriginate__: __(Optional)__ Set when default route needs to be advertised in BGP domain<br/>   - __maxPrefix__: __(Optional)__ Maximum number of prefixes that can be received from neighbor<br/>   - __multiHop__: __(Optional)__ Set when EBGP multi-hop functionality is enabled<br/>   - __sendCommunity__: __(Optional)__ Flag for sending standard, extended, and large communities<br/>   - __adminDistance__: __(Optional)__ Administrative Distance for routes installed<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -6728,18 +6728,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6783,18 +6783,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6838,18 +6838,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -6893,18 +6893,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 job_id = 'job_id_example' # str | id of the job as received from the Enqueue* calls.
 authorization = 'authorization_example' # str |  (optional)
@@ -6950,18 +6950,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7003,18 +7003,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7056,18 +7056,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7111,18 +7111,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7166,18 +7166,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7221,18 +7221,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7274,18 +7274,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7329,18 +7329,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7384,18 +7384,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 16 bytes (base64 encoded) identifier for the device.
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7439,18 +7439,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 16 bytes (base64 encoded) identifier for the device.
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7494,18 +7494,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 16 bytes (base64 encoded) identifier for the device.
 version = 56 # int | 8 bytes (base32 encoded) version number.
 authorization = 'authorization_example' # str |  (optional)
@@ -7549,18 +7549,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7602,18 +7602,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7657,18 +7657,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7712,18 +7712,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -7763,18 +7763,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7815,18 +7815,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -7865,18 +7865,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -7917,19 +7917,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.InventoryEnterpriseBody() # InventoryEnterpriseBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.InventoryEnterpriseBody() # InventoryEnterpriseBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -7969,18 +7969,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8020,19 +8020,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DevicesInventoryBody() # DevicesInventoryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DevicesInventoryBody() # DevicesInventoryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8073,18 +8073,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8125,18 +8125,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_serials = NULL # list[object] |  (optional)
 
@@ -8177,18 +8177,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8230,18 +8230,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8281,19 +8281,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DevicesRmaBody() # DevicesRmaBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DevicesRmaBody() # DevicesRmaBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8335,18 +8335,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 device_id = 'device_id_example' # str | Valid configured device ID > 0 (optional)
 protocols = NULL # list[object] | List of protocols names for which route count is needed (optional)
@@ -8392,18 +8392,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8447,18 +8447,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8502,18 +8502,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8553,18 +8553,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8605,19 +8605,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.UpgradeScheduleBody() # UpgradeScheduleBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.UpgradeScheduleBody() # UpgradeScheduleBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8659,18 +8659,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Valid Provisioned device ID
 body = NULL # object |   **Field Descriptions**:<br/>  - __description__: Description of the requested archive<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -8716,18 +8716,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 archive_id = 'archive_id_example' # str | Unique identifier for a specific archive
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8770,18 +8770,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 archive_id = 'archive_id_example' # str | Unique identifier for a specific archive
 body = NULL # object |   **Field Descriptions**:<br/>  - __description__: Description of the requested archive<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -8826,18 +8826,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Valid Provisioned device ID
 authorization = 'authorization_example' # str |  (optional)
 
@@ -8881,20 +8881,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Unique identifier for a specific device
-body = swagger_client.BgpresetDeviceIdBody() # BgpresetDeviceIdBody |   **Field Descriptions**:<br/>  - __hard__: BGP process restarts if set to true. if false, BGP route is only relearned<br/>  - __lanSegment__: The segment over which this route is learned<br/>  - __localInterface__: The local interface over which this route is learned<br/>  - __neighbor__: The neighbor to reset<br/>   (optional)
+body = graphiant_sdk.BgpresetDeviceIdBody() # BgpresetDeviceIdBody |   **Field Descriptions**:<br/>  - __hard__: BGP process restarts if set to true. if false, BGP route is only relearned<br/>  - __lanSegment__: The segment over which this route is learned<br/>  - __localInterface__: The local interface over which this route is learned<br/>  - __neighbor__: The neighbor to reset<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8937,20 +8937,20 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Unique identifier for a specific device
-body = swagger_client.CleararpDeviceIdBody() # CleararpDeviceIdBody |   **Field Descriptions**:<br/>  - __address__: IPv4 addresses<br/>  - __allEntry__: All IPv4 addresses<br/>  - __interfaceName__: Interface Name<br/>   (optional)
+body = graphiant_sdk.CleararpDeviceIdBody() # CleararpDeviceIdBody |   **Field Descriptions**:<br/>  - __address__: IPv4 addresses<br/>  - __allEntry__: All IPv4 addresses<br/>  - __interfaceName__: Interface Name<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -8993,18 +8993,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9046,20 +9046,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Unique identifier for a specific device
-body = swagger_client.InterfaceresetDeviceIdBody() # InterfaceresetDeviceIdBody |   **Field Descriptions**:<br/>  - __interface__: interface name<br/>   (optional)
+body = graphiant_sdk.InterfaceresetDeviceIdBody() # InterfaceresetDeviceIdBody |   **Field Descriptions**:<br/>  - __interface__: interface name<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9102,18 +9102,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Unique identifier for a specific device
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9157,18 +9157,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 pcap_id = 'pcap_id_example' # str | Unique identifier for a specific packet capture
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9212,19 +9212,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DiagnosticPacketcapturestartBody() # DiagnosticPacketcapturestartBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __duration__: Packet capture duration. Accepted values are 30, 60, 180<br/>  - __port__: __(Optional)__ Filters the capture for the specified port<br/>   - __prefix__: __(Optional)__ Filters the capture for the specified prefix<br/>   - __dscp__: __(Optional)__ Filters the packet capture for the specified DSCP field<br/>   - __protocol__: __(Optional)__ Filters the packet capture for the specified protocol<br/>   - __maxPacketCounter__: __(Optional)__ Packet capture limit.<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __vrfName__: __(Optional)__ Configured VRF Name<br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DiagnosticPacketcapturestartBody() # DiagnosticPacketcapturestartBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __duration__: Packet capture duration. Accepted values are 30, 60, 180<br/>  - __port__: __(Optional)__ Filters the capture for the specified port<br/>   - __prefix__: __(Optional)__ Filters the capture for the specified prefix<br/>   - __dscp__: __(Optional)__ Filters the packet capture for the specified DSCP field<br/>   - __protocol__: __(Optional)__ Filters the packet capture for the specified protocol<br/>   - __maxPacketCounter__: __(Optional)__ Packet capture limit.<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __vrfName__: __(Optional)__ Configured VRF Name<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9267,19 +9267,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DiagnosticPacketcapturestopBody() # DiagnosticPacketcapturestopBody |   **Field Descriptions**:<br/>  - __pcapId__: Unique identifier for a specific packet capture<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DiagnosticPacketcapturestopBody() # DiagnosticPacketcapturestopBody |   **Field Descriptions**:<br/>  - __pcapId__: Unique identifier for a specific packet capture<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9321,18 +9321,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __deviceId__: Valid Provisioned device ID<br/>  - __destAddress__: IPv4 or IPv6 Destination address<br/>  - __hopStatsCount__: __(Optional)__ Per hop probes needed for traceroute hop stats<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __payloadSize__: __(Optional)__ Size of packet to be sent<br/>   - __port__: Valid in case of TCP ping<br/>  - __probeCount__: __(Optional)__ Number of probes to send<br/>   - __srcAddress__: IPv4 or IPv6 address<br/>  - __tos__: __(Optional)__ Type of service<br/>   - __vrfName__: configure VRF Name<br/>  - __token__: __(Optional)__ Identifier which was received in initial response<br/>   - __transportType__: ICMP or TCP<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9376,18 +9376,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __deviceId__: Valid Provisioned device ID<br/>  - __destAddress__: IPv4 or IPv6 Destination address<br/>  - __hopStatsCount__: __(Optional)__ Per hop probes needed for traceroute hop stats<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __payloadSize__: __(Optional)__ Size of packet to be sent<br/>   - __port__: Valid in case of TCP ping<br/>  - __probeCount__: __(Optional)__ Number of probes to send<br/>   - __srcAddress__: IPv4 or IPv6 address<br/>  - __tos__: __(Optional)__ Type of service<br/>   - __vrfName__: configure VRF Name<br/>  - __token__: __(Optional)__ Identifier which was received in initial response<br/>   - __transportType__: ICMP or TCP<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9431,18 +9431,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 token = 'token_example' # str | Identifier which was received in initial response
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9485,18 +9485,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Valid Provisioned device ID
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9539,20 +9539,20 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | Unique identifier for a specific device
-body = swagger_client.ResetipsecsessionDeviceIdBody() # ResetipsecsessionDeviceIdBody |   **Field Descriptions**:<br/>  - __all3RdParty__: All 3rd Party IPSec sessions<br/>  - __allControllers__: All Graphiant controllers IPSec sessions<br/>  - __allE2E__: All Edge to Edge sessions<br/>  - __vrf__: List of circuit VRFs<br/>   (optional)
+body = graphiant_sdk.ResetipsecsessionDeviceIdBody() # ResetipsecsessionDeviceIdBody |   **Field Descriptions**:<br/>  - __all3RdParty__: All 3rd Party IPSec sessions<br/>  - __allControllers__: All Graphiant controllers IPSec sessions<br/>  - __allE2E__: All Edge to Edge sessions<br/>  - __vrf__: List of circuit VRFs<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9595,19 +9595,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DiagnosticSpeedtestBody() # DiagnosticSpeedtestBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __provider__: Speedtest provider name<br/>  - __serverId__: __(Optional)__ This is fetched using GetSpeedtestServers API<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __vrfName__: __(Optional)__ Configured VRF Name<br/>   - __token__: __(Optional)__ Token to be sent in subsequent lookup<br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DiagnosticSpeedtestBody() # DiagnosticSpeedtestBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __provider__: Speedtest provider name<br/>  - __serverId__: __(Optional)__ This is fetched using GetSpeedtestServers API<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __vrfName__: __(Optional)__ Configured VRF Name<br/>   - __token__: __(Optional)__ Token to be sent in subsequent lookup<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9650,18 +9650,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9703,19 +9703,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DiagnosticSpeedtestreportBody() # DiagnosticSpeedtestreportBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __historyLength__: Number of most recent speedtest records to return for a specific device<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DiagnosticSpeedtestreportBody() # DiagnosticSpeedtestreportBody |   **Field Descriptions**:<br/>  - __deviceId__: Unique identifier for a specific device<br/>  - __historyLength__: Number of most recent speedtest records to return for a specific device<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9758,18 +9758,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9811,18 +9811,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __deviceId__: Valid Provisioned device ID<br/>  - __destAddress__: IPv4 or IPv6 Destination address<br/>  - __hopStatsCount__: __(Optional)__ Per hop probes needed for traceroute hop stats<br/>   - __interface__: __(Optional)__ Source Interface name<br/>   - __payloadSize__: __(Optional)__ Size of packet to be sent<br/>   - __port__: Valid in case of TCP ping<br/>  - __probeCount__: __(Optional)__ Number of probes to send<br/>   - __srcAddress__: IPv4 or IPv6 address<br/>  - __tos__: __(Optional)__ Type of service<br/>   - __vrfName__: configure VRF Name<br/>  - __token__: __(Optional)__ Identifier which was received in initial response<br/>   - __transportType__: ICMP or TCP<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -9864,12 +9864,12 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9908,18 +9908,18 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -9959,18 +9959,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10010,18 +10010,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10063,18 +10063,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10115,18 +10115,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10168,19 +10168,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.EnterpriseConfigurationBody() # EnterpriseConfigurationBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.EnterpriseConfigurationBody() # EnterpriseConfigurationBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10222,19 +10222,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.EnterpriseContractBody() # EnterpriseContractBody |   **Field Descriptions**:<br/>  - __contractedCredits__: Amount of credits billed for a contract term or monthly if no expiration date is provided<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.EnterpriseContractBody() # EnterpriseContractBody |   **Field Descriptions**:<br/>  - __contractedCredits__: Amount of credits billed for a contract term or monthly if no expiration date is provided<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10276,18 +10276,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10327,18 +10327,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 enterprise_id = 'enterprise_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -10380,18 +10380,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 enterprise_id = 'enterprise_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -10433,18 +10433,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 enterprise_id = 'enterprise_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -10486,18 +10486,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10536,18 +10536,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 enterprise_ids = NULL # list[object] | Lists enterprises (optional)
 
@@ -10589,18 +10589,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 type = 'type_example' # str |  (optional)
 
@@ -10642,19 +10642,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1EnterprisesBody1() # V1EnterprisesBody1 |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1EnterprisesBody1() # V1EnterprisesBody1 |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10694,19 +10694,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1EnterprisesBody() # V1EnterprisesBody |   **Field Descriptions**:<br/>  - __adminTimeZone__: __(Optional)__ <br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1EnterprisesBody() # V1EnterprisesBody |   **Field Descriptions**:<br/>  - __adminTimeZone__: __(Optional)__ <br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10746,18 +10746,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10799,18 +10799,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10852,18 +10852,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10905,19 +10905,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SystemAckBody() # SystemAckBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.SystemAckBody() # SystemAckBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -10959,18 +10959,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11012,18 +11012,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11067,19 +11067,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.SitesusageTopBody() # SitesusageTopBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.SitesusageTopBody() # SitesusageTopBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11120,18 +11120,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11173,18 +11173,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11225,18 +11225,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11278,19 +11278,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.Extranetsb2bConsumerBody() # Extranetsb2bConsumerBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.Extranetsb2bConsumerBody() # Extranetsb2bConsumerBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11331,18 +11331,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11382,18 +11382,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11434,18 +11434,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11487,18 +11487,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11539,20 +11539,20 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.IdCustomerBody() # IdCustomerBody |  (optional)
+body = graphiant_sdk.IdCustomerBody() # IdCustomerBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11594,18 +11594,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11647,18 +11647,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11699,18 +11699,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11752,20 +11752,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.Extranetsb2bIdBody() # Extranetsb2bIdBody |  (optional)
+body = graphiant_sdk.Extranetsb2bIdBody() # Extranetsb2bIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11807,19 +11807,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1Extranetsb2bBody() # V1Extranetsb2bBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1Extranetsb2bBody() # V1Extranetsb2bBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11860,18 +11860,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -11913,18 +11913,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -11964,18 +11964,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12015,20 +12015,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.IdApplyBody() # IdApplyBody |  (optional)
+body = graphiant_sdk.IdApplyBody() # IdApplyBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12070,18 +12070,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -12123,18 +12123,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -12176,18 +12176,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -12231,18 +12231,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -12284,18 +12284,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12335,18 +12335,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12388,19 +12388,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetsmonitoringTrafficsecuritypolicyBody() # ExtranetsmonitoringTrafficsecuritypolicyBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetsmonitoringTrafficsecuritypolicyBody() # ExtranetsmonitoringTrafficsecuritypolicyBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12441,18 +12441,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -12494,19 +12494,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetsResolvepolicytargetBody() # ExtranetsResolvepolicytargetBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetsResolvepolicytargetBody() # ExtranetsResolvepolicytargetBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12547,19 +12547,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetsSourcesegmentsBody() # ExtranetsSourcesegmentsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetsSourcesegmentsBody() # ExtranetsSourcesegmentsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12602,19 +12602,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.FlowsFlowtableBody() # FlowsFlowtableBody |   **Field Descriptions**:<br/>  - __appId__: the app ID in the question from overall visuals view<br/>  - __numFlowRecords__: Number of app flow records requested by UI.<br/>  - __circuitName__: Filter by circuit name(s)<br/>  - __slaClass__: Filter by SLA class(es)<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.FlowsFlowtableBody() # FlowsFlowtableBody |   **Field Descriptions**:<br/>  - __appId__: the app ID in the question from overall visuals view<br/>  - __numFlowRecords__: Number of app flow records requested by UI.<br/>  - __circuitName__: Filter by circuit name(s)<br/>  - __slaClass__: Filter by SLA class(es)<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12657,19 +12657,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.FlowsTopologyBody() # FlowsTopologyBody |   **Field Descriptions**:<br/>  - __appId__: Filter by app ID<br/>  - __appName__: Filter by application name<br/>  - __slaClass__: Filter by SLA class<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.FlowsTopologyBody() # FlowsTopologyBody |   **Field Descriptions**:<br/>  - __appId__: Filter by app ID<br/>  - __appName__: Filter by application name<br/>  - __slaClass__: Filter by SLA class<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12710,18 +12710,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 id = 'id_example' # str |  (optional)
 
@@ -12762,18 +12762,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -12817,18 +12817,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 region_id = 56 # int | 
 vrf_id = 'vrf_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
@@ -12874,19 +12874,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1GatewaysBody1() # V1GatewaysBody1 |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1GatewaysBody1() # V1GatewaysBody1 |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12927,19 +12927,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1GatewaysBody() # V1GatewaysBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1GatewaysBody() # V1GatewaysBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -12979,18 +12979,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13030,19 +13030,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GatewaysStatusBody() # GatewaysStatusBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GatewaysStatusBody() # GatewaysStatusBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13082,18 +13082,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13135,18 +13135,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13188,18 +13188,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_list_id = 'app_list_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13242,18 +13242,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_list_id = 'app_list_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13297,18 +13297,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_list_id = 'app_list_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13352,18 +13352,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_list_id = 'app_list_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -13408,18 +13408,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13461,18 +13461,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13516,18 +13516,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 category_id = 'category_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13571,18 +13571,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13624,18 +13624,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_id = 'app_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13678,18 +13678,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_id = 'app_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13733,18 +13733,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_id = 'app_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13788,18 +13788,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 app_id = 'app_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -13844,18 +13844,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -13897,18 +13897,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -13952,18 +13952,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14005,19 +14005,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GlobalAttachededgesBody() # GlobalAttachededgesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GlobalAttachededgesBody() # GlobalAttachededgesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14060,19 +14060,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GlobalConfigBody() # GlobalConfigBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GlobalConfigBody() # GlobalConfigBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14115,19 +14115,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ConfigSiteBody() # ConfigSiteBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ConfigSiteBody() # ConfigSiteBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14169,18 +14169,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14222,18 +14222,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14275,18 +14275,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14330,18 +14330,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14383,18 +14383,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14436,18 +14436,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14491,18 +14491,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 vpn_profile_id = 'vpn_profile_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14546,18 +14546,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14599,18 +14599,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14654,19 +14654,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GlobalLansegmentsBody() # GlobalLansegmentsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GlobalLansegmentsBody() # GlobalLansegmentsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14709,18 +14709,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 vrf_id = 'vrf_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14764,18 +14764,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14817,18 +14817,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -14872,18 +14872,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14925,18 +14925,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -14978,18 +14978,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15033,18 +15033,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15086,18 +15086,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15141,18 +15141,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15194,18 +15194,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15247,18 +15247,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15302,18 +15302,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15355,19 +15355,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GlobalSummaryBody() # GlobalSummaryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GlobalSummaryBody() # GlobalSummaryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15410,19 +15410,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.GlobalSyncBody() # GlobalSyncBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.GlobalSyncBody() # GlobalSyncBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15464,18 +15464,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15517,18 +15517,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15572,18 +15572,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15625,18 +15625,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15678,18 +15678,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15733,18 +15733,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15784,18 +15784,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15835,18 +15835,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -15886,18 +15886,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -15939,18 +15939,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 enterprise_id = 'enterprise_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
@@ -15994,20 +15994,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.IdEnterprisesBody() # IdEnterprisesBody |  (optional)
+body = graphiant_sdk.IdEnterprisesBody() # IdEnterprisesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16048,18 +16048,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16101,18 +16101,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16156,18 +16156,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 member_id = 'member_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
@@ -16213,20 +16213,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.IdMembersBody() # IdMembersBody |  (optional)
+body = graphiant_sdk.IdMembersBody() # IdMembersBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16268,20 +16268,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.GroupsIdBody() # GroupsIdBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ <br/>   - __displayName__: __(Optional)__ <br/>   - __groupType__: __(Optional)__ <br/>   - __timeWindowEnd__: __(Optional)__ <br/>   - __timeWindowStart__: __(Optional)__ <br/>    (optional)
+body = graphiant_sdk.GroupsIdBody() # GroupsIdBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ <br/>   - __displayName__: __(Optional)__ <br/>   - __groupType__: __(Optional)__ <br/>   - __timeWindowEnd__: __(Optional)__ <br/>   - __timeWindowStart__: __(Optional)__ <br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16323,19 +16323,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1GroupsBody() # V1GroupsBody |   **Field Descriptions**:<br/>  - __groupId__: __(Optional)__ Only supply if enterprise uses an idp<br/>   - __groupType__: __(Optional)__ <br/>   - __managesEnterprises__: __(Optional)__ <br/>   - __timeWindowEnd__: __(Optional)__ <br/>   - __timeWindowStart__: __(Optional)__ <br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1GroupsBody() # V1GroupsBody |   **Field Descriptions**:<br/>  - __groupId__: __(Optional)__ Only supply if enterprise uses an idp<br/>   - __groupType__: __(Optional)__ <br/>   - __managesEnterprises__: __(Optional)__ <br/>   - __timeWindowEnd__: __(Optional)__ <br/>   - __timeWindowStart__: __(Optional)__ <br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16375,18 +16375,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16428,18 +16428,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16482,18 +16482,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16535,18 +16535,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 interface_id = 'interface_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16590,18 +16590,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 interface_id = 'interface_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16645,18 +16645,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 interface_id = 'interface_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16698,19 +16698,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1LogsBody() # V1LogsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1LogsBody() # V1LogsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -16751,18 +16751,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16804,18 +16804,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16857,18 +16857,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16910,18 +16910,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -16963,18 +16963,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17018,18 +17018,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17073,18 +17073,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17128,18 +17128,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17181,18 +17181,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17235,20 +17235,20 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
-body = swagger_client.PrefixsetsIdBody() # PrefixsetsIdBody |  (optional)
+body = graphiant_sdk.PrefixsetsIdBody() # PrefixsetsIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17292,19 +17292,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.PolicyPrefixsetsBody() # PolicyPrefixsetsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.PolicyPrefixsetsBody() # PolicyPrefixsetsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17347,18 +17347,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 level = 56 # int |  (optional)
@@ -17404,19 +17404,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.PolicyRoutetagsetsBody() # PolicyRoutetagsetsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.PolicyRoutetagsetsBody() # PolicyRoutetagsetsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17459,18 +17459,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17512,18 +17512,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17565,18 +17565,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17616,18 +17616,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 gcs_name = 'gcs_name_example' # str |  (optional)
 
@@ -17668,18 +17668,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17719,19 +17719,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.PortalApikeysBody() # PortalApikeysBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.PortalApikeysBody() # PortalApikeysBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17772,18 +17772,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17823,18 +17823,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -17874,18 +17874,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17926,18 +17926,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -17978,19 +17978,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.PrivateSyncBody() # PrivateSyncBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.PrivateSyncBody() # PrivateSyncBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18032,18 +18032,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18085,18 +18085,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18138,18 +18138,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18189,18 +18189,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 max_results = 56 # int |  (optional)
 search = 'search_example' # str |  (optional)
@@ -18246,19 +18246,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.DetailsSitelistsBody() # DetailsSitelistsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.DetailsSitelistsBody() # DetailsSitelistsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18301,18 +18301,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -18356,18 +18356,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18409,18 +18409,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18462,19 +18462,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1SitesBody() # V1SitesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1SitesBody() # V1SitesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18517,18 +18517,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -18572,18 +18572,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -18626,18 +18626,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -18681,20 +18681,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
-body = swagger_client.SitesSiteIdBody() # SitesSiteIdBody |  (optional)
+body = graphiant_sdk.SitesSiteIdBody() # SitesSiteIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18736,18 +18736,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18787,19 +18787,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AutoupgradeDefaultBody() # AutoupgradeDefaultBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AutoupgradeDefaultBody() # AutoupgradeDefaultBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18839,19 +18839,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.UploadNotesBody() # UploadNotesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.UploadNotesBody() # UploadNotesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18891,18 +18891,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18942,18 +18942,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -18993,18 +18993,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19044,18 +19044,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19095,18 +19095,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19148,20 +19148,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
-body = swagger_client.DeviceIdTopBody() # DeviceIdTopBody |   **Field Descriptions**:<br/>  - __numClients__: The maximum number of client usage info to be returned (10 if left empty)<br/>   (optional)
+body = graphiant_sdk.DeviceIdTopBody() # DeviceIdTopBody |   **Field Descriptions**:<br/>  - __numClients__: The maximum number of client usage info to be returned (10 if left empty)<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19205,20 +19205,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
-body = swagger_client.SiteIdTopBody() # SiteIdTopBody |   **Field Descriptions**:<br/>  - __numClients__: The maximum number of apps to return (10 if left empty)<br/>   (optional)
+body = graphiant_sdk.SiteIdTopBody() # SiteIdTopBody |   **Field Descriptions**:<br/>  - __numClients__: The maximum number of apps to return (10 if left empty)<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19260,18 +19260,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -19315,19 +19315,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.TroubleshootingEnterpriseBody() # TroubleshootingEnterpriseBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.TroubleshootingEnterpriseBody() # TroubleshootingEnterpriseBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19368,18 +19368,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19419,18 +19419,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19470,18 +19470,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -19523,18 +19523,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -19576,18 +19576,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 tt_identity = 'tt_identity_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -19629,12 +19629,12 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19673,12 +19673,12 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi()
+api_instance = graphiant_sdk.DefaultApi()
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -19717,20 +19717,20 @@ No authorization required
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 email = 'email_example' # str | 
-body = swagger_client.EmailPasswordBody() # EmailPasswordBody |  (optional)
+body = graphiant_sdk.EmailPasswordBody() # EmailPasswordBody |  (optional)
 token = 'token_example' # str |  (optional)
 
 try:
@@ -19771,18 +19771,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 email = 'email_example' # str | 
 
 try:
@@ -19821,18 +19821,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 email = 'email_example' # str | 
 token = 'token_example' # str |  (optional)
 
@@ -19873,18 +19873,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 id = 'id_example' # str |  (optional)
 
@@ -19928,18 +19928,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -19980,18 +19980,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20033,18 +20033,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20086,18 +20086,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20139,18 +20139,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20192,18 +20192,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 id = 'id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20244,19 +20244,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1UsersBody() # V1UsersBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1UsersBody() # V1UsersBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20298,19 +20298,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V1VersionBody() # V1VersionBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V1VersionBody() # V1VersionBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20353,18 +20353,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20404,19 +20404,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AckCreateupdateBody() # AckCreateupdateBody |   **Field Descriptions**:<br/>  - __alertIdList__: List of ids of alerts to acknowledge<br/>  - __reason__: __(Optional)__ Optional triage message in acknowledgement<br/>    (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AckCreateupdateBody() # AckCreateupdateBody |   **Field Descriptions**:<br/>  - __alertIdList__: List of ids of alerts to acknowledge<br/>  - __reason__: __(Optional)__ Optional triage message in acknowledgement<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20456,18 +20456,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20507,18 +20507,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __alertId__: Alert id of the alert to create allowlist/mutelist for<br/>  - __noteText__: __(Optional)__ Optional note<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20559,18 +20559,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 alert_id = 'alert_id_example' # str | Alert id of the alert to delete allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20611,18 +20611,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 entity_id = 'entity_id_example' # str | Entity id of the alert to delete allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20663,18 +20663,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 rule_id = 'rule_id_example' # str | Alert id of the alert to retrieve allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20716,19 +20716,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssistantAddtoconversationBody() # AssistantAddtoconversationBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssistantAddtoconversationBody() # AssistantAddtoconversationBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20769,18 +20769,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 conversation_id = 'conversation_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -20823,18 +20823,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 conversation_id = 'conversation_id_example' # str | 
 authorization = 'authorization_example' # str |  (optional)
 
@@ -20875,18 +20875,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 conversation_id = 'conversation_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -20929,19 +20929,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssistantGetconversationdetailsBody() # AssistantGetconversationdetailsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssistantGetconversationdetailsBody() # AssistantGetconversationdetailsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -20982,19 +20982,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssistantGetconversationsBody() # AssistantGetconversationsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssistantGetconversationsBody() # AssistantGetconversationsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21035,19 +21035,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssistantUpdateconversationnameBody() # AssistantUpdateconversationnameBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssistantUpdateconversationnameBody() # AssistantUpdateconversationnameBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21087,18 +21087,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21138,19 +21138,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceApplicationdetailsbynameBody() # AssuranceApplicationdetailsbynameBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceApplicationdetailsbynameBody() # AssuranceApplicationdetailsbynameBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21191,18 +21191,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -21246,18 +21246,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21297,19 +21297,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceBucketappserversBody() # AssuranceBucketappserversBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceBucketappserversBody() # AssuranceBucketappserversBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21350,19 +21350,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceBucketappsBody() # AssuranceBucketappsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceBucketappsBody() # AssuranceBucketappsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21403,19 +21403,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceBuckettopologiesBody() # AssuranceBuckettopologiesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceBuckettopologiesBody() # AssuranceBuckettopologiesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21456,19 +21456,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceBucketdetailsBody() # AssuranceBucketdetailsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceBucketdetailsBody() # AssuranceBucketdetailsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21509,19 +21509,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceCreateuserreportBody() # AssuranceCreateuserreportBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceCreateuserreportBody() # AssuranceCreateuserreportBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21562,19 +21562,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceCreateclassifiedapplicationBody() # AssuranceCreateclassifiedapplicationBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceCreateclassifiedapplicationBody() # AssuranceCreateclassifiedapplicationBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21615,18 +21615,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 report_id = 'report_id_example' # str |  (optional)
 
@@ -21667,18 +21667,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 classification_entry_id_list = NULL # list[object] |  (optional)
 
@@ -21719,18 +21719,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21770,19 +21770,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceEndpointintelBody() # AssuranceEndpointintelBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceEndpointintelBody() # AssuranceEndpointintelBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21823,18 +21823,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -21876,19 +21876,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceFlowsummaryBody() # AssuranceFlowsummaryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceFlowsummaryBody() # AssuranceFlowsummaryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21929,18 +21929,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -21980,18 +21980,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22031,18 +22031,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -22084,19 +22084,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyclientsessiondetailsBody() # AssuranceTopologyclientsessiondetailsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyclientsessiondetailsBody() # AssuranceTopologyclientsessiondetailsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22137,19 +22137,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyclientsessionsBody() # AssuranceTopologyclientsessionsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyclientsessionsBody() # AssuranceTopologyclientsessionsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22190,19 +22190,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyclientsummariesBody() # AssuranceTopologyclientsummariesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyclientsummariesBody() # AssuranceTopologyclientsummariesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22243,19 +22243,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyflowsBody() # AssuranceTopologyflowsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyflowsBody() # AssuranceTopologyflowsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22296,19 +22296,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyinventoryBody() # AssuranceTopologyinventoryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyinventoryBody() # AssuranceTopologyinventoryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22349,19 +22349,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyoverviewBody() # AssuranceTopologyoverviewBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyoverviewBody() # AssuranceTopologyoverviewBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22402,19 +22402,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologyregionsummaryBody() # AssuranceTopologyregionsummaryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologyregionsummaryBody() # AssuranceTopologyregionsummaryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22455,19 +22455,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceTopologysitesummariesBody() # AssuranceTopologysitesummariesBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceTopologysitesummariesBody() # AssuranceTopologysitesummariesBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22508,18 +22508,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -22561,19 +22561,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AssuranceUpdateclassifiedapplicationBody() # AssuranceUpdateclassifiedapplicationBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AssuranceUpdateclassifiedapplicationBody() # AssuranceUpdateclassifiedapplicationBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22613,18 +22613,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22664,19 +22664,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.AuditLogsBody1() # AuditLogsBody1 |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.AuditLogsBody1() # AuditLogsBody1 |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22717,19 +22717,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V2ChildalertlistBody() # V2ChildalertlistBody |   **Field Descriptions**:<br/>  - __alertId__: Alert id of the parent alert<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V2ChildalertlistBody() # V2ChildalertlistBody |   **Field Descriptions**:<br/>  - __alertId__: Alert id of the parent alert<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22772,18 +22772,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -22829,18 +22829,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 device_id = 'device_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -22886,19 +22886,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ConsumersusageTopBody() # ConsumersusageTopBody |   **Field Descriptions**:<br/>  - __id__: the id of a producer/service<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ConsumersusageTopBody() # ConsumersusageTopBody |   **Field Descriptions**:<br/>  - __id__: the id of a producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22941,19 +22941,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.LansegmentsusageTopBody() # LansegmentsusageTopBody |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.LansegmentsusageTopBody() # LansegmentsusageTopBody |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -22996,18 +22996,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23051,18 +23051,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23106,18 +23106,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __id__: the id associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23161,19 +23161,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetTotalusageBody() # ExtranetTotalusageBody |   **Field Descriptions**:<br/>  - __id__: the ID associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetTotalusageBody() # ExtranetTotalusageBody |   **Field Descriptions**:<br/>  - __id__: the ID associated with an entity - consumer_id for consumer, and service_id for the producer/service<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23216,19 +23216,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetsmonitoringConsumersBody() # ExtranetsmonitoringConsumersBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetsmonitoringConsumersBody() # ExtranetsmonitoringConsumersBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23269,18 +23269,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 enterprise_id = 'enterprise_id_example' # str | Enterprise id
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23322,18 +23322,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 integration_id = 'integration_id_example' # str | ID of the integration to be deleted
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23374,20 +23374,20 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 integration_id = 'integration_id_example' # str | integration id
-body = swagger_client.IntegrationIntegrationIdBody() # IntegrationIntegrationIdBody |   **Field Descriptions**:<br/>  - __enterprise__: ID of the enterprise<br/>  - __integrationType__: Type of integration<br/>  - __isActive__: __(Optional)__ Indicates whether the integration is active<br/>   - __nickName__: nick name of the integration<br/>  - __updatedBy__: __(Optional)__ ID of the user who updated the integration<br/>    (optional)
+body = graphiant_sdk.IntegrationIntegrationIdBody() # IntegrationIntegrationIdBody |   **Field Descriptions**:<br/>  - __enterprise__: ID of the enterprise<br/>  - __integrationType__: Type of integration<br/>  - __isActive__: __(Optional)__ Indicates whether the integration is active<br/>   - __nickName__: nick name of the integration<br/>  - __updatedBy__: __(Optional)__ ID of the user who updated the integration<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23428,19 +23428,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.V2IntegrationBody() # V2IntegrationBody |   **Field Descriptions**:<br/>  - __createdBy__: __(Optional)__ ID of the user who created the integration<br/>   - __enterprise__: ID of the enterprise<br/>  - __integrationType__: Type of integration<br/>  - __isActive__: __(Optional)__ Indicates whether the integration is active<br/>   - __nickName__: Name of the integration<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.V2IntegrationBody() # V2IntegrationBody |   **Field Descriptions**:<br/>  - __createdBy__: __(Optional)__ ID of the user who created the integration<br/>   - __enterprise__: ID of the enterprise<br/>  - __integrationType__: Type of integration<br/>  - __isActive__: __(Optional)__ Indicates whether the integration is active<br/>   - __nickName__: Name of the integration<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23481,18 +23481,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 enterprise_id = 'enterprise_id_example' # str | Enterprise id
 integration_id = 'integration_id_example' # str | Integration id
 authorization = 'authorization_example' # str |  (optional)
@@ -23535,19 +23535,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringBfdBody() # MonitoringBfdBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringBfdBody() # MonitoringBfdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23588,19 +23588,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringBgpBody() # MonitoringBgpBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringBgpBody() # MonitoringBgpBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23641,18 +23641,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23694,18 +23694,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23747,18 +23747,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23800,18 +23800,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -23853,20 +23853,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 circuit_name = 'circuit_name_example' # str | 
-body = swagger_client.CircuitsummaryCircuitnameBody() # CircuitsummaryCircuitnameBody |  (optional)
+body = graphiant_sdk.CircuitsummaryCircuitnameBody() # CircuitsummaryCircuitnameBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23908,19 +23908,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.ExtranetLogdetailsBody() # ExtranetLogdetailsBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.ExtranetLogdetailsBody() # ExtranetLogdetailsBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -23961,18 +23961,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24012,18 +24012,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24063,18 +24063,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24114,18 +24114,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24165,19 +24165,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringIkeerrorhistoryBody() # MonitoringIkeerrorhistoryBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringIkeerrorhistoryBody() # MonitoringIkeerrorhistoryBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24218,19 +24218,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringInterfaceBody() # MonitoringInterfaceBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringInterfaceBody() # MonitoringInterfaceBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24271,19 +24271,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringIpsecBody() # MonitoringIpsecBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringIpsecBody() # MonitoringIpsecBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24324,19 +24324,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringOspfBody() # MonitoringOspfBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringOspfBody() # MonitoringOspfBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24377,19 +24377,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringPolicyBody() # MonitoringPolicyBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringPolicyBody() # MonitoringPolicyBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24430,19 +24430,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringQueueinstantBody() # MonitoringQueueinstantBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringQueueinstantBody() # MonitoringQueueinstantBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24483,19 +24483,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringQueueBody() # MonitoringQueueBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringQueueBody() # MonitoringQueueBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24536,18 +24536,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -24589,20 +24589,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
-body = swagger_client.BandwidthSiteIdBody() # BandwidthSiteIdBody |  (optional)
+body = graphiant_sdk.BandwidthSiteIdBody() # BandwidthSiteIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24644,20 +24644,20 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
-body = swagger_client.SitetwampSiteIdBody() # SitetwampSiteIdBody |  (optional)
+body = graphiant_sdk.SitetwampSiteIdBody() # SitetwampSiteIdBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24699,18 +24699,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -24752,18 +24752,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -24805,19 +24805,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.MonitoringTwampBody() # MonitoringTwampBody |  (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.MonitoringTwampBody() # MonitoringTwampBody |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24858,19 +24858,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.NotificationCreateBody() # NotificationCreateBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ Description of notification<br/>   - __duration__: Time interval for notification<br/>  - __enabled__: Enable or disable notification<br/>  - __frequency__: Frequency of notifying a continuing alert<br/>  - __messageBody__: __(Optional)__ Message body to prepend to actual message<br/>   - __notificationName__: Name of the notification record<br/>  - __opsgenieList__: __(Optional)__ List of opsgenie recipients<br/>   - __opsrampList__: __(Optional)__ List of opsramp recipients<br/>   - __recipientList__: Non-empty list of email recipients<br/>  - __teamsList__: __(Optional)__ List of teams recipients<br/>   - __ruleIdList__: List of rule ids<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.NotificationCreateBody() # NotificationCreateBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ Description of notification<br/>   - __duration__: Time interval for notification<br/>  - __enabled__: Enable or disable notification<br/>  - __frequency__: Frequency of notifying a continuing alert<br/>  - __messageBody__: __(Optional)__ Message body to prepend to actual message<br/>   - __notificationName__: Name of the notification record<br/>  - __opsgenieList__: __(Optional)__ List of opsgenie recipients<br/>   - __opsrampList__: __(Optional)__ List of opsramp recipients<br/>   - __recipientList__: Non-empty list of email recipients<br/>  - __teamsList__: __(Optional)__ List of teams recipients<br/>   - __ruleIdList__: List of rule ids<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24910,19 +24910,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.NotificationDeleteBody() # NotificationDeleteBody |   **Field Descriptions**:<br/>  - __notificationIdList__: List of notification ids to delete notification records<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.NotificationDeleteBody() # NotificationDeleteBody |   **Field Descriptions**:<br/>  - __notificationIdList__: List of notification ids to delete notification records<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -24962,19 +24962,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.NotificationEnabledisableBody() # NotificationEnabledisableBody |   **Field Descriptions**:<br/>  - __enable__: Enable or disable. True means enable<br/>  - __notificationIdList__: List of notification ids to enable disable<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.NotificationEnabledisableBody() # NotificationEnabledisableBody |   **Field Descriptions**:<br/>  - __enable__: Enable or disable. True means enable<br/>  - __notificationIdList__: List of notification ids to enable disable<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -25014,19 +25014,19 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.NotificationUpdateBody() # NotificationUpdateBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ Description of notification<br/>   - __duration__: Time interval for notification<br/>  - __enabled__: Enable or disable notification<br/>  - __frequency__: Frequency of notifying a continuing alert<br/>  - __messageBody__: __(Optional)__ Message body to prepend to actual message<br/>   - __notificationName__: Name of the notification record<br/>  - __opsgenieList__: __(Optional)__ List of opsgenie recipients<br/>   - __opsrampList__: __(Optional)__ List of opsramp recipients<br/>   - __recipientList__: Non-empty list of email recipients<br/>  - __teamsList__: __(Optional)__ List of teams recipients<br/>   - __notificationIdList__: List of notification ids to update<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.NotificationUpdateBody() # NotificationUpdateBody |   **Field Descriptions**:<br/>  - __description__: __(Optional)__ Description of notification<br/>   - __duration__: Time interval for notification<br/>  - __enabled__: Enable or disable notification<br/>  - __frequency__: Frequency of notifying a continuing alert<br/>  - __messageBody__: __(Optional)__ Message body to prepend to actual message<br/>   - __notificationName__: Name of the notification record<br/>  - __opsgenieList__: __(Optional)__ List of opsgenie recipients<br/>   - __opsrampList__: __(Optional)__ List of opsramp recipients<br/>   - __recipientList__: Non-empty list of email recipients<br/>  - __teamsList__: __(Optional)__ List of teams recipients<br/>   - __notificationIdList__: List of notification ids to update<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -25066,18 +25066,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25119,18 +25119,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |   **Field Descriptions**:<br/>  - __alertId__: Alert id of the alert to create allowlist/mutelist for<br/>  - __noteText__: __(Optional)__ Optional note<br/>    (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25171,18 +25171,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 alert_id = 'alert_id_example' # str | Alert id of the alert to delete allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25223,18 +25223,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 entity_id = 'entity_id_example' # str | Entity id of the alert to delete allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25275,18 +25275,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 rule_id = 'rule_id_example' # str | Alert id of the alert to retrieve allowlist/mutelist for
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25328,18 +25328,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
 
@@ -25381,19 +25381,19 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
-body = swagger_client.RuleEnabledisableBody() # RuleEnabledisableBody |   **Field Descriptions**:<br/>  - __enable__: Enable or disable. True means enable<br/>  - __ruleIdList__: List of rule ids to enable/disable<br/>   (optional)
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
+body = graphiant_sdk.RuleEnabledisableBody() # RuleEnabledisableBody |   **Field Descriptions**:<br/>  - __enable__: Enable or disable. True means enable<br/>  - __ruleIdList__: List of rule ids to enable/disable<br/>   (optional)
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -25433,18 +25433,18 @@ void (empty response body)
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
@@ -25486,18 +25486,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -25543,18 +25543,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -25600,18 +25600,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 site_id = 'site_id_example' # str | 
 body = NULL # object |  (optional)
 authorization = 'authorization_example' # str |  (optional)
@@ -25655,18 +25655,18 @@ Name | Type | Description  | Notes
 ```python
 from __future__ import print_function
 import time
-import swagger_client
-from swagger_client.rest import ApiException
+import graphiant_sdk
+from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
 # Configure API key authorization: jwtAuth
-configuration = swagger_client.Configuration()
+configuration = graphiant_sdk.Configuration()
 configuration.api_key['authorization'] = 'YOUR_API_KEY'
 # Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 # configuration.api_key_prefix['authorization'] = 'Bearer'
 
 # create an instance of the API class
-api_instance = swagger_client.DefaultApi(swagger_client.ApiClient(configuration))
+api_instance = graphiant_sdk.DefaultApi(graphiant_sdk.ApiClient(configuration))
 authorization = 'authorization_example' # str |  (optional)
 
 try:
