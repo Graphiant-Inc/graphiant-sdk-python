@@ -20,34 +20,3 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 """
-
-from setuptools import setup, find_packages  # noqa: H301
-
-NAME = "graphiant-sdk"
-VERSION = "25.6.0"
-
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
-
-setup(
-    name=NAME,
-    version=VERSION,
-    url="https://www.graphiant.com",
-    project_urls={
-         "Source Code": "https://github.com/Graphiant-Inc/graphiant-sdk-python"
-    },
-    author="Graphiant Inc",
-    author_email="support@graphiant.com",
-    description="Python SDK for Graphiant NaaS",
-    long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
-    license='MIT',
-    keywords=["SDK", "Graphiant", "NaaS"],
-    install_requires=REQUIRES,
-    packages=find_packages(),
-    classifiers=[
-        'Programming Language :: Python :: 3',
-        'License :: OSI Approved :: MIT License',
-        'Operating System :: OS Independent',
-    ],
-    include_package_data=True,
-)
