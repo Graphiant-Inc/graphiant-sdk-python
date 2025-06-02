@@ -1,55 +1,5 @@
-# Graphiant-SDK-Python
-
-Python SDK for [Graphiant NaaS](https://www.graphiant.com).
-
-Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with our services.
-
-## Install
-
-```sh
-pip install graphiant-sdk
-```
-
-## Build
-
-This guide explains how to build and install Graphiant-SDK from source code.
-
-### Prerequisites
-
-python version 3.12+
-
-### Create and activate python virtual environment
-```sh
-python3 -m venv venv
-source venv/bin/activate
-```
-
-### Install requirement packages
-```sh
-pip install --upgrade pip setuptools wheel
-```
-
-### Clone the graphiant-sdk-python repo
-```sh
-git clone git@github.com:Graphiant-Inc/graphiant-sdk-python.git
-```
-
-### Build the SDK Distribution
-```sh
-cd graphiant-sdk-python
-python setup.py sdist bdist_wheel
-```
-
-### Install the SDK locally
-
-Install using the source archive:
-
-```sh
-pip install dist/*.tar.gz
-```
-
-## License
-
+# coding: utf-8
+"""
 Copyright (c) 2025 Graphiant-Inc
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -69,3 +19,32 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+"""
+
+from setuptools import setup, find_packages  # noqa: H301
+
+NAME = "graphiant-sdk"
+VERSION = "25.5.0"
+
+REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+
+setup(
+    name=NAME,
+    version=VERSION,
+    url="https://www.graphiant.com",
+    author="Graphiant Inc",
+    author_email="support@graphiant.com",
+    description="Python SDK for Graphiant NaaS",
+    long_description=open('README.md').read(),
+    long_description_content_type='text/markdown',
+    license='MIT',
+    keywords=["SDK", "Graphiant", "NaaS"],
+    install_requires=REQUIRES,
+    packages=find_packages(),
+    classifiers=[
+            'Programming Language :: Python :: 3',
+            'License :: OSI Approved :: MIT License',
+            'Operating System :: OS Independent',
+        ],
+    include_package_data=True,
+)
