@@ -1,8 +1,11 @@
-## Build & Install the GRAPHIANT-SDK-PYTHON
+# Graphiant-SDK-Python
+Python SDK for [Graphiant NaaS](https://www.graphiant.com).
 
-This guide explains how to build and install the GRAPHIANT-SDK-PYTHON.
+Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with our services.
 
----
+## Build & Install
+
+This guide explains how to build and install the Graphiant-SDK-Python.
 
 ### Install Python 3.12+
 
