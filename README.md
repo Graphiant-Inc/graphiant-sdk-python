@@ -6,6 +6,8 @@ Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with
 
 ## Install
 
+Graphiant-SDK package can be installed using pip. Refer [graphiant-sdk](https://pypi.org/project/graphiant-sdk/) package on public PyPi server.
+
 ```sh
 pip install graphiant-sdk
 ```
@@ -47,6 +49,10 @@ Install using the source archive:
 ```sh
 pip install dist/*.tar.gz
 ```
+
+## Usage
+
+Refer [graphiant-playbooks](https://github.com/Graphiant-Inc/graphiant-playbooks) repo for usage examples.
 
 ## License
 
