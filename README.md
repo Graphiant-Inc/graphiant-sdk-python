@@ -14,7 +14,7 @@ pip install graphiant-sdk
 
 ## Build
 
-This guide explains how to build and install Graphiant-SDK from source code.
+Steps to build and install Graphiant-SDK package from source code.
 
 ### Prerequisites
 
@@ -26,24 +26,24 @@ python3 -m venv venv
 source venv/bin/activate
 ```
 
-### Install requirement packages
+### Install dependencies
 ```sh
 pip install --upgrade pip setuptools wheel
 ```
 
-### Clone the graphiant-sdk-python repo
+### Clone the graphiant-sdk-python repository
 ```sh
 git clone git@github.com:Graphiant-Inc/graphiant-sdk-python.git
 ```
 
-### Build the SDK Distribution
+### Build graphiant-sdk distribution
 ```sh
 cd graphiant-sdk-python
 pip install -r requirements.txt
 python setup.py sdist bdist_wheel
 ```
 
-### Install the SDK locally
+### Install graphiant-sdk locally
 
 Install using the source archive:
 
@@ -51,14 +51,14 @@ Install using the source archive:
 pip install dist/*.tar.gz
 ```
 
-### To generate the SDK locally directly from the Graphiant portal OpenAPI specification file.
+## Generate
 
-To generate SDK directly using Graphiant portal OpenAPI specification file:
+Steps to generate Graphiant-SDK-Python locally using Graphiant API docs. 
 
 ```sh
-pip install openapi-generator-cli
-openapi-generator-cli generate -i openapi.json -g python -o graphiant_sdk --package-name graphiant_sdk
+openapi-generator generate -i graphiant_api_docs_v25.6.2.json -g python --git-user-id Graphiant-Inc --git-repo-id graphiant-sdk-python --package-name graphiant_sd
 ```
+Note: Latest version of Graphiant API docs can be downloaded from Graphiant portal under "Support Hub" > "Developer Tools".
 
 ## Usage
 
