@@ -1,0 +1,5 @@
+# OpenAPI Generator Ignore
+LICENSE
+setup.py
+README.md
+.gitignore
