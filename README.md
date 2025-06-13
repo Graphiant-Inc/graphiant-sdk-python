@@ -39,6 +39,7 @@ git clone git@github.com:Graphiant-Inc/graphiant-sdk-python.git
 ### Build the SDK Distribution
 ```sh
 cd graphiant-sdk-python
+pip install -r requirements.txt
 python setup.py sdist bdist_wheel
 ```
 
@@ -48,6 +49,15 @@ Install using the source archive:
 
 ```sh
 pip install dist/*.tar.gz
+```
+
+### To generate the SDK locally directly from the Graphiant portal OpenAPI specification file.
+
+To generate SDK directly using Graphiant portal OpenAPI specification file:
+
+```sh
+pip install openapi-generator-cli
+openapi-generator-cli generate -i openapi.json -g python -o graphiant_sdk --package-name graphiant_sdk
 ```
 
 ## Usage

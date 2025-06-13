@@ -24,30 +24,36 @@ SOFTWARE.
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "graphiant_sdk"
-VERSION = "25.6.1"
-
-REQUIRES = ["urllib3 >= 1.15", "six >= 1.10", "certifi", "python-dateutil"]
+VERSION = "25.6.2"
+PYTHON_REQUIRES = ">= 3.9"
+REQUIRES = [
+    "urllib3 >= 2.1.0, < 3.0.0",
+    "python-dateutil >= 2.8.2",
+    "pydantic >= 2",
+    "typing-extensions >= 4.7.1",
+]
 
 setup(
     name=NAME,
     version=VERSION,
-    url="https://www.graphiant.com",
-    project_urls={
-         "Source Code": "https://github.com/Graphiant-Inc/graphiant-sdk-python"
-    },
+    description="Python SDK for Graphiant NaaS",
     author="Graphiant Inc",
     author_email="support@graphiant.com",
-    description="Python SDK for Graphiant NaaS",
-    long_description=open('README.md').read(),
-    long_description_content_type='text/markdown',
-    license='MIT',
+    url="https://www.graphiant.com",
     keywords=["SDK", "Graphiant", "NaaS"],
     install_requires=REQUIRES,
     packages=find_packages(),
+    include_package_data=True,
+    long_description_content_type='text/markdown',
+    long_description=open('README.md').read(),
+    package_data={"graphiant_sdk": ["py.typed"]},
+    project_urls={
+         "Source Code": "https://github.com/Graphiant-Inc/graphiant-sdk-python"
+    },
+    license='MIT',
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License',
         'Operating System :: OS Independent',
     ],
-    include_package_data=True,
 )

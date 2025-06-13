@@ -1,9 +1,0 @@
-# InlineResponse20015ChildrenAlertList
-
-## Properties
-Name | Type | Description | Notes
------------- | ------------- | ------------- | -------------
-**alert_list** | [**list[InlineResponse20015ChildrenAlertListAlertList]**](InlineResponse20015ChildrenAlertListAlertList.md) |  | [optional] 
-
-[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
-
