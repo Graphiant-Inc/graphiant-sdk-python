@@ -2,7 +2,7 @@
 
 Python SDK for [Graphiant NaaS](https://www.graphiant.com).
 
-Refer [Graphiant Documentation](https://docs.graphiant.com/) to get started with our services.
+Refer [Graphiant-SDK-Python User Guide](https://docs.graphiant.com/docs/graphiant-sdk-python) under [Automation Section](https://docs.graphiant.com/docs/automation) in [Graphiant Docs](https://docs.graphiant.com/) for getting started instructions.
 
 ## Install
 
@@ -59,10 +59,6 @@ Steps to generate Graphiant-SDK-Python locally using Graphiant API docs.
 openapi-generator generate -i graphiant_api_docs_v25.6.2.json -g python --git-user-id Graphiant-Inc --git-repo-id graphiant-sdk-python --package-name graphiant_sd
 ```
 Note: Latest version of Graphiant API docs can be downloaded from Graphiant portal under "Support Hub" > "Developer Tools".
-
-## Usage
-
-Refer [graphiant-playbooks](https://github.com/Graphiant-Inc/graphiant-playbooks) repo for usage examples.
 
 ## License
 
