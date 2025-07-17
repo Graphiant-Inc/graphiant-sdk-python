@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **confirmed** | **bool** |  | [optional] 
 **id** | **str** |  | [optional] 
 **qr_code** | **str** |  | [optional] 
+**shared_secret** | **str** |  | [optional] 
 
 ## Example
 

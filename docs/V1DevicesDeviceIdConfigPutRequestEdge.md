@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **interfaces** | [**Dict[str, V1DevicesDeviceIdConfigPutRequestEdgeInterfacesValue]**](V1DevicesDeviceIdConfigPutRequestEdgeInterfacesValue.md) |  | [optional] 
 **ipfix_enabled** | **bool** |  | [optional] 
 **ipfix_exporters** | [**Dict[str, V1GlobalConfigPatchRequestIpfixExportersValue]**](V1GlobalConfigPatchRequestIpfixExportersValue.md) |  | [optional] 
+**lag_interfaces** | [**Dict[str, V1DevicesDeviceIdConfigPutRequestEdgeLagInterfacesValue]**](V1DevicesDeviceIdConfigPutRequestEdgeLagInterfacesValue.md) |  | [optional] 
 **lldp_enabled** | **bool** |  | [optional] 
 **local_route_tag** | [**V1GlobalConfigPatchRequestRoutingPoliciesValuePolicyStatementsValueStatementMatchesValueMatchRouteTag**](V1GlobalConfigPatchRequestRoutingPoliciesValuePolicyStatementsValueStatementMatchesValueMatchRouteTag.md) |  | [optional] 
 **local_web_server_password** | **str** |  | [optional] 

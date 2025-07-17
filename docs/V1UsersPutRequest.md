@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **email** | **str** |  | [optional] 
 **first_name** | **str** |  | [optional] 
+**group_id** | **str** |  | [optional] 
 **last_name** | **str** |  | [optional] 
 **time_zone** | **str** |  | [optional] 
 

@@ -5,9 +5,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**account_type** | **str** |  | [optional] 
 **auth** | **bool** |  | [optional] 
 **token** | **str** |  | [optional] 
+**account_type** | **str** |  | [optional] 
 
 ## Example
 

@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **allocation_core** | **float** |  | [optional] 
 **allocation_gw** | **float** |  | [optional] 
+**allocation_internet** | **float** |  | [optional] 
 **credit_core** | **float** |  | [optional] 
 **credit_gw** | **float** |  | [optional] 
 **region_id** | **int** |  | [optional] 

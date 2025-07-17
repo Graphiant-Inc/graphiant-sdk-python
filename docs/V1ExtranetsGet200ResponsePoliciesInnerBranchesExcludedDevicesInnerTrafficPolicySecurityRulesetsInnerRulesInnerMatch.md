@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **destination_port** | **int** |  | [optional] 
 **destination_port_range** | [**V1GlobalConfigPatchRequestTrafficPoliciesSecurityRulesetsValueRulesetRulesValueRuleMatchDestinationPortRange**](V1GlobalConfigPatchRequestTrafficPoliciesSecurityRulesetsValueRulesetRulesValueRuleMatchDestinationPortRange.md) |  | [optional] 
 **domain_category_ids** | **List[int]** |  | [optional] 
+**domain_wildcards** | **List[str]** |  | [optional] 
 **dscp** | [**V1GlobalConfigPatchRequestTrafficPoliciesSecurityRulesetsValueRulesetRulesValueRuleMatchDscpMatch**](V1GlobalConfigPatchRequestTrafficPoliciesSecurityRulesetsValueRulesetRulesValueRuleMatchDscpMatch.md) |  | [optional] 
 **icmp_type** | **int** |  | [optional] 
 **ip_protocol** | **str** |  | [optional] 
