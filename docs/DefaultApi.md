@@ -101,8 +101,8 @@ Method | HTTP request | Description
 [**v1_devices_device_id_candidate_circuits_get**](DefaultApi.md#v1_devices_device_id_candidate_circuits_get) | **GET** /v1/devices/{deviceId}/candidate-circuits | 
 [**v1_devices_device_id_circuits_vrf_associations_get**](DefaultApi.md#v1_devices_device_id_circuits_vrf_associations_get) | **GET** /v1/devices/{deviceId}/circuits/vrf-associations | 
 [**v1_devices_device_id_config_put**](DefaultApi.md#v1_devices_device_id_config_put) | **PUT** /v1/devices/{deviceId}/config | 
-[**v1_devices_device_id_configs_staged_delete**](DefaultApi.md#v1_devices_device_id_configs_staged_delete) | **DELETE** /v1/devices/{deviceId}/configs/staged | 
 [**v1_devices_device_id_connectivity_get**](DefaultApi.md#v1_devices_device_id_connectivity_get) | **GET** /v1/devices/{deviceId}/connectivity | 
+[**v1_devices_device_id_controller_peers_put**](DefaultApi.md#v1_devices_device_id_controller_peers_put) | **PUT** /v1/devices/{deviceId}/controller-peers | 
 [**v1_devices_device_id_dhcp_server_leases_get**](DefaultApi.md#v1_devices_device_id_dhcp_server_leases_get) | **GET** /v1/devices/{deviceId}/dhcp-server/leases | 
 [**v1_devices_device_id_draft_delete**](DefaultApi.md#v1_devices_device_id_draft_delete) | **DELETE** /v1/devices/{deviceId}/draft | 
 [**v1_devices_device_id_draft_get**](DefaultApi.md#v1_devices_device_id_draft_get) | **GET** /v1/devices/{deviceId}/draft | 
@@ -118,7 +118,6 @@ Method | HTTP request | Description
 [**v1_devices_device_id_policy_customapplications_get**](DefaultApi.md#v1_devices_device_id_policy_customapplications_get) | **GET** /v1/devices/{deviceId}/policy/customapplications | 
 [**v1_devices_device_id_policy_zonepairs_get**](DefaultApi.md#v1_devices_device_id_policy_zonepairs_get) | **GET** /v1/devices/{deviceId}/policy/zonepairs | 
 [**v1_devices_device_id_slice_peers_get**](DefaultApi.md#v1_devices_device_id_slice_peers_get) | **GET** /v1/devices/{deviceId}/slice/peers | 
-[**v1_devices_device_id_staged_config_compare_get**](DefaultApi.md#v1_devices_device_id_staged_config_compare_get) | **GET** /v1/devices/{deviceId}/stagedConfig/compare | 
 [**v1_devices_device_id_twamp_core_get**](DefaultApi.md#v1_devices_device_id_twamp_core_get) | **GET** /v1/devices/{deviceId}/twamp/core | 
 [**v1_devices_device_id_versions_compare_get**](DefaultApi.md#v1_devices_device_id_versions_compare_get) | **GET** /v1/devices/{deviceId}/versions/compare | 
 [**v1_devices_device_id_versions_get**](DefaultApi.md#v1_devices_device_id_versions_get) | **GET** /v1/devices/{deviceId}/versions | 
@@ -288,7 +287,6 @@ Method | HTTP request | Description
 [**v1_groups_id_patch**](DefaultApi.md#v1_groups_id_patch) | **PATCH** /v1/groups/{id} | 
 [**v1_groups_put**](DefaultApi.md#v1_groups_put) | **PUT** /v1/groups | 
 [**v1_groups_root_get**](DefaultApi.md#v1_groups_root_get) | **GET** /v1/groups/root | 
-[**v1_healthcheck_devices_get**](DefaultApi.md#v1_healthcheck_devices_get) | **GET** /v1/healthcheck/devices | 
 [**v1_id_password_recover_patch**](DefaultApi.md#v1_id_password_recover_patch) | **PATCH** /v1/{id}/password/recover | 
 [**v1_lan_segments_get**](DefaultApi.md#v1_lan_segments_get) | **GET** /v1/lan-segments | 
 [**v1_lldp_interface_id_neighbors_get**](DefaultApi.md#v1_lldp_interface_id_neighbors_get) | **GET** /v1/lldp/{interfaceId}/neighbors | 
@@ -8010,81 +8008,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v1_devices_device_id_configs_staged_delete**
-> object v1_devices_device_id_configs_staged_delete(authorization, device_id)
-
-### Example
-
-* Api Key Authentication (jwtAuth):
-
-```python
-import graphiant_sdk
-from graphiant_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.graphiant.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphiant_sdk.Configuration(
-    host = "https://api.graphiant.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: jwtAuth
-configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with graphiant_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = graphiant_sdk.DefaultApi(api_client)
-    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
-    device_id = 3000000000 # int | 16 bytes (base64 encoded) identifier for the device.
-
-    try:
-        api_response = api_instance.v1_devices_device_id_configs_staged_delete(authorization, device_id)
-        print("The response of DefaultApi->v1_devices_device_id_configs_staged_delete:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->v1_devices_device_id_configs_staged_delete: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **device_id** | **int**| 16 bytes (base64 encoded) identifier for the device. | 
-
-### Return type
-
-**object**
-
-### Authorization
-
-[jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**204** | No Content |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v1_devices_device_id_connectivity_get**
 > V1DevicesDeviceIdConnectivityGet200Response v1_devices_device_id_connectivity_get(authorization, device_id)
 
@@ -8158,6 +8081,84 @@ Name | Type | Description  | Notes
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
 **200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_devices_device_id_controller_peers_put**
+> object v1_devices_device_id_controller_peers_put(authorization, device_id, v1_devices_device_id_controller_peers_put_request)
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v1_devices_device_id_controller_peers_put_request import V1DevicesDeviceIdControllerPeersPutRequest
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    device_id = 1234567891011 # int | 
+    v1_devices_device_id_controller_peers_put_request = graphiant_sdk.V1DevicesDeviceIdControllerPeersPutRequest() # V1DevicesDeviceIdControllerPeersPutRequest | 
+
+    try:
+        api_response = api_instance.v1_devices_device_id_controller_peers_put(authorization, device_id, v1_devices_device_id_controller_peers_put_request)
+        print("The response of DefaultApi->v1_devices_device_id_controller_peers_put:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_devices_device_id_controller_peers_put: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **device_id** | **int**|  | 
+ **v1_devices_device_id_controller_peers_put_request** | [**V1DevicesDeviceIdControllerPeersPutRequest**](V1DevicesDeviceIdControllerPeersPutRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**202** | Accepted |  -  |
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -9305,82 +9306,6 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
-# **v1_devices_device_id_staged_config_compare_get**
-> V1DevicesDeviceIdStagedConfigCompareGet200Response v1_devices_device_id_staged_config_compare_get(authorization, device_id)
-
-### Example
-
-* Api Key Authentication (jwtAuth):
-
-```python
-import graphiant_sdk
-from graphiant_sdk.models.v1_devices_device_id_staged_config_compare_get200_response import V1DevicesDeviceIdStagedConfigCompareGet200Response
-from graphiant_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.graphiant.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphiant_sdk.Configuration(
-    host = "https://api.graphiant.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: jwtAuth
-configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with graphiant_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = graphiant_sdk.DefaultApi(api_client)
-    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
-    device_id = 3000000000 # int | 16 bytes (base64 encoded) identifier for the device.
-
-    try:
-        api_response = api_instance.v1_devices_device_id_staged_config_compare_get(authorization, device_id)
-        print("The response of DefaultApi->v1_devices_device_id_staged_config_compare_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->v1_devices_device_id_staged_config_compare_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
- **device_id** | **int**| 16 bytes (base64 encoded) identifier for the device. | 
-
-### Return type
-
-[**V1DevicesDeviceIdStagedConfigCompareGet200Response**](V1DevicesDeviceIdStagedConfigCompareGet200Response.md)
-
-### Authorization
-
-[jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
 # **v1_devices_device_id_twamp_core_get**
 > V1DevicesDeviceIdTwampCoreGet200Response v1_devices_device_id_twamp_core_get(authorization, device_id)
 
@@ -9458,7 +9383,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_devices_device_id_versions_compare_get**
-> V1DevicesDeviceIdStagedConfigCompareGet200Response v1_devices_device_id_versions_compare_get(authorization, device_id)
+> V1DevicesDeviceIdVersionsCompareGet200Response v1_devices_device_id_versions_compare_get(authorization, device_id)
 
 ### Example
 
@@ -9466,7 +9391,7 @@ Name | Type | Description  | Notes
 
 ```python
 import graphiant_sdk
-from graphiant_sdk.models.v1_devices_device_id_staged_config_compare_get200_response import V1DevicesDeviceIdStagedConfigCompareGet200Response
+from graphiant_sdk.models.v1_devices_device_id_versions_compare_get200_response import V1DevicesDeviceIdVersionsCompareGet200Response
 from graphiant_sdk.rest import ApiException
 from pprint import pprint
 
@@ -9514,7 +9439,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**V1DevicesDeviceIdStagedConfigCompareGet200Response**](V1DevicesDeviceIdStagedConfigCompareGet200Response.md)
+[**V1DevicesDeviceIdVersionsCompareGet200Response**](V1DevicesDeviceIdVersionsCompareGet200Response.md)
 
 ### Authorization
 
@@ -22188,80 +22113,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1GroupsGet200Response**](V1GroupsGet200Response.md)
-
-### Authorization
-
-[jwtAuth](../README.md#jwtAuth)
-
-### HTTP request headers
-
- - **Content-Type**: Not defined
- - **Accept**: application/json
-
-### HTTP response details
-
-| Status code | Description | Response headers |
-|-------------|-------------|------------------|
-**200** | OK |  -  |
-
-[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
-
-# **v1_healthcheck_devices_get**
-> V1HealthcheckDevicesGet200Response v1_healthcheck_devices_get(authorization)
-
-### Example
-
-* Api Key Authentication (jwtAuth):
-
-```python
-import graphiant_sdk
-from graphiant_sdk.models.v1_healthcheck_devices_get200_response import V1HealthcheckDevicesGet200Response
-from graphiant_sdk.rest import ApiException
-from pprint import pprint
-
-# Defining the host is optional and defaults to https://api.graphiant.com
-# See configuration.py for a list of all supported configuration parameters.
-configuration = graphiant_sdk.Configuration(
-    host = "https://api.graphiant.com"
-)
-
-# The client must configure the authentication and authorization parameters
-# in accordance with the API server security policy.
-# Examples for each auth method are provided below, use the example that
-# satisfies your auth use case.
-
-# Configure API key authorization: jwtAuth
-configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
-
-# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
-
-# Enter a context with an instance of the API client
-with graphiant_sdk.ApiClient(configuration) as api_client:
-    # Create an instance of the API class
-    api_instance = graphiant_sdk.DefaultApi(api_client)
-    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
-
-    try:
-        api_response = api_instance.v1_healthcheck_devices_get(authorization)
-        print("The response of DefaultApi->v1_healthcheck_devices_get:\n")
-        pprint(api_response)
-    except Exception as e:
-        print("Exception when calling DefaultApi->v1_healthcheck_devices_get: %s\n" % e)
-```
-
-
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
-
-### Return type
-
-[**V1HealthcheckDevicesGet200Response**](V1HealthcheckDevicesGet200Response.md)
 
 ### Authorization
 

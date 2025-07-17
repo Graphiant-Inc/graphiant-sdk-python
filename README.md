@@ -56,7 +56,7 @@ pip install dist/*.tar.gz
 Steps to generate Graphiant-SDK-Python locally using Graphiant API docs. 
 
 ```sh
-openapi-generator generate -i graphiant_api_docs_v25.6.2.json -g python --git-user-id Graphiant-Inc --git-repo-id graphiant-sdk-python --package-name graphiant_sd
+openapi-generator generate -i graphiant_api_docs_v25.7.1.json -g python --git-user-id Graphiant-Inc --git-repo-id graphiant-sdk-python --package-name graphiant_sdk
 ```
 Note: Latest version of Graphiant API docs can be downloaded from Graphiant portal under "Support Hub" > "Developer Tools".
 

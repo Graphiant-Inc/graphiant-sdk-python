@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **consumed_credits** | **float** |  | [optional] 
 **core_conversion_factor** | **float** |  | [optional] 
 **gw_conversion_factor** | **float** |  | [optional] 
+**internet_consumption** | [**V1EnterpriseAllocationGet200ResponseConsumptionSummaryRegionalSummariesValueInternetConsumption**](V1EnterpriseAllocationGet200ResponseConsumptionSummaryRegionalSummariesValueInternetConsumption.md) |  | [optional] 
 **usage** | [**V1EnterpriseAllocationGet200ResponseConsumptionSummaryRegionalSummariesValueAllocation**](V1EnterpriseAllocationGet200ResponseConsumptionSummaryRegionalSummariesValueAllocation.md) |  | [optional] 
 
 ## Example
