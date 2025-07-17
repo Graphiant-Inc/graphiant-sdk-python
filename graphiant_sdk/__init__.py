@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "1.0.0"
+__version__ = "25.7.1"
 
 # import apis into sdk package
 from graphiant_sdk.api.default_api import DefaultApi
