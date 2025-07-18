@@ -332,7 +332,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Documentation**: [Graphiant Docs](https://docs.graphiant.com/)
 - **API Reference**: [DefaultApi.md](docs/DefaultApi.md)
 - **Issues**: [GitHub Issues](https://github.com/Graphiant-Inc/graphiant-sdk-python/issues)
-- **Community**: [Graphiant Community](https://community.graphiant.com/)
+- **Email**: support@graphiant.com
 
 ## 🔗 Related Projects
 
