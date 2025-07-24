@@ -5,13 +5,15 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.graphiant.com/docs/graphiant-sdk-python)
 
-A comprehensive Python SDK for [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com), providing seamless integration with Graphiant's network automation platform.
+A comprehensive Python SDK for [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com) offerings, providing seamless integration with Graphiant's network automation platform.
+
+Refer [Graphiant Docs](https://docs.graphiant.com) to get started with [Graphiant Network-as-a-Service (NaaS)](https://www.graphiant.com) offerings.
 
 ## 📚 Documentation
 
-- **Official Documentation**: [Graphiant SDK Python Guide](https://docs.graphiant.com/docs/graphiant-sdk-python)
-- **API Reference**: [DefaultApi.md](docs/DefaultApi.md)
-- **Package**: [PyPI - graphiant-sdk](https://pypi.org/project/graphiant-sdk/)
+- **Official Documentation**: [Graphiant SDK Python Guide](https://docs.graphiant.com/docs/graphiant-sdk-python) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
+- **API Reference**: [Graphiant SDK Python API Docs](docs/DefaultApi.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
+- **Package**: [PyPI package - graphiant-sdk](https://pypi.org/project/graphiant-sdk)
 
 ## ✨ Features
 
@@ -44,7 +46,7 @@ from graphiant_sdk.exceptions import (
 
 # Create client configuration
 config = graphiant_sdk.Configuration(
-    host="https://portal.graphiant.com",
+    host="https://api.graphiant.com",
     username="your_username",
     password="your_password"
 )
@@ -310,9 +312,15 @@ python -m pytest tests/ --cov=graphiant_sdk --cov-report=html
 ### Environment Variables
 
 ```bash
-export GRAPHIANT_HOST="https://portal.graphiant.com"
+export GRAPHIANT_HOST="https://api.graphiant.com"
 export GRAPHIANT_USERNAME="your_username"
 export GRAPHIANT_PASSWORD="your_password"
+```
+
+```bash
+username = os.Getenv("GRAPHIANT_USERNAME")
+password = os.Getenv("GRAPHIANT_PASSWORD")
+host = os.Getenv("GRAPHIANT_HOST")
 ```
 
 ## 🤝 Contributing
@@ -329,15 +337,14 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🆘 Support
 
-- **Documentation**: [Graphiant Docs](https://docs.graphiant.com/)
-- **API Reference**: [DefaultApi.md](docs/DefaultApi.md)
+- **Official Documentation**: [Graphiant SDK Python Guide](https://docs.graphiant.com/docs/graphiant-sdk-python) <-> [Graphiant Automation Docs](https://docs.graphiant.com/docs/automation)
+- **API Reference**: [Graphiant SDK Python API Docs](docs/DefaultApi.md) <-> [Graphiant Portal REST API Guide](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
 - **Issues**: [GitHub Issues](https://github.com/Graphiant-Inc/graphiant-sdk-python/issues)
 - **Email**: support@graphiant.com
 
 ## 🔗 Related Projects
 
 - [Graphiant SDK Go](https://github.com/Graphiant-Inc/graphiant-sdk-go)
-- [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api)
 - [Graphiant Playbooks](https://github.com/Graphiant-Inc/graphiant-playbooks)
 
 ---
