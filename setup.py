@@ -37,6 +37,9 @@ REQUIRES = [
     "playwright >= 1.40.0, < 2.0.0",
 ]
 
+with open('README.md', encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
+
 setup(
     name=NAME,
     version=VERSION,
@@ -49,7 +52,7 @@ setup(
     packages=find_packages(),
     include_package_data=True,
     long_description_content_type='text/markdown',
-    long_description=open('README.md').read(),
+    long_description=LONG_DESCRIPTION,
     package_data={"graphiant_sdk": ["py.typed"]},
     project_urls={
          "Source Code": "https://github.com/Graphiant-Inc/graphiant-sdk-python"
