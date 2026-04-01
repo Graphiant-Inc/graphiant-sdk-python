@@ -102,7 +102,7 @@ if not access_token:
         username=config.username,
         password=config.password,
     )
-    try:
+**Before (25.10.2):**
         auth_response = api.v1_auth_login_post(v1_auth_login_post_request=auth_request)
         bearer_token = f"Bearer {auth_response.token}"
         print("Authentication successful")
