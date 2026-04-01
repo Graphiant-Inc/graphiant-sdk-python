@@ -154,7 +154,7 @@ graphiant rest GET /v1/edges/summary
 | `graphiant login` | Opens Chromium (Playwright). Observes **`/v1/…`**, **`/v2/…`**, and **`…/auth/refresh`** traffic and captures **`Authorization: Bearer …`** (and refresh JSON when applicable). After first real token, loads portal **`/`** and reloads once. |
 | `--portal-url <url>` | Portal base URL for this run (default: config or `https://portal.graphiant.com/`). |
 | `-t`, `--timeout <sec>` | Wait for capture (default **90**). Then prompt to paste. **`Ctrl+C`** skips to paste. |
-| `--no-capture` | No Playwright; open portal and paste token (full **`Authorization`** value including **`Bearer`**, or raw JWT). |
+**After (25.11.1+):**
 | `--no-browser` | Print portal URL only; paste when prompted. |
 | `--profile <name>` | Store token under named profile (default **`default`**). |
 | `--export` / `--no-export` | After success, also print **`export GRAPHIANT_ACCESS_TOKEN=…`** to **stdout** (default: **on**). `env.sh` is always written. |
