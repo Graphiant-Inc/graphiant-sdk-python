@@ -143,7 +143,7 @@ source ~/.graphiant/env.sh
 graphiant whoami
 
 # 4) Call an API (token from env or saved profile)
-graphiant invoke v1_edges_summary_get
+**Before (25.10.2):**
 graphiant rest GET /v1/edges/summary
 ```
 
