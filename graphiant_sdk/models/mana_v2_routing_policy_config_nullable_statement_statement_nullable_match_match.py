@@ -29,7 +29,6 @@ from graphiant_sdk.models.mana_v2_nullable_routing_protocol import ManaV2Nullabl
 from graphiant_sdk.models.mana_v2_nullable_stale_purge import ManaV2NullableStalePurge
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RoutingPolicyConfigNullableStatementStatementNullableMatchMatch(BaseModel):
     """
@@ -39,15 +38,14 @@ class ManaV2RoutingPolicyConfigNullableStatementStatementNullableMatchMatch(Base
     prefix_set: Optional[ManaV2NullablePrefixSet] = Field(default=None, alias="prefixSet")
     protocol_route_type: Optional[ManaV2NullableProtocolRouteType] = Field(default=None, alias="protocolRouteType")
     route_tag: Optional[ManaV2NullableRouteTagSet] = Field(default=None, alias="routeTag")
-    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     source_interface: Optional[ManaV2NullableInterfaceName] = Field(default=None, alias="sourceInterface")
     source_protocol: Optional[ManaV2NullableRoutingProtocol] = Field(default=None, alias="sourceProtocol")
     stale: Optional[ManaV2NullableStalePurge] = None
     __properties: ClassVar[List[str]] = ["community", "prefixSet", "protocolRouteType", "routeTag", "seq", "sourceInterface", "sourceProtocol", "stale"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class ManaV2RoutingPolicyConfigNullableStatementStatementNullableMatchMatch(Base
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

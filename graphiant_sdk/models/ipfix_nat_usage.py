@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixNatUsage(BaseModel):
     """
     IpfixNatUsage
     """ # noqa: E501
-    current_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCount", json_schema_extra={"examples": [12345678910]})
-    current_count_extranet: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountExtranet", json_schema_extra={"examples": [12345678910]})
-    current_count_pat: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountPat", json_schema_extra={"examples": [12345678910]})
-    current_count_static: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountStatic", json_schema_extra={"examples": [12345678910]})
-    max_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxCount", json_schema_extra={"examples": [12345678910]})
+    current_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCount")
+    current_count_extranet: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountExtranet")
+    current_count_pat: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountPat")
+    current_count_static: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="currentCountStatic")
+    max_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxCount")
     __properties: ClassVar[List[str]] = ["currentCount", "currentCountExtranet", "currentCountPat", "currentCountStatic", "maxCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class IpfixNatUsage(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**pdf_content** | **bytes** |  | [optional] 
+**pdf_content** | **bytearray** |  | [optional] 
 
 ## Example
 

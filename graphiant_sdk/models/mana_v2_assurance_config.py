@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_bucket_app import ManaV2BucketApp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2AssuranceConfig(BaseModel):
     """
     ManaV2AssuranceConfig
     """ # noqa: E501
     apps: Optional[List[ManaV2BucketApp]] = None
-    flex_algo: Optional[StrictStr] = Field(default=None, alias="flexAlgo", json_schema_extra={"examples": ["example string"]})
+    flex_algo: Optional[StrictStr] = Field(default=None, alias="flexAlgo")
     lan_names: Optional[List[StrictStr]] = Field(default=None, alias="lanNames")
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    site_list_id: Optional[StrictInt] = Field(default=None, alias="siteListId", json_schema_extra={"examples": [1234567891011]})
-    use_all_sites: Optional[StrictBool] = Field(default=None, alias="useAllSites", json_schema_extra={"examples": [True]})
+    name: Optional[StrictStr] = None
+    site_list_id: Optional[StrictInt] = Field(default=None, alias="siteListId")
+    use_all_sites: Optional[StrictBool] = Field(default=None, alias="useAllSites")
     __properties: ClassVar[List[str]] = ["apps", "flexAlgo", "lanNames", "name", "siteListId", "useAllSites"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2AssuranceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

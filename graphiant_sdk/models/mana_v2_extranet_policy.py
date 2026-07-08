@@ -27,7 +27,6 @@ from graphiant_sdk.models.mana_v2_policy_target import ManaV2PolicyTarget
 from graphiant_sdk.models.mana_v2_vrf import ManaV2Vrf
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ExtranetPolicy(BaseModel):
     """
@@ -36,23 +35,22 @@ class ManaV2ExtranetPolicy(BaseModel):
     auto: Optional[ManaV2ExtranetAutoReverseRoutes] = None
     branches: Optional[ManaV2PolicyTarget] = None
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    created_by: Optional[StrictStr] = Field(default=None, alias="createdBy", json_schema_extra={"examples": ["example string"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    created_by: Optional[StrictStr] = Field(default=None, alias="createdBy")
+    description: Optional[StrictStr] = None
     host_prefix_set: Optional[ManaV2EnterprisePrefixSet] = Field(default=None, alias="hostPrefixSet")
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    id: Optional[StrictInt] = None
     manual: Optional[ManaV2ExtranetManualReverseRoutes] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = None
     shared_prefixes: Optional[List[StrictStr]] = Field(default=None, alias="sharedPrefixes")
     shared_segment: Optional[ManaV2Vrf] = Field(default=None, alias="sharedSegment")
     source: Optional[ManaV2PolicyTarget] = None
     target_segments: Optional[List[ManaV2Vrf]] = Field(default=None, alias="targetSegments")
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    type: Optional[StrictStr] = None
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
     __properties: ClassVar[List[str]] = ["auto", "branches", "createdAt", "createdBy", "description", "hostPrefixSet", "id", "manual", "name", "sharedPrefixes", "sharedSegment", "source", "targetSegments", "type", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,7 +62,8 @@ class ManaV2ExtranetPolicy(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

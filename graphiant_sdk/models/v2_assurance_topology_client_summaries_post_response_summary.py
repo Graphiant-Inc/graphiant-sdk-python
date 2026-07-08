@@ -21,26 +21,24 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssuranceTopologyClientSummariesPostResponseSummary(BaseModel):
     """
     V2AssuranceTopologyClientSummariesPostResponseSummary
     """ # noqa: E501
-    app_server_key: Optional[StrictStr] = Field(default=None, alias="appServerKey", json_schema_extra={"examples": ["example string"]})
-    client_ip: Optional[StrictStr] = Field(default=None, alias="clientIp", json_schema_extra={"examples": ["example string"]})
-    client_username: Optional[StrictStr] = Field(default=None, alias="clientUsername", json_schema_extra={"examples": ["example string"]})
+    app_server_key: Optional[StrictStr] = Field(default=None, alias="appServerKey")
+    client_ip: Optional[StrictStr] = Field(default=None, alias="clientIp")
+    client_username: Optional[StrictStr] = Field(default=None, alias="clientUsername")
     lan_segments: Optional[List[StrictStr]] = Field(default=None, alias="lanSegments")
-    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp", json_schema_extra={"examples": ["example string"]})
-    server_port: Optional[StrictInt] = Field(default=None, alias="serverPort", json_schema_extra={"examples": [123]})
-    server_site_enterprise_name: Optional[StrictStr] = Field(default=None, alias="serverSiteEnterpriseName", json_schema_extra={"examples": ["example string"]})
-    server_site_name: Optional[StrictStr] = Field(default=None, alias="serverSiteName", json_schema_extra={"examples": ["example string"]})
-    session_count: Optional[StrictInt] = Field(default=None, alias="sessionCount", json_schema_extra={"examples": [123]})
+    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp")
+    server_port: Optional[StrictInt] = Field(default=None, alias="serverPort")
+    server_site_enterprise_name: Optional[StrictStr] = Field(default=None, alias="serverSiteEnterpriseName")
+    server_site_name: Optional[StrictStr] = Field(default=None, alias="serverSiteName")
+    session_count: Optional[StrictInt] = Field(default=None, alias="sessionCount")
     __properties: ClassVar[List[str]] = ["appServerKey", "clientIp", "clientUsername", "lanSegments", "serverIp", "serverPort", "serverSiteEnterpriseName", "serverSiteName", "sessionCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class V2AssuranceTopologyClientSummariesPostResponseSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

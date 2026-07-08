@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List
 from graphiant_sdk.models.auth_permissions import AuthPermissions
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthUserGetResponse(BaseModel):
     """
     V1AuthUserGetResponse
     """ # noqa: E501
-    user_id: StrictStr = Field(description="User identifier", alias="userId", json_schema_extra={"examples": ["user-12345"]})
-    enterprise_id: StrictInt = Field(description="Enterprise identifier", alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
+    user_id: StrictStr = Field(description="User identifier", alias="userId")
+    enterprise_id: StrictInt = Field(description="Enterprise identifier", alias="enterpriseId")
     permissions: AuthPermissions
-    time_zone: StrictStr = Field(description="User timezone", alias="timeZone", json_schema_extra={"examples": ["America/New_York"]})
+    time_zone: StrictStr = Field(description="User timezone", alias="timeZone")
     __properties: ClassVar[List[str]] = ["userId", "enterpriseId", "permissions", "timeZone"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1AuthUserGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

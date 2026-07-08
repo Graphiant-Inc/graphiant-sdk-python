@@ -21,23 +21,21 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2AwsAdvanceSettings(BaseModel):
     """
     ManaV2AwsAdvanceSettings
     """ # noqa: E501
-    address_family: Optional[StrictStr] = Field(default=None, alias="addressFamily", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    address_family: Optional[StrictStr] = Field(default=None, alias="addressFamily")
     allowed_prefixes: Optional[List[StrictStr]] = Field(default=None, alias="allowedPrefixes")
-    amazon_bgp_router_ip: Optional[StrictStr] = Field(default=None, alias="amazonBgpRouterIp", json_schema_extra={"examples": ["example string"]})
-    bgp_auth_key: Optional[StrictStr] = Field(default=None, alias="bgpAuthKey", json_schema_extra={"examples": ["example string"]})
-    customer_bgp_router_ip: Optional[StrictStr] = Field(default=None, alias="customerBgpRouterIp", json_schema_extra={"examples": ["example string"]})
-    is_jumbo: Optional[StrictBool] = Field(default=None, alias="isJumbo", json_schema_extra={"examples": [True]})
+    amazon_bgp_router_ip: Optional[StrictStr] = Field(default=None, alias="amazonBgpRouterIp")
+    bgp_auth_key: Optional[StrictStr] = Field(default=None, alias="bgpAuthKey")
+    customer_bgp_router_ip: Optional[StrictStr] = Field(default=None, alias="customerBgpRouterIp")
+    is_jumbo: Optional[StrictBool] = Field(default=None, alias="isJumbo")
     __properties: ClassVar[List[str]] = ["addressFamily", "allowedPrefixes", "amazonBgpRouterIp", "bgpAuthKey", "customerBgpRouterIp", "isJumbo"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class ManaV2AwsAdvanceSettings(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

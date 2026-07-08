@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.6.0] - 2026-07-08
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.6.0.json`
+- **Extranet B2B:** **`/v1/extranet/b2b/`** — customers, producers, consumers, matches (create/review/pause/status), and service summary; models **`V1ExtranetB2b*`** and **`ManaV2B2bExtranetMatch*`**, **`ManaV2ExtranetService*`** (consumer/producer policy, customer invite/match/summary, NAT translation modes)
+- **Public VIF (PVIF):** **`POST /v1/pvif`**, **`GET /v1/pvif/summary`**, **`GET`/`PUT`/`DELETE /v1/pvif/{id}`**, **`GET /v1/pvif/{id}/details`**; models **`V1Pvif*`** and **`ManaV2PublicVifGateway*`** (gateway NAT, consumer LAN devices, decentralized prefixes)
+- **Assurance AI adoption:** **`POST /v2/assurance/ai-adoption-summary`**, approve-entry CRUD (**`create`/`read`/`update`/`delete`**), **`POST /v2/assurance/get-app-names`**; models **`V2AssuranceAiAdoption*`**, **`AssuranceApprovedAppEntry*`**, **`AssuranceKpiMetric`**, **`AssuranceTopLevelKpi`**, **`AssuranceUserDefinition`**, **`AssuranceWhatWidget`**, **`AssuranceWhenWidget`**, **`AssuranceWhereWidget`**
+- **LAN / region / ZT:** **`GET /v1/lan-segments/interfaces/public`** (**`ManaV2LanSegmentPublicInterfaceEntry`**); **`GET /v1/regions/{regionId}/gateways`**; **`GET /v1/ztagent/agents`** (**`ConcealAgent`**)
+- **Developer tooling:** **`[project.optional-dependencies]` `dev`** extra so **`make install`** (`pip install -e ".[dev]"`) installs pytest, flake8, mypy, and related dev deps; **`types-click`** for CLI type-checking
+
+### Changed
+- **Version:** Package **26.6.0**; OpenAPI bundle **`graphiant_api_docs_v26.6.0.json`** (replaces **26.5.0** bundle in-repo).
+- **SDK (generated):** Refreshed **`default_api`**, **`api_client`**, **`configuration`**, model exports, and **`docs/`** to match the **26.6.0** spec (**460** paths, **1565** schemas).
+- **CLI / hand-written SDK:** Flake8 and mypy clean for **`graphiant_cli/`** and preserved SDK modules (Playwright **`Request`/`Response`** typing, **`QueryDict`** on **`graphiant rest`**, line-length and style fixes).
+
+### Removed
+- **Extranet public VIF (legacy):** **`GET`/`POST /v1/extranet-public-vif`**, **`POST /v1/extranet-public-vif/check`**, **`GET`/`PUT`/`DELETE /v1/extranet-public-vif/{id}`**; models **`V1ExtranetPublicVif*`** and **`ManaV2PublicVif*`** (superseded by **PVIF** and **extranet B2B** APIs in this spec).
+- **API spec:** removed **`graphiant_api_docs_v26.5.0.json`** (superseded by **26.6.0** bundle).
+
 ## [26.5.0] - 2026-06-10
 
 ### Added

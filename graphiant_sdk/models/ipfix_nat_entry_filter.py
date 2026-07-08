@@ -22,25 +22,23 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixNatEntryFilter(BaseModel):
     """
     IpfixNatEntryFilter
     """ # noqa: E501
-    destination_ip: Optional[StrictStr] = Field(default=None, alias="destinationIp", json_schema_extra={"examples": ["example string"]})
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
-    inside_local_ip: Optional[StrictStr] = Field(default=None, alias="insideLocalIp", json_schema_extra={"examples": ["example string"]})
-    inside_local_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="insideLocalPort", json_schema_extra={"examples": [123]})
-    nat_type: Optional[StrictStr] = Field(default=None, alias="natType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    outside_global_ip: Optional[StrictStr] = Field(default=None, alias="outsideGlobalIp", json_schema_extra={"examples": ["example string"]})
-    outside_global_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="outsideGlobalPort", json_schema_extra={"examples": [123]})
+    destination_ip: Optional[StrictStr] = Field(default=None, alias="destinationIp")
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
+    inside_local_ip: Optional[StrictStr] = Field(default=None, alias="insideLocalIp")
+    inside_local_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="insideLocalPort")
+    nat_type: Optional[StrictStr] = Field(default=None, alias="natType")
+    outside_global_ip: Optional[StrictStr] = Field(default=None, alias="outsideGlobalIp")
+    outside_global_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="outsideGlobalPort")
     vrf_ids: Optional[List[Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="vrfIds")
     __properties: ClassVar[List[str]] = ["destinationIp", "destinationPort", "insideLocalIp", "insideLocalPort", "natType", "outsideGlobalIp", "outsideGlobalPort", "vrfIds"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class IpfixNatEntryFilter(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

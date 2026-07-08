@@ -23,26 +23,24 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_nullable_interface_priority_decrement import ManaV2NullableInterfacePriorityDecrement
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2VrrpGroupConfig(BaseModel):
     """
     ManaV2VrrpGroupConfig
     """ # noqa: E501
-    accept_mode: Optional[StrictBool] = Field(default=None, alias="acceptMode", json_schema_extra={"examples": [True]})
-    allow_inter_operability: Optional[StrictBool] = Field(default=None, alias="allowInterOperability", json_schema_extra={"examples": [True]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    preempt: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    accept_mode: Optional[StrictBool] = Field(default=None, alias="acceptMode")
+    allow_inter_operability: Optional[StrictBool] = Field(default=None, alias="allowInterOperability")
+    description: Optional[StrictStr] = None
+    enabled: Optional[StrictBool] = None
+    preempt: Optional[StrictBool] = None
+    priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     tracked_interfaces: Optional[List[ManaV2NullableInterfacePriorityDecrement]] = Field(default=None, alias="trackedInterfaces")
-    virtual_ip: Optional[StrictStr] = Field(default=None, alias="virtualIp", json_schema_extra={"examples": ["example string"]})
-    virtual_router_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="virtualRouterId", json_schema_extra={"examples": [123]})
+    virtual_ip: Optional[StrictStr] = Field(default=None, alias="virtualIp")
+    virtual_router_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="virtualRouterId")
     __properties: ClassVar[List[str]] = ["acceptMode", "allowInterOperability", "description", "enabled", "preempt", "priority", "trackedInterfaces", "virtualIp", "virtualRouterId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class ManaV2VrrpGroupConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

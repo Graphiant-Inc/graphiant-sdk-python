@@ -24,27 +24,25 @@ from graphiant_sdk.models.mana_v2_i_psec_gateway_tunnel_details import ManaV2IPs
 from graphiant_sdk.models.mana_v2_ipsec_routing_config import ManaV2IpsecRoutingConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2IPsecGatewayDetails(BaseModel):
     """
     ManaV2IPsecGatewayDetails
     """ # noqa: E501
-    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress", json_schema_extra={"examples": ["example string"]})
-    ike_initiator: Optional[StrictBool] = Field(default=None, alias="ikeInitiator", json_schema_extra={"examples": [True]})
-    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    remote_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="remoteIkePeerIdentity", json_schema_extra={"examples": ["example string"]})
+    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress")
+    ike_initiator: Optional[StrictBool] = Field(default=None, alias="ikeInitiator")
+    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    name: Optional[StrictStr] = None
+    remote_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="remoteIkePeerIdentity")
     routing: Optional[ManaV2IpsecRoutingConfig] = None
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
     tunnel1: Optional[ManaV2IPsecGatewayTunnelDetails] = None
     tunnel2: Optional[ManaV2IPsecGatewayTunnelDetails] = None
-    vpn_profile: Optional[StrictStr] = Field(default=None, alias="vpnProfile", json_schema_extra={"examples": ["example string"]})
+    vpn_profile: Optional[StrictStr] = Field(default=None, alias="vpnProfile")
     __properties: ClassVar[List[str]] = ["destinationAddress", "ikeInitiator", "mtu", "name", "remoteIkePeerIdentity", "routing", "tcpMss", "tunnel1", "tunnel2", "vpnProfile"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class ManaV2IPsecGatewayDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

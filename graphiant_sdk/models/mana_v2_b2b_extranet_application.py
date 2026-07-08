@@ -23,29 +23,27 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetApplication(BaseModel):
     """
     ManaV2B2bExtranetApplication
     """ # noqa: E501
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    is_publisher: Optional[StrictBool] = Field(default=None, alias="isPublisher", json_schema_extra={"examples": [True]})
-    lan_segment: Optional[StrictInt] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": [1234567891011]})
-    matched_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="matchedCustomers", json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    id: Optional[StrictInt] = None
+    is_publisher: Optional[StrictBool] = Field(default=None, alias="isPublisher")
+    lan_segment: Optional[StrictInt] = Field(default=None, alias="lanSegment")
+    matched_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="matchedCustomers")
+    name: Optional[StrictStr] = None
     server_ip_address: Optional[List[StrictStr]] = Field(default=None, alias="serverIpAddress")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    total_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalCustomers", json_schema_extra={"examples": [123]})
-    total_sites: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalSites", json_schema_extra={"examples": [123]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
+    total_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalCustomers")
+    total_sites: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalSites")
+    type: Optional[StrictStr] = None
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
     __properties: ClassVar[List[str]] = ["createdAt", "id", "isPublisher", "lanSegment", "matchedCustomers", "name", "serverIpAddress", "status", "totalCustomers", "totalSites", "type", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2B2bExtranetApplication(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

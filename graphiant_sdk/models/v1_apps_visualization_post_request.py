@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AppsVisualizationPostRequest(BaseModel):
     """
     V1AppsVisualizationPostRequest
     """ # noqa: E501
-    circuit_name: Optional[StrictStr] = Field(default=None, description="Circuit name is specified if circuit apps utilization data is desired.", alias="circuitName", json_schema_extra={"examples": ["example string"]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia", json_schema_extra={"examples": [True]})
-    sla_class: Optional[StrictStr] = Field(default=None, description="SLA class is specified if queue apps utilization data is desired. Circuit name must be provided.", alias="slaClass", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    circuit_name: Optional[StrictStr] = Field(default=None, description="Circuit name is specified if circuit apps utilization data is desired.", alias="circuitName")
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia")
+    sla_class: Optional[StrictStr] = Field(default=None, description="SLA class is specified if queue apps utilization data is desired. Circuit name must be provided.", alias="slaClass")
     time_window: Optional[StatsmonTimeWindow] = Field(default=None, alias="timeWindow")
     __properties: ClassVar[List[str]] = ["circuitName", "deviceId", "isDia", "slaClass", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1AppsVisualizationPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

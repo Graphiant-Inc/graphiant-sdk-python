@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBandwidthtrackerBwUsageByRegion(BaseModel):
     """
     StatsmonBandwidthtrackerBwUsageByRegion
     """ # noqa: E501
-    region_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="regionId", json_schema_extra={"examples": [12345678910]})
-    region_name: Optional[StrictStr] = Field(default=None, alias="regionName", json_schema_extra={"examples": ["example string"]})
-    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount", json_schema_extra={"examples": [12345678910]})
-    usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="usageKbps", json_schema_extra={"examples": [123.45]})
+    region_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="regionId")
+    region_name: Optional[StrictStr] = Field(default=None, alias="regionName")
+    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount")
+    usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="usageKbps")
     __properties: ClassVar[List[str]] = ["regionId", "regionName", "siteCount", "usageKbps"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class StatsmonBandwidthtrackerBwUsageByRegion(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

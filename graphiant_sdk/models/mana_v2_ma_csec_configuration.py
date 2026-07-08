@@ -25,27 +25,25 @@ from graphiant_sdk.models.mana_v2_psk_configuration import ManaV2PskConfiguratio
 from graphiant_sdk.models.mana_v2_sak_configuration import ManaV2SakConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2MaCsecConfiguration(BaseModel):
     """
     ManaV2MaCsecConfiguration
     """ # noqa: E501
-    enabled: StrictBool = Field(description="Whether MACsec is enabled or disabled (required)", json_schema_extra={"examples": [True]})
-    encryption_enforcement_mode: StrictStr = Field(description="The encryption enforcement mode (required)", alias="encryptionEnforcementMode", json_schema_extra={"examples": ["MACSEC_ENFORCEMENT_MODE_SHOULD_ENCRYPT"]})
+    enabled: StrictBool = Field(description="Whether MACsec is enabled or disabled (required)")
+    encryption_enforcement_mode: StrictStr = Field(description="The encryption enforcement mode (required)", alias="encryptionEnforcementMode")
     global_sak_configuration: ManaV2NullableSakConfiguration = Field(alias="globalSakConfiguration")
-    key_server_priority: Optional[StrictInt] = Field(default=None, description="The priority of the key server. Lower number means higher priority.", alias="keyServerPriority", json_schema_extra={"examples": [255]})
+    key_server_priority: Optional[StrictInt] = Field(default=None, description="The priority of the key server. Lower number means higher priority.", alias="keyServerPriority")
     psk_configurations: Optional[List[ManaV2PskConfiguration]] = Field(default=None, alias="pskConfigurations")
     psk_configurations_by_nickname: Dict[str, ManaV2NullablePskConfiguration] = Field(alias="pskConfigurationsByNickname")
     sak_configurations: Optional[List[ManaV2SakConfiguration]] = Field(default=None, alias="sakConfigurations")
     sak_configurations_by_lag_member_interface_id: Dict[str, ManaV2NullableSakConfiguration] = Field(alias="sakConfigurationsByLagMemberInterfaceId")
-    split_sak_config_by_lag_member: Optional[StrictBool] = Field(default=None, description="Whether to allow individual SAK configurations for each lag member", alias="splitSakConfigByLagMember", json_schema_extra={"examples": [True]})
-    transparent_vlan: Optional[StrictBool] = Field(default=None, description="Whether transparent VLAN is enabled or disabled", alias="transparentVlan", json_schema_extra={"examples": [True]})
+    split_sak_config_by_lag_member: Optional[StrictBool] = Field(default=None, description="Whether to allow individual SAK configurations for each lag member", alias="splitSakConfigByLagMember")
+    transparent_vlan: Optional[StrictBool] = Field(default=None, description="Whether transparent VLAN is enabled or disabled", alias="transparentVlan")
     __properties: ClassVar[List[str]] = ["enabled", "encryptionEnforcementMode", "globalSakConfiguration", "keyServerPriority", "pskConfigurations", "pskConfigurationsByNickname", "sakConfigurations", "sakConfigurationsByLagMemberInterfaceId", "splitSakConfigByLagMember", "transparentVlan"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2MaCsecConfiguration(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

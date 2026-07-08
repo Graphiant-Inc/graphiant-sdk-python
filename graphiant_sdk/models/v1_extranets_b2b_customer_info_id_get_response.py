@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bCustomerInfoIdGetResponse(BaseModel):
     """
     V1ExtranetsB2bCustomerInfoIdGetResponse
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    provider_enterprise_id: Optional[StrictInt] = Field(default=None, alias="providerEnterpriseId", json_schema_extra={"examples": [1234567891011]})
-    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName", json_schema_extra={"examples": ["example string"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    id: Optional[StrictInt] = None
+    provider_enterprise_id: Optional[StrictInt] = Field(default=None, alias="providerEnterpriseId")
+    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName")
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["id", "providerEnterpriseId", "serviceName", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1ExtranetsB2bCustomerInfoIdGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

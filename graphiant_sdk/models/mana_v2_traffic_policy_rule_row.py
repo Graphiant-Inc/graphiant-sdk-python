@@ -23,7 +23,6 @@ from graphiant_sdk.models.mana_v2_site_device_stub import ManaV2SiteDeviceStub
 from graphiant_sdk.models.mana_v2_traffic_policy_rule import ManaV2TrafficPolicyRule
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2TrafficPolicyRuleRow(BaseModel):
     """
@@ -31,12 +30,11 @@ class ManaV2TrafficPolicyRuleRow(BaseModel):
     """ # noqa: E501
     device: Optional[ManaV2SiteDeviceStub] = None
     traffic_policy_rule: Optional[ManaV2TrafficPolicyRule] = Field(default=None, alias="trafficPolicyRule")
-    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName", json_schema_extra={"examples": ["example string"]})
+    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName")
     __properties: ClassVar[List[str]] = ["device", "trafficPolicyRule", "vrfName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2TrafficPolicyRuleRow(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

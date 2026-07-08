@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_app import ManaV2App
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalAppsCategoriesGetResponseEntry(BaseModel):
     """
     V1GlobalAppsCategoriesGetResponseEntry
     """ # noqa: E501
-    app_count: Optional[StrictInt] = Field(default=None, alias="appCount", json_schema_extra={"examples": [123]})
+    app_count: Optional[StrictInt] = Field(default=None, alias="appCount")
     category: Optional[ManaV2App] = None
     __properties: ClassVar[List[str]] = ["appCount", "category"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1GlobalAppsCategoriesGetResponseEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

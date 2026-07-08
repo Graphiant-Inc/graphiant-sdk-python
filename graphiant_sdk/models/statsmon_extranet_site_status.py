@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.statsmon_extranet_server_status import StatsmonExtranetServerStatus
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonExtranetSiteStatus(BaseModel):
     """
     StatsmonExtranetSiteStatus
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, description="the id of the site", json_schema_extra={"examples": [1]})
-    name: Optional[StrictStr] = Field(default=None, description="the name of the site", json_schema_extra={"examples": ["site1"]})
-    status: Optional[StrictStr] = Field(default=None, description="the status of the site (Healthy, Impaired, Down)", json_schema_extra={"examples": ["Healthy"]})
+    id: Optional[StrictInt] = Field(default=None, description="the id of the site")
+    name: Optional[StrictStr] = Field(default=None, description="the name of the site")
+    status: Optional[StrictStr] = Field(default=None, description="the status of the site (Healthy, Impaired, Down)")
     statuses: Optional[List[StatsmonExtranetServerStatus]] = None
     __properties: ClassVar[List[str]] = ["id", "name", "status", "statuses"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class StatsmonExtranetSiteStatus(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,28 +21,27 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AuthPermissions(BaseModel):
     """
     AuthPermissions
     """ # noqa: E501
-    billing_and_invoicing: Optional[StrictStr] = Field(default=None, alias="billingAndInvoicing", json_schema_extra={"examples": ["read_write"]})
-    licensing: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read_write"]})
-    order_status: Optional[StrictStr] = Field(default=None, alias="orderStatus", json_schema_extra={"examples": ["read"]})
-    support: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read"]})
-    user_and_tenant_management: Optional[StrictStr] = Field(default=None, alias="userAndTenantManagement", json_schema_extra={"examples": ["read_write"]})
-    asset_manager: Optional[StrictStr] = Field(default=None, alias="assetManager", json_schema_extra={"examples": ["read_write"]})
-    global_services: Optional[StrictStr] = Field(default=None, alias="globalServices", json_schema_extra={"examples": ["read"]})
-    network_configurations: Optional[StrictStr] = Field(default=None, alias="networkConfigurations", json_schema_extra={"examples": ["read_write"]})
-    safety_and_security: Optional[StrictStr] = Field(default=None, alias="safetyAndSecurity", json_schema_extra={"examples": ["read_write"]})
-    service_policies: Optional[StrictStr] = Field(default=None, alias="servicePolicies", json_schema_extra={"examples": ["read_write"]})
-    compliance: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read"]})
-    developer_tools: Optional[StrictStr] = Field(default=None, alias="developerTools", json_schema_extra={"examples": ["read"]})
-    insights: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read_write"]})
-    logs: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read_write"]})
-    monitoring_and_troubleshooting: Optional[StrictStr] = Field(default=None, alias="monitoringAndTroubleshooting", json_schema_extra={"examples": ["read_write"]})
-    reports: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["read"]})
+    billing_and_invoicing: Optional[StrictStr] = Field(default=None, alias="billingAndInvoicing")
+    licensing: Optional[StrictStr] = None
+    order_status: Optional[StrictStr] = Field(default=None, alias="orderStatus")
+    support: Optional[StrictStr] = None
+    user_and_tenant_management: Optional[StrictStr] = Field(default=None, alias="userAndTenantManagement")
+    asset_manager: Optional[StrictStr] = Field(default=None, alias="assetManager")
+    global_services: Optional[StrictStr] = Field(default=None, alias="globalServices")
+    network_configurations: Optional[StrictStr] = Field(default=None, alias="networkConfigurations")
+    safety_and_security: Optional[StrictStr] = Field(default=None, alias="safetyAndSecurity")
+    service_policies: Optional[StrictStr] = Field(default=None, alias="servicePolicies")
+    compliance: Optional[StrictStr] = None
+    developer_tools: Optional[StrictStr] = Field(default=None, alias="developerTools")
+    insights: Optional[StrictStr] = None
+    logs: Optional[StrictStr] = None
+    monitoring_and_troubleshooting: Optional[StrictStr] = Field(default=None, alias="monitoringAndTroubleshooting")
+    reports: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["billingAndInvoicing", "licensing", "orderStatus", "support", "userAndTenantManagement", "assetManager", "globalServices", "networkConfigurations", "safetyAndSecurity", "servicePolicies", "compliance", "developerTools", "insights", "logs", "monitoringAndTroubleshooting", "reports"]
 
     @field_validator('billing_and_invoicing')
@@ -206,8 +205,7 @@ class AuthPermissions(BaseModel):
         return value
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -219,7 +217,8 @@ class AuthPermissions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

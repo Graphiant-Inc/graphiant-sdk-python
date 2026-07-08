@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **affected_regions** | **int** |  | [optional] 
 **affected_sites** | **int** |  | [optional] 
 **affected_vrfs** | **int** |  | [optional] 
+**app_ai_tag** | **str** |  | [optional] 
 **app_id** | **int** |  | [optional] 
 **app_id_records** | [**List[AssuranceAppIdRecord]**](AssuranceAppIdRecord.md) |  | [optional] 
 **app_name** | **str** |  | [optional] 

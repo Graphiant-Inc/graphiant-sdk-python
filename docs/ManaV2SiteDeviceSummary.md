@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **device_id** | **int** |  | [optional] 
 **hostname** | **str** |  | [optional] 
+**site_id** | **int** |  | [optional] 
 
 ## Example
 

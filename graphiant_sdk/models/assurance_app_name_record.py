@@ -24,33 +24,32 @@ from graphiant_sdk.models.assurance_exchange_service_identifier import Assurance
 from graphiant_sdk.models.assurance_flex_algo_identifier import AssuranceFlexAlgoIdentifier
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceAppNameRecord(BaseModel):
     """
     AssuranceAppNameRecord
     """ # noqa: E501
-    affected_hosts: Optional[StrictInt] = Field(default=None, alias="affectedHosts", json_schema_extra={"examples": [1234567891011]})
-    affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions", json_schema_extra={"examples": [1234567891011]})
-    affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites", json_schema_extra={"examples": [1234567891011]})
-    affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs", json_schema_extra={"examples": [1234567891011]})
-    app_id: Optional[StrictInt] = Field(default=None, alias="appId", json_schema_extra={"examples": [1234567891011]})
+    affected_hosts: Optional[StrictInt] = Field(default=None, alias="affectedHosts")
+    affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions")
+    affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites")
+    affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs")
+    app_ai_tag: Optional[StrictStr] = Field(default=None, alias="appAiTag")
+    app_id: Optional[StrictInt] = Field(default=None, alias="appId")
     app_id_records: Optional[List[AssuranceAppIdRecord]] = Field(default=None, alias="appIdRecords")
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    app_type: Optional[StrictStr] = Field(default=None, alias="appType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    category: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    da_classified: Optional[StrictBool] = Field(default=None, alias="daClassified", json_schema_extra={"examples": [True]})
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    app_type: Optional[StrictStr] = Field(default=None, alias="appType")
+    category: Optional[StrictStr] = None
+    da_classified: Optional[StrictBool] = Field(default=None, alias="daClassified")
     exchange_service: Optional[List[AssuranceExchangeServiceIdentifier]] = Field(default=None, alias="exchangeService")
     flex_algo: Optional[List[AssuranceFlexAlgoIdentifier]] = Field(default=None, alias="flexAlgo")
-    flows_analyzed: Optional[StrictInt] = Field(default=None, alias="flowsAnalyzed", json_schema_extra={"examples": [1234567891011]})
-    recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore", json_schema_extra={"examples": [1234567891011]})
-    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "recommendation", "riskStatus", "threatScore"]
+    flows_analyzed: Optional[StrictInt] = Field(default=None, alias="flowsAnalyzed")
+    recommendation: Optional[StrictStr] = None
+    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus")
+    threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore")
+    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "recommendation", "riskStatus", "threatScore"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,7 +61,8 @@ class AssuranceAppNameRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -124,6 +124,7 @@ class AssuranceAppNameRecord(BaseModel):
             "affectedRegions": obj.get("affectedRegions"),
             "affectedSites": obj.get("affectedSites"),
             "affectedVrfs": obj.get("affectedVrfs"),
+            "appAiTag": obj.get("appAiTag"),
             "appId": obj.get("appId"),
             "appIdRecords": [AssuranceAppIdRecord.from_dict(_item) for _item in obj["appIdRecords"]] if obj.get("appIdRecords") is not None else None,
             "appName": obj.get("appName"),

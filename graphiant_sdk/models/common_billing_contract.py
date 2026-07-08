@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.common_billing_time_period import CommonBillingTimePeriod
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class CommonBillingContract(BaseModel):
     """
     CommonBillingContract
     """ # noqa: E501
-    contracted_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of credits agreed upon for the entirety of the current contract", alias="contractedCredits", json_schema_extra={"examples": [12.34]})
+    contracted_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of credits agreed upon for the entirety of the current contract", alias="contractedCredits")
     expiration_date: Optional[CommonBillingTimePeriod] = Field(default=None, alias="expirationDate")
     __properties: ClassVar[List[str]] = ["contractedCredits", "expirationDate"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class CommonBillingContract(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

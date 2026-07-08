@@ -24,37 +24,35 @@ from graphiant_sdk.models.iam_counts import IamCounts
 from graphiant_sdk.models.iam_customer import IamCustomer
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IamEnterprise(BaseModel):
     """
     IamEnterprise
     """ # noqa: E501
-    accept_eula: Optional[StrictBool] = Field(default=None, alias="acceptEula", json_schema_extra={"examples": [True]})
-    account_type: Optional[StrictStr] = Field(default=None, alias="accountType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
-    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    company_name: Optional[StrictStr] = Field(default=None, alias="companyName", json_schema_extra={"examples": ["example string"]})
+    accept_eula: Optional[StrictBool] = Field(default=None, alias="acceptEula")
+    account_type: Optional[StrictStr] = Field(default=None, alias="accountType")
+    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail")
+    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider")
+    company_name: Optional[StrictStr] = Field(default=None, alias="companyName")
     counts: Optional[IamCounts] = None
-    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit", json_schema_extra={"examples": [123]})
+    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit")
     customers: Optional[Dict[str, IamCustomer]] = None
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
+    description: Optional[StrictStr] = None
+    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId")
     eula_agreement_date: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="eulaAgreementDate")
-    impersonation_enabled: Optional[StrictBool] = Field(default=None, alias="impersonationEnabled", json_schema_extra={"examples": [True]})
-    logo: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId", json_schema_extra={"examples": ["example string"]})
-    parent_company_name: Optional[StrictStr] = Field(default=None, alias="parentCompanyName", json_schema_extra={"examples": ["example string"]})
-    parent_enterprise_id: Optional[StrictInt] = Field(default=None, alias="parentEnterpriseId", json_schema_extra={"examples": [1234567891011]})
-    portal_banner: Optional[StrictStr] = Field(default=None, alias="portalBanner", json_schema_extra={"examples": ["example string"]})
-    proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId", json_schema_extra={"examples": [1234567891011]})
-    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo", json_schema_extra={"examples": ["example string"]})
-    token_expiry: Optional[StrictStr] = Field(default=None, alias="tokenExpiry", json_schema_extra={"examples": ["example string"]})
+    impersonation_enabled: Optional[StrictBool] = Field(default=None, alias="impersonationEnabled")
+    logo: Optional[StrictStr] = None
+    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId")
+    parent_company_name: Optional[StrictStr] = Field(default=None, alias="parentCompanyName")
+    parent_enterprise_id: Optional[StrictInt] = Field(default=None, alias="parentEnterpriseId")
+    portal_banner: Optional[StrictStr] = Field(default=None, alias="portalBanner")
+    proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId")
+    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo")
+    token_expiry: Optional[StrictStr] = Field(default=None, alias="tokenExpiry")
     __properties: ClassVar[List[str]] = ["acceptEula", "accountType", "adminEmail", "cloudProvider", "companyName", "counts", "creditLimit", "customers", "description", "enterpriseId", "eulaAgreementDate", "impersonationEnabled", "logo", "marketplaceId", "parentCompanyName", "parentEnterpriseId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -66,7 +64,8 @@ class IamEnterprise(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

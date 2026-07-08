@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BgpConnection(BaseModel):
     """
     ManaV2BgpConnection
     """ # noqa: E501
-    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress", json_schema_extra={"examples": ["example string"]})
-    oper_status: Optional[StrictBool] = Field(default=None, alias="operStatus", json_schema_extra={"examples": [True]})
-    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress", json_schema_extra={"examples": ["example string"]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress")
+    oper_status: Optional[StrictBool] = Field(default=None, alias="operStatus")
+    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress")
+    state: Optional[StrictStr] = None
     time_since_last_oper_change: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="timeSinceLastOperChange")
-    up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    up: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["localAddress", "operStatus", "remoteAddress", "state", "timeSinceLastOperChange", "up"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2BgpConnection(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

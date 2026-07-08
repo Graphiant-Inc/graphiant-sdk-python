@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2IpFirewallPolicy(BaseModel):
     """
     ManaV2IpFirewallPolicy
     """ # noqa: E501
-    block_land_attacks: Optional[StrictBool] = Field(default=None, alias="blockLandAttacks", json_schema_extra={"examples": [True]})
-    session_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sessionLimit", json_schema_extra={"examples": [123]})
-    urpf: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    block_land_attacks: Optional[StrictBool] = Field(default=None, alias="blockLandAttacks")
+    session_limit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sessionLimit")
+    urpf: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["blockLandAttacks", "sessionLimit", "urpf"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class ManaV2IpFirewallPolicy(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

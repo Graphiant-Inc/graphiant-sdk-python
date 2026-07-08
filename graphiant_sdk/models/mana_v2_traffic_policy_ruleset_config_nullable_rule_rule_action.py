@@ -25,7 +25,6 @@ from graphiant_sdk.models.mana_v2_nullable_set_dscp_config import ManaV2Nullable
 from graphiant_sdk.models.mana_v2_nullable_set_sla_class_config import ManaV2NullableSetSlaClassConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2TrafficPolicyRulesetConfigNullableRuleRuleAction(BaseModel):
     """
@@ -33,8 +32,8 @@ class ManaV2TrafficPolicyRulesetConfigNullableRuleRuleAction(BaseModel):
     """ # noqa: E501
     backup_circuit: Optional[ManaV2NullableSetCircuitConfig] = Field(default=None, alias="backupCircuit")
     backup_circuit_label: Optional[ManaV2NullableSetCircuitLabelConfig] = Field(default=None, alias="backupCircuitLabel")
-    egress: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    logging: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    egress: Optional[StrictStr] = None
+    logging: Optional[StrictBool] = None
     primary_circuit: Optional[ManaV2NullableSetCircuitConfig] = Field(default=None, alias="primaryCircuit")
     primary_circuit_label: Optional[ManaV2NullableSetCircuitLabelConfig] = Field(default=None, alias="primaryCircuitLabel")
     remark: Optional[ManaV2NullableSetDscpConfig] = None
@@ -42,8 +41,7 @@ class ManaV2TrafficPolicyRulesetConfigNullableRuleRuleAction(BaseModel):
     __properties: ClassVar[List[str]] = ["backupCircuit", "backupCircuitLabel", "egress", "logging", "primaryCircuit", "primaryCircuitLabel", "remark", "setSlaClass"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class ManaV2TrafficPolicyRulesetConfigNullableRuleRuleAction(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

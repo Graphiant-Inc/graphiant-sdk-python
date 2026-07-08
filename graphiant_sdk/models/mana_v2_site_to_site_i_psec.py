@@ -24,35 +24,33 @@ from graphiant_sdk.models.mana_v2_site_to_site_i_psec_i_psec_bgp_routes import M
 from graphiant_sdk.models.mana_v2_site_to_site_i_psec_i_psec_static_routes import ManaV2SiteToSiteIPsecIPsecStaticRoutes
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SiteToSiteIPsec(BaseModel):
     """
     ManaV2SiteToSiteIPsec
     """ # noqa: E501
     bgp: Optional[ManaV2SiteToSiteIPsecIPsecBgpRoutes] = None
-    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress", json_schema_extra={"examples": ["example string"]})
-    ike_initiator: Optional[StrictBool] = Field(default=None, alias="ikeInitiator", json_schema_extra={"examples": [True]})
-    ipsec_label: Optional[StrictStr] = Field(default=None, alias="ipsecLabel", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    local_address_v4: Optional[StrictStr] = Field(default=None, alias="localAddressV4", json_schema_extra={"examples": ["example string"]})
-    local_address_v6: Optional[StrictStr] = Field(default=None, alias="localAddressV6", json_schema_extra={"examples": ["example string"]})
-    local_circuit: Optional[StrictStr] = Field(default=None, alias="localCircuit", json_schema_extra={"examples": ["example string"]})
-    local_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="localIkePeerIdentity", json_schema_extra={"examples": ["example string"]})
-    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    preshared_key: Optional[StrictStr] = Field(default=None, alias="presharedKey", json_schema_extra={"examples": ["example string"]})
-    remote_address_v4: Optional[StrictStr] = Field(default=None, alias="remoteAddressV4", json_schema_extra={"examples": ["example string"]})
-    remote_address_v6: Optional[StrictStr] = Field(default=None, alias="remoteAddressV6", json_schema_extra={"examples": ["example string"]})
-    remote_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="remoteIkePeerIdentity", json_schema_extra={"examples": ["example string"]})
+    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress")
+    ike_initiator: Optional[StrictBool] = Field(default=None, alias="ikeInitiator")
+    ipsec_label: Optional[StrictStr] = Field(default=None, alias="ipsecLabel")
+    lan: Optional[StrictStr] = None
+    local_address_v4: Optional[StrictStr] = Field(default=None, alias="localAddressV4")
+    local_address_v6: Optional[StrictStr] = Field(default=None, alias="localAddressV6")
+    local_circuit: Optional[StrictStr] = Field(default=None, alias="localCircuit")
+    local_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="localIkePeerIdentity")
+    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    name: Optional[StrictStr] = None
+    preshared_key: Optional[StrictStr] = Field(default=None, alias="presharedKey")
+    remote_address_v4: Optional[StrictStr] = Field(default=None, alias="remoteAddressV4")
+    remote_address_v6: Optional[StrictStr] = Field(default=None, alias="remoteAddressV6")
+    remote_ike_peer_identity: Optional[StrictStr] = Field(default=None, alias="remoteIkePeerIdentity")
     static: Optional[ManaV2SiteToSiteIPsecIPsecStaticRoutes] = None
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    vpn_profile: Optional[StrictStr] = Field(default=None, alias="vpnProfile", json_schema_extra={"examples": ["example string"]})
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    vpn_profile: Optional[StrictStr] = Field(default=None, alias="vpnProfile")
     __properties: ClassVar[List[str]] = ["bgp", "destinationAddress", "ikeInitiator", "ipsecLabel", "lan", "localAddressV4", "localAddressV6", "localCircuit", "localIkePeerIdentity", "mtu", "name", "presharedKey", "remoteAddressV4", "remoteAddressV6", "remoteIkePeerIdentity", "static", "tcpMss", "vpnProfile"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,7 +62,8 @@ class ManaV2SiteToSiteIPsec(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,23 +23,21 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingOspfNbr(BaseModel):
     """
     RoutingOspfNbr
     """ # noqa: E501
-    address: Optional[StrictStr] = Field(default=None, description="v4 or v6 Address (required)", json_schema_extra={"examples": ["1.1.1.1"]})
-    cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="cost (required)", json_schema_extra={"examples": [230]})
-    dead_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Dead Timer (required)", alias="deadTimer", json_schema_extra={"examples": [40]})
+    address: Optional[StrictStr] = Field(default=None, description="v4 or v6 Address (required)")
+    cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="cost (required)")
+    dead_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Dead Timer (required)", alias="deadTimer")
     last_state_change: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastStateChange")
-    router_id: Optional[StrictStr] = Field(default=None, description="Router ID (required)", alias="routerId", json_schema_extra={"examples": ["1.1.1.1"]})
-    state: Optional[StrictStr] = Field(default=None, description="interface state (required)", json_schema_extra={"examples": ["up or down"]})
+    router_id: Optional[StrictStr] = Field(default=None, description="Router ID (required)", alias="routerId")
+    state: Optional[StrictStr] = Field(default=None, description="interface state (required)")
     __properties: ClassVar[List[str]] = ["address", "cost", "deadTimer", "lastStateChange", "routerId", "state"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class RoutingOspfNbr(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

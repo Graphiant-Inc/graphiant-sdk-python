@@ -23,24 +23,22 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_interface_ip_config import ManaV2InterfaceIpConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceLagvlanConfig(BaseModel):
     """
     ManaV2InterfaceLagvlanConfig
     """ # noqa: E501
-    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus", json_schema_extra={"examples": [True]})
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus")
+    alias: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     ipv4: Optional[ManaV2InterfaceIpConfig] = None
     ipv6: Optional[ManaV2InterfaceIpConfig] = None
-    segment: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    segment: Optional[StrictStr] = None
+    vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     __properties: ClassVar[List[str]] = ["adminStatus", "alias", "description", "ipv4", "ipv6", "segment", "vlan"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class ManaV2InterfaceLagvlanConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

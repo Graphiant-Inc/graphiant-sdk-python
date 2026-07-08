@@ -21,31 +21,29 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1BackboneHealthOverviewPostRequestDimensions(BaseModel):
     """
     V1BackboneHealthOverviewPostRequestDimensions
     """ # noqa: E501
-    certificate_expiry: Optional[StrictBool] = Field(default=None, alias="certificateExpiry", json_schema_extra={"examples": [True]})
-    core_connectivity: Optional[StrictBool] = Field(default=None, alias="coreConnectivity", json_schema_extra={"examples": [True]})
-    core_core_sla_performance: Optional[StrictBool] = Field(default=None, alias="coreCoreSlaPerformance", json_schema_extra={"examples": [True]})
-    core_wan_performance: Optional[StrictBool] = Field(default=None, alias="coreWanPerformance", json_schema_extra={"examples": [True]})
-    cpu: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    crashes: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    credit_expiry: Optional[StrictBool] = Field(default=None, alias="creditExpiry", json_schema_extra={"examples": [True]})
-    disk: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    fan_speed: Optional[StrictBool] = Field(default=None, alias="fanSpeed", json_schema_extra={"examples": [True]})
-    license_expiry: Optional[StrictBool] = Field(default=None, alias="licenseExpiry", json_schema_extra={"examples": [True]})
-    memory: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    odp_connectivity: Optional[StrictBool] = Field(default=None, alias="odpConnectivity", json_schema_extra={"examples": [True]})
-    t2_connectivity: Optional[StrictBool] = Field(default=None, alias="t2Connectivity", json_schema_extra={"examples": [True]})
-    temperature: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    certificate_expiry: Optional[StrictBool] = Field(default=None, alias="certificateExpiry")
+    core_connectivity: Optional[StrictBool] = Field(default=None, alias="coreConnectivity")
+    core_core_sla_performance: Optional[StrictBool] = Field(default=None, alias="coreCoreSlaPerformance")
+    core_wan_performance: Optional[StrictBool] = Field(default=None, alias="coreWanPerformance")
+    cpu: Optional[StrictBool] = None
+    crashes: Optional[StrictBool] = None
+    credit_expiry: Optional[StrictBool] = Field(default=None, alias="creditExpiry")
+    disk: Optional[StrictBool] = None
+    fan_speed: Optional[StrictBool] = Field(default=None, alias="fanSpeed")
+    license_expiry: Optional[StrictBool] = Field(default=None, alias="licenseExpiry")
+    memory: Optional[StrictBool] = None
+    odp_connectivity: Optional[StrictBool] = Field(default=None, alias="odpConnectivity")
+    t2_connectivity: Optional[StrictBool] = Field(default=None, alias="t2Connectivity")
+    temperature: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["certificateExpiry", "coreConnectivity", "coreCoreSlaPerformance", "coreWanPerformance", "cpu", "crashes", "creditExpiry", "disk", "fanSpeed", "licenseExpiry", "memory", "odpConnectivity", "t2Connectivity", "temperature"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class V1BackboneHealthOverviewPostRequestDimensions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

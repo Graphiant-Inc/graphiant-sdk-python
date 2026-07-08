@@ -24,30 +24,28 @@ from graphiant_sdk.models.assurance_app_name_record import AssuranceAppNameRecor
 from graphiant_sdk.models.assurance_trend_value import AssuranceTrendValue
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceBucketDetails(BaseModel):
     """
     AssuranceBucketDetails
     """ # noqa: E501
-    app_count_threat_high: Optional[StrictInt] = Field(default=None, alias="appCountThreatHigh", json_schema_extra={"examples": [1234567891011]})
-    app_count_threat_low: Optional[StrictInt] = Field(default=None, alias="appCountThreatLow", json_schema_extra={"examples": [1234567891011]})
-    app_count_threat_medium: Optional[StrictInt] = Field(default=None, alias="appCountThreatMedium", json_schema_extra={"examples": [1234567891011]})
+    app_count_threat_high: Optional[StrictInt] = Field(default=None, alias="appCountThreatHigh")
+    app_count_threat_low: Optional[StrictInt] = Field(default=None, alias="appCountThreatLow")
+    app_count_threat_medium: Optional[StrictInt] = Field(default=None, alias="appCountThreatMedium")
     app_id_records: Optional[List[AssuranceAppIdRecord]] = Field(default=None, alias="appIdRecords")
     app_name_records: Optional[List[AssuranceAppNameRecord]] = Field(default=None, alias="appNameRecords")
-    bucket_name_to_display: Optional[StrictStr] = Field(default=None, alias="bucketNameToDisplay", json_schema_extra={"examples": ["example string"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    display_ip_port: Optional[StrictBool] = Field(default=None, alias="displayIpPort", json_schema_extra={"examples": [True]})
-    flow_count: Optional[StrictInt] = Field(default=None, alias="flowCount", json_schema_extra={"examples": [1234567891011]})
-    new_ip_hint: Optional[StrictBool] = Field(default=None, alias="newIpHint", json_schema_extra={"examples": [True]})
-    recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    bucket_name_to_display: Optional[StrictStr] = Field(default=None, alias="bucketNameToDisplay")
+    description: Optional[StrictStr] = None
+    display_ip_port: Optional[StrictBool] = Field(default=None, alias="displayIpPort")
+    flow_count: Optional[StrictInt] = Field(default=None, alias="flowCount")
+    new_ip_hint: Optional[StrictBool] = Field(default=None, alias="newIpHint")
+    recommendation: Optional[StrictStr] = None
     trend_value_list: Optional[List[AssuranceTrendValue]] = Field(default=None, alias="trendValueList")
-    unique_app_count: Optional[StrictInt] = Field(default=None, alias="uniqueAppCount", json_schema_extra={"examples": [1234567891011]})
+    unique_app_count: Optional[StrictInt] = Field(default=None, alias="uniqueAppCount")
     __properties: ClassVar[List[str]] = ["appCountThreatHigh", "appCountThreatLow", "appCountThreatMedium", "appIdRecords", "appNameRecords", "bucketNameToDisplay", "description", "displayIpPort", "flowCount", "newIpHint", "recommendation", "trendValueList", "uniqueAppCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class AssuranceBucketDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

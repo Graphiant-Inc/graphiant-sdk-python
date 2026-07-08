@@ -22,33 +22,31 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.google_protobuf_duration import GoogleProtobufDuration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2NodeDeviceInfo(BaseModel):
     """
     StatsmonV2NodeDeviceInfo
     """ # noqa: E501
-    control_quality: Optional[StrictStr] = Field(default=None, alias="controlQuality", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    cpu: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [12.34]})
-    data_quality: Optional[StrictStr] = Field(default=None, alias="dataQuality", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    location: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode", json_schema_extra={"examples": [True]})
-    memory: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [12.34]})
-    mgmt_ip: Optional[StrictStr] = Field(default=None, alias="mgmtIp", json_schema_extra={"examples": ["example string"]})
-    model: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    portal_quality: Optional[StrictStr] = Field(default=None, alias="portalQuality", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    serial_number: Optional[StrictStr] = Field(default=None, alias="serialNumber", json_schema_extra={"examples": ["example string"]})
-    software_version: Optional[StrictStr] = Field(default=None, alias="softwareVersion", json_schema_extra={"examples": ["example string"]})
-    staging_mode: Optional[StrictBool] = Field(default=None, alias="stagingMode", json_schema_extra={"examples": [True]})
-    temperature: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [12.34]})
+    control_quality: Optional[StrictStr] = Field(default=None, alias="controlQuality")
+    cpu: Optional[Union[StrictFloat, StrictInt]] = None
+    data_quality: Optional[StrictStr] = Field(default=None, alias="dataQuality")
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    hostname: Optional[StrictStr] = None
+    location: Optional[StrictStr] = None
+    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode")
+    memory: Optional[Union[StrictFloat, StrictInt]] = None
+    mgmt_ip: Optional[StrictStr] = Field(default=None, alias="mgmtIp")
+    model: Optional[StrictStr] = None
+    portal_quality: Optional[StrictStr] = Field(default=None, alias="portalQuality")
+    serial_number: Optional[StrictStr] = Field(default=None, alias="serialNumber")
+    software_version: Optional[StrictStr] = Field(default=None, alias="softwareVersion")
+    staging_mode: Optional[StrictBool] = Field(default=None, alias="stagingMode")
+    temperature: Optional[Union[StrictFloat, StrictInt]] = None
     uptime: Optional[GoogleProtobufDuration] = None
     __properties: ClassVar[List[str]] = ["controlQuality", "cpu", "dataQuality", "deviceId", "hostname", "location", "maintenanceMode", "memory", "mgmtIp", "model", "portalQuality", "serialNumber", "softwareVersion", "stagingMode", "temperature", "uptime"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class StatsmonV2NodeDeviceInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

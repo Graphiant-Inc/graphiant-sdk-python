@@ -24,21 +24,19 @@ from graphiant_sdk.models.statsmon_v2_stats_sample import StatsmonV2StatsSample
 from graphiant_sdk.models.statsmon_v2_twamp_stats_selector import StatsmonV2TwampStatsSelector
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringSiteTwampSiteIdPostResponseData(BaseModel):
     """
     V2MonitoringSiteTwampSiteIdPostResponseData
     """ # noqa: E501
-    carrier: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [12345678910]})
+    carrier: Optional[StrictStr] = None
+    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId")
     samples: Optional[List[StatsmonV2StatsSample]] = None
     selector: Optional[StatsmonV2TwampStatsSelector] = None
     __properties: ClassVar[List[str]] = ["carrier", "deviceId", "samples", "selector"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class V2MonitoringSiteTwampSiteIdPostResponseData(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

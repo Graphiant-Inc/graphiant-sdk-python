@@ -23,20 +23,18 @@ from graphiant_sdk.models.mana_v2_aws_advance_settings import ManaV2AwsAdvanceSe
 from graphiant_sdk.models.mana_v2_aws_gateway_details_transit_connection import ManaV2AWSGatewayDetailsTransitConnection
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2AwsGatewayDetails(BaseModel):
     """
     ManaV2AwsGatewayDetails
     """ # noqa: E501
-    account_id: Optional[StrictStr] = Field(default=None, alias="accountId", json_schema_extra={"examples": ["example string"]})
+    account_id: Optional[StrictStr] = Field(default=None, alias="accountId")
     advance_settings: Optional[ManaV2AwsAdvanceSettings] = Field(default=None, alias="advanceSettings")
     transit_connection: Optional[ManaV2AWSGatewayDetailsTransitConnection] = Field(default=None, alias="transitConnection")
     __properties: ClassVar[List[str]] = ["accountId", "advanceSettings", "transitConnection"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2AwsGatewayDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

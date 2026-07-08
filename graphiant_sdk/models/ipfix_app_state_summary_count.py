@@ -25,7 +25,6 @@ from graphiant_sdk.models.statsmon_circuits_incidents import StatsmonCircuitsInc
 from graphiant_sdk.models.statsmon_v2_circuit_incidents import StatsmonV2CircuitIncidents
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixAppStateSummaryCount(BaseModel):
     """
@@ -33,15 +32,14 @@ class IpfixAppStateSummaryCount(BaseModel):
     """ # noqa: E501
     app_health: Optional[Dict[str, Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="appHealth")
     app_incidents: Optional[IpfixAppIncidents] = Field(default=None, alias="appIncidents")
-    apps_on_device_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appsOnDeviceCount", json_schema_extra={"examples": [123]})
-    average_qoe: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageQoe", json_schema_extra={"examples": [123.45]})
+    apps_on_device_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appsOnDeviceCount")
+    average_qoe: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageQoe")
     circuits_incidents: Optional[List[StatsmonCircuitsIncidents]] = Field(default=None, alias="circuitsIncidents")
     circuits_incidentsv2: Optional[List[StatsmonV2CircuitIncidents]] = Field(default=None, alias="circuitsIncidentsv2")
     __properties: ClassVar[List[str]] = ["appHealth", "appIncidents", "appsOnDeviceCount", "averageQoe", "circuitsIncidents", "circuitsIncidentsv2"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class IpfixAppStateSummaryCount(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

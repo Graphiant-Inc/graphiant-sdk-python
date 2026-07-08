@@ -23,44 +23,42 @@ from graphiant_sdk.models.assurance_exchange_service_identifier import Assurance
 from graphiant_sdk.models.assurance_flex_algo_identifier import AssuranceFlexAlgoIdentifier
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceAppIdRecord(BaseModel):
     """
     AssuranceAppIdRecord
     """ # noqa: E501
-    affected_hosts: Optional[StrictInt] = Field(default=None, alias="affectedHosts", json_schema_extra={"examples": [1234567891011]})
-    affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions", json_schema_extra={"examples": [1234567891011]})
-    affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites", json_schema_extra={"examples": [1234567891011]})
-    affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs", json_schema_extra={"examples": [1234567891011]})
-    app_id_key: Optional[StrictStr] = Field(default=None, alias="appIdKey", json_schema_extra={"examples": ["example string"]})
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    app_type: Optional[StrictStr] = Field(default=None, alias="appType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    affected_hosts: Optional[StrictInt] = Field(default=None, alias="affectedHosts")
+    affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions")
+    affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites")
+    affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs")
+    app_id_key: Optional[StrictStr] = Field(default=None, alias="appIdKey")
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    app_type: Optional[StrictStr] = Field(default=None, alias="appType")
     blocked_policy_list: Optional[List[StrictStr]] = Field(default=None, alias="blockedPolicyList")
     blocked_reason_list: Optional[List[StrictStr]] = Field(default=None, alias="blockedReasonList")
-    category: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    classfication_field: Optional[StrictStr] = Field(default=None, alias="classficationField", json_schema_extra={"examples": ["example string"]})
-    classification_field: Optional[StrictStr] = Field(default=None, alias="classificationField", json_schema_extra={"examples": ["example string"]})
+    category: Optional[StrictStr] = None
+    classfication_field: Optional[StrictStr] = Field(default=None, alias="classficationField")
+    classification_field: Optional[StrictStr] = Field(default=None, alias="classificationField")
     clients: Optional[List[StrictStr]] = None
     exchange_service: Optional[List[AssuranceExchangeServiceIdentifier]] = Field(default=None, alias="exchangeService")
-    first_seen: Optional[StrictInt] = Field(default=None, alias="firstSeen", json_schema_extra={"examples": [1234567891011]})
+    first_seen: Optional[StrictInt] = Field(default=None, alias="firstSeen")
     flex_algo: Optional[List[AssuranceFlexAlgoIdentifier]] = Field(default=None, alias="flexAlgo")
-    flows_analyzed: Optional[StrictInt] = Field(default=None, alias="flowsAnalyzed", json_schema_extra={"examples": [1234567891011]})
-    last_seen: Optional[StrictInt] = Field(default=None, alias="lastSeen", json_schema_extra={"examples": [1234567891011]})
-    new_ip_hint: Optional[StrictBool] = Field(default=None, alias="newIpHint", json_schema_extra={"examples": [True]})
-    recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    flows_analyzed: Optional[StrictInt] = Field(default=None, alias="flowsAnalyzed")
+    last_seen: Optional[StrictInt] = Field(default=None, alias="lastSeen")
+    new_ip_hint: Optional[StrictBool] = Field(default=None, alias="newIpHint")
+    recommendation: Optional[StrictStr] = None
     region_list: Optional[List[StrictStr]] = Field(default=None, alias="regionList")
-    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp", json_schema_extra={"examples": ["example string"]})
-    server_port: Optional[StrictStr] = Field(default=None, alias="serverPort", json_schema_extra={"examples": ["example string"]})
+    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus")
+    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp")
+    server_port: Optional[StrictStr] = Field(default=None, alias="serverPort")
     site_list: Optional[List[StrictStr]] = Field(default=None, alias="siteList")
-    threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore", json_schema_extra={"examples": [1234567891011]})
+    threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore")
     vrf_list: Optional[List[StrictStr]] = Field(default=None, alias="vrfList")
     __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appIdKey", "appName", "appType", "blockedPolicyList", "blockedReasonList", "category", "classficationField", "classificationField", "clients", "exchangeService", "firstSeen", "flexAlgo", "flowsAnalyzed", "lastSeen", "newIpHint", "recommendation", "regionList", "riskStatus", "serverIp", "serverPort", "siteList", "threatScore", "vrfList"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -72,7 +70,8 @@ class AssuranceAppIdRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,32 +23,30 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixAppFlowTable(BaseModel):
     """
     IpfixAppFlowTable
     """ # noqa: E501
-    dest_ip: Optional[StrictStr] = Field(default=None, alias="destIp", json_schema_extra={"examples": ["example string"]})
-    dest_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destPort", json_schema_extra={"examples": [123]})
-    dl_circuit_name: Optional[StrictStr] = Field(default=None, alias="dlCircuitName", json_schema_extra={"examples": ["example string"]})
-    dl_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Down link application usage in MB", alias="dlUsage", json_schema_extra={"examples": [123.45]})
-    egress_local_core_region: Optional[StrictStr] = Field(default=None, alias="egressLocalCoreRegion", json_schema_extra={"examples": ["example string"]})
-    ingress_local_core_region: Optional[StrictStr] = Field(default=None, alias="ingressLocalCoreRegion", json_schema_extra={"examples": ["example string"]})
-    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": ["example string"]})
-    protocol: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    remote_core_region: Optional[StrictStr] = Field(default=None, alias="remoteCoreRegion", json_schema_extra={"examples": ["example string"]})
-    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    src_ip: Optional[StrictStr] = Field(default=None, alias="srcIp", json_schema_extra={"examples": ["example string"]})
-    src_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="srcPort", json_schema_extra={"examples": [123]})
+    dest_ip: Optional[StrictStr] = Field(default=None, alias="destIp")
+    dest_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destPort")
+    dl_circuit_name: Optional[StrictStr] = Field(default=None, alias="dlCircuitName")
+    dl_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Down link application usage in MB", alias="dlUsage")
+    egress_local_core_region: Optional[StrictStr] = Field(default=None, alias="egressLocalCoreRegion")
+    ingress_local_core_region: Optional[StrictStr] = Field(default=None, alias="ingressLocalCoreRegion")
+    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment")
+    protocol: Optional[StrictStr] = None
+    remote_core_region: Optional[StrictStr] = Field(default=None, alias="remoteCoreRegion")
+    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass")
+    src_ip: Optional[StrictStr] = Field(default=None, alias="srcIp")
+    src_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="srcPort")
     ts: Optional[GoogleProtobufTimestamp] = None
-    ul_circuit_name: Optional[StrictStr] = Field(default=None, alias="ulCircuitName", json_schema_extra={"examples": ["example string"]})
-    ul_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Up link application usage in MB", alias="ulUsage", json_schema_extra={"examples": [123.45]})
+    ul_circuit_name: Optional[StrictStr] = Field(default=None, alias="ulCircuitName")
+    ul_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Up link application usage in MB", alias="ulUsage")
     __properties: ClassVar[List[str]] = ["destIp", "destPort", "dlCircuitName", "dlUsage", "egressLocalCoreRegion", "ingressLocalCoreRegion", "lanSegment", "protocol", "remoteCoreRegion", "slaClass", "srcIp", "srcPort", "ts", "ulCircuitName", "ulUsage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class IpfixAppFlowTable(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

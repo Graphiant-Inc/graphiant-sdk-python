@@ -23,26 +23,24 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_route_tag import ManaV2RouteTag
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RoutingPolicyStatementMatch(BaseModel):
     """
     ManaV2RoutingPolicyStatementMatch
     """ # noqa: E501
     community: Optional[List[StrictStr]] = None
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    prefix_set: Optional[StrictStr] = Field(default=None, alias="prefixSet", json_schema_extra={"examples": ["example string"]})
-    protocol_route_type: Optional[StrictStr] = Field(default=None, alias="protocolRouteType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    id: Optional[StrictInt] = None
+    prefix_set: Optional[StrictStr] = Field(default=None, alias="prefixSet")
+    protocol_route_type: Optional[StrictStr] = Field(default=None, alias="protocolRouteType")
     route_tag: Optional[ManaV2RouteTag] = Field(default=None, alias="routeTag")
-    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    source_interface: Optional[StrictStr] = Field(default=None, alias="sourceInterface", json_schema_extra={"examples": ["example string"]})
-    source_protocol: Optional[StrictStr] = Field(default=None, alias="sourceProtocol", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    stale_purge: Optional[StrictBool] = Field(default=None, alias="stalePurge", json_schema_extra={"examples": [True]})
+    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    source_interface: Optional[StrictStr] = Field(default=None, alias="sourceInterface")
+    source_protocol: Optional[StrictStr] = Field(default=None, alias="sourceProtocol")
+    stale_purge: Optional[StrictBool] = Field(default=None, alias="stalePurge")
     __properties: ClassVar[List[str]] = ["community", "id", "prefixSet", "protocolRouteType", "routeTag", "seq", "sourceInterface", "sourceProtocol", "stalePurge"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class ManaV2RoutingPolicyStatementMatch(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

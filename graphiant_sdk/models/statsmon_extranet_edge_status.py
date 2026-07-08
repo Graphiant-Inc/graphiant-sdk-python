@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonExtranetEdgeStatus(BaseModel):
     """
     StatsmonExtranetEdgeStatus
     """ # noqa: E501
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    disconnected_reason: Optional[StrictStr] = Field(default=None, description="the reason for the edge being disconnected", alias="disconnectedReason", json_schema_extra={"examples": ["No route to the server"]})
-    hostname: Optional[StrictStr] = Field(default=None, description="the hostname of the edge", json_schema_extra={"examples": ["edge1"]})
-    id: Optional[StrictInt] = Field(default=None, description="the id of the edge/device", json_schema_extra={"examples": [30000000001]})
-    site_name: Optional[StrictStr] = Field(default=None, description="the name of the site", alias="siteName", json_schema_extra={"examples": ["site1"]})
-    status: Optional[StrictStr] = Field(default=None, description="the health status of the edge (Healthy, Impaired, Down)", json_schema_extra={"examples": ["Healthy"]})
+    disconnected_reason: Optional[StrictStr] = Field(default=None, description="the reason for the edge being disconnected", alias="disconnectedReason")
+    hostname: Optional[StrictStr] = Field(default=None, description="the hostname of the edge")
+    id: Optional[StrictInt] = Field(default=None, description="the id of the edge/device")
+    site_name: Optional[StrictStr] = Field(default=None, description="the name of the site", alias="siteName")
+    status: Optional[StrictStr] = Field(default=None, description="the health status of the edge (Healthy, Impaired, Down)")
     __properties: ClassVar[List[str]] = ["createdAt", "disconnectedReason", "hostname", "id", "siteName", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class StatsmonExtranetEdgeStatus(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

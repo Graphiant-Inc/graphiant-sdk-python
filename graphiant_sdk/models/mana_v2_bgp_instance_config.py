@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BgpInstanceConfig(BaseModel):
     """
     ManaV2BgpInstanceConfig
     """ # noqa: E501
     address_families: Optional[List[StrictStr]] = Field(default=None, alias="addressFamilies")
-    asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    route_server: Optional[StrictBool] = Field(default=None, alias="routeServer", json_schema_extra={"examples": [True]})
-    router_id: Optional[StrictStr] = Field(default=None, alias="routerId", json_schema_extra={"examples": ["example string"]})
+    asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    route_server: Optional[StrictBool] = Field(default=None, alias="routeServer")
+    router_id: Optional[StrictStr] = Field(default=None, alias="routerId")
     __properties: ClassVar[List[str]] = ["addressFamilies", "asn", "routeServer", "routerId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2BgpInstanceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

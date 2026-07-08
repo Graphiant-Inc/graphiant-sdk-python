@@ -27,29 +27,27 @@ from graphiant_sdk.models.mana_v2_nullable_lag_member_interface import ManaV2Nul
 from graphiant_sdk.models.mana_v2_nullable_ma_csec_configuration import ManaV2NullableMaCsecConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2LagInterfaceConfig(BaseModel):
     """
     ManaV2LagInterfaceConfig
     """ # noqa: E501
-    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus", json_schema_extra={"examples": [True]})
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus")
+    alias: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     ipv4: Optional[ManaV2InterfaceIpConfig] = None
     ipv6: Optional[ManaV2InterfaceIpConfig] = None
     lacp: Optional[ManaV2LacpConfig] = None
     lag_members: Optional[Dict[str, ManaV2NullableLagMemberInterface]] = Field(default=None, alias="lagMembers")
     macsec: Optional[ManaV2NullableMaCsecConfiguration] = None
-    minimum_members: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minimumMembers", json_schema_extra={"examples": [123]})
-    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    segment: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    minimum_members: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minimumMembers")
+    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    segment: Optional[StrictStr] = None
     subinterfaces: Optional[Dict[str, ManaV2NullableInterfaceLagvlanConfig]] = None
     __properties: ClassVar[List[str]] = ["adminStatus", "alias", "description", "ipv4", "ipv6", "lacp", "lagMembers", "macsec", "minimumMembers", "mtu", "segment", "subinterfaces"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,7 +59,8 @@ class ManaV2LagInterfaceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

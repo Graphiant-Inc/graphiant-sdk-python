@@ -23,20 +23,18 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_aws_transit_gateway_vpc import ManaV2AWSTransitGatewayVpc
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2AwsTransitGateway(BaseModel):
     """
     ManaV2AwsTransitGateway
     """ # noqa: E501
-    asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    id: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    id: Optional[StrictStr] = None
     vpcs: Optional[List[ManaV2AWSTransitGatewayVpc]] = None
     __properties: ClassVar[List[str]] = ["asn", "id", "vpcs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2AwsTransitGateway(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

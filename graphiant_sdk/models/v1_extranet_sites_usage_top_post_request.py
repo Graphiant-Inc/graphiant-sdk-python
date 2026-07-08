@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetSitesUsageTopPostRequest(BaseModel):
     """
     V1ExtranetSitesUsageTopPostRequest
     """ # noqa: E501
-    id: StrictInt = Field(description="the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)", json_schema_extra={"examples": [1]})
-    is_b2_b: StrictBool = Field(description="whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)", alias="isB2B", json_schema_extra={"examples": [True]})
-    is_provider: StrictBool = Field(description="whether the entity is a provider or consumer (required)", alias="isProvider", json_schema_extra={"examples": [True]})
-    service_id: Optional[StrictInt] = Field(default=None, alias="serviceId", json_schema_extra={"examples": [1234567891011]})
+    id: StrictInt = Field(description="the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)")
+    is_b2_b: StrictBool = Field(description="whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)", alias="isB2B")
+    is_provider: StrictBool = Field(description="whether the entity is a provider or consumer (required)", alias="isProvider")
+    service_id: Optional[StrictInt] = Field(default=None, alias="serviceId")
     time_window: StatsmonTimeWindow = Field(alias="timeWindow")
     __properties: ClassVar[List[str]] = ["id", "isB2B", "isProvider", "serviceId", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1ExtranetSitesUsageTopPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

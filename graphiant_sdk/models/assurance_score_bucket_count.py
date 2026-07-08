@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceScoreBucketCount(BaseModel):
     """
     AssuranceScoreBucketCount
     """ # noqa: E501
-    curr_score: Optional[StrictInt] = Field(default=None, alias="currScore", json_schema_extra={"examples": [1234567891011]})
-    max_score: Optional[StrictInt] = Field(default=None, alias="maxScore", json_schema_extra={"examples": [1234567891011]})
-    score_bucket_id: Optional[StrictStr] = Field(default=None, alias="scoreBucketId", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    curr_score: Optional[StrictInt] = Field(default=None, alias="currScore")
+    max_score: Optional[StrictInt] = Field(default=None, alias="maxScore")
+    score_bucket_id: Optional[StrictStr] = Field(default=None, alias="scoreBucketId")
     __properties: ClassVar[List[str]] = ["currScore", "maxScore", "scoreBucketId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class AssuranceScoreBucketCount(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

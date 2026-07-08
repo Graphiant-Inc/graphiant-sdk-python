@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GlobalObjectDeviceStatus(BaseModel):
     """
     ManaV2GlobalObjectDeviceStatus
     """ # noqa: E501
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    error_message: Optional[StrictStr] = Field(default=None, alias="errorMessage", json_schema_extra={"examples": ["example string"]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    internal_state: Optional[StrictStr] = Field(default=None, alias="internalState", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    site_name: Optional[StrictStr] = Field(default=None, alias="siteName", json_schema_extra={"examples": ["example string"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    error_message: Optional[StrictStr] = Field(default=None, alias="errorMessage")
+    hostname: Optional[StrictStr] = None
+    internal_state: Optional[StrictStr] = Field(default=None, alias="internalState")
+    site_name: Optional[StrictStr] = Field(default=None, alias="siteName")
+    status: Optional[StrictStr] = None
     status_since: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="statusSince")
     __properties: ClassVar[List[str]] = ["deviceId", "errorMessage", "hostname", "internalState", "siteName", "status", "statusSince"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2GlobalObjectDeviceStatus(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

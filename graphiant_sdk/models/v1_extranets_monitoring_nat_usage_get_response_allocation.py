@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsMonitoringNatUsageGetResponseAllocation(BaseModel):
     """
     V1ExtranetsMonitoringNatUsageGetResponseAllocation
     """ # noqa: E501
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    ip_address: Optional[StrictStr] = Field(default=None, alias="ipAddress", json_schema_extra={"examples": ["example string"]})
-    site_id: Optional[StrictInt] = Field(default=None, alias="siteId", json_schema_extra={"examples": [1234567891011]})
-    site_name: Optional[StrictStr] = Field(default=None, alias="siteName", json_schema_extra={"examples": ["example string"]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    hostname: Optional[StrictStr] = None
+    ip_address: Optional[StrictStr] = Field(default=None, alias="ipAddress")
+    site_id: Optional[StrictInt] = Field(default=None, alias="siteId")
+    site_name: Optional[StrictStr] = Field(default=None, alias="siteName")
     __properties: ClassVar[List[str]] = ["deviceId", "hostname", "ipAddress", "siteId", "siteName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1ExtranetsMonitoringNatUsageGetResponseAllocation(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

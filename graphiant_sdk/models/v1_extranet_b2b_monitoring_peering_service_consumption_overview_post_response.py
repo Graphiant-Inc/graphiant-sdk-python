@@ -22,7 +22,6 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.ipfix_connection_map import IpfixConnectionMap
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostResponse(BaseModel):
     """
@@ -31,12 +30,11 @@ class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostResponse(BaseM
     first_level: Optional[List[IpfixConnectionMap]] = Field(default=None, alias="firstLevel")
     second_level: Optional[List[IpfixConnectionMap]] = Field(default=None, alias="secondLevel")
     third_level: Optional[List[IpfixConnectionMap]] = Field(default=None, alias="thirdLevel")
-    total_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="total service usage in kilo bytes", alias="totalUsage", json_schema_extra={"examples": [1000000]})
+    total_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="total service usage in kilo bytes", alias="totalUsage")
     __properties: ClassVar[List[str]] = ["firstLevel", "secondLevel", "thirdLevel", "totalUsage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostResponse(BaseM
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

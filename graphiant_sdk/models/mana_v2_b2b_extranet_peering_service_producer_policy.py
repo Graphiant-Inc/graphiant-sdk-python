@@ -24,23 +24,21 @@ from graphiant_sdk.models.mana_v2_b2b_site_information import ManaV2B2bSiteInfor
 from graphiant_sdk.models.mana_v2_global_object_service_ops import ManaV2GlobalObjectServiceOps
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetPeeringServiceProducerPolicy(BaseModel):
     """
     ManaV2B2bExtranetPeeringServiceProducerPolicy
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="Description for the service", json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = Field(default=None, description="Description for the service")
     global_object_ops: Optional[Dict[str, ManaV2GlobalObjectServiceOps]] = Field(default=None, alias="globalObjectOps")
     prefix_tags: List[ManaV2B2bExtranetPrefixTag] = Field(alias="prefixTags")
-    service_lan_segment: StrictInt = Field(description="LAN segment ID for the service (required)", alias="serviceLanSegment", json_schema_extra={"examples": [1234567891011]})
+    service_lan_segment: StrictInt = Field(description="LAN segment ID for the service (required)", alias="serviceLanSegment")
     site: List[ManaV2B2bSiteInformation]
-    type: StrictStr = Field(description="Type of the service whether it is application or peering (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    type: StrictStr = Field(description="Type of the service whether it is application or peering (required)")
     __properties: ClassVar[List[str]] = ["description", "globalObjectOps", "prefixTags", "serviceLanSegment", "site", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class ManaV2B2bExtranetPeeringServiceProducerPolicy(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

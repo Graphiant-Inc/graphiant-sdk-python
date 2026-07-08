@@ -23,21 +23,19 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.mana_v2_route_tag_id import ManaV2RouteTagId
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SiteListSiteEntry(BaseModel):
     """
     ManaV2SiteListSiteEntry
     """ # noqa: E501
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    edge_references: Optional[StrictInt] = Field(default=None, alias="edgeReferences", json_schema_extra={"examples": [123]})
-    site_name: Optional[StrictStr] = Field(default=None, alias="siteName", json_schema_extra={"examples": ["example string"]})
+    edge_references: Optional[StrictInt] = Field(default=None, alias="edgeReferences")
+    site_name: Optional[StrictStr] = Field(default=None, alias="siteName")
     tag: Optional[List[ManaV2RouteTagId]] = None
     __properties: ClassVar[List[str]] = ["createdAt", "edgeReferences", "siteName", "tag"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class ManaV2SiteListSiteEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

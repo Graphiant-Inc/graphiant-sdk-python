@@ -25,25 +25,23 @@ from graphiant_sdk.models.ipfix_app_flow_table_selector import IpfixAppFlowTable
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1FlowsFlowTablePostRequest(BaseModel):
     """
     V1FlowsFlowTablePostRequest
     """ # noqa: E501
-    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="the app ID in the question from overall visuals view", alias="appId", json_schema_extra={"examples": [123]})
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
+    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="the app ID in the question from overall visuals view", alias="appId")
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
     cursor_ref: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="cursorRef")
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia", json_schema_extra={"examples": [True]})
-    num_flow_records: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of app flow records requested by UI.", alias="numFlowRecords", json_schema_extra={"examples": [123]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia")
+    num_flow_records: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of app flow records requested by UI.", alias="numFlowRecords")
     selector: Optional[IpfixAppFlowTableSelector] = None
     time_window: Optional[StatsmonTimeWindow] = Field(default=None, alias="timeWindow")
     __properties: ClassVar[List[str]] = ["appId", "appName", "cursorRef", "deviceId", "isDia", "numFlowRecords", "selector", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class V1FlowsFlowTablePostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

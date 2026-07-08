@@ -21,19 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest(BaseModel):
     """
     V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest
     """ # noqa: E501
-    id: StrictInt = Field(description="match ID for the customer's service subscription (required)", json_schema_extra={"examples": [1234567891011]})
-    status: StrictStr = Field(description="Customer’s service status: Paused or Active (required)", json_schema_extra={"examples": ["B2B_PEERING_SERVICE_STATUS_PAUSED"]})
+    id: StrictInt = Field(description="match ID for the customer's service subscription (required)")
+    status: StrictStr = Field(description="Customer’s service status: Paused or Active (required)")
     __properties: ClassVar[List[str]] = ["id", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class V1ExtranetsB2bPeeringMatchServiceToCustomerServiceStatusPutRequest(BaseMod
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

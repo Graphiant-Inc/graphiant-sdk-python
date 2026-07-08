@@ -24,28 +24,26 @@ from graphiant_sdk.models.upgrade_schedule import UpgradeSchedule
 from graphiant_sdk.models.upgrade_sw_version import UpgradeSwVersion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeUpgradeSummary(BaseModel):
     """
     UpgradeUpgradeSummary
     """ # noqa: E501
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    end_of_life: Optional[StrictBool] = Field(default=None, alias="endOfLife", json_schema_extra={"examples": [True]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    end_of_life: Optional[StrictBool] = Field(default=None, alias="endOfLife")
     last_discovered_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastDiscoveredTs")
     last_running_version: Optional[UpgradeSwVersion] = Field(default=None, alias="lastRunningVersion")
     last_upgrade_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastUpgradeTs")
     ready_for_activation_version: Optional[UpgradeSwVersion] = Field(default=None, alias="readyForActivationVersion")
-    rollout_id: Optional[StrictInt] = Field(default=None, alias="rolloutId", json_schema_extra={"examples": [1234567891011]})
-    rollout_name: Optional[StrictStr] = Field(default=None, alias="rolloutName", json_schema_extra={"examples": ["example string"]})
+    rollout_id: Optional[StrictInt] = Field(default=None, alias="rolloutId")
+    rollout_name: Optional[StrictStr] = Field(default=None, alias="rolloutName")
     running_version: Optional[UpgradeSwVersion] = Field(default=None, alias="runningVersion")
     schedule: Optional[UpgradeSchedule] = None
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["deviceId", "endOfLife", "lastDiscoveredTs", "lastRunningVersion", "lastUpgradeTs", "readyForActivationVersion", "rolloutId", "rolloutName", "runningVersion", "schedule", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class UpgradeUpgradeSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

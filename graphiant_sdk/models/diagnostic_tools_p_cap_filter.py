@@ -23,21 +23,19 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.diagnostic_tools_prefix_port import DiagnosticToolsPrefixPort
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsPCapFilter(BaseModel):
     """
     DiagnosticToolsPCapFilter
     """ # noqa: E501
     destination: Optional[DiagnosticToolsPrefixPort] = None
-    dscp: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Filters the packet capture for the specified DSCP field", json_schema_extra={"examples": [80]})
-    protocol: Optional[StrictStr] = Field(default=None, description="Filters the packet capture for the specified protocol", json_schema_extra={"examples": ["Tcp"]})
+    dscp: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Filters the packet capture for the specified DSCP field")
+    protocol: Optional[StrictStr] = Field(default=None, description="Filters the packet capture for the specified protocol")
     source: Optional[DiagnosticToolsPrefixPort] = None
     __properties: ClassVar[List[str]] = ["destination", "dscp", "protocol", "source"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class DiagnosticToolsPCapFilter(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_bucket_app_server import ManaV2BucketAppServer
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BucketApp(BaseModel):
     """
     ManaV2BucketApp
     """ # noqa: E501
-    bucket_id: Optional[StrictInt] = Field(default=None, alias="bucketId", json_schema_extra={"examples": [123]})
-    builtin_app_id: Optional[StrictInt] = Field(default=None, alias="builtinAppId", json_schema_extra={"examples": [1234567891011]})
-    custom_app_id: Optional[StrictInt] = Field(default=None, alias="customAppId", json_schema_extra={"examples": [1234567891011]})
-    is_domain: Optional[StrictBool] = Field(default=None, alias="isDomain", json_schema_extra={"examples": [True]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    bucket_id: Optional[StrictInt] = Field(default=None, alias="bucketId")
+    builtin_app_id: Optional[StrictInt] = Field(default=None, alias="builtinAppId")
+    custom_app_id: Optional[StrictInt] = Field(default=None, alias="customAppId")
+    is_domain: Optional[StrictBool] = Field(default=None, alias="isDomain")
+    name: Optional[StrictStr] = None
     servers: Optional[List[ManaV2BucketAppServer]] = None
-    use_all_servers: Optional[StrictBool] = Field(default=None, alias="useAllServers", json_schema_extra={"examples": [True]})
+    use_all_servers: Optional[StrictBool] = Field(default=None, alias="useAllServers")
     __properties: ClassVar[List[str]] = ["bucketId", "builtinAppId", "customAppId", "isDomain", "name", "servers", "useAllServers"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2BucketApp(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

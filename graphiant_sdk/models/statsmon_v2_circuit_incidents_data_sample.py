@@ -23,22 +23,20 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.statsmon_v2_circuit_incidents_data_sample_incidents import StatsmonV2CircuitIncidentsDataSampleIncidents
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2CircuitIncidentsDataSample(BaseModel):
     """
     StatsmonV2CircuitIncidentsDataSample
     """ # noqa: E501
     dl_incidents: Optional[StatsmonV2CircuitIncidentsDataSampleIncidents] = Field(default=None, alias="dlIncidents")
-    overall_status: Optional[StrictStr] = Field(default=None, description="Overall circuit status based on num of poor/fair incidents.", alias="overallStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    overall_status: Optional[StrictStr] = Field(default=None, description="Overall circuit status based on num of poor/fair incidents.", alias="overallStatus")
     total_incidents: Optional[StatsmonV2CircuitIncidentsDataSampleIncidents] = Field(default=None, alias="totalIncidents")
     ts: Optional[GoogleProtobufTimestamp] = None
     ul_incidents: Optional[StatsmonV2CircuitIncidentsDataSampleIncidents] = Field(default=None, alias="ulIncidents")
     __properties: ClassVar[List[str]] = ["dlIncidents", "overallStatus", "totalIncidents", "ts", "ulIncidents"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class StatsmonV2CircuitIncidentsDataSample(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

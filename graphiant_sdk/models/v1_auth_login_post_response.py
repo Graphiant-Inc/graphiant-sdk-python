@@ -21,19 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr, field_
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthLoginPostResponse(BaseModel):
     """
     V1AuthLoginPostResponse
     """ # noqa: E501
-    auth: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    token: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["gr-auth-12345678-1234-1234-1234-123456789012-87654321-4321-4321-4321-210987654321"]})
-    account_type: Optional[StrictStr] = Field(default=None, alias="accountType", json_schema_extra={"examples": ["enterprise"]})
-    email: Optional[StrictStr] = Field(default=None, description="User email address (returned for MFA users)", json_schema_extra={"examples": ["user@example.com"]})
-    mfa_type: Optional[StrictStr] = Field(default=None, description="MFA type (returned for MFA users)", alias="mfaType", json_schema_extra={"examples": ["TOTP"]})
-    state_token: Optional[StrictStr] = Field(default=None, description="State token for MFA verification (returned for MFA users)", alias="stateToken", json_schema_extra={"examples": ["state-token-12345"]})
-    status: Optional[StrictStr] = Field(default=None, description="Authentication status (returned for MFA users)", json_schema_extra={"examples": ["AwaitingMfa"]})
+    auth: Optional[StrictBool] = None
+    token: Optional[StrictStr] = None
+    account_type: Optional[StrictStr] = Field(default=None, alias="accountType")
+    email: Optional[StrictStr] = Field(default=None, description="User email address (returned for MFA users)")
+    mfa_type: Optional[StrictStr] = Field(default=None, description="MFA type (returned for MFA users)", alias="mfaType")
+    state_token: Optional[StrictStr] = Field(default=None, description="State token for MFA verification (returned for MFA users)", alias="stateToken")
+    status: Optional[StrictStr] = Field(default=None, description="Authentication status (returned for MFA users)")
     __properties: ClassVar[List[str]] = ["auth", "token", "accountType", "email", "mfaType", "stateToken", "status"]
 
     @field_validator('account_type')
@@ -47,8 +46,7 @@ class V1AuthLoginPostResponse(BaseModel):
         return value
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class V1AuthLoginPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

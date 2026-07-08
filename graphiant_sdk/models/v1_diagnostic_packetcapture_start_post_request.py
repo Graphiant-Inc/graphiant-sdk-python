@@ -24,22 +24,20 @@ from graphiant_sdk.models.diagnostic_tools_p_cap_filter import DiagnosticToolsPC
 from graphiant_sdk.models.diagnostic_tools_target_type import DiagnosticToolsTargetType
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticPacketcaptureStartPostRequest(BaseModel):
     """
     V1DiagnosticPacketcaptureStartPostRequest
     """ # noqa: E501
-    device_id: StrictInt = Field(description="Unique identifier for a specific device (required)", alias="deviceId", json_schema_extra={"examples": [30000000555]})
-    duration: Annotated[int, Field(strict=True, ge=0)] = Field(description="Packet capture duration. Accepted values are 30, 60, 180 (required)", json_schema_extra={"examples": [30]})
+    device_id: StrictInt = Field(description="Unique identifier for a specific device (required)", alias="deviceId")
+    duration: Annotated[int, Field(strict=True, ge=0)] = Field(description="Packet capture duration. Accepted values are 30, 60, 180 (required)")
     filter: Optional[DiagnosticToolsPCapFilter] = None
-    max_packet_counter: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Packet capture limit.", alias="maxPacketCounter", json_schema_extra={"examples": [300]})
+    max_packet_counter: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Packet capture limit.", alias="maxPacketCounter")
     target: DiagnosticToolsTargetType
     __properties: ClassVar[List[str]] = ["deviceId", "duration", "filter", "maxPacketCounter", "target"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class V1DiagnosticPacketcaptureStartPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

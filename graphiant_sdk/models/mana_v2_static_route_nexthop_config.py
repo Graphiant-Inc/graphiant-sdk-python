@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2StaticRouteNexthopConfig(BaseModel):
     """
     ManaV2StaticRouteNexthopConfig
     """ # noqa: E501
-    address: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    interface: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    next_hop_address: Optional[StrictStr] = Field(default=None, alias="nextHopAddress", json_schema_extra={"examples": ["example string"]})
-    third_party_ipsec_tunnel: Optional[StrictStr] = Field(default=None, alias="thirdPartyIpsecTunnel", json_schema_extra={"examples": ["example string"]})
+    address: Optional[StrictStr] = None
+    circuit: Optional[StrictStr] = None
+    interface: Optional[StrictStr] = None
+    next_hop_address: Optional[StrictStr] = Field(default=None, alias="nextHopAddress")
+    third_party_ipsec_tunnel: Optional[StrictStr] = Field(default=None, alias="thirdPartyIpsecTunnel")
     __properties: ClassVar[List[str]] = ["address", "circuit", "interface", "nextHopAddress", "thirdPartyIpsecTunnel"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2StaticRouteNexthopConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

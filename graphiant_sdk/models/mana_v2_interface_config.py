@@ -28,38 +28,36 @@ from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v4 import ManaV2NullableTcpMs
 from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v6 import ManaV2NullableTcpMssV6
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceConfig(BaseModel):
     """
     ManaV2InterfaceConfig
     """ # noqa: E501
-    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus", json_schema_extra={"examples": [True]})
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    duplex: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus")
+    alias: Optional[StrictStr] = None
+    circuit: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    duplex: Optional[StrictStr] = None
     ipsec: Optional[ManaV2InterfaceIPsecConfig] = None
     ipv4: Optional[ManaV2InterfaceIpConfig] = None
     ipv6: Optional[ManaV2InterfaceIpConfig] = None
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
-    loopback: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    lan: Optional[StrictStr] = None
+    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled")
+    loopback: Optional[StrictBool] = None
     macsec: Optional[ManaV2NullableMaCsecConfiguration] = None
-    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
-    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
-    speed: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit")
+    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone")
+    speed: Optional[StrictInt] = None
     subinterfaces: Optional[Dict[str, ManaV2NullableInterfaceVlanConfig]] = None
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4", json_schema_extra={"examples": [123]})
-    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4")
+    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6")
     v4_tcp_mss: Optional[ManaV2NullableTcpMssV4] = Field(default=None, alias="v4TcpMss")
     v6_tcp_mss: Optional[ManaV2NullableTcpMssV6] = Field(default=None, alias="v6TcpMss")
     __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "description", "duplex", "ipsec", "ipv4", "ipv6", "lan", "lldpEnabled", "loopback", "macsec", "maxTransmissionUnit", "securityZone", "speed", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "v4TcpMss", "v6TcpMss"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -71,7 +69,8 @@ class ManaV2InterfaceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,20 +23,18 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.statsmon_v2_time_window import StatsmonV2TimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringIkeErrorHistoryPostRequest(BaseModel):
     """
     V2MonitoringIkeErrorHistoryPostRequest
     """ # noqa: E501
-    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [12345678910]})
+    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId")
     time_window: Optional[StatsmonV2TimeWindow] = Field(default=None, alias="timeWindow")
-    tunnel_name: Optional[StrictStr] = Field(default=None, alias="tunnelName", json_schema_extra={"examples": ["example string"]})
+    tunnel_name: Optional[StrictStr] = Field(default=None, alias="tunnelName")
     __properties: ClassVar[List[str]] = ["deviceId", "timeWindow", "tunnelName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V2MonitoringIkeErrorHistoryPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

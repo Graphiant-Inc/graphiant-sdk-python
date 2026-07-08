@@ -24,7 +24,6 @@ from graphiant_sdk.models.v1_backbone_health_etet_sla_matrix_get_response_region
 from graphiant_sdk.models.v1_backbone_health_etet_sla_matrix_get_response_sla_summary import V1BackboneHealthEtetSlaMatrixGetResponseSlaSummary
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1BackboneHealthEtetSlaMatrixGetResponse(BaseModel):
     """
@@ -36,8 +35,7 @@ class V1BackboneHealthEtetSlaMatrixGetResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["devices", "regionStatus", "slaMatrix"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1BackboneHealthEtetSlaMatrixGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

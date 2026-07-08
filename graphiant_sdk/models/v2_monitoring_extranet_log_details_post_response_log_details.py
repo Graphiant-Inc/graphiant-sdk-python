@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringExtranetLogDetailsPostResponseLogDetails(BaseModel):
     """
     V2MonitoringExtranetLogDetailsPostResponseLogDetails
     """ # noqa: E501
-    hostname: Optional[StrictStr] = Field(default=None, description="the hostname of the log", json_schema_extra={"examples": ["hostname1"]})
-    reason: Optional[StrictStr] = Field(default=None, description="the reason for the log", json_schema_extra={"examples": ["Reason 1"]})
-    server_address: Optional[StrictStr] = Field(default=None, description="the address of the server", alias="serverAddress", json_schema_extra={"examples": ["192.168.1.1"]})
-    site_name: Optional[StrictStr] = Field(default=None, description="the name of the site", alias="siteName", json_schema_extra={"examples": ["site1"]})
+    hostname: Optional[StrictStr] = Field(default=None, description="the hostname of the log")
+    reason: Optional[StrictStr] = Field(default=None, description="the reason for the log")
+    server_address: Optional[StrictStr] = Field(default=None, description="the address of the server", alias="serverAddress")
+    site_name: Optional[StrictStr] = Field(default=None, description="the name of the site", alias="siteName")
     ts: Optional[GoogleProtobufTimestamp] = None
     __properties: ClassVar[List[str]] = ["hostname", "reason", "serverAddress", "siteName", "ts"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V2MonitoringExtranetLogDetailsPostResponseLogDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

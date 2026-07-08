@@ -26,40 +26,38 @@ from graphiant_sdk.models.assurance_client_session_pop_link import AssuranceClie
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceClientSession(BaseModel):
     """
     AssuranceClientSession
     """ # noqa: E501
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    bucket: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    bucket: Optional[StrictStr] = None
     client_endpoint: Optional[AssuranceClientSessionEndpointDetails] = Field(default=None, alias="clientEndpoint")
-    client_flex_algo: Optional[StrictStr] = Field(default=None, alias="clientFlexAlgo", json_schema_extra={"examples": ["example string"]})
-    client_ip: Optional[StrictStr] = Field(default=None, alias="clientIp", json_schema_extra={"examples": ["example string"]})
+    client_flex_algo: Optional[StrictStr] = Field(default=None, alias="clientFlexAlgo")
+    client_ip: Optional[StrictStr] = Field(default=None, alias="clientIp")
     client_links: Optional[List[AssuranceClientSessionEndpointLink]] = Field(default=None, alias="clientLinks")
-    client_username: Optional[StrictStr] = Field(default=None, alias="clientUsername", json_schema_extra={"examples": ["example string"]})
-    exchange_service_name: Optional[StrictStr] = Field(default=None, alias="exchangeServiceName", json_schema_extra={"examples": ["example string"]})
+    client_username: Optional[StrictStr] = Field(default=None, alias="clientUsername")
+    exchange_service_name: Optional[StrictStr] = Field(default=None, alias="exchangeServiceName")
     first_seen_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="firstSeenTs")
     lan_segment: Optional[List[StrictStr]] = Field(default=None, alias="lanSegment")
     last_seen_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastSeenTs")
     local_dia_links: Optional[List[AssuranceClientSessionDiaLink]] = Field(default=None, alias="localDiaLinks")
     pop_links: Optional[List[AssuranceClientSessionPopLink]] = Field(default=None, alias="popLinks")
     remote_dia_links: Optional[List[AssuranceClientSessionDiaLink]] = Field(default=None, alias="remoteDiaLinks")
-    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus")
     server_endpoint: Optional[AssuranceClientSessionEndpointDetails] = Field(default=None, alias="serverEndpoint")
     server_flex_algos: Optional[List[StrictStr]] = Field(default=None, alias="serverFlexAlgos")
-    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp", json_schema_extra={"examples": ["example string"]})
+    server_ip: Optional[StrictStr] = Field(default=None, alias="serverIp")
     server_links: Optional[List[AssuranceClientSessionEndpointLink]] = Field(default=None, alias="serverLinks")
-    server_port: Optional[StrictInt] = Field(default=None, alias="serverPort", json_schema_extra={"examples": [123]})
-    session_id: Optional[StrictStr] = Field(default=None, alias="sessionId", json_schema_extra={"examples": ["example string"]})
-    sla: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass", json_schema_extra={"examples": ["example string"]})
+    server_port: Optional[StrictInt] = Field(default=None, alias="serverPort")
+    session_id: Optional[StrictStr] = Field(default=None, alias="sessionId")
+    sla: Optional[StrictStr] = None
+    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass")
     __properties: ClassVar[List[str]] = ["appName", "bucket", "clientEndpoint", "clientFlexAlgo", "clientIp", "clientLinks", "clientUsername", "exchangeServiceName", "firstSeenTs", "lanSegment", "lastSeenTs", "localDiaLinks", "popLinks", "remoteDiaLinks", "riskStatus", "serverEndpoint", "serverFlexAlgos", "serverIp", "serverLinks", "serverPort", "sessionId", "sla", "slaClass"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -71,7 +69,8 @@ class AssuranceClientSession(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,18 +21,16 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AggregatedNotificationEnableDisablePostRequest(BaseModel):
     """
     V2AggregatedNotificationEnableDisablePostRequest
     """ # noqa: E501
-    enable: StrictBool = Field(description="Enable or disable aggregated notifications. True means enabled (required)", json_schema_extra={"examples": [True]})
+    enable: StrictBool = Field(description="Enable or disable aggregated notifications. True means enabled (required)")
     __properties: ClassVar[List[str]] = ["enable"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -44,7 +42,8 @@ class V2AggregatedNotificationEnableDisablePostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

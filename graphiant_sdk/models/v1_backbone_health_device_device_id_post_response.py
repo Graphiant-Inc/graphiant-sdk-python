@@ -28,7 +28,6 @@ from graphiant_sdk.models.statsmon_troubleshooting_issue import StatsmonTroubles
 from graphiant_sdk.models.upgrade_sw_version import UpgradeSwVersion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1BackboneHealthDeviceDeviceIdPostResponse(BaseModel):
     """
@@ -38,17 +37,16 @@ class V1BackboneHealthDeviceDeviceIdPostResponse(BaseModel):
     data_plane: Optional[StatsmonBackbonehealthDataPlane] = Field(default=None, alias="dataPlane")
     issues: Optional[List[StatsmonTroubleshootingIssue]] = None
     qoe_matrix: Optional[StatsmonBackbonehealthGetQoeMatrixResponse] = Field(default=None, alias="qoeMatrix")
-    role: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion", json_schema_extra={"examples": ["example string"]})
+    role: Optional[StrictStr] = None
+    status: Optional[StrictStr] = None
+    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion")
     sw_version_v2: Optional[UpgradeSwVersion] = Field(default=None, alias="swVersionV2")
     system_plane: Optional[StatsmonBackbonehealthSystemPlane] = Field(default=None, alias="systemPlane")
     up_since_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="upSinceTs")
     __properties: ClassVar[List[str]] = ["controlPlane", "dataPlane", "issues", "qoeMatrix", "role", "status", "swVersion", "swVersionV2", "systemPlane", "upSinceTs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class V1BackboneHealthDeviceDeviceIdPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

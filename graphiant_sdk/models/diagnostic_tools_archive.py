@@ -22,26 +22,24 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsArchive(BaseModel):
     """
     DiagnosticToolsArchive
     """ # noqa: E501
-    archive_file_name: Optional[StrictStr] = Field(default=None, description="The archive file name", alias="archiveFileName", json_schema_extra={"examples": ["12000.tar.zst.gpg"]})
-    archive_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for a specific archive", alias="archiveId", json_schema_extra={"examples": [1000000]})
-    archive_url: Optional[StrictStr] = Field(default=None, description="The URL to download this archive", alias="archiveUrl", json_schema_extra={"examples": ["graphiant.com/archives/134"]})
+    archive_file_name: Optional[StrictStr] = Field(default=None, description="The archive file name", alias="archiveFileName")
+    archive_id: Optional[StrictInt] = Field(default=None, description="Unique identifier for a specific archive", alias="archiveId")
+    archive_url: Optional[StrictStr] = Field(default=None, description="The URL to download this archive", alias="archiveUrl")
     created: Optional[GoogleProtobufTimestamp] = None
-    creator: Optional[StrictStr] = Field(default=None, description="The user who requested the generation of this archive", json_schema_extra={"examples": ["8a2ec658-f25b-11ec-b939-0242ac120002"]})
-    description: Optional[StrictStr] = Field(default=None, description="Description of the requested archive", json_schema_extra={"examples": ["archive requested to debug tenant A problem in device B"]})
-    progress: Optional[StrictInt] = Field(default=None, description="The upload progress of the requested debug archive in percentage", json_schema_extra={"examples": [80]})
-    status: Optional[StrictStr] = Field(default=None, description="The status of the requested debug archive", json_schema_extra={"examples": ["Uploaded"]})
-    type: Optional[StrictStr] = Field(default=None, description="The type of the archive", json_schema_extra={"examples": ["Debug"]})
+    creator: Optional[StrictStr] = Field(default=None, description="The user who requested the generation of this archive")
+    description: Optional[StrictStr] = Field(default=None, description="Description of the requested archive")
+    progress: Optional[StrictInt] = Field(default=None, description="The upload progress of the requested debug archive in percentage")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the requested debug archive")
+    type: Optional[StrictStr] = Field(default=None, description="The type of the archive")
     __properties: ClassVar[List[str]] = ["archiveFileName", "archiveId", "archiveUrl", "created", "creator", "description", "progress", "status", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class DiagnosticToolsArchive(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

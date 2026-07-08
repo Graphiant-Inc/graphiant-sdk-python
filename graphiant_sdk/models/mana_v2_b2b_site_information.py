@@ -22,14 +22,13 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_policer import ManaV2Policer
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bSiteInformation(BaseModel):
     """
     ManaV2B2bSiteInformation
     """ # noqa: E501
-    bw_allocation_site_lists: Optional[StrictInt] = Field(default=None, description="Total Bandwidth allocation for the service on these site lists", alias="bwAllocationSiteLists", json_schema_extra={"examples": [123]})
-    bw_allocation_sites: Optional[StrictInt] = Field(default=None, description="Total Bandwidth allocation for the service on these sites", alias="bwAllocationSites", json_schema_extra={"examples": [123]})
+    bw_allocation_site_lists: Optional[StrictInt] = Field(default=None, description="Total Bandwidth allocation for the service on these site lists", alias="bwAllocationSiteLists")
+    bw_allocation_sites: Optional[StrictInt] = Field(default=None, description="Total Bandwidth allocation for the service on these sites", alias="bwAllocationSites")
     policer_site_lists: Optional[ManaV2Policer] = Field(default=None, alias="policerSiteLists")
     policer_sites: Optional[ManaV2Policer] = Field(default=None, alias="policerSites")
     site_lists: Optional[List[StrictInt]] = Field(default=None, alias="siteLists")
@@ -37,8 +36,7 @@ class ManaV2B2bSiteInformation(BaseModel):
     __properties: ClassVar[List[str]] = ["bwAllocationSiteLists", "bwAllocationSites", "policerSiteLists", "policerSites", "siteLists", "sites"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2B2bSiteInformation(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

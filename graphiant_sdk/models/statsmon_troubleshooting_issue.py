@@ -22,30 +22,28 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonTroubleshootingIssue(BaseModel):
     """
     StatsmonTroubleshootingIssue
     """ # noqa: E501
-    alert_id: Optional[StrictStr] = Field(default=None, alias="alertId", json_schema_extra={"examples": ["example string"]})
-    allow_listed: Optional[StrictBool] = Field(default=None, alias="allowListed", json_schema_extra={"examples": [True]})
-    component: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    alert_id: Optional[StrictStr] = Field(default=None, alias="alertId")
+    allow_listed: Optional[StrictBool] = Field(default=None, alias="allowListed")
+    component: Optional[StrictStr] = None
     end_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="endTime")
-    entity: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    issue: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    mute_listed: Optional[StrictBool] = Field(default=None, alias="muteListed", json_schema_extra={"examples": [True]})
-    notification_created: Optional[StrictBool] = Field(default=None, alias="notificationCreated", json_schema_extra={"examples": [True]})
-    plane: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    reason: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    severity: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    entity: Optional[StrictStr] = None
+    issue: Optional[StrictStr] = None
+    mute_listed: Optional[StrictBool] = Field(default=None, alias="muteListed")
+    notification_created: Optional[StrictBool] = Field(default=None, alias="notificationCreated")
+    plane: Optional[StrictStr] = None
+    reason: Optional[StrictStr] = None
+    severity: Optional[StrictStr] = None
     start_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="startTime")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["alertId", "allowListed", "component", "endTime", "entity", "issue", "muteListed", "notificationCreated", "plane", "reason", "severity", "startTime", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class StatsmonTroubleshootingIssue(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

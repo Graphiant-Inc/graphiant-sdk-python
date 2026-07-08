@@ -23,29 +23,27 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_forwarding_policy_match import ManaV2ForwardingPolicyMatch
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SecurityPolicyRulesetRule(BaseModel):
     """
     ManaV2SecurityPolicyRulesetRule
     """ # noqa: E501
-    action: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    downlink_burst_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downlinkBurstRate", json_schema_extra={"examples": [123]})
-    downlink_policer_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downlinkPolicerRate", json_schema_extra={"examples": [123]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    logging: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    action: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
+    downlink_burst_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downlinkBurstRate")
+    downlink_policer_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downlinkPolicerRate")
+    id: Optional[StrictInt] = None
+    index: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    logging: Optional[StrictBool] = None
     match: Optional[ManaV2ForwardingPolicyMatch] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    uplink_burst_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="uplinkBurstRate", json_schema_extra={"examples": [123]})
-    uplink_policer_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="uplinkPolicerRate", json_schema_extra={"examples": [123]})
+    name: Optional[StrictStr] = None
+    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    uplink_burst_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="uplinkBurstRate")
+    uplink_policer_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="uplinkPolicerRate")
     __properties: ClassVar[List[str]] = ["action", "description", "downlinkBurstRate", "downlinkPolicerRate", "id", "index", "logging", "match", "name", "seq", "uplinkBurstRate", "uplinkPolicerRate"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2SecurityPolicyRulesetRule(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

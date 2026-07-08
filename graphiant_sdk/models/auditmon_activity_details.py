@@ -24,35 +24,33 @@ from graphiant_sdk.models.auditmon_activity_details_target import AuditmonActivi
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AuditmonActivityDetails(BaseModel):
     """
     AuditmonActivityDetails
     """ # noqa: E501
-    action: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    action: Optional[StrictStr] = None
     attributes: Optional[List[AuditActivityItem]] = None
-    category: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    disable_auto_timeout: Optional[StrictBool] = Field(default=None, alias="disableAutoTimeout", json_schema_extra={"examples": [True]})
+    category: Optional[StrictStr] = None
+    disable_auto_timeout: Optional[StrictBool] = Field(default=None, alias="disableAutoTimeout")
     end_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="endTs")
-    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
-    id: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    initiator_type: Optional[StrictStr] = Field(default=None, alias="initiatorType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId")
+    id: Optional[StrictStr] = None
+    initiator_type: Optional[StrictStr] = Field(default=None, alias="initiatorType")
     job_entities: Optional[List[AuditActivityItem]] = Field(default=None, alias="jobEntities")
-    job_type: Optional[StrictStr] = Field(default=None, alias="jobType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    original_enterprise_id: Optional[StrictInt] = Field(default=None, alias="originalEnterpriseId", json_schema_extra={"examples": [1234567891011]})
+    job_type: Optional[StrictStr] = Field(default=None, alias="jobType")
+    original_enterprise_id: Optional[StrictInt] = Field(default=None, alias="originalEnterpriseId")
     start_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="startTs")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     targets: Optional[List[AuditmonActivityDetailsTarget]] = None
-    trace_session_id: Optional[StrictStr] = Field(default=None, alias="traceSessionId", json_schema_extra={"examples": ["example string"]})
-    usage: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    user: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    user_id: Optional[StrictStr] = Field(default=None, alias="userId", json_schema_extra={"examples": ["example string"]})
+    trace_session_id: Optional[StrictStr] = Field(default=None, alias="traceSessionId")
+    usage: Optional[StrictStr] = None
+    user: Optional[StrictStr] = None
+    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
     __properties: ClassVar[List[str]] = ["action", "attributes", "category", "disableAutoTimeout", "endTs", "enterpriseId", "id", "initiatorType", "jobEntities", "jobType", "originalEnterpriseId", "startTs", "status", "targets", "traceSessionId", "usage", "user", "userId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -64,7 +62,8 @@ class AuditmonActivityDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

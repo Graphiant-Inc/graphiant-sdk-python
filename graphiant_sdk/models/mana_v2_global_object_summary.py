@@ -22,31 +22,29 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GlobalObjectSummary(BaseModel):
     """
     ManaV2GlobalObjectSummary
     """ # noqa: E501
-    attach_point: Optional[StrictStr] = Field(default=None, alias="attachPoint", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    ip_version: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ipVersion", json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    num_attached_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numAttachedDevices", json_schema_extra={"examples": [123]})
-    num_attached_sites: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numAttachedSites", json_schema_extra={"examples": [123]})
-    num_failures: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numFailures", json_schema_extra={"examples": [123]})
-    num_in_sync_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numInSyncDevices", json_schema_extra={"examples": [123]})
-    num_override_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numOverrideDevices", json_schema_extra={"examples": [123]})
-    num_policies: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numPolicies", json_schema_extra={"examples": [123]})
-    num_prefixes: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numPrefixes", json_schema_extra={"examples": [123]})
-    num_rules: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numRules", json_schema_extra={"examples": [123]})
-    num_statements: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numStatements", json_schema_extra={"examples": [123]})
-    traffic_policy_type: Optional[StrictStr] = Field(default=None, alias="trafficPolicyType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    attach_point: Optional[StrictStr] = Field(default=None, alias="attachPoint")
+    id: Optional[StrictInt] = None
+    ip_version: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ipVersion")
+    name: Optional[StrictStr] = None
+    num_attached_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numAttachedDevices")
+    num_attached_sites: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numAttachedSites")
+    num_failures: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numFailures")
+    num_in_sync_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numInSyncDevices")
+    num_override_devices: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numOverrideDevices")
+    num_policies: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numPolicies")
+    num_prefixes: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numPrefixes")
+    num_rules: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numRules")
+    num_statements: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numStatements")
+    traffic_policy_type: Optional[StrictStr] = Field(default=None, alias="trafficPolicyType")
     __properties: ClassVar[List[str]] = ["attachPoint", "id", "ipVersion", "name", "numAttachedDevices", "numAttachedSites", "numFailures", "numInSyncDevices", "numOverrideDevices", "numPolicies", "numPrefixes", "numRules", "numStatements", "trafficPolicyType"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,7 +56,8 @@ class ManaV2GlobalObjectSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

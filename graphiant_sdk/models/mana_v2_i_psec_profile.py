@@ -22,30 +22,28 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2IPsecProfile(BaseModel):
     """
     ManaV2IPsecProfile
     """ # noqa: E501
-    anti_replay_window_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="antiReplayWindowSize", json_schema_extra={"examples": [123]})
-    dpd_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdInterval", json_schema_extra={"examples": [123]})
-    esn: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    ike_dh_group: Optional[StrictStr] = Field(default=None, alias="ikeDhGroup", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    ike_encryption_alg: Optional[StrictStr] = Field(default=None, alias="ikeEncryptionAlg", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    ike_integrity: Optional[StrictStr] = Field(default=None, alias="ikeIntegrity", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    ipsec_encryption_alg: Optional[StrictStr] = Field(default=None, alias="ipsecEncryptionAlg", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    ipsec_integrity: Optional[StrictStr] = Field(default=None, alias="ipsecIntegrity", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    perfect_forward_secrecy: Optional[StrictStr] = Field(default=None, alias="perfectForwardSecrecy", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    reauth_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="reauthInterval", json_schema_extra={"examples": [123]})
-    rekey_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="rekeyInterval", json_schema_extra={"examples": [123]})
+    anti_replay_window_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="antiReplayWindowSize")
+    dpd_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdInterval")
+    esn: Optional[StrictBool] = None
+    id: Optional[StrictInt] = None
+    ike_dh_group: Optional[StrictStr] = Field(default=None, alias="ikeDhGroup")
+    ike_encryption_alg: Optional[StrictStr] = Field(default=None, alias="ikeEncryptionAlg")
+    ike_integrity: Optional[StrictStr] = Field(default=None, alias="ikeIntegrity")
+    ipsec_encryption_alg: Optional[StrictStr] = Field(default=None, alias="ipsecEncryptionAlg")
+    ipsec_integrity: Optional[StrictStr] = Field(default=None, alias="ipsecIntegrity")
+    name: Optional[StrictStr] = None
+    perfect_forward_secrecy: Optional[StrictStr] = Field(default=None, alias="perfectForwardSecrecy")
+    reauth_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="reauthInterval")
+    rekey_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="rekeyInterval")
     __properties: ClassVar[List[str]] = ["antiReplayWindowSize", "dpdInterval", "esn", "id", "ikeDhGroup", "ikeEncryptionAlg", "ikeIntegrity", "ipsecEncryptionAlg", "ipsecIntegrity", "name", "perfectForwardSecrecy", "reauthInterval", "rekeyInterval"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2IPsecProfile(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

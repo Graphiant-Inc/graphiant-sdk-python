@@ -27,29 +27,27 @@ from graphiant_sdk.models.mana_v2_guest_consumer_site_to_site_vpn_config import 
 from graphiant_sdk.models.v1_extranets_b2b_peering_consumer_customer_id_consumer_details_get_response_ipsec_vpn_tunnel_config import V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponseIpsecVpnTunnelConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse(BaseModel):
     """
     V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse
     """ # noqa: E501
-    consumer_id: Optional[StrictInt] = Field(default=None, alias="consumerId", json_schema_extra={"examples": [1234567891011]})
-    consumer_name: Optional[StrictStr] = Field(default=None, alias="consumerName", json_schema_extra={"examples": ["example string"]})
+    consumer_id: Optional[StrictInt] = Field(default=None, alias="consumerId")
+    consumer_name: Optional[StrictStr] = Field(default=None, alias="consumerName")
     emails: Optional[List[StrictStr]] = None
     global_object_device_summaries: Optional[Dict[str, ManaV2GlobalObjectServiceSummaries]] = Field(default=None, alias="globalObjectDeviceSummaries")
     global_object_summaries: Optional[Dict[str, ManaV2GlobalObjectServiceSummaries]] = Field(default=None, alias="globalObjectSummaries")
     ipsec_tunnel_config: Optional[List[V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponseIpsecVpnTunnelConfig]] = Field(default=None, alias="ipsecTunnelConfig")
     match_details: Optional[ManaV2B2bExtranetServiceCustomerMatchDetails] = Field(default=None, alias="matchDetails")
-    peer_type: Optional[StrictStr] = Field(default=None, alias="peerType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    peer_type: Optional[StrictStr] = Field(default=None, alias="peerType")
     policy: Optional[List[ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy]] = None
     site_information: Optional[List[ManaV2B2bSiteInformation]] = Field(default=None, alias="siteInformation")
     site_to_site_vpn: Optional[ManaV2GuestConsumerSiteToSiteVpnConfig] = Field(default=None, alias="siteToSiteVpn")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["consumerId", "consumerName", "emails", "globalObjectDeviceSummaries", "globalObjectSummaries", "ipsecTunnelConfig", "matchDetails", "peerType", "policy", "siteInformation", "siteToSiteVpn", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,7 +59,8 @@ class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse(BaseMode
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

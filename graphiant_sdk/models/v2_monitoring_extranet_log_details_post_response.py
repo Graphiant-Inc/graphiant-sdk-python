@@ -22,7 +22,6 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.v2_monitoring_extranet_log_details_post_response_log_details import V2MonitoringExtranetLogDetailsPostResponseLogDetails
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringExtranetLogDetailsPostResponse(BaseModel):
     """
@@ -32,8 +31,7 @@ class V2MonitoringExtranetLogDetailsPostResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["logs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class V2MonitoringExtranetLogDetailsPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

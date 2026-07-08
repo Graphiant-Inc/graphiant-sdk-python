@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RouteTag(BaseModel):
     """
     ManaV2RouteTag
     """ # noqa: E501
-    level_one: Optional[StrictStr] = Field(default=None, alias="levelOne", json_schema_extra={"examples": ["example string"]})
-    level_two: Optional[StrictStr] = Field(default=None, alias="levelTwo", json_schema_extra={"examples": ["example string"]})
-    level_zero: Optional[StrictStr] = Field(default=None, alias="levelZero", json_schema_extra={"examples": ["example string"]})
+    level_one: Optional[StrictStr] = Field(default=None, alias="levelOne")
+    level_two: Optional[StrictStr] = Field(default=None, alias="levelTwo")
+    level_zero: Optional[StrictStr] = Field(default=None, alias="levelZero")
     __properties: ClassVar[List[str]] = ["levelOne", "levelTwo", "levelZero"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class ManaV2RouteTag(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

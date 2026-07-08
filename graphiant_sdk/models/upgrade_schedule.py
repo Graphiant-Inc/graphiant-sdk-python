@@ -24,24 +24,22 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.upgrade_sw_version import UpgradeSwVersion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeSchedule(BaseModel):
     """
     UpgradeSchedule
     """ # noqa: E501
-    action: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    download_progress: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downloadProgress", json_schema_extra={"examples": [123]})
-    failure_reason: Optional[StrictStr] = Field(default=None, alias="failureReason", json_schema_extra={"examples": ["example string"]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    action: Optional[StrictStr] = None
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    download_progress: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="downloadProgress")
+    failure_reason: Optional[StrictStr] = Field(default=None, alias="failureReason")
+    state: Optional[StrictStr] = None
     ts: Optional[GoogleProtobufTimestamp] = None
     version: Optional[UpgradeSwVersion] = None
     __properties: ClassVar[List[str]] = ["action", "deviceId", "downloadProgress", "failureReason", "state", "ts", "version"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class UpgradeSchedule(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticResetIpsecSessionDeviceIdPutRequest(BaseModel):
     """
     V1DiagnosticResetIpsecSessionDeviceIdPutRequest
     """ # noqa: E501
-    all3_rd_party: Optional[StrictBool] = Field(default=None, description="All 3rd Party IPSec sessions", alias="all3RdParty", json_schema_extra={"examples": [True]})
-    all_controllers: Optional[StrictBool] = Field(default=None, description="All Graphiant controllers IPSec sessions", alias="allControllers", json_schema_extra={"examples": [True]})
-    all_e2_e: Optional[StrictBool] = Field(default=None, description="All Edge to Edge sessions", alias="allE2E", json_schema_extra={"examples": [True]})
+    all3_rd_party: Optional[StrictBool] = Field(default=None, description="All 3rd Party IPSec sessions", alias="all3RdParty")
+    all_controllers: Optional[StrictBool] = Field(default=None, description="All Graphiant controllers IPSec sessions", alias="allControllers")
+    all_e2_e: Optional[StrictBool] = Field(default=None, description="All Edge to Edge sessions", alias="allE2E")
     vrf: Optional[List[StrictStr]] = None
     __properties: ClassVar[List[str]] = ["all3RdParty", "allControllers", "allE2E", "vrf"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1DiagnosticResetIpsecSessionDeviceIdPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

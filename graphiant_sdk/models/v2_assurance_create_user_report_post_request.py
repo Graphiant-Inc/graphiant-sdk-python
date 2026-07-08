@@ -21,24 +21,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssuranceCreateUserReportPostRequest(BaseModel):
     """
     V2AssuranceCreateUserReportPostRequest
     """ # noqa: E501
-    created_on: Optional[StrictInt] = Field(default=None, alias="createdOn", json_schema_extra={"examples": [1234567891011]})
+    created_on: Optional[StrictInt] = Field(default=None, alias="createdOn")
     email_list: Optional[List[StrictStr]] = Field(default=None, alias="emailList")
-    pdf_content: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, alias="pdfContent", json_schema_extra={"examples": ["WW5sMFpYTT0="]})
+    pdf_content: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, alias="pdfContent")
     raw_content: Optional[List[Union[StrictBytes, StrictStr]]] = Field(default=None, alias="rawContent")
-    report_name: Optional[StrictStr] = Field(default=None, alias="reportName", json_schema_extra={"examples": ["example string"]})
-    report_type: Optional[StrictStr] = Field(default=None, alias="reportType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    time_period: Optional[StrictStr] = Field(default=None, alias="timePeriod", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    report_name: Optional[StrictStr] = Field(default=None, alias="reportName")
+    report_type: Optional[StrictStr] = Field(default=None, alias="reportType")
+    time_period: Optional[StrictStr] = Field(default=None, alias="timePeriod")
     __properties: ClassVar[List[str]] = ["createdOn", "emailList", "pdfContent", "rawContent", "reportName", "reportType", "timePeriod"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class V2AssuranceCreateUserReportPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

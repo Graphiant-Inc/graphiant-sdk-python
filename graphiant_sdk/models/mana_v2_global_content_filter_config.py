@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_global_content_filter_rule import ManaV2GlobalContentFilterRule
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GlobalContentFilterConfig(BaseModel):
     """
     ManaV2GlobalContentFilterConfig
     """ # noqa: E501
     lan_names: Optional[List[StrictStr]] = Field(default=None, alias="lanNames")
-    name: Optional[StrictStr] = Field(default=None, description="Display name for this global content filter configuration.", json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = Field(default=None, description="Display name for this global content filter configuration.")
     rules: Optional[List[ManaV2GlobalContentFilterRule]] = None
-    site_list_id: Optional[StrictInt] = Field(default=None, description="Site list whose members this content filter applies to; omit the oneof when no site scope is set.", alias="siteListId", json_schema_extra={"examples": [1234567891011]})
-    use_all_sites: Optional[StrictBool] = Field(default=None, description="When true, the filter applies to all sites in the tenant (must be the constant true).", alias="useAllSites", json_schema_extra={"examples": [True]})
+    site_list_id: Optional[StrictInt] = Field(default=None, description="Site list whose members this content filter applies to; omit the oneof when no site scope is set.", alias="siteListId")
+    use_all_sites: Optional[StrictBool] = Field(default=None, description="When true, the filter applies to all sites in the tenant (must be the constant true).", alias="useAllSites")
     __properties: ClassVar[List[str]] = ["lanNames", "name", "rules", "siteListId", "useAllSites"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class ManaV2GlobalContentFilterConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

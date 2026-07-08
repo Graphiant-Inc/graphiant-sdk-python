@@ -22,9 +22,9 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_allocation_conversion_holder import ManaV2AllocationConversionHolder
 from graphiant_sdk.models.mana_v2_bandwidth_consumption_summary import ManaV2BandwidthConsumptionSummary
 from graphiant_sdk.models.mana_v2_regional_allocation import ManaV2RegionalAllocation
+from graphiant_sdk.models.mana_v2_zero_trust_consumption_summary import ManaV2ZeroTrustConsumptionSummary
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1EnterpriseAllocationGetResponse(BaseModel):
     """
@@ -33,11 +33,11 @@ class V1EnterpriseAllocationGetResponse(BaseModel):
     consumption_summary: Optional[ManaV2BandwidthConsumptionSummary] = Field(default=None, alias="consumptionSummary")
     conversion_holders: Optional[Dict[str, ManaV2AllocationConversionHolder]] = Field(default=None, alias="conversionHolders")
     regional_allocations: Optional[List[ManaV2RegionalAllocation]] = Field(default=None, alias="regionalAllocations")
-    __properties: ClassVar[List[str]] = ["consumptionSummary", "conversionHolders", "regionalAllocations"]
+    zero_trust_summary: Optional[ManaV2ZeroTrustConsumptionSummary] = Field(default=None, alias="zeroTrustSummary")
+    __properties: ClassVar[List[str]] = ["consumptionSummary", "conversionHolders", "regionalAllocations", "zeroTrustSummary"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +49,8 @@ class V1EnterpriseAllocationGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -91,6 +92,9 @@ class V1EnterpriseAllocationGetResponse(BaseModel):
                 if _item_regional_allocations:
                     _items.append(_item_regional_allocations.to_dict())
             _dict['regionalAllocations'] = _items
+        # override the default output from pydantic by calling `to_dict()` of zero_trust_summary
+        if self.zero_trust_summary:
+            _dict['zeroTrustSummary'] = self.zero_trust_summary.to_dict()
         return _dict
 
     @classmethod
@@ -110,7 +114,8 @@ class V1EnterpriseAllocationGetResponse(BaseModel):
             )
             if obj.get("conversionHolders") is not None
             else None,
-            "regionalAllocations": [ManaV2RegionalAllocation.from_dict(_item) for _item in obj["regionalAllocations"]] if obj.get("regionalAllocations") is not None else None
+            "regionalAllocations": [ManaV2RegionalAllocation.from_dict(_item) for _item in obj["regionalAllocations"]] if obj.get("regionalAllocations") is not None else None,
+            "zeroTrustSummary": ManaV2ZeroTrustConsumptionSummary.from_dict(obj["zeroTrustSummary"]) if obj.get("zeroTrustSummary") is not None else None
         })
         return _obj
 

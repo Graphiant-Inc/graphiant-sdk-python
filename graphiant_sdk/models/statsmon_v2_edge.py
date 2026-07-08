@@ -24,23 +24,21 @@ from graphiant_sdk.models.statsmon_v2_connection import StatsmonV2Connection
 from graphiant_sdk.models.statsmon_v2_edgeedge_circuit_info import StatsmonV2EdgeedgeCircuitInfo
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2Edge(BaseModel):
     """
     StatsmonV2Edge
     """ # noqa: E501
-    a: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    b: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    a: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    b: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     circuits_info: Optional[List[StatsmonV2EdgeedgeCircuitInfo]] = Field(default=None, alias="circuitsInfo")
     connections: Optional[List[StatsmonV2Connection]] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    quality: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    name: Optional[StrictStr] = None
+    quality: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["a", "b", "circuitsInfo", "connections", "name", "quality"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class StatsmonV2Edge(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

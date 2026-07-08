@@ -21,24 +21,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalSummaryPostRequest(BaseModel):
     """
     V1GlobalSummaryPostRequest
     """ # noqa: E501
-    ipfix_exported_type: Optional[StrictBool] = Field(default=None, alias="ipfixExportedType", json_schema_extra={"examples": [True]})
-    ntp_type: Optional[StrictBool] = Field(default=None, alias="ntpType", json_schema_extra={"examples": [True]})
-    prefix_set_type: Optional[StrictBool] = Field(default=None, alias="prefixSetType", json_schema_extra={"examples": [True]})
-    routing_policy_type: Optional[StrictBool] = Field(default=None, alias="routingPolicyType", json_schema_extra={"examples": [True]})
-    snmp_type: Optional[StrictBool] = Field(default=None, alias="snmpType", json_schema_extra={"examples": [True]})
-    syslog_server_type: Optional[StrictBool] = Field(default=None, alias="syslogServerType", json_schema_extra={"examples": [True]})
-    traffic_policy_type: Optional[StrictBool] = Field(default=None, alias="trafficPolicyType", json_schema_extra={"examples": [True]})
+    ipfix_exported_type: Optional[StrictBool] = Field(default=None, alias="ipfixExportedType")
+    ntp_type: Optional[StrictBool] = Field(default=None, alias="ntpType")
+    prefix_set_type: Optional[StrictBool] = Field(default=None, alias="prefixSetType")
+    routing_policy_type: Optional[StrictBool] = Field(default=None, alias="routingPolicyType")
+    snmp_type: Optional[StrictBool] = Field(default=None, alias="snmpType")
+    syslog_server_type: Optional[StrictBool] = Field(default=None, alias="syslogServerType")
+    traffic_policy_type: Optional[StrictBool] = Field(default=None, alias="trafficPolicyType")
     __properties: ClassVar[List[str]] = ["ipfixExportedType", "ntpType", "prefixSetType", "routingPolicyType", "snmpType", "syslogServerType", "trafficPolicyType"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class V1GlobalSummaryPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -26,7 +26,6 @@ from graphiant_sdk.models.mana_v2_i_psec_gateway_details import ManaV2IPsecGatew
 from graphiant_sdk.models.mana_v2_oci_gateway_details import ManaV2OciGatewayDetails
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GatewayDetails(BaseModel):
     """
@@ -34,18 +33,17 @@ class ManaV2GatewayDetails(BaseModel):
     """ # noqa: E501
     aws: Optional[ManaV2AwsGatewayDetails] = None
     azure: Optional[ManaV2AzureGatewayDetails] = None
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
     gcp: Optional[ManaV2GcpGatewayDetails] = None
     ipsec_gateway: Optional[ManaV2IPsecGatewayDetails] = Field(default=None, alias="ipsecGateway")
     oci: Optional[ManaV2OciGatewayDetails] = None
-    region_id: Optional[StrictInt] = Field(default=None, alias="regionId", json_schema_extra={"examples": [123]})
-    speed: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId", json_schema_extra={"examples": [1234567891011]})
+    region_id: Optional[StrictInt] = Field(default=None, alias="regionId")
+    speed: Optional[StrictStr] = None
+    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId")
     __properties: ClassVar[List[str]] = ["aws", "azure", "description", "gcp", "ipsecGateway", "oci", "regionId", "speed", "vrfId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2GatewayDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

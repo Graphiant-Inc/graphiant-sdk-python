@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.statsmon_extranet_prefix_health import StatsmonExtranetPrefixHealth
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonExtranetServiceHealth(BaseModel):
     """
     StatsmonExtranetServiceHealth
     """ # noqa: E501
-    customer_name: Optional[StrictStr] = Field(default=None, description="the name of the customer", alias="customerName", json_schema_extra={"examples": ["Customer 1"]})
+    customer_name: Optional[StrictStr] = Field(default=None, description="the name of the customer", alias="customerName")
     customer_prefix_health: Optional[StatsmonExtranetPrefixHealth] = Field(default=None, alias="customerPrefixHealth")
-    overall_health: Optional[StrictStr] = Field(default=None, description="the overall connectivity status of the service (Healthy, Impaired, Down)", alias="overallHealth", json_schema_extra={"examples": ["Impaired"]})
+    overall_health: Optional[StrictStr] = Field(default=None, description="the overall connectivity status of the service (Healthy, Impaired, Down)", alias="overallHealth")
     producer_prefix_health: Optional[StatsmonExtranetPrefixHealth] = Field(default=None, alias="producerPrefixHealth")
     __properties: ClassVar[List[str]] = ["customerName", "customerPrefixHealth", "overallHealth", "producerPrefixHealth"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class StatsmonExtranetServiceHealth(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -25,15 +25,14 @@ from graphiant_sdk.models.v1_global_content_filters_get_response_row_rule_entry 
 from graphiant_sdk.models.v1_global_content_filters_get_response_row_site_entry import V1GlobalContentFiltersGetResponseRowSiteEntry
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalContentFiltersGetResponseRow(BaseModel):
     """
     V1GlobalContentFiltersGetResponseRow
     """ # noqa: E501
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    global_content_filter_id: Optional[StrictInt] = Field(default=None, description="ID for the global content filter.", alias="globalContentFilterId", json_schema_extra={"examples": [1234567891011]})
-    global_content_filter_name: Optional[StrictStr] = Field(default=None, description="Given name of this global content filter.", alias="globalContentFilterName", json_schema_extra={"examples": ["example string"]})
+    global_content_filter_id: Optional[StrictInt] = Field(default=None, description="ID for the global content filter.", alias="globalContentFilterId")
+    global_content_filter_name: Optional[StrictStr] = Field(default=None, description="Given name of this global content filter.", alias="globalContentFilterName")
     lans: Optional[List[V1GlobalContentFiltersGetResponseRowLanEntry]] = None
     rules: Optional[List[V1GlobalContentFiltersGetResponseRowRuleEntry]] = None
     sites: Optional[List[V1GlobalContentFiltersGetResponseRowSiteEntry]] = None
@@ -41,8 +40,7 @@ class V1GlobalContentFiltersGetResponseRow(BaseModel):
     __properties: ClassVar[List[str]] = ["createdAt", "globalContentFilterId", "globalContentFilterName", "lans", "rules", "sites", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class V1GlobalContentFiltersGetResponseRow(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1UsersPutRequest(BaseModel):
     """
     V1UsersPutRequest
     """ # noqa: E501
-    email: StrictStr = Field(description=" (required)", json_schema_extra={"examples": ["example string"]})
-    first_name: StrictStr = Field(description=" (required)", alias="firstName", json_schema_extra={"examples": ["example string"]})
-    group_id: Optional[StrictStr] = Field(default=None, alias="groupId", json_schema_extra={"examples": ["example string"]})
-    last_name: StrictStr = Field(description=" (required)", alias="lastName", json_schema_extra={"examples": ["example string"]})
-    time_zone: Optional[StrictStr] = Field(default=None, alias="timeZone", json_schema_extra={"examples": ["example string"]})
+    email: StrictStr = Field(description=" (required)")
+    first_name: StrictStr = Field(description=" (required)", alias="firstName")
+    group_id: Optional[StrictStr] = Field(default=None, alias="groupId")
+    last_name: StrictStr = Field(description=" (required)", alias="lastName")
+    time_zone: Optional[StrictStr] = Field(default=None, alias="timeZone")
     __properties: ClassVar[List[str]] = ["email", "firstName", "groupId", "lastName", "timeZone"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1UsersPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

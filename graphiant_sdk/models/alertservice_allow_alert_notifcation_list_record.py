@@ -21,30 +21,28 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceAllowAlertNotifcationListRecord(BaseModel):
     """
     AlertserviceAllowAlertNotifcationListRecord
     """ # noqa: E501
-    create_time: Optional[StrictInt] = Field(default=None, alias="createTime", json_schema_extra={"examples": [1234567891011]})
-    device_interface: Optional[StrictStr] = Field(default=None, alias="deviceInterface", json_schema_extra={"examples": ["example string"]})
-    device_name: Optional[StrictStr] = Field(default=None, alias="deviceName", json_schema_extra={"examples": ["example string"]})
-    enterprise_name: Optional[StrictStr] = Field(default=None, alias="enterpriseName", json_schema_extra={"examples": ["example string"]})
-    entity_id: Optional[StrictStr] = Field(default=None, alias="entityId", json_schema_extra={"examples": ["example string"]})
-    is_wan_circuit: Optional[StrictBool] = Field(default=None, alias="isWanCircuit", json_schema_extra={"examples": [True]})
-    note_text: Optional[StrictStr] = Field(default=None, alias="noteText", json_schema_extra={"examples": ["example string"]})
-    peer_device_interface: Optional[StrictStr] = Field(default=None, alias="peerDeviceInterface", json_schema_extra={"examples": ["example string"]})
-    peer_device_name: Optional[StrictStr] = Field(default=None, alias="peerDeviceName", json_schema_extra={"examples": ["example string"]})
-    rule_id: Optional[StrictStr] = Field(default=None, alias="ruleId", json_schema_extra={"examples": ["example string"]})
-    rule_name: Optional[StrictStr] = Field(default=None, alias="ruleName", json_schema_extra={"examples": ["example string"]})
-    site_name: Optional[StrictStr] = Field(default=None, alias="siteName", json_schema_extra={"examples": ["example string"]})
-    vrf_id: Optional[StrictStr] = Field(default=None, alias="vrfId", json_schema_extra={"examples": ["example string"]})
+    create_time: Optional[StrictInt] = Field(default=None, alias="createTime")
+    device_interface: Optional[StrictStr] = Field(default=None, alias="deviceInterface")
+    device_name: Optional[StrictStr] = Field(default=None, alias="deviceName")
+    enterprise_name: Optional[StrictStr] = Field(default=None, alias="enterpriseName")
+    entity_id: Optional[StrictStr] = Field(default=None, alias="entityId")
+    is_wan_circuit: Optional[StrictBool] = Field(default=None, alias="isWanCircuit")
+    note_text: Optional[StrictStr] = Field(default=None, alias="noteText")
+    peer_device_interface: Optional[StrictStr] = Field(default=None, alias="peerDeviceInterface")
+    peer_device_name: Optional[StrictStr] = Field(default=None, alias="peerDeviceName")
+    rule_id: Optional[StrictStr] = Field(default=None, alias="ruleId")
+    rule_name: Optional[StrictStr] = Field(default=None, alias="ruleName")
+    site_name: Optional[StrictStr] = Field(default=None, alias="siteName")
+    vrf_id: Optional[StrictStr] = Field(default=None, alias="vrfId")
     __properties: ClassVar[List[str]] = ["createTime", "deviceInterface", "deviceName", "enterpriseName", "entityId", "isWanCircuit", "noteText", "peerDeviceInterface", "peerDeviceName", "ruleId", "ruleName", "siteName", "vrfId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class AlertserviceAllowAlertNotifcationListRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -29,52 +29,50 @@ from graphiant_sdk.models.mana_v2_interface_vlan import ManaV2InterfaceVlan
 from graphiant_sdk.models.mana_v2_lag_interface import ManaV2LagInterface
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2Interface(BaseModel):
     """
     ManaV2Interface
     """ # noqa: E501
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName", json_schema_extra={"examples": ["example string"]})
+    alias: Optional[StrictStr] = None
+    circuit: Optional[StrictStr] = None
+    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName")
     config_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="configUpdatedAt")
-    configured_max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configuredMaxTransmissionUnit", json_schema_extra={"examples": [123]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    duplex: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    gateway_address_v4: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV4", json_schema_extra={"examples": ["example string"]})
-    gateway_address_v6: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV6", json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    configured_max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configuredMaxTransmissionUnit")
+    description: Optional[StrictStr] = None
+    duplex: Optional[StrictStr] = None
+    enabled: Optional[StrictBool] = None
+    gateway_address_v4: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV4")
+    gateway_address_v6: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV6")
+    id: Optional[StrictInt] = None
     ip_sec: Optional[ManaV2InterfaceIPsec] = Field(default=None, alias="ipSec")
     ipv4: Optional[ManaV2InterfaceAddress] = None
     ipv6: Optional[ManaV2InterfaceAddress] = None
     ipv6_addresses: Optional[List[ManaV2InterfaceAddress]] = Field(default=None, alias="ipv6Addresses")
     lag_interface: Optional[ManaV2LagInterface] = Field(default=None, alias="lagInterface")
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
+    lan: Optional[StrictStr] = None
+    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled")
     macsec: Optional[ManaV2InterfaceMaCsec] = None
-    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit")
+    name: Optional[StrictStr] = None
     oper_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="operUpdatedAt")
-    phy_address: Optional[StrictStr] = Field(default=None, alias="phyAddress", json_schema_extra={"examples": ["example string"]})
-    protocol: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
+    phy_address: Optional[StrictStr] = Field(default=None, alias="phyAddress")
+    protocol: Optional[StrictStr] = None
+    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone")
     sfp_optical_strength: Optional[List[ManaV2InterfaceSfpOpticalStrength]] = Field(default=None, alias="sfpOpticalStrength")
-    speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="speedMbps", json_schema_extra={"examples": [123]})
+    speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="speedMbps")
     subinterfaces: Optional[List[ManaV2InterfaceVlan]] = None
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4", json_schema_extra={"examples": [123]})
-    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    vrf_function_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="vrfFunctionId", json_schema_extra={"examples": [123]})
-    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName", json_schema_extra={"examples": ["example string"]})
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4")
+    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6")
+    type: Optional[StrictStr] = None
+    up: Optional[StrictBool] = None
+    vrf_function_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="vrfFunctionId")
+    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName")
     __properties: ClassVar[List[str]] = ["alias", "circuit", "circuitName", "configUpdatedAt", "configuredMaxTransmissionUnit", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipSec", "ipv4", "ipv6", "ipv6Addresses", "lagInterface", "lan", "lldpEnabled", "macsec", "maxTransmissionUnit", "name", "operUpdatedAt", "phyAddress", "protocol", "securityZone", "sfpOpticalStrength", "speedMbps", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "type", "up", "vrfFunctionId", "vrfName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -86,7 +84,8 @@ class ManaV2Interface(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

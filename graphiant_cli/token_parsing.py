@@ -4,9 +4,13 @@ from __future__ import annotations
 
 import json
 import re
+from typing import TYPE_CHECKING
 from urllib.parse import parse_qs, urlparse, urlunparse
 
 from graphiant_cli.cli_logging import get_logger, safe_api_url_for_log
+
+if TYPE_CHECKING:
+    from playwright.sync_api import Request, Response
 
 logger = get_logger("token_parsing")
 
@@ -128,7 +132,7 @@ def eligible_capture(tok: str | None, url: str) -> bool:
     return True
 
 
-def extract_token_from_refresh_response(response: object) -> str | None:
+def extract_token_from_refresh_response(response: Response) -> str | None:
     """Bearer from refresh: JSON body, then response/request ``Authorization`` headers."""
     try:
         status = getattr(response, "status", None)
@@ -174,14 +178,14 @@ def extract_token_from_refresh_response(response: object) -> str | None:
     return None
 
 
-def token_from_authorization_headers_only(message: object) -> str | None:
+def token_from_authorization_headers_only(message: Request | Response) -> str | None:
     try:
         return bearer_from_header_map(getattr(message, "headers", None))
     except Exception:
         return None
 
 
-def extract_token_from_graphiant_api_response(response: object) -> str | None:
+def extract_token_from_graphiant_api_response(response: Response) -> str | None:
     """Non-refresh API response: ``Authorization`` on response or linked request only."""
     try:
         status = getattr(response, "status", None)

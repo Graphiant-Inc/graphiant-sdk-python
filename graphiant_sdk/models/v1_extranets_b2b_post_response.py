@@ -17,24 +17,22 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictInt
+from pydantic import BaseModel, ConfigDict, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_b2b_extranet_policy_response import ManaV2B2bExtranetPolicyResponse
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPostResponse(BaseModel):
     """
     V1ExtranetsB2bPostResponse
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    id: Optional[StrictInt] = None
     policy: Optional[ManaV2B2bExtranetPolicyResponse] = None
     __properties: ClassVar[List[str]] = ["id", "policy"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1ExtranetsB2bPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

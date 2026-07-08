@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BandwidthInfo(BaseModel):
     """
     ManaV2BandwidthInfo
     """ # noqa: E501
-    combined_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Sum of the credits associated with cloud and gateway networks", alias="combinedCredits", json_schema_extra={"examples": [12.34]})
-    core_bandwidth: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Soft-upper-bounded max speed in gigabytes per second associated with core network connections", alias="coreBandwidth", json_schema_extra={"examples": [12.34]})
-    core_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits derived from bandwidth on core network connections", alias="coreCredits", json_schema_extra={"examples": [12.34]})
-    gw_bandwidth: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Soft-upper-bounded max speed in gigabytes per second associated with gateway connections", alias="gwBandwidth", json_schema_extra={"examples": [12.34]})
-    gw_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits derived from bandwidth on gateway network connections", alias="gwCredits", json_schema_extra={"examples": [12.34]})
+    combined_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Sum of the credits associated with cloud and gateway networks", alias="combinedCredits")
+    core_bandwidth: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Soft-upper-bounded max speed in gigabytes per second associated with core network connections", alias="coreBandwidth")
+    core_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits derived from bandwidth on core network connections", alias="coreCredits")
+    gw_bandwidth: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Soft-upper-bounded max speed in gigabytes per second associated with gateway connections", alias="gwBandwidth")
+    gw_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits derived from bandwidth on gateway network connections", alias="gwCredits")
     __properties: ClassVar[List[str]] = ["combinedCredits", "coreBandwidth", "coreCredits", "gwBandwidth", "gwCredits"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2BandwidthInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

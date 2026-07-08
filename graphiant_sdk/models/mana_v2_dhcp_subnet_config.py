@@ -26,30 +26,28 @@ from graphiant_sdk.models.mana_v2_nullable_dhcp_subnet_static_lease_config impor
 from graphiant_sdk.models.mana_v2_nullable_dhcpip_range_list import ManaV2NullableDhcpipRangeList
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2DhcpSubnetConfig(BaseModel):
     """
     ManaV2DhcpSubnetConfig
     """ # noqa: E501
-    default_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="defaultLeaseTimeSecs", json_schema_extra={"examples": [123]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    domain_name: Optional[StrictStr] = Field(default=None, alias="domainName", json_schema_extra={"examples": ["example string"]})
+    default_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="defaultLeaseTimeSecs")
+    description: Optional[StrictStr] = None
+    domain_name: Optional[StrictStr] = Field(default=None, alias="domainName")
     domain_name_server: Optional[ManaV2DhcpServerDnsParametersConfig] = Field(default=None, alias="domainNameServer")
-    interface: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    ip_gateway: Optional[StrictStr] = Field(default=None, alias="ipGateway", json_schema_extra={"examples": ["example string"]})
-    ip_prefix: Optional[StrictStr] = Field(default=None, alias="ipPrefix", json_schema_extra={"examples": ["example string"]})
+    interface: Optional[StrictStr] = None
+    ip_gateway: Optional[StrictStr] = Field(default=None, alias="ipGateway")
+    ip_prefix: Optional[StrictStr] = Field(default=None, alias="ipPrefix")
     ip_ranges: Optional[List[ManaV2DhcpipRangeConfig]] = Field(default=None, alias="ipRanges")
     ip_ranges_v2: Optional[ManaV2NullableDhcpipRangeList] = Field(default=None, alias="ipRangesV2")
-    max_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxLeaseTimeSecs", json_schema_extra={"examples": [123]})
-    min_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minLeaseTimeSecs", json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    max_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxLeaseTimeSecs")
+    min_lease_time_secs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minLeaseTimeSecs")
+    name: Optional[StrictStr] = None
     static_leases: Optional[Dict[str, ManaV2NullableDhcpSubnetStaticLeaseConfig]] = Field(default=None, alias="staticLeases")
     __properties: ClassVar[List[str]] = ["defaultLeaseTimeSecs", "description", "domainName", "domainNameServer", "interface", "ipGateway", "ipPrefix", "ipRanges", "ipRangesV2", "maxLeaseTimeSecs", "minLeaseTimeSecs", "name", "staticLeases"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,7 +59,8 @@ class ManaV2DhcpSubnetConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

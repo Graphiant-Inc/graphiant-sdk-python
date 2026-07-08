@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_duration import GoogleProtobufDuration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticGnmiPingGetResponseResult(BaseModel):
     """
     V1DiagnosticGnmiPingGetResponseResult
     """ # noqa: E501
-    address: Optional[StrictStr] = Field(default=None, description="Address of the device on which the test was performed", json_schema_extra={"examples": ["12001:0db8:85a3:0000:0000:8a2e:0370:7334"]})
-    error: Optional[StrictStr] = Field(default=None, description="If error is empty, the ping is success", json_schema_extra={"examples": ["device offline"]})
+    address: Optional[StrictStr] = Field(default=None, description="Address of the device on which the test was performed")
+    error: Optional[StrictStr] = Field(default=None, description="If error is empty, the ping is success")
     rtt: Optional[GoogleProtobufDuration] = None
-    tt_device_id: Optional[StrictInt] = Field(default=None, alias="ttDeviceId", json_schema_extra={"examples": [1234567891011]})
+    tt_device_id: Optional[StrictInt] = Field(default=None, alias="ttDeviceId")
     __properties: ClassVar[List[str]] = ["address", "error", "rtt", "ttDeviceId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1DiagnosticGnmiPingGetResponseResult(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,33 +23,31 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.mana_v2_interface import ManaV2Interface
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceTunnel(BaseModel):
     """
     ManaV2InterfaceTunnel
     """ # noqa: E501
-    anti_replay_w_size: Optional[StrictInt] = Field(default=None, alias="antiReplayWSize", json_schema_extra={"examples": [123]})
+    anti_replay_w_size: Optional[StrictInt] = Field(default=None, alias="antiReplayWSize")
     established_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="establishedTime")
-    local_circuit: Optional[StrictStr] = Field(default=None, alias="localCircuit", json_schema_extra={"examples": ["example string"]})
+    local_circuit: Optional[StrictStr] = Field(default=None, alias="localCircuit")
     local_interface: Optional[ManaV2Interface] = Field(default=None, alias="localInterface")
-    local_port: Optional[StrictInt] = Field(default=None, alias="localPort", json_schema_extra={"examples": [123]})
-    local_spi: Optional[StrictInt] = Field(default=None, alias="localSpi", json_schema_extra={"examples": [1234567891011]})
-    negotiated_algorithms: Optional[StrictStr] = Field(default=None, alias="negotiatedAlgorithms", json_schema_extra={"examples": ["example string"]})
-    oper_state: Optional[StrictBool] = Field(default=None, alias="operState", json_schema_extra={"examples": [True]})
-    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress", json_schema_extra={"examples": ["example string"]})
-    protocol: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    local_port: Optional[StrictInt] = Field(default=None, alias="localPort")
+    local_spi: Optional[StrictInt] = Field(default=None, alias="localSpi")
+    negotiated_algorithms: Optional[StrictStr] = Field(default=None, alias="negotiatedAlgorithms")
+    oper_state: Optional[StrictBool] = Field(default=None, alias="operState")
+    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress")
+    protocol: Optional[StrictStr] = None
     rekey_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="rekeyTime")
-    remote_port: Optional[StrictInt] = Field(default=None, alias="remotePort", json_schema_extra={"examples": [123]})
-    remote_spi: Optional[StrictInt] = Field(default=None, alias="remoteSpi", json_schema_extra={"examples": [1234567891011]})
-    session_id: Optional[StrictInt] = Field(default=None, alias="sessionId", json_schema_extra={"examples": [1234567891011]})
-    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress", json_schema_extra={"examples": ["example string"]})
+    remote_port: Optional[StrictInt] = Field(default=None, alias="remotePort")
+    remote_spi: Optional[StrictInt] = Field(default=None, alias="remoteSpi")
+    session_id: Optional[StrictInt] = Field(default=None, alias="sessionId")
+    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress")
     tunnel_interface: Optional[ManaV2Interface] = Field(default=None, alias="tunnelInterface")
     __properties: ClassVar[List[str]] = ["antiReplayWSize", "establishedTime", "localCircuit", "localInterface", "localPort", "localSpi", "negotiatedAlgorithms", "operState", "peerAddress", "protocol", "rekeyTime", "remotePort", "remoteSpi", "sessionId", "sourceAddress", "tunnelInterface"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -61,7 +59,8 @@ class ManaV2InterfaceTunnel(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

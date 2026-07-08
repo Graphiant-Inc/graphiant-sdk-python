@@ -25,7 +25,6 @@ from graphiant_sdk.models.statsmon_bandwidthtracker_bw_usage_by_role_summary imp
 from graphiant_sdk.models.statsmon_bandwidthtracker_bw_usage_by_top_regions import StatsmonBandwidthtrackerBwUsageByTopRegions
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBandwidthtrackerBwUsageByEnterpriseSummary(BaseModel):
     """
@@ -34,16 +33,15 @@ class StatsmonBandwidthtrackerBwUsageByEnterpriseSummary(BaseModel):
     bwusage_role_summary: Optional[List[StatsmonBandwidthtrackerBwUsageByRoleSummary]] = Field(default=None, alias="bwusageRoleSummary")
     bwusage_top_regions: Optional[List[StatsmonBandwidthtrackerBwUsageByTopRegions]] = Field(default=None, alias="bwusageTopRegions")
     min_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="minTime")
-    percent_changed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentChanged", json_schema_extra={"examples": [123.45]})
-    provider_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="providerCount", json_schema_extra={"examples": [12345678910]})
-    region_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="regionCount", json_schema_extra={"examples": [12345678910]})
-    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount", json_schema_extra={"examples": [12345678910]})
-    usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="usageKbps", json_schema_extra={"examples": [123.45]})
+    percent_changed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentChanged")
+    provider_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="providerCount")
+    region_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="regionCount")
+    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount")
+    usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="usageKbps")
     __properties: ClassVar[List[str]] = ["bwusageRoleSummary", "bwusageTopRegions", "minTime", "percentChanged", "providerCount", "regionCount", "siteCount", "usageKbps"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class StatsmonBandwidthtrackerBwUsageByEnterpriseSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

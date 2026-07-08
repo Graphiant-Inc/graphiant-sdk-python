@@ -24,7 +24,6 @@ from graphiant_sdk.models.mana_v2_snmp_vacm_group_member import ManaV2SnmpVacmGr
 from graphiant_sdk.models.mana_v2_snmp_vacm_view import ManaV2SnmpVacmView
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpVacmGroup(BaseModel):
     """
@@ -32,14 +31,13 @@ class ManaV2SnmpVacmGroup(BaseModel):
     """ # noqa: E501
     accesses: Optional[List[ManaV2SnmpVacmGroupAccess]] = None
     group_members: Optional[List[ManaV2SnmpVacmGroupMember]] = Field(default=None, alias="groupMembers")
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
     views: Optional[List[ManaV2SnmpVacmView]] = None
     __properties: ClassVar[List[str]] = ["accesses", "groupMembers", "id", "name", "views"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2SnmpVacmGroup(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,26 +22,24 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsDiagnosticParams(BaseModel):
     """
     DiagnosticToolsDiagnosticParams
     """ # noqa: E501
-    dest_address: StrictStr = Field(description="IPv4 or IPv6 Destination address (required)", alias="destAddress", json_schema_extra={"examples": ["172.1.1.1"]})
-    hop_stats_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Per hop probes needed for traceroute hop stats", alias="hopStatsCount", json_schema_extra={"examples": [10]})
-    interface: Optional[StrictStr] = Field(default=None, description="Source Interface name", json_schema_extra={"examples": ["ethernet1/0"]})
-    payload_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Size of  packet to be sent", alias="payloadSize", json_schema_extra={"examples": [64]})
-    port: Annotated[int, Field(strict=True, ge=0)] = Field(description="Valid in case of TCP ping (required)", json_schema_extra={"examples": [443]})
-    probe_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of probes to send", alias="probeCount", json_schema_extra={"examples": [4]})
-    src_address: StrictStr = Field(description="IPv4 or IPv6 address (required)", alias="srcAddress", json_schema_extra={"examples": ["10.1.1.1"]})
+    dest_address: StrictStr = Field(description="IPv4 or IPv6 Destination address (required)", alias="destAddress")
+    hop_stats_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Per hop probes needed for traceroute hop stats", alias="hopStatsCount")
+    interface: Optional[StrictStr] = Field(default=None, description="Source Interface name")
+    payload_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Size of  packet to be sent", alias="payloadSize")
+    port: Annotated[int, Field(strict=True, ge=0)] = Field(description="Valid in case of TCP ping (required)")
+    probe_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of probes to send", alias="probeCount")
+    src_address: StrictStr = Field(description="IPv4 or IPv6 address (required)", alias="srcAddress")
     tos: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Type of service")
-    vrf_name: StrictStr = Field(description="configure VRF Name (required)", alias="vrfName", json_schema_extra={"examples": ["finance"]})
+    vrf_name: StrictStr = Field(description="configure VRF Name (required)", alias="vrfName")
     __properties: ClassVar[List[str]] = ["destAddress", "hopStatsCount", "interface", "payloadSize", "port", "probeCount", "srcAddress", "tos", "vrfName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class DiagnosticToolsDiagnosticParams(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,19 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ExtranetConsumerNatRule(BaseModel):
     """
     ManaV2ExtranetConsumerNatRule
     """ # noqa: E501
-    outside_nat_prefix: Optional[StrictStr] = Field(default=None, description="Optional nat prefix associated with a service prefix with an empty string indicating no NATing", alias="outsideNatPrefix", json_schema_extra={"examples": ["example string"]})
-    service_prefix: StrictStr = Field(description="Service prefix for the NAT rule (required)", alias="servicePrefix", json_schema_extra={"examples": ["10.1.2.0/24"]})
+    outside_nat_prefix: Optional[StrictStr] = Field(default=None, description="Optional nat prefix associated with a service prefix with an empty string indicating no NATing", alias="outsideNatPrefix")
+    service_prefix: StrictStr = Field(description="Service prefix for the NAT rule (required)", alias="servicePrefix")
     __properties: ClassVar[List[str]] = ["outsideNatPrefix", "servicePrefix"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class ManaV2ExtranetConsumerNatRule(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

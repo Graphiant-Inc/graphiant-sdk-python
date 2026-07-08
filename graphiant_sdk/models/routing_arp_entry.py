@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingArpEntry(BaseModel):
     """
     RoutingArpEntry
     """ # noqa: E501
-    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    ipv4_address: Optional[StrictStr] = Field(default=None, alias="ipv4Address", json_schema_extra={"examples": ["example string"]})
-    mac_address: Optional[StrictStr] = Field(default=None, alias="macAddress", json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, description="Circuit or VRF name", json_schema_extra={"examples": ["example string"]})
+    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName")
+    ipv4_address: Optional[StrictStr] = Field(default=None, alias="ipv4Address")
+    mac_address: Optional[StrictStr] = Field(default=None, alias="macAddress")
+    name: Optional[StrictStr] = Field(default=None, description="Circuit or VRF name")
     __properties: ClassVar[List[str]] = ["interfaceName", "ipv4Address", "macAddress", "name"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class RoutingArpEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

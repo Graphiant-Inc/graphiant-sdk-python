@@ -24,7 +24,6 @@ from graphiant_sdk.models.mana_v2_nullable_ospf_area_config import ManaV2Nullabl
 from graphiant_sdk.models.mana_v2_nullable_ospf_redistribute_protocol_config import ManaV2NullableOspfRedistributeProtocolConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2OspfProcessConfig(BaseModel):
     """
@@ -33,16 +32,15 @@ class ManaV2OspfProcessConfig(BaseModel):
     address_families: Optional[List[StrictStr]] = Field(default=None, alias="addressFamilies")
     admin_distance: Optional[ManaV2NullableOspfAdminDistanceValue] = Field(default=None, alias="adminDistance")
     areas: Optional[Dict[str, ManaV2NullableOspfAreaConfig]] = None
-    auto: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    manual: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    auto: Optional[StrictBool] = None
+    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate")
+    manual: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
     redistribution: Optional[Dict[str, ManaV2NullableOspfRedistributeProtocolConfig]] = None
     __properties: ClassVar[List[str]] = ["addressFamilies", "adminDistance", "areas", "auto", "defaultOriginate", "manual", "name", "redistribution"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class ManaV2OspfProcessConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

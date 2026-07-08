@@ -23,23 +23,21 @@ from graphiant_sdk.models.statsmon_backbonehealth_get_qoe_matrix_response_qoe_se
 from graphiant_sdk.models.statsmon_troubleshooting_region import StatsmonTroubleshootingRegion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummary(BaseModel):
     """
     StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummary
     """ # noqa: E501
     box: Optional[List[StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummaryQoeSessionBox]] = None
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
     device_region: Optional[StatsmonTroubleshootingRegion] = Field(default=None, alias="deviceRegion")
-    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId", json_schema_extra={"examples": [1234567891011]})
+    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId")
     peer_device_region: Optional[StatsmonTroubleshootingRegion] = Field(default=None, alias="peerDeviceRegion")
-    session_name: Optional[StrictStr] = Field(default=None, alias="sessionName", json_schema_extra={"examples": ["example string"]})
+    session_name: Optional[StrictStr] = Field(default=None, alias="sessionName")
     __properties: ClassVar[List[str]] = ["box", "deviceId", "deviceRegion", "peerDeviceId", "peerDeviceRegion", "sessionName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

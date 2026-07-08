@@ -5,7 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**report** | **bytes** | The generated report | [optional] 
+**report** | **bytearray** | The generated report | [optional] 
 **report_id** | **int** | 8 bytes (base32 encoded) identifier for the report | [optional] 
 
 ## Example

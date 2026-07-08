@@ -24,22 +24,20 @@ from graphiant_sdk.models.mana_v2_security_policy_rule import ManaV2SecurityPoli
 from graphiant_sdk.models.mana_v2_traffic_policy_rule import ManaV2TrafficPolicyRule
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetPolicyResponse(BaseModel):
     """
     ManaV2B2bExtranetPolicyResponse
     """ # noqa: E501
-    dns_name: Optional[StrictStr] = Field(default=None, alias="dnsName", json_schema_extra={"examples": ["example string"]})
+    dns_name: Optional[StrictStr] = Field(default=None, alias="dnsName")
     inbound_security_rules: Optional[List[ManaV2SecurityPolicyRule]] = Field(default=None, alias="inboundSecurityRules")
     policy: Optional[ManaV2B2bExtranetProducerPolicy] = None
-    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName", json_schema_extra={"examples": ["example string"]})
+    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName")
     traffic_rules: Optional[List[ManaV2TrafficPolicyRule]] = Field(default=None, alias="trafficRules")
     __properties: ClassVar[List[str]] = ["dnsName", "inboundSecurityRules", "policy", "serviceName", "trafficRules"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2B2bExtranetPolicyResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

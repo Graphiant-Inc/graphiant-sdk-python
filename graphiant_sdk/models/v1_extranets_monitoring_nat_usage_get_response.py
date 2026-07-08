@@ -23,20 +23,18 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.v1_extranets_monitoring_nat_usage_get_response_allocation import V1ExtranetsMonitoringNatUsageGetResponseAllocation
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsMonitoringNatUsageGetResponse(BaseModel):
     """
     V1ExtranetsMonitoringNatUsageGetResponse
     """ # noqa: E501
-    allocated_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allocatedCount", json_schema_extra={"examples": [123]})
+    allocated_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allocatedCount")
     allocations: Optional[List[V1ExtranetsMonitoringNatUsageGetResponseAllocation]] = None
-    usage_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="usageCount", json_schema_extra={"examples": [123]})
+    usage_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="usageCount")
     __properties: ClassVar[List[str]] = ["allocatedCount", "allocations", "usageCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1ExtranetsMonitoringNatUsageGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

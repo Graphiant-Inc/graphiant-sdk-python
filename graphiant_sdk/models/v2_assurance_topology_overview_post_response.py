@@ -24,22 +24,20 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.v2_assurance_topology_overview_post_response_georegion import V2AssuranceTopologyOverviewPostResponseGeoregion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssuranceTopologyOverviewPostResponse(BaseModel):
     """
     V2AssuranceTopologyOverviewPostResponse
     """ # noqa: E501
-    num_applications: Optional[StrictInt] = Field(default=None, alias="numApplications", json_schema_extra={"examples": [123]})
-    num_flows: Optional[StrictInt] = Field(default=None, alias="numFlows", json_schema_extra={"examples": [123]})
+    num_applications: Optional[StrictInt] = Field(default=None, alias="numApplications")
+    num_flows: Optional[StrictInt] = Field(default=None, alias="numFlows")
     topology: Optional[AssuranceTopology] = None
     topology_change_ts: Optional[List[GoogleProtobufTimestamp]] = Field(default=None, alias="topologyChangeTs")
     traffic_regions: Optional[List[V2AssuranceTopologyOverviewPostResponseGeoregion]] = Field(default=None, alias="trafficRegions")
     __properties: ClassVar[List[str]] = ["numApplications", "numFlows", "topology", "topologyChangeTs", "trafficRegions"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class V2AssuranceTopologyOverviewPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

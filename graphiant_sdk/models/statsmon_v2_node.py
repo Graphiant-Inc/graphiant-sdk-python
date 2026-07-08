@@ -25,7 +25,6 @@ from graphiant_sdk.models.statsmon_v2_node_connection import StatsmonV2NodeConne
 from graphiant_sdk.models.statsmon_v2_node_device_info import StatsmonV2NodeDeviceInfo
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2Node(BaseModel):
     """
@@ -33,17 +32,16 @@ class StatsmonV2Node(BaseModel):
     """ # noqa: E501
     circuit_info: Optional[List[StatsmonV2NodeCircuitInfo]] = Field(default=None, alias="circuitInfo")
     connections: Optional[List[StatsmonV2NodeConnection]] = None
-    id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    id: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    name: Optional[StrictStr] = None
     node_info: Optional[StatsmonV2NodeDeviceInfo] = Field(default=None, alias="nodeInfo")
-    preferred_region_name: Optional[StrictStr] = Field(default=None, alias="preferredRegionName", json_schema_extra={"examples": ["example string"]})
-    quality: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    preferred_region_name: Optional[StrictStr] = Field(default=None, alias="preferredRegionName")
+    quality: Optional[StrictStr] = None
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["circuitInfo", "connections", "id", "name", "nodeInfo", "preferredRegionName", "quality", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class StatsmonV2Node(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

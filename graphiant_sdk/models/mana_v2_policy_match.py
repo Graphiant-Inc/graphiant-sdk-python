@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2PolicyMatch(BaseModel):
     """
     ManaV2PolicyMatch
     """ # noqa: E501
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
-    destination_prefix: Optional[StrictStr] = Field(default=None, alias="destinationPrefix", json_schema_extra={"examples": ["example string"]})
-    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType", json_schema_extra={"examples": [123]})
-    protocol: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort", json_schema_extra={"examples": [123]})
-    source_prefix: Optional[StrictStr] = Field(default=None, alias="sourcePrefix", json_schema_extra={"examples": ["example string"]})
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
+    destination_prefix: Optional[StrictStr] = Field(default=None, alias="destinationPrefix")
+    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType")
+    protocol: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort")
+    source_prefix: Optional[StrictStr] = Field(default=None, alias="sourcePrefix")
     __properties: ClassVar[List[str]] = ["destinationPort", "destinationPrefix", "icmpType", "protocol", "sourcePort", "sourcePrefix"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2PolicyMatch(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

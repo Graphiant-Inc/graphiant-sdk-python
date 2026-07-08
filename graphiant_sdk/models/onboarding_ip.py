@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class OnboardingIp(BaseModel):
     """
     OnboardingIp
     """ # noqa: E501
-    gateway_addr: Optional[StrictStr] = Field(default=None, alias="gatewayAddr", json_schema_extra={"examples": ["example string"]})
-    ip_addr: Optional[StrictStr] = Field(default=None, alias="ipAddr", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    gateway_addr: Optional[StrictStr] = Field(default=None, alias="gatewayAddr")
+    ip_addr: Optional[StrictStr] = Field(default=None, alias="ipAddr")
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["gatewayAddr", "ipAddr", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class OnboardingIp(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

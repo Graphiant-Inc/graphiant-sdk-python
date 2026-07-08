@@ -21,26 +21,24 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2VRRPGroupMember(BaseModel):
     """
     ManaV2VRRPGroupMember
     """ # noqa: E501
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    effective_priority: Optional[StrictInt] = Field(default=None, alias="effectivePriority", json_schema_extra={"examples": [123]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    interface: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    local_ip_address: Optional[StrictStr] = Field(default=None, alias="localIpAddress", json_schema_extra={"examples": ["example string"]})
-    priority: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [123]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    circuit: Optional[StrictStr] = None
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    effective_priority: Optional[StrictInt] = Field(default=None, alias="effectivePriority")
+    hostname: Optional[StrictStr] = None
+    interface: Optional[StrictStr] = None
+    lan: Optional[StrictStr] = None
+    local_ip_address: Optional[StrictStr] = Field(default=None, alias="localIpAddress")
+    priority: Optional[StrictInt] = None
+    state: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["circuit", "deviceId", "effectivePriority", "hostname", "interface", "lan", "localIpAddress", "priority", "state"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class ManaV2VRRPGroupMember(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

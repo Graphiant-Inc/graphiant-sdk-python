@@ -25,25 +25,23 @@ from graphiant_sdk.models.v1_data_assurance_assurances_global_get_response_row_l
 from graphiant_sdk.models.v1_data_assurance_assurances_global_get_response_row_site_entry import V1DataAssuranceAssurancesGlobalGetResponseRowSiteEntry
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DataAssuranceAssurancesGlobalGetResponseRow(BaseModel):
     """
     V1DataAssuranceAssurancesGlobalGetResponseRow
     """ # noqa: E501
     apps: Optional[List[V1DataAssuranceAssurancesGlobalGetResponseRowAppEntry]] = None
-    assurance_id: Optional[StrictInt] = Field(default=None, alias="assuranceId", json_schema_extra={"examples": [1234567891011]})
-    assurance_name: Optional[StrictStr] = Field(default=None, alias="assuranceName", json_schema_extra={"examples": ["example string"]})
+    assurance_id: Optional[StrictInt] = Field(default=None, alias="assuranceId")
+    assurance_name: Optional[StrictStr] = Field(default=None, alias="assuranceName")
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
-    flex_algo: Optional[StrictStr] = Field(default=None, alias="flexAlgo", json_schema_extra={"examples": ["example string"]})
+    flex_algo: Optional[StrictStr] = Field(default=None, alias="flexAlgo")
     lans: Optional[List[V1DataAssuranceAssurancesGlobalGetResponseRowLanEntry]] = None
     sites: Optional[List[V1DataAssuranceAssurancesGlobalGetResponseRowSiteEntry]] = None
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
     __properties: ClassVar[List[str]] = ["apps", "assuranceId", "assuranceName", "createdAt", "flexAlgo", "lans", "sites", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class V1DataAssuranceAssurancesGlobalGetResponseRow(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

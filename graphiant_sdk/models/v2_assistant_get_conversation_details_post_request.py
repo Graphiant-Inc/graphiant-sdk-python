@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.assistant_time_window import AssistantTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssistantGetConversationDetailsPostRequest(BaseModel):
     """
     V2AssistantGetConversationDetailsPostRequest
     """ # noqa: E501
-    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId", json_schema_extra={"examples": ["example string"]})
+    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId")
     time_window: Optional[AssistantTimeWindow] = Field(default=None, alias="timeWindow")
-    user_id: Optional[StrictStr] = Field(default=None, alias="userId", json_schema_extra={"examples": ["example string"]})
+    user_id: Optional[StrictStr] = Field(default=None, alias="userId")
     __properties: ClassVar[List[str]] = ["conversationId", "timeWindow", "userId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V2AssistantGetConversationDetailsPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

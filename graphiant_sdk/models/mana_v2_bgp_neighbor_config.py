@@ -31,7 +31,6 @@ from graphiant_sdk.models.mana_v2_nullable_max_prefix import ManaV2NullableMaxPr
 from graphiant_sdk.models.mana_v2_nullable_md5_password import ManaV2NullableMd5Password
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BgpNeighborConfig(BaseModel):
     """
@@ -39,28 +38,27 @@ class ManaV2BgpNeighborConfig(BaseModel):
     """ # noqa: E501
     address_families: Optional[Dict[str, ManaV2NullableBgpNeighborAddressFamilyConfig]] = Field(default=None, alias="addressFamilies")
     allow_as_in: Optional[ManaV2NullableAllowAsIn] = Field(default=None, alias="allowAsIn")
-    as_override: Optional[StrictBool] = Field(default=None, alias="asOverride", json_schema_extra={"examples": [True]})
+    as_override: Optional[StrictBool] = Field(default=None, alias="asOverride")
     bfd: Optional[ManaV2NullableBfdInstanceConfig] = None
-    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate")
     ebgp_multihop_ttl: Optional[ManaV2NullableEbgpConfig] = Field(default=None, alias="ebgpMultihopTtl")
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    hold_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="holdTimer", json_schema_extra={"examples": [123]})
+    enabled: Optional[StrictBool] = None
+    hold_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="holdTimer")
     hold_timer_value: Optional[ManaV2NullableHoldTimer] = Field(default=None, alias="holdTimerValue")
-    keepalive_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="keepaliveTimer", json_schema_extra={"examples": [123]})
+    keepalive_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="keepaliveTimer")
     keepalive_timer_value: Optional[ManaV2NullableKeepAliveTimer] = Field(default=None, alias="keepaliveTimerValue")
-    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress", json_schema_extra={"examples": ["example string"]})
+    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress")
     local_interface: Optional[ManaV2NullableInterfaceName] = Field(default=None, alias="localInterface")
     max_prefix_value: Optional[ManaV2NullableMaxPrefix] = Field(default=None, alias="maxPrefixValue")
     md5_password: Optional[ManaV2NullableMd5Password] = Field(default=None, alias="md5Password")
-    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="peerAsn", json_schema_extra={"examples": [123]})
-    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress", json_schema_extra={"examples": ["example string"]})
-    remove_private_as: Optional[StrictBool] = Field(default=None, alias="removePrivateAs", json_schema_extra={"examples": [True]})
-    send_community: Optional[StrictBool] = Field(default=None, alias="sendCommunity", json_schema_extra={"examples": [True]})
+    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="peerAsn")
+    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress")
+    remove_private_as: Optional[StrictBool] = Field(default=None, alias="removePrivateAs")
+    send_community: Optional[StrictBool] = Field(default=None, alias="sendCommunity")
     __properties: ClassVar[List[str]] = ["addressFamilies", "allowAsIn", "asOverride", "bfd", "defaultOriginate", "ebgpMultihopTtl", "enabled", "holdTimer", "holdTimerValue", "keepaliveTimer", "keepaliveTimerValue", "localAddress", "localInterface", "maxPrefixValue", "md5Password", "peerAsn", "remoteAddress", "removePrivateAs", "sendCommunity"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -72,7 +70,8 @@ class ManaV2BgpNeighborConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

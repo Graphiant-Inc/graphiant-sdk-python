@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.assurance_topology_edge_link_performance import AssuranceTopologyEdgeLinkPerformance
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceTopologyEdge(BaseModel):
     """
     AssuranceTopologyEdge
     """ # noqa: E501
-    destination_node_id: Optional[StrictStr] = Field(default=None, alias="destinationNodeId", json_schema_extra={"examples": ["example string"]})
+    destination_node_id: Optional[StrictStr] = Field(default=None, alias="destinationNodeId")
     performance: Optional[List[AssuranceTopologyEdgeLinkPerformance]] = None
-    source_node_id: Optional[StrictStr] = Field(default=None, alias="sourceNodeId", json_schema_extra={"examples": ["example string"]})
+    source_node_id: Optional[StrictStr] = Field(default=None, alias="sourceNodeId")
     __properties: ClassVar[List[str]] = ["destinationNodeId", "performance", "sourceNodeId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class AssuranceTopologyEdge(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

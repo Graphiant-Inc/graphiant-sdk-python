@@ -24,33 +24,31 @@ from graphiant_sdk.models.mana_v2_ip_network_list_config import ManaV2IpNetworkL
 from graphiant_sdk.models.mana_v2_l4_port_list_config import ManaV2L4PortListConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2DpiApplicationConfig(BaseModel):
     """
     ManaV2DpiApplicationConfig
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    destination_network: Optional[StrictStr] = Field(default=None, alias="destinationNetwork", json_schema_extra={"examples": ["example string"]})
-    destination_network_list: Optional[StrictStr] = Field(default=None, alias="destinationNetworkList", json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
+    destination_network: Optional[StrictStr] = Field(default=None, alias="destinationNetwork")
+    destination_network_list: Optional[StrictStr] = Field(default=None, alias="destinationNetworkList")
     destination_networks: Optional[ManaV2IpNetworkListConfig] = Field(default=None, alias="destinationNetworks")
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
-    destination_port_list: Optional[StrictStr] = Field(default=None, alias="destinationPortList", json_schema_extra={"examples": ["example string"]})
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
+    destination_port_list: Optional[StrictStr] = Field(default=None, alias="destinationPortList")
     destination_ports: Optional[ManaV2L4PortListConfig] = Field(default=None, alias="destinationPorts")
-    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType", json_schema_extra={"examples": [123]})
-    ip_protocol: Optional[StrictStr] = Field(default=None, alias="ipProtocol", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    source_network: Optional[StrictStr] = Field(default=None, alias="sourceNetwork", json_schema_extra={"examples": ["example string"]})
-    source_network_list: Optional[StrictStr] = Field(default=None, alias="sourceNetworkList", json_schema_extra={"examples": ["example string"]})
+    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType")
+    ip_protocol: Optional[StrictStr] = Field(default=None, alias="ipProtocol")
+    name: Optional[StrictStr] = None
+    source_network: Optional[StrictStr] = Field(default=None, alias="sourceNetwork")
+    source_network_list: Optional[StrictStr] = Field(default=None, alias="sourceNetworkList")
     source_networks: Optional[ManaV2IpNetworkListConfig] = Field(default=None, alias="sourceNetworks")
-    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort", json_schema_extra={"examples": [123]})
-    source_port_list: Optional[StrictStr] = Field(default=None, alias="sourcePortList", json_schema_extra={"examples": ["example string"]})
+    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort")
+    source_port_list: Optional[StrictStr] = Field(default=None, alias="sourcePortList")
     source_ports: Optional[ManaV2L4PortListConfig] = Field(default=None, alias="sourcePorts")
     __properties: ClassVar[List[str]] = ["description", "destinationNetwork", "destinationNetworkList", "destinationNetworks", "destinationPort", "destinationPortList", "destinationPorts", "icmpType", "ipProtocol", "name", "sourceNetwork", "sourceNetworkList", "sourceNetworks", "sourcePort", "sourcePortList", "sourcePorts"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,7 +60,8 @@ class ManaV2DpiApplicationConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

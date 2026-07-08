@@ -23,22 +23,20 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.statsmon_bandwidthtracker_bw_usage_by_top_sites import StatsmonBandwidthtrackerBwUsageByTopSites
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBandwidthtrackerBwUsageByRegionEdgeSummary(BaseModel):
     """
     StatsmonBandwidthtrackerBwUsageByRegionEdgeSummary
     """ # noqa: E501
     bwusage_top_sites: Optional[List[StatsmonBandwidthtrackerBwUsageByTopSites]] = Field(default=None, alias="bwusageTopSites")
-    edgeusage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="edgeusageKbps", json_schema_extra={"examples": [123.45]})
-    percent_changed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentChanged", json_schema_extra={"examples": [123.45]})
-    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount", json_schema_extra={"examples": [12345678910]})
-    totusage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="totusageKbps", json_schema_extra={"examples": [123.45]})
+    edgeusage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="edgeusageKbps")
+    percent_changed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentChanged")
+    site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteCount")
+    totusage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="totusageKbps")
     __properties: ClassVar[List[str]] = ["bwusageTopSites", "edgeusageKbps", "percentChanged", "siteCount", "totusageKbps"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class StatsmonBandwidthtrackerBwUsageByRegionEdgeSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

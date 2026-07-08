@@ -21,36 +21,34 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class CommonPermissions(BaseModel):
     """
     CommonPermissions
     """ # noqa: E501
-    asset_manager: Optional[StrictStr] = Field(default=None, alias="assetManager", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    b2b: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    b2b_security_profile_external: Optional[StrictStr] = Field(default=None, alias="b2bSecurityProfileExternal", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    billing_and_invoicing: Optional[StrictStr] = Field(default=None, alias="billingAndInvoicing", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    compliance: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    developer_tools: Optional[StrictStr] = Field(default=None, alias="developerTools", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    gateway: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    global_services: Optional[StrictStr] = Field(default=None, alias="globalServices", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    insights: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    licensing: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    logs: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    monitoring_and_troubleshooting: Optional[StrictStr] = Field(default=None, alias="monitoringAndTroubleshooting", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    network_configuration: Optional[StrictStr] = Field(default=None, alias="networkConfiguration", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    order_status: Optional[StrictStr] = Field(default=None, alias="orderStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    reports: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    safety_and_security: Optional[StrictStr] = Field(default=None, alias="safetyAndSecurity", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    service_policies: Optional[StrictStr] = Field(default=None, alias="servicePolicies", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    support: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    user_and_tenant_management: Optional[StrictStr] = Field(default=None, alias="userAndTenantManagement", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    asset_manager: Optional[StrictStr] = Field(default=None, alias="assetManager")
+    b2b: Optional[StrictStr] = None
+    b2b_security_profile_external: Optional[StrictStr] = Field(default=None, alias="b2bSecurityProfileExternal")
+    billing_and_invoicing: Optional[StrictStr] = Field(default=None, alias="billingAndInvoicing")
+    compliance: Optional[StrictStr] = None
+    developer_tools: Optional[StrictStr] = Field(default=None, alias="developerTools")
+    gateway: Optional[StrictStr] = None
+    global_services: Optional[StrictStr] = Field(default=None, alias="globalServices")
+    insights: Optional[StrictStr] = None
+    licensing: Optional[StrictStr] = None
+    logs: Optional[StrictStr] = None
+    monitoring_and_troubleshooting: Optional[StrictStr] = Field(default=None, alias="monitoringAndTroubleshooting")
+    network_configuration: Optional[StrictStr] = Field(default=None, alias="networkConfiguration")
+    order_status: Optional[StrictStr] = Field(default=None, alias="orderStatus")
+    reports: Optional[StrictStr] = None
+    safety_and_security: Optional[StrictStr] = Field(default=None, alias="safetyAndSecurity")
+    service_policies: Optional[StrictStr] = Field(default=None, alias="servicePolicies")
+    support: Optional[StrictStr] = None
+    user_and_tenant_management: Optional[StrictStr] = Field(default=None, alias="userAndTenantManagement")
     __properties: ClassVar[List[str]] = ["assetManager", "b2b", "b2bSecurityProfileExternal", "billingAndInvoicing", "compliance", "developerTools", "gateway", "globalServices", "insights", "licensing", "logs", "monitoringAndTroubleshooting", "networkConfiguration", "orderStatus", "reports", "safetyAndSecurity", "servicePolicies", "support", "userAndTenantManagement"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,7 +60,8 @@ class CommonPermissions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

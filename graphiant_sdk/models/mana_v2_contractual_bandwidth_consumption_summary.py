@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.mana_v2_time_period import ManaV2TimePeriod
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ContractualBandwidthConsumptionSummary(BaseModel):
     """
     ManaV2ContractualBandwidthConsumptionSummary
     """ # noqa: E501
     expiration_date: Optional[ManaV2TimePeriod] = Field(default=None, alias="expirationDate")
-    total_consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="All credits consumed over the entirety the enterprise's contracts", alias="totalConsumedCredits", json_schema_extra={"examples": [12.34]})
-    total_contracted_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of credits agreed upon for the entirety of the current contract", alias="totalContractedCredits", json_schema_extra={"examples": [12.34]})
-    total_remaining_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of unused credits remaining under the current contract", alias="totalRemainingCredits", json_schema_extra={"examples": [12.34]})
+    total_consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="All credits consumed over the entirety the enterprise's contracts", alias="totalConsumedCredits")
+    total_contracted_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of credits agreed upon for the entirety of the current contract", alias="totalContractedCredits")
+    total_remaining_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Number of unused credits remaining under the current contract", alias="totalRemainingCredits")
     __properties: ClassVar[List[str]] = ["expirationDate", "totalConsumedCredits", "totalContractedCredits", "totalRemainingCredits"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2ContractualBandwidthConsumptionSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2PskConfiguration(BaseModel):
     """
     ManaV2PskConfiguration
     """ # noqa: E501
-    cak: Optional[StrictStr] = Field(default=None, description="The Connection Authentication Key (CAK)", json_schema_extra={"examples": ["1234567890abcdef1234567890abcdef"]})
-    cak_cryptographic_algorithm: Optional[StrictStr] = Field(default=None, description="The cryptographic algorithm for the CAK, SAK Cipher Suite is implicitly selected based on this field. (required)", alias="cakCryptographicAlgorithm", json_schema_extra={"examples": ["AES_128_CMAC"]})
-    ckn: Optional[StrictStr] = Field(default=None, description="The Connection Key Name (CKN) (required)", json_schema_extra={"examples": ["Corp-MACsec-CKN"]})
-    nickname: Optional[StrictStr] = Field(default=None, description="The nickname of the PSK (required)", json_schema_extra={"examples": ["PSK1"]})
+    cak: Optional[StrictStr] = Field(default=None, description="The Connection Authentication Key (CAK)")
+    cak_cryptographic_algorithm: Optional[StrictStr] = Field(default=None, description="The cryptographic algorithm for the CAK, SAK Cipher Suite is implicitly selected based on this field. (required)", alias="cakCryptographicAlgorithm")
+    ckn: Optional[StrictStr] = Field(default=None, description="The Connection Key Name (CKN) (required)")
+    nickname: Optional[StrictStr] = Field(default=None, description="The nickname of the PSK (required)")
     start_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="startTime")
-    use_xpn_for_cipher_suite: Optional[StrictBool] = Field(default=None, description="Whether to use XPN for the cipher suite. If true, AES_128_GCM_XPN or AES_256_GCM_XPN is selected based on the cmac algorithm. If false, AES_128_GCM or AES_256_GCM is selected based on the cmac algorithm.", alias="useXpnForCipherSuite", json_schema_extra={"examples": [True]})
+    use_xpn_for_cipher_suite: Optional[StrictBool] = Field(default=None, description="Whether to use XPN for the cipher suite. If true, AES_128_GCM_XPN or AES_256_GCM_XPN is selected based on the cmac algorithm. If false, AES_128_GCM or AES_256_GCM is selected based on the cmac algorithm.", alias="useXpnForCipherSuite")
     __properties: ClassVar[List[str]] = ["cak", "cakCryptographicAlgorithm", "ckn", "nickname", "startTime", "useXpnForCipherSuite"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2PskConfiguration(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

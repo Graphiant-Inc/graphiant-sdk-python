@@ -22,25 +22,23 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.common_permissions import CommonPermissions
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GroupsPutRequest(BaseModel):
     """
     V1GroupsPutRequest
     """ # noqa: E501
-    description: StrictStr = Field(description=" (required)", json_schema_extra={"examples": ["example string"]})
-    group_id: Optional[StrictStr] = Field(default=None, description="Only supply if enterprise uses an idp", alias="groupId", json_schema_extra={"examples": ["example string"]})
-    group_type: Optional[StrictStr] = Field(default=None, alias="groupType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    manages_enterprises: Optional[StrictBool] = Field(default=None, alias="managesEnterprises", json_schema_extra={"examples": [True]})
-    name: StrictStr = Field(description=" (required)", json_schema_extra={"examples": ["example string"]})
+    description: StrictStr = Field(description=" (required)")
+    group_id: Optional[StrictStr] = Field(default=None, description="Only supply if enterprise uses an idp", alias="groupId")
+    group_type: Optional[StrictStr] = Field(default=None, alias="groupType")
+    manages_enterprises: Optional[StrictBool] = Field(default=None, alias="managesEnterprises")
+    name: StrictStr = Field(description=" (required)")
     permissions: Optional[CommonPermissions] = None
-    time_window_end: Optional[StrictInt] = Field(default=None, alias="timeWindowEnd", json_schema_extra={"examples": [1234567891011]})
-    time_window_start: Optional[StrictInt] = Field(default=None, alias="timeWindowStart", json_schema_extra={"examples": [1234567891011]})
+    time_window_end: Optional[StrictInt] = Field(default=None, alias="timeWindowEnd")
+    time_window_start: Optional[StrictInt] = Field(default=None, alias="timeWindowStart")
     __properties: ClassVar[List[str]] = ["description", "groupId", "groupType", "managesEnterprises", "name", "permissions", "timeWindowEnd", "timeWindowStart"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class V1GroupsPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

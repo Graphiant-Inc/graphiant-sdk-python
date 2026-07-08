@@ -22,31 +22,29 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2DeviceSnapshotData(BaseModel):
     """
     ManaV2DeviceSnapshotData
     """ # noqa: E501
-    ospf_installed_route_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="OSPFInstalledRouteCount", json_schema_extra={"examples": [123]})
-    t2_session_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="T2SessionCount", json_schema_extra={"examples": [123]})
-    twamp_session_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="TWAMPSessionCount", json_schema_extra={"examples": [123]})
-    bfd_session_count: Optional[StrictInt] = Field(default=None, alias="bfdSessionCount", json_schema_extra={"examples": [123]})
+    ospf_installed_route_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="OSPFInstalledRouteCount")
+    t2_session_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="T2SessionCount")
+    twamp_session_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="TWAMPSessionCount")
+    bfd_session_count: Optional[StrictInt] = Field(default=None, alias="bfdSessionCount")
     bgp_neighbor_ip_list: Optional[List[StrictStr]] = Field(default=None, alias="bgpNeighborIpList")
-    bgp_session_count: Optional[StrictInt] = Field(default=None, alias="bgpSessionCount", json_schema_extra={"examples": [123]})
-    device_role: Optional[StrictStr] = Field(default=None, alias="deviceRole", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    failed_services_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="failedServicesCount", json_schema_extra={"examples": [123]})
-    graphnos_version: Optional[StrictStr] = Field(default=None, alias="graphnosVersion", json_schema_extra={"examples": ["example string"]})
-    installed_labels: Optional[StrictInt] = Field(default=None, alias="installedLabels", json_schema_extra={"examples": [123]})
-    ipsec_session_count: Optional[StrictInt] = Field(default=None, alias="ipsecSessionCount", json_schema_extra={"examples": [123]})
-    ongoing_alerts: Optional[StrictInt] = Field(default=None, alias="ongoingAlerts", json_schema_extra={"examples": [123]})
+    bgp_session_count: Optional[StrictInt] = Field(default=None, alias="bgpSessionCount")
+    device_role: Optional[StrictStr] = Field(default=None, alias="deviceRole")
+    failed_services_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="failedServicesCount")
+    graphnos_version: Optional[StrictStr] = Field(default=None, alias="graphnosVersion")
+    installed_labels: Optional[StrictInt] = Field(default=None, alias="installedLabels")
+    ipsec_session_count: Optional[StrictInt] = Field(default=None, alias="ipsecSessionCount")
+    ongoing_alerts: Optional[StrictInt] = Field(default=None, alias="ongoingAlerts")
     ospf_neighbor_ip_list: Optional[List[StrictStr]] = Field(default=None, alias="ospfNeighborIpList")
-    ospf_session_count: Optional[StrictInt] = Field(default=None, alias="ospfSessionCount", json_schema_extra={"examples": [123]})
+    ospf_session_count: Optional[StrictInt] = Field(default=None, alias="ospfSessionCount")
     __properties: ClassVar[List[str]] = ["OSPFInstalledRouteCount", "T2SessionCount", "TWAMPSessionCount", "bfdSessionCount", "bgpNeighborIpList", "bgpSessionCount", "deviceRole", "failedServicesCount", "graphnosVersion", "installedLabels", "ipsecSessionCount", "ongoingAlerts", "ospfNeighborIpList", "ospfSessionCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,7 +56,8 @@ class ManaV2DeviceSnapshotData(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

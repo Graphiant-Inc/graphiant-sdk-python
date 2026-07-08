@@ -27,7 +27,6 @@ from graphiant_sdk.models.mana_v2_interface_wan_config import ManaV2InterfaceWan
 from graphiant_sdk.models.mana_v2interface_config_type import ManaV2interfaceConfigType
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2CoreVlanInterfaceConfig(BaseModel):
     """
@@ -38,13 +37,12 @@ class ManaV2CoreVlanInterfaceConfig(BaseModel):
     gateway_neighbor: Optional[ManaV2InterfaceCoreToGatewayPeerConfig] = Field(default=None, alias="gatewayNeighbor")
     interface: Optional[ManaV2CoreInterfaceConfig] = None
     interface_type: Optional[ManaV2interfaceConfigType] = Field(default=None, alias="interfaceType")
-    vlan_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="vlanId", json_schema_extra={"examples": [123]})
+    vlan_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="vlanId")
     wan: Optional[ManaV2InterfaceWanConfig] = None
     __properties: ClassVar[List[str]] = ["coreNeighbor", "default", "gatewayNeighbor", "interface", "interfaceType", "vlanId", "wan"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class ManaV2CoreVlanInterfaceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -24,7 +24,6 @@ from graphiant_sdk.models.mana_v2_core_device_config import ManaV2CoreDeviceConf
 from graphiant_sdk.models.mana_v2_edge_device_config import ManaV2EdgeDeviceConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DevicesDeviceIdConfigPutRequest(BaseModel):
     """
@@ -32,15 +31,14 @@ class V1DevicesDeviceIdConfigPutRequest(BaseModel):
     """ # noqa: E501
     configuration_metadata: Optional[ManaV2ConfigurationMetadata] = Field(default=None, alias="configurationMetadata")
     core: Optional[ManaV2CoreDeviceConfig] = None
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
     edge: Optional[ManaV2EdgeDeviceConfig] = None
-    local_web_server_password: Optional[StrictStr] = Field(default=None, alias="localWebServerPassword", json_schema_extra={"examples": ["example string"]})
-    replace: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    local_web_server_password: Optional[StrictStr] = Field(default=None, alias="localWebServerPassword")
+    replace: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["configurationMetadata", "core", "description", "edge", "localWebServerPassword", "replace"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class V1DevicesDeviceIdConfigPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

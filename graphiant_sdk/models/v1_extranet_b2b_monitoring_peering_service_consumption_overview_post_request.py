@@ -22,25 +22,23 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(BaseModel):
     """
     V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest
     """ # noqa: E501
-    customer_name: Optional[StrictStr] = Field(default=None, description="a filter to get usage for a specific customer", alias="customerName", json_schema_extra={"examples": ["Customer 1"]})
-    flipped_view: StrictBool = Field(description="whether to view the data from the consumer's perspective (true) or the provider's perspective (false) (required)", alias="flippedView", json_schema_extra={"examples": [True]})
-    id: StrictInt = Field(description="the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)", json_schema_extra={"examples": [1]})
-    is_b2_b: StrictBool = Field(description="whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)", alias="isB2B", json_schema_extra={"examples": [True]})
-    is_provider: StrictBool = Field(description="whether the entity is a provider or consumer (required)", alias="isProvider", json_schema_extra={"examples": [True]})
-    site_id: Optional[StrictInt] = Field(default=None, description="a filter to get usage for a specific site", alias="siteId", json_schema_extra={"examples": [1]})
+    customer_name: Optional[StrictStr] = Field(default=None, description="a filter to get usage for a specific customer", alias="customerName")
+    flipped_view: StrictBool = Field(description="whether to view the data from the consumer's perspective (true) or the provider's perspective (false) (required)", alias="flippedView")
+    id: StrictInt = Field(description="the id associated with an entity - consumer_id for consumer, and service_id for the producer/service (required)")
+    is_b2_b: StrictBool = Field(description="whether the entity is a b2b entity (true for b2b entity, false for local extranet entity) (required)", alias="isB2B")
+    is_provider: StrictBool = Field(description="whether the entity is a provider or consumer (required)", alias="isProvider")
+    site_id: Optional[StrictInt] = Field(default=None, description="a filter to get usage for a specific site", alias="siteId")
     time_window: StatsmonTimeWindow = Field(alias="timeWindow")
-    vrf_id: Optional[StrictInt] = Field(default=None, description="a filter to get usage for a specific vrf", alias="vrfId", json_schema_extra={"examples": [1]})
+    vrf_id: Optional[StrictInt] = Field(default=None, description="a filter to get usage for a specific vrf", alias="vrfId")
     __properties: ClassVar[List[str]] = ["customerName", "flippedView", "id", "isB2B", "isProvider", "siteId", "timeWindow", "vrfId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostRequest(BaseMo
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

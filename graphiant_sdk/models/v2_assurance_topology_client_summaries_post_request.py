@@ -23,25 +23,23 @@ from graphiant_sdk.models.assurance_time_window import AssuranceTimeWindow
 from graphiant_sdk.models.assurance_topology_filter import AssuranceTopologyFilter
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssuranceTopologyClientSummariesPostRequest(BaseModel):
     """
     V2AssuranceTopologyClientSummariesPostRequest
     """ # noqa: E501
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    app_server_key: Optional[StrictStr] = Field(default=None, alias="appServerKey", json_schema_extra={"examples": ["example string"]})
-    bucket_id: Optional[StrictStr] = Field(default=None, alias="bucketId", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    exchange_service_id: Optional[StrictInt] = Field(default=None, alias="exchangeServiceId", json_schema_extra={"examples": [1234567891011]})
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    app_server_key: Optional[StrictStr] = Field(default=None, alias="appServerKey")
+    bucket_id: Optional[StrictStr] = Field(default=None, alias="bucketId")
+    exchange_service_id: Optional[StrictInt] = Field(default=None, alias="exchangeServiceId")
     filter: Optional[AssuranceTopologyFilter] = None
-    flex_algo_id: Optional[StrictInt] = Field(default=None, alias="flexAlgoId", json_schema_extra={"examples": [1234567891011]})
-    site_id: Optional[StrictInt] = Field(default=None, alias="siteId", json_schema_extra={"examples": [1234567891011]})
+    flex_algo_id: Optional[StrictInt] = Field(default=None, alias="flexAlgoId")
+    site_id: Optional[StrictInt] = Field(default=None, alias="siteId")
     time_window: Optional[AssuranceTimeWindow] = Field(default=None, alias="timeWindow")
     __properties: ClassVar[List[str]] = ["appName", "appServerKey", "bucketId", "exchangeServiceId", "filter", "flexAlgoId", "siteId", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class V2AssuranceTopologyClientSummariesPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

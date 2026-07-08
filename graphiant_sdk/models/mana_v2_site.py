@@ -26,31 +26,29 @@ from graphiant_sdk.models.mana_v2_single_route_tag import ManaV2SingleRouteTag
 from graphiant_sdk.models.mana_v2_site_device_stub import ManaV2SiteDeviceStub
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2Site(BaseModel):
     """
     ManaV2Site
     """ # noqa: E501
-    address: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    address: Optional[StrictStr] = None
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
     devices: Optional[List[ManaV2SiteDeviceStub]] = None
-    edge_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="edgeCount", json_schema_extra={"examples": [123]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    edge_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="edgeCount")
+    id: Optional[StrictInt] = None
     location: Optional[ManaV2Location] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    notes: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    policy_reference_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="policyReferenceCount", json_schema_extra={"examples": [123]})
+    name: Optional[StrictStr] = None
+    notes: Optional[StrictStr] = None
+    policy_reference_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="policyReferenceCount")
     policy_tag: Optional[ManaV2SingleRouteTag] = Field(default=None, alias="policyTag")
-    segment_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="segmentCount", json_schema_extra={"examples": [123]})
-    site_list_reference_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteListReferenceCount", json_schema_extra={"examples": [123]})
+    segment_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="segmentCount")
+    site_list_reference_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteListReferenceCount")
     tags: Optional[List[StrictStr]] = None
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
     __properties: ClassVar[List[str]] = ["address", "createdAt", "devices", "edgeCount", "id", "location", "name", "notes", "policyReferenceCount", "policyTag", "segmentCount", "siteListReferenceCount", "tags", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,7 +60,8 @@ class ManaV2Site(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticPacketcapturePcapIdGetResponse(BaseModel):
     """
     V1DiagnosticPacketcapturePcapIdGetResponse
     """ # noqa: E501
-    failure_reason: Optional[StrictStr] = Field(default=None, description="Error message if the packet capture generation/upload failed", alias="failureReason", json_schema_extra={"examples": ["failed to access the cloud"]})
-    file_name: Optional[StrictStr] = Field(default=None, description="The PCap file name.", alias="fileName", json_schema_extra={"examples": ["12000.tar.zst.gpg"]})
-    status: Optional[StrictStr] = Field(default=None, description="The status of the requested packet capture", json_schema_extra={"examples": ["Uploaded"]})
-    upload_progress: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="upload progress in percentage", alias="uploadProgress", json_schema_extra={"examples": [60]})
-    url: Optional[StrictStr] = Field(default=None, description="The URL to download this packet capture.", json_schema_extra={"examples": ["graphiant.com/pcaps/134"]})
+    failure_reason: Optional[StrictStr] = Field(default=None, description="Error message if the packet capture generation/upload failed", alias="failureReason")
+    file_name: Optional[StrictStr] = Field(default=None, description="The PCap file name.", alias="fileName")
+    status: Optional[StrictStr] = Field(default=None, description="The status of the requested packet capture")
+    upload_progress: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="upload progress in percentage", alias="uploadProgress")
+    url: Optional[StrictStr] = Field(default=None, description="The URL to download this packet capture.")
     __properties: ClassVar[List[str]] = ["failureReason", "fileName", "status", "uploadProgress", "url"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1DiagnosticPacketcapturePcapIdGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

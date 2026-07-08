@@ -27,28 +27,26 @@ from graphiant_sdk.models.statsmon_troubleshooting_system_plane import StatsmonT
 from graphiant_sdk.models.upgrade_sw_version import UpgradeSwVersion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1TroubleshootingDeviceDeviceIdPostResponse(BaseModel):
     """
     V1TroubleshootingDeviceDeviceIdPostResponse
     """ # noqa: E501
-    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="MaintenanceMode", json_schema_extra={"examples": [True]})
-    colr_active: Optional[StrictBool] = Field(default=None, alias="colrActive", json_schema_extra={"examples": [True]})
+    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="MaintenanceMode")
+    colr_active: Optional[StrictBool] = Field(default=None, alias="colrActive")
     control_plane: Optional[StatsmonTroubleshootingControlPlane] = Field(default=None, alias="controlPlane")
     data_plane: Optional[StatsmonTroubleshootingDataPlane] = Field(default=None, alias="dataPlane")
     issues: Optional[List[StatsmonTroubleshootingIssue]] = None
-    lifecycle_status: Optional[StrictStr] = Field(default=None, alias="lifecycleStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion", json_schema_extra={"examples": ["example string"]})
+    lifecycle_status: Optional[StrictStr] = Field(default=None, alias="lifecycleStatus")
+    status: Optional[StrictStr] = None
+    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion")
     sw_version_v2: Optional[UpgradeSwVersion] = Field(default=None, alias="swVersionV2")
     system_plane: Optional[StatsmonTroubleshootingSystemPlane] = Field(default=None, alias="systemPlane")
     up_since_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="upSinceTs")
     __properties: ClassVar[List[str]] = ["MaintenanceMode", "colrActive", "controlPlane", "dataPlane", "issues", "lifecycleStatus", "status", "swVersion", "swVersionV2", "systemPlane", "upSinceTs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class V1TroubleshootingDeviceDeviceIdPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

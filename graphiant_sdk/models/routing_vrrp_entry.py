@@ -22,28 +22,26 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingVrrpEntry(BaseModel):
     """
     RoutingVrrpEntry
     """ # noqa: E501
-    address_family: Optional[StrictStr] = Field(default=None, description="type of IP address", alias="addressFamily", json_schema_extra={"examples": ["IPv4 or IPv6"]})
-    advertisement_rcvd: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="advertisementRcvd", json_schema_extra={"examples": [12345678910]})
-    advertisement_sent: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="advertisementSent", json_schema_extra={"examples": [12345678910]})
-    effective_priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="effectivePriority", json_schema_extra={"examples": [123]})
-    group_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="groupId", json_schema_extra={"examples": [123]})
-    is_owner: Optional[StrictBool] = Field(default=None, alias="isOwner", json_schema_extra={"examples": [True]})
-    master_transition: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="masterTransition", json_schema_extra={"examples": [123]})
-    new_master_reason: Optional[StrictStr] = Field(default=None, alias="newMasterReason", json_schema_extra={"examples": ["UNSET = 0"]})
-    priority_zero_pkts_rcvd: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="priorityZeroPktsRcvd", json_schema_extra={"examples": [12345678910]})
-    priority_zero_pkts_sent: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="priorityZeroPktsSent", json_schema_extra={"examples": [12345678910]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["UNSET = 0"]})
+    address_family: Optional[StrictStr] = Field(default=None, description="type of IP address", alias="addressFamily")
+    advertisement_rcvd: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="advertisementRcvd")
+    advertisement_sent: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="advertisementSent")
+    effective_priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="effectivePriority")
+    group_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="groupId")
+    is_owner: Optional[StrictBool] = Field(default=None, alias="isOwner")
+    master_transition: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="masterTransition")
+    new_master_reason: Optional[StrictStr] = Field(default=None, alias="newMasterReason")
+    priority_zero_pkts_rcvd: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="priorityZeroPktsRcvd")
+    priority_zero_pkts_sent: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="priorityZeroPktsSent")
+    state: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["addressFamily", "advertisementRcvd", "advertisementSent", "effectivePriority", "groupId", "isOwner", "masterTransition", "newMasterReason", "priorityZeroPktsRcvd", "priorityZeroPktsSent", "state"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class RoutingVrrpEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,19 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsMonitoringTrafficSecurityPolicyPostRequest(BaseModel):
     """
     V1ExtranetsMonitoringTrafficSecurityPolicyPostRequest
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    is_provider: Optional[StrictBool] = Field(default=None, alias="isProvider", json_schema_extra={"examples": [True]})
+    id: Optional[StrictInt] = None
+    is_provider: Optional[StrictBool] = Field(default=None, alias="isProvider")
     __properties: ClassVar[List[str]] = ["id", "isProvider"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class V1ExtranetsMonitoringTrafficSecurityPolicyPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_nullable_snmp_engine_endpoints_address import ManaV2NullableSnmpEngineEndpointsAddress
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpEngineEndpointConfig(BaseModel):
     """
     ManaV2SnmpEngineEndpointConfig
     """ # noqa: E501
     addresses: Optional[Dict[str, ManaV2NullableSnmpEngineEndpointsAddress]] = None
-    auto_ipv4: Optional[StrictBool] = Field(default=None, alias="autoIpv4", json_schema_extra={"examples": [True]})
-    auto_ipv6: Optional[StrictBool] = Field(default=None, alias="autoIpv6", json_schema_extra={"examples": [True]})
-    interface: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    auto_ipv4: Optional[StrictBool] = Field(default=None, alias="autoIpv4")
+    auto_ipv6: Optional[StrictBool] = Field(default=None, alias="autoIpv6")
+    interface: Optional[StrictStr] = None
+    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment")
+    name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["addresses", "autoIpv4", "autoIpv6", "interface", "lanSegment", "name"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2SnmpEngineEndpointConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

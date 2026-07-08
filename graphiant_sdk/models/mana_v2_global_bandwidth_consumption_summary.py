@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GlobalBandwidthConsumptionSummary(BaseModel):
     """
     ManaV2GlobalBandwidthConsumptionSummary
     """ # noqa: E501
-    allocated_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits allocated for the current month", alias="allocatedMonthlyCredits", json_schema_extra={"examples": [12.34]})
-    consumed_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the current month. It equals the the higher value between the credits allocated and used for the month", alias="consumedMonthlyCredits", json_schema_extra={"examples": [12.34]})
-    prior_allocated_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits allocated for the prior month", alias="priorAllocatedMonthlyCredits", json_schema_extra={"examples": [12.34]})
-    prior_consumed_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the prior month.", alias="priorConsumedMonthlyCredits", json_schema_extra={"examples": [12.34]})
-    recommended_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Expected amount of credits to allocate for the month to match the overall contracted amount. For monthly-contracted enterprises, this is equivalent to the monthly number of credits being billed while for term-based-contracted enterprises, this is equivalent to the number of credits to use up in this and the following months to use up exactly the number of credits remaining in the contract.", alias="recommendedMonthlyCredits", json_schema_extra={"examples": [12.34]})
+    allocated_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits allocated for the current month", alias="allocatedMonthlyCredits")
+    consumed_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the current month. It equals the the higher value between the credits allocated and used for the month", alias="consumedMonthlyCredits")
+    prior_allocated_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits allocated for the prior month", alias="priorAllocatedMonthlyCredits")
+    prior_consumed_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the prior month.", alias="priorConsumedMonthlyCredits")
+    recommended_monthly_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Expected amount of credits to allocate for the month to match the overall contracted amount. For monthly-contracted enterprises, this is equivalent to the monthly number of credits being billed while for term-based-contracted enterprises, this is equivalent to the number of credits to use up in this and the following months to use up exactly the number of credits remaining in the contract.", alias="recommendedMonthlyCredits")
     __properties: ClassVar[List[str]] = ["allocatedMonthlyCredits", "consumedMonthlyCredits", "priorAllocatedMonthlyCredits", "priorConsumedMonthlyCredits", "recommendedMonthlyCredits"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2GlobalBandwidthConsumptionSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

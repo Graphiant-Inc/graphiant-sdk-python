@@ -21,24 +21,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpEngineEndpoint(BaseModel):
     """
     ManaV2SnmpEngineEndpoint
     """ # noqa: E501
     addresses: Optional[List[StrictStr]] = None
-    auto_ipv4: Optional[StrictBool] = Field(default=None, alias="autoIpv4", json_schema_extra={"examples": [True]})
-    auto_ipv6: Optional[StrictBool] = Field(default=None, alias="autoIpv6", json_schema_extra={"examples": [True]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    auto_ipv4: Optional[StrictBool] = Field(default=None, alias="autoIpv4")
+    auto_ipv6: Optional[StrictBool] = Field(default=None, alias="autoIpv6")
+    id: Optional[StrictInt] = None
+    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName")
+    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment")
+    name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["addresses", "autoIpv4", "autoIpv6", "id", "interfaceName", "lanSegment", "name"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2SnmpEngineEndpoint(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

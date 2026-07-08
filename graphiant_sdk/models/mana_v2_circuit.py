@@ -29,7 +29,6 @@ from graphiant_sdk.models.mana_v2_qo_s_profile import ManaV2QoSProfile
 from graphiant_sdk.models.mana_v2_static_route import ManaV2StaticRoute
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2Circuit(BaseModel):
     """
@@ -39,36 +38,35 @@ class ManaV2Circuit(BaseModel):
     bgp_multipath: Optional[ManaV2BgpMultipath] = Field(default=None, alias="bgpMultipath")
     bgp_neighbors: Optional[List[ManaV2BgpNeighbor]] = Field(default=None, alias="bgpNeighbors")
     bgp_redistributions: Optional[ManaV2BgpRedistribute] = Field(default=None, alias="bgpRedistributions")
-    carrier: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit_type: Optional[StrictStr] = Field(default=None, alias="circuitType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    connection_type: Optional[StrictStr] = Field(default=None, alias="connectionType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    carrier: Optional[StrictStr] = None
+    circuit_type: Optional[StrictStr] = Field(default=None, alias="circuitType")
+    connection_type: Optional[StrictStr] = Field(default=None, alias="connectionType")
     core_logical_interfaces_v2: Optional[List[ManaV2CircuitInterface]] = Field(default=None, alias="coreLogicalInterfacesV2")
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    dia_enabled: Optional[StrictBool] = Field(default=None, alias="diaEnabled", json_schema_extra={"examples": [True]})
-    dia_snmp_index: Optional[StrictInt] = Field(default=None, alias="diaSnmpIndex", json_schema_extra={"examples": [1234567891011]})
-    discovered_public_ip: Optional[StrictStr] = Field(default=None, alias="discoveredPublicIp", json_schema_extra={"examples": ["example string"]})
-    drop_mechanism: Optional[StrictStr] = Field(default=None, alias="dropMechanism", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    label: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort", json_schema_extra={"examples": [True]})
-    link_down_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="linkDownSpeedMbps", json_schema_extra={"examples": [123]})
-    link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="linkUpSpeedMbps", json_schema_extra={"examples": [123]})
-    loopback: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
+    dia_enabled: Optional[StrictBool] = Field(default=None, alias="diaEnabled")
+    dia_snmp_index: Optional[StrictInt] = Field(default=None, alias="diaSnmpIndex")
+    discovered_public_ip: Optional[StrictStr] = Field(default=None, alias="discoveredPublicIp")
+    drop_mechanism: Optional[StrictStr] = Field(default=None, alias="dropMechanism")
+    id: Optional[StrictInt] = None
+    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName")
+    label: Optional[StrictStr] = None
+    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort")
+    link_down_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="linkDownSpeedMbps")
+    link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="linkUpSpeedMbps")
+    loopback: Optional[StrictBool] = None
+    name: Optional[StrictStr] = None
     pat_addresses: Optional[List[StrictStr]] = Field(default=None, alias="patAddresses")
-    private_ip: Optional[StrictStr] = Field(default=None, alias="privateIp", json_schema_extra={"examples": ["example string"]})
+    private_ip: Optional[StrictStr] = Field(default=None, alias="privateIp")
     profile: Optional[ManaV2QoSProfile] = None
-    qos_profile: Optional[StrictStr] = Field(default=None, alias="qosProfile", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    qos_profile_type: Optional[StrictStr] = Field(default=None, alias="qosProfileType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    snmp_index: Optional[StrictInt] = Field(default=None, alias="snmpIndex", json_schema_extra={"examples": [1234567891011]})
+    qos_profile: Optional[StrictStr] = Field(default=None, alias="qosProfile")
+    qos_profile_type: Optional[StrictStr] = Field(default=None, alias="qosProfileType")
+    snmp_index: Optional[StrictInt] = Field(default=None, alias="snmpIndex")
     static_routes: Optional[List[ManaV2StaticRoute]] = Field(default=None, alias="staticRoutes")
     wan_interface_v2: Optional[ManaV2CircuitInterface] = Field(default=None, alias="wanInterfaceV2")
     __properties: ClassVar[List[str]] = ["bgpAggregations", "bgpMultipath", "bgpNeighbors", "bgpRedistributions", "carrier", "circuitType", "connectionType", "coreLogicalInterfacesV2", "description", "diaEnabled", "diaSnmpIndex", "discoveredPublicIp", "dropMechanism", "id", "interfaceName", "label", "lastResort", "linkDownSpeedMbps", "linkUpSpeedMbps", "loopback", "name", "patAddresses", "privateIp", "profile", "qosProfile", "qosProfileType", "snmpIndex", "staticRoutes", "wanInterfaceV2"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -80,7 +78,8 @@ class ManaV2Circuit(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,23 +23,21 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BgpDynamicNeighborOperPeer(BaseModel):
     """
     ManaV2BgpDynamicNeighborOperPeer
     """ # noqa: E501
     last_oper_status_change: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastOperStatusChange")
-    local_address: Optional[StrictStr] = Field(default=None, description="Local address used for this peer session, if known from oper", alias="localAddress", json_schema_extra={"examples": ["example string"]})
-    oper_status: Optional[StrictBool] = Field(default=None, description="True when the BGP session to this peer is operationally up (e.g. established)", alias="operStatus", json_schema_extra={"examples": [True]})
-    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Peer ASN from oper, if reported", alias="peerAsn", json_schema_extra={"examples": [123]})
-    remote_address: Optional[StrictStr] = Field(default=None, description="Peer address from device oper state (IPv4/IPv6; may include IPv6 zone id)", alias="remoteAddress", json_schema_extra={"examples": ["example string"]})
-    state: Optional[StrictStr] = Field(default=None, description="BGP FSM state for this peer session", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    local_address: Optional[StrictStr] = Field(default=None, description="Local address used for this peer session, if known from oper", alias="localAddress")
+    oper_status: Optional[StrictBool] = Field(default=None, description="True when the BGP session to this peer is operationally up (e.g. established)", alias="operStatus")
+    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Peer ASN from oper, if reported", alias="peerAsn")
+    remote_address: Optional[StrictStr] = Field(default=None, description="Peer address from device oper state (IPv4/IPv6; may include IPv6 zone id)", alias="remoteAddress")
+    state: Optional[StrictStr] = Field(default=None, description="BGP FSM state for this peer session")
     __properties: ClassVar[List[str]] = ["lastOperStatusChange", "localAddress", "operStatus", "peerAsn", "remoteAddress", "state"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2BgpDynamicNeighborOperPeer(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

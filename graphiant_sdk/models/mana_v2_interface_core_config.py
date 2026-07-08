@@ -34,21 +34,20 @@ from graphiant_sdk.models.mana_v2_nullable_ospf_interface_config import ManaV2Nu
 from graphiant_sdk.models.mana_v2interface_config_type import ManaV2interfaceConfigType
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceCoreConfig(BaseModel):
     """
     ManaV2InterfaceCoreConfig
     """ # noqa: E501
-    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus", json_schema_extra={"examples": [True]})
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    admin_status: Optional[StrictBool] = Field(default=None, alias="adminStatus")
+    alias: Optional[StrictStr] = None
+    circuit: Optional[StrictStr] = None
     core_neighbor: Optional[ManaV2InterfaceCoreToCorePeerConfig] = Field(default=None, alias="coreNeighbor")
     core_to_core_tunnel: Optional[Dict[str, Any]] = Field(default=None, alias="coreToCoreTunnel")
-    create_link_local_address: Optional[StrictBool] = Field(default=None, alias="createLinkLocalAddress", json_schema_extra={"examples": [True]})
+    create_link_local_address: Optional[StrictBool] = Field(default=None, alias="createLinkLocalAddress")
     default: Optional[Dict[str, Any]] = None
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    duplex: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
+    duplex: Optional[StrictStr] = None
     dynamic: Optional[ManaV2LatencyBandwidth] = None
     flex_algos: Optional[ManaV2InterfaceCoreFlexAlgoConfig] = Field(default=None, alias="flexAlgos")
     gateway_neighbor: Optional[ManaV2InterfaceCoreToGatewayPeerConfig] = Field(default=None, alias="gatewayNeighbor")
@@ -57,32 +56,31 @@ class ManaV2InterfaceCoreConfig(BaseModel):
     ipsec: Optional[ManaV2InterfaceIPsecConfig] = None
     ipv4: Optional[ManaV2InterfaceIpConfig] = None
     ipv6: Optional[ManaV2InterfaceIpConfig] = None
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
-    loopback: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
-    mpls_enabled: Optional[StrictBool] = Field(default=None, alias="mplsEnabled", json_schema_extra={"examples": [True]})
+    lan: Optional[StrictStr] = None
+    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled")
+    loopback: Optional[StrictBool] = None
+    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit")
+    mpls_enabled: Optional[StrictBool] = Field(default=None, alias="mplsEnabled")
     ospf_cost: Optional[ManaV2CoreLinkCost] = Field(default=None, alias="ospfCost")
     ospf_interface: Optional[ManaV2NullableOspfInterfaceConfig] = Field(default=None, alias="ospfInterface")
-    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId", json_schema_extra={"examples": [1234567891011]})
-    peer_hostname: Optional[StrictStr] = Field(default=None, alias="peerHostname", json_schema_extra={"examples": ["example string"]})
-    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
-    speed: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    static: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId")
+    peer_hostname: Optional[StrictStr] = Field(default=None, alias="peerHostname")
+    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone")
+    speed: Optional[StrictInt] = None
+    static: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     subinterfaces: Optional[Dict[str, ManaV2NullableCoreInterfaceVlanConfig]] = None
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4", json_schema_extra={"examples": [123]})
-    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
-    tunnel_interface: Optional[StrictStr] = Field(default=None, alias="tunnelInterface", json_schema_extra={"examples": ["example string"]})
-    tunnel_underlay: Optional[StrictStr] = Field(default=None, alias="tunnelUnderlay", json_schema_extra={"examples": ["example string"]})
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4")
+    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6")
+    tunnel_interface: Optional[StrictStr] = Field(default=None, alias="tunnelInterface")
+    tunnel_underlay: Optional[StrictStr] = Field(default=None, alias="tunnelUnderlay")
     wan: Optional[ManaV2InterfaceWanConfig] = None
     wan_management: Optional[Dict[str, Any]] = Field(default=None, alias="wanManagement")
-    x_talk_filter: Optional[StrictBool] = Field(default=None, alias="xTalkFilter", json_schema_extra={"examples": [True]})
+    x_talk_filter: Optional[StrictBool] = Field(default=None, alias="xTalkFilter")
     __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "coreNeighbor", "coreToCoreTunnel", "createLinkLocalAddress", "default", "description", "duplex", "dynamic", "flexAlgos", "gatewayNeighbor", "gw", "interfaceType", "ipsec", "ipv4", "ipv6", "lan", "lldpEnabled", "loopback", "maxTransmissionUnit", "mplsEnabled", "ospfCost", "ospfInterface", "peerDeviceId", "peerHostname", "securityZone", "speed", "static", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "tunnelInterface", "tunnelUnderlay", "wan", "wanManagement", "xTalkFilter"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -94,7 +92,8 @@ class ManaV2InterfaceCoreConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

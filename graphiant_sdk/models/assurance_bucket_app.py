@@ -23,23 +23,21 @@ from graphiant_sdk.models.assurance_exchange_service_identifier import Assurance
 from graphiant_sdk.models.assurance_flex_algo_identifier import AssuranceFlexAlgoIdentifier
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceBucketApp(BaseModel):
     """
     AssuranceBucketApp
     """ # noqa: E501
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    builtin_app_id: Optional[StrictInt] = Field(default=None, alias="builtinAppId", json_schema_extra={"examples": [1234567891011]})
-    custom_app_id: Optional[StrictInt] = Field(default=None, alias="customAppId", json_schema_extra={"examples": [1234567891011]})
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    builtin_app_id: Optional[StrictInt] = Field(default=None, alias="builtinAppId")
+    custom_app_id: Optional[StrictInt] = Field(default=None, alias="customAppId")
     exchange_service: Optional[AssuranceExchangeServiceIdentifier] = Field(default=None, alias="exchangeService")
     flex_algo: Optional[AssuranceFlexAlgoIdentifier] = Field(default=None, alias="flexAlgo")
-    is_domain: Optional[StrictBool] = Field(default=None, alias="isDomain", json_schema_extra={"examples": [True]})
+    is_domain: Optional[StrictBool] = Field(default=None, alias="isDomain")
     __properties: ClassVar[List[str]] = ["appName", "builtinAppId", "customAppId", "exchangeService", "flexAlgo", "isDomain"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class AssuranceBucketApp(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

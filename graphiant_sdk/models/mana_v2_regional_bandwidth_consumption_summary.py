@@ -23,23 +23,21 @@ from graphiant_sdk.models.mana_v2_bandwidth_info import ManaV2BandwidthInfo
 from graphiant_sdk.models.mana_v2_internet_access_bandwidth_info import ManaV2InternetAccessBandwidthInfo
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RegionalBandwidthConsumptionSummary(BaseModel):
     """
     ManaV2RegionalBandwidthConsumptionSummary
     """ # noqa: E501
     allocation: Optional[ManaV2BandwidthInfo] = None
-    consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the region. It equals the higher value between total credits allocated and used plus any additional dia consumption", alias="consumedCredits", json_schema_extra={"examples": [12.34]})
-    core_conversion_factor: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Conversion rate from gigabytes per second to Graphiant credits used for calculating credits on core networks for this region", alias="coreConversionFactor", json_schema_extra={"examples": [12.34]})
-    gw_conversion_factor: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Conversion rate from gigabytes per second to Graphiant credits used for calculating credits on core networks for this region", alias="gwConversionFactor", json_schema_extra={"examples": [12.34]})
+    consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Credits billed for the region. It equals the higher value between total credits allocated and used plus any additional dia consumption", alias="consumedCredits")
+    core_conversion_factor: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Conversion rate from gigabytes per second to Graphiant credits used for calculating credits on core networks for this region", alias="coreConversionFactor")
+    gw_conversion_factor: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Conversion rate from gigabytes per second to Graphiant credits used for calculating credits on core networks for this region", alias="gwConversionFactor")
     internet_consumption: Optional[ManaV2InternetAccessBandwidthInfo] = Field(default=None, alias="internetConsumption")
     usage: Optional[ManaV2BandwidthInfo] = None
     __properties: ClassVar[List[str]] = ["allocation", "consumedCredits", "coreConversionFactor", "gwConversionFactor", "internetConsumption", "usage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2RegionalBandwidthConsumptionSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

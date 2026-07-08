@@ -22,32 +22,30 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2IpfixExporter(BaseModel):
     """
     ManaV2IpfixExporter
     """ # noqa: E501
-    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress", json_schema_extra={"examples": ["example string"]})
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
-    error_message: Optional[StrictStr] = Field(default=None, alias="errorMessage", json_schema_extra={"examples": ["example string"]})
-    global_id: Optional[StrictInt] = Field(default=None, alias="globalId", json_schema_extra={"examples": [1234567891011]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress")
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
+    error_message: Optional[StrictStr] = Field(default=None, alias="errorMessage")
+    global_id: Optional[StrictInt] = Field(default=None, alias="globalId")
+    id: Optional[StrictInt] = None
     monitored_segments: Optional[List[StrictStr]] = Field(default=None, alias="monitoredSegments")
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    sample_mode: Optional[StrictStr] = Field(default=None, alias="sampleMode", json_schema_extra={"examples": ["example string"]})
-    sample_rate: Optional[StrictInt] = Field(default=None, alias="sampleRate", json_schema_extra={"examples": [1234567891011]})
-    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress", json_schema_extra={"examples": ["example string"]})
-    source_interface: Optional[StrictStr] = Field(default=None, alias="sourceInterface", json_schema_extra={"examples": ["example string"]})
-    source_segment: Optional[StrictStr] = Field(default=None, alias="sourceSegment", json_schema_extra={"examples": ["example string"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId", json_schema_extra={"examples": [1234567891011]})
-    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName", json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = None
+    sample_mode: Optional[StrictStr] = Field(default=None, alias="sampleMode")
+    sample_rate: Optional[StrictInt] = Field(default=None, alias="sampleRate")
+    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress")
+    source_interface: Optional[StrictStr] = Field(default=None, alias="sourceInterface")
+    source_segment: Optional[StrictStr] = Field(default=None, alias="sourceSegment")
+    status: Optional[StrictStr] = None
+    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId")
+    vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName")
     __properties: ClassVar[List[str]] = ["destinationAddress", "destinationPort", "errorMessage", "globalId", "id", "monitoredSegments", "name", "sampleMode", "sampleRate", "sourceAddress", "sourceInterface", "sourceSegment", "status", "vrfId", "vrfName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class ManaV2IpfixExporter(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

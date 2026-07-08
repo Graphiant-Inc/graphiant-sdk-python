@@ -24,7 +24,6 @@ from graphiant_sdk.models.mana_v2_location import ManaV2Location
 from graphiant_sdk.models.mana_v2_route_tag import ManaV2RouteTag
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2NewSite(BaseModel):
     """
@@ -34,8 +33,8 @@ class ManaV2NewSite(BaseModel):
     ipfix_exporter_ops: Optional[Dict[str, StrictStr]] = Field(default=None, alias="ipfixExporterOps")
     ipfix_exporter_ops_v2: Optional[Dict[str, ManaV2GlobalObjectOperationConfig]] = Field(default=None, alias="ipfixExporterOpsV2")
     location: Optional[ManaV2Location] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    notes: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = None
+    notes: Optional[StrictStr] = None
     ntp_ops: Optional[Dict[str, StrictStr]] = Field(default=None, alias="ntpOps")
     prefix_set_ops: Optional[Dict[str, StrictStr]] = Field(default=None, alias="prefixSetOps")
     route_tag: Optional[ManaV2RouteTag] = Field(default=None, alias="routeTag")
@@ -47,8 +46,7 @@ class ManaV2NewSite(BaseModel):
     __properties: ClassVar[List[str]] = ["globalPrefixSetOps", "ipfixExporterOps", "ipfixExporterOpsV2", "location", "name", "notes", "ntpOps", "prefixSetOps", "routeTag", "routingPolicyOps", "snmpOps", "syslogServerOps", "syslogServerOpsV2", "trafficPolicyOps"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class ManaV2NewSite(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

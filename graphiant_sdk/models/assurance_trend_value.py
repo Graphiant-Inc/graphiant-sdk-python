@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceTrendValue(BaseModel):
     """
     AssuranceTrendValue
     """ # noqa: E501
-    end_time: Optional[StrictInt] = Field(default=None, alias="endTime", json_schema_extra={"examples": [1234567891011]})
-    flow_count: Optional[StrictInt] = Field(default=None, alias="flowCount", json_schema_extra={"examples": [1234567891011]})
-    start_time: Optional[StrictInt] = Field(default=None, alias="startTime", json_schema_extra={"examples": [1234567891011]})
+    end_time: Optional[StrictInt] = Field(default=None, alias="endTime")
+    flow_count: Optional[StrictInt] = Field(default=None, alias="flowCount")
+    start_time: Optional[StrictInt] = Field(default=None, alias="startTime")
     __properties: ClassVar[List[str]] = ["endTime", "flowCount", "startTime"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class AssuranceTrendValue(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

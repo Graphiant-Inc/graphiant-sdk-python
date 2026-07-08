@@ -21,33 +21,31 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1TroubleshootingEnterprisePostRequestDimensions(BaseModel):
     """
     V1TroubleshootingEnterprisePostRequestDimensions
     """ # noqa: E501
-    certificate_expiry: Optional[StrictBool] = Field(default=None, alias="certificateExpiry", json_schema_extra={"examples": [True]})
-    core_connectivity: Optional[StrictBool] = Field(default=None, alias="coreConnectivity", json_schema_extra={"examples": [True]})
-    core_transitions: Optional[StrictBool] = Field(default=None, alias="coreTransitions", json_schema_extra={"examples": [True]})
-    cpu: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    crashes: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    credit_expiry: Optional[StrictBool] = Field(default=None, alias="creditExpiry", json_schema_extra={"examples": [True]})
-    disk: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    fan_speed: Optional[StrictBool] = Field(default=None, alias="fanSpeed", json_schema_extra={"examples": [True]})
-    license_expiry: Optional[StrictBool] = Field(default=None, alias="licenseExpiry", json_schema_extra={"examples": [True]})
-    memory: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    odp_connectivity: Optional[StrictBool] = Field(default=None, alias="odpConnectivity", json_schema_extra={"examples": [True]})
-    odp_transitions: Optional[StrictBool] = Field(default=None, alias="odpTransitions", json_schema_extra={"examples": [True]})
-    sla_performance: Optional[StrictBool] = Field(default=None, alias="slaPerformance", json_schema_extra={"examples": [True]})
-    t2_connectivity: Optional[StrictBool] = Field(default=None, alias="t2Connectivity", json_schema_extra={"examples": [True]})
-    t2_transitions: Optional[StrictBool] = Field(default=None, alias="t2Transitions", json_schema_extra={"examples": [True]})
-    temperature: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    certificate_expiry: Optional[StrictBool] = Field(default=None, alias="certificateExpiry")
+    core_connectivity: Optional[StrictBool] = Field(default=None, alias="coreConnectivity")
+    core_transitions: Optional[StrictBool] = Field(default=None, alias="coreTransitions")
+    cpu: Optional[StrictBool] = None
+    crashes: Optional[StrictBool] = None
+    credit_expiry: Optional[StrictBool] = Field(default=None, alias="creditExpiry")
+    disk: Optional[StrictBool] = None
+    fan_speed: Optional[StrictBool] = Field(default=None, alias="fanSpeed")
+    license_expiry: Optional[StrictBool] = Field(default=None, alias="licenseExpiry")
+    memory: Optional[StrictBool] = None
+    odp_connectivity: Optional[StrictBool] = Field(default=None, alias="odpConnectivity")
+    odp_transitions: Optional[StrictBool] = Field(default=None, alias="odpTransitions")
+    sla_performance: Optional[StrictBool] = Field(default=None, alias="slaPerformance")
+    t2_connectivity: Optional[StrictBool] = Field(default=None, alias="t2Connectivity")
+    t2_transitions: Optional[StrictBool] = Field(default=None, alias="t2Transitions")
+    temperature: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["certificateExpiry", "coreConnectivity", "coreTransitions", "cpu", "crashes", "creditExpiry", "disk", "fanSpeed", "licenseExpiry", "memory", "odpConnectivity", "odpTransitions", "slaPerformance", "t2Connectivity", "t2Transitions", "temperature"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class V1TroubleshootingEnterprisePostRequestDimensions(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

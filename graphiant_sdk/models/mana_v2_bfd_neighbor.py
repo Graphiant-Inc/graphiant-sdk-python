@@ -24,30 +24,28 @@ from graphiant_sdk.models.google_protobuf_duration import GoogleProtobufDuration
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BfdNeighbor(BaseModel):
     """
     ManaV2BfdNeighbor
     """ # noqa: E501
-    desired_minimum_tx_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="desiredMinimumTxInterval", json_schema_extra={"examples": [123]})
-    if_index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ifIndex", json_schema_extra={"examples": [123]})
-    interface: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    desired_minimum_tx_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="desiredMinimumTxInterval")
+    if_index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ifIndex")
+    interface: Optional[StrictStr] = None
     last_updated: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastUpdated")
-    local_diag: Optional[StrictStr] = Field(default=None, alias="localDiag", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress", json_schema_extra={"examples": ["example string"]})
-    remote_diag: Optional[StrictStr] = Field(default=None, alias="remoteDiag", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    required_minimum_rx_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="requiredMinimumRxInterval", json_schema_extra={"examples": [123]})
-    segment_name: Optional[StrictStr] = Field(default=None, alias="segmentName", json_schema_extra={"examples": ["example string"]})
-    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress", json_schema_extra={"examples": ["example string"]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    local_diag: Optional[StrictStr] = Field(default=None, alias="localDiag")
+    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress")
+    remote_diag: Optional[StrictStr] = Field(default=None, alias="remoteDiag")
+    required_minimum_rx_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="requiredMinimumRxInterval")
+    segment_name: Optional[StrictStr] = Field(default=None, alias="segmentName")
+    source_address: Optional[StrictStr] = Field(default=None, alias="sourceAddress")
+    state: Optional[StrictStr] = None
     time_in_state: Optional[GoogleProtobufDuration] = Field(default=None, alias="timeInState")
-    up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    up: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["desiredMinimumTxInterval", "ifIndex", "interface", "lastUpdated", "localDiag", "peerAddress", "remoteDiag", "requiredMinimumRxInterval", "segmentName", "sourceAddress", "state", "timeInState", "up"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class ManaV2BfdNeighbor(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

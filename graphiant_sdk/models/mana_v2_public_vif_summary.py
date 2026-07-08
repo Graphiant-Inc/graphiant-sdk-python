@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2PublicVifSummary(BaseModel):
     """
     ManaV2PublicVifSummary
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, description="id of this Public VIF", json_schema_extra={"examples": [1234567891011]})
-    service_name: Optional[StrictStr] = Field(default=None, description="name of this Public VIF", alias="serviceName", json_schema_extra={"examples": ["example string"]})
+    id: Optional[StrictInt] = Field(default=None, description="id of this Public VIF")
+    service_name: Optional[StrictStr] = Field(default=None, description="name of this Public VIF", alias="serviceName")
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
-    user_name: Optional[StrictStr] = Field(default=None, description="creator of this Public VIF", alias="userName", json_schema_extra={"examples": ["example string"]})
+    user_name: Optional[StrictStr] = Field(default=None, description="creator of this Public VIF", alias="userName")
     __properties: ClassVar[List[str]] = ["id", "serviceName", "updatedAt", "userName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2PublicVifSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

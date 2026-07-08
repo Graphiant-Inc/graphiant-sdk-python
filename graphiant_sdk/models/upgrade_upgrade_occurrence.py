@@ -21,23 +21,21 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeUpgradeOccurrence(BaseModel):
     """
     UpgradeUpgradeOccurrence
     """ # noqa: E501
-    day_of_week: Optional[StrictStr] = Field(default=None, alias="dayOfWeek", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    hour: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [123]})
-    minute: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [123]})
-    occurrence_in_month: Optional[StrictInt] = Field(default=None, alias="occurrenceInMonth", json_schema_extra={"examples": [123]})
-    ordinal: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    weekday: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    day_of_week: Optional[StrictStr] = Field(default=None, alias="dayOfWeek")
+    hour: Optional[StrictInt] = None
+    minute: Optional[StrictInt] = None
+    occurrence_in_month: Optional[StrictInt] = Field(default=None, alias="occurrenceInMonth")
+    ordinal: Optional[StrictStr] = None
+    weekday: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["dayOfWeek", "hour", "minute", "occurrenceInMonth", "ordinal", "weekday"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class UpgradeUpgradeOccurrence(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceZendeskDetails(BaseModel):
     """
     AlertserviceZendeskDetails
     """ # noqa: E501
-    zendesk_api_token: StrictStr = Field(description="zendesk api token (required)", alias="zendeskApiToken", json_schema_extra={"examples": ["example string"]})
-    zendesk_assignee_id: StrictStr = Field(description="zendesk assignee id (required)", alias="zendeskAssigneeId", json_schema_extra={"examples": ["example string"]})
-    zendesk_base_url: StrictStr = Field(description="zendesk base url (required)", alias="zendeskBaseUrl", json_schema_extra={"examples": ["example string"]})
-    zendesk_email: StrictStr = Field(description="zendesk email (required)", alias="zendeskEmail", json_schema_extra={"examples": ["example string"]})
+    zendesk_api_token: StrictStr = Field(description="zendesk api token (required)", alias="zendeskApiToken")
+    zendesk_assignee_id: StrictStr = Field(description="zendesk assignee id (required)", alias="zendeskAssigneeId")
+    zendesk_base_url: StrictStr = Field(description="zendesk base url (required)", alias="zendeskBaseUrl")
+    zendesk_email: StrictStr = Field(description="zendesk email (required)", alias="zendeskEmail")
     __properties: ClassVar[List[str]] = ["zendeskApiToken", "zendeskAssigneeId", "zendeskBaseUrl", "zendeskEmail"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class AlertserviceZendeskDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

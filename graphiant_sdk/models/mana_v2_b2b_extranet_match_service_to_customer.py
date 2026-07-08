@@ -24,22 +24,20 @@ from graphiant_sdk.models.mana_v2_b2b_extranet_prefix_tag import ManaV2B2bExtran
 from graphiant_sdk.models.mana_v2_b2b_nat import ManaV2B2bNat
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetMatchServiceToCustomer(BaseModel):
     """
     ManaV2B2bExtranetMatchServiceToCustomer
     """ # noqa: E501
-    id: StrictInt = Field(description="ID of the service being subscribed by the customer (required)", json_schema_extra={"examples": [1234567891011]})
-    lan_segment: Optional[StrictInt] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": [1234567891011]})
+    id: StrictInt = Field(description="ID of the service being subscribed by the customer (required)")
+    lan_segment: Optional[StrictInt] = Field(default=None, alias="lanSegment")
     nat: List[ManaV2B2bNat]
-    num_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of customers subscribed to the service", alias="numCustomers", json_schema_extra={"examples": [123]})
+    num_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of customers subscribed to the service", alias="numCustomers")
     service_prefixes: List[ManaV2B2bExtranetPrefixTag] = Field(alias="servicePrefixes")
     __properties: ClassVar[List[str]] = ["id", "lanSegment", "nat", "numCustomers", "servicePrefixes"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2B2bExtranetMatchServiceToCustomer(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

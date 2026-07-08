@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeWeeklyRecurrence(BaseModel):
     """
     UpgradeWeeklyRecurrence
     """ # noqa: E501
-    interval: Annotated[int, Field(strict=True, ge=0)] = Field(description="Which occurrence of the weekday in the month applies for weekly-style recurrence (1–52, aligned with schedule validation). (required)", json_schema_extra={"examples": [2]})
-    weekday: StrictStr = Field(description="Day of week for the weekly recurrence. (required)", json_schema_extra={"examples": ["Monday"]})
+    interval: Annotated[int, Field(strict=True, ge=0)] = Field(description="Which occurrence of the weekday in the month applies for weekly-style recurrence (1–52, aligned with schedule validation). (required)")
+    weekday: StrictStr = Field(description="Day of week for the weekly recurrence. (required)")
     __properties: ClassVar[List[str]] = ["interval", "weekday"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class UpgradeWeeklyRecurrence(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

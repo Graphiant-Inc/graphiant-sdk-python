@@ -22,47 +22,45 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceAlertRecord(BaseModel):
     """
     AlertserviceAlertRecord
     """ # noqa: E501
     acknowledged_list: Optional[List[StrictStr]] = Field(default=None, alias="acknowledgedList")
-    acknowledgement_reason: Optional[StrictStr] = Field(default=None, description="Reason put by users when acknowledged", alias="acknowledgementReason", json_schema_extra={"examples": ["example string"]})
-    alert_body: Optional[StrictStr] = Field(default=None, description="Latest event(s) behind the alert (required)", alias="alertBody", json_schema_extra={"examples": ["example string"]})
-    alert_id: Optional[StrictStr] = Field(default=None, description="Unique id of the alert (required)", alias="alertId", json_schema_extra={"examples": ["example string"]})
-    allow_listed: Optional[StrictBool] = Field(default=None, description="whether entity in alert is put in allowlist/excludelist, disabling alert (required)", alias="allowListed", json_schema_extra={"examples": [True]})
+    acknowledgement_reason: Optional[StrictStr] = Field(default=None, description="Reason put by users when acknowledged", alias="acknowledgementReason")
+    alert_body: Optional[StrictStr] = Field(default=None, description="Latest event(s) behind the alert (required)", alias="alertBody")
+    alert_id: Optional[StrictStr] = Field(default=None, description="Unique id of the alert (required)", alias="alertId")
+    allow_listed: Optional[StrictBool] = Field(default=None, description="whether entity in alert is put in allowlist/excludelist, disabling alert (required)", alias="allowListed")
     children_alert_list: Optional[AlertserviceChildrenAlertListResponse] = Field(default=None, alias="childrenAlertList")
-    descendant_present: Optional[StrictBool] = Field(default=None, description="Whether or not descendants are present (required)", alias="descendantPresent", json_schema_extra={"examples": [True]})
-    device_id: Optional[StrictStr] = Field(default=None, description="Internal device id to navigate to troubleshooting", alias="deviceId", json_schema_extra={"examples": ["example string"]})
-    end_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="When this alert was last seen as a continuation (required)", alias="endTime", json_schema_extra={"examples": [12345678910]})
-    enterprise_id: Optional[StrictStr] = Field(default=None, description="Internal enterprise id to navigate to troubleshooting (required)", alias="enterpriseId", json_schema_extra={"examples": ["example string"]})
-    entity: Optional[StrictStr] = Field(default=None, description="Entity that triggered the alert. Edge, core, etc. (required)", json_schema_extra={"examples": ["example string"]})
-    interface_name: Optional[StrictStr] = Field(default=None, description="Device Interface Name", alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    mute_listed: Optional[StrictBool] = Field(default=None, description="whether entity in alert is put in notification mutelist (required)", alias="muteListed", json_schema_extra={"examples": [True]})
-    notification_created: Optional[StrictBool] = Field(default=None, description="whether notification exists for this rule (required)", alias="notificationCreated", json_schema_extra={"examples": [True]})
-    occurrences: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of times alert was raised as a continuation (required)", json_schema_extra={"examples": [12345678910]})
-    peer_device_id: Optional[StrictStr] = Field(default=None, description="peer device id", alias="peerDeviceId", json_schema_extra={"examples": ["example string"]})
-    peer_interface_name: Optional[StrictStr] = Field(default=None, description="Peer Interface Name", alias="peerInterfaceName", json_schema_extra={"examples": ["example string"]})
-    peer_name: Optional[StrictStr] = Field(default=None, description="Peer Name", alias="peerName", json_schema_extra={"examples": ["example string"]})
-    plane: Optional[StrictStr] = Field(default=None, description="Plane of the rule generating the alert (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    reason: Optional[StrictStr] = Field(default=None, description="Reason why alert was generated (required)", json_schema_extra={"examples": ["example string"]})
-    recommendation: Optional[StrictStr] = Field(default=None, description="Recommendation to recover from alert (required)", json_schema_extra={"examples": ["example string"]})
-    rule_id: Optional[StrictStr] = Field(default=None, description="Unique id of the rule generating the alert (required)", alias="ruleId", json_schema_extra={"examples": ["example string"]})
-    severity: Optional[StrictStr] = Field(default=None, description="Severity of the rule behind the alert (required)", json_schema_extra={"examples": ["Low"]})
-    site_id: Optional[StrictStr] = Field(default=None, description="Internal site id to navigate to troubleshooting", alias="siteId", json_schema_extra={"examples": ["example string"]})
-    start_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="When this alert was first triggered (required)", alias="startTime", json_schema_extra={"examples": [12345678910]})
-    status: Optional[StrictStr] = Field(default=None, description="Status of the alert whether active or inactive (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    troubleshooting_disabled_reason: Optional[StrictStr] = Field(default=None, description="Reason to not navigate to troubleshooting", alias="troubleshootingDisabledReason", json_schema_extra={"examples": ["example string"]})
-    troubleshooting_enabled: Optional[StrictBool] = Field(default=None, description="Navigate or not navigate to troubleshooting dashboard (required)", alias="troubleshootingEnabled", json_schema_extra={"examples": [True]})
-    tunnel_interface_name: Optional[StrictStr] = Field(default=None, description="Tunnel Interface Name", alias="tunnelInterfaceName", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, description="Type of alert (required)", json_schema_extra={"examples": ["example string"]})
+    descendant_present: Optional[StrictBool] = Field(default=None, description="Whether or not descendants are present (required)", alias="descendantPresent")
+    device_id: Optional[StrictStr] = Field(default=None, description="Internal device id to navigate to troubleshooting", alias="deviceId")
+    end_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="When this alert was last seen as a continuation (required)", alias="endTime")
+    enterprise_id: Optional[StrictStr] = Field(default=None, description="Internal enterprise id to navigate to troubleshooting (required)", alias="enterpriseId")
+    entity: Optional[StrictStr] = Field(default=None, description="Entity that triggered the alert. Edge, core, etc. (required)")
+    interface_name: Optional[StrictStr] = Field(default=None, description="Device Interface Name", alias="interfaceName")
+    mute_listed: Optional[StrictBool] = Field(default=None, description="whether entity in alert is put in notification mutelist (required)", alias="muteListed")
+    notification_created: Optional[StrictBool] = Field(default=None, description="whether notification exists for this rule (required)", alias="notificationCreated")
+    occurrences: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Number of times alert was raised as a continuation (required)")
+    peer_device_id: Optional[StrictStr] = Field(default=None, description="peer device id", alias="peerDeviceId")
+    peer_interface_name: Optional[StrictStr] = Field(default=None, description="Peer Interface Name", alias="peerInterfaceName")
+    peer_name: Optional[StrictStr] = Field(default=None, description="Peer Name", alias="peerName")
+    plane: Optional[StrictStr] = Field(default=None, description="Plane of the rule generating the alert (required)")
+    reason: Optional[StrictStr] = Field(default=None, description="Reason why alert was generated (required)")
+    recommendation: Optional[StrictStr] = Field(default=None, description="Recommendation to recover from alert (required)")
+    rule_id: Optional[StrictStr] = Field(default=None, description="Unique id of the rule generating the alert (required)", alias="ruleId")
+    severity: Optional[StrictStr] = Field(default=None, description="Severity of the rule behind the alert (required)")
+    site_id: Optional[StrictStr] = Field(default=None, description="Internal site id to navigate to troubleshooting", alias="siteId")
+    start_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="When this alert was first triggered (required)", alias="startTime")
+    status: Optional[StrictStr] = Field(default=None, description="Status of the alert whether active or inactive (required)")
+    troubleshooting_disabled_reason: Optional[StrictStr] = Field(default=None, description="Reason to not navigate to troubleshooting", alias="troubleshootingDisabledReason")
+    troubleshooting_enabled: Optional[StrictBool] = Field(default=None, description="Navigate or not navigate to troubleshooting dashboard (required)", alias="troubleshootingEnabled")
+    tunnel_interface_name: Optional[StrictStr] = Field(default=None, description="Tunnel Interface Name", alias="tunnelInterfaceName")
+    type: Optional[StrictStr] = Field(default=None, description="Type of alert (required)")
     __properties: ClassVar[List[str]] = ["acknowledgedList", "acknowledgementReason", "alertBody", "alertId", "allowListed", "childrenAlertList", "descendantPresent", "deviceId", "endTime", "enterpriseId", "entity", "interfaceName", "muteListed", "notificationCreated", "occurrences", "peerDeviceId", "peerInterfaceName", "peerName", "plane", "reason", "recommendation", "ruleId", "severity", "siteId", "startTime", "status", "troubleshootingDisabledReason", "troubleshootingEnabled", "tunnelInterfaceName", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -74,7 +72,8 @@ class AlertserviceAlertRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

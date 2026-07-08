@@ -27,30 +27,28 @@ from graphiant_sdk.models.mana_v2_global_object_service_summaries import ManaV2G
 from graphiant_sdk.models.mana_v2_sla_information import ManaV2SlaInformation
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetProducerPolicy(BaseModel):
     """
     ManaV2B2bExtranetProducerPolicy
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="Description for the service", json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = Field(default=None, description="Description for the service")
     global_object_device_summaries: Optional[Dict[str, ManaV2GlobalObjectServiceSummaries]] = Field(default=None, alias="globalObjectDeviceSummaries")
     global_object_summaries: Optional[Dict[str, ManaV2GlobalObjectServiceSummaries]] = Field(default=None, alias="globalObjectSummaries")
     nat_pools: List[StrictStr] = Field(alias="natPools")
     prefix_tags: Optional[List[ManaV2B2bExtranetPrefixTag]] = Field(default=None, alias="prefixTags")
     profiles: Optional[List[ManaV2ApplicationProfile]] = None
-    service_lan_segment: StrictInt = Field(description="LAN segment for the service (required)", alias="serviceLanSegment", json_schema_extra={"examples": [1234567891011]})
+    service_lan_segment: StrictInt = Field(description="LAN segment for the service (required)", alias="serviceLanSegment")
     service_prefixes: List[StrictStr] = Field(alias="servicePrefixes")
     sites: List[ManaV2B2bSiteInformation]
     sla: Optional[ManaV2SlaInformation] = None
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    type: StrictStr = Field(description="Type of the service whether it is application or peering (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    unmatched_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="unmatchedCustomers", json_schema_extra={"examples": [123]})
+    status: Optional[StrictStr] = None
+    type: StrictStr = Field(description="Type of the service whether it is application or peering (required)")
+    unmatched_customers: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="unmatchedCustomers")
     __properties: ClassVar[List[str]] = ["description", "globalObjectDeviceSummaries", "globalObjectSummaries", "natPools", "prefixTags", "profiles", "serviceLanSegment", "servicePrefixes", "sites", "sla", "status", "type", "unmatchedCustomers"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -62,7 +60,8 @@ class ManaV2B2bExtranetProducerPolicy(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

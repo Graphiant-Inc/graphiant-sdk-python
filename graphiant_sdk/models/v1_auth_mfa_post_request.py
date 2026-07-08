@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthMfaPostRequest(BaseModel):
     """
     V1AuthMfaPostRequest
     """ # noqa: E501
-    email: StrictStr = Field(json_schema_extra={"examples": ["user@example.com"]})
-    mfa_type: StrictStr = Field(alias="mfaType", json_schema_extra={"examples": ["TOTP"]})
-    code: StrictStr = Field(json_schema_extra={"examples": ["123456"]})
-    state_token: Optional[StrictStr] = Field(default=None, alias="stateToken", json_schema_extra={"examples": ["state-token-12345"]})
+    email: StrictStr
+    mfa_type: StrictStr = Field(alias="mfaType")
+    code: StrictStr
+    state_token: Optional[StrictStr] = Field(default=None, alias="stateToken")
     __properties: ClassVar[List[str]] = ["email", "mfaType", "code", "stateToken"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1AuthMfaPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

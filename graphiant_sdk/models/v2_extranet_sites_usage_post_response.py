@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.ipfix_stats import IpfixStats
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2ExtranetSitesUsagePostResponse(BaseModel):
     """
     V2ExtranetSitesUsagePostResponse
     """ # noqa: E501
-    bw_allocation: Optional[StrictInt] = Field(default=None, description="the bandwidth allocation for the entity in kbps", alias="bwAllocation", json_schema_extra={"examples": [1000000]})
+    bw_allocation: Optional[StrictInt] = Field(default=None, description="the bandwidth allocation for the entity in kbps", alias="bwAllocation")
     dl_stats: Optional[List[IpfixStats]] = Field(default=None, alias="dlStats")
     ul_stats: Optional[List[IpfixStats]] = Field(default=None, alias="ulStats")
     __properties: ClassVar[List[str]] = ["bwAllocation", "dlStats", "ulStats"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V2ExtranetSitesUsagePostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

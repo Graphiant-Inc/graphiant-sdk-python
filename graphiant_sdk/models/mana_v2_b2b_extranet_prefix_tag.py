@@ -21,19 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetPrefixTag(BaseModel):
     """
     ManaV2B2bExtranetPrefixTag
     """ # noqa: E501
-    prefix: StrictStr = Field(description="Prefix advertised by the service (required)", json_schema_extra={"examples": ["10.1.2.0/24"]})
-    tag: Optional[StrictStr] = Field(default=None, description="Tag for the prefix", json_schema_extra={"examples": ["example string"]})
+    prefix: StrictStr = Field(description="Prefix advertised by the service (required)")
+    tag: Optional[StrictStr] = Field(default=None, description="Tag for the prefix")
     __properties: ClassVar[List[str]] = ["prefix", "tag"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class ManaV2B2bExtranetPrefixTag(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

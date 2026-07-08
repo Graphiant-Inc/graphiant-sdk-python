@@ -24,42 +24,40 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.mana_v2_interface_address import ManaV2InterfaceAddress
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceVlan(BaseModel):
     """
     ManaV2InterfaceVlan
     """ # noqa: E501
-    alias: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    alias: Optional[StrictStr] = None
+    circuit: Optional[StrictStr] = None
     config_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="configUpdatedAt")
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    duplex: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    gateway_address_v4: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV4", json_schema_extra={"examples": ["example string"]})
-    gateway_address_v6: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV6", json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    description: Optional[StrictStr] = None
+    duplex: Optional[StrictStr] = None
+    enabled: Optional[StrictBool] = None
+    gateway_address_v4: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV4")
+    gateway_address_v6: Optional[StrictStr] = Field(default=None, alias="gatewayAddressV6")
+    id: Optional[StrictInt] = None
     ipv4: Optional[ManaV2InterfaceAddress] = None
     ipv6: Optional[ManaV2InterfaceAddress] = None
     ipv6_addresses: Optional[List[ManaV2InterfaceAddress]] = Field(default=None, alias="ipv6Addresses")
-    lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    mac_address: Optional[StrictStr] = Field(default=None, alias="macAddress", json_schema_extra={"examples": ["example string"]})
-    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    lan: Optional[StrictStr] = None
+    mac_address: Optional[StrictStr] = Field(default=None, alias="macAddress")
+    max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit")
+    name: Optional[StrictStr] = None
     oper_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="operUpdatedAt")
-    parent_mac_address: Optional[StrictStr] = Field(default=None, alias="parentMacAddress", json_schema_extra={"examples": ["example string"]})
-    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
-    speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="speedMbps", json_schema_extra={"examples": [123]})
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4", json_schema_extra={"examples": [123]})
-    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
-    up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    parent_mac_address: Optional[StrictStr] = Field(default=None, alias="parentMacAddress")
+    security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone")
+    speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="speedMbps")
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4")
+    tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6")
+    up: Optional[StrictBool] = None
+    vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     __properties: ClassVar[List[str]] = ["alias", "circuit", "configUpdatedAt", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipv4", "ipv6", "ipv6Addresses", "lan", "macAddress", "maxTransmissionUnit", "name", "operUpdatedAt", "parentMacAddress", "securityZone", "speedMbps", "tcpMss", "tcpMssV4", "tcpMssV6", "up", "vlan"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -71,7 +69,8 @@ class ManaV2InterfaceVlan(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

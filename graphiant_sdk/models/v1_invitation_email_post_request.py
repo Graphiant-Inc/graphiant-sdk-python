@@ -21,24 +21,23 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1InvitationEmailPostRequest(BaseModel):
     """
     V1InvitationEmailPostRequest
     """ # noqa: E501
-    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
-    customer_id: Optional[StrictInt] = Field(default=None, alias="customerId", json_schema_extra={"examples": [1234567891011]})
-    customer_name: StrictStr = Field(description=" (required)", alias="customerName", json_schema_extra={"examples": ["example string"]})
-    is_graphiant: Optional[StrictBool] = Field(default=None, alias="isGraphiant", json_schema_extra={"examples": [True]})
-    match_id: StrictInt = Field(description=" (required)", alias="matchId", json_schema_extra={"examples": [1234567891011]})
-    service_id: StrictInt = Field(description=" (required)", alias="serviceId", json_schema_extra={"examples": [1234567891011]})
-    service_name: StrictStr = Field(description=" (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["adminEmail", "customerId", "customerName", "isGraphiant", "matchId", "serviceId", "serviceName"]
+    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail")
+    customer_id: Optional[StrictInt] = Field(default=None, alias="customerId")
+    customer_name: StrictStr = Field(description=" (required)", alias="customerName")
+    is_graphiant: Optional[StrictBool] = Field(default=None, alias="isGraphiant")
+    match_id: StrictInt = Field(description=" (required)", alias="matchId")
+    service_id: StrictInt = Field(description=" (required)", alias="serviceId")
+    service_name: StrictStr = Field(description=" (required)", alias="serviceName")
+    service_type: Optional[StrictStr] = Field(default=None, description="Extranet service type URL segment (e.g. peering_service, client_to_server)", alias="serviceType")
+    __properties: ClassVar[List[str]] = ["adminEmail", "customerId", "customerName", "isGraphiant", "matchId", "serviceId", "serviceName", "serviceType"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +49,8 @@ class V1InvitationEmailPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -93,7 +93,8 @@ class V1InvitationEmailPostRequest(BaseModel):
             "isGraphiant": obj.get("isGraphiant"),
             "matchId": obj.get("matchId"),
             "serviceId": obj.get("serviceId"),
-            "serviceName": obj.get("serviceName")
+            "serviceName": obj.get("serviceName"),
+            "serviceType": obj.get("serviceType")
         })
         return _obj
 

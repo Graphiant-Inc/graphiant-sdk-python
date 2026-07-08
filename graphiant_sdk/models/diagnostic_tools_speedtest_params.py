@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.diagnostic_tools_target_type import DiagnosticToolsTargetType
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsSpeedtestParams(BaseModel):
     """
     DiagnosticToolsSpeedtestParams
     """ # noqa: E501
-    provider: StrictStr = Field(description="Speedtest provider name (required)", json_schema_extra={"examples": ["ookla"]})
-    server_id: Optional[StrictStr] = Field(default=None, description="This is fetched using GetSpeedtestServers API", alias="serverId", json_schema_extra={"examples": ["234123"]})
+    provider: StrictStr = Field(description="Speedtest provider name (required)")
+    server_id: Optional[StrictStr] = Field(default=None, description="This is fetched using GetSpeedtestServers API", alias="serverId")
     target: DiagnosticToolsTargetType
-    token: Optional[StrictStr] = Field(default=None, description="Token to be sent in subsequent lookup", json_schema_extra={"examples": ["example string"]})
+    token: Optional[StrictStr] = Field(default=None, description="Token to be sent in subsequent lookup")
     __properties: ClassVar[List[str]] = ["provider", "serverId", "target", "token"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class DiagnosticToolsSpeedtestParams(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

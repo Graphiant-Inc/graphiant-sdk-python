@@ -30,7 +30,6 @@ from graphiant_sdk.models.mana_v2_prometheus_config import ManaV2PrometheusConfi
 from graphiant_sdk.models.mana_v2_vrf_config import ManaV2VrfConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2CoreDeviceConfig(BaseModel):
     """
@@ -41,12 +40,12 @@ class ManaV2CoreDeviceConfig(BaseModel):
     interfaces: Optional[Dict[str, ManaV2NullableInterfaceCoreConfig]] = None
     ipfix_exporters: Optional[Dict[str, ManaV2NullableIpfixExporterConfig]] = Field(default=None, alias="ipfixExporters")
     isp_vrfs: Optional[Dict[str, ManaV2VrfConfig]] = Field(default=None, alias="ispVrfs")
-    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode", json_schema_extra={"examples": [True]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode")
+    name: Optional[StrictStr] = None
     prefix_sets: Optional[Dict[str, ManaV2NullablePrefixSetConfig]] = Field(default=None, alias="prefixSets")
     prometheus: Optional[ManaV2PrometheusConfig] = None
-    region: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    region_name: Optional[StrictStr] = Field(default=None, alias="regionName", json_schema_extra={"examples": ["example string"]})
+    region: Optional[StrictStr] = None
+    region_name: Optional[StrictStr] = Field(default=None, alias="regionName")
     route_policies: Optional[Dict[str, ManaV2NullableRoutingPolicyConfig]] = Field(default=None, alias="routePolicies")
     site: Optional[ManaV2NewSite] = None
     traffic_policy: Optional[ManaV2ForwardingPolicyConfig] = Field(default=None, alias="trafficPolicy")
@@ -54,8 +53,7 @@ class ManaV2CoreDeviceConfig(BaseModel):
     __properties: ClassVar[List[str]] = ["bgpInstance", "coreVrf", "interfaces", "ipfixExporters", "ispVrfs", "maintenanceMode", "name", "prefixSets", "prometheus", "region", "regionName", "routePolicies", "site", "trafficPolicy", "vrfs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -67,7 +65,8 @@ class ManaV2CoreDeviceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

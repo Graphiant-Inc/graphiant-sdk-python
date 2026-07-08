@@ -23,7 +23,6 @@ from graphiant_sdk.models.mana_v2_dns_config_dynamic import ManaV2DNSConfigDynam
 from graphiant_sdk.models.mana_v2_dns_config_static import ManaV2DNSConfigStatic
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2DnsConfig(BaseModel):
     """
@@ -35,8 +34,7 @@ class ManaV2DnsConfig(BaseModel):
     __properties: ClassVar[List[str]] = ["cloudflare", "dynamic", "static"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class ManaV2DnsConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

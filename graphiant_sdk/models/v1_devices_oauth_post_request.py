@@ -21,18 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DevicesOauthPostRequest(BaseModel):
     """
     V1DevicesOauthPostRequest
     """ # noqa: E501
-    grant_type: StrictStr = Field(description="OAuth grant type", json_schema_extra={"examples": ["client_credentials"]})
-    scope: StrictStr = Field(description="OAuth scope containing device type, UUID, and hostname", json_schema_extra={"examples": ["type=zt-cpe uuid=device-uuid-123 hostname=device.example.com"]})
-    state: Optional[StrictStr] = Field(default=None, description="OAuth state parameter", json_schema_extra={"examples": ["state-12345"]})
-    code_verify: Optional[StrictStr] = Field(default=None, description="OAuth code verifier", json_schema_extra={"examples": ["code-verify-12345"]})
-    pt: Optional[StrictStr] = Field(default=None, description="Platform type", json_schema_extra={"examples": ["hardware"]})
-    bm: Optional[StrictStr] = Field(default=None, description="Boot mode", json_schema_extra={"examples": ["p"]})
+    grant_type: StrictStr = Field(description="OAuth grant type")
+    scope: StrictStr = Field(description="OAuth scope containing device type, UUID, and hostname")
+    state: Optional[StrictStr] = Field(default=None, description="OAuth state parameter")
+    code_verify: Optional[StrictStr] = Field(default=None, description="OAuth code verifier")
+    pt: Optional[StrictStr] = Field(default=None, description="Platform type")
+    bm: Optional[StrictStr] = Field(default=None, description="Boot mode")
     __properties: ClassVar[List[str]] = ["grant_type", "scope", "state", "code_verify", "pt", "bm"]
 
     @field_validator('grant_type')
@@ -43,8 +42,7 @@ class V1DevicesOauthPostRequest(BaseModel):
         return value
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class V1DevicesOauthPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

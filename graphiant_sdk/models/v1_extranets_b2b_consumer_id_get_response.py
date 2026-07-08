@@ -23,21 +23,19 @@ from graphiant_sdk.models.mana_v2_b2b_site_information import ManaV2B2bSiteInfor
 from graphiant_sdk.models.mana_v2_extranet_consumer_lan_segment_policy_response import ManaV2ExtranetConsumerLanSegmentPolicyResponse
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bConsumerIdGetResponse(BaseModel):
     """
     V1ExtranetsB2bConsumerIdGetResponse
     """ # noqa: E501
-    consumer_id: Optional[StrictInt] = Field(default=None, alias="consumerId", json_schema_extra={"examples": [1234567891011]})
+    consumer_id: Optional[StrictInt] = Field(default=None, alias="consumerId")
     policy: Optional[List[ManaV2ExtranetConsumerLanSegmentPolicyResponse]] = None
-    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName", json_schema_extra={"examples": ["example string"]})
+    service_name: Optional[StrictStr] = Field(default=None, alias="serviceName")
     site_information: Optional[List[ManaV2B2bSiteInformation]] = Field(default=None, alias="siteInformation")
     __properties: ClassVar[List[str]] = ["consumerId", "policy", "serviceName", "siteInformation"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1ExtranetsB2bConsumerIdGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

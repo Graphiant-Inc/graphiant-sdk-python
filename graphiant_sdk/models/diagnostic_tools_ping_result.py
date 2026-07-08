@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsPingResult(BaseModel):
     """
     DiagnosticToolsPingResult
     """ # noqa: E501
-    avg_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="% loss (required)", alias="avgLoss", json_schema_extra={"examples": [64]})
-    avg_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="avgTime", json_schema_extra={"examples": [3]})
+    avg_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="% loss (required)", alias="avgLoss")
+    avg_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="avgTime")
     completed_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="completedTime")
-    max_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="maxTime", json_schema_extra={"examples": [10]})
-    min_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="minTime", json_schema_extra={"examples": [5]})
-    result: Optional[StrictStr] = Field(default=None, description="Success or Failed (required)", json_schema_extra={"examples": ["Success"]})
+    max_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="maxTime")
+    min_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Time in milli seconds (required)", alias="minTime")
+    result: Optional[StrictStr] = Field(default=None, description="Success or Failed (required)")
     __properties: ClassVar[List[str]] = ["avgLoss", "avgTime", "completedTime", "maxTime", "minTime", "result"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class DiagnosticToolsPingResult(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ApplicationProfile(BaseModel):
     """
     ManaV2ApplicationProfile
     """ # noqa: E501
-    port_range: Optional[StrictStr] = Field(default=None, description="Port Range", alias="portRange", json_schema_extra={"examples": ["example string"]})
+    port_range: Optional[StrictStr] = Field(default=None, description="Port Range", alias="portRange")
     ports: List[StrictInt]
-    protocol: StrictInt = Field(description="Protocol for the application profile (required)", json_schema_extra={"examples": [123]})
+    protocol: StrictInt = Field(description="Protocol for the application profile (required)")
     __properties: ClassVar[List[str]] = ["portRange", "ports", "protocol"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class ManaV2ApplicationProfile(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

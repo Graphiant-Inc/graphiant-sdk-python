@@ -26,15 +26,14 @@ from graphiant_sdk.models.mana_v2_global_object_service_ops import ManaV2GlobalO
 from graphiant_sdk.models.mana_v2_guest_consumer_site_to_site_vpn_config import ManaV2GuestConsumerSiteToSiteVpnConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPeeringConsumerMatchIdPostRequest(BaseModel):
     """
     V1ExtranetsB2bPeeringConsumerMatchIdPostRequest
     """ # noqa: E501
-    customer_id: Optional[StrictInt] = Field(default=None, alias="customerId", json_schema_extra={"examples": [1234567891011]})
+    customer_id: Optional[StrictInt] = Field(default=None, alias="customerId")
     global_object_ops: Optional[Dict[str, ManaV2GlobalObjectServiceOps]] = Field(default=None, alias="globalObjectOps")
-    id: StrictInt = Field(description="ID of the service which is being consumed by the customer (required)", json_schema_extra={"examples": [1234567891011]})
+    id: StrictInt = Field(description="ID of the service which is being consumed by the customer (required)")
     nat: List[ManaV2B2bNat]
     policy: List[ManaV2B2bExtranetPeeringServiceConsumerLanSegmentPolicy]
     site_information: List[ManaV2B2bSiteInformation] = Field(alias="siteInformation")
@@ -42,8 +41,7 @@ class V1ExtranetsB2bPeeringConsumerMatchIdPostRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["customerId", "globalObjectOps", "id", "nat", "policy", "siteInformation", "siteToSiteVpn"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class V1ExtranetsB2bPeeringConsumerMatchIdPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

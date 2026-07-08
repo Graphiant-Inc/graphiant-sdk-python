@@ -23,29 +23,27 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_community_type import ManaV2CommunityType
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RoutingPolicyStatementAction(BaseModel):
     """
     ManaV2RoutingPolicyStatementAction
     """ # noqa: E501
-    administrative_distance: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="administrativeDistance", json_schema_extra={"examples": [123]})
-    aspath_prepend: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="aspathPrepend", json_schema_extra={"examples": [123]})
-    bgp_set_next_hop: Optional[StrictStr] = Field(default=None, alias="bgpSetNextHop", json_schema_extra={"examples": ["example string"]})
-    call_policy: Optional[StrictStr] = Field(default=None, alias="callPolicy", json_schema_extra={"examples": ["example string"]})
+    administrative_distance: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="administrativeDistance")
+    aspath_prepend: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="aspathPrepend")
+    bgp_set_next_hop: Optional[StrictStr] = Field(default=None, alias="bgpSetNextHop")
+    call_policy: Optional[StrictStr] = Field(default=None, alias="callPolicy")
     community: Optional[ManaV2CommunityType] = None
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    local_pref: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="localPref", json_schema_extra={"examples": [123]})
-    metric_absolute: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="metricAbsolute", json_schema_extra={"examples": [123]})
-    metric_modifier: Optional[StrictInt] = Field(default=None, alias="metricModifier", json_schema_extra={"examples": [123]})
-    result: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    weight: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    id: Optional[StrictInt] = None
+    local_pref: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="localPref")
+    metric_absolute: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="metricAbsolute")
+    metric_modifier: Optional[StrictInt] = Field(default=None, alias="metricModifier")
+    result: Optional[StrictStr] = None
+    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    weight: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     __properties: ClassVar[List[str]] = ["administrativeDistance", "aspathPrepend", "bgpSetNextHop", "callPolicy", "community", "id", "localPref", "metricAbsolute", "metricModifier", "result", "seq", "weight"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2RoutingPolicyStatementAction(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

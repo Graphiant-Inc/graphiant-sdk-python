@@ -17,31 +17,30 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from graphiant_sdk.models.upgrade_rollout_config import UpgradeRolloutConfig
 from graphiant_sdk.models.upgrade_rollout_device import UpgradeRolloutDevice
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeRollout(BaseModel):
     """
     UpgradeRollout
     """ # noqa: E501
     devices: Optional[List[UpgradeRolloutDevice]] = None
-    has_failed: Optional[StrictBool] = Field(default=None, description="True if any device in the rollout has a failed upgrade state.", alias="hasFailed", json_schema_extra={"examples": [True]})
-    id: Optional[StrictInt] = Field(default=None, description="Server-assigned rollout identifier.", json_schema_extra={"examples": [42]})
+    has_failed: Optional[StrictBool] = Field(default=None, description="True if any device in the rollout has a failed upgrade state.", alias="hasFailed")
+    id: Optional[StrictInt] = Field(default=None, description="Server-assigned rollout identifier.")
     last_run_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastRunTs")
     next_run_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="nextRunTs")
-    num_devices: Optional[StrictInt] = Field(default=None, description="Count of devices associated with the rollout.", alias="numDevices", json_schema_extra={"examples": [3]})
+    num_devices: Optional[StrictInt] = Field(default=None, description="Count of devices associated with the rollout.", alias="numDevices")
     rollout_config: Optional[UpgradeRolloutConfig] = Field(default=None, alias="rolloutConfig")
-    __properties: ClassVar[List[str]] = ["devices", "hasFailed", "id", "lastRunTs", "nextRunTs", "numDevices", "rolloutConfig"]
+    status: Optional[StrictStr] = Field(default=None, description="Status of the upgrade rollout group")
+    __properties: ClassVar[List[str]] = ["devices", "hasFailed", "id", "lastRunTs", "nextRunTs", "numDevices", "rolloutConfig", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +52,8 @@ class UpgradeRollout(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -112,7 +112,8 @@ class UpgradeRollout(BaseModel):
             "lastRunTs": GoogleProtobufTimestamp.from_dict(obj["lastRunTs"]) if obj.get("lastRunTs") is not None else None,
             "nextRunTs": GoogleProtobufTimestamp.from_dict(obj["nextRunTs"]) if obj.get("nextRunTs") is not None else None,
             "numDevices": obj.get("numDevices"),
-            "rolloutConfig": UpgradeRolloutConfig.from_dict(obj["rolloutConfig"]) if obj.get("rolloutConfig") is not None else None
+            "rolloutConfig": UpgradeRolloutConfig.from_dict(obj["rolloutConfig"]) if obj.get("rolloutConfig") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
 

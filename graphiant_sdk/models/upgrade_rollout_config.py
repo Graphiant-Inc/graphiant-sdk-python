@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.upgrade_recurring_schedule import UpgradeRecurringSchedule
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeRolloutConfig(BaseModel):
     """
     UpgradeRolloutConfig
     """ # noqa: E501
-    action: StrictStr = Field(description="Upgrade action to perform (e.g. install+activate, install only, activate, auto-upgrade). (required)", json_schema_extra={"examples": ["InstallActivate"]})
-    description: Optional[StrictStr] = Field(default=None, description="Optional longer description of the rollout.", json_schema_extra={"examples": ["Upgrade branch sites to release 25.4"]})
+    action: StrictStr = Field(description="Upgrade action to perform (e.g. install+activate, install only, activate, auto-upgrade). (required)")
+    description: Optional[StrictStr] = Field(default=None, description="Optional longer description of the rollout.")
     device_ids: Optional[List[StrictInt]] = Field(default=None, alias="deviceIds")
-    name: StrictStr = Field(description="Human-readable rollout name unique within the enterprise. (required)", json_schema_extra={"examples": ["Q2 edge upgrade"]})
-    release: StrictStr = Field(description="Target software release for devices in this rollout. (required)", json_schema_extra={"examples": ["Recommended"]})
+    name: StrictStr = Field(description="Human-readable rollout name unique within the enterprise. (required)")
+    release: StrictStr = Field(description="Target software release for devices in this rollout. (required)")
     schedule: Optional[UpgradeRecurringSchedule] = None
     __properties: ClassVar[List[str]] = ["action", "description", "deviceIds", "name", "release", "schedule"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class UpgradeRolloutConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

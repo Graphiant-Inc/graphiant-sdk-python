@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2StaticRouteNexthop(BaseModel):
     """
     ManaV2StaticRouteNexthop
     """ # noqa: E501
-    circuit: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    metric: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    next_hop_address: Optional[StrictStr] = Field(default=None, alias="nextHopAddress", json_schema_extra={"examples": ["example string"]})
-    nexthop: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    outgoing_interface: Optional[StrictStr] = Field(default=None, alias="outgoingInterface", json_schema_extra={"examples": ["example string"]})
-    third_party_ipsec_tunnel: Optional[StrictStr] = Field(default=None, alias="thirdPartyIpsecTunnel", json_schema_extra={"examples": ["example string"]})
+    circuit: Optional[StrictStr] = None
+    id: Optional[StrictInt] = None
+    metric: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    next_hop_address: Optional[StrictStr] = Field(default=None, alias="nextHopAddress")
+    nexthop: Optional[StrictStr] = None
+    outgoing_interface: Optional[StrictStr] = Field(default=None, alias="outgoingInterface")
+    third_party_ipsec_tunnel: Optional[StrictStr] = Field(default=None, alias="thirdPartyIpsecTunnel")
     __properties: ClassVar[List[str]] = ["circuit", "id", "metric", "nextHopAddress", "nexthop", "outgoingInterface", "thirdPartyIpsecTunnel"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2StaticRouteNexthop(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -24,24 +24,22 @@ from graphiant_sdk.models.auditmon_activity_details_target_event import Auditmon
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AuditmonActivityDetailsTarget(BaseModel):
     """
     AuditmonActivityDetailsTarget
     """ # noqa: E501
-    detailed_failure_reason: Optional[StrictStr] = Field(default=None, alias="detailedFailureReason", json_schema_extra={"examples": ["example string"]})
+    detailed_failure_reason: Optional[StrictStr] = Field(default=None, alias="detailedFailureReason")
     end_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="endTs")
     events: Optional[List[AuditmonActivityDetailsTargetEvent]] = None
-    failure_reason: Optional[StrictStr] = Field(default=None, alias="failureReason", json_schema_extra={"examples": ["example string"]})
+    failure_reason: Optional[StrictStr] = Field(default=None, alias="failureReason")
     ids: Optional[List[AuditActivityItem]] = None
     start_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="startTs")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["detailedFailureReason", "endTs", "events", "failureReason", "ids", "startTs", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class AuditmonActivityDetailsTarget(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

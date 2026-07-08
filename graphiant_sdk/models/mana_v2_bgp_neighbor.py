@@ -27,41 +27,39 @@ from graphiant_sdk.models.mana_v2_bgp_dynamic_neighbor_oper_peer import ManaV2Bg
 from graphiant_sdk.models.mana_v2_bgp_neighbor_address_family import ManaV2BgpNeighborAddressFamily
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2BgpNeighbor(BaseModel):
     """
     ManaV2BgpNeighbor
     """ # noqa: E501
     address_families: Optional[List[ManaV2BgpNeighborAddressFamily]] = Field(default=None, alias="addressFamilies")
-    allow_as_in: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allowAsIn", json_schema_extra={"examples": [123]})
-    as_override: Optional[StrictBool] = Field(default=None, alias="asOverride", json_schema_extra={"examples": [True]})
+    allow_as_in: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allowAsIn")
+    as_override: Optional[StrictBool] = Field(default=None, alias="asOverride")
     bfd: Optional[ManaV2BfdInstance] = None
     bfd_neighbor: Optional[ManaV2BfdNeighbor] = Field(default=None, alias="bfdNeighbor")
-    bgp_type: Optional[StrictStr] = Field(default=None, alias="bgpType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    default_originate: Optional[StrictStr] = Field(default=None, description="Set when default route needs to be advertised in BGP domain", alias="defaultOriginate", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    bgp_type: Optional[StrictStr] = Field(default=None, alias="bgpType")
+    default_originate: Optional[StrictStr] = Field(default=None, description="Set when default route needs to be advertised in BGP domain", alias="defaultOriginate")
     dynamic_neighbor_peers: Optional[List[ManaV2BgpDynamicNeighborOperPeer]] = Field(default=None, alias="dynamicNeighborPeers")
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    hold_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="holdTimer", json_schema_extra={"examples": [123]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    keepalive_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="keepaliveTimer", json_schema_extra={"examples": [123]})
-    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress", json_schema_extra={"examples": ["example string"]})
-    local_interface: Optional[StrictStr] = Field(default=None, alias="localInterface", json_schema_extra={"examples": ["example string"]})
-    max_prefix: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Maximum number of prefixes that can be received from neighbor", alias="maxPrefix", json_schema_extra={"examples": [10000]})
-    md5_password: Optional[StrictStr] = Field(default=None, alias="md5Password", json_schema_extra={"examples": ["example string"]})
-    multi_hop: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Set when EBGP multi-hop functionality is enabled", alias="multiHop", json_schema_extra={"examples": [5]})
-    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="peerAsn", json_schema_extra={"examples": [123]})
-    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress", json_schema_extra={"examples": ["example string"]})
-    remove_private_as: Optional[StrictBool] = Field(default=None, alias="removePrivateAs", json_schema_extra={"examples": [True]})
-    send_community: Optional[StrictBool] = Field(default=None, description="Flag for sending standard, extended, and large communities", alias="sendCommunity", json_schema_extra={"examples": [True]})
-    state: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    enabled: Optional[StrictBool] = None
+    hold_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="holdTimer")
+    id: Optional[StrictInt] = None
+    keepalive_timer: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="keepaliveTimer")
+    local_address: Optional[StrictStr] = Field(default=None, alias="localAddress")
+    local_interface: Optional[StrictStr] = Field(default=None, alias="localInterface")
+    max_prefix: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Maximum number of prefixes that can be received from neighbor", alias="maxPrefix")
+    md5_password: Optional[StrictStr] = Field(default=None, alias="md5Password")
+    multi_hop: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Set when EBGP multi-hop functionality is enabled", alias="multiHop")
+    peer_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="peerAsn")
+    remote_address: Optional[StrictStr] = Field(default=None, alias="remoteAddress")
+    remove_private_as: Optional[StrictBool] = Field(default=None, alias="removePrivateAs")
+    send_community: Optional[StrictBool] = Field(default=None, description="Flag for sending standard, extended, and large communities", alias="sendCommunity")
+    state: Optional[StrictStr] = None
     time_since_last_oper_change: Optional[GoogleProtobufDuration] = Field(default=None, alias="timeSinceLastOperChange")
-    up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    up: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["addressFamilies", "allowAsIn", "asOverride", "bfd", "bfdNeighbor", "bgpType", "defaultOriginate", "dynamicNeighborPeers", "enabled", "holdTimer", "id", "keepaliveTimer", "localAddress", "localInterface", "maxPrefix", "md5Password", "multiHop", "peerAsn", "remoteAddress", "removePrivateAs", "sendCommunity", "state", "timeSinceLastOperChange", "up"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -73,7 +71,8 @@ class ManaV2BgpNeighbor(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

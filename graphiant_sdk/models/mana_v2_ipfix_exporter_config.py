@@ -22,27 +22,25 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2IpfixExporterConfig(BaseModel):
     """
     ManaV2IpfixExporterConfig
     """ # noqa: E501
-    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress", json_schema_extra={"examples": ["example string"]})
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
-    global_id: Optional[StrictInt] = Field(default=None, alias="globalId", json_schema_extra={"examples": [1234567891011]})
-    is_global_sync: Optional[StrictBool] = Field(default=None, alias="isGlobalSync", json_schema_extra={"examples": [True]})
+    destination_address: Optional[StrictStr] = Field(default=None, alias="destinationAddress")
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
+    global_id: Optional[StrictInt] = Field(default=None, alias="globalId")
+    is_global_sync: Optional[StrictBool] = Field(default=None, alias="isGlobalSync")
     monitored_segments: Optional[List[StrictStr]] = Field(default=None, alias="monitoredSegments")
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    sample_mode: Optional[StrictStr] = Field(default=None, alias="sampleMode", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    sample_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sampleRate", json_schema_extra={"examples": [123]})
-    source_interface_name: Optional[StrictStr] = Field(default=None, alias="sourceInterfaceName", json_schema_extra={"examples": ["example string"]})
-    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId", json_schema_extra={"examples": [1234567891011]})
+    name: Optional[StrictStr] = None
+    sample_mode: Optional[StrictStr] = Field(default=None, alias="sampleMode")
+    sample_rate: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sampleRate")
+    source_interface_name: Optional[StrictStr] = Field(default=None, alias="sourceInterfaceName")
+    vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId")
     __properties: ClassVar[List[str]] = ["destinationAddress", "destinationPort", "globalId", "isGlobalSync", "monitoredSegments", "name", "sampleMode", "sampleRate", "sourceInterfaceName", "vrfId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class ManaV2IpfixExporterConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

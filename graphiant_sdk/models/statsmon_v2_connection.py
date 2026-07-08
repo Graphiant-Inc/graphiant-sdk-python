@@ -22,27 +22,25 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2Connection(BaseModel):
     """
     StatsmonV2Connection
     """ # noqa: E501
-    active: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    circuit_carrier: Optional[StrictStr] = Field(default=None, alias="circuitCarrier", json_schema_extra={"examples": ["example string"]})
-    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName", json_schema_extra={"examples": ["example string"]})
-    destination_ip: Optional[StrictStr] = Field(default=None, alias="destinationIp", json_schema_extra={"examples": ["example string"]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    active: Optional[StrictBool] = None
+    circuit_carrier: Optional[StrictStr] = Field(default=None, alias="circuitCarrier")
+    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName")
+    destination_ip: Optional[StrictStr] = Field(default=None, alias="destinationIp")
+    hostname: Optional[StrictStr] = None
     last_established_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastEstablishedTime")
-    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort", json_schema_extra={"examples": [True]})
-    quality: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    source_ip: Optional[StrictStr] = Field(default=None, alias="sourceIp", json_schema_extra={"examples": ["example string"]})
-    source_public_ip: Optional[StrictStr] = Field(default=None, alias="sourcePublicIp", json_schema_extra={"examples": ["example string"]})
+    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort")
+    quality: Optional[StrictStr] = None
+    source_ip: Optional[StrictStr] = Field(default=None, alias="sourceIp")
+    source_public_ip: Optional[StrictStr] = Field(default=None, alias="sourcePublicIp")
     __properties: ClassVar[List[str]] = ["active", "circuitCarrier", "circuitName", "destinationIp", "hostname", "lastEstablishedTime", "lastResort", "quality", "sourceIp", "sourcePublicIp"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class StatsmonV2Connection(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,21 +23,19 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.statsmon_v2_stats_sample import StatsmonV2StatsSample
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringSegmentRouteCountsPostResponseData(BaseModel):
     """
     V2MonitoringSegmentRouteCountsPostResponseData
     """ # noqa: E501
-    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [12345678910]})
+    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId")
     ipv4_route_count: Optional[StatsmonV2StatsSample] = Field(default=None, alias="ipv4RouteCount")
     ipv6_route_count: Optional[StatsmonV2StatsSample] = Field(default=None, alias="ipv6RouteCount")
-    segment_name: Optional[StrictStr] = Field(default=None, alias="segmentName", json_schema_extra={"examples": ["example string"]})
+    segment_name: Optional[StrictStr] = Field(default=None, alias="segmentName")
     __properties: ClassVar[List[str]] = ["deviceId", "ipv4RouteCount", "ipv6RouteCount", "segmentName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V2MonitoringSegmentRouteCountsPostResponseData(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

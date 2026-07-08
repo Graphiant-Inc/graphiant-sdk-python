@@ -23,19 +23,17 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.ipfix_time_window import IpfixTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AppsDeviceDeviceIdTopPostRequest(BaseModel):
     """
     V1AppsDeviceDeviceIdTopPostRequest
     """ # noqa: E501
-    num_apps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The maximum number of apps to return (100 if left empty)", alias="numApps", json_schema_extra={"examples": [22]})
+    num_apps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The maximum number of apps to return (100 if left empty)", alias="numApps")
     time_window: Optional[IpfixTimeWindow] = Field(default=None, alias="timeWindow")
     __properties: ClassVar[List[str]] = ["numApps", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1AppsDeviceDeviceIdTopPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

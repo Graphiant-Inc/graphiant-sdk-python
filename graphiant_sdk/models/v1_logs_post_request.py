@@ -24,25 +24,23 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.syslogmon_syslogs_selector import SyslogmonSyslogsSelector
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1LogsPostRequest(BaseModel):
     """
     V1LogsPostRequest
     """ # noqa: E501
-    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef", json_schema_extra={"examples": ["example string"]})
-    customer_view: Optional[StrictBool] = Field(default=None, alias="customerView", json_schema_extra={"examples": [True]})
+    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef")
+    customer_view: Optional[StrictBool] = Field(default=None, alias="customerView")
     device_ids: Optional[List[Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="deviceIds")
-    histogram_bucket_size_sec: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="histogramBucketSizeSec", json_schema_extra={"examples": [123]})
-    num_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numLogs", json_schema_extra={"examples": [123]})
+    histogram_bucket_size_sec: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="histogramBucketSizeSec")
+    num_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numLogs")
     old_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="oldTs")
     recent_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="recentTs")
     selectors: Optional[List[SyslogmonSyslogsSelector]] = None
     __properties: ClassVar[List[str]] = ["cursorRef", "customerView", "deviceIds", "histogramBucketSizeSec", "numLogs", "oldTs", "recentTs", "selectors"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class V1LogsPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

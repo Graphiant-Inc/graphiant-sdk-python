@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DeviceRoutingBgpNbrsDetailsGetResponse(BaseModel):
     """
     V1DeviceRoutingBgpNbrsDetailsGetResponse
     """ # noqa: E501
-    ebgp_multi_hop_ttl: Optional[StrictInt] = Field(default=None, alias="ebgpMultiHopTtl", json_schema_extra={"examples": [123]})
-    hold_timer: Optional[StrictInt] = Field(default=None, alias="holdTimer", json_schema_extra={"examples": [123]})
-    keep_alive_timer: Optional[StrictInt] = Field(default=None, alias="keepAliveTimer", json_schema_extra={"examples": [123]})
+    ebgp_multi_hop_ttl: Optional[StrictInt] = Field(default=None, alias="ebgpMultiHopTtl")
+    hold_timer: Optional[StrictInt] = Field(default=None, alias="holdTimer")
+    keep_alive_timer: Optional[StrictInt] = Field(default=None, alias="keepAliveTimer")
     __properties: ClassVar[List[str]] = ["ebgpMultiHopTtl", "holdTimer", "keepAliveTimer"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1DeviceRoutingBgpNbrsDetailsGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

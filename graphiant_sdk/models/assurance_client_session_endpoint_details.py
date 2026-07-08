@@ -24,7 +24,6 @@ from graphiant_sdk.models.assurance_edge import AssuranceEdge
 from graphiant_sdk.models.assurance_site import AssuranceSite
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceClientSessionEndpointDetails(BaseModel):
     """
@@ -32,18 +31,17 @@ class AssuranceClientSessionEndpointDetails(BaseModel):
     """ # noqa: E501
     circuits: Optional[List[StrictStr]] = None
     edges: Optional[List[AssuranceEdge]] = None
-    is_gateway: Optional[StrictBool] = Field(default=None, alias="isGateway", json_schema_extra={"examples": [True]})
+    is_gateway: Optional[StrictBool] = Field(default=None, alias="isGateway")
     jitter: Optional[AssuranceClientSessionEndpointDetailsStatistics] = None
     latency: Optional[AssuranceClientSessionEndpointDetailsStatistics] = None
     loss: Optional[AssuranceClientSessionEndpointDetailsStatistics] = None
     site: Optional[AssuranceSite] = None
-    total_downlink_usage: Optional[StrictInt] = Field(default=None, alias="totalDownlinkUsage", json_schema_extra={"examples": [1234567891011]})
-    total_uplink_usage: Optional[StrictInt] = Field(default=None, alias="totalUplinkUsage", json_schema_extra={"examples": [1234567891011]})
+    total_downlink_usage: Optional[StrictInt] = Field(default=None, alias="totalDownlinkUsage")
+    total_uplink_usage: Optional[StrictInt] = Field(default=None, alias="totalUplinkUsage")
     __properties: ClassVar[List[str]] = ["circuits", "edges", "isGateway", "jitter", "latency", "loss", "site", "totalDownlinkUsage", "totalUplinkUsage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class AssuranceClientSessionEndpointDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

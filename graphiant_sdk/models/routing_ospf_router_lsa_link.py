@@ -23,22 +23,20 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.routing_ospflsa_tos_metric import RoutingOspflsaTosMetric
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingOspfRouterLsaLink(BaseModel):
     """
     RoutingOspfRouterLsaLink
     """ # noqa: E501
-    link_data: Optional[StrictStr] = Field(default=None, alias="linkData", json_schema_extra={"examples": ["example string"]})
-    link_id: Optional[StrictStr] = Field(default=None, alias="linkId", json_schema_extra={"examples": ["example string"]})
-    link_type: Optional[StrictStr] = Field(default=None, alias="linkType", json_schema_extra={"examples": ["example string"]})
-    metric: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    link_data: Optional[StrictStr] = Field(default=None, alias="linkData")
+    link_id: Optional[StrictStr] = Field(default=None, alias="linkId")
+    link_type: Optional[StrictStr] = Field(default=None, alias="linkType")
+    metric: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     tos_metric: Optional[RoutingOspflsaTosMetric] = Field(default=None, alias="tosMetric")
     __properties: ClassVar[List[str]] = ["linkData", "linkId", "linkType", "metric", "tosMetric"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class RoutingOspfRouterLsaLink(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

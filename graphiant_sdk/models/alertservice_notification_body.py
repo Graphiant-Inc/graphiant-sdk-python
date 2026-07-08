@@ -22,18 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceNotificationBody(BaseModel):
     """
     AlertserviceNotificationBody
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="Description of notification", json_schema_extra={"examples": ["example string"]})
-    duration: Optional[StrictStr] = Field(default=None, description="Time interval for notification (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    enabled: Optional[StrictBool] = Field(default=None, description="Enable or disable notification (required)", json_schema_extra={"examples": [True]})
-    frequency: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Frequency of notifying a continuing alert (required)", json_schema_extra={"examples": [12345678910]})
-    message_body: Optional[StrictStr] = Field(default=None, description="Message body to prepend to actual message", alias="messageBody", json_schema_extra={"examples": ["example string"]})
-    notification_name: Optional[StrictStr] = Field(default=None, description="Name of the notification record (required)", alias="notificationName", json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = Field(default=None, description="Description of notification")
+    duration: Optional[StrictStr] = Field(default=None, description="Time interval for notification (required)")
+    enabled: Optional[StrictBool] = Field(default=None, description="Enable or disable notification (required)")
+    frequency: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Frequency of notifying a continuing alert (required)")
+    message_body: Optional[StrictStr] = Field(default=None, description="Message body to prepend to actual message", alias="messageBody")
+    notification_name: Optional[StrictStr] = Field(default=None, description="Name of the notification record (required)", alias="notificationName")
     opsgenie_list: Optional[List[StrictStr]] = Field(default=None, alias="opsgenieList")
     opsramp_list: Optional[List[StrictStr]] = Field(default=None, alias="opsrampList")
     pagerduty_list: Optional[List[StrictStr]] = Field(default=None, alias="pagerdutyList")
@@ -43,8 +42,7 @@ class AlertserviceNotificationBody(BaseModel):
     __properties: ClassVar[List[str]] = ["description", "duration", "enabled", "frequency", "messageBody", "notificationName", "opsgenieList", "opsrampList", "pagerdutyList", "recipientList", "teamsList", "webhookUrlList"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class AlertserviceNotificationBody(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

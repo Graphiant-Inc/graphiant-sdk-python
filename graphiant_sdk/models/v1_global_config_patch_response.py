@@ -21,7 +21,6 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalConfigPatchResponse(BaseModel):
     """
@@ -33,15 +32,14 @@ class V1GlobalConfigPatchResponse(BaseModel):
     prefix_sets: Optional[Dict[str, StrictInt]] = Field(default=None, alias="prefixSets")
     routing_policies: Optional[Dict[str, StrictInt]] = Field(default=None, alias="routingPolicies")
     snmps: Optional[Dict[str, StrictInt]] = None
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    status: Optional[StrictStr] = None
     syslog_servers: Optional[Dict[str, StrictInt]] = Field(default=None, alias="syslogServers")
     traffic_policies: Optional[Dict[str, StrictInt]] = Field(default=None, alias="trafficPolicies")
     vpn_profiles: Optional[Dict[str, StrictInt]] = Field(default=None, alias="vpnProfiles")
     __properties: ClassVar[List[str]] = ["globalPrefixSets", "ipfixExporters", "ntps", "prefixSets", "routingPolicies", "snmps", "status", "syslogServers", "trafficPolicies", "vpnProfiles"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class V1GlobalConfigPatchResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

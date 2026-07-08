@@ -21,26 +21,24 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2NATPolicyRulesetConfigNullableRuleRule(BaseModel):
     """
     ManaV2NATPolicyRulesetConfigNullableRuleRule
     """ # noqa: E501
-    advertise_pre_nat_prefixes: Optional[StrictBool] = Field(default=None, alias="advertisePreNatPrefixes", json_schema_extra={"examples": [True]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    original_dst_ip_prefix: Optional[StrictStr] = Field(default=None, alias="originalDstIpPrefix", json_schema_extra={"examples": ["example string"]})
-    original_src_ip_prefix: Optional[StrictStr] = Field(default=None, alias="originalSrcIpPrefix", json_schema_extra={"examples": ["example string"]})
-    seq: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    translated_dst_ip_prefix: Optional[StrictStr] = Field(default=None, alias="translatedDstIpPrefix", json_schema_extra={"examples": ["example string"]})
-    translated_src_ip_prefix: Optional[StrictStr] = Field(default=None, alias="translatedSrcIpPrefix", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    advertise_pre_nat_prefixes: Optional[StrictBool] = Field(default=None, alias="advertisePreNatPrefixes")
+    description: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
+    original_dst_ip_prefix: Optional[StrictStr] = Field(default=None, alias="originalDstIpPrefix")
+    original_src_ip_prefix: Optional[StrictStr] = Field(default=None, alias="originalSrcIpPrefix")
+    seq: Optional[StrictInt] = None
+    translated_dst_ip_prefix: Optional[StrictStr] = Field(default=None, alias="translatedDstIpPrefix")
+    translated_src_ip_prefix: Optional[StrictStr] = Field(default=None, alias="translatedSrcIpPrefix")
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["advertisePreNatPrefixes", "description", "name", "originalDstIpPrefix", "originalSrcIpPrefix", "seq", "translatedDstIpPrefix", "translatedSrcIpPrefix", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class ManaV2NATPolicyRulesetConfigNullableRuleRule(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

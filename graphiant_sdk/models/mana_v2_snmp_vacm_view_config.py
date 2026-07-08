@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_snmp_vacm_view_include_config import ManaV2SnmpVacmViewIncludeConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpVacmViewConfig(BaseModel):
     """
     ManaV2SnmpVacmViewConfig
     """ # noqa: E501
     include_exclude_list: Optional[Dict[str, ManaV2SnmpVacmViewIncludeConfig]] = Field(default=None, alias="includeExcludeList")
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["includeExcludeList", "name"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class ManaV2SnmpVacmViewConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

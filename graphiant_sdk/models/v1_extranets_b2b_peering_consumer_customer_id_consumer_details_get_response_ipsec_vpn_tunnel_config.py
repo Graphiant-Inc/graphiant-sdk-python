@@ -22,49 +22,47 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponseIpsecVpnTunnelConfig(BaseModel):
     """
     V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponseIpsecVpnTunnelConfig
     """ # noqa: E501
-    bgp_graphiant_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpGraphiantAsn", json_schema_extra={"examples": [123]})
-    bgp_local_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpLocalAsn", json_schema_extra={"examples": [123]})
-    bgp_neighbor_hold_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpNeighborHoldTime", json_schema_extra={"examples": [123]})
-    bgp_neighbor_ipv4: Optional[StrictStr] = Field(default=None, alias="bgpNeighborIpv4", json_schema_extra={"examples": ["example string"]})
-    bgp_neighbor_ipv6: Optional[StrictStr] = Field(default=None, alias="bgpNeighborIpv6", json_schema_extra={"examples": ["example string"]})
-    dpd_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdInterval", json_schema_extra={"examples": [123]})
-    dpd_retries: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdRetries", json_schema_extra={"examples": [123]})
-    graphiant_destination_ip: Optional[StrictStr] = Field(default=None, alias="graphiantDestinationIp", json_schema_extra={"examples": ["example string"]})
-    graphiant_ike_id: Optional[StrictStr] = Field(default=None, alias="graphiantIkeId", json_schema_extra={"examples": ["example string"]})
-    graphiant_outer_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="graphiantOuterTunnelIp", json_schema_extra={"examples": ["example string"]})
-    graphiant_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="graphiantTunnelIp", json_schema_extra={"examples": ["example string"]})
-    graphiant_tunnel_ipv6: Optional[StrictStr] = Field(default=None, alias="graphiantTunnelIpv6", json_schema_extra={"examples": ["example string"]})
-    ike_authentication_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeAuthenticationAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ike_authentication_method: Optional[StrictStr] = Field(default=None, alias="ikeAuthenticationMethod", json_schema_extra={"examples": ["example string"]})
-    ike_dh_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeDhAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ike_encryption_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeEncryptionAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ike_lifetime: Optional[StrictStr] = Field(default=None, alias="ikeLifetime", json_schema_extra={"examples": ["example string"]})
-    ike_preshared_key: Optional[StrictStr] = Field(default=None, alias="ikePresharedKey", json_schema_extra={"examples": ["example string"]})
-    ike_version: Optional[StrictInt] = Field(default=None, alias="ikeVersion", json_schema_extra={"examples": [123]})
-    ipsec_authentication_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecAuthenticationAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ipsec_encryption_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecEncryptionAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ipsec_extended_sequence_number: Optional[StrictBool] = Field(default=None, alias="ipsecExtendedSequenceNumber", json_schema_extra={"examples": [True]})
-    ipsec_lifetime: Optional[StrictStr] = Field(default=None, alias="ipsecLifetime", json_schema_extra={"examples": ["example string"]})
-    ipsec_mode: Optional[StrictStr] = Field(default=None, alias="ipsecMode", json_schema_extra={"examples": ["example string"]})
-    ipsec_pfs_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecPfsAlgorithm", json_schema_extra={"examples": ["example string"]})
-    ipsec_protocol: Optional[StrictStr] = Field(default=None, alias="ipsecProtocol", json_schema_extra={"examples": ["example string"]})
-    local_ike_id: Optional[StrictStr] = Field(default=None, alias="localIkeId", json_schema_extra={"examples": ["example string"]})
-    local_outer_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="localOuterTunnelIp", json_schema_extra={"examples": ["example string"]})
-    local_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="localTunnelIp", json_schema_extra={"examples": ["example string"]})
-    local_tunnel_ipv6: Optional[StrictStr] = Field(default=None, alias="localTunnelIpv6", json_schema_extra={"examples": ["example string"]})
-    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
-    tunnel_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tunnelMtu", json_schema_extra={"examples": [123]})
+    bgp_graphiant_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpGraphiantAsn")
+    bgp_local_asn: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpLocalAsn")
+    bgp_neighbor_hold_time: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="bgpNeighborHoldTime")
+    bgp_neighbor_ipv4: Optional[StrictStr] = Field(default=None, alias="bgpNeighborIpv4")
+    bgp_neighbor_ipv6: Optional[StrictStr] = Field(default=None, alias="bgpNeighborIpv6")
+    dpd_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdInterval")
+    dpd_retries: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="dpdRetries")
+    graphiant_destination_ip: Optional[StrictStr] = Field(default=None, alias="graphiantDestinationIp")
+    graphiant_ike_id: Optional[StrictStr] = Field(default=None, alias="graphiantIkeId")
+    graphiant_outer_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="graphiantOuterTunnelIp")
+    graphiant_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="graphiantTunnelIp")
+    graphiant_tunnel_ipv6: Optional[StrictStr] = Field(default=None, alias="graphiantTunnelIpv6")
+    ike_authentication_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeAuthenticationAlgorithm")
+    ike_authentication_method: Optional[StrictStr] = Field(default=None, alias="ikeAuthenticationMethod")
+    ike_dh_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeDhAlgorithm")
+    ike_encryption_algorithm: Optional[StrictStr] = Field(default=None, alias="ikeEncryptionAlgorithm")
+    ike_lifetime: Optional[StrictStr] = Field(default=None, alias="ikeLifetime")
+    ike_preshared_key: Optional[StrictStr] = Field(default=None, alias="ikePresharedKey")
+    ike_version: Optional[StrictInt] = Field(default=None, alias="ikeVersion")
+    ipsec_authentication_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecAuthenticationAlgorithm")
+    ipsec_encryption_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecEncryptionAlgorithm")
+    ipsec_extended_sequence_number: Optional[StrictBool] = Field(default=None, alias="ipsecExtendedSequenceNumber")
+    ipsec_lifetime: Optional[StrictStr] = Field(default=None, alias="ipsecLifetime")
+    ipsec_mode: Optional[StrictStr] = Field(default=None, alias="ipsecMode")
+    ipsec_pfs_algorithm: Optional[StrictStr] = Field(default=None, alias="ipsecPfsAlgorithm")
+    ipsec_protocol: Optional[StrictStr] = Field(default=None, alias="ipsecProtocol")
+    local_ike_id: Optional[StrictStr] = Field(default=None, alias="localIkeId")
+    local_outer_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="localOuterTunnelIp")
+    local_tunnel_ip: Optional[StrictStr] = Field(default=None, alias="localTunnelIp")
+    local_tunnel_ipv6: Optional[StrictStr] = Field(default=None, alias="localTunnelIpv6")
+    tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss")
+    tunnel_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tunnelMtu")
     __properties: ClassVar[List[str]] = ["bgpGraphiantAsn", "bgpLocalAsn", "bgpNeighborHoldTime", "bgpNeighborIpv4", "bgpNeighborIpv6", "dpdInterval", "dpdRetries", "graphiantDestinationIp", "graphiantIkeId", "graphiantOuterTunnelIp", "graphiantTunnelIp", "graphiantTunnelIpv6", "ikeAuthenticationAlgorithm", "ikeAuthenticationMethod", "ikeDhAlgorithm", "ikeEncryptionAlgorithm", "ikeLifetime", "ikePresharedKey", "ikeVersion", "ipsecAuthenticationAlgorithm", "ipsecEncryptionAlgorithm", "ipsecExtendedSequenceNumber", "ipsecLifetime", "ipsecMode", "ipsecPfsAlgorithm", "ipsecProtocol", "localIkeId", "localOuterTunnelIp", "localTunnelIp", "localTunnelIpv6", "tcpMss", "tunnelMtu"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -76,7 +74,8 @@ class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponseIpsecVpnT
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

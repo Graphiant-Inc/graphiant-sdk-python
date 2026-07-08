@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.iam_failed_user import IamFailedUser
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1UsersPasswordsExpirePostResponse(BaseModel):
     """
     V1UsersPasswordsExpirePostResponse
     """ # noqa: E501
-    failed_count: Optional[StrictInt] = Field(default=None, alias="failedCount", json_schema_extra={"examples": [123]})
+    failed_count: Optional[StrictInt] = Field(default=None, alias="failedCount")
     failed_users: Optional[List[IamFailedUser]] = Field(default=None, alias="failedUsers")
-    success_count: Optional[StrictInt] = Field(default=None, alias="successCount", json_schema_extra={"examples": [123]})
+    success_count: Optional[StrictInt] = Field(default=None, alias="successCount")
     __properties: ClassVar[List[str]] = ["failedCount", "failedUsers", "successCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1UsersPasswordsExpirePostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

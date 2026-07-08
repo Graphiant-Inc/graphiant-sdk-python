@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DevicesBringupTokenPostResponse(BaseModel):
     """
     V1DevicesBringupTokenPostResponse
     """ # noqa: E501
-    access_token: Optional[StrictStr] = Field(default=None, alias="accessToken", json_schema_extra={"examples": ["example string"]})
+    access_token: Optional[StrictStr] = Field(default=None, alias="accessToken")
     valid_till_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="validTillTs")
     __properties: ClassVar[List[str]] = ["accessToken", "validTillTs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1DevicesBringupTokenPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

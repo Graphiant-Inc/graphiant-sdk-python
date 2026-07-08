@@ -23,26 +23,24 @@ from graphiant_sdk.models.assurance_bucket_stats import AssuranceBucketStats
 from graphiant_sdk.models.assurance_bucket_stats_with_id import AssuranceBucketStatsWithId
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceBucketSummary(BaseModel):
     """
     AssuranceBucketSummary
     """ # noqa: E501
-    assurance_bucket: Optional[StrictStr] = Field(default=None, alias="assuranceBucket", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    bucket_color: Optional[StrictStr] = Field(default=None, alias="bucketColor", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    bucket_name_to_display: Optional[StrictStr] = Field(default=None, alias="bucketNameToDisplay", json_schema_extra={"examples": ["example string"]})
+    assurance_bucket: Optional[StrictStr] = Field(default=None, alias="assuranceBucket")
+    bucket_color: Optional[StrictStr] = Field(default=None, alias="bucketColor")
+    bucket_name_to_display: Optional[StrictStr] = Field(default=None, alias="bucketNameToDisplay")
     bucket_stats: Optional[AssuranceBucketStats] = Field(default=None, alias="bucketStats")
     child_bucket_list: Optional[List[StrictStr]] = Field(default=None, alias="childBucketList")
     child_bucket_stats_list: Optional[List[AssuranceBucketStatsWithId]] = Field(default=None, alias="childBucketStatsList")
-    is_root: Optional[StrictBool] = Field(default=None, alias="isRoot", json_schema_extra={"examples": [True]})
-    is_terminal: Optional[StrictBool] = Field(default=None, alias="isTerminal", json_schema_extra={"examples": [True]})
+    is_root: Optional[StrictBool] = Field(default=None, alias="isRoot")
+    is_terminal: Optional[StrictBool] = Field(default=None, alias="isTerminal")
     parent_bucket_list: Optional[List[StrictStr]] = Field(default=None, alias="parentBucketList")
     __properties: ClassVar[List[str]] = ["assuranceBucket", "bucketColor", "bucketNameToDisplay", "bucketStats", "childBucketList", "childBucketStatsList", "isRoot", "isTerminal", "parentBucketList"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class AssuranceBucketSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

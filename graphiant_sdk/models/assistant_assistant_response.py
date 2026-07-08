@@ -23,26 +23,24 @@ from graphiant_sdk.models.assistant_assistant_question import AssistantAssistant
 from graphiant_sdk.models.assistant_dataframe_dictionary import AssistantDataframeDictionary
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssistantAssistantResponse(BaseModel):
     """
     AssistantAssistantResponse
     """ # noqa: E501
-    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId", json_schema_extra={"examples": ["example string"]})
+    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId")
     dataframe_dictionary: Optional[List[AssistantDataframeDictionary]] = Field(default=None, alias="dataframeDictionary")
     original_question: Optional[AssistantAssistantQuestion] = Field(default=None, alias="originalQuestion")
-    response_id: Optional[StrictStr] = Field(default=None, alias="responseId", json_schema_extra={"examples": ["example string"]})
-    response_language: Optional[StrictStr] = Field(default=None, alias="responseLanguage", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    response_text: Optional[StrictStr] = Field(default=None, alias="responseText", json_schema_extra={"examples": ["example string"]})
-    response_timestamp: Optional[StrictInt] = Field(default=None, alias="responseTimestamp", json_schema_extra={"examples": [1234567891011]})
-    response_type: Optional[StrictStr] = Field(default=None, alias="responseType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    visualization_summary: Optional[StrictStr] = Field(default=None, alias="visualizationSummary", json_schema_extra={"examples": ["example string"]})
+    response_id: Optional[StrictStr] = Field(default=None, alias="responseId")
+    response_language: Optional[StrictStr] = Field(default=None, alias="responseLanguage")
+    response_text: Optional[StrictStr] = Field(default=None, alias="responseText")
+    response_timestamp: Optional[StrictInt] = Field(default=None, alias="responseTimestamp")
+    response_type: Optional[StrictStr] = Field(default=None, alias="responseType")
+    visualization_summary: Optional[StrictStr] = Field(default=None, alias="visualizationSummary")
     __properties: ClassVar[List[str]] = ["conversationId", "dataframeDictionary", "originalQuestion", "responseId", "responseLanguage", "responseText", "responseTimestamp", "responseType", "visualizationSummary"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class AssistantAssistantResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

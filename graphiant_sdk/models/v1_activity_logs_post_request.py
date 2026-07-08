@@ -25,14 +25,13 @@ from graphiant_sdk.models.auditmon_activity_logs_selector_v2 import AuditmonActi
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ActivityLogsPostRequest(BaseModel):
     """
     V1ActivityLogsPostRequest
     """ # noqa: E501
-    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef", json_schema_extra={"examples": ["example string"]})
-    num_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numLogs", json_schema_extra={"examples": [123]})
+    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef")
+    num_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="numLogs")
     old_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="oldTs")
     recent_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="recentTs")
     selector: Optional[AuditmonActivityLogsSelector] = None
@@ -40,8 +39,7 @@ class V1ActivityLogsPostRequest(BaseModel):
     __properties: ClassVar[List[str]] = ["cursorRef", "numLogs", "oldTs", "recentTs", "selector", "selectorV2"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class V1ActivityLogsPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

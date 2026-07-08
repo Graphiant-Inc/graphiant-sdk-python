@@ -21,25 +21,23 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalSyncPostRequest(BaseModel):
     """
     V1GlobalSyncPostRequest
     """ # noqa: E501
     device_ids: Optional[List[StrictInt]] = Field(default=None, alias="deviceIds")
-    ipfix_exported_id: Optional[StrictInt] = Field(default=None, alias="ipfixExportedId", json_schema_extra={"examples": [1234567891011]})
-    ntp_id: Optional[StrictInt] = Field(default=None, alias="ntpId", json_schema_extra={"examples": [1234567891011]})
-    prefix_set_id: Optional[StrictInt] = Field(default=None, alias="prefixSetId", json_schema_extra={"examples": [1234567891011]})
-    routing_policy_id: Optional[StrictInt] = Field(default=None, alias="routingPolicyId", json_schema_extra={"examples": [1234567891011]})
-    snmp_id: Optional[StrictInt] = Field(default=None, alias="snmpId", json_schema_extra={"examples": [1234567891011]})
-    syslog_server_id: Optional[StrictInt] = Field(default=None, alias="syslogServerId", json_schema_extra={"examples": [1234567891011]})
-    traffic_policy_id: Optional[StrictInt] = Field(default=None, alias="trafficPolicyId", json_schema_extra={"examples": [1234567891011]})
+    ipfix_exported_id: Optional[StrictInt] = Field(default=None, alias="ipfixExportedId")
+    ntp_id: Optional[StrictInt] = Field(default=None, alias="ntpId")
+    prefix_set_id: Optional[StrictInt] = Field(default=None, alias="prefixSetId")
+    routing_policy_id: Optional[StrictInt] = Field(default=None, alias="routingPolicyId")
+    snmp_id: Optional[StrictInt] = Field(default=None, alias="snmpId")
+    syslog_server_id: Optional[StrictInt] = Field(default=None, alias="syslogServerId")
+    traffic_policy_id: Optional[StrictInt] = Field(default=None, alias="trafficPolicyId")
     __properties: ClassVar[List[str]] = ["deviceIds", "ipfixExportedId", "ntpId", "prefixSetId", "routingPolicyId", "snmpId", "syslogServerId", "trafficPolicyId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class V1GlobalSyncPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

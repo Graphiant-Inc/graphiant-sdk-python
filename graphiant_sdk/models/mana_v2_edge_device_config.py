@@ -39,34 +39,33 @@ from graphiant_sdk.models.mana_v2_nullable_snmp_config import ManaV2NullableSnmp
 from graphiant_sdk.models.mana_v2_vrf_config import ManaV2VrfConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2EdgeDeviceConfig(BaseModel):
     """
     ManaV2EdgeDeviceConfig
     """ # noqa: E501
-    bgp_enabled: Optional[StrictBool] = Field(default=None, alias="bgpEnabled", json_schema_extra={"examples": [True]})
+    bgp_enabled: Optional[StrictBool] = Field(default=None, alias="bgpEnabled")
     bgp_instance: Optional[ManaV2BgpInstanceConfig] = Field(default=None, alias="bgpInstance")
     circuits: Optional[Dict[str, ManaV2CircuitConfig]] = None
-    dhcp_server_enabled: Optional[StrictBool] = Field(default=None, alias="dhcpServerEnabled", json_schema_extra={"examples": [True]})
+    dhcp_server_enabled: Optional[StrictBool] = Field(default=None, alias="dhcpServerEnabled")
     dns: Optional[ManaV2NullableDnsConfig] = None
     interfaces: Optional[Dict[str, ManaV2NullableInterfaceConfig]] = None
-    ipfix_enabled: Optional[StrictBool] = Field(default=None, alias="ipfixEnabled", json_schema_extra={"examples": [True]})
+    ipfix_enabled: Optional[StrictBool] = Field(default=None, alias="ipfixEnabled")
     ipfix_exporters: Optional[Dict[str, ManaV2NullableIpfixExporterConfig]] = Field(default=None, alias="ipfixExporters")
     lag_interfaces: Optional[Dict[str, ManaV2NullableLagInterfaceConfig]] = Field(default=None, alias="lagInterfaces")
-    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
+    lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled")
     local_route_tag: Optional[ManaV2NullableRouteTagSet] = Field(default=None, alias="localRouteTag")
-    local_web_server_password: Optional[StrictStr] = Field(default=None, alias="localWebServerPassword", json_schema_extra={"examples": ["example string"]})
+    local_web_server_password: Optional[StrictStr] = Field(default=None, alias="localWebServerPassword")
     location: Optional[ManaV2Location] = None
-    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode", json_schema_extra={"examples": [True]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode")
+    name: Optional[StrictStr] = None
     nat_policy: Optional[ManaV2NatPolicyConfig] = Field(default=None, alias="natPolicy")
     ntp_global_object: Optional[Dict[str, ManaV2NullableNtpConfig]] = Field(default=None, alias="ntpGlobalObject")
-    ospfv2_enabled: Optional[StrictBool] = Field(default=None, alias="ospfv2Enabled", json_schema_extra={"examples": [True]})
-    ospfv3_enabled: Optional[StrictBool] = Field(default=None, alias="ospfv3Enabled", json_schema_extra={"examples": [True]})
+    ospfv2_enabled: Optional[StrictBool] = Field(default=None, alias="ospfv2Enabled")
+    ospfv3_enabled: Optional[StrictBool] = Field(default=None, alias="ospfv3Enabled")
     prefix_sets: Optional[Dict[str, ManaV2NullablePrefixSetConfig]] = Field(default=None, alias="prefixSets")
-    region: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    region_name: Optional[StrictStr] = Field(default=None, alias="regionName", json_schema_extra={"examples": ["example string"]})
+    region: Optional[StrictStr] = None
+    region_name: Optional[StrictStr] = Field(default=None, alias="regionName")
     route_policies: Optional[Dict[str, ManaV2NullableRoutingPolicyConfig]] = Field(default=None, alias="routePolicies")
     segments: Optional[Dict[str, ManaV2VrfConfig]] = None
     site: Optional[ManaV2NewSite] = None
@@ -74,14 +73,13 @@ class ManaV2EdgeDeviceConfig(BaseModel):
     sla_conformance: Optional[ManaV2NullableSlaConformance] = Field(default=None, alias="slaConformance")
     snmp: Optional[ManaV2NullableSnmpConfig] = None
     snmp_global_object: Optional[Dict[str, ManaV2NullableSnmpConfig]] = Field(default=None, alias="snmpGlobalObject")
-    static_routes_enabled: Optional[StrictBool] = Field(default=None, alias="staticRoutesEnabled", json_schema_extra={"examples": [True]})
+    static_routes_enabled: Optional[StrictBool] = Field(default=None, alias="staticRoutesEnabled")
     traffic_policy: Optional[ManaV2ForwardingPolicyConfig] = Field(default=None, alias="trafficPolicy")
-    vrrp_enabled: Optional[StrictBool] = Field(default=None, alias="vrrpEnabled", json_schema_extra={"examples": [True]})
+    vrrp_enabled: Optional[StrictBool] = Field(default=None, alias="vrrpEnabled")
     __properties: ClassVar[List[str]] = ["bgpEnabled", "bgpInstance", "circuits", "dhcpServerEnabled", "dns", "interfaces", "ipfixEnabled", "ipfixExporters", "lagInterfaces", "lldpEnabled", "localRouteTag", "localWebServerPassword", "location", "maintenanceMode", "name", "natPolicy", "ntpGlobalObject", "ospfv2Enabled", "ospfv3Enabled", "prefixSets", "region", "regionName", "routePolicies", "segments", "site", "siteToSiteVpn", "slaConformance", "snmp", "snmpGlobalObject", "staticRoutesEnabled", "trafficPolicy", "vrrpEnabled"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -93,7 +91,8 @@ class ManaV2EdgeDeviceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

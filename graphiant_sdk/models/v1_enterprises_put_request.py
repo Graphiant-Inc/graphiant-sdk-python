@@ -22,30 +22,28 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.common_billing_contract import CommonBillingContract
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1EnterprisesPutRequest(BaseModel):
     """
     V1EnterprisesPutRequest
     """ # noqa: E501
-    account_type: StrictStr = Field(description=" (required)", alias="accountType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
-    admin_first_name: Optional[StrictStr] = Field(default=None, alias="adminFirstName", json_schema_extra={"examples": ["example string"]})
-    admin_last_name: Optional[StrictStr] = Field(default=None, alias="adminLastName", json_schema_extra={"examples": ["example string"]})
-    admin_time_zone: Optional[StrictStr] = Field(default=None, alias="adminTimeZone", json_schema_extra={"examples": ["example string"]})
-    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    company_name: StrictStr = Field(description=" (required)", alias="companyName", json_schema_extra={"examples": ["example string"]})
-    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit", json_schema_extra={"examples": [123]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    account_type: StrictStr = Field(description=" (required)", alias="accountType")
+    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail")
+    admin_first_name: Optional[StrictStr] = Field(default=None, alias="adminFirstName")
+    admin_last_name: Optional[StrictStr] = Field(default=None, alias="adminLastName")
+    admin_time_zone: Optional[StrictStr] = Field(default=None, alias="adminTimeZone")
+    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider")
+    company_name: StrictStr = Field(description=" (required)", alias="companyName")
+    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit")
+    description: Optional[StrictStr] = None
     enterprise_contract: CommonBillingContract = Field(alias="enterpriseContract")
-    logo: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId", json_schema_extra={"examples": ["example string"]})
-    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo", json_schema_extra={"examples": ["example string"]})
+    logo: Optional[StrictStr] = None
+    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId")
+    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo")
     __properties: ClassVar[List[str]] = ["accountType", "adminEmail", "adminFirstName", "adminLastName", "adminTimeZone", "cloudProvider", "companyName", "creditLimit", "description", "enterpriseContract", "logo", "marketplaceId", "smallLogo"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class V1EnterprisesPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

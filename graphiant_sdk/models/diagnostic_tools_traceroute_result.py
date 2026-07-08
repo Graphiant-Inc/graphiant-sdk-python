@@ -24,24 +24,22 @@ from graphiant_sdk.models.diagnostic_tools_hop_info import DiagnosticToolsHopInf
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsTracerouteResult(BaseModel):
     """
     DiagnosticToolsTracerouteResult
     """ # noqa: E501
     hops: Optional[List[DiagnosticToolsHopInfo]] = None
-    max_latency: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="time in milliseconds (required)", alias="maxLatency", json_schema_extra={"examples": [10]})
-    max_latency_host: Optional[StrictStr] = Field(default=None, description="IPv4 or IPv6 address (required)", alias="maxLatencyHost", json_schema_extra={"examples": ["A123:3242::1111"]})
-    max_path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU (required)", alias="maxPathMtu", json_schema_extra={"examples": [1500]})
-    min_path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU (required)", alias="minPathMtu", json_schema_extra={"examples": [1000]})
-    result: Optional[StrictStr] = Field(default=None, description="Success or Failed (required)", json_schema_extra={"examples": ["Failed"]})
+    max_latency: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="time in milliseconds (required)", alias="maxLatency")
+    max_latency_host: Optional[StrictStr] = Field(default=None, description="IPv4 or IPv6 address (required)", alias="maxLatencyHost")
+    max_path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU (required)", alias="maxPathMtu")
+    min_path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU (required)", alias="minPathMtu")
+    result: Optional[StrictStr] = Field(default=None, description="Success or Failed (required)")
     stopped_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="stoppedTime")
     __properties: ClassVar[List[str]] = ["hops", "maxLatency", "maxLatencyHost", "maxPathMtu", "minPathMtu", "result", "stoppedTime"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class DiagnosticToolsTracerouteResult(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

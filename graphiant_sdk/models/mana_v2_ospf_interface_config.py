@@ -26,28 +26,26 @@ from graphiant_sdk.models.mana_v2_nullable_ospf_hello_interval_value import Mana
 from graphiant_sdk.models.mana_v2_nullable_ospf_retransmit_interval_value import ManaV2NullableOspfRetransmitIntervalValue
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2OspfInterfaceConfig(BaseModel):
     """
     ManaV2OspfInterfaceConfig
     """ # noqa: E501
     bfd: Optional[ManaV2NullableBfdInstanceConfig] = None
-    cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     dead_interval_value: Optional[ManaV2NullableOspfDeadIntervalValue] = Field(default=None, alias="deadIntervalValue")
-    dr_priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="drPriority", json_schema_extra={"examples": [123]})
+    dr_priority: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="drPriority")
     hello_interval_value: Optional[ManaV2NullableOspfHelloIntervalValue] = Field(default=None, alias="helloIntervalValue")
-    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    mtu_ignore: Optional[StrictBool] = Field(default=None, alias="mtuIgnore", json_schema_extra={"examples": [True]})
-    prefix_sid: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="prefixSid", json_schema_extra={"examples": [123]})
+    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName")
+    mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    mtu_ignore: Optional[StrictBool] = Field(default=None, alias="mtuIgnore")
+    prefix_sid: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="prefixSid")
     retransmit_interval_value: Optional[ManaV2NullableOspfRetransmitIntervalValue] = Field(default=None, alias="retransmitIntervalValue")
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["bfd", "cost", "deadIntervalValue", "drPriority", "helloIntervalValue", "interfaceName", "mtu", "mtuIgnore", "prefixSid", "retransmitIntervalValue", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class ManaV2OspfInterfaceConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

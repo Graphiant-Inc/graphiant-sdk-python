@@ -22,7 +22,6 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.common_page_info import CommonPageInfo
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DeviceRoutingBgpNbridGetResponse(BaseModel):
     """
@@ -30,12 +29,11 @@ class V1DeviceRoutingBgpNbridGetResponse(BaseModel):
     """ # noqa: E501
     nbrs: Optional[List[StrictStr]] = None
     page_info: Optional[CommonPageInfo] = Field(default=None, alias="pageInfo")
-    token: Optional[StrictStr] = Field(default=None, description="Reference to the resultset being queried, this should be sent by the service as part of a previous request and so can be opaque to the client.", json_schema_extra={"examples": ["xxxxxxxxx"]})
+    token: Optional[StrictStr] = Field(default=None, description="Reference to the resultset being queried, this should be sent by the service as part of a previous request and so can be opaque to the client.")
     __properties: ClassVar[List[str]] = ["nbrs", "pageInfo", "token"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1DeviceRoutingBgpNbridGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,24 +21,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RouteTagSummary(BaseModel):
     """
     ManaV2RouteTagSummary
     """ # noqa: E501
-    device_count: Optional[StrictInt] = Field(default=None, alias="deviceCount", json_schema_extra={"examples": [123]})
-    level_one: Optional[StrictInt] = Field(default=None, alias="levelOne", json_schema_extra={"examples": [1234567891011]})
-    level_one_tag: Optional[StrictStr] = Field(default=None, alias="levelOneTag", json_schema_extra={"examples": ["example string"]})
-    level_two: Optional[StrictInt] = Field(default=None, alias="levelTwo", json_schema_extra={"examples": [1234567891011]})
-    level_two_tag: Optional[StrictStr] = Field(default=None, alias="levelTwoTag", json_schema_extra={"examples": ["example string"]})
-    level_zero: Optional[StrictInt] = Field(default=None, alias="levelZero", json_schema_extra={"examples": [1234567891011]})
-    level_zero_tag: Optional[StrictStr] = Field(default=None, alias="levelZeroTag", json_schema_extra={"examples": ["example string"]})
+    device_count: Optional[StrictInt] = Field(default=None, alias="deviceCount")
+    level_one: Optional[StrictInt] = Field(default=None, alias="levelOne")
+    level_one_tag: Optional[StrictStr] = Field(default=None, alias="levelOneTag")
+    level_two: Optional[StrictInt] = Field(default=None, alias="levelTwo")
+    level_two_tag: Optional[StrictStr] = Field(default=None, alias="levelTwoTag")
+    level_zero: Optional[StrictInt] = Field(default=None, alias="levelZero")
+    level_zero_tag: Optional[StrictStr] = Field(default=None, alias="levelZeroTag")
     __properties: ClassVar[List[str]] = ["deviceCount", "levelOne", "levelOneTag", "levelTwo", "levelTwoTag", "levelZero", "levelZeroTag"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2RouteTagSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

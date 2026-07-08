@@ -22,21 +22,19 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class UpgradeYearlyRecurrence(BaseModel):
     """
     UpgradeYearlyRecurrence
     """ # noqa: E501
-    var_date: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Calendar day (1–31) for fixed month+date yearly recurrence.", alias="date", json_schema_extra={"examples": [1]})
-    month: Annotated[int, Field(strict=True, ge=0)] = Field(description="Month of year (1–12) for yearly recurrence. (required)", json_schema_extra={"examples": [3]})
-    ordinal: Optional[StrictStr] = Field(default=None, description="For nth-weekday-in-month yearly recurrence; use with weekday, or use month + date.", json_schema_extra={"examples": ["First"]})
-    weekday: Optional[StrictStr] = Field(default=None, description="Weekday paired with ordinal for yearly recurrence.", json_schema_extra={"examples": ["Wednesday"]})
+    var_date: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Calendar day (1–31) for fixed month+date yearly recurrence.", alias="date")
+    month: Annotated[int, Field(strict=True, ge=0)] = Field(description="Month of year (1–12) for yearly recurrence. (required)")
+    ordinal: Optional[StrictStr] = Field(default=None, description="For nth-weekday-in-month yearly recurrence; use with weekday, or use month + date.")
+    weekday: Optional[StrictStr] = Field(default=None, description="Weekday paired with ordinal for yearly recurrence.")
     __properties: ClassVar[List[str]] = ["date", "month", "ordinal", "weekday"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class UpgradeYearlyRecurrence(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

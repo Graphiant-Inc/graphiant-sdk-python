@@ -22,23 +22,21 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2QueueUtilization(BaseModel):
     """
     StatsmonV2QueueUtilization
     """ # noqa: E501
-    allocated_pct: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allocatedPct", json_schema_extra={"examples": [123]})
-    default_queue: Optional[StrictBool] = Field(default=None, alias="defaultQueue", json_schema_extra={"examples": [True]})
-    excess_weight: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="excessWeight", json_schema_extra={"examples": [123]})
-    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    utilization_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="utilizationKbps", json_schema_extra={"examples": [12.34]})
-    utilization_pct: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="utilizationPct", json_schema_extra={"examples": [12.34]})
+    allocated_pct: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="allocatedPct")
+    default_queue: Optional[StrictBool] = Field(default=None, alias="defaultQueue")
+    excess_weight: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="excessWeight")
+    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass")
+    utilization_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="utilizationKbps")
+    utilization_pct: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="utilizationPct")
     __properties: ClassVar[List[str]] = ["allocatedPct", "defaultQueue", "excessWeight", "slaClass", "utilizationKbps", "utilizationPct"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class StatsmonV2QueueUtilization(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

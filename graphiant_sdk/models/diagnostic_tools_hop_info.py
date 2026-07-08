@@ -23,21 +23,19 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.diagnostic_tools_hop_stats import DiagnosticToolsHopStats
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsHopInfo(BaseModel):
     """
     DiagnosticToolsHopInfo
     """ # noqa: E501
-    host_address: Optional[StrictStr] = Field(default=None, description="IPv4 or IPv6 address (required)", alias="hostAddress", json_schema_extra={"examples": ["1213:1::6451"]})
-    path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU for this host_address (required)", alias="pathMtu", json_schema_extra={"examples": [1500]})
-    round_trip_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="time in milli seconds (required)", alias="roundTripTime", json_schema_extra={"examples": [10]})
+    host_address: Optional[StrictStr] = Field(default=None, description="IPv4 or IPv6 address (required)", alias="hostAddress")
+    path_mtu: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Path MTU for this host_address (required)", alias="pathMtu")
+    round_trip_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="time in milli seconds (required)", alias="roundTripTime")
     stats: Optional[DiagnosticToolsHopStats] = None
     __properties: ClassVar[List[str]] = ["hostAddress", "pathMtu", "roundTripTime", "stats"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class DiagnosticToolsHopInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

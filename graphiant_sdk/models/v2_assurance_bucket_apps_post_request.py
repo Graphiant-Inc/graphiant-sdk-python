@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.assurance_time_window import AssuranceTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2AssuranceBucketAppsPostRequest(BaseModel):
     """
     V2AssuranceBucketAppsPostRequest
     """ # noqa: E501
-    bucket_id: Optional[StrictStr] = Field(default=None, alias="bucketId", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    exchange_service_id: Optional[StrictInt] = Field(default=None, alias="exchangeServiceId", json_schema_extra={"examples": [1234567891011]})
-    flex_algo_id: Optional[StrictInt] = Field(default=None, alias="flexAlgoId", json_schema_extra={"examples": [1234567891011]})
+    bucket_id: Optional[StrictStr] = Field(default=None, alias="bucketId")
+    exchange_service_id: Optional[StrictInt] = Field(default=None, alias="exchangeServiceId")
+    flex_algo_id: Optional[StrictInt] = Field(default=None, alias="flexAlgoId")
     time_window: Optional[AssuranceTimeWindow] = Field(default=None, alias="timeWindow")
-    unclassified_only: Optional[StrictBool] = Field(default=None, alias="unclassifiedOnly", json_schema_extra={"examples": [True]})
+    unclassified_only: Optional[StrictBool] = Field(default=None, alias="unclassifiedOnly")
     __properties: ClassVar[List[str]] = ["bucketId", "exchangeServiceId", "flexAlgoId", "timeWindow", "unclassifiedOnly"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V2AssuranceBucketAppsPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

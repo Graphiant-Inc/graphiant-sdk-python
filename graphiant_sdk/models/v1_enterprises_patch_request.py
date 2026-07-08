@@ -23,31 +23,29 @@ from graphiant_sdk.models.common_billing_contract import CommonBillingContract
 from graphiant_sdk.models.v1_enterprises_patch_request_token_expiry import V1EnterprisesPatchRequestTokenExpiry
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1EnterprisesPatchRequest(BaseModel):
     """
     V1EnterprisesPatchRequest
     """ # noqa: E501
-    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
-    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    company_name: Optional[StrictStr] = Field(default=None, alias="companyName", json_schema_extra={"examples": ["example string"]})
-    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit", json_schema_extra={"examples": [123]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail")
+    cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider")
+    company_name: Optional[StrictStr] = Field(default=None, alias="companyName")
+    credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit")
+    description: Optional[StrictStr] = None
     enterprise_contract: Optional[CommonBillingContract] = Field(default=None, alias="enterpriseContract")
-    enterprise_id: StrictInt = Field(description=" (required)", alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
-    impersonation_enabled: Optional[StrictBool] = Field(default=None, alias="impersonationEnabled", json_schema_extra={"examples": [True]})
-    logo: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId", json_schema_extra={"examples": ["example string"]})
-    portal_banner: Optional[StrictStr] = Field(default=None, alias="portalBanner", json_schema_extra={"examples": ["example string"]})
-    proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId", json_schema_extra={"examples": [1234567891011]})
-    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo", json_schema_extra={"examples": ["example string"]})
+    enterprise_id: StrictInt = Field(description=" (required)", alias="enterpriseId")
+    impersonation_enabled: Optional[StrictBool] = Field(default=None, alias="impersonationEnabled")
+    logo: Optional[StrictStr] = None
+    marketplace_id: Optional[StrictStr] = Field(default=None, alias="marketplaceId")
+    portal_banner: Optional[StrictStr] = Field(default=None, alias="portalBanner")
+    proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId")
+    small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo")
     token_expiry: Optional[V1EnterprisesPatchRequestTokenExpiry] = Field(default=None, alias="tokenExpiry")
     __properties: ClassVar[List[str]] = ["adminEmail", "cloudProvider", "companyName", "creditLimit", "description", "enterpriseContract", "enterpriseId", "impersonationEnabled", "logo", "marketplaceId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class V1EnterprisesPatchRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

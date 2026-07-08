@@ -22,7 +22,6 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixConnectionMap(BaseModel):
     """
@@ -30,12 +29,11 @@ class IpfixConnectionMap(BaseModel):
     """ # noqa: E501
     connections: Optional[Dict[str, Annotated[int, Field(strict=True, ge=0)]]] = None
     connections_v2: Optional[Dict[str, Union[StrictFloat, StrictInt]]] = Field(default=None, alias="connectionsV2")
-    name: Optional[StrictStr] = Field(default=None, description="the name of the connection", json_schema_extra={"examples": ["Site 1"]})
+    name: Optional[StrictStr] = Field(default=None, description="the name of the connection")
     __properties: ClassVar[List[str]] = ["connections", "connectionsV2", "name"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class IpfixConnectionMap(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

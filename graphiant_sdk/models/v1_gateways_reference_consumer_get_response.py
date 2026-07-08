@@ -20,20 +20,20 @@ import json
 from pydantic import BaseModel, ConfigDict, Field
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_i_psec_gateway_details import ManaV2IPsecGatewayDetails
+from graphiant_sdk.models.mana_v2_i_psec_gateway_peers_config import ManaV2IPsecGatewayPeersConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GatewaysReferenceConsumerGetResponse(BaseModel):
     """
     V1GatewaysReferenceConsumerGetResponse
     """ # noqa: E501
     ipsec_gateway_details: Optional[ManaV2IPsecGatewayDetails] = Field(default=None, alias="ipsecGatewayDetails")
-    __properties: ClassVar[List[str]] = ["ipsecGatewayDetails"]
+    ipsec_gateway_peers: Optional[ManaV2IPsecGatewayPeersConfig] = Field(default=None, alias="ipsecGatewayPeers")
+    __properties: ClassVar[List[str]] = ["ipsecGatewayDetails", "ipsecGatewayPeers"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +45,8 @@ class V1GatewaysReferenceConsumerGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
@@ -73,6 +74,9 @@ class V1GatewaysReferenceConsumerGetResponse(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of ipsec_gateway_details
         if self.ipsec_gateway_details:
             _dict['ipsecGatewayDetails'] = self.ipsec_gateway_details.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of ipsec_gateway_peers
+        if self.ipsec_gateway_peers:
+            _dict['ipsecGatewayPeers'] = self.ipsec_gateway_peers.to_dict()
         return _dict
 
     @classmethod
@@ -85,7 +89,8 @@ class V1GatewaysReferenceConsumerGetResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "ipsecGatewayDetails": ManaV2IPsecGatewayDetails.from_dict(obj["ipsecGatewayDetails"]) if obj.get("ipsecGatewayDetails") is not None else None
+            "ipsecGatewayDetails": ManaV2IPsecGatewayDetails.from_dict(obj["ipsecGatewayDetails"]) if obj.get("ipsecGatewayDetails") is not None else None,
+            "ipsecGatewayPeers": ManaV2IPsecGatewayPeersConfig.from_dict(obj["ipsecGatewayPeers"]) if obj.get("ipsecGatewayPeers") is not None else None
         })
         return _obj
 

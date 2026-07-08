@@ -23,24 +23,22 @@ from graphiant_sdk.models.alertservice_integration_details import AlertserviceIn
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceCreateIntegrationBody(BaseModel):
     """
     AlertserviceCreateIntegrationBody
     """ # noqa: E501
-    created_by: Optional[StrictStr] = Field(default=None, description="ID of the user who created the integration", alias="createdBy", json_schema_extra={"examples": ["example string"]})
+    created_by: Optional[StrictStr] = Field(default=None, description="ID of the user who created the integration", alias="createdBy")
     created_on: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdOn")
     details: Optional[AlertserviceIntegrationDetails] = None
-    enterprise: StrictInt = Field(description="ID of the enterprise (required)", json_schema_extra={"examples": [1234567891011]})
-    integration_type: StrictStr = Field(description="Type of integration (required)", alias="integrationType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    is_active: Optional[StrictBool] = Field(default=None, description="Indicates whether the integration is active", alias="isActive", json_schema_extra={"examples": [True]})
-    nick_name: StrictStr = Field(description="Name of the integration (required)", alias="nickName", json_schema_extra={"examples": ["example string"]})
+    enterprise: StrictInt = Field(description="ID of the enterprise (required)")
+    integration_type: StrictStr = Field(description="Type of integration (required)", alias="integrationType")
+    is_active: Optional[StrictBool] = Field(default=None, description="Indicates whether the integration is active", alias="isActive")
+    nick_name: StrictStr = Field(description="Name of the integration (required)", alias="nickName")
     __properties: ClassVar[List[str]] = ["createdBy", "createdOn", "details", "enterprise", "integrationType", "isActive", "nickName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class AlertserviceCreateIntegrationBody(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,26 +23,24 @@ from graphiant_sdk.models.common_permissions import CommonPermissions
 from graphiant_sdk.models.iam_enterprise_permissions import IamEnterprisePermissions
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IamGroup(BaseModel):
     """
     IamGroup
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
     enterprise_ids: Optional[List[StrictInt]] = Field(default=None, alias="enterpriseIds")
     enterprise_permissions: Optional[Dict[str, IamEnterprisePermissions]] = Field(default=None, alias="enterprisePermissions")
-    group_type: Optional[StrictStr] = Field(default=None, alias="groupType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    id: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    group_type: Optional[StrictStr] = Field(default=None, alias="groupType")
+    id: Optional[StrictStr] = None
+    name: Optional[StrictStr] = None
     permissions: Optional[CommonPermissions] = None
-    time_window_end: Optional[StrictInt] = Field(default=None, alias="timeWindowEnd", json_schema_extra={"examples": [1234567891011]})
-    time_window_start: Optional[StrictInt] = Field(default=None, alias="timeWindowStart", json_schema_extra={"examples": [1234567891011]})
+    time_window_end: Optional[StrictInt] = Field(default=None, alias="timeWindowEnd")
+    time_window_start: Optional[StrictInt] = Field(default=None, alias="timeWindowStart")
     __properties: ClassVar[List[str]] = ["description", "enterpriseIds", "enterprisePermissions", "groupType", "id", "name", "permissions", "timeWindowEnd", "timeWindowStart"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class IamGroup(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

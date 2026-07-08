@@ -21,26 +21,24 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceRuleRecord(BaseModel):
     """
     AlertserviceRuleRecord
     """ # noqa: E501
-    alarm_clear: Optional[StrictStr] = Field(default=None, description="Condition for triggering recovery", alias="alarmClear", json_schema_extra={"examples": ["example string"]})
-    alarm_set: Optional[StrictStr] = Field(default=None, description="Condition for triggering alert (required)", alias="alarmSet", json_schema_extra={"examples": ["example string"]})
-    allow_count: Optional[StrictInt] = Field(default=None, description="Number of entities  allowed/excluded (required)", alias="allowCount", json_schema_extra={"examples": [1234567891011]})
-    category: Optional[StrictStr] = Field(default=None, description="Category of the rule (required)", json_schema_extra={"examples": ["example string"]})
-    enabled: Optional[StrictBool] = Field(default=None, description="Whether the rule is enabled or disabled (required)", json_schema_extra={"examples": [True]})
-    plane: Optional[StrictStr] = Field(default=None, description="Plane of the rule (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    priority: Optional[StrictStr] = Field(default=None, description="Priority of taking action against the rule (required)", json_schema_extra={"examples": ["10000000"]})
-    rule_id: Optional[StrictStr] = Field(default=None, description="Unique id of the rule (required)", alias="ruleId", json_schema_extra={"examples": ["example string"]})
-    rule_name: Optional[StrictStr] = Field(default=None, description="Name of the rule (required)", alias="ruleName", json_schema_extra={"examples": ["example string"]})
+    alarm_clear: Optional[StrictStr] = Field(default=None, description="Condition for triggering recovery", alias="alarmClear")
+    alarm_set: Optional[StrictStr] = Field(default=None, description="Condition for triggering alert (required)", alias="alarmSet")
+    allow_count: Optional[StrictInt] = Field(default=None, description="Number of entities  allowed/excluded (required)", alias="allowCount")
+    category: Optional[StrictStr] = Field(default=None, description="Category of the rule (required)")
+    enabled: Optional[StrictBool] = Field(default=None, description="Whether the rule is enabled or disabled (required)")
+    plane: Optional[StrictStr] = Field(default=None, description="Plane of the rule (required)")
+    priority: Optional[StrictStr] = Field(default=None, description="Priority of taking action against the rule (required)")
+    rule_id: Optional[StrictStr] = Field(default=None, description="Unique id of the rule (required)", alias="ruleId")
+    rule_name: Optional[StrictStr] = Field(default=None, description="Name of the rule (required)", alias="ruleName")
     __properties: ClassVar[List[str]] = ["alarmClear", "alarmSet", "allowCount", "category", "enabled", "plane", "priority", "ruleId", "ruleName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class AlertserviceRuleRecord(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

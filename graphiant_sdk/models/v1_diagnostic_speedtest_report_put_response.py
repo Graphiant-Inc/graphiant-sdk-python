@@ -21,19 +21,17 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBytes, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticSpeedtestReportPutResponse(BaseModel):
     """
     V1DiagnosticSpeedtestReportPutResponse
     """ # noqa: E501
-    report: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The generated report", json_schema_extra={"examples": ["WzM3LDgwLDY4LDcwLDQ1LDQ5LDQ2LDUyLDEwLDM3LDIxMSwyMzUsMjMzLDIyNSwxMCw0OSwzMiw0OCwzMiwxMTEsOTgsMTA2LDEwLDYwLDYwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDExMSwxMTQsMzIsNDAsNjcsMTA0LDExNCwxMTEsMTA5LDEwNSwxMTcsMTA5LDQxLDEwLDQ3LDgwLDExNCwxMTEsMTAwLDExNyw5OSwxMDEsMTE0LDMyLDQwLDgzLDEwNywxMDUsOTcsNDcsODAsNjgsNzAsMzIsMTA5LDU3LDU2LDQxLDEwLDQ3LDY3LDExNCwxMDEsOTcsMTE2LDEwNSwxMTEsMTEwLDY4LDk3LDExNiwxMDEsMzIsNDAsNjgsNTgsNTAsNDgsNTAsNTAsNDgsNTQsNDgsNTcsNDgsNTQsNTIsNDksNTAsNTUsNDMsNDgsNDgsMzksNDgsNDgsMzksNDEsMTAsNDcsNzcsMTExLDEwMCw2OCw5NywxMTYsMTAxLDMyLDQwLDY4LDU4LDUwLDQ4LDUwLDUwLDQ4LDU0LDQ4LDU3LDQ4LDU0LDUyLDQ5LDUwLDU1LDQzLDQ4LDQ4LDM5LDQ4LDQ4XQ=="]})
-    report_id: Optional[StrictInt] = Field(default=None, description="8 bytes (base32 encoded) identifier for the report", alias="reportId", json_schema_extra={"examples": [10]})
+    report: Optional[Union[StrictBytes, StrictStr]] = Field(default=None, description="The generated report")
+    report_id: Optional[StrictInt] = Field(default=None, description="8 bytes (base32 encoded) identifier for the report", alias="reportId")
     __properties: ClassVar[List[str]] = ["report", "reportId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -45,7 +43,8 @@ class V1DiagnosticSpeedtestReportPutResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

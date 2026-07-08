@@ -21,22 +21,20 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, Strict
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GlobalLanSegmentsVrfIdDevicesGetResponseEntry(BaseModel):
     """
     V1GlobalLanSegmentsVrfIdDevicesGetResponseEntry
     """ # noqa: E501
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    host_name: Optional[StrictStr] = Field(default=None, alias="hostName", json_schema_extra={"examples": ["example string"]})
-    num_interfaces: Optional[StrictInt] = Field(default=None, alias="numInterfaces", json_schema_extra={"examples": [123]})
-    site: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    status: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    host_name: Optional[StrictStr] = Field(default=None, alias="hostName")
+    num_interfaces: Optional[StrictInt] = Field(default=None, alias="numInterfaces")
+    site: Optional[StrictInt] = None
+    status: Optional[StrictBool] = None
     __properties: ClassVar[List[str]] = ["deviceId", "hostName", "numInterfaces", "site", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1GlobalLanSegmentsVrfIdDevicesGetResponseEntry(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

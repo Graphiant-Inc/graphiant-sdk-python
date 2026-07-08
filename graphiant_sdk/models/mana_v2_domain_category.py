@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2DomainCategory(BaseModel):
     """
     ManaV2DomainCategory
     """ # noqa: E501
-    description: Optional[StrictStr] = Field(default=None, description="Optional longer text describing what sites or traffic belong in this category.", json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, description="Stable identifier for this domain category in the content-filter catalog.", json_schema_extra={"examples": [1234567891011]})
-    name: Optional[StrictStr] = Field(default=None, description="Human-readable name of the domain category.", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, description="Optional category classifier or grouping hint from the catalog (e.g. vendor-specific type).", json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = Field(default=None, description="Optional longer text describing what sites or traffic belong in this category.")
+    id: Optional[StrictInt] = Field(default=None, description="Stable identifier for this domain category in the content-filter catalog.")
+    name: Optional[StrictStr] = Field(default=None, description="Human-readable name of the domain category.")
+    type: Optional[StrictStr] = Field(default=None, description="Optional category classifier or grouping hint from the catalog (e.g. vendor-specific type).")
     __properties: ClassVar[List[str]] = ["description", "id", "name", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class ManaV2DomainCategory(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

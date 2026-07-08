@@ -22,42 +22,40 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2CircuitSummary(BaseModel):
     """
     StatsmonV2CircuitSummary
     """ # noqa: E501
-    average_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average delay for this circuit in this time duration", alias="averageDelay", json_schema_extra={"examples": [12.34]})
-    average_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average jitter for this circuit in this time duration", alias="averageJitter", json_schema_extra={"examples": [12.34]})
-    average_link_down_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageLinkDownSpeedKbps", json_schema_extra={"examples": [12.34]})
-    average_link_up_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageLinkUpSpeedKbps", json_schema_extra={"examples": [12.34]})
-    average_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average loss for this circuit in this time duration", alias="averageLoss", json_schema_extra={"examples": [12.34]})
-    avg_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant avg score/QoE based on mos for the time duration", alias="avgMos", json_schema_extra={"examples": [12.34]})
-    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName", json_schema_extra={"examples": ["example string"]})
-    config_link_down_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkDownSpeedMbps", json_schema_extra={"examples": [123]})
-    config_link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkUpSpeedMbps", json_schema_extra={"examples": [123]})
-    connection_status: Optional[StrictStr] = Field(default=None, alias="connectionStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    current_link_down_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentLinkDownSpeedKbps", json_schema_extra={"examples": [12.34]})
-    current_link_up_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentLinkUpSpeedKbps", json_schema_extra={"examples": [12.34]})
-    delay: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Delay in nano seconds", json_schema_extra={"examples": [12345678910]})
-    jitter: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Jitter in nano seconds", json_schema_extra={"examples": [12345678910]})
-    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort", json_schema_extra={"examples": [True]})
-    loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Loss in percentage", json_schema_extra={"examples": [12.34]})
-    max_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max delay for this circuit in this time duration", alias="maxDelay", json_schema_extra={"examples": [12.34]})
-    max_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max jitter for this circuit in this time duration", alias="maxJitter", json_schema_extra={"examples": [12.34]})
-    max_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max loss for this circuit in this time duration", alias="maxLoss", json_schema_extra={"examples": [12.34]})
-    max_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant max score/QoE based on mos for the time duration", alias="maxMos", json_schema_extra={"examples": [12.34]})
-    min_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min delay for this circuit in this time duration", alias="minDelay", json_schema_extra={"examples": [12.34]})
-    min_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min jitter for this circuit in this time duration", alias="minJitter", json_schema_extra={"examples": [12.34]})
-    min_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min loss for this circuit in this time duration", alias="minLoss", json_schema_extra={"examples": [12.34]})
-    min_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant min score/QoE based on mos for the time duration", alias="minMos", json_schema_extra={"examples": [12.34]})
-    mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant score/QoE based on mos", json_schema_extra={"examples": [12.34]})
+    average_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average delay for this circuit in this time duration", alias="averageDelay")
+    average_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average jitter for this circuit in this time duration", alias="averageJitter")
+    average_link_down_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageLinkDownSpeedKbps")
+    average_link_up_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageLinkUpSpeedKbps")
+    average_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Average loss for this circuit in this time duration", alias="averageLoss")
+    avg_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant avg score/QoE based on mos for the time duration", alias="avgMos")
+    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName")
+    config_link_down_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkDownSpeedMbps")
+    config_link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkUpSpeedMbps")
+    connection_status: Optional[StrictStr] = Field(default=None, alias="connectionStatus")
+    current_link_down_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentLinkDownSpeedKbps")
+    current_link_up_speed_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentLinkUpSpeedKbps")
+    delay: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Delay in nano seconds")
+    jitter: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Jitter in nano seconds")
+    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort")
+    loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Loss in percentage")
+    max_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max delay for this circuit in this time duration", alias="maxDelay")
+    max_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max jitter for this circuit in this time duration", alias="maxJitter")
+    max_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max loss for this circuit in this time duration", alias="maxLoss")
+    max_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant max score/QoE based on mos for the time duration", alias="maxMos")
+    min_delay: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min delay for this circuit in this time duration", alias="minDelay")
+    min_jitter: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min jitter for this circuit in this time duration", alias="minJitter")
+    min_loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min loss for this circuit in this time duration", alias="minLoss")
+    min_mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant min score/QoE based on mos for the time duration", alias="minMos")
+    mos: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Graphiant score/QoE based on mos")
     __properties: ClassVar[List[str]] = ["averageDelay", "averageJitter", "averageLinkDownSpeedKbps", "averageLinkUpSpeedKbps", "averageLoss", "avgMos", "circuitName", "configLinkDownSpeedMbps", "configLinkUpSpeedMbps", "connectionStatus", "currentLinkDownSpeedKbps", "currentLinkUpSpeedKbps", "delay", "jitter", "lastResort", "loss", "maxDelay", "maxJitter", "maxLoss", "maxMos", "minDelay", "minJitter", "minLoss", "minMos", "mos"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -69,7 +67,8 @@ class StatsmonV2CircuitSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

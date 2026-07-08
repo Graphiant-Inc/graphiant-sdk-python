@@ -23,24 +23,22 @@ from graphiant_sdk.models.mana_v2_psk_configuration import ManaV2PskConfiguratio
 from graphiant_sdk.models.mana_v2_sak_configuration import ManaV2SakConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2InterfaceMaCsec(BaseModel):
     """
     ManaV2InterfaceMaCsec
     """ # noqa: E501
-    enabled: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    encryption_enforcement_mode: Optional[StrictStr] = Field(default=None, alias="encryptionEnforcementMode", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    key_server_priority: Optional[StrictInt] = Field(default=None, alias="keyServerPriority", json_schema_extra={"examples": [1234567891011]})
+    enabled: Optional[StrictBool] = None
+    encryption_enforcement_mode: Optional[StrictStr] = Field(default=None, alias="encryptionEnforcementMode")
+    key_server_priority: Optional[StrictInt] = Field(default=None, alias="keyServerPriority")
     psk_configurations: Optional[List[ManaV2PskConfiguration]] = Field(default=None, alias="pskConfigurations")
     sak_configurations: Optional[List[ManaV2SakConfiguration]] = Field(default=None, alias="sakConfigurations")
-    split_sak_config_by_lag_member: Optional[StrictBool] = Field(default=None, alias="splitSakConfigByLagMember", json_schema_extra={"examples": [True]})
-    transparent_vlan: Optional[StrictBool] = Field(default=None, alias="transparentVlan", json_schema_extra={"examples": [True]})
+    split_sak_config_by_lag_member: Optional[StrictBool] = Field(default=None, alias="splitSakConfigByLagMember")
+    transparent_vlan: Optional[StrictBool] = Field(default=None, alias="transparentVlan")
     __properties: ClassVar[List[str]] = ["enabled", "encryptionEnforcementMode", "keyServerPriority", "pskConfigurations", "sakConfigurations", "splitSakConfigByLagMember", "transparentVlan"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class ManaV2InterfaceMaCsec(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

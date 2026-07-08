@@ -23,20 +23,18 @@ from graphiant_sdk.models.common_billing_contract import CommonBillingContract
 from graphiant_sdk.models.mana_v2_managed_enterprise_contract_info import ManaV2ManagedEnterpriseContractInfo
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1MspManagedEnterpriseContractInfoGetResponse(BaseModel):
     """
     V1MspManagedEnterpriseContractInfoGetResponse
     """ # noqa: E501
     enterprises: Optional[List[ManaV2ManagedEnterpriseContractInfo]] = None
-    msp_consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="All credits consumed by the MSP over the entirety of its contracts", alias="mspConsumedCredits", json_schema_extra={"examples": [12.34]})
+    msp_consumed_credits: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="All credits consumed by the MSP over the entirety of its contracts", alias="mspConsumedCredits")
     msp_contract: Optional[CommonBillingContract] = Field(default=None, alias="mspContract")
     __properties: ClassVar[List[str]] = ["enterprises", "mspConsumedCredits", "mspContract"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1MspManagedEnterpriseContractInfoGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

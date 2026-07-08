@@ -24,22 +24,20 @@ from graphiant_sdk.models.auditmon_activity_details import AuditmonActivityDetai
 from graphiant_sdk.models.v1_activity_logs_post_response_activity_items import V1ActivityLogsPostResponseActivityItems
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ActivityLogsPostResponse(BaseModel):
     """
     V1ActivityLogsPostResponse
     """ # noqa: E501
-    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef", json_schema_extra={"examples": ["example string"]})
+    cursor_ref: Optional[StrictStr] = Field(default=None, alias="cursorRef")
     details: Optional[List[AuditmonActivityDetails]] = None
     filter_entities: Optional[Dict[str, V1ActivityLogsPostResponseActivityItems]] = Field(default=None, alias="filterEntities")
     filter_job_types: Optional[List[StrictStr]] = Field(default=None, alias="filterJobTypes")
-    total_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalLogs", json_schema_extra={"examples": [12345678910]})
+    total_logs: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="totalLogs")
     __properties: ClassVar[List[str]] = ["cursorRef", "details", "filterEntities", "filterJobTypes", "totalLogs"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class V1ActivityLogsPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

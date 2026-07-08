@@ -21,24 +21,22 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2RegionalAllocation(BaseModel):
     """
     ManaV2RegionalAllocation
     """ # noqa: E501
-    allocation_core: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for core network connections on this region", alias="allocationCore", json_schema_extra={"examples": [12.34]})
-    allocation_gw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for gateway connections on this region", alias="allocationGw", json_schema_extra={"examples": [12.34]})
-    allocation_internet: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for dia gateway internet access on this region. Must be 0, 10, or 100", alias="allocationInternet", json_schema_extra={"examples": [12.34]})
-    credit_core: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="creditCore", json_schema_extra={"examples": [12.34]})
-    credit_gw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="creditGw", json_schema_extra={"examples": [12.34]})
-    region_id: Optional[StrictInt] = Field(default=None, alias="regionId", json_schema_extra={"examples": [123]})
-    region_name: Optional[StrictStr] = Field(default=None, alias="regionName", json_schema_extra={"examples": ["example string"]})
+    allocation_core: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for core network connections on this region", alias="allocationCore")
+    allocation_gw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for gateway connections on this region", alias="allocationGw")
+    allocation_internet: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Gigabytes per second allowed for dia gateway internet access on this region. Must be 0, 10, or 100", alias="allocationInternet")
+    credit_core: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="creditCore")
+    credit_gw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="creditGw")
+    region_id: Optional[StrictInt] = Field(default=None, alias="regionId")
+    region_name: Optional[StrictStr] = Field(default=None, alias="regionName")
     __properties: ClassVar[List[str]] = ["allocationCore", "allocationGw", "allocationInternet", "creditCore", "creditGw", "regionId", "regionName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -50,7 +48,8 @@ class ManaV2RegionalAllocation(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

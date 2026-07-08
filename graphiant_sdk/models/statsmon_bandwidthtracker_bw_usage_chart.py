@@ -22,19 +22,17 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.statsmon_bandwidthtracker_bw_usage_chart_value import StatsmonBandwidthtrackerBwUsageChartValue
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBandwidthtrackerBwUsageChart(BaseModel):
     """
     StatsmonBandwidthtrackerBwUsageChart
     """ # noqa: E501
     bwusage_chart: Optional[List[StatsmonBandwidthtrackerBwUsageChartValue]] = Field(default=None, alias="bwusageChart")
-    percentile_usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentileUsageKbps", json_schema_extra={"examples": [123.45]})
+    percentile_usage_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="percentileUsageKbps")
     __properties: ClassVar[List[str]] = ["bwusageChart", "percentileUsageKbps"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class StatsmonBandwidthtrackerBwUsageChart(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

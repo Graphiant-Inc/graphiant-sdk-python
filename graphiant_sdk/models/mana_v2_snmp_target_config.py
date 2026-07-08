@@ -21,27 +21,25 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpTargetConfig(BaseModel):
     """
     ManaV2SnmpTargetConfig
     """ # noqa: E501
-    community: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment", json_schema_extra={"examples": ["example string"]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    notify_filter_profile: Optional[StrictStr] = Field(default=None, alias="notifyFilterProfile", json_schema_extra={"examples": ["example string"]})
-    notify_type: Optional[StrictStr] = Field(default=None, alias="notifyType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    source_ip: Optional[StrictStr] = Field(default=None, alias="sourceIp", json_schema_extra={"examples": ["example string"]})
-    target_ip: Optional[StrictStr] = Field(default=None, alias="targetIp", json_schema_extra={"examples": ["example string"]})
-    target_type: Optional[StrictStr] = Field(default=None, alias="targetType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    usm_security_level: Optional[StrictStr] = Field(default=None, alias="usmSecurityLevel", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    usm_user_name: Optional[StrictStr] = Field(default=None, alias="usmUserName", json_schema_extra={"examples": ["example string"]})
+    community: Optional[StrictStr] = None
+    lan_segment: Optional[StrictStr] = Field(default=None, alias="lanSegment")
+    name: Optional[StrictStr] = None
+    notify_filter_profile: Optional[StrictStr] = Field(default=None, alias="notifyFilterProfile")
+    notify_type: Optional[StrictStr] = Field(default=None, alias="notifyType")
+    source_ip: Optional[StrictStr] = Field(default=None, alias="sourceIp")
+    target_ip: Optional[StrictStr] = Field(default=None, alias="targetIp")
+    target_type: Optional[StrictStr] = Field(default=None, alias="targetType")
+    usm_security_level: Optional[StrictStr] = Field(default=None, alias="usmSecurityLevel")
+    usm_user_name: Optional[StrictStr] = Field(default=None, alias="usmUserName")
     __properties: ClassVar[List[str]] = ["community", "lanSegment", "name", "notifyFilterProfile", "notifyType", "sourceIp", "targetIp", "targetType", "usmSecurityLevel", "usmUserName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class ManaV2SnmpTargetConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

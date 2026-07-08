@@ -22,31 +22,29 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.statsmon_troubleshooting_region import StatsmonTroubleshootingRegion
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1BackboneHealthEtetSlaMatrixGetResponseSlaSummary(BaseModel):
     """
     V1BackboneHealthEtetSlaMatrixGetResponseSlaSummary
     """ # noqa: E501
-    delay_status: Optional[StrictStr] = Field(default=None, alias="delayStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    delay_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="delayValue", json_schema_extra={"examples": [12.34]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    device_name: Optional[StrictStr] = Field(default=None, alias="deviceName", json_schema_extra={"examples": ["example string"]})
-    jitter_status: Optional[StrictStr] = Field(default=None, alias="jitterStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    jitter_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="jitterValue", json_schema_extra={"examples": [12.34]})
-    loss_status: Optional[StrictStr] = Field(default=None, alias="lossStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    loss_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="lossValue", json_schema_extra={"examples": [12.34]})
-    mos_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="mosValue", json_schema_extra={"examples": [12.34]})
-    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId", json_schema_extra={"examples": [1234567891011]})
-    peer_device_name: Optional[StrictStr] = Field(default=None, alias="peerDeviceName", json_schema_extra={"examples": ["example string"]})
+    delay_status: Optional[StrictStr] = Field(default=None, alias="delayStatus")
+    delay_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="delayValue")
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    device_name: Optional[StrictStr] = Field(default=None, alias="deviceName")
+    jitter_status: Optional[StrictStr] = Field(default=None, alias="jitterStatus")
+    jitter_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="jitterValue")
+    loss_status: Optional[StrictStr] = Field(default=None, alias="lossStatus")
+    loss_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="lossValue")
+    mos_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="mosValue")
+    peer_device_id: Optional[StrictInt] = Field(default=None, alias="peerDeviceId")
+    peer_device_name: Optional[StrictStr] = Field(default=None, alias="peerDeviceName")
     peer_region: Optional[StatsmonTroubleshootingRegion] = Field(default=None, alias="peerRegion")
     region: Optional[StatsmonTroubleshootingRegion] = None
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    status: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["delayStatus", "delayValue", "deviceId", "deviceName", "jitterStatus", "jitterValue", "lossStatus", "lossValue", "mosValue", "peerDeviceId", "peerDeviceName", "peerRegion", "region", "status"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -58,7 +56,8 @@ class V1BackboneHealthEtetSlaMatrixGetResponseSlaSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthLoginTempPostRequest(BaseModel):
     """
     V1AuthLoginTempPostRequest
     """ # noqa: E501
-    email: StrictStr = Field(json_schema_extra={"examples": ["user@example.com"]})
-    temp_password: StrictStr = Field(alias="tempPassword", json_schema_extra={"examples": ["temp123456"]})
-    match_id: Union[StrictFloat, StrictInt] = Field(alias="matchId", json_schema_extra={"examples": [12345]})
+    email: StrictStr
+    temp_password: StrictStr = Field(alias="tempPassword")
+    match_id: Union[StrictFloat, StrictInt] = Field(alias="matchId")
     __properties: ClassVar[List[str]] = ["email", "tempPassword", "matchId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1AuthLoginTempPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

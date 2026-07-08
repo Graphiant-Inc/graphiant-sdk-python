@@ -24,20 +24,18 @@ from graphiant_sdk.models.statsmon_v2_circuit_utilization_selector import Statsm
 from graphiant_sdk.models.statsmon_v2_queue_utilization import StatsmonV2QueueUtilization
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V2MonitoringCircuitsUtilizationPostResponseData(BaseModel):
     """
     V2MonitoringCircuitsUtilizationPostResponseData
     """ # noqa: E501
-    config_link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkUpSpeedMbps", json_schema_extra={"examples": [123]})
+    config_link_up_speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="configLinkUpSpeedMbps")
     queue_utilization: Optional[List[StatsmonV2QueueUtilization]] = Field(default=None, alias="queueUtilization")
     selector: Optional[StatsmonV2CircuitUtilizationSelector] = None
     __properties: ClassVar[List[str]] = ["configLinkUpSpeedMbps", "queueUtilization", "selector"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V2MonitoringCircuitsUtilizationPostResponseData(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

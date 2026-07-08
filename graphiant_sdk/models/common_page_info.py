@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class CommonPageInfo(BaseModel):
     """
     CommonPageInfo
     """ # noqa: E501
-    current_page: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The page number we are currently on (required)", alias="currentPage", json_schema_extra={"examples": [1]})
-    end_cursor: Optional[StrictStr] = Field(default=None, description="Cursor pointing to the last record on the current page", alias="endCursor", json_schema_extra={"examples": ["xxxxxxy"]})
-    has_next_page: Optional[StrictBool] = Field(default=None, description="An indicator whether there is a page after this one in the resultset based on current position", alias="hasNextPage", json_schema_extra={"examples": [True]})
-    has_prev_page: Optional[StrictBool] = Field(default=None, description="An indicator whether there is a page before this one in the resultset based on current position", alias="hasPrevPage", json_schema_extra={"examples": [True]})
-    start_cursor: Optional[StrictStr] = Field(default=None, description="Cursor pointing to the first record on the current page", alias="startCursor", json_schema_extra={"examples": ["xxxxxx"]})
-    total_pages: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The number of pages in the complete resultset based on the current length of the page (required)", alias="totalPages", json_schema_extra={"examples": [4]})
-    total_records: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Describes the total number of records in the complete resultset (required)", alias="totalRecords", json_schema_extra={"examples": [400]})
+    current_page: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The page number we are currently on (required)", alias="currentPage")
+    end_cursor: Optional[StrictStr] = Field(default=None, description="Cursor pointing to the last record on the current page", alias="endCursor")
+    has_next_page: Optional[StrictBool] = Field(default=None, description="An indicator whether there is a page after this one in the resultset based on current position", alias="hasNextPage")
+    has_prev_page: Optional[StrictBool] = Field(default=None, description="An indicator whether there is a page before this one in the resultset based on current position", alias="hasPrevPage")
+    start_cursor: Optional[StrictStr] = Field(default=None, description="Cursor pointing to the first record on the current page", alias="startCursor")
+    total_pages: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="The number of pages in the complete resultset based on the current length of the page (required)", alias="totalPages")
+    total_records: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Describes the total number of records in the complete resultset (required)", alias="totalRecords")
     __properties: ClassVar[List[str]] = ["currentPage", "endCursor", "hasNextPage", "hasPrevPage", "startCursor", "totalPages", "totalRecords"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class CommonPageInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

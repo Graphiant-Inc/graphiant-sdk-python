@@ -29,45 +29,43 @@ from graphiant_sdk.models.mana_v2_nullable_usm_remote_user_config_value import M
 from graphiant_sdk.models.mana_v2_nullable_vacm_group_value import ManaV2NullableVacmGroupValue
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpConfig(BaseModel):
     """
     ManaV2SnmpConfig
     """ # noqa: E501
     communities: Optional[Dict[str, ManaV2NullableSnmpCommunityConfigValue]] = None
-    engine_authen_traps: Optional[StrictBool] = Field(default=None, alias="engineAuthenTraps", json_schema_extra={"examples": [True]})
-    engine_enabled: Optional[StrictBool] = Field(default=None, alias="engineEnabled", json_schema_extra={"examples": [True]})
+    engine_authen_traps: Optional[StrictBool] = Field(default=None, alias="engineAuthenTraps")
+    engine_enabled: Optional[StrictBool] = Field(default=None, alias="engineEnabled")
     engine_endpoints: Optional[Dict[str, ManaV2NullableSnmpEngineEndpointConfigValue]] = Field(default=None, alias="engineEndpoints")
-    engine_high_cpu_traps: Optional[StrictBool] = Field(default=None, alias="engineHighCpuTraps", json_schema_extra={"examples": [True]})
-    engine_high_memory_traps: Optional[StrictBool] = Field(default=None, alias="engineHighMemoryTraps", json_schema_extra={"examples": [True]})
-    engine_id_admin_octets: Optional[StrictStr] = Field(default=None, alias="engineIdAdminOctets", json_schema_extra={"examples": ["example string"]})
-    engine_id_admin_text: Optional[StrictStr] = Field(default=None, alias="engineIdAdminText", json_schema_extra={"examples": ["example string"]})
-    engine_id_ipv4: Optional[StrictStr] = Field(default=None, alias="engineIdIpv4", json_schema_extra={"examples": ["example string"]})
-    engine_id_ipv6: Optional[StrictStr] = Field(default=None, alias="engineIdIpv6", json_schema_extra={"examples": ["example string"]})
-    engine_id_mac: Optional[StrictStr] = Field(default=None, alias="engineIdMac", json_schema_extra={"examples": ["example string"]})
-    engine_id_raw: Optional[StrictStr] = Field(default=None, alias="engineIdRaw", json_schema_extra={"examples": ["example string"]})
-    engine_local_acess_v4: Optional[StrictBool] = Field(default=None, alias="engineLocalAcessV4", json_schema_extra={"examples": [True]})
-    engine_local_acess_v6: Optional[StrictBool] = Field(default=None, alias="engineLocalAcessV6", json_schema_extra={"examples": [True]})
-    engine_user_hints: Optional[StrictBool] = Field(default=None, alias="engineUserHints", json_schema_extra={"examples": [True]})
-    engine_user_validation: Optional[StrictBool] = Field(default=None, alias="engineUserValidation", json_schema_extra={"examples": [True]})
-    global_id: Optional[StrictInt] = Field(default=None, alias="globalId", json_schema_extra={"examples": [1234567891011]})
-    is_global_sync: Optional[StrictBool] = Field(default=None, alias="isGlobalSync", json_schema_extra={"examples": [True]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    engine_high_cpu_traps: Optional[StrictBool] = Field(default=None, alias="engineHighCpuTraps")
+    engine_high_memory_traps: Optional[StrictBool] = Field(default=None, alias="engineHighMemoryTraps")
+    engine_id_admin_octets: Optional[StrictStr] = Field(default=None, alias="engineIdAdminOctets")
+    engine_id_admin_text: Optional[StrictStr] = Field(default=None, alias="engineIdAdminText")
+    engine_id_ipv4: Optional[StrictStr] = Field(default=None, alias="engineIdIpv4")
+    engine_id_ipv6: Optional[StrictStr] = Field(default=None, alias="engineIdIpv6")
+    engine_id_mac: Optional[StrictStr] = Field(default=None, alias="engineIdMac")
+    engine_id_raw: Optional[StrictStr] = Field(default=None, alias="engineIdRaw")
+    engine_local_acess_v4: Optional[StrictBool] = Field(default=None, alias="engineLocalAcessV4")
+    engine_local_acess_v6: Optional[StrictBool] = Field(default=None, alias="engineLocalAcessV6")
+    engine_user_hints: Optional[StrictBool] = Field(default=None, alias="engineUserHints")
+    engine_user_validation: Optional[StrictBool] = Field(default=None, alias="engineUserValidation")
+    global_id: Optional[StrictInt] = Field(default=None, alias="globalId")
+    is_global_sync: Optional[StrictBool] = Field(default=None, alias="isGlobalSync")
+    name: Optional[StrictStr] = None
     notify_filter_profiles: Optional[Dict[str, ManaV2NullableSnmpNotifyFilterProfileConfigValue]] = Field(default=None, alias="notifyFilterProfiles")
-    snmp_version: Optional[StrictStr] = Field(default=None, alias="snmpVersion", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    snmp_version: Optional[StrictStr] = Field(default=None, alias="snmpVersion")
     targets: Optional[Dict[str, ManaV2NullableSnmpTargetConfigValue]] = None
     usm_local_users: Optional[Dict[str, ManaV2NullableUsmLocalUserConfigValue]] = Field(default=None, alias="usmLocalUsers")
     usm_remote_users: Optional[Dict[str, ManaV2NullableUsmRemoteUserConfigValue]] = Field(default=None, alias="usmRemoteUsers")
-    v2c_enabled: Optional[StrictBool] = Field(default=None, alias="v2cEnabled", json_schema_extra={"examples": [True]})
-    v3_enabled: Optional[StrictBool] = Field(default=None, alias="v3Enabled", json_schema_extra={"examples": [True]})
+    v2c_enabled: Optional[StrictBool] = Field(default=None, alias="v2cEnabled")
+    v3_enabled: Optional[StrictBool] = Field(default=None, alias="v3Enabled")
     vacm_groups: Optional[Dict[str, ManaV2NullableVacmGroupValue]] = Field(default=None, alias="vacmGroups")
     vacm_views: Optional[Dict[str, ManaV2NullableSnmpVacmViewValue]] = Field(default=None, alias="vacmViews")
     __properties: ClassVar[List[str]] = ["communities", "engineAuthenTraps", "engineEnabled", "engineEndpoints", "engineHighCpuTraps", "engineHighMemoryTraps", "engineIdAdminOctets", "engineIdAdminText", "engineIdIpv4", "engineIdIpv6", "engineIdMac", "engineIdRaw", "engineLocalAcessV4", "engineLocalAcessV6", "engineUserHints", "engineUserValidation", "globalId", "isGlobalSync", "name", "notifyFilterProfiles", "snmpVersion", "targets", "usmLocalUsers", "usmRemoteUsers", "v2cEnabled", "v3Enabled", "vacmGroups", "vacmViews"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -79,7 +77,8 @@ class ManaV2SnmpConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

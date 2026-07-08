@@ -26,28 +26,26 @@ from graphiant_sdk.models.routing_ospf_summary_lsa import RoutingOspfSummaryLsa
 from graphiant_sdk.models.routing_ospfas_external_lsa import RoutingOspfasExternalLsa
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingOspflsa(BaseModel):
     """
     RoutingOspflsa
     """ # noqa: E501
-    advertising_router: Optional[StrictStr] = Field(default=None, description="IP address (required)", alias="advertisingRouter", json_schema_extra={"examples": ["172.121.12.34"]})
-    age: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="How old is the LSA (required)", json_schema_extra={"examples": [3242342]})
+    advertising_router: Optional[StrictStr] = Field(default=None, description="IP address (required)", alias="advertisingRouter")
+    age: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="How old is the LSA (required)")
     asexternal_lsa: Optional[RoutingOspfasExternalLsa] = Field(default=None, alias="asexternalLsa")
-    checksum: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="LSA Checksum (required)", json_schema_extra={"examples": [2343232]})
-    length: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="LSA length (required)", json_schema_extra={"examples": [123132]})
-    link_id: Optional[StrictStr] = Field(default=None, description="IP address of link on peer (required)", alias="linkId", json_schema_extra={"examples": ["143.12.1.5"]})
+    checksum: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="LSA Checksum (required)")
+    length: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="LSA length (required)")
+    link_id: Optional[StrictStr] = Field(default=None, description="IP address of link on peer (required)", alias="linkId")
     network_lsa: Optional[RoutingOspfNetworkLsa] = Field(default=None, alias="networkLsa")
     router_lsa: Optional[RoutingOspfRouterLsa] = Field(default=None, alias="routerLsa")
-    sequence_number: Optional[StrictStr] = Field(default=None, description="LSA sequence number (required)", alias="sequenceNumber", json_schema_extra={"examples": ["0x80000001"]})
+    sequence_number: Optional[StrictStr] = Field(default=None, description="LSA sequence number (required)", alias="sequenceNumber")
     summary_lsa: Optional[RoutingOspfSummaryLsa] = Field(default=None, alias="summaryLsa")
-    type: Optional[StrictStr] = Field(default=None, description="Type of LSA (required)", json_schema_extra={"examples": ["Router"]})
+    type: Optional[StrictStr] = Field(default=None, description="Type of LSA (required)")
     __properties: ClassVar[List[str]] = ["advertisingRouter", "age", "asexternalLsa", "checksum", "length", "linkId", "networkLsa", "routerLsa", "sequenceNumber", "summaryLsa", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class RoutingOspflsa(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DevicesOauthPostResponse(BaseModel):
     """
     V1DevicesOauthPostResponse
     """ # noqa: E501
-    access_token: Optional[StrictStr] = Field(default=None, description="OAuth access token", json_schema_extra={"examples": ["access-token-12345"]})
-    expires_in: Optional[StrictInt] = Field(default=None, description="Token expiration time in seconds", json_schema_extra={"examples": [3600]})
-    token_type: Optional[StrictStr] = Field(default=None, description="Token type", json_schema_extra={"examples": ["Bearer"]})
+    access_token: Optional[StrictStr] = Field(default=None, description="OAuth access token")
+    expires_in: Optional[StrictInt] = Field(default=None, description="Token expiration time in seconds")
+    token_type: Optional[StrictStr] = Field(default=None, description="Token type")
     __properties: ClassVar[List[str]] = ["access_token", "expires_in", "token_type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class V1DevicesOauthPostResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

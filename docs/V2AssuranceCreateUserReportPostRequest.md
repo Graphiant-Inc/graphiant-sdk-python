@@ -7,8 +7,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **created_on** | **int** |  | [optional] 
 **email_list** | **List[str]** |  | [optional] 
-**pdf_content** | **bytes** |  | [optional] 
-**raw_content** | **List[bytes]** |  | [optional] 
+**pdf_content** | **bytearray** |  | [optional] 
+**raw_content** | **List[bytearray]** |  | [optional] 
 **report_name** | **str** |  | [optional] 
 **report_type** | **str** |  | [optional] 
 **time_period** | **str** |  | [optional] 

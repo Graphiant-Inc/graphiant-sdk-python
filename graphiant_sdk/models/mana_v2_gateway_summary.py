@@ -23,7 +23,6 @@ from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimesta
 from graphiant_sdk.models.mana_v2_gateway_summary_gateway_device_summary import ManaV2GatewaySummaryGatewayDeviceSummary
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2GatewaySummary(BaseModel):
     """
@@ -31,19 +30,18 @@ class ManaV2GatewaySummary(BaseModel):
     """ # noqa: E501
     created_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="createdAt")
     gateway_device_summary: Optional[List[ManaV2GatewaySummaryGatewayDeviceSummary]] = Field(default=None, alias="gatewayDeviceSummary")
-    graphiant_region: Optional[StrictStr] = Field(default=None, alias="graphiantRegion", json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    speed: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    support_status: Optional[StrictStr] = Field(default=None, alias="supportStatus", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    graphiant_region: Optional[StrictStr] = Field(default=None, alias="graphiantRegion")
+    id: Optional[StrictInt] = None
+    name: Optional[StrictStr] = None
+    speed: Optional[StrictStr] = None
+    status: Optional[StrictStr] = None
+    support_status: Optional[StrictStr] = Field(default=None, alias="supportStatus")
+    type: Optional[StrictStr] = None
     updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="updatedAt")
     __properties: ClassVar[List[str]] = ["createdAt", "gatewayDeviceSummary", "graphiantRegion", "id", "name", "speed", "status", "supportStatus", "type", "updatedAt"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class ManaV2GatewaySummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

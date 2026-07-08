@@ -21,20 +21,18 @@ from pydantic import BaseModel, ConfigDict, Field, StrictFloat, StrictInt, Stric
 from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixEntityUsage(BaseModel):
     """
     IpfixEntityUsage
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, description="id of the entity", json_schema_extra={"examples": [1]})
-    name: Optional[StrictStr] = Field(default=None, description="name of the entity", json_schema_extra={"examples": ["Site 1"]})
-    usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="usage in kbps", json_schema_extra={"examples": [1000000]})
+    id: Optional[StrictInt] = Field(default=None, description="id of the entity")
+    name: Optional[StrictStr] = Field(default=None, description="name of the entity")
+    usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="usage in kbps")
     __properties: ClassVar[List[str]] = ["id", "name", "usage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -46,7 +44,8 @@ class IpfixEntityUsage(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

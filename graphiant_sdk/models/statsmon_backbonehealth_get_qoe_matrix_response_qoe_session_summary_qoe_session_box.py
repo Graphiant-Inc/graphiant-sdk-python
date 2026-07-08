@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummaryQoeSessionBox(BaseModel):
     """
     StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummaryQoeSessionBox
     """ # noqa: E501
-    delay_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="delayValue", json_schema_extra={"examples": [123.45]})
+    delay_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="delayValue")
     end_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="endTime")
-    jitter_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="jitterValue", json_schema_extra={"examples": [123.45]})
-    loss_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="lossValue", json_schema_extra={"examples": [123.45]})
+    jitter_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="jitterValue")
+    loss_value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="lossValue")
     start_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="startTime")
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [123.45]})
+    status: Optional[StrictStr] = None
+    value: Optional[Union[StrictFloat, StrictInt]] = None
     __properties: ClassVar[List[str]] = ["delayValue", "endTime", "jitterValue", "lossValue", "startTime", "status", "value"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummaryQoeSessionBox(B
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

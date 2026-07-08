@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixAppUtilizationSummary(BaseModel):
     """
     IpfixAppUtilizationSummary
     """ # noqa: E501
-    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appId", json_schema_extra={"examples": [123]})
-    app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
-    usage: Optional[StrictInt] = Field(default=None, description="application usage in kilo bytes", json_schema_extra={"examples": [1234567891011]})
+    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appId")
+    app_name: Optional[StrictStr] = Field(default=None, alias="appName")
+    usage: Optional[StrictInt] = Field(default=None, description="application usage in kilo bytes")
     __properties: ClassVar[List[str]] = ["appId", "appName", "usage"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class IpfixAppUtilizationSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2BfdStatsSelector(BaseModel):
     """
     StatsmonV2BfdStatsSelector
     """ # noqa: E501
-    if_index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ifIndex", json_schema_extra={"examples": [123]})
-    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    if_index: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ifIndex")
+    peer_address: Optional[StrictStr] = Field(default=None, alias="peerAddress")
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["ifIndex", "peerAddress", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class StatsmonV2BfdStatsSelector(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

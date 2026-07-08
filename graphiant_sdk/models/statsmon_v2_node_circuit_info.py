@@ -22,33 +22,31 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class StatsmonV2NodeCircuitInfo(BaseModel):
     """
     StatsmonV2NodeCircuitInfo
     """ # noqa: E501
-    average_downlink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageDownlinkUtilization", json_schema_extra={"examples": [123.45]})
-    average_uplink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageUplinkUtilization", json_schema_extra={"examples": [123.45]})
-    circuit_carrier: Optional[StrictStr] = Field(default=None, alias="circuitCarrier", json_schema_extra={"examples": ["example string"]})
-    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName", json_schema_extra={"examples": ["example string"]})
-    connected_region_name: Optional[StrictStr] = Field(default=None, alias="connectedRegionName", json_schema_extra={"examples": ["example string"]})
-    current_downlink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentDownlinkUtilization", json_schema_extra={"examples": [123.45]})
-    current_uplink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentUplinkUtilization", json_schema_extra={"examples": [123.45]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName", json_schema_extra={"examples": ["example string"]})
-    jitter: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [12345678910]})
-    label: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort", json_schema_extra={"examples": [True]})
-    latency: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [12345678910]})
-    loss: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [12.34]})
-    qoe: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, json_schema_extra={"examples": [12.34]})
-    quality: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    average_downlink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageDownlinkUtilization")
+    average_uplink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="averageUplinkUtilization")
+    circuit_carrier: Optional[StrictStr] = Field(default=None, alias="circuitCarrier")
+    circuit_name: Optional[StrictStr] = Field(default=None, alias="circuitName")
+    connected_region_name: Optional[StrictStr] = Field(default=None, alias="connectedRegionName")
+    current_downlink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentDownlinkUtilization")
+    current_uplink_utilization: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentUplinkUtilization")
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    interface_name: Optional[StrictStr] = Field(default=None, alias="interfaceName")
+    jitter: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    label: Optional[StrictStr] = None
+    last_resort: Optional[StrictBool] = Field(default=None, alias="lastResort")
+    latency: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
+    loss: Optional[Union[StrictFloat, StrictInt]] = None
+    qoe: Optional[Union[StrictFloat, StrictInt]] = None
+    quality: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["averageDownlinkUtilization", "averageUplinkUtilization", "circuitCarrier", "circuitName", "connectedRegionName", "currentDownlinkUtilization", "currentUplinkUtilization", "deviceId", "interfaceName", "jitter", "label", "lastResort", "latency", "loss", "qoe", "quality"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -60,7 +58,8 @@ class StatsmonV2NodeCircuitInfo(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

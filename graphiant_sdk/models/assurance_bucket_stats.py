@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssuranceBucketStats(BaseModel):
     """
     AssuranceBucketStats
     """ # noqa: E501
-    prev_unique_app_count: Optional[StrictInt] = Field(default=None, alias="prevUniqueAppCount", json_schema_extra={"examples": [1234567891011]})
-    prev_unique_threat_count: Optional[StrictInt] = Field(default=None, alias="prevUniqueThreatCount", json_schema_extra={"examples": [1234567891011]})
-    unique_app_count: Optional[StrictInt] = Field(default=None, alias="uniqueAppCount", json_schema_extra={"examples": [1234567891011]})
-    unique_threat_count: Optional[StrictInt] = Field(default=None, alias="uniqueThreatCount", json_schema_extra={"examples": [1234567891011]})
+    prev_unique_app_count: Optional[StrictInt] = Field(default=None, alias="prevUniqueAppCount")
+    prev_unique_threat_count: Optional[StrictInt] = Field(default=None, alias="prevUniqueThreatCount")
+    unique_app_count: Optional[StrictInt] = Field(default=None, alias="uniqueAppCount")
+    unique_threat_count: Optional[StrictInt] = Field(default=None, alias="uniqueThreatCount")
     __properties: ClassVar[List[str]] = ["prevUniqueAppCount", "prevUniqueThreatCount", "uniqueAppCount", "uniqueThreatCount"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class AssuranceBucketStats(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

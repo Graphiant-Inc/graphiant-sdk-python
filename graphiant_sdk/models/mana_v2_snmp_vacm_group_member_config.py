@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SnmpVacmGroupMemberConfig(BaseModel):
     """
     ManaV2SnmpVacmGroupMemberConfig
     """ # noqa: E501
-    community: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    security_model: Optional[StrictStr] = Field(default=None, alias="securityModel", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    security_name: Optional[StrictStr] = Field(default=None, alias="securityName", json_schema_extra={"examples": ["example string"]})
-    type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
+    community: Optional[StrictStr] = None
+    security_model: Optional[StrictStr] = Field(default=None, alias="securityModel")
+    security_name: Optional[StrictStr] = Field(default=None, alias="securityName")
+    type: Optional[StrictStr] = None
     __properties: ClassVar[List[str]] = ["community", "securityModel", "securityName", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class ManaV2SnmpVacmGroupMemberConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

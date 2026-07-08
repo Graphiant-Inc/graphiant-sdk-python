@@ -23,21 +23,19 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_lacp_config import ManaV2LacpConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2LagInterface(BaseModel):
     """
     ManaV2LagInterface
     """ # noqa: E501
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    id: Optional[StrictInt] = None
     lacp_config: Optional[ManaV2LacpConfig] = Field(default=None, alias="lacpConfig")
     members: Optional[List[StrictInt]] = None
-    minimum_members: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minimumMembers", json_schema_extra={"examples": [123]})
+    minimum_members: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="minimumMembers")
     __properties: ClassVar[List[str]] = ["id", "lacpConfig", "members", "minimumMembers"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class ManaV2LagInterface(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

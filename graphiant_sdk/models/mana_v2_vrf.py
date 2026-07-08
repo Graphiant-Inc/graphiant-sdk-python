@@ -32,7 +32,6 @@ from graphiant_sdk.models.mana_v2_static_route import ManaV2StaticRoute
 from graphiant_sdk.models.mana_v2_syslog_collector import ManaV2SyslogCollector
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2Vrf(BaseModel):
     """
@@ -42,28 +41,27 @@ class ManaV2Vrf(BaseModel):
     bgp_multipath: Optional[ManaV2BgpMultipath] = Field(default=None, alias="bgpMultipath")
     bgp_neighbors: Optional[List[ManaV2BgpNeighbor]] = Field(default=None, alias="bgpNeighbors")
     bgp_redistributions: Optional[ManaV2BgpRedistribute] = Field(default=None, alias="bgpRedistributions")
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    description: Optional[StrictStr] = None
     dhcp_subnets: Optional[List[ManaV2DhcpServerPool]] = Field(default=None, alias="dhcpSubnets")
-    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
-    function: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId")
+    function: Optional[StrictStr] = None
+    id: Optional[StrictInt] = None
     ipfix_exporters: Optional[List[ManaV2IpfixExporter]] = Field(default=None, alias="ipfixExporters")
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    nat_ruleset: Optional[StrictStr] = Field(default=None, alias="natRuleset", json_schema_extra={"examples": ["example string"]})
+    name: Optional[StrictStr] = None
+    nat_ruleset: Optional[StrictStr] = Field(default=None, alias="natRuleset")
     networks: Optional[List[StrictStr]] = None
     ospfv2_process: Optional[ManaV2OspFv2Process] = Field(default=None, alias="ospfv2Process")
     ospfv3_process: Optional[ManaV2OspFv3Process] = Field(default=None, alias="ospfv3Process")
     overlay_filters: Optional[ManaV2OverlayFilters] = Field(default=None, alias="overlayFilters")
-    routable: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    route_distinguisher: Optional[StrictStr] = Field(default=None, alias="routeDistinguisher", json_schema_extra={"examples": ["example string"]})
+    routable: Optional[StrictBool] = None
+    route_distinguisher: Optional[StrictStr] = Field(default=None, alias="routeDistinguisher")
     static_routes: Optional[List[ManaV2StaticRoute]] = Field(default=None, alias="staticRoutes")
     syslog_targets: Optional[List[ManaV2SyslogCollector]] = Field(default=None, alias="syslogTargets")
-    traffic_ruleset: Optional[StrictStr] = Field(default=None, alias="trafficRuleset", json_schema_extra={"examples": ["example string"]})
+    traffic_ruleset: Optional[StrictStr] = Field(default=None, alias="trafficRuleset")
     __properties: ClassVar[List[str]] = ["bgpAggregations", "bgpMultipath", "bgpNeighbors", "bgpRedistributions", "description", "dhcpSubnets", "enterpriseId", "function", "id", "ipfixExporters", "name", "natRuleset", "networks", "ospfv2Process", "ospfv3Process", "overlayFilters", "routable", "routeDistinguisher", "staticRoutes", "syslogTargets", "trafficRuleset"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -75,7 +73,8 @@ class ManaV2Vrf(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

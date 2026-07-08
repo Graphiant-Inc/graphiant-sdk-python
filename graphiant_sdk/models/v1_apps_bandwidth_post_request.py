@@ -23,24 +23,22 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AppsBandwidthPostRequest(BaseModel):
     """
     V1AppsBandwidthPostRequest
     """ # noqa: E501
-    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appId", json_schema_extra={"examples": [123]})
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    dl_circuit_name: Optional[StrictStr] = Field(default=None, alias="dlCircuitName", json_schema_extra={"examples": ["example string"]})
-    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia", json_schema_extra={"examples": [True]})
-    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    app_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="appId")
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    dl_circuit_name: Optional[StrictStr] = Field(default=None, alias="dlCircuitName")
+    is_dia: Optional[StrictBool] = Field(default=None, alias="isDia")
+    sla_class: Optional[StrictStr] = Field(default=None, alias="slaClass")
     time_window: Optional[StatsmonTimeWindow] = Field(default=None, alias="timeWindow")
-    ul_circuit_name: Optional[StrictStr] = Field(default=None, alias="ulCircuitName", json_schema_extra={"examples": ["example string"]})
+    ul_circuit_name: Optional[StrictStr] = Field(default=None, alias="ulCircuitName")
     __properties: ClassVar[List[str]] = ["appId", "deviceId", "dlCircuitName", "isDia", "slaClass", "timeWindow", "ulCircuitName"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -52,7 +50,8 @@ class V1AppsBandwidthPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

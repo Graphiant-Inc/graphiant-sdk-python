@@ -23,26 +23,24 @@ from graphiant_sdk.models.diagnostic_tools_speedtest_server import DiagnosticToo
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class DiagnosticToolsSpeedtestResult(BaseModel):
     """
     DiagnosticToolsSpeedtestResult
     """ # noqa: E501
-    avg_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Avg Ping Time in milli seconds (required)", alias="avgPingTime", json_schema_extra={"examples": [3]})
+    avg_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Avg Ping Time in milli seconds (required)", alias="avgPingTime")
     date_time: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="dateTime")
-    download_speed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Download speed in Mbps (required)", alias="downloadSpeed", json_schema_extra={"examples": [30.1]})
-    isp: Optional[StrictStr] = Field(default=None, description="ISP details (required)", json_schema_extra={"examples": ["Google Fiber"]})
-    max_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max PingTime in milli seconds (required)", alias="maxPingTime", json_schema_extra={"examples": [5]})
-    min_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min Ping Time in milli seconds (required)", alias="minPingTime", json_schema_extra={"examples": [10]})
-    result: Optional[StrictStr] = Field(default=None, description="Status of the speedtest operation (required)", json_schema_extra={"examples": ["Failed"]})
+    download_speed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Download speed in Mbps (required)", alias="downloadSpeed")
+    isp: Optional[StrictStr] = Field(default=None, description="ISP details (required)")
+    max_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Max PingTime in milli seconds (required)", alias="maxPingTime")
+    min_ping_time: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Min Ping Time in milli seconds (required)", alias="minPingTime")
+    result: Optional[StrictStr] = Field(default=None, description="Status of the speedtest operation (required)")
     server_details: Optional[DiagnosticToolsSpeedtestServer] = Field(default=None, alias="serverDetails")
-    upload_speed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Upload speed in Mbps (required)", alias="uploadSpeed", json_schema_extra={"examples": [21]})
+    upload_speed: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Upload speed in Mbps (required)", alias="uploadSpeed")
     __properties: ClassVar[List[str]] = ["avgPingTime", "dateTime", "downloadSpeed", "isp", "maxPingTime", "minPingTime", "result", "serverDetails", "uploadSpeed"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class DiagnosticToolsSpeedtestResult(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

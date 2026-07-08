@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthPutRequest(BaseModel):
     """
     V1AuthPutRequest
     """ # noqa: E501
-    cert: StrictStr = Field(description=" (required)", json_schema_extra={"examples": ["example string"]})
-    entry_point: StrictStr = Field(description=" (required)", alias="entryPoint", json_schema_extra={"examples": ["example string"]})
-    iam_type: StrictStr = Field(description=" (required)", alias="iamType", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    issuer: StrictStr = Field(description=" (required)", json_schema_extra={"examples": ["example string"]})
+    cert: StrictStr = Field(description=" (required)")
+    entry_point: StrictStr = Field(description=" (required)", alias="entryPoint")
+    iam_type: StrictStr = Field(description=" (required)", alias="iamType")
+    issuer: StrictStr = Field(description=" (required)")
     __properties: ClassVar[List[str]] = ["cert", "entryPoint", "iamType", "issuer"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1AuthPutRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

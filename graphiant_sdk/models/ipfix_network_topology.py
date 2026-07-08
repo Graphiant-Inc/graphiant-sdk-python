@@ -26,7 +26,6 @@ from graphiant_sdk.models.mana_v2_connectivity_graph_node import ManaV2Connectiv
 from graphiant_sdk.models.statsmon_time_window import StatsmonTimeWindow
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixNetworkTopology(BaseModel):
     """
@@ -35,14 +34,13 @@ class IpfixNetworkTopology(BaseModel):
     circuit_status: Optional[Dict[str, Annotated[int, Field(strict=True, ge=0)]]] = Field(default=None, alias="circuitStatus")
     delta: Optional[IpfixNetworkTopologyDelta] = None
     edges: Optional[List[ManaV2ConnectivityGraphEdge]] = None
-    flows: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Application flow count", json_schema_extra={"examples": [123]})
+    flows: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Application flow count")
     nodes: Optional[List[ManaV2ConnectivityGraphNode]] = None
     time_window: Optional[StatsmonTimeWindow] = Field(default=None, alias="timeWindow")
     __properties: ClassVar[List[str]] = ["circuitStatus", "delta", "edges", "flows", "nodes", "timeWindow"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -54,7 +52,8 @@ class IpfixNetworkTopology(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

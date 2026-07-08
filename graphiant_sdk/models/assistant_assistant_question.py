@@ -21,21 +21,19 @@ from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AssistantAssistantQuestion(BaseModel):
     """
     AssistantAssistantQuestion
     """ # noqa: E501
-    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId", json_schema_extra={"examples": ["example string"]})
-    question_language: Optional[StrictStr] = Field(default=None, alias="questionLanguage", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    question_text: Optional[StrictStr] = Field(default=None, alias="questionText", json_schema_extra={"examples": ["example string"]})
-    question_timestamp: Optional[StrictInt] = Field(default=None, alias="questionTimestamp", json_schema_extra={"examples": [1234567891011]})
+    conversation_id: Optional[StrictStr] = Field(default=None, alias="conversationId")
+    question_language: Optional[StrictStr] = Field(default=None, alias="questionLanguage")
+    question_text: Optional[StrictStr] = Field(default=None, alias="questionText")
+    question_timestamp: Optional[StrictInt] = Field(default=None, alias="questionTimestamp")
     __properties: ClassVar[List[str]] = ["conversationId", "questionLanguage", "questionText", "questionTimestamp"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class AssistantAssistantQuestion(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

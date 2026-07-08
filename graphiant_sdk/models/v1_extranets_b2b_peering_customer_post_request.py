@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List
 from graphiant_sdk.models.mana_v2_b2b_extranet_peering_service_customer_invite import ManaV2B2bExtranetPeeringServiceCustomerInvite
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1ExtranetsB2bPeeringCustomerPostRequest(BaseModel):
     """
     V1ExtranetsB2bPeeringCustomerPostRequest
     """ # noqa: E501
     invite: ManaV2B2bExtranetPeeringServiceCustomerInvite
-    name: StrictStr = Field(description="Name of the peering service customer (required)", json_schema_extra={"examples": ["example string"]})
-    type: StrictStr = Field(description="Type of the peerings servicecustomer whether it is a graphiant or non-graphiant (required)", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    name: StrictStr = Field(description="Name of the peering service customer (required)")
+    type: StrictStr = Field(description="Type of the peerings servicecustomer whether it is a graphiant or non-graphiant (required)")
     __properties: ClassVar[List[str]] = ["invite", "name", "type"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class V1ExtranetsB2bPeeringCustomerPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

@@ -23,7 +23,6 @@ from graphiant_sdk.models.mana_v2_guest_consumer_site_to_site_vpn_config import 
 from graphiant_sdk.models.v1_gateways_guest_consumer_match_id_get_response_ipsec_vpn_tunnel_config import V1GatewaysGuestConsumerMatchIdGetResponseIpsecVpnTunnelConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1GatewaysGuestConsumerMatchIdGetResponse(BaseModel):
     """
@@ -35,8 +34,7 @@ class V1GatewaysGuestConsumerMatchIdGetResponse(BaseModel):
     __properties: ClassVar[List[str]] = ["destinationPrefixes", "ipsecTunnelConfig", "siteToSiteVpn"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -48,7 +46,8 @@ class V1GatewaysGuestConsumerMatchIdGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

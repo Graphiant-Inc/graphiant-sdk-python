@@ -23,21 +23,19 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.diagnostic_tools_diagnostic_params import DiagnosticToolsDiagnosticParams
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1DiagnosticPingPostRequest(BaseModel):
     """
     V1DiagnosticPingPostRequest
     """ # noqa: E501
-    device_id: Annotated[int, Field(strict=True, ge=0)] = Field(description="Valid Provisioned device ID (required)", alias="deviceId", json_schema_extra={"examples": [10000000]})
+    device_id: Annotated[int, Field(strict=True, ge=0)] = Field(description="Valid Provisioned device ID (required)", alias="deviceId")
     params: Optional[DiagnosticToolsDiagnosticParams] = None
-    token: Optional[StrictStr] = Field(default=None, description="Identifier which was received in initial response", json_schema_extra={"examples": ["example string"]})
-    transport_type: StrictStr = Field(description="ICMP or TCP (required)", alias="transportType", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    token: Optional[StrictStr] = Field(default=None, description="Identifier which was received in initial response")
+    transport_type: StrictStr = Field(description="ICMP or TCP (required)", alias="transportType")
     __properties: ClassVar[List[str]] = ["deviceId", "params", "token", "transportType"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class V1DiagnosticPingPostRequest(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

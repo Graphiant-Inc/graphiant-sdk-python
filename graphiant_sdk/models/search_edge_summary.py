@@ -25,48 +25,46 @@ from graphiant_sdk.models.mana_v2_location import ManaV2Location
 from graphiant_sdk.models.upgrade_upgrade_summary import UpgradeUpgradeSummary
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class SearchEdgeSummary(BaseModel):
     """
     SearchEdgeSummary
     """ # noqa: E501
     assigned_on: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="assignedOn")
-    canary_mode: Optional[StrictStr] = Field(default=None, alias="canaryMode", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    canary_mode: Optional[StrictStr] = Field(default=None, alias="canaryMode")
     connected_regions: Optional[List[StrictStr]] = Field(default=None, alias="connectedRegions")
-    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [1234567891011]})
-    discovered_location: Optional[StrictStr] = Field(default=None, alias="discoveredLocation", json_schema_extra={"examples": ["example string"]})
-    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
-    enterprise_name: Optional[StrictStr] = Field(default=None, alias="enterpriseName", json_schema_extra={"examples": ["example string"]})
+    device_id: Optional[StrictInt] = Field(default=None, alias="deviceId")
+    discovered_location: Optional[StrictStr] = Field(default=None, alias="discoveredLocation")
+    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId")
+    enterprise_name: Optional[StrictStr] = Field(default=None, alias="enterpriseName")
     first_appeared_on: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="firstAppearedOn")
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    ip_detected: Optional[StrictStr] = Field(default=None, alias="ipDetected", json_schema_extra={"examples": ["example string"]})
-    is_hardware: Optional[StrictBool] = Field(default=None, alias="isHardware", json_schema_extra={"examples": [True]})
-    is_new: Optional[StrictBool] = Field(default=None, alias="isNew", json_schema_extra={"examples": [True]})
-    is_requested: Optional[StrictBool] = Field(default=None, alias="isRequested", json_schema_extra={"examples": [True]})
-    is_requested_status: Optional[StrictStr] = Field(default=None, alias="isRequestedStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    hostname: Optional[StrictStr] = None
+    ip_detected: Optional[StrictStr] = Field(default=None, alias="ipDetected")
+    is_hardware: Optional[StrictBool] = Field(default=None, alias="isHardware")
+    is_new: Optional[StrictBool] = Field(default=None, alias="isNew")
+    is_requested: Optional[StrictBool] = Field(default=None, alias="isRequested")
+    is_requested_status: Optional[StrictStr] = Field(default=None, alias="isRequestedStatus")
     last_booted_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="lastBootedAt")
     location: Optional[ManaV2Location] = None
-    model: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    override_region: Optional[StrictStr] = Field(default=None, alias="overrideRegion", json_schema_extra={"examples": ["example string"]})
-    parent_enterprise_name: Optional[StrictStr] = Field(default=None, alias="parentEnterpriseName", json_schema_extra={"examples": ["example string"]})
-    portal_status: Optional[StrictStr] = Field(default=None, alias="portalStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    region: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    role: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    serial_num: Optional[StrictStr] = Field(default=None, alias="serialNum", json_schema_extra={"examples": ["example string"]})
-    site: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    site_id: Optional[StrictInt] = Field(default=None, alias="siteId", json_schema_extra={"examples": [1234567891011]})
-    stale: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
-    status: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    sw_name: Optional[StrictStr] = Field(default=None, alias="swName", json_schema_extra={"examples": ["example string"]})
-    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion", json_schema_extra={"examples": ["example string"]})
-    tt_conn_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ttConnCount", json_schema_extra={"examples": [123]})
+    model: Optional[StrictStr] = None
+    override_region: Optional[StrictStr] = Field(default=None, alias="overrideRegion")
+    parent_enterprise_name: Optional[StrictStr] = Field(default=None, alias="parentEnterpriseName")
+    portal_status: Optional[StrictStr] = Field(default=None, alias="portalStatus")
+    region: Optional[StrictStr] = None
+    role: Optional[StrictStr] = None
+    serial_num: Optional[StrictStr] = Field(default=None, alias="serialNum")
+    site: Optional[StrictStr] = None
+    site_id: Optional[StrictInt] = Field(default=None, alias="siteId")
+    stale: Optional[StrictBool] = None
+    status: Optional[StrictStr] = None
+    sw_name: Optional[StrictStr] = Field(default=None, alias="swName")
+    sw_version: Optional[StrictStr] = Field(default=None, alias="swVersion")
+    tt_conn_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="ttConnCount")
     upgrade_summary: Optional[UpgradeUpgradeSummary] = Field(default=None, alias="upgradeSummary")
     __properties: ClassVar[List[str]] = ["assignedOn", "canaryMode", "connectedRegions", "deviceId", "discoveredLocation", "enterpriseId", "enterpriseName", "firstAppearedOn", "hostname", "ipDetected", "isHardware", "isNew", "isRequested", "isRequestedStatus", "lastBootedAt", "location", "model", "overrideRegion", "parentEnterpriseName", "portalStatus", "region", "role", "serialNum", "site", "siteId", "stale", "status", "swName", "swVersion", "ttConnCount", "upgradeSummary"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -78,7 +76,8 @@ class SearchEdgeSummary(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

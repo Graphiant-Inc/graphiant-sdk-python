@@ -24,27 +24,25 @@ from graphiant_sdk.models.mana_v2_forwarding_policy_match_config import ManaV2Fo
 from graphiant_sdk.models.mana_v2_nullable_meter_rates import ManaV2NullableMeterRates
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2SecurityPolicyRulesetConfigNullableRuleRule(BaseModel):
     """
     ManaV2SecurityPolicyRulesetConfigNullableRuleRule
     """ # noqa: E501
-    action: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    action: Optional[StrictStr] = None
+    description: Optional[StrictStr] = None
     downlink_burst_rate: Optional[ManaV2NullableMeterRates] = Field(default=None, alias="downlinkBurstRate")
     downlink_policer_rate: Optional[ManaV2NullableMeterRates] = Field(default=None, alias="downlinkPolicerRate")
-    logging: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
+    logging: Optional[StrictBool] = None
     match: Optional[ManaV2ForwardingPolicyMatchConfig] = None
-    name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    name: Optional[StrictStr] = None
+    seq: Optional[Annotated[int, Field(strict=True, ge=0)]] = None
     uplink_burst_rate: Optional[ManaV2NullableMeterRates] = Field(default=None, alias="uplinkBurstRate")
     uplink_policer_rate: Optional[ManaV2NullableMeterRates] = Field(default=None, alias="uplinkPolicerRate")
     __properties: ClassVar[List[str]] = ["action", "description", "downlinkBurstRate", "downlinkPolicerRate", "logging", "match", "name", "seq", "uplinkBurstRate", "uplinkPolicerRate"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -56,7 +54,8 @@ class ManaV2SecurityPolicyRulesetConfigNullableRuleRule(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

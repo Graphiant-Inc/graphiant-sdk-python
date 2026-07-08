@@ -24,24 +24,22 @@ from graphiant_sdk.models.mana_v2_ospf_area import ManaV2OspfArea
 from graphiant_sdk.models.mana_v2_ospf_redistribute import ManaV2OspfRedistribute
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2OspFv2Process(BaseModel):
     """
     ManaV2OspFv2Process
     """ # noqa: E501
-    admin_distance: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Administrative Distance for routes installed", alias="adminDistance", json_schema_extra={"examples": [100]})
+    admin_distance: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, description="Administrative Distance for routes installed", alias="adminDistance")
     areas: Optional[List[ManaV2OspfArea]] = None
-    auto_router_id: Optional[StrictBool] = Field(default=None, alias="autoRouterId", json_schema_extra={"examples": [True]})
-    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate", json_schema_extra={"examples": ["ENUM_VALUE"]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
+    auto_router_id: Optional[StrictBool] = Field(default=None, alias="autoRouterId")
+    default_originate: Optional[StrictStr] = Field(default=None, alias="defaultOriginate")
+    id: Optional[StrictInt] = None
     redistributed_protocols: Optional[List[ManaV2OspfRedistribute]] = Field(default=None, alias="redistributedProtocols")
-    router_id: Optional[StrictStr] = Field(default=None, alias="routerId", json_schema_extra={"examples": ["example string"]})
+    router_id: Optional[StrictStr] = Field(default=None, alias="routerId")
     __properties: ClassVar[List[str]] = ["adminDistance", "areas", "autoRouterId", "defaultOriginate", "id", "redistributedProtocols", "routerId"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class ManaV2OspFv2Process(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

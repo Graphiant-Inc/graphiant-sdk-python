@@ -28,7 +28,6 @@ from graphiant_sdk.models.mana_v2_nullable_traffic_policy_ruleset_config import 
 from graphiant_sdk.models.mana_v2_nullable_zone_firewall_config import ManaV2NullableZoneFirewallConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ForwardingPolicyConfig(BaseModel):
     """
@@ -44,8 +43,7 @@ class ManaV2ForwardingPolicyConfig(BaseModel):
     __properties: ClassVar[List[str]] = ["dpiApplications", "networkLists", "portLists", "securityRulesets", "trafficRulesets", "zoneFirewalls", "zones"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -57,7 +55,8 @@ class ManaV2ForwardingPolicyConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

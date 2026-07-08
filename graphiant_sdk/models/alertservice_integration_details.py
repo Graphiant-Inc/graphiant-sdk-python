@@ -22,22 +22,20 @@ from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.alertservice_zendesk_details import AlertserviceZendeskDetails
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class AlertserviceIntegrationDetails(BaseModel):
     """
     AlertserviceIntegrationDetails
     """ # noqa: E501
-    opsgenie_key: Optional[StrictStr] = Field(default=None, alias="opsgenieKey", json_schema_extra={"examples": ["example string"]})
-    opsramp_details: Optional[StrictStr] = Field(default=None, alias="opsrampDetails", json_schema_extra={"examples": ["example string"]})
-    pagerduty_routing_key: Optional[StrictStr] = Field(default=None, alias="pagerdutyRoutingKey", json_schema_extra={"examples": ["example string"]})
-    webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl", json_schema_extra={"examples": ["example string"]})
+    opsgenie_key: Optional[StrictStr] = Field(default=None, alias="opsgenieKey")
+    opsramp_details: Optional[StrictStr] = Field(default=None, alias="opsrampDetails")
+    pagerduty_routing_key: Optional[StrictStr] = Field(default=None, alias="pagerdutyRoutingKey")
+    webhook_url: Optional[StrictStr] = Field(default=None, alias="webhookUrl")
     zendesk_details: Optional[AlertserviceZendeskDetails] = Field(default=None, alias="zendeskDetails")
     __properties: ClassVar[List[str]] = ["opsgenieKey", "opsrampDetails", "pagerdutyRoutingKey", "webhookUrl", "zendeskDetails"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -49,7 +47,8 @@ class AlertserviceIntegrationDetails(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

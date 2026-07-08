@@ -21,17 +21,16 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr, field_validator
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class V1AuthLoginPreGetResponse(BaseModel):
     """
     V1AuthLoginPreGetResponse
     """ # noqa: E501
-    method: StrictStr = Field(description="Authentication method to use", json_schema_extra={"examples": ["PASSWORD"]})
-    email: StrictStr = Field(description="User email address", json_schema_extra={"examples": ["user@example.com"]})
-    iam: Optional[StrictStr] = Field(default=None, description="Identity provider name (Azure/Okta)", json_schema_extra={"examples": ["Azure"]})
-    relay_state: Optional[StrictStr] = Field(default=None, description="State to relay after authentication", alias="relayState", json_schema_extra={"examples": ["information-to-relay"]})
-    entry_point: Optional[StrictStr] = Field(default=None, description="SSO entry point URL", alias="entryPoint", json_schema_extra={"examples": ["https://saml.example.com/sso"]})
+    method: StrictStr = Field(description="Authentication method to use")
+    email: StrictStr = Field(description="User email address")
+    iam: Optional[StrictStr] = Field(default=None, description="Identity provider name (Azure/Okta)")
+    relay_state: Optional[StrictStr] = Field(default=None, description="State to relay after authentication", alias="relayState")
+    entry_point: Optional[StrictStr] = Field(default=None, description="SSO entry point URL", alias="entryPoint")
     __properties: ClassVar[List[str]] = ["method", "email", "iam", "relayState", "entryPoint"]
 
     @field_validator('method')
@@ -42,8 +41,7 @@ class V1AuthLoginPreGetResponse(BaseModel):
         return value
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -55,7 +53,8 @@ class V1AuthLoginPreGetResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

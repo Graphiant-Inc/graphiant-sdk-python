@@ -22,20 +22,18 @@ from typing import Any, ClassVar, Dict, List, Optional, Union
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class IpfixAppBandwidthStats(BaseModel):
     """
     IpfixAppBandwidthStats
     """ # noqa: E501
-    dl_bw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Bandwidth in kilo bits per second", alias="dlBw", json_schema_extra={"examples": [123.45]})
+    dl_bw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Bandwidth in kilo bits per second", alias="dlBw")
     ts: Optional[GoogleProtobufTimestamp] = None
-    ul_bw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Bandwidth in kilo bits per second", alias="ulBw", json_schema_extra={"examples": [123.45]})
+    ul_bw: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="Bandwidth in kilo bits per second", alias="ulBw")
     __properties: ClassVar[List[str]] = ["dlBw", "ts", "ulBw"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -47,7 +45,8 @@ class IpfixAppBandwidthStats(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

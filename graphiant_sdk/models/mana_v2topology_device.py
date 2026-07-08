@@ -23,31 +23,29 @@ from typing_extensions import Annotated
 from graphiant_sdk.models.google_protobuf_duration import GoogleProtobufDuration
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2topologyDevice(BaseModel):
     """
     ManaV2topologyDevice
     """ # noqa: E501
-    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [12345678910]})
-    hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    location: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode", json_schema_extra={"examples": [True]})
-    management_ip: Optional[StrictStr] = Field(default=None, alias="managementIp", json_schema_extra={"examples": ["example string"]})
-    model: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    role: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    serial_number: Optional[StrictStr] = Field(default=None, alias="serialNumber", json_schema_extra={"examples": ["example string"]})
-    site_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteId", json_schema_extra={"examples": [12345678910]})
-    software_version: Optional[StrictStr] = Field(default=None, alias="softwareVersion", json_schema_extra={"examples": ["example string"]})
-    staging_mode: Optional[StrictBool] = Field(default=None, alias="stagingMode", json_schema_extra={"examples": [True]})
+    device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId")
+    hostname: Optional[StrictStr] = None
+    location: Optional[StrictStr] = None
+    maintenance_mode: Optional[StrictBool] = Field(default=None, alias="maintenanceMode")
+    management_ip: Optional[StrictStr] = Field(default=None, alias="managementIp")
+    model: Optional[StrictStr] = None
+    role: Optional[StrictStr] = None
+    serial_number: Optional[StrictStr] = Field(default=None, alias="serialNumber")
+    site_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="siteId")
+    software_version: Optional[StrictStr] = Field(default=None, alias="softwareVersion")
+    staging_mode: Optional[StrictBool] = Field(default=None, alias="stagingMode")
     uptime: Optional[GoogleProtobufDuration] = None
-    vrrp_interface: Optional[StrictStr] = Field(default=None, alias="vrrpInterface", json_schema_extra={"examples": ["example string"]})
-    vrrp_state: Optional[StrictStr] = Field(default=None, alias="vrrpState", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    vrrp_interface: Optional[StrictStr] = Field(default=None, alias="vrrpInterface")
+    vrrp_state: Optional[StrictStr] = Field(default=None, alias="vrrpState")
     __properties: ClassVar[List[str]] = ["deviceId", "hostname", "location", "maintenanceMode", "managementIp", "model", "role", "serialNumber", "siteId", "softwareVersion", "stagingMode", "uptime", "vrrpInterface", "vrrpState"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -59,7 +57,8 @@ class ManaV2topologyDevice(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

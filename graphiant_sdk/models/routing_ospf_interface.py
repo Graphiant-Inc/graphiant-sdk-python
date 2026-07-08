@@ -21,27 +21,25 @@ from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class RoutingOspfInterface(BaseModel):
     """
     RoutingOspfInterface
     """ # noqa: E501
-    bdr_ip_addr: Optional[StrictStr] = Field(default=None, description="Router IP Address (required)", alias="bdrIpAddr", json_schema_extra={"examples": ["131.34.23.11"]})
-    bdr_router_id: Optional[StrictStr] = Field(default=None, description="BDR Router ID (required)", alias="bdrRouterId", json_schema_extra={"examples": ["1.1.1.1"]})
-    dr_ip_addr: Optional[StrictStr] = Field(default=None, description="Router IP Address (required)", alias="drIpAddr", json_schema_extra={"examples": ["131.34.23.11"]})
-    dr_router_id: Optional[StrictStr] = Field(default=None, description="Router ID (required)", alias="drRouterId", json_schema_extra={"examples": ["1.1.1.1"]})
-    hello_interval: Optional[StrictStr] = Field(default=None, alias="helloInterval", json_schema_extra={"examples": ["example string"]})
-    hello_timer: Optional[StrictStr] = Field(default=None, description="Timer in seconds (required)", alias="helloTimer", json_schema_extra={"examples": ["50"]})
-    name: Optional[StrictStr] = Field(default=None, description="Interface name (required)", json_schema_extra={"examples": ["ethernet1/0"]})
+    bdr_ip_addr: Optional[StrictStr] = Field(default=None, description="Router IP Address (required)", alias="bdrIpAddr")
+    bdr_router_id: Optional[StrictStr] = Field(default=None, description="BDR Router ID (required)", alias="bdrRouterId")
+    dr_ip_addr: Optional[StrictStr] = Field(default=None, description="Router IP Address (required)", alias="drIpAddr")
+    dr_router_id: Optional[StrictStr] = Field(default=None, description="Router ID (required)", alias="drRouterId")
+    hello_interval: Optional[StrictStr] = Field(default=None, alias="helloInterval")
+    hello_timer: Optional[StrictStr] = Field(default=None, description="Timer in seconds (required)", alias="helloTimer")
+    name: Optional[StrictStr] = Field(default=None, description="Interface name (required)")
     neighbors: Optional[List[StrictStr]] = None
-    state: Optional[StrictStr] = Field(default=None, description="interface state (required)", json_schema_extra={"examples": ["Loopback"]})
-    wait_timer: Optional[StrictStr] = Field(default=None, description="Timer in seconds (required)", alias="waitTimer", json_schema_extra={"examples": ["50"]})
+    state: Optional[StrictStr] = Field(default=None, description="interface state (required)")
+    wait_timer: Optional[StrictStr] = Field(default=None, description="Timer in seconds (required)", alias="waitTimer")
     __properties: ClassVar[List[str]] = ["bdrIpAddr", "bdrRouterId", "drIpAddr", "drRouterId", "helloInterval", "helloTimer", "name", "neighbors", "state", "waitTimer"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -53,7 +51,8 @@ class RoutingOspfInterface(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

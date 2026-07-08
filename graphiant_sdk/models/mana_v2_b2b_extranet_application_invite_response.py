@@ -22,24 +22,22 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2B2bExtranetApplicationInviteResponse(BaseModel):
     """
     ManaV2B2bExtranetApplicationInviteResponse
     """ # noqa: E501
-    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
-    consumer_burst_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="consumerBurstSize", json_schema_extra={"examples": [123]})
-    consumer_bw_site: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="consumerBwSite", json_schema_extra={"examples": [123]})
-    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
-    id: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
-    maximum_site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maximumSiteCount", json_schema_extra={"examples": [123]})
+    admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail")
+    consumer_burst_size: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="consumerBurstSize")
+    consumer_bw_site: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="consumerBwSite")
+    enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId")
+    id: Optional[StrictInt] = None
+    maximum_site_count: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maximumSiteCount")
     service_prefixes: Optional[List[StrictStr]] = Field(default=None, alias="servicePrefixes")
     __properties: ClassVar[List[str]] = ["adminEmail", "consumerBurstSize", "consumerBwSite", "enterpriseId", "id", "maximumSiteCount", "servicePrefixes"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -51,7 +49,8 @@ class ManaV2B2bExtranetApplicationInviteResponse(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:

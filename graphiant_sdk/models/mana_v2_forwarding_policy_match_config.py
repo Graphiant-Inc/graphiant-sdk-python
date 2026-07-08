@@ -30,7 +30,6 @@ from graphiant_sdk.models.mana_v2_nullable_source_network_match_config import Ma
 from graphiant_sdk.models.mana_v2_port_range_config import ManaV2PortRangeConfig
 from typing import Optional, Set
 from typing_extensions import Self
-from pydantic_core import to_jsonable_python
 
 class ManaV2ForwardingPolicyMatchConfig(BaseModel):
     """
@@ -39,21 +38,20 @@ class ManaV2ForwardingPolicyMatchConfig(BaseModel):
     application: Optional[ManaV2NullableApplicationMatchConfig] = None
     content_filter: Optional[ManaV2NullableContentFilterMatchConfig] = Field(default=None, alias="contentFilter")
     destination_network: Optional[ManaV2NullableDestinationNetworkMatchConfig] = Field(default=None, alias="destinationNetwork")
-    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort", json_schema_extra={"examples": [123]})
+    destination_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="destinationPort")
     destination_port_range: Optional[ManaV2PortRangeConfig] = Field(default=None, alias="destinationPortRange")
     domain_list: Optional[ManaV2NullableDomainListMatchConfig] = Field(default=None, alias="domainList")
     dscp: Optional[ManaV2NullableDscpMatchConfig] = None
-    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType", json_schema_extra={"examples": [123]})
-    ip_protocol: Optional[StrictStr] = Field(default=None, alias="ipProtocol", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    icmp_type: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="icmpType")
+    ip_protocol: Optional[StrictStr] = Field(default=None, alias="ipProtocol")
     protocol: Optional[ManaV2NullableIpProtocol] = None
     source_network: Optional[ManaV2NullableSourceNetworkMatchConfig] = Field(default=None, alias="sourceNetwork")
-    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort", json_schema_extra={"examples": [123]})
+    source_port: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="sourcePort")
     source_port_range: Optional[ManaV2PortRangeConfig] = Field(default=None, alias="sourcePortRange")
     __properties: ClassVar[List[str]] = ["application", "contentFilter", "destinationNetwork", "destinationPort", "destinationPortRange", "domainList", "dscp", "icmpType", "ipProtocol", "protocol", "sourceNetwork", "sourcePort", "sourcePortRange"]
 
     model_config = ConfigDict(
-        validate_by_name=True,
-        validate_by_alias=True,
+        populate_by_name=True,
         validate_assignment=True,
         protected_namespaces=(),
     )
@@ -65,7 +63,8 @@ class ManaV2ForwardingPolicyMatchConfig(BaseModel):
 
     def to_json(self) -> str:
         """Returns the JSON representation of the model using alias"""
-        return json.dumps(to_jsonable_python(self.to_dict()))
+        # TODO: pydantic v2: use .model_dump_json(by_alias=True, exclude_unset=True) instead
+        return json.dumps(self.to_dict())
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
