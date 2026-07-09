@@ -1979,6 +1979,10 @@
             "format": "int64",
             "example": 1234567891011
           },
+          "appAiTag": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
           "appId": {
             "type": "integer",
             "format": "int64",
@@ -3556,6 +3560,357 @@
         },
         "additionalProperties": false
       },
+      "v2AssuranceAiAdoptionSummaryPostRequest": {
+        "type": "object",
+        "properties": {
+          "timeWindow": {
+            "$ref": "#/components/schemas/assuranceTimeWindow"
+          },
+          "userListSize": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "list size of user list in where widget (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "timeWindow",
+          "userListSize"
+        ]
+      },
+      "v2AssuranceAiAdoptionSummaryPostResponse": {
+        "type": "object",
+        "properties": {
+          "topLevelKpi": {
+            "$ref": "#/components/schemas/assuranceTopLevelKpi"
+          },
+          "whatWidget": {
+            "$ref": "#/components/schemas/assuranceWhatWidget"
+          },
+          "whenWidget": {
+            "$ref": "#/components/schemas/assuranceWhenWidget"
+          },
+          "whereWidget": {
+            "$ref": "#/components/schemas/assuranceWhereWidget"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceTopLevelKpi": {
+        "type": "object",
+        "properties": {
+          "dataTransferredKbpsMetric": {
+            "$ref": "#/components/schemas/assuranceKpiMetric"
+          },
+          "shadowAiToolsMetric": {
+            "$ref": "#/components/schemas/assuranceKpiMetric"
+          },
+          "toolsMetric": {
+            "$ref": "#/components/schemas/assuranceKpiMetric"
+          },
+          "usersMetric": {
+            "$ref": "#/components/schemas/assuranceKpiMetric"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceKpiMetric": {
+        "type": "object",
+        "properties": {
+          "delta": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "delta value for the metric"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "name of the metric"
+          },
+          "percent": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "AI adoption percent for the metric"
+          },
+          "tag": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "AI adoption tag for the metric"
+          },
+          "value": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "metric value (required)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceWhatWidget": {
+        "type": "object",
+        "properties": {
+          "bubbleCategories": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "topToolsByActiveUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "topToolsByDataTransferred": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceWhenWidget": {
+        "type": "object",
+        "properties": {
+          "dayOfWeek": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "hourOfDay": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "monthlyActiveUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "monthlyBandwidthTransferred": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceWhereWidget": {
+        "type": "object",
+        "properties": {
+          "topSitesByUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          },
+          "topUsersByDataTransferred": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceUserDefinition"
+            }
+          },
+          "topVrfsByUsers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceKpiMetric"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceUserDefinition": {
+        "type": "object",
+        "properties": {
+          "dataSent": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "data sent by the user (required)"
+          },
+          "managed": {
+            "type": "boolean",
+            "example": true,
+            "description": "whether the user is managed (required)"
+          },
+          "sessionsDay": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "daily sessions for the user (required)"
+          },
+          "user": {
+            "type": "string",
+            "example": "example string",
+            "description": "user identifier (required)"
+          },
+          "vrf": {
+            "type": "string",
+            "example": "example string",
+            "description": "VRF associated with the user (required)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2AssuranceCreateAiAdoptionApproveEntryPostRequest": {
+        "type": "object",
+        "properties": {
+          "approvedAppEntry": {
+            "$ref": "#/components/schemas/assuranceApprovedAppEntryRequest"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "approvedAppEntry"
+        ]
+      },
+      "assuranceApprovedAppEntryRequest": {
+        "type": "object",
+        "properties": {
+          "appName": {
+            "type": "string",
+            "example": "example string",
+            "description": "app name to approve (required)"
+          },
+          "domain": {
+            "type": "string",
+            "example": "example string",
+            "description": "app name to approve"
+          },
+          "id": {
+            "type": "string",
+            "example": "example string",
+            "description": "approved app entry identifier"
+          },
+          "tagRequested": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "resulting tag, approved or shadow (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "appName",
+          "tagRequested"
+        ]
+      },
+      "v2AssuranceCreateAiAdoptionApproveEntryPostResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "example string",
+            "description": "identifier of the created approved app entry (required)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2AssuranceUpdateAiAdoptionApproveEntryPostRequest": {
+        "type": "object",
+        "properties": {
+          "approvedAppEntry": {
+            "$ref": "#/components/schemas/assuranceApprovedAppEntryRequest"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "approvedAppEntry"
+        ]
+      },
+      "v2AssuranceUpdateAiAdoptionApproveEntryPostResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v2AssuranceDeleteAiAdoptionApproveEntryDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v2AssuranceReadAiAdoptionApproveEntriesGetResponse": {
+        "type": "object",
+        "properties": {
+          "approvedAppList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceApprovedAppEntry"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "assuranceApprovedAppEntry": {
+        "type": "object",
+        "properties": {
+          "activeUsers": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "number of active users (required)"
+          },
+          "category": {
+            "type": "string",
+            "example": "example string",
+            "description": "approved AI tool category (required)"
+          },
+          "dataSentKbps": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "data sent in kbps (required)"
+          },
+          "id": {
+            "type": "string",
+            "example": "example string",
+            "description": "approved app entry identifier (required)"
+          },
+          "tool": {
+            "type": "string",
+            "example": "example string",
+            "description": "approved AI tool name (required)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2AssuranceGetAppNamesPostRequest": {
+        "type": "object",
+        "properties": {
+          "tags": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "ENUM_VALUE",
+              "description": "app name type to fetch (required)"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "tags"
+        ]
+      },
+      "v2AssuranceGetAppNamesPostResponse": {
+        "type": "object",
+        "properties": {
+          "appNames": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "app names returned (required)"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "v1AuditLogsPostRequest": {
         "type": "object",
         "properties": {
@@ -4215,6 +4570,53 @@
             "example": 1234567891011
           },
           "siteId": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ZtagentAgentsGetResponse": {
+        "type": "object",
+        "properties": {
+          "agents": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/concealAgent"
+            }
+          },
+          "count": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123
+          }
+        },
+        "additionalProperties": false
+      },
+      "concealAgent": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "type": "string",
+            "example": "example string"
+          },
+          "disabled": {
+            "type": "boolean",
+            "example": true
+          },
+          "id": {
+            "type": "string",
+            "example": "example string"
+          },
+          "identifier": {
+            "type": "string",
+            "example": "example string"
+          },
+          "lastCheckin": {
+            "type": "string",
+            "example": "example string"
+          },
+          "machine": {
             "type": "string",
             "example": "example string"
           }
@@ -20014,6 +20416,9 @@
           "ipsecGatewayDetails": {
             "$ref": "#/components/schemas/manaV2IPsecGatewayDetails"
           },
+          "ipsecGatewayPeers": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayPeersConfig"
+          },
           "regionId": {
             "type": "integer",
             "format": "int32",
@@ -20087,6 +20492,74 @@
           "psk": {
             "type": "string",
             "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayPeersConfig": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Name of the IPsec gateway service"
+          },
+          "remotePeers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2IPsecGatewayRemotePeer"
+            }
+          },
+          "routing": {
+            "$ref": "#/components/schemas/manaV2IpsecRoutingConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayRemotePeer": {
+        "type": "object",
+        "properties": {
+          "destinationAddress": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeInitiator": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, Graphiant initiates IKE for this peer"
+          },
+          "mtu": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional display name or label for this peer; used when generating tunnel names"
+          },
+          "remoteIkePeerIdentity": {
+            "type": "string",
+            "example": "example string",
+            "description": "IKE identity of the remote peer"
+          },
+          "tcpMss": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "tunnel1": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "tunnel2": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "vpnProfile": {
+            "type": "string",
+            "example": "example string",
+            "description": "Enterprise IPsec VPN profile name for this peer"
           }
         },
         "additionalProperties": false
@@ -20857,73 +21330,67 @@
         },
         "additionalProperties": false
       },
-      "v1ExtranetPublicVifPostRequest": {
+      "v1PvifPostRequest": {
         "type": "object",
         "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicy"
+          "advertisement": {
+            "$ref": "#/components/schemas/manaV2SiteInformation"
           },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicy"
-          },
-          "serviceName": {
-            "type": "string",
-            "example": "example string"
-          },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE",
-            "description": "Type of the service whether it is application or peering (required)"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "consumerPolicy",
-          "producerPolicy",
-          "type"
-        ]
-      },
-      "manaV2PublicVifConsumerPolicy": {
-        "type": "object",
-        "properties": {
-          "lanSegments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2PublicVifConsumerLanSegment"
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
             }
           },
-          "sites": {
-            "$ref": "#/components/schemas/manaV2SiteInformation"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "lanSegments",
-          "sites"
-        ]
-      },
-      "manaV2PublicVifConsumerLanSegment": {
-        "type": "object",
-        "properties": {
-          "allowedPrefixes": {
+          "coveringPrefixes": {
             "type": "array",
             "items": {
               "type": "string",
               "example": "example string",
-              "description": "Allowed prefixes for the Lan Segment (required)"
+              "description": "Prefixes monitored for this service; empty means 0.0.0.0/0"
             }
           },
-          "serviceLanSegment": {
+          "gatewayBgpNeighbors": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2BgpNeighborConfig"
+            }
+          },
+          "lanSegmentId": {
             "type": "integer",
             "format": "int64",
             "example": 1234567891011,
-            "description": "LAN segment ID for the service (required)"
+            "description": "Producer LAN segment (VRF) on gateway appliances (required)"
+          },
+          "natPrefixStrategy": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+          },
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Graphiant region for gateway appliances (required)"
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Service display name (required)"
+          },
+          "storageProvider": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Storage provider; each gateway appliance must match region and provider (required)"
           }
         },
         "additionalProperties": false,
         "required": [
-          "allowedPrefixes",
-          "serviceLanSegment"
+          "consumerLanSegments",
+          "gatewayBgpNeighbors",
+          "lanSegmentId",
+          "natPrefixStrategy",
+          "regionId",
+          "serviceName",
+          "storageProvider"
         ]
       },
       "manaV2SiteInformation": {
@@ -20948,393 +21415,340 @@
         },
         "additionalProperties": false
       },
-      "manaV2PublicVifProducerPolicy": {
+      "manaV2PublicVifGatewayConsumerLanDevices": {
         "type": "object",
         "properties": {
-          "devices": {
-            "type": "object",
-            "additionalProperties": {
-              "$ref": "#/components/schemas/manaV2PublicVifDevice"
-            }
-          },
-          "profiles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2ApplicationProfile"
-            }
-          },
-          "serviceLanSegment": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011,
-            "description": "LAN segment ID for the service (required)"
-          },
-          "serviceName": {
-            "type": "string",
-            "example": "example string",
-            "description": "Public VIF service name (local_extranet_producer_service.name)"
-          },
-          "sites": {
-            "$ref": "#/components/schemas/manaV2SiteInformation"
-          },
-          "sla": {
-            "$ref": "#/components/schemas/manaV2SlaInformation"
-          },
-          "vifs": {
-            "$ref": "#/components/schemas/manaV2PublicVif"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "devices",
-          "serviceLanSegment",
-          "sites",
-          "vifs"
-        ]
-      },
-      "manaV2PublicVifDevice": {
-        "type": "object",
-        "properties": {
-          "consumerBurstSize": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0,
-            "description": "Maximum Burst size per device (required)"
-          },
-          "consumerBwSite": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0,
-            "description": "Maximum Bandwidth allocation per device (required)"
-          },
-          "natPools": {
+          "consumerPrefixes": {
             "type": "array",
             "items": {
               "type": "string",
               "example": "example string",
-              "description": "NAT details for the service prefixes (required)"
+              "description": "Allow prefixes for this consumer LAN; empty means 0.0.0.0/0"
             }
           }
         },
-        "additionalProperties": false,
-        "required": [
-          "consumerBurstSize",
-          "consumerBwSite",
-          "natPools"
-        ]
+        "additionalProperties": false
       },
-      "manaV2PublicVif": {
+      "manaV2PublicVifGatewayNatPrefixStrategy": {
         "type": "object",
         "properties": {
-          "coveringPrefixes": {
-            "$ref": "#/components/schemas/manaV2PublicVifDynamic"
+          "centralized": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayCentralizedNat"
           },
-          "fixedPrefixes": {
-            "$ref": "#/components/schemas/manaV2PublicVifFixed"
-          },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE",
-            "description": "Type of Public VIF dynamic/fixed (required)"
+          "decentralized": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayDecentralizedPrefixes"
           }
         },
-        "additionalProperties": false,
-        "required": [
-          "coveringPrefixes",
-          "fixedPrefixes",
-          "type"
-        ]
+        "additionalProperties": false
       },
-      "manaV2PublicVifDynamic": {
+      "manaV2PublicVifGatewayCentralizedNat": {
         "type": "object",
         "properties": {
-          "entries": {
-            "type": "array",
-            "items": {
+          "consumerPrefix": {
+            "type": "object",
+            "additionalProperties": {
               "type": "string",
               "example": "example string"
             }
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "required": [
+          "consumerPrefix"
+        ]
       },
-      "manaV2PublicVifFixed": {
+      "manaV2PublicVifGatewayDecentralizedPrefixes": {
         "type": "object",
         "properties": {
-          "entries": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2PublicVifFixedNat"
+          "prefixes": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "example": "example string"
             }
           }
         },
-        "additionalProperties": false
+        "additionalProperties": false,
+        "required": [
+          "prefixes"
+        ]
       },
-      "manaV2PublicVifFixedNat": {
+      "v1PvifPostResponse": {
         "type": "object",
         "properties": {
-          "outsideNatPrefix": {
-            "type": "string",
-            "example": "example string"
+          "advertiseAllSites": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when consumer scope is all symmetric sites (snapshotted on create and update); false when advertisement lists explicit sites or site lists"
           },
-          "servicePrefix": {
-            "type": "string",
-            "example": "example string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "v1ExtranetPublicVifPostResponse": {
-        "type": "object",
-        "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
-          },
-          "id": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
-          },
-          "serviceName": {
-            "type": "string",
-            "example": "example string"
-          },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2PublicVifConsumerPolicyResponse": {
-        "type": "object",
-        "properties": {
-          "consumerServiceId": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "lanSegments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2PublicVifConsumerLanSegmentResponse"
-            }
-          },
-          "sites": {
+          "advertisement": {
             "$ref": "#/components/schemas/manaV2SiteInformation"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2PublicVifConsumerLanSegmentResponse": {
-        "type": "object",
-        "properties": {
-          "allowedPrefixes": {
+          },
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+            }
+          },
+          "coveringPrefixes": {
             "type": "array",
             "items": {
               "type": "string",
               "example": "example string",
-              "description": "Allowed prefixes for the Lan Segment"
+              "description": "Prefixes monitored for this service"
             }
           },
-          "outboundSecurityRules": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2SecurityPolicyRule"
-            }
-          },
-          "serviceLanSegment": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011,
-            "description": "LAN segment ID for the service"
-          },
-          "trafficRules": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2TrafficPolicyRule"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2PublicVifProducerPolicyResponse": {
-        "type": "object",
-        "properties": {
-          "devices": {
+          "gatewayBgpNeighbors": {
             "type": "object",
             "additionalProperties": {
-              "$ref": "#/components/schemas/manaV2PublicVifDevice"
+              "$ref": "#/components/schemas/manaV2BgpNeighbor"
             }
           },
-          "inboundSecurityRules": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2SecurityPolicyRule"
-            }
-          },
-          "profiles": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2ApplicationProfile"
-            }
-          },
-          "serviceLanSegment": {
+          "id": {
             "type": "integer",
             "format": "int64",
             "example": 1234567891011,
-            "description": "LAN segment ID for the service"
+            "description": "Producer service id"
+          },
+          "lanSegmentId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer LAN segment (VRF) id"
+          },
+          "natPrefixStrategy": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+          },
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Graphiant region for gateway appliances"
           },
           "serviceName": {
             "type": "string",
             "example": "example string",
-            "description": "Public VIF service name (local_extranet_producer_service.name)"
+            "description": "Service display name"
           },
-          "sites": {
-            "$ref": "#/components/schemas/manaV2SiteInformation"
-          },
-          "sla": {
-            "$ref": "#/components/schemas/manaV2SlaInformation"
-          },
-          "trafficRules": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2TrafficPolicyRule"
-            }
-          },
-          "vifs": {
-            "$ref": "#/components/schemas/manaV2PublicVif"
+          "storageProvider": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Storage provider for gateway appliances"
           }
         },
         "additionalProperties": false
       },
-      "v1ExtranetPublicVifIdPutRequest": {
+      "v1PvifIdPutRequest": {
         "type": "object",
         "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicy"
-          },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicy"
+          "configuration": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayWriteRequest"
           }
         },
         "additionalProperties": false,
         "required": [
-          "producerPolicy"
+          "configuration"
         ]
       },
-      "v1ExtranetPublicVifIdPutResponse": {
+      "manaV2PublicVifGatewayWriteRequest": {
         "type": "object",
         "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
+          "advertisement": {
+            "$ref": "#/components/schemas/manaV2SiteInformation"
+          },
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+            }
+          },
+          "coveringPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Prefixes monitored for this service; empty means 0.0.0.0/0"
+            }
+          },
+          "gatewayBgpNeighbors": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2BgpNeighborConfig"
+            }
+          },
+          "lanSegmentId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer LAN segment (VRF) on gateway appliances (required)"
+          },
+          "natPrefixStrategy": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+          },
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Graphiant region for gateway appliances (required)"
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Service display name (required)"
+          },
+          "storageProvider": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Storage provider; each gateway appliance must match region and provider (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "consumerLanSegments",
+          "gatewayBgpNeighbors",
+          "lanSegmentId",
+          "natPrefixStrategy",
+          "regionId",
+          "serviceName",
+          "storageProvider"
+        ]
+      },
+      "v1PvifIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "advertiseAllSites": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when consumer scope is all symmetric sites (snapshotted on create and update); false when advertisement lists explicit sites or site lists"
+          },
+          "advertisement": {
+            "$ref": "#/components/schemas/manaV2SiteInformation"
+          },
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+            }
+          },
+          "coveringPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Prefixes monitored for this service"
+            }
+          },
+          "gatewayBgpNeighbors": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2BgpNeighbor"
+            }
           },
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1234567891011
+            "example": 1234567891011,
+            "description": "Producer service id"
           },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
+          "lanSegmentId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer LAN segment (VRF) id"
+          },
+          "natPrefixStrategy": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
+          },
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Graphiant region for gateway appliances"
           },
           "serviceName": {
             "type": "string",
-            "example": "example string"
+            "example": "example string",
+            "description": "Service display name"
           },
-          "type": {
+          "storageProvider": {
             "type": "string",
-            "example": "ENUM_VALUE"
+            "example": "ENUM_VALUE",
+            "description": "Storage provider for gateway appliances"
           }
         },
         "additionalProperties": false
       },
-      "v1ExtranetPublicVifIdDeleteResponse": {
+      "v1PvifIdDeleteResponse": {
         "type": "object",
         "properties": {},
         "additionalProperties": false
       },
-      "v1ExtranetPublicVifIdGetResponse": {
+      "v1PvifIdDetailsGetResponse": {
         "type": "object",
         "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
+          "advertiseAllSites": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when consumer scope is all symmetric sites (snapshotted on create and update); false when advertisement lists explicit sites or site lists"
+          },
+          "advertisement": {
+            "$ref": "#/components/schemas/manaV2SiteInformation"
+          },
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2PublicVifGatewayConsumerLanDevices"
+            }
+          },
+          "coveringPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Prefixes monitored for this service"
+            }
+          },
+          "gatewayBgpNeighbors": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2BgpNeighbor"
+            }
           },
           "id": {
             "type": "integer",
             "format": "int64",
-            "example": 1234567891011
+            "example": 1234567891011,
+            "description": "Producer service id"
           },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
+          "lanSegmentId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer LAN segment (VRF) id"
           },
-          "serviceName": {
-            "type": "string",
-            "example": "example string"
+          "natPrefixStrategy": {
+            "$ref": "#/components/schemas/manaV2PublicVifGatewayNatPrefixStrategy"
           },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE"
-          }
-        },
-        "additionalProperties": false
-      },
-      "v1ExtranetPublicVifCheckPostRequest": {
-        "type": "object",
-        "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicy"
-          },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicy"
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Graphiant region for gateway appliances"
           },
           "serviceName": {
             "type": "string",
-            "example": "example string"
+            "example": "example string",
+            "description": "Service display name"
           },
-          "type": {
+          "storageProvider": {
             "type": "string",
             "example": "ENUM_VALUE",
-            "description": "Type of the service whether it is application or peering (required)"
-          }
-        },
-        "additionalProperties": false,
-        "required": [
-          "consumerPolicy",
-          "producerPolicy",
-          "type"
-        ]
-      },
-      "v1ExtranetPublicVifCheckPostResponse": {
-        "type": "object",
-        "properties": {
-          "consumerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifConsumerPolicyResponse"
-          },
-          "id": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "producerPolicy": {
-            "$ref": "#/components/schemas/manaV2PublicVifProducerPolicyResponse"
-          },
-          "serviceName": {
-            "type": "string",
-            "example": "example string"
-          },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE"
+            "description": "Storage provider for gateway appliances"
           }
         },
         "additionalProperties": false
       },
-      "v1ExtranetPublicVifGetResponse": {
+      "v1PvifSummaryGetResponse": {
         "type": "object",
         "properties": {
           "summary": {
@@ -22146,6 +22560,71 @@
           "hostname": {
             "type": "string",
             "example": "example string"
+          },
+          "siteId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1LanSegmentsInterfacesPublicGetResponse": {
+        "type": "object",
+        "properties": {
+          "lanSegmentIds": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2LanSegmentPublicInterfacesLists"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2LanSegmentPublicInterfacesLists": {
+        "type": "object",
+        "properties": {
+          "privateInterfaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2LanSegmentPublicInterfaceEntry"
+            }
+          },
+          "publicInterfaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2LanSegmentPublicInterfaceEntry"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2LanSegmentPublicInterfaceEntry": {
+        "type": "object",
+        "properties": {
+          "interfaceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "network.interface id (required)"
+          },
+          "ipv4Addresses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "IPv4 host/prefix strings from interface_ip_address (non-stale rows)"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Device interface name (BGP local_interface uses this) (required)"
+          },
+          "storageProvider": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Interface storage provider (cloud provider for gateway LAN interfaces)"
           }
         },
         "additionalProperties": false
@@ -22158,6 +22637,33 @@
             "items": {
               "$ref": "#/components/schemas/manaV2Region"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1RegionsRegionIdGatewaysGetResponse": {
+        "type": "object",
+        "properties": {
+          "gateways": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1RegionsRegionIdGatewaysGetResponseGateway"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1RegionsRegionIdGatewaysGetResponseGateway": {
+        "type": "object",
+        "properties": {
+          "deviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "hostname": {
+            "type": "string",
+            "example": "example string"
           }
         },
         "additionalProperties": false
@@ -23129,6 +23635,9 @@
         "properties": {
           "ipsecGatewayDetails": {
             "$ref": "#/components/schemas/manaV2IPsecGatewayDetails"
+          },
+          "ipsecGatewayPeers": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayPeersConfig"
           }
         },
         "additionalProperties": false
@@ -24440,6 +24949,9 @@
             "items": {
               "$ref": "#/components/schemas/manaV2RegionalAllocation"
             }
+          },
+          "zeroTrustSummary": {
+            "$ref": "#/components/schemas/manaV2ZeroTrustConsumptionSummary"
           }
         },
         "additionalProperties": false
@@ -24702,6 +25214,18 @@
           "regionName": {
             "type": "string",
             "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ZeroTrustConsumptionSummary": {
+        "type": "object",
+        "properties": {
+          "userAgentCredits": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34,
+            "description": "Number of devices that have been installed with the zero trust agent"
           }
         },
         "additionalProperties": false
@@ -33425,6 +33949,11 @@
           },
           "rolloutConfig": {
             "$ref": "#/components/schemas/upgradeRolloutConfig"
+          },
+          "status": {
+            "type": "string",
+            "example": "idle",
+            "description": "Status of the upgrade rollout group"
           }
         },
         "additionalProperties": false
@@ -35350,6 +35879,48 @@
         }
       }
     },
+    "/v2/assurance/create-ai-adoption-approve-entry": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceCreateAiAdoptionApproveEntryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceCreateAiAdoptionApproveEntryPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/createclassifiedapplication": {
       "post": {
         "security": [
@@ -35469,6 +36040,56 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/v2AssuranceCreateUserReportPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/delete-ai-adoption-approve-entry": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "idList",
+            "in": "query",
+            "description": "list of approved app entry identifiers to delete",
+            "required": true,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "example string"
+              },
+              "example": [
+                "example"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceDeleteAiAdoptionApproveEntryDeleteResponse"
                 }
               }
             }
@@ -35626,6 +36247,90 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/v2AssuranceDownloadUserReportGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/ai-adoption-summary": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceAiAdoptionSummaryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceAiAdoptionSummaryPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/get-app-names": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceGetAppNamesPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceGetAppNamesPostResponse"
                 }
               }
             }
@@ -36379,6 +37084,38 @@
         }
       }
     },
+    "/v2/assurance/read-ai-adoption-approve-entries": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceReadAiAdoptionApproveEntriesGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/read-dnsproxy-list": {
       "get": {
         "security": [
@@ -36436,6 +37173,48 @@
               "application/json": {
                 "schema": {
                   "$ref": "#/components/schemas/v2AssuranceReadUserReportListGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/assurance/update-ai-adoption-approve-entry": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceUpdateAiAdoptionApproveEntryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceUpdateAiAdoptionApproveEntryPostResponse"
                 }
               }
             }
@@ -36651,6 +37430,149 @@
             }
           }
         }
+      }
+    },
+    "/v1/ztagent/agents": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "createdDateEnd",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "createdDateStart",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "endpoints",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "example string"
+              },
+              "example": [
+                "example"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "hostname",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "limit",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 123
+            }
+          },
+          {
+            "name": "machineId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 123
+            }
+          },
+          {
+            "name": "tenantId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "updatedDateEnd",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "updatedDateStart",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ZtagentAgentsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List Conceal agents (devices) with pagination and filters."
       }
     },
     "/v1/ztagent/bindings": {
@@ -40738,49 +41660,6 @@
         }
       }
     },
-    "/v1/extranet-public-vif/check": {
-      "post": {
-        "security": [
-          {
-            "jwtAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Bearer token. Format: Bearer <your_token_here>"
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/v1ExtranetPublicVifCheckPostRequest"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifCheckPostResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Check Public Vif service"
-      }
-    },
     "/v1/global/config": {
       "patch": {
         "security": [
@@ -41827,7 +42706,7 @@
         "description": "Get a list of lan-segments under the currently logged in enterprise"
       }
     },
-    "/v1/extranet-public-vif": {
+    "/v1/pvif": {
       "post": {
         "security": [
           {
@@ -41850,7 +42729,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/v1ExtranetPublicVifPostRequest"
+                "$ref": "#/components/schemas/v1PvifPostRequest"
               }
             }
           }
@@ -41861,44 +42740,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifPostResponse"
+                  "$ref": "#/components/schemas/v1PvifPostResponse"
                 }
               }
             }
           }
         },
-        "description": "Create Public Vif service"
-      },
-      "get": {
-        "security": [
-          {
-            "jwtAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Bearer token. Format: Bearer <your_token_here>"
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifGetResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Get Public Vif summary"
+        "description": "Create a gateway Public VIF service"
       }
     },
     "/v1/policy/route-tag-sets": {
@@ -43393,7 +44241,7 @@
         "description": "Delete a lan-segment"
       }
     },
-    "/v1/extranet-public-vif/{id}": {
+    "/v1/pvif/{id}": {
       "delete": {
         "security": [
           {
@@ -43414,7 +44262,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "",
+            "description": "Producer service id",
             "schema": {
               "type": "integer",
               "format": "int64",
@@ -43428,55 +44276,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifIdDeleteResponse"
+                  "$ref": "#/components/schemas/v1PvifIdDeleteResponse"
                 }
               }
             }
           }
         },
-        "description": "Delete Public Vif service"
-      },
-      "get": {
-        "security": [
-          {
-            "jwtAuth": []
-          }
-        ],
-        "parameters": [
-          {
-            "in": "header",
-            "name": "Authorization",
-            "required": true,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Bearer token. Format: Bearer <your_token_here>"
-          },
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "description": "Public VIF producer policy",
-            "schema": {
-              "type": "integer",
-              "format": "int64",
-              "example": 1234567891011
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifIdGetResponse"
-                }
-              }
-            }
-          }
-        },
-        "description": "Get Public Vif service"
+        "description": "Delete a gateway Public VIF service"
       },
       "put": {
         "security": [
@@ -43498,7 +44304,7 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "description": "Public VIF producer service id",
+            "description": "Producer service id",
             "schema": {
               "type": "integer",
               "format": "int64",
@@ -43511,7 +44317,7 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/v1ExtranetPublicVifIdPutRequest"
+                "$ref": "#/components/schemas/v1PvifIdPutRequest"
               }
             }
           }
@@ -43522,13 +44328,13 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/v1ExtranetPublicVifIdPutResponse"
+                  "$ref": "#/components/schemas/v1PvifIdPutResponse"
                 }
               }
             }
           }
         },
-        "description": "Update Public Vif service"
+        "description": "Update a gateway Public VIF service"
       }
     },
     "/v1/policy/route-tag-sets/{id}": {
@@ -46008,6 +46814,60 @@
         }
       }
     },
+    "/v1/regions/{regionId}/gateways": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "regionId",
+            "in": "path",
+            "required": true,
+            "description": "Graphiant region id",
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 123
+            }
+          },
+          {
+            "name": "storageProvider",
+            "in": "query",
+            "description": "Storage provider; only gateways with a LAN interface for this provider are returned",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "example": "ENUM_VALUE"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1RegionsRegionIdGatewaysGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List gateway appliances in a region with at least one LAN interface for the given storage provider"
+      }
+    },
     "/v1/gateways/summary": {
       "get": {
         "security": [
@@ -47405,6 +48265,50 @@
         "description": "Get a list of lan-segment devices under the currently logged in enterprise"
       }
     },
+    "/v1/lan-segments/interfaces/public": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "deviceId",
+            "in": "query",
+            "description": "device id",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1LanSegmentsInterfacesPublicGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Per LAN segment (VRF) on a device: interfaces split by globally routable IPv4 (for Public VIF / BGP)"
+      }
+    },
     "/v1/msp/managed-enterprise-contract-info": {
       "get": {
         "security": [
@@ -47555,6 +48459,83 @@
           }
         },
         "description": "Get all domain categories from the DPI engine"
+      }
+    },
+    "/v1/pvif/{id}/details": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Producer service id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1PvifIdDetailsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a gateway Public VIF service"
+      }
+    },
+    "/v1/pvif/summary": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1PvifSummaryGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List gateway Public VIF services"
       }
     },
     "/v1/gateways/reference-consumer": {
@@ -48141,6 +49122,56 @@
               "type": "string"
             },
             "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "deviceId",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          },
+          {
+            "name": "deviceIds",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "integer",
+                "format": "int64",
+                "example": 1234567891011
+              },
+              "example": [
+                0
+              ]
+            },
+            "style": "form",
+            "explode": true
+          },
+          {
+            "name": "filter",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "gatewayCloudProvider",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "ENUM_VALUE"
+            }
           }
         ],
         "responses": {

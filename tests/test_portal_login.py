@@ -24,7 +24,8 @@ def test_default_portal_constant() -> None:
 
 
 def test_portal_root_url() -> None:
-    assert portal_root_url("https://portal.graphiant.com/foo/bar") == "https://portal.graphiant.com/"
+    assert portal_root_url(
+        "https://portal.graphiant.com/foo/bar") == "https://portal.graphiant.com/"
     assert portal_root_url("https://portal.example.com") == "https://portal.example.com/"
 
 
@@ -78,7 +79,7 @@ def test_extract_token_from_refresh_json_access_token_aliases() -> None:
 
 
 def test_extract_token_from_refresh_response_entry_point_uses_request_header() -> None:
-    """OpenAPI oneOf: refresh may return only entryPoint; bearer is still on the outgoing request."""
+    """OpenAPI oneOf: refresh may return only entryPoint; bearer on the request."""
 
     class _Req:
         headers = {"authorization": "Bearer gr-auth-from-req"}

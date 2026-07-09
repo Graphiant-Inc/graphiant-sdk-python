@@ -38,7 +38,7 @@ from graphiant_cli.portal_login import (
     open_portal,
     portal_url_from_config,
 )
-from graphiant_cli.rest_client import request as rest_request
+from graphiant_cli.rest_client import QueryDict, request as rest_request
 from graphiant_cli.sdk_invoke import invoke_method, list_api_method_rows, list_api_methods
 from graphiant_sdk.exceptions import ApiException
 
@@ -52,7 +52,10 @@ app = typer.Typer(
 )
 configure_app = typer.Typer(help="Default API host and portal URL.")
 login_app = typer.Typer(
-    help="Open the portal; auto-captures bearer from Graphiant API traffic (/v1/… or auth/refresh) after login.",
+    help=(
+        "Open the portal; auto-captures bearer from Graphiant API traffic "
+        "(/v1/… or auth/refresh) after login."
+    ),
     invoke_without_command=True,
 )
 api_app = typer.Typer(help="Call DefaultApi methods or list operation names.")
@@ -144,7 +147,8 @@ def configure_show() -> None:
     cfg = load_config()
     prof = get_profile()
     console.print("[bold]API host:[/bold]", cfg.get("host") or _default_host())
-    console.print("[bold]Portal URL:[/bold]", cfg.get("portal_url") or portal_url_from_config().rstrip("/"))
+    console.print("[bold]Portal URL:[/bold]", cfg.get("portal_url")
+                  or portal_url_from_config().rstrip("/"))
     console.print("[bold]Profile:[/bold]", os.environ.get("GRAPHIANT_PROFILE", DEFAULT_PROFILE))
     if prof:
         console.print("[bold]Token:[/bold]", "present" if prof.get("access_token") else "none")
@@ -159,7 +163,10 @@ def login_callback(
     portal_url: Optional[str] = typer.Option(
         None,
         "--portal-url",
-        help=f"Graphiant portal base URL (default: {DEFAULT_PORTAL_URL} or configure set-portal-url)",
+        help=(
+            f"Graphiant portal base URL (default: {DEFAULT_PORTAL_URL} "
+            "or configure set-portal-url)"
+        ),
     ),
     no_browser: bool = typer.Option(False, "--no-browser", help="Do not open a browser"),
     no_capture: bool = typer.Option(
@@ -171,19 +178,28 @@ def login_callback(
         90,
         "--timeout",
         "-t",
-        help="Seconds to wait for API bearer capture after opening the browser (default 90; then paste prompt)",
+        help=(
+            "Seconds to wait for API bearer capture after opening the browser "
+            "(default 90; then paste prompt)"
+        ),
     ),
     export_shell: bool = typer.Option(
         False,
         "--export/--no-export",
-        help="After success, also print 'export GRAPHIANT_ACCESS_TOKEN=…' to stdout (for scripts/eval). "
-        "Default off so the token is not echoed to the terminal; ~/.graphiant/env.sh is always written.",
+        help=(
+            "After success, also print 'export GRAPHIANT_ACCESS_TOKEN=…' to stdout "
+            "(for scripts/eval). Default off so the token is not echoed to the "
+            "terminal; ~/.graphiant/env.sh is always written."
+        ),
     ),
     verbose: bool = typer.Option(
         False,
         "--verbose",
         "-v",
-        help="Verbose login diagnostics on stderr (debug). Or set GRAPHIANT_LOG=debug|info|warning.",
+        help=(
+            "Verbose login diagnostics on stderr (debug). "
+            "Or set GRAPHIANT_LOG=debug|info|warning."
+        ),
     ),
 ) -> None:
     if ctx.invoked_subcommand is not None:
@@ -208,12 +224,16 @@ def login_callback(
         if verbose:
             console.print(
                 "[dim]Complete sign-in in the [bold]Chromium[/bold] window. "
-                "The CLI captures [bold]Bearer[/bold] from Graphiant [bold]…/v1/…[/bold] or [bold]…/v2/…[/bold] API calls or [bold]…/auth/refresh[/bold]. "
-                "After login, refresh the home page [bold]if needed[/bold] (F5); the CLI also opens [cyan]/[/cyan] and reloads once. "
+                "The CLI captures [bold]Bearer[/bold] from Graphiant "
+                "[bold]…/v1/…[/bold] or [bold]…/v2/…[/bold] API calls or "
+                "[bold]…/auth/refresh[/bold]. "
+                "After login, refresh the home page [bold]if needed[/bold] (F5); "
+                "the CLI also opens [cyan]/[/cyan] and reloads once. "
                 "[bold]Ctrl+C[/bold] skips wait and prompts for a token.[/dim]"
             )
         else:
-            console.print("[dim]Sign in in the browser window. [bold]Ctrl+C[/bold] to paste a token.[/dim]")
+            console.print(
+                "[dim]Sign in in the browser window. [bold]Ctrl+C[/bold] to paste a token.[/dim]")
         capture_interrupted = False
         try:
             tok = capture_token_via_browser(
@@ -225,8 +245,8 @@ def login_callback(
             capture_interrupted = True
             console.print(
                 "\n[yellow]Auto-capture interrupted. Paste your token below "
-                "(DevTools → Network: copy the full [cyan]Authorization[/cyan] value, including the word "
-                "[cyan]Bearer[/cyan]).[/yellow]\n"
+                "(DevTools → Network: copy the full [cyan]Authorization[/cyan] value, "
+                "including the word [cyan]Bearer[/cyan]).[/yellow]\n"
             )
             tok = None
         except Exception as e:
@@ -246,10 +266,13 @@ def login_callback(
             return
         if not capture_interrupted:
             console.print(
-                "[yellow]Auto-capture did not see a bearer token from Graphiant API traffic in time.[/yellow] "
-                "Try a longer wait: [cyan]graphiant login -t 180[/cyan], complete sign-in sooner, refresh the portal home (F5), "
+                "[yellow]Auto-capture did not see a bearer token from Graphiant API "
+                "traffic in time.[/yellow] "
+                "Try a longer wait: [cyan]graphiant login -t 180[/cyan], complete sign-in "
+                "sooner, refresh the portal home (F5), "
                 "or use [cyan]graphiant login --no-capture[/cyan]. "
-                "Diagnostics: [cyan]graphiant login -v[/cyan] or [cyan]GRAPHIANT_LOG=debug[/cyan].\n"
+                "Diagnostics: [cyan]graphiant login -v[/cyan] or "
+                "[cyan]GRAPHIANT_LOG=debug[/cyan].\n"
             )
 
     if not no_browser:
@@ -260,14 +283,17 @@ def login_callback(
 
     if not PLAYWRIGHT_AVAILABLE and not no_capture:
         console.print(
-            "[dim]Playwright is not installed; cannot auto-capture. Install dependencies: pip install graphiant-sdk[/dim]\n"
+            "[dim]Playwright is not installed; cannot auto-capture. "
+            "Install dependencies: pip install graphiant-sdk[/dim]\n"
         )
 
     console.print(
-        "After the portal home page loads, open [bold]Developer tools[/bold] → [bold]Network[/bold], "
-        "select a request to the Graphiant API ([cyan]api.graphiant.com[/cyan] or your configured host), "
-        "and copy the entire [bold]Authorization[/bold] request header value, including the word "
-        "[cyan]Bearer[/cyan] and the token (you can also paste a raw JWT only).\n"
+        "After the portal home page loads, open [bold]Developer tools[/bold] → "
+        "[bold]Network[/bold], select a request to the Graphiant API "
+        "([cyan]api.graphiant.com[/cyan] or your configured host), "
+        "and copy the entire [bold]Authorization[/bold] request header value, "
+        "including the word [cyan]Bearer[/cyan] and the token "
+        "(you can also paste a raw JWT only).\n"
     )
     line = click.prompt("Authorization / token", err=True).strip()
     if not line:
@@ -305,7 +331,8 @@ def login_env_export(profile: Optional[str] = typer.Option(None, "--profile", "-
 def logout_cmd(profile: Optional[str] = typer.Option(None, "--profile", "-p")) -> None:
     name = profile or os.environ.get("GRAPHIANT_PROFILE", DEFAULT_PROFILE)
     clear_profile(name)
-    login_logger.info("Logged out profile %s (clear shell with unset GRAPHIANT_ACCESS_TOKEN if needed)", name)
+    login_logger.info(
+        "Logged out profile %s (clear shell with unset GRAPHIANT_ACCESS_TOKEN if needed)", name)
     console.print(f"[green]Logged out[/green] profile [bold]{name}[/bold]")
     console.print(
         "[dim]If this terminal still has a token exported, run:[/dim] "
@@ -364,7 +391,10 @@ def api_invoke_cmd(
         None,
         "--kwargs",
         "-k",
-        help='JSON object of keyword args (request bodies as nested objects), e.g. \'{"v1_foo_post_request": {...}}\'',
+        help=(
+            'JSON object of keyword args (request bodies as nested objects), '
+            'e.g. \'{"v1_foo_post_request": {...}}\''
+        ),
     ),
     profile: Optional[str] = typer.Option(None, "--profile", "-p"),
 ) -> None:
@@ -399,7 +429,8 @@ def _print_api_list(prefix: str, plain: bool) -> None:
 
 @api_app.command("list")
 def api_list_cmd(
-    prefix: str = typer.Option("", "--prefix", help="Only methods starting with this prefix (e.g. v1_edges)"),
+    prefix: str = typer.Option(
+        "", "--prefix", help="Only methods starting with this prefix (e.g. v1_edges)"),
     plain: bool = typer.Option(
         False,
         "--plain",
@@ -407,7 +438,7 @@ def api_list_cmd(
         help="Print one SDK method name per line (no HTTP/path table)",
     ),
 ) -> None:
-    """List DefaultApi method names and raw HTTP path (for graphiant api invoke / graphiant rest)."""
+    """List DefaultApi method names and raw HTTP path (for graphiant api invoke)."""
     _print_api_list(prefix, plain)
 
 
@@ -424,7 +455,8 @@ def apis_alias_cmd(
 def rest_cmd(
     method: str = typer.Argument(..., help="HTTP method: GET, POST, PATCH, PUT, DELETE"),
     path: str = typer.Argument(..., help="Path starting with /v1/..."),
-    body: Optional[str] = typer.Option(None, "--body", "-b", help="JSON body string or @file.json"),
+    body: Optional[str] = typer.Option(
+        None, "--body", "-b", help="JSON body string or @file.json"),
     profile: Optional[str] = typer.Option(None, "--profile", "-p"),
     query: Optional[str] = typer.Option(None, "--query", "-q", help="Query string a=b&c=d"),
 ) -> None:
@@ -433,7 +465,7 @@ def rest_cmd(
     if not token:
         console.print("[red]Not logged in.[/red]")
         raise typer.Exit(1)
-    payload: dict | str | None = None
+    payload: dict[str, Any] | str | None = None
     if body:
         if body.startswith("@"):
             with open(body[1:], encoding="utf-8") as f:
@@ -443,7 +475,7 @@ def rest_cmd(
                 payload = json.loads(body)
             except json.JSONDecodeError:
                 payload = body
-    qdict: dict[str, str] | None = None
+    qdict: QueryDict | None = None
     if query:
         qdict = {}
         for pair in query.split("&"):
@@ -655,7 +687,8 @@ def whoami_cmd(profile: Optional[str] = typer.Option(None, "--profile", "-p")) -
         raise typer.Exit(1)
     raw_tok = token[7:].strip() if token.lower().startswith("bearer ") else token
     try:
-        status, text, _ = rest_request(host, "GET", "/v1/auth/user", raw_tok, body=None, query=None)
+        status, text, _ = rest_request(host, "GET", "/v1/auth/user",
+                                       raw_tok, body=None, query=None)
         if 200 <= status < 300:
             try:
                 payload = json.loads(text)
@@ -682,7 +715,8 @@ def version_cmd() -> None:
 
 
 def main() -> None:
-    # Stable prog name for Click/Typer shell completion (_GRAPHIANT_COMPLETE, --install-completion).
+    # Stable prog name for Click/Typer shell completion
+    # (_GRAPHIANT_COMPLETE, --install-completion).
     app(prog_name="graphiant")
 
 

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import logging
 import sys
 from pathlib import Path
 
@@ -20,7 +21,7 @@ def try_persist_login(
     profile: str,
     *,
     console: Console,
-    logger: object,
+    logger: logging.Logger,
 ) -> bool:
     """Persist token; print error and return False on filesystem/JSON failures."""
     try:

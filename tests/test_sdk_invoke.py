@@ -37,7 +37,8 @@ def test_list_api_method_rows_global_content_filters_and_rollouts() -> None:
     assert rows["v1_global_content_filters_post"][0] == "POST"
     roll = {n: (v, p) for n, v, p in list_api_method_rows("v1_software_rollouts")}
     assert roll["v1_software_rollouts_get"] == ("GET", "/v1/software/rollouts")
-    macsec = {n: (v, p) for n, v, p in list_api_method_rows("v2_monitoring_macsec_device_id_status")}
+    macsec = {n: (v, p) for n, v, p in list_api_method_rows(
+        "v2_monitoring_macsec_device_id_status")}
     assert macsec["v2_monitoring_macsec_device_id_status_get"] == (
         "GET",
         "/v2/monitoring/macsec/{deviceId}/status",

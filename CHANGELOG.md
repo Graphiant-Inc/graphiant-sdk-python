@@ -6,6 +6,25 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.6.0] - 2026-07-08
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.6.0.json`
+- **Public VIF (PVIF) gateway:** **`GET`/`POST /v1/pvif`**, **`GET`/`PUT`/`DELETE /v1/pvif/{id}`**, **`GET /v1/pvif/{id}/details`**, **`GET /v1/pvif/summary`**; models **`V1Pvif*`** and **`ManaV2PublicVifGateway*`** (centralized/decentralized NAT, consumer LAN devices, NAT prefix strategy, write request)
+- **Assurance AI adoption:** **`POST /v2/assurance/ai-adoption-summary`**, **`POST /v2/assurance/create-ai-adoption-approve-entry`**, **`POST /v2/assurance/read-ai-adoption-approve-entries`**, **`POST /v2/assurance/update-ai-adoption-approve-entry`**, **`POST /v2/assurance/delete-ai-adoption-approve-entry`**, **`POST /v2/assurance/get-app-names`**; models **`AssuranceApprovedAppEntry`**, **`AssuranceApprovedAppEntryRequest`**, **`AssuranceKpiMetric`**, **`AssuranceTopLevelKpi`**, **`AssuranceUserDefinition`**, **`AssuranceWhatWidget`**, **`AssuranceWhenWidget`**, **`AssuranceWhereWidget`**, and related **`V2AssuranceAiAdoption*`** / **`V2AssuranceGetAppNames*`** types
+- **LAN segment public interfaces:** **`GET /v1/lan-segments/interfaces/public`** with **`V1LanSegmentsInterfacesPublicGetResponse`**, **`ManaV2LanSegmentPublicInterfaceEntry`**, **`ManaV2LanSegmentPublicInterfacesLists`**
+- **Region gateways:** **`GET /v1/regions/{regionId}/gateways`** with **`V1RegionsRegionIdGatewaysGetResponse`**, **`ManaV2IPsecGatewayPeersConfig`**, **`ManaV2IPsecGatewayRemotePeer`**
+- **ZTAgent agents:** **`GET /v1/ztagent/agents`** with **`V1ZtagentAgentsGetResponse`** and **`ConcealAgent`**
+- **Mana:** **`ManaV2ZeroTrustConsumptionSummary`**
+
+### Changed
+- **Version:** Package **26.6.0**; OpenAPI bundle **`graphiant_api_docs_v26.6.0.json`** (replaces **26.5.0** bundle in-repo).
+- **Schemas / docs (updated):** **`AssuranceAppNameRecord`**, **`ManaV2GuestConsumerSiteToSiteVpnConfig`**, **`ManaV2SiteDeviceSummary`**, **`UpgradeRollout`**, **`V1EnterpriseAllocationGetResponse`**, **`V1GatewaysReferenceConsumerGetResponse`**, **`DefaultApi`**, README, and generated **`docs/`** model pages.
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.6.0** spec.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.5.0.json`** (superseded by **26.6.0** bundle).
+
 ## [26.5.0] - 2026-06-10
 
 ### Added

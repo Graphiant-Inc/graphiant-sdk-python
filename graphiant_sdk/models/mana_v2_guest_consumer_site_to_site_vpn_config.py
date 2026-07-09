@@ -20,6 +20,7 @@ import json
 from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_i_psec_gateway_details import ManaV2IPsecGatewayDetails
+from graphiant_sdk.models.mana_v2_i_psec_gateway_peers_config import ManaV2IPsecGatewayPeersConfig
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,8 +31,9 @@ class ManaV2GuestConsumerSiteToSiteVpnConfig(BaseModel):
     """ # noqa: E501
     emails: Optional[List[StrictStr]] = None
     ipsec_gateway_details: Optional[ManaV2IPsecGatewayDetails] = Field(default=None, alias="ipsecGatewayDetails")
+    ipsec_gateway_peers: Optional[ManaV2IPsecGatewayPeersConfig] = Field(default=None, alias="ipsecGatewayPeers")
     region_id: Optional[StrictInt] = Field(default=None, alias="regionId", json_schema_extra={"examples": [123]})
-    __properties: ClassVar[List[str]] = ["emails", "ipsecGatewayDetails", "regionId"]
+    __properties: ClassVar[List[str]] = ["emails", "ipsecGatewayDetails", "ipsecGatewayPeers", "regionId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -75,6 +77,9 @@ class ManaV2GuestConsumerSiteToSiteVpnConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of ipsec_gateway_details
         if self.ipsec_gateway_details:
             _dict['ipsecGatewayDetails'] = self.ipsec_gateway_details.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of ipsec_gateway_peers
+        if self.ipsec_gateway_peers:
+            _dict['ipsecGatewayPeers'] = self.ipsec_gateway_peers.to_dict()
         return _dict
 
     @classmethod
@@ -89,6 +94,7 @@ class ManaV2GuestConsumerSiteToSiteVpnConfig(BaseModel):
         _obj = cls.model_validate({
             "emails": obj.get("emails"),
             "ipsecGatewayDetails": ManaV2IPsecGatewayDetails.from_dict(obj["ipsecGatewayDetails"]) if obj.get("ipsecGatewayDetails") is not None else None,
+            "ipsecGatewayPeers": ManaV2IPsecGatewayPeersConfig.from_dict(obj["ipsecGatewayPeers"]) if obj.get("ipsecGatewayPeers") is not None else None,
             "regionId": obj.get("regionId")
         })
         return _obj

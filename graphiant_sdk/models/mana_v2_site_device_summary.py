@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from typing import Optional, Set
@@ -30,7 +30,8 @@ class ManaV2SiteDeviceSummary(BaseModel):
     """ # noqa: E501
     device_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="deviceId", json_schema_extra={"examples": [12345678910]})
     hostname: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["deviceId", "hostname"]
+    site_id: Optional[StrictInt] = Field(default=None, alias="siteId", json_schema_extra={"examples": [1234567891011]})
+    __properties: ClassVar[List[str]] = ["deviceId", "hostname", "siteId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,7 +85,8 @@ class ManaV2SiteDeviceSummary(BaseModel):
 
         _obj = cls.model_validate({
             "deviceId": obj.get("deviceId"),
-            "hostname": obj.get("hostname")
+            "hostname": obj.get("hostname"),
+            "siteId": obj.get("siteId")
         })
         return _obj
 

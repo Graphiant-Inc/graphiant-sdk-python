@@ -165,9 +165,12 @@ class Configuration:
       in PEM (str) or DER (bytes) format.
     :param cert_file: the path to a client certificate file, for mTLS.
     :param key_file: the path to a client key file, for mTLS.
-    :param assert_hostname: Set this to True/False to enable/disable SSL hostname verification.
-    :param tls_server_name: SSL/TLS Server Name Indication (SNI). Set this to the SNI value expected by the server.
-    :param connection_pool_maxsize: Connection pool max size. None in the constructor is coerced to 100 for async and cpu_count * 5 for sync.
+    :param assert_hostname: Set this to True/False to enable/disable SSL
+      hostname verification.
+    :param tls_server_name: SSL/TLS Server Name Indication (SNI). Set this to
+      the SNI value expected by the server.
+    :param connection_pool_maxsize: Connection pool max size. None in the
+      constructor is coerced to 100 for async and cpu_count * 5 for sync.
     :param proxy: Proxy URL.
     :param proxy_headers: Proxy headers.
     :param safe_chars_for_path_param: Safe characters for path parameter encoding.
@@ -202,33 +205,33 @@ conf = graphiant_sdk.Configuration(
 
     def __init__(
         self,
-        host: Optional[str]=None,
-        api_key: Optional[Dict[str, str]]=None,
-        api_key_prefix: Optional[Dict[str, str]]=None,
-        username: Optional[str]=None,
-        password: Optional[str]=None,
-        access_token: Optional[str]=None,
-        server_index: Optional[int]=None,
-        server_variables: Optional[ServerVariablesT]=None,
-        server_operation_index: Optional[Dict[int, int]]=None,
-        server_operation_variables: Optional[Dict[int, ServerVariablesT]]=None,
-        ignore_operation_servers: bool=False,
-        ssl_ca_cert: Optional[str]=None,
+        host: Optional[str] = None,
+        api_key: Optional[Dict[str, str]] = None,
+        api_key_prefix: Optional[Dict[str, str]] = None,
+        username: Optional[str] = None,
+        password: Optional[str] = None,
+        access_token: Optional[str] = None,
+        server_index: Optional[int] = None,
+        server_variables: Optional[ServerVariablesT] = None,
+        server_operation_index: Optional[Dict[int, int]] = None,
+        server_operation_variables: Optional[Dict[int, ServerVariablesT]] = None,
+        ignore_operation_servers: bool = False,
+        ssl_ca_cert: Optional[str] = None,
         retries: Optional[Union[int, urllib3.util.retry.Retry]] = None,
         ca_cert_data: Optional[Union[str, bytes]] = None,
-        cert_file: Optional[str]=None,
-        key_file: Optional[str]=None,
-        verify_ssl: bool=True,
-        assert_hostname: Optional[bool]=None,
-        tls_server_name: Optional[str]=None,
-        connection_pool_maxsize: Optional[int]=None,
-        proxy: Optional[str]=None,
-        proxy_headers: Optional[Any]=None,
-        safe_chars_for_path_param: str='',
-        client_side_validation: bool=True,
-        socket_options: Optional[Any]=None,
-        datetime_format: str="%Y-%m-%dT%H:%M:%S.%f%z",
-        date_format: str="%Y-%m-%d",
+        cert_file: Optional[str] = None,
+        key_file: Optional[str] = None,
+        verify_ssl: bool = True,
+        assert_hostname: Optional[bool] = None,
+        tls_server_name: Optional[str] = None,
+        connection_pool_maxsize: Optional[int] = None,
+        proxy: Optional[str] = None,
+        proxy_headers: Optional[Any] = None,
+        safe_chars_for_path_param: str = '',
+        client_side_validation: bool = True,
+        socket_options: Optional[Any] = None,
+        datetime_format: str = "%Y-%m-%dT%H:%M:%S.%f%z",
+        date_format: str = "%Y-%m-%d",
         *,
         debug: Optional[bool] = None,
     ) -> None:
@@ -324,7 +327,11 @@ conf = graphiant_sdk.Configuration(
            Set this to the SNI value expected by the server.
         """
 
-        self.connection_pool_maxsize = connection_pool_maxsize if connection_pool_maxsize is not None else multiprocessing.cpu_count() * 5
+        self.connection_pool_maxsize = (
+            connection_pool_maxsize
+            if connection_pool_maxsize is not None
+            else multiprocessing.cpu_count() * 5
+        )
         """urllib3 connection pool's maximum number of connections saved
            per pool. None in the constructor is coerced to cpu_count * 5.
         """
@@ -493,7 +500,9 @@ conf = graphiant_sdk.Configuration(
         self.__logger_format = value
         self.logger_formatter = logging.Formatter(self.__logger_format)
 
-    def get_api_key_with_prefix(self, identifier: str, alias: Optional[str]=None) -> Optional[str]:
+    def get_api_key_with_prefix(
+        self, identifier: str, alias: Optional[str] = None
+    ) -> Optional[str]:
         """Gets API key (with prefix if set).
 
         :param identifier: The identifier of apiKey.
@@ -528,7 +537,7 @@ conf = graphiant_sdk.Configuration(
             basic_auth=username + ':' + password
         ).get('authorization')
 
-    def auth_settings(self)-> AuthSettings:
+    def auth_settings(self) -> AuthSettings:
         """Gets Auth Settings dict for api client.
 
         :return: The Auth Settings information dict.
@@ -554,7 +563,7 @@ conf = graphiant_sdk.Configuration(
                "OS: {env}\n"\
                "Python Version: {pyversion}\n"\
                "Version of the API: 1.0.0\n"\
-               "SDK Package Version: 26.5.0".\
+               "SDK Package Version: 26.6.0".\
                format(env=sys.platform, pyversion=sys.version)
 
     def get_host_settings(self) -> List[HostSetting]:
@@ -572,8 +581,8 @@ conf = graphiant_sdk.Configuration(
     def get_host_from_settings(
         self,
         index: Optional[int],
-        variables: Optional[ServerVariablesT]=None,
-        servers: Optional[List[HostSetting]]=None,
+        variables: Optional[ServerVariablesT] = None,
+        servers: Optional[List[HostSetting]] = None,
     ) -> str:
         """Gets host URL based on the index and variables
         :param index: array index of the host settings

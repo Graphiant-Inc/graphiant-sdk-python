@@ -138,20 +138,24 @@ def extract_token_from_refresh_response(response: object) -> str | None:
         pass
 
     try:
-        data = response.json()
-        if isinstance(data, dict):
-            tok = extract_token_from_refresh_json(data)
-            if tok:
-                return tok
+        json_fn = getattr(response, "json", None)
+        if callable(json_fn):
+            data = json_fn()
+            if isinstance(data, dict):
+                tok = extract_token_from_refresh_json(data)
+                if tok:
+                    return tok
     except Exception:
         try:
-            raw = response.body()
-            if raw:
-                data = json.loads(raw.decode("utf-8", errors="replace"))
-                if isinstance(data, dict):
-                    tok = extract_token_from_refresh_json(data)
-                    if tok:
-                        return tok
+            body_fn = getattr(response, "body", None)
+            if callable(body_fn):
+                raw = body_fn()
+                if raw:
+                    data = json.loads(raw.decode("utf-8", errors="replace"))
+                    if isinstance(data, dict):
+                        tok = extract_token_from_refresh_json(data)
+                        if tok:
+                            return tok
         except Exception:
             pass
 

@@ -6,7 +6,7 @@ install:
 
 ## test: Run pytest with coverage
 test:
-	pytest --cov=graphiant_sdk --cov-report=term --cov-report=xml
+	python -m pytest --cov=graphiant_sdk --cov-report=term --cov-report=xml
 
 ## lint: Run flake8 on hand-written files only (generated files excluded via .flake8)
 lint:

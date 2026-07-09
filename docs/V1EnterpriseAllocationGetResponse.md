@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **consumption_summary** | [**ManaV2BandwidthConsumptionSummary**](ManaV2BandwidthConsumptionSummary.md) |  | [optional] 
 **conversion_holders** | [**Dict[str, ManaV2AllocationConversionHolder]**](ManaV2AllocationConversionHolder.md) |  | [optional] 
 **regional_allocations** | [**List[ManaV2RegionalAllocation]**](ManaV2RegionalAllocation.md) |  | [optional] 
+**zero_trust_summary** | [**ManaV2ZeroTrustConsumptionSummary**](ManaV2ZeroTrustConsumptionSummary.md) |  | [optional] 
 
 ## Example
 

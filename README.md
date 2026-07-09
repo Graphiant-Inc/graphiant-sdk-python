@@ -33,7 +33,7 @@ More product and platform context: [Graphiant Docs](https://docs.graphiant.com).
 | **Automation** | [Graphiant Automation](https://docs.graphiant.com/docs/automation) |
 | **REST API** | [Graphiant Portal REST API](https://docs.graphiant.com/docs/graphiant-portal-rest-api) |
 | **Method index (repo)** | [DefaultApi.md](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/docs/DefaultApi.md) |
-| **OpenAPI bundle (this build)** | [`api/graphiant_api_docs_v26.5.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/api/graphiant_api_docs_v26.5.0.json) — source for generated paths and models |
+| **OpenAPI bundle (this build)** | [`api/graphiant_api_docs_v26.6.0.json`](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/api/graphiant_api_docs_v26.6.0.json) — source for generated paths and models |
 | **Model docs (`*.md`)** | [`docs/`](https://github.com/Graphiant-Inc/graphiant-sdk-python/tree/main/docs) (same names as Python classes, e.g. `V1EdgesSummaryGetResponse.md`) |
 | **PyPI** | [graphiant-sdk](https://pypi.org/project/graphiant-sdk) |
 | **Changelog** | [CHANGELOG.md](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/CHANGELOG.md) |
@@ -425,7 +425,7 @@ def get_device_info(api, bearer_token, device_id):
 
 - Python 3.10+ (3.13 recommended)
 - Git
-- OpenAPI Generator (for code generation) — `brew install openapi-generator`
+- OpenAPI Generator **>= 7.23.0** (for code generation) — `brew install openapi-generator` or `npm install -g @openapitools/openapi-generator-cli`
 
 ### CI/CD Workflows
 
@@ -477,12 +477,12 @@ To regenerate the SDK from the latest API specification:
 make generate
 
 # Or run the script directly (supports OPENAPI_SPEC override)
-OPENAPI_SPEC=api/graphiant_api_docs_v26.5.0.json bash scripts/generate.sh
+OPENAPI_SPEC=api/graphiant_api_docs_v26.6.0.json bash scripts/generate.sh
 ```
 
-`scripts/generate.sh` wraps the full `openapi-generator-cli generate` invocation. It auto-detects `openapi-generator` (Homebrew) or `openapi-generator-cli` (npm), reads the current version from `pyproject.toml`, and passes `--git-user-id`/`--git-repo-id` so generated docs never contain `GIT_USER_ID` placeholders.
+`scripts/generate.sh` wraps the full `openapi-generator-cli generate` invocation (requires OpenAPI Generator **>= 7.23.0**). It auto-detects `openapi-generator` (Homebrew) or `openapi-generator-cli` (npm), reads the current version from `pyproject.toml`, and passes `--git-user-id`/`--git-repo-id` so generated docs never contain `GIT_USER_ID` placeholders.
 
-> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools** and place it in `api/`. The versioned JSON bundle (`api/graphiant_api_docs_v26.5.0.json`) is the snapshot used for this release; `api/openapi.yaml` is the primary YAML spec. Hand-written files listed in `.openapi-generator-ignore` (`graphiant_cli/`, `graphiant_sdk/api_client.py`, `configuration.py`, etc.) are never overwritten by the generator.
+> **Note:** Download the latest API bundle from the Graphiant portal under **Support Hub** → **Developer Tools** and place it in `api/`. The versioned JSON bundle (`api/graphiant_api_docs_v26.6.0.json`) is the snapshot used for this release; `api/openapi.yaml` is the primary YAML spec. Hand-written files listed in `.openapi-generator-ignore` (`graphiant_cli/`, `graphiant_sdk/api_client.py`, `configuration.py`, etc.) are never overwritten by the generator.
 
 ### Testing
 
@@ -498,7 +498,7 @@ pytest tests/ --cov=graphiant_sdk --cov-report=html
 
 ### Source of truth (this release)
 
-Operations and schemas are generated from **`api/graphiant_api_docs_v26.5.0.json`** (in `api/` and bundled in the PyPI wheel). For a newer portal/API, download the current bundle (Support Hub → Developer Tools) and diff paths before relying on URLs here.
+Operations and schemas are generated from **`api/graphiant_api_docs_v26.6.0.json`** (in `api/` and bundled in the PyPI wheel). For a newer portal/API, download the current bundle (Support Hub → Developer Tools) and diff paths before relying on URLs here.
 
 | How to explore | Where |
 |----------------|-------|
@@ -529,7 +529,7 @@ REST query parameters use **camelCase** in URLs (`enterpriseId`). Generated Pyth
 | **`V1GlobalSummaryPostRequest`**, **`V1GlobalSummaryPostResponse`** | **`POST /v1/global/summary`** |
 | **`V2ParentalertlistPostRequest`**, **`V2ParentalertlistPostResponse`** | **`POST /v2/parentalertlist`** |
 
-### Sample HTTP endpoints (from `graphiant_api_docs_v26.5.0.json`)
+### Sample HTTP endpoints (from `graphiant_api_docs_v26.6.0.json`)
 
 The API surface is large; this table lists **real** paths from the bundled spec. For the full set, use **`graphiant api list`** or **`DefaultApi.md`**.
 

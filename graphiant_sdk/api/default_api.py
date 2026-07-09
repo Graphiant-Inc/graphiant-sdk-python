@@ -243,14 +243,6 @@ from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_hea
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_health_post_response import V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostResponse
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_overtime_consumption_post_request import V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_overtime_consumption_post_response import V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostResponse
-from graphiant_sdk.models.v1_extranet_public_vif_check_post_request import V1ExtranetPublicVifCheckPostRequest
-from graphiant_sdk.models.v1_extranet_public_vif_check_post_response import V1ExtranetPublicVifCheckPostResponse
-from graphiant_sdk.models.v1_extranet_public_vif_get_response import V1ExtranetPublicVifGetResponse
-from graphiant_sdk.models.v1_extranet_public_vif_id_get_response import V1ExtranetPublicVifIdGetResponse
-from graphiant_sdk.models.v1_extranet_public_vif_id_put_request import V1ExtranetPublicVifIdPutRequest
-from graphiant_sdk.models.v1_extranet_public_vif_id_put_response import V1ExtranetPublicVifIdPutResponse
-from graphiant_sdk.models.v1_extranet_public_vif_post_request import V1ExtranetPublicVifPostRequest
-from graphiant_sdk.models.v1_extranet_public_vif_post_response import V1ExtranetPublicVifPostResponse
 from graphiant_sdk.models.v1_extranet_sites_usage_top_post_request import V1ExtranetSitesUsageTopPostRequest
 from graphiant_sdk.models.v1_extranet_sites_usage_top_post_response import V1ExtranetSitesUsageTopPostResponse
 from graphiant_sdk.models.v1_extranets_b2b_consumer_device_status_id_get_response import V1ExtranetsB2bConsumerDeviceStatusIdGetResponse
@@ -402,6 +394,7 @@ from graphiant_sdk.models.v1_groups_put_request import V1GroupsPutRequest
 from graphiant_sdk.models.v1_groups_root_get_response import V1GroupsRootGetResponse
 from graphiant_sdk.models.v1_invitation_email_post_request import V1InvitationEmailPostRequest
 from graphiant_sdk.models.v1_lan_segments_get_response import V1LanSegmentsGetResponse
+from graphiant_sdk.models.v1_lan_segments_interfaces_public_get_response import V1LanSegmentsInterfacesPublicGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_neighbors_get_response import V1LldpInterfaceIdNeighborsGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_summary_get_response import V1LldpInterfaceIdSummaryGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_vendors_get_response import V1LldpInterfaceIdVendorsGetResponse
@@ -420,8 +413,15 @@ from graphiant_sdk.models.v1_policy_route_tag_sets_tag_detail_get_response impor
 from graphiant_sdk.models.v1_policy_route_tag_sets_tags_get_response import V1PolicyRouteTagSetsTagsGetResponse
 from graphiant_sdk.models.v1_policy_route_tag_sets_tags_summary_get_response import V1PolicyRouteTagSetsTagsSummaryGetResponse
 from graphiant_sdk.models.v1_presharedkey_get_response import V1PresharedkeyGetResponse
+from graphiant_sdk.models.v1_pvif_id_details_get_response import V1PvifIdDetailsGetResponse
+from graphiant_sdk.models.v1_pvif_id_put_request import V1PvifIdPutRequest
+from graphiant_sdk.models.v1_pvif_id_put_response import V1PvifIdPutResponse
+from graphiant_sdk.models.v1_pvif_post_request import V1PvifPostRequest
+from graphiant_sdk.models.v1_pvif_post_response import V1PvifPostResponse
+from graphiant_sdk.models.v1_pvif_summary_get_response import V1PvifSummaryGetResponse
 from graphiant_sdk.models.v1_qos_circuit_profiles_get_response import V1QosCircuitProfilesGetResponse
 from graphiant_sdk.models.v1_regions_get_response import V1RegionsGetResponse
+from graphiant_sdk.models.v1_regions_region_id_gateways_get_response import V1RegionsRegionIdGatewaysGetResponse
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse
 from graphiant_sdk.models.v1_site_details_sitelists_post_request import V1SiteDetailsSitelistsPostRequest
 from graphiant_sdk.models.v1_site_details_sitelists_post_response import V1SiteDetailsSitelistsPostResponse
@@ -474,6 +474,7 @@ from graphiant_sdk.models.v1_users_put_request import V1UsersPutRequest
 from graphiant_sdk.models.v1_version_post_request import V1VersionPostRequest
 from graphiant_sdk.models.v1_version_post_response import V1VersionPostResponse
 from graphiant_sdk.models.v1_zones_get_response import V1ZonesGetResponse
+from graphiant_sdk.models.v1_ztagent_agents_get_response import V1ZtagentAgentsGetResponse
 from graphiant_sdk.models.v1_ztagent_bindings_get_response import V1ZtagentBindingsGetResponse
 from graphiant_sdk.models.v1_ztagent_bindings_put_request import V1ZtagentBindingsPutRequest
 from graphiant_sdk.models.v2_ack_createupdate_post_request import V2AckCreateupdatePostRequest
@@ -493,6 +494,8 @@ from graphiant_sdk.models.v2_assistant_get_conversations_post_request import V2A
 from graphiant_sdk.models.v2_assistant_get_conversations_post_response import V2AssistantGetConversationsPostResponse
 from graphiant_sdk.models.v2_assistant_update_conversation_name_post_request import V2AssistantUpdateConversationNamePostRequest
 from graphiant_sdk.models.v2_assistant_version_post_response import V2AssistantVersionPostResponse
+from graphiant_sdk.models.v2_assurance_ai_adoption_summary_post_request import V2AssuranceAiAdoptionSummaryPostRequest
+from graphiant_sdk.models.v2_assurance_ai_adoption_summary_post_response import V2AssuranceAiAdoptionSummaryPostResponse
 from graphiant_sdk.models.v2_assurance_applicationdetailsbyname_post_request import V2AssuranceApplicationdetailsbynamePostRequest
 from graphiant_sdk.models.v2_assurance_applicationdetailsbyname_post_response import V2AssuranceApplicationdetailsbynamePostResponse
 from graphiant_sdk.models.v2_assurance_applicationprofilesummary_post_request import V2AssuranceApplicationprofilesummaryPostRequest
@@ -507,6 +510,8 @@ from graphiant_sdk.models.v2_assurance_bucket_topologies_post_request import V2A
 from graphiant_sdk.models.v2_assurance_bucket_topologies_post_response import V2AssuranceBucketTopologiesPostResponse
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_request import V2AssuranceBucketdetailsPostRequest
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_response import V2AssuranceBucketdetailsPostResponse
+from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_request import V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_response import V2AssuranceCreateAiAdoptionApproveEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_request import V2AssuranceCreateDnsproxyEntryPostRequest
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_response import V2AssuranceCreateDnsproxyEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_user_report_post_request import V2AssuranceCreateUserReportPostRequest
@@ -516,7 +521,10 @@ from graphiant_sdk.models.v2_assurance_createclassifiedapplication_post_response
 from graphiant_sdk.models.v2_assurance_download_user_report_get_response import V2AssuranceDownloadUserReportGetResponse
 from graphiant_sdk.models.v2_assurance_enterprisesummary_post_request import V2AssuranceEnterprisesummaryPostRequest
 from graphiant_sdk.models.v2_assurance_enterprisesummary_post_response import V2AssuranceEnterprisesummaryPostResponse
+from graphiant_sdk.models.v2_assurance_get_app_names_post_request import V2AssuranceGetAppNamesPostRequest
+from graphiant_sdk.models.v2_assurance_get_app_names_post_response import V2AssuranceGetAppNamesPostResponse
 from graphiant_sdk.models.v2_assurance_getclassifiedapplicationlist_get_response import V2AssuranceGetclassifiedapplicationlistGetResponse
+from graphiant_sdk.models.v2_assurance_read_ai_adoption_approve_entries_get_response import V2AssuranceReadAiAdoptionApproveEntriesGetResponse
 from graphiant_sdk.models.v2_assurance_read_dnsproxy_list_get_response import V2AssuranceReadDnsproxyListGetResponse
 from graphiant_sdk.models.v2_assurance_read_user_report_list_get_response import V2AssuranceReadUserReportListGetResponse
 from graphiant_sdk.models.v2_assurance_scoredetails_post_request import V2AssuranceScoredetailsPostRequest
@@ -537,6 +545,7 @@ from graphiant_sdk.models.v2_assurance_topology_site_summaries_post_request impo
 from graphiant_sdk.models.v2_assurance_topology_site_summaries_post_response import V2AssuranceTopologySiteSummariesPostResponse
 from graphiant_sdk.models.v2_assurance_unclassifiedapplicationprofilesummary_post_request import V2AssuranceUnclassifiedapplicationprofilesummaryPostRequest
 from graphiant_sdk.models.v2_assurance_unclassifiedapplicationprofilesummary_post_response import V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse
+from graphiant_sdk.models.v2_assurance_update_ai_adoption_approve_entry_post_request import V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
 from graphiant_sdk.models.v2_assurance_update_dnsproxy_entry_post_request import V2AssuranceUpdateDnsproxyEntryPostRequest
 from graphiant_sdk.models.v2_assurance_updateclassifiedapplication_post_request import V2AssuranceUpdateclassifiedapplicationPostRequest
 from graphiant_sdk.models.v2_audit_logs_post_request import V2AuditLogsPostRequest
@@ -53681,1701 +53690,6 @@ class DefaultApi:
 
 
     @validate_call
-    def v1_extranet_public_vif_check_post(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V1ExtranetPublicVifCheckPostResponse:
-        """v1_extranet_public_vif_check_post
-
-        Check Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_check_post_request: (required)
-        :type v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_check_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_check_post_request=v1_extranet_public_vif_check_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifCheckPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_check_post_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V1ExtranetPublicVifCheckPostResponse]:
-        """v1_extranet_public_vif_check_post
-
-        Check Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_check_post_request: (required)
-        :type v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_check_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_check_post_request=v1_extranet_public_vif_check_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifCheckPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_check_post_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_check_post
-
-        Check Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_check_post_request: (required)
-        :type v1_extranet_public_vif_check_post_request: V1ExtranetPublicVifCheckPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_check_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_check_post_request=v1_extranet_public_vif_check_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifCheckPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_check_post_serialize(
-        self,
-        authorization,
-        v1_extranet_public_vif_check_post_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-        if v1_extranet_public_vif_check_post_request is not None:
-            _body_params = v1_extranet_public_vif_check_post_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1/extranet-public-vif/check',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v1_extranet_public_vif_get(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V1ExtranetPublicVifGetResponse:
-        """v1_extranet_public_vif_get
-
-        Get Public Vif summary
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_get_serialize(
-            authorization=authorization,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_get_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V1ExtranetPublicVifGetResponse]:
-        """v1_extranet_public_vif_get
-
-        Get Public Vif summary
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_get_serialize(
-            authorization=authorization,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_get_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_get
-
-        Get Public Vif summary
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_get_serialize(
-            authorization=authorization,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_get_serialize(
-        self,
-        authorization,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/extranet-public-vif',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_delete(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> object:
-        """v1_extranet_public_vif_id_delete
-
-        Delete Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id:  (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_delete_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_delete_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[object]:
-        """v1_extranet_public_vif_id_delete
-
-        Delete Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id:  (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_delete_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_delete_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: StrictInt,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_id_delete
-
-        Delete Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id:  (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_delete_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "object",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_id_delete_serialize(
-        self,
-        authorization,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='DELETE',
-            resource_path='/v1/extranet-public-vif/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_get(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer policy")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V1ExtranetPublicVifIdGetResponse:
-        """v1_extranet_public_vif_id_get
-
-        Get Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer policy (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_get_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_get_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer policy")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V1ExtranetPublicVifIdGetResponse]:
-        """v1_extranet_public_vif_id_get
-
-        Get Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer policy (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_get_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_get_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer policy")],
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_id_get
-
-        Get Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer policy (required)
-        :type id: int
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_get_serialize(
-            authorization=authorization,
-            id=id,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdGetResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_id_get_serialize(
-        self,
-        authorization,
-        id,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='GET',
-            resource_path='/v1/extranet-public-vif/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_put(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer service id")],
-        v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V1ExtranetPublicVifIdPutResponse:
-        """v1_extranet_public_vif_id_put
-
-        Update Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer service id (required)
-        :type id: int
-        :param v1_extranet_public_vif_id_put_request: (required)
-        :type v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_put_serialize(
-            authorization=authorization,
-            id=id,
-            v1_extranet_public_vif_id_put_request=v1_extranet_public_vif_id_put_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdPutResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_put_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer service id")],
-        v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V1ExtranetPublicVifIdPutResponse]:
-        """v1_extranet_public_vif_id_put
-
-        Update Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer service id (required)
-        :type id: int
-        :param v1_extranet_public_vif_id_put_request: (required)
-        :type v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_put_serialize(
-            authorization=authorization,
-            id=id,
-            v1_extranet_public_vif_id_put_request=v1_extranet_public_vif_id_put_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdPutResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_id_put_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id: Annotated[StrictInt, Field(description="Public VIF producer service id")],
-        v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_id_put
-
-        Update Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param id: Public VIF producer service id (required)
-        :type id: int
-        :param v1_extranet_public_vif_id_put_request: (required)
-        :type v1_extranet_public_vif_id_put_request: V1ExtranetPublicVifIdPutRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_id_put_serialize(
-            authorization=authorization,
-            id=id,
-            v1_extranet_public_vif_id_put_request=v1_extranet_public_vif_id_put_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifIdPutResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_id_put_serialize(
-        self,
-        authorization,
-        id,
-        v1_extranet_public_vif_id_put_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        if id is not None:
-            _path_params['id'] = id
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-        if v1_extranet_public_vif_id_put_request is not None:
-            _body_params = v1_extranet_public_vif_id_put_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='PUT',
-            resource_path='/v1/extranet-public-vif/{id}',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
-    def v1_extranet_public_vif_post(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> V1ExtranetPublicVifPostResponse:
-        """v1_extranet_public_vif_post
-
-        Create Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_post_request: (required)
-        :type v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_post_request=v1_extranet_public_vif_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        ).data
-
-
-    @validate_call
-    def v1_extranet_public_vif_post_with_http_info(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> ApiResponse[V1ExtranetPublicVifPostResponse]:
-        """v1_extranet_public_vif_post
-
-        Create Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_post_request: (required)
-        :type v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_post_request=v1_extranet_public_vif_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        response_data.read()
-        return self.api_client.response_deserialize(
-            response_data=response_data,
-            response_types_map=_response_types_map,
-        )
-
-
-    @validate_call
-    def v1_extranet_public_vif_post_without_preload_content(
-        self,
-        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest,
-        _request_timeout: Union[
-            None,
-            Annotated[StrictFloat, Field(gt=0)],
-            Tuple[
-                Annotated[StrictFloat, Field(gt=0)],
-                Annotated[StrictFloat, Field(gt=0)]
-            ]
-        ] = None,
-        _request_auth: Optional[Dict[StrictStr, Any]] = None,
-        _content_type: Optional[StrictStr] = None,
-        _headers: Optional[Dict[StrictStr, Any]] = None,
-        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
-    ) -> RESTResponseType:
-        """v1_extranet_public_vif_post
-
-        Create Public Vif service
-
-        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
-        :type authorization: str
-        :param v1_extranet_public_vif_post_request: (required)
-        :type v1_extranet_public_vif_post_request: V1ExtranetPublicVifPostRequest
-        :param _request_timeout: timeout setting for this request. If one
-                                 number provided, it will be total request
-                                 timeout. It can also be a pair (tuple) of
-                                 (connection, read) timeouts.
-        :type _request_timeout: int, tuple(int, int), optional
-        :param _request_auth: set to override the auth_settings for an a single
-                              request; this effectively ignores the
-                              authentication in the spec for a single request.
-        :type _request_auth: dict, optional
-        :param _content_type: force content-type for the request.
-        :type _content_type: str, Optional
-        :param _headers: set to override the headers for a single
-                         request; this effectively ignores the headers
-                         in the spec for a single request.
-        :type _headers: dict, optional
-        :param _host_index: set to override the host_index for a single
-                            request; this effectively ignores the host_index
-                            in the spec for a single request.
-        :type _host_index: int, optional
-        :return: Returns the result object.
-        """ # noqa: E501
-
-        _param = self._v1_extranet_public_vif_post_serialize(
-            authorization=authorization,
-            v1_extranet_public_vif_post_request=v1_extranet_public_vif_post_request,
-            _request_auth=_request_auth,
-            _content_type=_content_type,
-            _headers=_headers,
-            _host_index=_host_index
-        )
-
-        _response_types_map: Dict[str, Optional[str]] = {
-            '200': "V1ExtranetPublicVifPostResponse",
-        }
-        response_data = self.api_client.call_api(
-            *_param,
-            _request_timeout=_request_timeout
-        )
-        return response_data.response
-
-
-    def _v1_extranet_public_vif_post_serialize(
-        self,
-        authorization,
-        v1_extranet_public_vif_post_request,
-        _request_auth,
-        _content_type,
-        _headers,
-        _host_index,
-    ) -> RequestSerialized:
-
-        _host = None
-
-        _collection_formats: Dict[str, str] = {
-        }
-
-        _path_params: Dict[str, str] = {}
-        _query_params: List[Tuple[str, str]] = []
-        _header_params: Dict[str, Optional[str]] = _headers or {}
-        _form_params: List[Tuple[str, str]] = []
-        _files: Dict[
-            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
-        ] = {}
-        _body_params: Optional[bytes] = None
-
-        # process the path parameters
-        # process the query parameters
-        # process the header parameters
-        if authorization is not None:
-            _header_params['Authorization'] = authorization
-        # process the form parameters
-        # process the body parameter
-        if v1_extranet_public_vif_post_request is not None:
-            _body_params = v1_extranet_public_vif_post_request
-
-
-        # set the HTTP header `Accept`
-        if 'Accept' not in _header_params:
-            _header_params['Accept'] = self.api_client.select_header_accept(
-                [
-                    'application/json'
-                ]
-            )
-
-        # set the HTTP header `Content-Type`
-        if _content_type:
-            _header_params['Content-Type'] = _content_type
-        else:
-            _default_content_type = (
-                self.api_client.select_header_content_type(
-                    [
-                        'application/json'
-                    ]
-                )
-            )
-            if _default_content_type is not None:
-                _header_params['Content-Type'] = _default_content_type
-
-        # authentication setting
-        _auth_settings: List[str] = [
-            'jwtAuth'
-        ]
-
-        return self.api_client.param_serialize(
-            method='POST',
-            resource_path='/v1/extranet-public-vif',
-            path_params=_path_params,
-            query_params=_query_params,
-            header_params=_header_params,
-            body=_body_params,
-            post_params=_form_params,
-            files=_files,
-            auth_settings=_auth_settings,
-            collection_formats=_collection_formats,
-            _host=_host,
-            _request_auth=_request_auth
-        )
-
-
-
-
-    @validate_call
     def v1_extranet_sites_usage_top_post(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -90927,6 +89241,10 @@ class DefaultApi:
     def v1_lan_segments_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Optional[StrictInt] = None,
+        device_ids: Optional[List[StrictInt]] = None,
+        filter: Optional[StrictStr] = None,
+        gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -90946,6 +89264,14 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param device_id: 
+        :type device_id: int
+        :param device_ids: 
+        :type device_ids: List[int]
+        :param filter: 
+        :type filter: str
+        :param gateway_cloud_provider: 
+        :type gateway_cloud_provider: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -90970,6 +89296,10 @@ class DefaultApi:
 
         _param = self._v1_lan_segments_get_serialize(
             authorization=authorization,
+            device_id=device_id,
+            device_ids=device_ids,
+            filter=filter,
+            gateway_cloud_provider=gateway_cloud_provider,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -90994,6 +89324,10 @@ class DefaultApi:
     def v1_lan_segments_get_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Optional[StrictInt] = None,
+        device_ids: Optional[List[StrictInt]] = None,
+        filter: Optional[StrictStr] = None,
+        gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -91013,6 +89347,14 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param device_id: 
+        :type device_id: int
+        :param device_ids: 
+        :type device_ids: List[int]
+        :param filter: 
+        :type filter: str
+        :param gateway_cloud_provider: 
+        :type gateway_cloud_provider: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91037,6 +89379,10 @@ class DefaultApi:
 
         _param = self._v1_lan_segments_get_serialize(
             authorization=authorization,
+            device_id=device_id,
+            device_ids=device_ids,
+            filter=filter,
+            gateway_cloud_provider=gateway_cloud_provider,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -91061,6 +89407,10 @@ class DefaultApi:
     def v1_lan_segments_get_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Optional[StrictInt] = None,
+        device_ids: Optional[List[StrictInt]] = None,
+        filter: Optional[StrictStr] = None,
+        gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -91080,6 +89430,14 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param device_id: 
+        :type device_id: int
+        :param device_ids: 
+        :type device_ids: List[int]
+        :param filter: 
+        :type filter: str
+        :param gateway_cloud_provider: 
+        :type gateway_cloud_provider: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -91104,6 +89462,10 @@ class DefaultApi:
 
         _param = self._v1_lan_segments_get_serialize(
             authorization=authorization,
+            device_id=device_id,
+            device_ids=device_ids,
+            filter=filter,
+            gateway_cloud_provider=gateway_cloud_provider,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -91123,6 +89485,10 @@ class DefaultApi:
     def _v1_lan_segments_get_serialize(
         self,
         authorization,
+        device_id,
+        device_ids,
+        filter,
+        gateway_cloud_provider,
         _request_auth,
         _content_type,
         _headers,
@@ -91132,6 +89498,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'deviceIds': 'multi',
         }
 
         _path_params: Dict[str, str] = {}
@@ -91145,6 +89512,22 @@ class DefaultApi:
 
         # process the path parameters
         # process the query parameters
+        if device_id is not None:
+            
+            _query_params.append(('deviceId', device_id))
+            
+        if device_ids is not None:
+            
+            _query_params.append(('deviceIds', device_ids))
+            
+        if filter is not None:
+            
+            _query_params.append(('filter', filter))
+            
+        if gateway_cloud_provider is not None:
+            
+            _query_params.append(('gatewayCloudProvider', gateway_cloud_provider))
+            
         # process the header parameters
         if authorization is not None:
             _header_params['Authorization'] = authorization
@@ -91169,6 +89552,284 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/lan-segments',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_lan_segments_interfaces_public_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Annotated[StrictInt, Field(description="device id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1LanSegmentsInterfacesPublicGetResponse:
+        """v1_lan_segments_interfaces_public_get
+
+        Per LAN segment (VRF) on a device: interfaces split by globally routable IPv4 (for Public VIF / BGP)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param device_id: device id (required)
+        :type device_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_lan_segments_interfaces_public_get_serialize(
+            authorization=authorization,
+            device_id=device_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1LanSegmentsInterfacesPublicGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_lan_segments_interfaces_public_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Annotated[StrictInt, Field(description="device id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1LanSegmentsInterfacesPublicGetResponse]:
+        """v1_lan_segments_interfaces_public_get
+
+        Per LAN segment (VRF) on a device: interfaces split by globally routable IPv4 (for Public VIF / BGP)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param device_id: device id (required)
+        :type device_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_lan_segments_interfaces_public_get_serialize(
+            authorization=authorization,
+            device_id=device_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1LanSegmentsInterfacesPublicGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_lan_segments_interfaces_public_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        device_id: Annotated[StrictInt, Field(description="device id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_lan_segments_interfaces_public_get
+
+        Per LAN segment (VRF) on a device: interfaces split by globally routable IPv4 (for Public VIF / BGP)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param device_id: device id (required)
+        :type device_id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_lan_segments_interfaces_public_get_serialize(
+            authorization=authorization,
+            device_id=device_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1LanSegmentsInterfacesPublicGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_lan_segments_interfaces_public_get_serialize(
+        self,
+        authorization,
+        device_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if device_id is not None:
+            
+            _query_params.append(('deviceId', device_id))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/lan-segments/interfaces/public',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -95803,6 +94464,1412 @@ class DefaultApi:
 
 
     @validate_call
+    def v1_pvif_id_delete(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> object:
+        """v1_pvif_id_delete
+
+        Delete a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_delete_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_pvif_id_delete_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[object]:
+        """v1_pvif_id_delete
+
+        Delete a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_delete_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_pvif_id_delete_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_pvif_id_delete
+
+        Delete a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_delete_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_pvif_id_delete_serialize(
+        self,
+        authorization,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v1/pvif/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_pvif_id_details_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1PvifIdDetailsGetResponse:
+        """v1_pvif_id_details_get
+
+        Get a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_details_get_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdDetailsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_pvif_id_details_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1PvifIdDetailsGetResponse]:
+        """v1_pvif_id_details_get
+
+        Get a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_details_get_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdDetailsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_pvif_id_details_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_pvif_id_details_get
+
+        Get a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_details_get_serialize(
+            authorization=authorization,
+            id=id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdDetailsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_pvif_id_details_get_serialize(
+        self,
+        authorization,
+        id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/pvif/{id}/details',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_pvif_id_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        v1_pvif_id_put_request: V1PvifIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1PvifIdPutResponse:
+        """v1_pvif_id_put
+
+        Update a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param v1_pvif_id_put_request: (required)
+        :type v1_pvif_id_put_request: V1PvifIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_put_serialize(
+            authorization=authorization,
+            id=id,
+            v1_pvif_id_put_request=v1_pvif_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_pvif_id_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        v1_pvif_id_put_request: V1PvifIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1PvifIdPutResponse]:
+        """v1_pvif_id_put
+
+        Update a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param v1_pvif_id_put_request: (required)
+        :type v1_pvif_id_put_request: V1PvifIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_put_serialize(
+            authorization=authorization,
+            id=id,
+            v1_pvif_id_put_request=v1_pvif_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_pvif_id_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id: Annotated[StrictInt, Field(description="Producer service id")],
+        v1_pvif_id_put_request: V1PvifIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_pvif_id_put
+
+        Update a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id: Producer service id (required)
+        :type id: int
+        :param v1_pvif_id_put_request: (required)
+        :type v1_pvif_id_put_request: V1PvifIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_id_put_serialize(
+            authorization=authorization,
+            id=id,
+            v1_pvif_id_put_request=v1_pvif_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_pvif_id_put_serialize(
+        self,
+        authorization,
+        id,
+        v1_pvif_id_put_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if id is not None:
+            _path_params['id'] = id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_pvif_id_put_request is not None:
+            _body_params = v1_pvif_id_put_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/pvif/{id}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_pvif_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_pvif_post_request: V1PvifPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1PvifPostResponse:
+        """v1_pvif_post
+
+        Create a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_pvif_post_request: (required)
+        :type v1_pvif_post_request: V1PvifPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_post_serialize(
+            authorization=authorization,
+            v1_pvif_post_request=v1_pvif_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_pvif_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_pvif_post_request: V1PvifPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1PvifPostResponse]:
+        """v1_pvif_post
+
+        Create a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_pvif_post_request: (required)
+        :type v1_pvif_post_request: V1PvifPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_post_serialize(
+            authorization=authorization,
+            v1_pvif_post_request=v1_pvif_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_pvif_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_pvif_post_request: V1PvifPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_pvif_post
+
+        Create a gateway Public VIF service
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_pvif_post_request: (required)
+        :type v1_pvif_post_request: V1PvifPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_post_serialize(
+            authorization=authorization,
+            v1_pvif_post_request=v1_pvif_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_pvif_post_serialize(
+        self,
+        authorization,
+        v1_pvif_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_pvif_post_request is not None:
+            _body_params = v1_pvif_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/pvif',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_pvif_summary_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1PvifSummaryGetResponse:
+        """v1_pvif_summary_get
+
+        List gateway Public VIF services
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_summary_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifSummaryGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_pvif_summary_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1PvifSummaryGetResponse]:
+        """v1_pvif_summary_get
+
+        List gateway Public VIF services
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_summary_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifSummaryGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_pvif_summary_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_pvif_summary_get
+
+        List gateway Public VIF services
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_pvif_summary_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1PvifSummaryGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_pvif_summary_get_serialize(
+        self,
+        authorization,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/pvif/summary',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v1_qos_circuit_profiles_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -96309,6 +96376,299 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v1/regions',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_regions_region_id_gateways_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        region_id: Annotated[StrictInt, Field(description="Graphiant region id")],
+        storage_provider: Annotated[StrictStr, Field(description="Storage provider; only gateways with a LAN interface for this provider are returned")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1RegionsRegionIdGatewaysGetResponse:
+        """v1_regions_region_id_gateways_get
+
+        List gateway appliances in a region with at least one LAN interface for the given storage provider
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param region_id: Graphiant region id (required)
+        :type region_id: int
+        :param storage_provider: Storage provider; only gateways with a LAN interface for this provider are returned (required)
+        :type storage_provider: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_regions_region_id_gateways_get_serialize(
+            authorization=authorization,
+            region_id=region_id,
+            storage_provider=storage_provider,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1RegionsRegionIdGatewaysGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_regions_region_id_gateways_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        region_id: Annotated[StrictInt, Field(description="Graphiant region id")],
+        storage_provider: Annotated[StrictStr, Field(description="Storage provider; only gateways with a LAN interface for this provider are returned")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1RegionsRegionIdGatewaysGetResponse]:
+        """v1_regions_region_id_gateways_get
+
+        List gateway appliances in a region with at least one LAN interface for the given storage provider
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param region_id: Graphiant region id (required)
+        :type region_id: int
+        :param storage_provider: Storage provider; only gateways with a LAN interface for this provider are returned (required)
+        :type storage_provider: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_regions_region_id_gateways_get_serialize(
+            authorization=authorization,
+            region_id=region_id,
+            storage_provider=storage_provider,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1RegionsRegionIdGatewaysGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_regions_region_id_gateways_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        region_id: Annotated[StrictInt, Field(description="Graphiant region id")],
+        storage_provider: Annotated[StrictStr, Field(description="Storage provider; only gateways with a LAN interface for this provider are returned")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_regions_region_id_gateways_get
+
+        List gateway appliances in a region with at least one LAN interface for the given storage provider
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param region_id: Graphiant region id (required)
+        :type region_id: int
+        :param storage_provider: Storage provider; only gateways with a LAN interface for this provider are returned (required)
+        :type storage_provider: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_regions_region_id_gateways_get_serialize(
+            authorization=authorization,
+            region_id=region_id,
+            storage_provider=storage_provider,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1RegionsRegionIdGatewaysGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_regions_region_id_gateways_get_serialize(
+        self,
+        authorization,
+        region_id,
+        storage_provider,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if region_id is not None:
+            _path_params['regionId'] = region_id
+        # process the query parameters
+        if storage_provider is not None:
+            
+            _query_params.append(('storageProvider', storage_provider))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/regions/{regionId}/gateways',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -109495,6 +109855,438 @@ class DefaultApi:
 
 
     @validate_call
+    def v1_ztagent_agents_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        created_date_end: Optional[StrictStr] = None,
+        created_date_start: Optional[StrictStr] = None,
+        endpoints: Optional[List[StrictStr]] = None,
+        hostname: Optional[StrictStr] = None,
+        limit: Optional[StrictInt] = None,
+        machine_id: Optional[StrictStr] = None,
+        page: Optional[StrictInt] = None,
+        tenant_id: Optional[StrictStr] = None,
+        updated_date_end: Optional[StrictStr] = None,
+        updated_date_start: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1ZtagentAgentsGetResponse:
+        """v1_ztagent_agents_get
+
+        List Conceal agents (devices) with pagination and filters.
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param created_date_end: 
+        :type created_date_end: str
+        :param created_date_start: 
+        :type created_date_start: str
+        :param endpoints: 
+        :type endpoints: List[str]
+        :param hostname: 
+        :type hostname: str
+        :param limit: 
+        :type limit: int
+        :param machine_id: 
+        :type machine_id: str
+        :param page: 
+        :type page: int
+        :param tenant_id: 
+        :type tenant_id: str
+        :param updated_date_end: 
+        :type updated_date_end: str
+        :param updated_date_start: 
+        :type updated_date_start: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_ztagent_agents_get_serialize(
+            authorization=authorization,
+            created_date_end=created_date_end,
+            created_date_start=created_date_start,
+            endpoints=endpoints,
+            hostname=hostname,
+            limit=limit,
+            machine_id=machine_id,
+            page=page,
+            tenant_id=tenant_id,
+            updated_date_end=updated_date_end,
+            updated_date_start=updated_date_start,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ZtagentAgentsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_ztagent_agents_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        created_date_end: Optional[StrictStr] = None,
+        created_date_start: Optional[StrictStr] = None,
+        endpoints: Optional[List[StrictStr]] = None,
+        hostname: Optional[StrictStr] = None,
+        limit: Optional[StrictInt] = None,
+        machine_id: Optional[StrictStr] = None,
+        page: Optional[StrictInt] = None,
+        tenant_id: Optional[StrictStr] = None,
+        updated_date_end: Optional[StrictStr] = None,
+        updated_date_start: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1ZtagentAgentsGetResponse]:
+        """v1_ztagent_agents_get
+
+        List Conceal agents (devices) with pagination and filters.
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param created_date_end: 
+        :type created_date_end: str
+        :param created_date_start: 
+        :type created_date_start: str
+        :param endpoints: 
+        :type endpoints: List[str]
+        :param hostname: 
+        :type hostname: str
+        :param limit: 
+        :type limit: int
+        :param machine_id: 
+        :type machine_id: str
+        :param page: 
+        :type page: int
+        :param tenant_id: 
+        :type tenant_id: str
+        :param updated_date_end: 
+        :type updated_date_end: str
+        :param updated_date_start: 
+        :type updated_date_start: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_ztagent_agents_get_serialize(
+            authorization=authorization,
+            created_date_end=created_date_end,
+            created_date_start=created_date_start,
+            endpoints=endpoints,
+            hostname=hostname,
+            limit=limit,
+            machine_id=machine_id,
+            page=page,
+            tenant_id=tenant_id,
+            updated_date_end=updated_date_end,
+            updated_date_start=updated_date_start,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ZtagentAgentsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_ztagent_agents_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        created_date_end: Optional[StrictStr] = None,
+        created_date_start: Optional[StrictStr] = None,
+        endpoints: Optional[List[StrictStr]] = None,
+        hostname: Optional[StrictStr] = None,
+        limit: Optional[StrictInt] = None,
+        machine_id: Optional[StrictStr] = None,
+        page: Optional[StrictInt] = None,
+        tenant_id: Optional[StrictStr] = None,
+        updated_date_end: Optional[StrictStr] = None,
+        updated_date_start: Optional[StrictStr] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_ztagent_agents_get
+
+        List Conceal agents (devices) with pagination and filters.
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param created_date_end: 
+        :type created_date_end: str
+        :param created_date_start: 
+        :type created_date_start: str
+        :param endpoints: 
+        :type endpoints: List[str]
+        :param hostname: 
+        :type hostname: str
+        :param limit: 
+        :type limit: int
+        :param machine_id: 
+        :type machine_id: str
+        :param page: 
+        :type page: int
+        :param tenant_id: 
+        :type tenant_id: str
+        :param updated_date_end: 
+        :type updated_date_end: str
+        :param updated_date_start: 
+        :type updated_date_start: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_ztagent_agents_get_serialize(
+            authorization=authorization,
+            created_date_end=created_date_end,
+            created_date_start=created_date_start,
+            endpoints=endpoints,
+            hostname=hostname,
+            limit=limit,
+            machine_id=machine_id,
+            page=page,
+            tenant_id=tenant_id,
+            updated_date_end=updated_date_end,
+            updated_date_start=updated_date_start,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1ZtagentAgentsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_ztagent_agents_get_serialize(
+        self,
+        authorization,
+        created_date_end,
+        created_date_start,
+        endpoints,
+        hostname,
+        limit,
+        machine_id,
+        page,
+        tenant_id,
+        updated_date_end,
+        updated_date_start,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'endpoints': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if created_date_end is not None:
+            
+            _query_params.append(('createdDateEnd', created_date_end))
+            
+        if created_date_start is not None:
+            
+            _query_params.append(('createdDateStart', created_date_start))
+            
+        if endpoints is not None:
+            
+            _query_params.append(('endpoints', endpoints))
+            
+        if hostname is not None:
+            
+            _query_params.append(('hostname', hostname))
+            
+        if limit is not None:
+            
+            _query_params.append(('limit', limit))
+            
+        if machine_id is not None:
+            
+            _query_params.append(('machineId', machine_id))
+            
+        if page is not None:
+            
+            _query_params.append(('page', page))
+            
+        if tenant_id is not None:
+            
+            _query_params.append(('tenantId', tenant_id))
+            
+        if updated_date_end is not None:
+            
+            _query_params.append(('updatedDateEnd', updated_date_end))
+            
+        if updated_date_start is not None:
+            
+            _query_params.append(('updatedDateStart', updated_date_start))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/ztagent/agents',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v1_ztagent_bindings_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -114788,6 +115580,292 @@ class DefaultApi:
 
 
     @validate_call
+    def v2_assurance_ai_adoption_summary_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2AssuranceAiAdoptionSummaryPostResponse:
+        """v2_assurance_ai_adoption_summary_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_ai_adoption_summary_post_request: (required)
+        :type v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_ai_adoption_summary_post_serialize(
+            authorization=authorization,
+            v2_assurance_ai_adoption_summary_post_request=v2_assurance_ai_adoption_summary_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceAiAdoptionSummaryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_ai_adoption_summary_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2AssuranceAiAdoptionSummaryPostResponse]:
+        """v2_assurance_ai_adoption_summary_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_ai_adoption_summary_post_request: (required)
+        :type v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_ai_adoption_summary_post_serialize(
+            authorization=authorization,
+            v2_assurance_ai_adoption_summary_post_request=v2_assurance_ai_adoption_summary_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceAiAdoptionSummaryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_ai_adoption_summary_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_ai_adoption_summary_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_ai_adoption_summary_post_request: (required)
+        :type v2_assurance_ai_adoption_summary_post_request: V2AssuranceAiAdoptionSummaryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_ai_adoption_summary_post_serialize(
+            authorization=authorization,
+            v2_assurance_ai_adoption_summary_post_request=v2_assurance_ai_adoption_summary_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceAiAdoptionSummaryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_ai_adoption_summary_post_serialize(
+        self,
+        authorization,
+        v2_assurance_ai_adoption_summary_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v2_assurance_ai_adoption_summary_post_request is not None:
+            _body_params = v2_assurance_ai_adoption_summary_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/assurance/ai-adoption-summary',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v2_assurance_applicationdetailsbyname_post(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -116790,6 +117868,292 @@ class DefaultApi:
 
 
     @validate_call
+    def v2_assurance_create_ai_adoption_approve_entry_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2AssuranceCreateAiAdoptionApproveEntryPostResponse:
+        """v2_assurance_create_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_create_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_create_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_create_ai_adoption_approve_entry_post_request=v2_assurance_create_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceCreateAiAdoptionApproveEntryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_create_ai_adoption_approve_entry_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2AssuranceCreateAiAdoptionApproveEntryPostResponse]:
+        """v2_assurance_create_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_create_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_create_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_create_ai_adoption_approve_entry_post_request=v2_assurance_create_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceCreateAiAdoptionApproveEntryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_create_ai_adoption_approve_entry_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_create_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_create_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_create_ai_adoption_approve_entry_post_request: V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_create_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_create_ai_adoption_approve_entry_post_request=v2_assurance_create_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceCreateAiAdoptionApproveEntryPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_create_ai_adoption_approve_entry_post_serialize(
+        self,
+        authorization,
+        v2_assurance_create_ai_adoption_approve_entry_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v2_assurance_create_ai_adoption_approve_entry_post_request is not None:
+            _body_params = v2_assurance_create_ai_adoption_approve_entry_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/assurance/create-ai-adoption-approve-entry',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v2_assurance_create_dnsproxy_entry_post(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -117632,6 +118996,282 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/assurance/createclassifiedapplication',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v2_assurance_delete_ai_adoption_approve_entry_delete(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> object:
+        """v2_assurance_delete_ai_adoption_approve_entry_delete
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id_list: list of approved app entry identifiers to delete (required)
+        :type id_list: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_delete_ai_adoption_approve_entry_delete_serialize(
+            authorization=authorization,
+            id_list=id_list,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_delete_ai_adoption_approve_entry_delete_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[object]:
+        """v2_assurance_delete_ai_adoption_approve_entry_delete
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id_list: list of approved app entry identifiers to delete (required)
+        :type id_list: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_delete_ai_adoption_approve_entry_delete_serialize(
+            authorization=authorization,
+            id_list=id_list,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_delete_ai_adoption_approve_entry_delete_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_delete_ai_adoption_approve_entry_delete
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param id_list: list of approved app entry identifiers to delete (required)
+        :type id_list: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_delete_ai_adoption_approve_entry_delete_serialize(
+            authorization=authorization,
+            id_list=id_list,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_delete_ai_adoption_approve_entry_delete_serialize(
+        self,
+        authorization,
+        id_list,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'idList': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if id_list is not None:
+            
+            _query_params.append(('idList', id_list))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v2/assurance/delete-ai-adoption-approve-entry',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -119001,6 +120641,292 @@ class DefaultApi:
 
 
     @validate_call
+    def v2_assurance_get_app_names_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2AssuranceGetAppNamesPostResponse:
+        """v2_assurance_get_app_names_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_get_app_names_post_request: (required)
+        :type v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_get_app_names_post_serialize(
+            authorization=authorization,
+            v2_assurance_get_app_names_post_request=v2_assurance_get_app_names_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceGetAppNamesPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_get_app_names_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2AssuranceGetAppNamesPostResponse]:
+        """v2_assurance_get_app_names_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_get_app_names_post_request: (required)
+        :type v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_get_app_names_post_serialize(
+            authorization=authorization,
+            v2_assurance_get_app_names_post_request=v2_assurance_get_app_names_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceGetAppNamesPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_get_app_names_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_get_app_names_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_get_app_names_post_request: (required)
+        :type v2_assurance_get_app_names_post_request: V2AssuranceGetAppNamesPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_get_app_names_post_serialize(
+            authorization=authorization,
+            v2_assurance_get_app_names_post_request=v2_assurance_get_app_names_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceGetAppNamesPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_get_app_names_post_serialize(
+        self,
+        authorization,
+        v2_assurance_get_app_names_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v2_assurance_get_app_names_post_request is not None:
+            _body_params = v2_assurance_get_app_names_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/assurance/get-app-names',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v2_assurance_getclassifiedapplicationlist_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -119243,6 +121169,264 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v2/assurance/getclassifiedapplicationlist',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_approve_entries_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2AssuranceReadAiAdoptionApproveEntriesGetResponse:
+        """v2_assurance_read_ai_adoption_approve_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_approve_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionApproveEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_approve_entries_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2AssuranceReadAiAdoptionApproveEntriesGetResponse]:
+        """v2_assurance_read_ai_adoption_approve_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_approve_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionApproveEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_approve_entries_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_read_ai_adoption_approve_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_approve_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionApproveEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_read_ai_adoption_approve_entries_get_serialize(
+        self,
+        authorization,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/assurance/read-ai-adoption-approve-entries',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -122333,6 +124517,292 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v2/assurance/unclassifiedapplicationprofilesummary',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v2_assurance_update_ai_adoption_approve_entry_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> object:
+        """v2_assurance_update_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_update_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_update_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_update_ai_adoption_approve_entry_post_request=v2_assurance_update_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_update_ai_adoption_approve_entry_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[object]:
+        """v2_assurance_update_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_update_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_update_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_update_ai_adoption_approve_entry_post_request=v2_assurance_update_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_update_ai_adoption_approve_entry_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_update_ai_adoption_approve_entry_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_update_ai_adoption_approve_entry_post_request: (required)
+        :type v2_assurance_update_ai_adoption_approve_entry_post_request: V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_update_ai_adoption_approve_entry_post_serialize(
+            authorization=authorization,
+            v2_assurance_update_ai_adoption_approve_entry_post_request=v2_assurance_update_ai_adoption_approve_entry_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_update_ai_adoption_approve_entry_post_serialize(
+        self,
+        authorization,
+        v2_assurance_update_ai_adoption_approve_entry_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v2_assurance_update_ai_adoption_approve_entry_post_request is not None:
+            _body_params = v2_assurance_update_ai_adoption_approve_entry_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/assurance/update-ai-adoption-approve-entry',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

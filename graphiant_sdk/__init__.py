@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "26.5.0"
+__version__ = "26.6.0"
 
 # Define package exports
 __all__ = [
@@ -48,6 +48,8 @@ __all__ = [
     "AssuranceAppIdRecord",
     "AssuranceAppNameRecord",
     "AssuranceApplicationProfileSummary",
+    "AssuranceApprovedAppEntry",
+    "AssuranceApprovedAppEntryRequest",
     "AssuranceBucketApp",
     "AssuranceBucketAppServer",
     "AssuranceBucketDetails",
@@ -67,11 +69,13 @@ __all__ = [
     "AssuranceExchangeServiceIdentifier",
     "AssuranceFlexAlgoIdentifier",
     "AssuranceGeolocation",
+    "AssuranceKpiMetric",
     "AssuranceRegion",
     "AssuranceScoreBucketCount",
     "AssuranceScoreDetails",
     "AssuranceSite",
     "AssuranceTimeWindow",
+    "AssuranceTopLevelKpi",
     "AssuranceTopology",
     "AssuranceTopologyEdge",
     "AssuranceTopologyEdgeLinkPerformance",
@@ -79,7 +83,11 @@ __all__ = [
     "AssuranceTopologyNode",
     "AssuranceTopologyPath",
     "AssuranceTrendValue",
+    "AssuranceUserDefinition",
     "AssuranceUserReport",
+    "AssuranceWhatWidget",
+    "AssuranceWhenWidget",
+    "AssuranceWhereWidget",
     "AuditActivityItem",
     "AuditAuditEntry",
     "AuditTarget",
@@ -101,6 +109,7 @@ __all__ = [
     "CommonPermissions",
     "CommonUser",
     "CommonUserInfo",
+    "ConcealAgent",
     "ConfigWorkerJobStatus",
     "DiagnosticToolsArchive",
     "DiagnosticToolsArpEntry",
@@ -291,6 +300,8 @@ __all__ = [
     "ManaV2GuestConsumerSiteToSiteVpnConfig",
     "ManaV2IPsecBgpRouteConfig",
     "ManaV2IPsecGatewayDetails",
+    "ManaV2IPsecGatewayPeersConfig",
+    "ManaV2IPsecGatewayRemotePeer",
     "ManaV2IPsecGatewayTunnelDetails",
     "ManaV2IPsecProfile",
     "ManaV2IPsecStaticRouteConfig",
@@ -326,6 +337,8 @@ __all__ = [
     "ManaV2LacpConfig",
     "ManaV2LagInterface",
     "ManaV2LagInterfaceConfig",
+    "ManaV2LanSegmentPublicInterfaceEntry",
+    "ManaV2LanSegmentPublicInterfacesLists",
     "ManaV2LanSegmentSitesMap",
     "ManaV2LatencyBandwidth",
     "ManaV2LldpNeighbor",
@@ -490,17 +503,11 @@ __all__ = [
     "ManaV2PrometheusRuleGroupConfig",
     "ManaV2PrometheusSysDbMonitorConfig",
     "ManaV2PskConfiguration",
-    "ManaV2PublicVif",
-    "ManaV2PublicVifConsumerLanSegment",
-    "ManaV2PublicVifConsumerLanSegmentResponse",
-    "ManaV2PublicVifConsumerPolicy",
-    "ManaV2PublicVifConsumerPolicyResponse",
-    "ManaV2PublicVifDevice",
-    "ManaV2PublicVifDynamic",
-    "ManaV2PublicVifFixed",
-    "ManaV2PublicVifFixedNat",
-    "ManaV2PublicVifProducerPolicy",
-    "ManaV2PublicVifProducerPolicyResponse",
+    "ManaV2PublicVifGatewayCentralizedNat",
+    "ManaV2PublicVifGatewayConsumerLanDevices",
+    "ManaV2PublicVifGatewayDecentralizedPrefixes",
+    "ManaV2PublicVifGatewayNatPrefixStrategy",
+    "ManaV2PublicVifGatewayWriteRequest",
     "ManaV2PublicVifSummary",
     "ManaV2QoSProfile",
     "ManaV2QoSProfileQueue",
@@ -601,6 +608,7 @@ __all__ = [
     "ManaV2VrfConfig",
     "ManaV2VrrpGroup",
     "ManaV2VrrpGroupConfig",
+    "ManaV2ZeroTrustConsumptionSummary",
     "ManaV2Zone",
     "ManaV2ZoneFirewallConfig",
     "ManaV2ZoneFirewallIpPolicyConfig",
@@ -1004,14 +1012,6 @@ __all__ = [
     "V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostResponse",
     "V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest",
     "V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostResponse",
-    "V1ExtranetPublicVifCheckPostRequest",
-    "V1ExtranetPublicVifCheckPostResponse",
-    "V1ExtranetPublicVifGetResponse",
-    "V1ExtranetPublicVifIdGetResponse",
-    "V1ExtranetPublicVifIdPutRequest",
-    "V1ExtranetPublicVifIdPutResponse",
-    "V1ExtranetPublicVifPostRequest",
-    "V1ExtranetPublicVifPostResponse",
     "V1ExtranetSitesUsageTopPostRequest",
     "V1ExtranetSitesUsageTopPostResponse",
     "V1ExtranetSitesUsageTopPostResponseSiteUsage",
@@ -1182,6 +1182,7 @@ __all__ = [
     "V1GroupsRootGetResponse",
     "V1InvitationEmailPostRequest",
     "V1LanSegmentsGetResponse",
+    "V1LanSegmentsInterfacesPublicGetResponse",
     "V1LldpInterfaceIdNeighborsGetResponse",
     "V1LldpInterfaceIdSummaryGetResponse",
     "V1LldpInterfaceIdVendorsGetResponse",
@@ -1201,8 +1202,16 @@ __all__ = [
     "V1PolicyRouteTagSetsTagsGetResponse",
     "V1PolicyRouteTagSetsTagsSummaryGetResponse",
     "V1PresharedkeyGetResponse",
+    "V1PvifIdDetailsGetResponse",
+    "V1PvifIdPutRequest",
+    "V1PvifIdPutResponse",
+    "V1PvifPostRequest",
+    "V1PvifPostResponse",
+    "V1PvifSummaryGetResponse",
     "V1QosCircuitProfilesGetResponse",
     "V1RegionsGetResponse",
+    "V1RegionsRegionIdGatewaysGetResponse",
+    "V1RegionsRegionIdGatewaysGetResponseGateway",
     "V1SearchGetResponse",
     "V1SiteDetailsSitelistsPostRequest",
     "V1SiteDetailsSitelistsPostResponse",
@@ -1263,6 +1272,7 @@ __all__ = [
     "V1VersionPostRequest",
     "V1VersionPostResponse",
     "V1ZonesGetResponse",
+    "V1ZtagentAgentsGetResponse",
     "V1ZtagentBindingsGetResponse",
     "V1ZtagentBindingsPutRequest",
     "V2AckCreateupdatePostRequest",
@@ -1282,6 +1292,8 @@ __all__ = [
     "V2AssistantGetConversationsPostResponse",
     "V2AssistantUpdateConversationNamePostRequest",
     "V2AssistantVersionPostResponse",
+    "V2AssuranceAiAdoptionSummaryPostRequest",
+    "V2AssuranceAiAdoptionSummaryPostResponse",
     "V2AssuranceApplicationdetailsbynamePostRequest",
     "V2AssuranceApplicationdetailsbynamePostResponse",
     "V2AssuranceApplicationprofilesummaryPostRequest",
@@ -1296,6 +1308,8 @@ __all__ = [
     "V2AssuranceBucketTopologiesPostResponse",
     "V2AssuranceBucketdetailsPostRequest",
     "V2AssuranceBucketdetailsPostResponse",
+    "V2AssuranceCreateAiAdoptionApproveEntryPostRequest",
+    "V2AssuranceCreateAiAdoptionApproveEntryPostResponse",
     "V2AssuranceCreateDnsproxyEntryPostRequest",
     "V2AssuranceCreateDnsproxyEntryPostResponse",
     "V2AssuranceCreateUserReportPostRequest",
@@ -1305,7 +1319,10 @@ __all__ = [
     "V2AssuranceDownloadUserReportGetResponse",
     "V2AssuranceEnterprisesummaryPostRequest",
     "V2AssuranceEnterprisesummaryPostResponse",
+    "V2AssuranceGetAppNamesPostRequest",
+    "V2AssuranceGetAppNamesPostResponse",
     "V2AssuranceGetclassifiedapplicationlistGetResponse",
+    "V2AssuranceReadAiAdoptionApproveEntriesGetResponse",
     "V2AssuranceReadDnsproxyListGetResponse",
     "V2AssuranceReadUserReportListGetResponse",
     "V2AssuranceScoredetailsPostRequest",
@@ -1331,6 +1348,7 @@ __all__ = [
     "V2AssuranceTopologySiteSummariesPostResponseSummary",
     "V2AssuranceUnclassifiedapplicationprofilesummaryPostRequest",
     "V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse",
+    "V2AssuranceUpdateAiAdoptionApproveEntryPostRequest",
     "V2AssuranceUpdateDnsproxyEntryPostRequest",
     "V2AssuranceUpdateclassifiedapplicationPostRequest",
     "V2AuditLogsPostRequest",
@@ -1471,6 +1489,8 @@ from graphiant_sdk.models.assistant_time_window import AssistantTimeWindow as As
 from graphiant_sdk.models.assurance_app_id_record import AssuranceAppIdRecord as AssuranceAppIdRecord
 from graphiant_sdk.models.assurance_app_name_record import AssuranceAppNameRecord as AssuranceAppNameRecord
 from graphiant_sdk.models.assurance_application_profile_summary import AssuranceApplicationProfileSummary as AssuranceApplicationProfileSummary
+from graphiant_sdk.models.assurance_approved_app_entry import AssuranceApprovedAppEntry as AssuranceApprovedAppEntry
+from graphiant_sdk.models.assurance_approved_app_entry_request import AssuranceApprovedAppEntryRequest as AssuranceApprovedAppEntryRequest
 from graphiant_sdk.models.assurance_bucket_app import AssuranceBucketApp as AssuranceBucketApp
 from graphiant_sdk.models.assurance_bucket_app_server import AssuranceBucketAppServer as AssuranceBucketAppServer
 from graphiant_sdk.models.assurance_bucket_details import AssuranceBucketDetails as AssuranceBucketDetails
@@ -1490,11 +1510,13 @@ from graphiant_sdk.models.assurance_enterprise_summary import AssuranceEnterpris
 from graphiant_sdk.models.assurance_exchange_service_identifier import AssuranceExchangeServiceIdentifier as AssuranceExchangeServiceIdentifier
 from graphiant_sdk.models.assurance_flex_algo_identifier import AssuranceFlexAlgoIdentifier as AssuranceFlexAlgoIdentifier
 from graphiant_sdk.models.assurance_geolocation import AssuranceGeolocation as AssuranceGeolocation
+from graphiant_sdk.models.assurance_kpi_metric import AssuranceKpiMetric as AssuranceKpiMetric
 from graphiant_sdk.models.assurance_region import AssuranceRegion as AssuranceRegion
 from graphiant_sdk.models.assurance_score_bucket_count import AssuranceScoreBucketCount as AssuranceScoreBucketCount
 from graphiant_sdk.models.assurance_score_details import AssuranceScoreDetails as AssuranceScoreDetails
 from graphiant_sdk.models.assurance_site import AssuranceSite as AssuranceSite
 from graphiant_sdk.models.assurance_time_window import AssuranceTimeWindow as AssuranceTimeWindow
+from graphiant_sdk.models.assurance_top_level_kpi import AssuranceTopLevelKpi as AssuranceTopLevelKpi
 from graphiant_sdk.models.assurance_topology import AssuranceTopology as AssuranceTopology
 from graphiant_sdk.models.assurance_topology_edge import AssuranceTopologyEdge as AssuranceTopologyEdge
 from graphiant_sdk.models.assurance_topology_edge_link_performance import AssuranceTopologyEdgeLinkPerformance as AssuranceTopologyEdgeLinkPerformance
@@ -1502,7 +1524,11 @@ from graphiant_sdk.models.assurance_topology_filter import AssuranceTopologyFilt
 from graphiant_sdk.models.assurance_topology_node import AssuranceTopologyNode as AssuranceTopologyNode
 from graphiant_sdk.models.assurance_topology_path import AssuranceTopologyPath as AssuranceTopologyPath
 from graphiant_sdk.models.assurance_trend_value import AssuranceTrendValue as AssuranceTrendValue
+from graphiant_sdk.models.assurance_user_definition import AssuranceUserDefinition as AssuranceUserDefinition
 from graphiant_sdk.models.assurance_user_report import AssuranceUserReport as AssuranceUserReport
+from graphiant_sdk.models.assurance_what_widget import AssuranceWhatWidget as AssuranceWhatWidget
+from graphiant_sdk.models.assurance_when_widget import AssuranceWhenWidget as AssuranceWhenWidget
+from graphiant_sdk.models.assurance_where_widget import AssuranceWhereWidget as AssuranceWhereWidget
 from graphiant_sdk.models.audit_activity_item import AuditActivityItem as AuditActivityItem
 from graphiant_sdk.models.audit_audit_entry import AuditAuditEntry as AuditAuditEntry
 from graphiant_sdk.models.audit_target import AuditTarget as AuditTarget
@@ -1524,6 +1550,7 @@ from graphiant_sdk.models.common_page_request import CommonPageRequest as Common
 from graphiant_sdk.models.common_permissions import CommonPermissions as CommonPermissions
 from graphiant_sdk.models.common_user import CommonUser as CommonUser
 from graphiant_sdk.models.common_user_info import CommonUserInfo as CommonUserInfo
+from graphiant_sdk.models.conceal_agent import ConcealAgent as ConcealAgent
 from graphiant_sdk.models.config_worker_job_status import ConfigWorkerJobStatus as ConfigWorkerJobStatus
 from graphiant_sdk.models.diagnostic_tools_archive import DiagnosticToolsArchive as DiagnosticToolsArchive
 from graphiant_sdk.models.diagnostic_tools_arp_entry import DiagnosticToolsArpEntry as DiagnosticToolsArpEntry
@@ -1714,6 +1741,8 @@ from graphiant_sdk.models.mana_v2_graphiant_connections import ManaV2GraphiantCo
 from graphiant_sdk.models.mana_v2_guest_consumer_site_to_site_vpn_config import ManaV2GuestConsumerSiteToSiteVpnConfig as ManaV2GuestConsumerSiteToSiteVpnConfig
 from graphiant_sdk.models.mana_v2_i_psec_bgp_route_config import ManaV2IPsecBgpRouteConfig as ManaV2IPsecBgpRouteConfig
 from graphiant_sdk.models.mana_v2_i_psec_gateway_details import ManaV2IPsecGatewayDetails as ManaV2IPsecGatewayDetails
+from graphiant_sdk.models.mana_v2_i_psec_gateway_peers_config import ManaV2IPsecGatewayPeersConfig as ManaV2IPsecGatewayPeersConfig
+from graphiant_sdk.models.mana_v2_i_psec_gateway_remote_peer import ManaV2IPsecGatewayRemotePeer as ManaV2IPsecGatewayRemotePeer
 from graphiant_sdk.models.mana_v2_i_psec_gateway_tunnel_details import ManaV2IPsecGatewayTunnelDetails as ManaV2IPsecGatewayTunnelDetails
 from graphiant_sdk.models.mana_v2_i_psec_profile import ManaV2IPsecProfile as ManaV2IPsecProfile
 from graphiant_sdk.models.mana_v2_i_psec_static_route_config import ManaV2IPsecStaticRouteConfig as ManaV2IPsecStaticRouteConfig
@@ -1749,6 +1778,8 @@ from graphiant_sdk.models.mana_v2_l4_port_list_config import ManaV2L4PortListCon
 from graphiant_sdk.models.mana_v2_lacp_config import ManaV2LacpConfig as ManaV2LacpConfig
 from graphiant_sdk.models.mana_v2_lag_interface import ManaV2LagInterface as ManaV2LagInterface
 from graphiant_sdk.models.mana_v2_lag_interface_config import ManaV2LagInterfaceConfig as ManaV2LagInterfaceConfig
+from graphiant_sdk.models.mana_v2_lan_segment_public_interface_entry import ManaV2LanSegmentPublicInterfaceEntry as ManaV2LanSegmentPublicInterfaceEntry
+from graphiant_sdk.models.mana_v2_lan_segment_public_interfaces_lists import ManaV2LanSegmentPublicInterfacesLists as ManaV2LanSegmentPublicInterfacesLists
 from graphiant_sdk.models.mana_v2_lan_segment_sites_map import ManaV2LanSegmentSitesMap as ManaV2LanSegmentSitesMap
 from graphiant_sdk.models.mana_v2_latency_bandwidth import ManaV2LatencyBandwidth as ManaV2LatencyBandwidth
 from graphiant_sdk.models.mana_v2_lldp_neighbor import ManaV2LldpNeighbor as ManaV2LldpNeighbor
@@ -1913,17 +1944,11 @@ from graphiant_sdk.models.mana_v2_prometheus_rule_config import ManaV2Prometheus
 from graphiant_sdk.models.mana_v2_prometheus_rule_group_config import ManaV2PrometheusRuleGroupConfig as ManaV2PrometheusRuleGroupConfig
 from graphiant_sdk.models.mana_v2_prometheus_sys_db_monitor_config import ManaV2PrometheusSysDbMonitorConfig as ManaV2PrometheusSysDbMonitorConfig
 from graphiant_sdk.models.mana_v2_psk_configuration import ManaV2PskConfiguration as ManaV2PskConfiguration
-from graphiant_sdk.models.mana_v2_public_vif import ManaV2PublicVif as ManaV2PublicVif
-from graphiant_sdk.models.mana_v2_public_vif_consumer_lan_segment import ManaV2PublicVifConsumerLanSegment as ManaV2PublicVifConsumerLanSegment
-from graphiant_sdk.models.mana_v2_public_vif_consumer_lan_segment_response import ManaV2PublicVifConsumerLanSegmentResponse as ManaV2PublicVifConsumerLanSegmentResponse
-from graphiant_sdk.models.mana_v2_public_vif_consumer_policy import ManaV2PublicVifConsumerPolicy as ManaV2PublicVifConsumerPolicy
-from graphiant_sdk.models.mana_v2_public_vif_consumer_policy_response import ManaV2PublicVifConsumerPolicyResponse as ManaV2PublicVifConsumerPolicyResponse
-from graphiant_sdk.models.mana_v2_public_vif_device import ManaV2PublicVifDevice as ManaV2PublicVifDevice
-from graphiant_sdk.models.mana_v2_public_vif_dynamic import ManaV2PublicVifDynamic as ManaV2PublicVifDynamic
-from graphiant_sdk.models.mana_v2_public_vif_fixed import ManaV2PublicVifFixed as ManaV2PublicVifFixed
-from graphiant_sdk.models.mana_v2_public_vif_fixed_nat import ManaV2PublicVifFixedNat as ManaV2PublicVifFixedNat
-from graphiant_sdk.models.mana_v2_public_vif_producer_policy import ManaV2PublicVifProducerPolicy as ManaV2PublicVifProducerPolicy
-from graphiant_sdk.models.mana_v2_public_vif_producer_policy_response import ManaV2PublicVifProducerPolicyResponse as ManaV2PublicVifProducerPolicyResponse
+from graphiant_sdk.models.mana_v2_public_vif_gateway_centralized_nat import ManaV2PublicVifGatewayCentralizedNat as ManaV2PublicVifGatewayCentralizedNat
+from graphiant_sdk.models.mana_v2_public_vif_gateway_consumer_lan_devices import ManaV2PublicVifGatewayConsumerLanDevices as ManaV2PublicVifGatewayConsumerLanDevices
+from graphiant_sdk.models.mana_v2_public_vif_gateway_decentralized_prefixes import ManaV2PublicVifGatewayDecentralizedPrefixes as ManaV2PublicVifGatewayDecentralizedPrefixes
+from graphiant_sdk.models.mana_v2_public_vif_gateway_nat_prefix_strategy import ManaV2PublicVifGatewayNatPrefixStrategy as ManaV2PublicVifGatewayNatPrefixStrategy
+from graphiant_sdk.models.mana_v2_public_vif_gateway_write_request import ManaV2PublicVifGatewayWriteRequest as ManaV2PublicVifGatewayWriteRequest
 from graphiant_sdk.models.mana_v2_public_vif_summary import ManaV2PublicVifSummary as ManaV2PublicVifSummary
 from graphiant_sdk.models.mana_v2_qo_s_profile import ManaV2QoSProfile as ManaV2QoSProfile
 from graphiant_sdk.models.mana_v2_qo_s_profile_queue import ManaV2QoSProfileQueue as ManaV2QoSProfileQueue
@@ -2024,6 +2049,7 @@ from graphiant_sdk.models.mana_v2_vrf import ManaV2Vrf as ManaV2Vrf
 from graphiant_sdk.models.mana_v2_vrf_config import ManaV2VrfConfig as ManaV2VrfConfig
 from graphiant_sdk.models.mana_v2_vrrp_group import ManaV2VrrpGroup as ManaV2VrrpGroup
 from graphiant_sdk.models.mana_v2_vrrp_group_config import ManaV2VrrpGroupConfig as ManaV2VrrpGroupConfig
+from graphiant_sdk.models.mana_v2_zero_trust_consumption_summary import ManaV2ZeroTrustConsumptionSummary as ManaV2ZeroTrustConsumptionSummary
 from graphiant_sdk.models.mana_v2_zone import ManaV2Zone as ManaV2Zone
 from graphiant_sdk.models.mana_v2_zone_firewall_config import ManaV2ZoneFirewallConfig as ManaV2ZoneFirewallConfig
 from graphiant_sdk.models.mana_v2_zone_firewall_ip_policy_config import ManaV2ZoneFirewallIpPolicyConfig as ManaV2ZoneFirewallIpPolicyConfig
@@ -2427,14 +2453,6 @@ from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_hea
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_health_post_response import V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostResponse as V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostResponse
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_overtime_consumption_post_request import V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest as V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostRequest
 from graphiant_sdk.models.v1_extranet_b2b_monitoring_peering_service_service_overtime_consumption_post_response import V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostResponse as V1ExtranetB2bMonitoringPeeringServiceServiceOvertimeConsumptionPostResponse
-from graphiant_sdk.models.v1_extranet_public_vif_check_post_request import V1ExtranetPublicVifCheckPostRequest as V1ExtranetPublicVifCheckPostRequest
-from graphiant_sdk.models.v1_extranet_public_vif_check_post_response import V1ExtranetPublicVifCheckPostResponse as V1ExtranetPublicVifCheckPostResponse
-from graphiant_sdk.models.v1_extranet_public_vif_get_response import V1ExtranetPublicVifGetResponse as V1ExtranetPublicVifGetResponse
-from graphiant_sdk.models.v1_extranet_public_vif_id_get_response import V1ExtranetPublicVifIdGetResponse as V1ExtranetPublicVifIdGetResponse
-from graphiant_sdk.models.v1_extranet_public_vif_id_put_request import V1ExtranetPublicVifIdPutRequest as V1ExtranetPublicVifIdPutRequest
-from graphiant_sdk.models.v1_extranet_public_vif_id_put_response import V1ExtranetPublicVifIdPutResponse as V1ExtranetPublicVifIdPutResponse
-from graphiant_sdk.models.v1_extranet_public_vif_post_request import V1ExtranetPublicVifPostRequest as V1ExtranetPublicVifPostRequest
-from graphiant_sdk.models.v1_extranet_public_vif_post_response import V1ExtranetPublicVifPostResponse as V1ExtranetPublicVifPostResponse
 from graphiant_sdk.models.v1_extranet_sites_usage_top_post_request import V1ExtranetSitesUsageTopPostRequest as V1ExtranetSitesUsageTopPostRequest
 from graphiant_sdk.models.v1_extranet_sites_usage_top_post_response import V1ExtranetSitesUsageTopPostResponse as V1ExtranetSitesUsageTopPostResponse
 from graphiant_sdk.models.v1_extranet_sites_usage_top_post_response_site_usage import V1ExtranetSitesUsageTopPostResponseSiteUsage as V1ExtranetSitesUsageTopPostResponseSiteUsage
@@ -2605,6 +2623,7 @@ from graphiant_sdk.models.v1_groups_put_request import V1GroupsPutRequest as V1G
 from graphiant_sdk.models.v1_groups_root_get_response import V1GroupsRootGetResponse as V1GroupsRootGetResponse
 from graphiant_sdk.models.v1_invitation_email_post_request import V1InvitationEmailPostRequest as V1InvitationEmailPostRequest
 from graphiant_sdk.models.v1_lan_segments_get_response import V1LanSegmentsGetResponse as V1LanSegmentsGetResponse
+from graphiant_sdk.models.v1_lan_segments_interfaces_public_get_response import V1LanSegmentsInterfacesPublicGetResponse as V1LanSegmentsInterfacesPublicGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_neighbors_get_response import V1LldpInterfaceIdNeighborsGetResponse as V1LldpInterfaceIdNeighborsGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_summary_get_response import V1LldpInterfaceIdSummaryGetResponse as V1LldpInterfaceIdSummaryGetResponse
 from graphiant_sdk.models.v1_lldp_interface_id_vendors_get_response import V1LldpInterfaceIdVendorsGetResponse as V1LldpInterfaceIdVendorsGetResponse
@@ -2624,8 +2643,16 @@ from graphiant_sdk.models.v1_policy_route_tag_sets_tag_detail_get_response impor
 from graphiant_sdk.models.v1_policy_route_tag_sets_tags_get_response import V1PolicyRouteTagSetsTagsGetResponse as V1PolicyRouteTagSetsTagsGetResponse
 from graphiant_sdk.models.v1_policy_route_tag_sets_tags_summary_get_response import V1PolicyRouteTagSetsTagsSummaryGetResponse as V1PolicyRouteTagSetsTagsSummaryGetResponse
 from graphiant_sdk.models.v1_presharedkey_get_response import V1PresharedkeyGetResponse as V1PresharedkeyGetResponse
+from graphiant_sdk.models.v1_pvif_id_details_get_response import V1PvifIdDetailsGetResponse as V1PvifIdDetailsGetResponse
+from graphiant_sdk.models.v1_pvif_id_put_request import V1PvifIdPutRequest as V1PvifIdPutRequest
+from graphiant_sdk.models.v1_pvif_id_put_response import V1PvifIdPutResponse as V1PvifIdPutResponse
+from graphiant_sdk.models.v1_pvif_post_request import V1PvifPostRequest as V1PvifPostRequest
+from graphiant_sdk.models.v1_pvif_post_response import V1PvifPostResponse as V1PvifPostResponse
+from graphiant_sdk.models.v1_pvif_summary_get_response import V1PvifSummaryGetResponse as V1PvifSummaryGetResponse
 from graphiant_sdk.models.v1_qos_circuit_profiles_get_response import V1QosCircuitProfilesGetResponse as V1QosCircuitProfilesGetResponse
 from graphiant_sdk.models.v1_regions_get_response import V1RegionsGetResponse as V1RegionsGetResponse
+from graphiant_sdk.models.v1_regions_region_id_gateways_get_response import V1RegionsRegionIdGatewaysGetResponse as V1RegionsRegionIdGatewaysGetResponse
+from graphiant_sdk.models.v1_regions_region_id_gateways_get_response_gateway import V1RegionsRegionIdGatewaysGetResponseGateway as V1RegionsRegionIdGatewaysGetResponseGateway
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse as V1SearchGetResponse
 from graphiant_sdk.models.v1_site_details_sitelists_post_request import V1SiteDetailsSitelistsPostRequest as V1SiteDetailsSitelistsPostRequest
 from graphiant_sdk.models.v1_site_details_sitelists_post_response import V1SiteDetailsSitelistsPostResponse as V1SiteDetailsSitelistsPostResponse
@@ -2686,6 +2713,7 @@ from graphiant_sdk.models.v1_users_put_request import V1UsersPutRequest as V1Use
 from graphiant_sdk.models.v1_version_post_request import V1VersionPostRequest as V1VersionPostRequest
 from graphiant_sdk.models.v1_version_post_response import V1VersionPostResponse as V1VersionPostResponse
 from graphiant_sdk.models.v1_zones_get_response import V1ZonesGetResponse as V1ZonesGetResponse
+from graphiant_sdk.models.v1_ztagent_agents_get_response import V1ZtagentAgentsGetResponse as V1ZtagentAgentsGetResponse
 from graphiant_sdk.models.v1_ztagent_bindings_get_response import V1ZtagentBindingsGetResponse as V1ZtagentBindingsGetResponse
 from graphiant_sdk.models.v1_ztagent_bindings_put_request import V1ZtagentBindingsPutRequest as V1ZtagentBindingsPutRequest
 from graphiant_sdk.models.v2_ack_createupdate_post_request import V2AckCreateupdatePostRequest as V2AckCreateupdatePostRequest
@@ -2705,6 +2733,8 @@ from graphiant_sdk.models.v2_assistant_get_conversations_post_request import V2A
 from graphiant_sdk.models.v2_assistant_get_conversations_post_response import V2AssistantGetConversationsPostResponse as V2AssistantGetConversationsPostResponse
 from graphiant_sdk.models.v2_assistant_update_conversation_name_post_request import V2AssistantUpdateConversationNamePostRequest as V2AssistantUpdateConversationNamePostRequest
 from graphiant_sdk.models.v2_assistant_version_post_response import V2AssistantVersionPostResponse as V2AssistantVersionPostResponse
+from graphiant_sdk.models.v2_assurance_ai_adoption_summary_post_request import V2AssuranceAiAdoptionSummaryPostRequest as V2AssuranceAiAdoptionSummaryPostRequest
+from graphiant_sdk.models.v2_assurance_ai_adoption_summary_post_response import V2AssuranceAiAdoptionSummaryPostResponse as V2AssuranceAiAdoptionSummaryPostResponse
 from graphiant_sdk.models.v2_assurance_applicationdetailsbyname_post_request import V2AssuranceApplicationdetailsbynamePostRequest as V2AssuranceApplicationdetailsbynamePostRequest
 from graphiant_sdk.models.v2_assurance_applicationdetailsbyname_post_response import V2AssuranceApplicationdetailsbynamePostResponse as V2AssuranceApplicationdetailsbynamePostResponse
 from graphiant_sdk.models.v2_assurance_applicationprofilesummary_post_request import V2AssuranceApplicationprofilesummaryPostRequest as V2AssuranceApplicationprofilesummaryPostRequest
@@ -2719,6 +2749,8 @@ from graphiant_sdk.models.v2_assurance_bucket_topologies_post_request import V2A
 from graphiant_sdk.models.v2_assurance_bucket_topologies_post_response import V2AssuranceBucketTopologiesPostResponse as V2AssuranceBucketTopologiesPostResponse
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_request import V2AssuranceBucketdetailsPostRequest as V2AssuranceBucketdetailsPostRequest
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_response import V2AssuranceBucketdetailsPostResponse as V2AssuranceBucketdetailsPostResponse
+from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_request import V2AssuranceCreateAiAdoptionApproveEntryPostRequest as V2AssuranceCreateAiAdoptionApproveEntryPostRequest
+from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_response import V2AssuranceCreateAiAdoptionApproveEntryPostResponse as V2AssuranceCreateAiAdoptionApproveEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_request import V2AssuranceCreateDnsproxyEntryPostRequest as V2AssuranceCreateDnsproxyEntryPostRequest
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_response import V2AssuranceCreateDnsproxyEntryPostResponse as V2AssuranceCreateDnsproxyEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_user_report_post_request import V2AssuranceCreateUserReportPostRequest as V2AssuranceCreateUserReportPostRequest
@@ -2728,7 +2760,10 @@ from graphiant_sdk.models.v2_assurance_createclassifiedapplication_post_response
 from graphiant_sdk.models.v2_assurance_download_user_report_get_response import V2AssuranceDownloadUserReportGetResponse as V2AssuranceDownloadUserReportGetResponse
 from graphiant_sdk.models.v2_assurance_enterprisesummary_post_request import V2AssuranceEnterprisesummaryPostRequest as V2AssuranceEnterprisesummaryPostRequest
 from graphiant_sdk.models.v2_assurance_enterprisesummary_post_response import V2AssuranceEnterprisesummaryPostResponse as V2AssuranceEnterprisesummaryPostResponse
+from graphiant_sdk.models.v2_assurance_get_app_names_post_request import V2AssuranceGetAppNamesPostRequest as V2AssuranceGetAppNamesPostRequest
+from graphiant_sdk.models.v2_assurance_get_app_names_post_response import V2AssuranceGetAppNamesPostResponse as V2AssuranceGetAppNamesPostResponse
 from graphiant_sdk.models.v2_assurance_getclassifiedapplicationlist_get_response import V2AssuranceGetclassifiedapplicationlistGetResponse as V2AssuranceGetclassifiedapplicationlistGetResponse
+from graphiant_sdk.models.v2_assurance_read_ai_adoption_approve_entries_get_response import V2AssuranceReadAiAdoptionApproveEntriesGetResponse as V2AssuranceReadAiAdoptionApproveEntriesGetResponse
 from graphiant_sdk.models.v2_assurance_read_dnsproxy_list_get_response import V2AssuranceReadDnsproxyListGetResponse as V2AssuranceReadDnsproxyListGetResponse
 from graphiant_sdk.models.v2_assurance_read_user_report_list_get_response import V2AssuranceReadUserReportListGetResponse as V2AssuranceReadUserReportListGetResponse
 from graphiant_sdk.models.v2_assurance_scoredetails_post_request import V2AssuranceScoredetailsPostRequest as V2AssuranceScoredetailsPostRequest
@@ -2754,6 +2789,7 @@ from graphiant_sdk.models.v2_assurance_topology_site_summaries_post_response imp
 from graphiant_sdk.models.v2_assurance_topology_site_summaries_post_response_summary import V2AssuranceTopologySiteSummariesPostResponseSummary as V2AssuranceTopologySiteSummariesPostResponseSummary
 from graphiant_sdk.models.v2_assurance_unclassifiedapplicationprofilesummary_post_request import V2AssuranceUnclassifiedapplicationprofilesummaryPostRequest as V2AssuranceUnclassifiedapplicationprofilesummaryPostRequest
 from graphiant_sdk.models.v2_assurance_unclassifiedapplicationprofilesummary_post_response import V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse as V2AssuranceUnclassifiedapplicationprofilesummaryPostResponse
+from graphiant_sdk.models.v2_assurance_update_ai_adoption_approve_entry_post_request import V2AssuranceUpdateAiAdoptionApproveEntryPostRequest as V2AssuranceUpdateAiAdoptionApproveEntryPostRequest
 from graphiant_sdk.models.v2_assurance_update_dnsproxy_entry_post_request import V2AssuranceUpdateDnsproxyEntryPostRequest as V2AssuranceUpdateDnsproxyEntryPostRequest
 from graphiant_sdk.models.v2_assurance_updateclassifiedapplication_post_request import V2AssuranceUpdateclassifiedapplicationPostRequest as V2AssuranceUpdateclassifiedapplicationPostRequest
 from graphiant_sdk.models.v2_audit_logs_post_request import V2AuditLogsPostRequest as V2AuditLogsPostRequest

@@ -5,6 +5,7 @@ from __future__ import annotations
 import subprocess
 import sys
 import time
+from typing import TYPE_CHECKING, Callable
 
 from graphiant_cli.cli_logging import ensure_cli_logging, get_logger, safe_api_url_for_log
 from graphiant_cli.token_parsing import (
@@ -17,18 +18,23 @@ from graphiant_cli.token_parsing import (
     token_from_authorization_headers_only,
 )
 
+if TYPE_CHECKING:
+    from playwright.sync_api import Page, PlaywrightContextManager, Request, Response
+
 logger = get_logger("browser_capture")
 
 PLAYWRIGHT_AVAILABLE = False
+sync_playwright: Callable[[], PlaywrightContextManager] | None = None
 try:
-    from playwright.sync_api import sync_playwright
+    from playwright.sync_api import sync_playwright as _sync_playwright
 
+    sync_playwright = _sync_playwright
     PLAYWRIGHT_AVAILABLE = True
 except ImportError:
-    sync_playwright = None  # type: ignore[misc, assignment]
+    pass
 
 
-def playwright_yield_ms(page: object, ms: int) -> None:
+def playwright_yield_ms(page: Page, ms: int) -> None:
     """
     Yield so Playwright's sync driver can process network events.
 
@@ -110,12 +116,12 @@ def capture_token_via_browser(
                 page = context.new_page()
                 captured: list[str] = []
 
-                def on_request(request: object) -> None:
+                def on_request(request: Request) -> None:
                     try:
                         if not is_graphiant_api_url(request.url):
                             return
                         tok = token_from_authorization_headers_only(request)
-                        if eligible_capture(tok, request.url):
+                        if tok is not None and eligible_capture(tok, request.url):
                             captured.append(tok)
                             logger.debug(
                                 "Captured bearer from request %s",
@@ -124,7 +130,7 @@ def capture_token_via_browser(
                     except Exception:
                         logger.debug("on_request handler failed", exc_info=True)
 
-                def on_response(response: object) -> None:
+                def on_response(response: Response) -> None:
                     try:
                         url = response.url
                         if not is_graphiant_api_url(url):
@@ -133,7 +139,7 @@ def capture_token_via_browser(
                             tok = extract_token_from_refresh_response(response)
                         else:
                             tok = extract_token_from_graphiant_api_response(response)
-                        if eligible_capture(tok, url):
+                        if tok is not None and eligible_capture(tok, url):
                             captured.append(tok)
                             logger.debug(
                                 "Captured bearer from response %s status=%s",
@@ -164,9 +170,11 @@ def capture_token_via_browser(
                     if time.time() >= next_progress:
                         if verbose:
                             print(
-                                "Still waiting for a Graphiant API bearer token (…/v1/…, …/v2/…, or …/auth/refresh) … "
-                                "(sign in in this Chromium window; after login, refresh the portal home page if needed — "
-                                "e.g. F5 or the reload button. Press Ctrl+C to paste a token.)",
+                                "Still waiting for a Graphiant API bearer token "
+                                "(…/v1/…, …/v2/…, or …/auth/refresh) … "
+                                "(sign in in Chromium; after login, refresh the portal "
+                                "home page if needed — e.g. F5 or the reload button. "
+                                "Press Ctrl+C to paste a token.)",
                                 file=sys.stderr,
                             )
                         else:
@@ -198,7 +206,8 @@ def capture_token_via_browser(
                 if verbose:
                     print(
                         "Signed in. The CLI will open the home URL and reload once. "
-                        "If no further API traffic appears, refresh the portal home page yourself (F5 or reload).",
+                        "If no further API traffic appears, refresh the portal home page "
+                        "yourself (F5 or reload).",
                         file=sys.stderr,
                     )
                 else:
@@ -233,7 +242,8 @@ def capture_token_via_browser(
         return _attempt()
     except Exception as e:
         if _launch_failure_suggests_missing_browser(e):
-            logger.warning("Browser missing or failed to start; attempting playwright install chromium")
+            logger.warning(
+                "Browser missing or failed to start; attempting playwright install chromium")
             if _install_chromium():
                 try:
                     return _attempt()

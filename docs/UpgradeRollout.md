@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **next_run_ts** | [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **num_devices** | **int** | Count of devices associated with the rollout. | [optional] 
 **rollout_config** | [**UpgradeRolloutConfig**](UpgradeRolloutConfig.md) |  | [optional] 
+**status** | **str** | Status of the upgrade rollout group | [optional] 
 
 ## Example
 

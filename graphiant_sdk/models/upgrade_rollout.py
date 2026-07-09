@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictInt, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.google_protobuf_timestamp import GoogleProtobufTimestamp
 from graphiant_sdk.models.upgrade_rollout_config import UpgradeRolloutConfig
@@ -37,7 +37,8 @@ class UpgradeRollout(BaseModel):
     next_run_ts: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="nextRunTs")
     num_devices: Optional[StrictInt] = Field(default=None, description="Count of devices associated with the rollout.", alias="numDevices", json_schema_extra={"examples": [3]})
     rollout_config: Optional[UpgradeRolloutConfig] = Field(default=None, alias="rolloutConfig")
-    __properties: ClassVar[List[str]] = ["devices", "hasFailed", "id", "lastRunTs", "nextRunTs", "numDevices", "rolloutConfig"]
+    status: Optional[StrictStr] = Field(default=None, description="Status of the upgrade rollout group", json_schema_extra={"examples": ["idle"]})
+    __properties: ClassVar[List[str]] = ["devices", "hasFailed", "id", "lastRunTs", "nextRunTs", "numDevices", "rolloutConfig", "status"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -112,7 +113,8 @@ class UpgradeRollout(BaseModel):
             "lastRunTs": GoogleProtobufTimestamp.from_dict(obj["lastRunTs"]) if obj.get("lastRunTs") is not None else None,
             "nextRunTs": GoogleProtobufTimestamp.from_dict(obj["nextRunTs"]) if obj.get("nextRunTs") is not None else None,
             "numDevices": obj.get("numDevices"),
-            "rolloutConfig": UpgradeRolloutConfig.from_dict(obj["rolloutConfig"]) if obj.get("rolloutConfig") is not None else None
+            "rolloutConfig": UpgradeRolloutConfig.from_dict(obj["rolloutConfig"]) if obj.get("rolloutConfig") is not None else None,
+            "status": obj.get("status")
         })
         return _obj
 

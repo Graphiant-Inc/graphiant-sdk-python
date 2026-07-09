@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **emails** | **List[str]** |  | [optional] 
 **ipsec_gateway_details** | [**ManaV2IPsecGatewayDetails**](ManaV2IPsecGatewayDetails.md) |  | [optional] 
+**ipsec_gateway_peers** | [**ManaV2IPsecGatewayPeersConfig**](ManaV2IPsecGatewayPeersConfig.md) |  | [optional] 
 **region_id** | **int** |  | [optional] 
 
 ## Example

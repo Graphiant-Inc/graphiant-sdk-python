@@ -34,6 +34,7 @@ class AssuranceAppNameRecord(BaseModel):
     affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions", json_schema_extra={"examples": [1234567891011]})
     affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites", json_schema_extra={"examples": [1234567891011]})
     affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs", json_schema_extra={"examples": [1234567891011]})
+    app_ai_tag: Optional[StrictStr] = Field(default=None, alias="appAiTag", json_schema_extra={"examples": ["ENUM_VALUE"]})
     app_id: Optional[StrictInt] = Field(default=None, alias="appId", json_schema_extra={"examples": [1234567891011]})
     app_id_records: Optional[List[AssuranceAppIdRecord]] = Field(default=None, alias="appIdRecords")
     app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
@@ -46,7 +47,7 @@ class AssuranceAppNameRecord(BaseModel):
     recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
     threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore", json_schema_extra={"examples": [1234567891011]})
-    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "recommendation", "riskStatus", "threatScore"]
+    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "recommendation", "riskStatus", "threatScore"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -124,6 +125,7 @@ class AssuranceAppNameRecord(BaseModel):
             "affectedRegions": obj.get("affectedRegions"),
             "affectedSites": obj.get("affectedSites"),
             "affectedVrfs": obj.get("affectedVrfs"),
+            "appAiTag": obj.get("appAiTag"),
             "appId": obj.get("appId"),
             "appIdRecords": [AssuranceAppIdRecord.from_dict(_item) for _item in obj["appIdRecords"]] if obj.get("appIdRecords") is not None else None,
             "appName": obj.get("appName"),
