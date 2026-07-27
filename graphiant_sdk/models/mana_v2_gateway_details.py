@@ -23,6 +23,7 @@ from graphiant_sdk.models.mana_v2_aws_gateway_details import ManaV2AwsGatewayDet
 from graphiant_sdk.models.mana_v2_azure_gateway_details import ManaV2AzureGatewayDetails
 from graphiant_sdk.models.mana_v2_gcp_gateway_details import ManaV2GcpGatewayDetails
 from graphiant_sdk.models.mana_v2_i_psec_gateway_details import ManaV2IPsecGatewayDetails
+from graphiant_sdk.models.mana_v2_i_psec_gateway_peers_config import ManaV2IPsecGatewayPeersConfig
 from graphiant_sdk.models.mana_v2_oci_gateway_details import ManaV2OciGatewayDetails
 from typing import Optional, Set
 from typing_extensions import Self
@@ -37,11 +38,12 @@ class ManaV2GatewayDetails(BaseModel):
     description: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     gcp: Optional[ManaV2GcpGatewayDetails] = None
     ipsec_gateway: Optional[ManaV2IPsecGatewayDetails] = Field(default=None, alias="ipsecGateway")
+    ipsec_gateway_peers: Optional[ManaV2IPsecGatewayPeersConfig] = Field(default=None, alias="ipsecGatewayPeers")
     oci: Optional[ManaV2OciGatewayDetails] = None
     region_id: Optional[StrictInt] = Field(default=None, alias="regionId", json_schema_extra={"examples": [123]})
     speed: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
     vrf_id: Optional[StrictInt] = Field(default=None, alias="vrfId", json_schema_extra={"examples": [1234567891011]})
-    __properties: ClassVar[List[str]] = ["aws", "azure", "description", "gcp", "ipsecGateway", "oci", "regionId", "speed", "vrfId"]
+    __properties: ClassVar[List[str]] = ["aws", "azure", "description", "gcp", "ipsecGateway", "ipsecGatewayPeers", "oci", "regionId", "speed", "vrfId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -94,6 +96,9 @@ class ManaV2GatewayDetails(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of ipsec_gateway
         if self.ipsec_gateway:
             _dict['ipsecGateway'] = self.ipsec_gateway.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of ipsec_gateway_peers
+        if self.ipsec_gateway_peers:
+            _dict['ipsecGatewayPeers'] = self.ipsec_gateway_peers.to_dict()
         # override the default output from pydantic by calling `to_dict()` of oci
         if self.oci:
             _dict['oci'] = self.oci.to_dict()
@@ -114,6 +119,7 @@ class ManaV2GatewayDetails(BaseModel):
             "description": obj.get("description"),
             "gcp": ManaV2GcpGatewayDetails.from_dict(obj["gcp"]) if obj.get("gcp") is not None else None,
             "ipsecGateway": ManaV2IPsecGatewayDetails.from_dict(obj["ipsecGateway"]) if obj.get("ipsecGateway") is not None else None,
+            "ipsecGatewayPeers": ManaV2IPsecGatewayPeersConfig.from_dict(obj["ipsecGatewayPeers"]) if obj.get("ipsecGatewayPeers") is not None else None,
             "oci": ManaV2OciGatewayDetails.from_dict(obj["oci"]) if obj.get("oci") is not None else None,
             "regionId": obj.get("regionId"),
             "speed": obj.get("speed"),

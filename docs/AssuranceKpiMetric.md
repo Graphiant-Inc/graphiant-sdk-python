@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **name** | **str** | name of the metric | [optional] 
 **percent** | **float** | AI adoption percent for the metric | [optional] 
 **tag** | **str** | AI adoption tag for the metric | [optional] 
+**token_usage** | **float** | AI adoption token usage value | [optional] 
 **value** | **float** | metric value (required) | [optional] 
 
 ## Example

@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**authentication** | [**ManaV2NullableOspfAuthenticationConfig**](ManaV2NullableOspfAuthenticationConfig.md) |  | [optional] 
 **bfd** | [**ManaV2NullableBfdInstanceConfig**](ManaV2NullableBfdInstanceConfig.md) |  | [optional] 
 **cost** | **int** |  | [optional] 
 **dead_interval_value** | [**ManaV2NullableOspfDeadIntervalValue**](ManaV2NullableOspfDeadIntervalValue.md) |  | [optional] 
