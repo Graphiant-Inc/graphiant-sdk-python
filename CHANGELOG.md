@@ -6,6 +6,33 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.7.0] - 2026-07-27
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.7.0.json`
+- **B2B extranet — new API paths (`/v1/extranet/b2b/...`):** Comprehensive new endpoint set alongside the existing `/v1/extranets/b2b/...` paths:
+  - **Consumers:** **`GET /v1/extranet/b2b/consumers/{customerId}`**, **`GET`/`PUT`/`DELETE /v1/extranet/b2b/consumers/{id}`**, **`GET /v1/extranet/b2b/consumers/{id}/device-status`**, **`PUT /v1/extranet/b2b/consumers/{id}/prefixes`**; models **`V1ExtranetB2bConsumers*`**, **`ManaV2ExtranetConsumerLanPrefixes`**
+  - **Customers:** **`POST /v1/extranet/b2b/customers`**, **`GET /v1/extranet/b2b/customers/summary`**, **`GET`/`PUT`/`DELETE /v1/extranet/b2b/customers/{id}`**, **`GET /v1/extranet/b2b/customers/{id}/details`**, **`GET /v1/extranet/b2b/customers/{id}/matches/summary`**, **`POST /v1/extranet/b2b/customers/{id}/retry`**; models **`V1ExtranetB2bCustomers*`**
+  - **Matches:** **`POST /v1/extranet/b2b/matches`**, **`GET`/`PUT`/`DELETE /v1/extranet/b2b/matches/{matchId}`**, **`GET /v1/extranet/b2b/matches/{matchId}/details`**, **`POST /v1/extranet/b2b/matches/{matchId}/consumer`**, **`POST /v1/extranet/b2b/matches/{matchId}/consumer/check`**, **`PUT /v1/extranet/b2b/matches/{matchId}/status`**, **`PUT /v1/extranet/b2b/matches/pause`**, **`POST /v1/extranet/b2b/matches/review`**, **`POST /v1/extranet/b2b/matches/customers`**; models **`V1ExtranetB2bMatches*`**, **`ManaV2B2bExtranetMatch`**, **`ManaV2B2bExtranetMatchConsumerDetails`**, **`ManaV2B2BExtranetMatchConsumerDetailsCustomer`**, **`ManaV2B2BExtranetMatchConsumerDetailsProducerPrefix`**, **`ManaV2B2BExtranetMatchConsumerDetailsService`**
+  - **Producer:** **`POST /v1/extranet/b2b/producer`**, **`GET`/`PUT`/`DELETE /v1/extranet/b2b/producer/{id}`**, **`GET /v1/extranet/b2b/producer/{id}/customers`**, **`GET /v1/extranet/b2b/producer/{id}/device-status`**, **`PUT /v1/extranet/b2b/producer/{id}/status`**, **`POST /v1/extranet/b2b/producer/review`**; models **`V1ExtranetB2bProducer*`**
+  - **Services:** **`GET /v1/extranet/b2b/services/summary`**; model **`V1ExtranetB2bServicesSummaryGetResponse`**
+  - **Shared extranet models:** **`ManaV2ExtranetNatTranslationCentralized`**, **`ManaV2ExtranetNatTranslationDecentralized`**, **`ManaV2ExtranetNatTranslationDevicePrefixes`**, **`ManaV2ExtranetNatTranslationMode`**, **`ManaV2ExtranetNatTranslationPeerToPeer`**, **`ManaV2ExtranetNatTranslationPeerToPeerPrefix`**, **`ManaV2ExtranetServiceConsumerPolicy`**, **`ManaV2ExtranetServiceCustomerInvite`**, **`ManaV2ExtranetServiceCustomerMatchSummary`**, **`ManaV2ExtranetServiceCustomerSummary`**, **`ManaV2ExtranetServicePolicyResponse`**, **`ManaV2ExtranetServiceProducerCustomer`**, **`ManaV2ExtranetServiceProducerPolicy`**, **`ManaV2ExtranetServiceSummary`**
+- **OSPF authentication:** **`ManaV2OspfAuthentication`**, **`ManaV2NullableOspfAuthenticationConfig`**; **`ManaV2OspfInterface`** and **`ManaV2OspfInterfaceConfig`** extended with `authentication` field
+- **Auth error response models:** **`V1AuthLoginCallbackPost500Response`**, **`V1AuthLoginSamlGet401Response`**, **`V1AuthLoginSamlGet500Response`**, **`V1AuthRefreshGet403Response`**, **`V1AuthRefreshGet422Response`**, **`V1AuthSessionGet403Response`**, **`V1AuthSessionGet422Response`**
+
+### Changed
+- **Version:** Package **26.7.0**; OpenAPI bundle **`graphiant_api_docs_v26.7.0.json`** (replaces **26.6.0** bundle in-repo).
+- **Schemas / docs (updated):**
+  - **`AssuranceKpiMetric`**: added `token_usage` field (AI adoption token usage value)
+  - **`AssuranceUserDefinition`**: `data_sent` description updated ("tokens sent"); added `tokens_usage` and `tokens_usage_days` fields
+  - **`ManaV2GatewayDetails`**: added `ipsec_gateway_peers` field (**`ManaV2IPsecGatewayPeersConfig`**)
+  - **`V1InvitationEmailPostRequest`**: added `service_type` field (extranet service type URL segment)
+  - **`DefaultApi`**, README, and generated **`docs/`** model pages refreshed.
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.7.0** spec.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.6.0.json`** (superseded by **26.7.0** bundle).
+
 ## [26.6.0] - 2026-07-08
 
 ### Added

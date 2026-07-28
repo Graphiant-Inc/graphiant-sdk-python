@@ -5,9 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data_sent** | **float** | data sent by the user (required) | [optional] 
+**data_sent** | **float** | tokens sent by the user (required) | [optional] 
 **managed** | **bool** | whether the user is managed (required) | [optional] 
 **sessions_day** | **float** | daily sessions for the user (required) | [optional] 
+**tokens_usage** | **float** | token usage (required) | [optional] 
+**tokens_usage_days** | **float** | token usage per day (required) | [optional] 
 **user** | **str** | user identifier (required) | [optional] 
 **vrf** | **str** | VRF associated with the user (required) | [optional] 
 

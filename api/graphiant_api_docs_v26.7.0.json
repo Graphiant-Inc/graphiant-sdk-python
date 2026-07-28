@@ -3640,6 +3640,12 @@
             "example": "ENUM_VALUE",
             "description": "AI adoption tag for the metric"
           },
+          "tokenUsage": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "AI adoption token usage value"
+          },
           "value": {
             "type": "number",
             "format": "double",
@@ -3734,7 +3740,7 @@
             "type": "number",
             "format": "double",
             "example": 123.45,
-            "description": "data sent by the user (required)"
+            "description": "tokens sent by the user (required)"
           },
           "managed": {
             "type": "boolean",
@@ -3746,6 +3752,18 @@
             "format": "double",
             "example": 123.45,
             "description": "daily sessions for the user (required)"
+          },
+          "tokensUsage": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "token usage (required)"
+          },
+          "tokensUsageDays": {
+            "type": "number",
+            "format": "double",
+            "example": 123.45,
+            "description": "token usage per day (required)"
           },
           "user": {
             "type": "string",
@@ -5756,6 +5774,11 @@
             "type": "string",
             "example": "example string",
             "description": " (required)"
+          },
+          "serviceType": {
+            "type": "string",
+            "example": "example string",
+            "description": "Extranet service type URL segment (e.g. peering_service, client_to_server)"
           }
         },
         "additionalProperties": false,
@@ -11999,6 +12022,9 @@
       "manaV2OspfInterface": {
         "type": "object",
         "properties": {
+          "authentication": {
+            "$ref": "#/components/schemas/manaV2OspfAuthentication"
+          },
           "bfd": {
             "$ref": "#/components/schemas/manaV2BfdInstance"
           },
@@ -12090,6 +12116,24 @@
           "type": {
             "type": "string",
             "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2OspfAuthentication": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "example": "example string",
+            "description": "Shared secret for OSPFv2 MD5 authentication on this interface"
+          },
+          "keyId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0,
+            "description": "Identifier of the OSPFv2 MD5 authentication key configured on this interface"
           }
         },
         "additionalProperties": false
@@ -14342,6 +14386,9 @@
       "manaV2OspfInterfaceConfig": {
         "type": "object",
         "properties": {
+          "authentication": {
+            "$ref": "#/components/schemas/manaV2NullableOspfAuthenticationConfig"
+          },
           "bfd": {
             "$ref": "#/components/schemas/manaV2NullableBfdInstanceConfig"
           },
@@ -14391,6 +14438,20 @@
             "example": "ENUM_VALUE"
           }
         },
+        "additionalProperties": false
+      },
+      "manaV2NullableOspfAuthenticationConfig": {
+        "type": "object",
+        "properties": {
+          "authentication": {
+            "$ref": "#/components/schemas/manaV2OspfAuthenticationConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2OspfAuthenticationConfig": {
+        "type": "object",
+        "properties": {},
         "additionalProperties": false
       },
       "manaV2NullableOspfDeadIntervalValue": {
@@ -18799,41 +18860,51 @@
         },
         "additionalProperties": false
       },
-      "v1ExtranetsB2bPeeringProducerPostRequest": {
+      "v1ExtranetB2bProducerPostRequest": {
         "type": "object",
         "properties": {
           "policy": {
-            "$ref": "#/components/schemas/manaV2B2bExtranetPeeringServiceProducerPolicy"
+            "$ref": "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
           },
           "serviceName": {
             "type": "string",
-            "example": "example string"
+            "example": "example string",
+            "description": " (required)"
           },
-          "type": {
+          "serviceType": {
             "type": "string",
             "example": "ENUM_VALUE",
-            "description": "Type of the service whether it is application or peering (required)"
+            "description": "Branded extranet service type (peering_service, client_to_server, …) (required)"
           }
         },
         "additionalProperties": false,
         "required": [
           "policy",
-          "type"
+          "serviceName",
+          "serviceType"
         ]
       },
-      "manaV2B2bExtranetPeeringServiceProducerPolicy": {
+      "manaV2ExtranetServiceProducerPolicy": {
         "type": "object",
         "properties": {
           "description": {
             "type": "string",
-            "example": "example string",
-            "description": "Description for the service"
+            "example": "example string"
+          },
+          "globalObjectDeviceSummaries": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2GlobalObjectServiceSummaries"
+            }
           },
           "globalObjectOps": {
             "type": "object",
             "additionalProperties": {
               "$ref": "#/components/schemas/manaV2GlobalObjectServiceOps"
             }
+          },
+          "natTranslationMode": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationMode"
           },
           "prefixTags": {
             "type": "array",
@@ -18845,27 +18916,111 @@
             "type": "integer",
             "format": "int64",
             "example": 1234567891011,
-            "description": "LAN segment ID for the service (required)"
+            "description": "LAN segment ID for the service"
           },
-          "site": {
+          "sites": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/manaV2B2bSiteInformation"
             }
-          },
-          "type": {
-            "type": "string",
-            "example": "ENUM_VALUE",
-            "description": "Type of the service whether it is application or peering (required)"
           }
         },
-        "additionalProperties": false,
-        "required": [
-          "prefixTags",
-          "serviceLanSegment",
-          "site",
-          "type"
-        ]
+        "additionalProperties": false
+      },
+      "manaV2GlobalObjectServiceSummaries": {
+        "type": "object",
+        "properties": {
+          "routingPolicies": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2GlobalObjectSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2GlobalObjectSummary": {
+        "type": "object",
+        "properties": {
+          "attachPoint": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "ipVersion": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "numAttachedDevices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numAttachedSites": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numFailures": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numInSyncDevices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numOverrideDevices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numPolicies": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numPrefixes": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numRules": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "numStatements": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "trafficPolicyType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
       },
       "manaV2GlobalObjectServiceOps": {
         "type": "object",
@@ -18876,6 +19031,87 @@
               "type": "string",
               "example": "ENUM_VALUE"
             }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationMode": {
+        "type": "object",
+        "properties": {
+          "centralized": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationCentralized"
+          },
+          "decentralized": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationDecentralized"
+          },
+          "peerToPeer": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationPeerToPeer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationCentralized": {
+        "type": "object",
+        "properties": {
+          "prefixes": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2ExtranetNatTranslationDevicePrefixes"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationDevicePrefixes": {
+        "type": "object",
+        "properties": {
+          "prefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "IPv4 CIDR NAT pool(s) for the device"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationDecentralized": {
+        "type": "object",
+        "properties": {
+          "prefixes": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2ExtranetNatTranslationDevicePrefixes"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationPeerToPeer": {
+        "type": "object",
+        "properties": {
+          "prefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetNatTranslationPeerToPeerPrefix"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetNatTranslationPeerToPeerPrefix": {
+        "type": "object",
+        "properties": {
+          "outsideNatPrefix": {
+            "type": "string",
+            "example": "100.1.2.0/24",
+            "description": "Optional outside address presented for prefix on the far side of the attachment; omit for no NAT on that prefix"
+          },
+          "prefix": {
+            "type": "string",
+            "example": "10.1.2.0/24",
+            "description": "At match: customer export prefix. At consumer accept/update (peering): subscribed service prefix"
           }
         },
         "additionalProperties": false
@@ -18961,6 +19197,1533 @@
         "required": [
           "burstSize",
           "bw"
+        ]
+      },
+      "v1ExtranetB2bProducerPostResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServicePolicyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServicePolicyResponse": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "serviceType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerReviewPostRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string",
+            "description": " (required)"
+          },
+          "serviceType": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Branded extranet service type (peering_service, client_to_server, …) (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "policy",
+          "serviceName",
+          "serviceType"
+        ]
+      },
+      "v1ExtranetB2bProducerReviewPostResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServicePolicyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServicePolicyResponse"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceProducerPolicy"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServicePolicyResponse"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdStatusPutRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdStatusPutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdCustomersGetResponse": {
+        "type": "object",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceProducerCustomer"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServiceProducerCustomer": {
+        "type": "object",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "customerId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "matchId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "matchedServices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersPostRequest": {
+        "type": "object",
+        "properties": {
+          "invite": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerInvite"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Partner display name (required)"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Graphiant peer vs guest (non-Graphiant) partner (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "invite",
+          "name",
+          "type"
+        ]
+      },
+      "manaV2ExtranetServiceCustomerInvite": {
+        "type": "object",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Admin emails for the partner"
+            }
+          },
+          "maximumNumberOfSites": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0,
+            "description": "Maximum number of consumer sites"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersPostResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "invite": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerInvite"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdDetailsGetResponse": {
+        "type": "object",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "numSites": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "invite": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerInvite"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "invite": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerInvite"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdDeleteResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdRetryPostRequest": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdRetryPostResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesPostRequest": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "match": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2bExtranetMatch": {
+        "type": "object",
+        "properties": {
+          "consumerPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Consumer client prefixes agreed at match (flat list; scoped to LAN segments at consumer accept)"
+            }
+          },
+          "lanSegment": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "natTranslationMode": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationMode"
+          },
+          "numCustomers": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0,
+            "description": "Number of customers subscribed to the service"
+          },
+          "serviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer service id"
+          },
+          "servicePrefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetPrefixTag"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesPostResponse": {
+        "type": "object",
+        "properties": {
+          "matchId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesCustomersPostRequest": {
+        "type": "object",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceProducerCustomer"
+            }
+          },
+          "serviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesCustomersPostResponse": {
+        "type": "object",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceProducerCustomer"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesReviewPostRequest": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "match": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesReviewPostResponse": {
+        "type": "object",
+        "properties": {
+          "matchId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "matches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "customerName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "match": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+          },
+          "matchId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "match": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "match": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatch"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdStatusPutRequest": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdStatusPutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesPausePutRequest": {
+        "type": "object",
+        "properties": {
+          "customerId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesPausePutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdDeleteResponse": {
+        "type": "object",
+        "properties": {
+          "activityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersIdMatchesSummaryGetResponse": {
+        "type": "object",
+        "properties": {
+          "matches": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerMatchSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServiceCustomerMatchSummary": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "lanSegment": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "matchedCustomers": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "serviceType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdDetailsGetResponse": {
+        "type": "object",
+        "properties": {
+          "details": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetMatchConsumerDetails"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2bExtranetMatchConsumerDetails": {
+        "type": "object",
+        "properties": {
+          "consumerId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "consumerPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "customer": {
+            "$ref": "#/components/schemas/manaV2B2BExtranetMatchConsumerDetailsCustomer"
+          },
+          "oldConsumerPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "oldServicePrefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2BExtranetMatchConsumerDetailsProducerPrefix"
+            }
+          },
+          "service": {
+            "$ref": "#/components/schemas/manaV2B2BExtranetMatchConsumerDetailsService"
+          },
+          "servicePrefixes": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2BExtranetMatchConsumerDetailsProducerPrefix"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2BExtranetMatchConsumerDetailsCustomer": {
+        "type": "object",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "companyName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "numSites": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2BExtranetMatchConsumerDetailsProducerPrefix": {
+        "type": "object",
+        "properties": {
+          "customerTranslatedPrefix": {
+            "type": "string",
+            "example": "example string"
+          },
+          "prefix": {
+            "type": "string",
+            "example": "example string"
+          },
+          "tag": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2BExtranetMatchConsumerDetailsService": {
+        "type": "object",
+        "properties": {
+          "companyName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "contactEmail": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "description": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdConsumerPostRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          },
+          "serviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer service id being consumed"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServiceConsumerPolicy": {
+        "type": "object",
+        "properties": {
+          "consumerLanSegments": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2ExtranetConsumerLanPrefixes"
+            }
+          },
+          "globalObjectOps": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2GlobalObjectServiceOps"
+            }
+          },
+          "natTranslationMode": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationMode"
+          },
+          "siteToSiteVpn": {
+            "$ref": "#/components/schemas/manaV2GuestConsumerSiteToSiteVpnConfig"
+          },
+          "sites": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bSiteInformation"
+            }
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "consumerLanSegments"
+        ]
+      },
+      "manaV2ExtranetConsumerLanPrefixes": {
+        "type": "object",
+        "properties": {
+          "consumerPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Consumer client prefixes on this LAN"
+            }
+          },
+          "servicePrefixDnat": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2GuestConsumerSiteToSiteVpnConfig": {
+        "type": "object",
+        "properties": {
+          "emails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "ipsecGatewayDetails": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayDetails"
+          },
+          "ipsecGatewayPeers": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayPeersConfig"
+          },
+          "regionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayDetails": {
+        "type": "object",
+        "properties": {
+          "destinationAddress": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeInitiator": {
+            "type": "boolean",
+            "example": true
+          },
+          "mtu": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "remoteIkePeerIdentity": {
+            "type": "string",
+            "example": "example string"
+          },
+          "routing": {
+            "$ref": "#/components/schemas/manaV2IpsecRoutingConfig"
+          },
+          "tcpMss": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "tunnel1": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "tunnel2": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "vpnProfile": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayTunnelDetails": {
+        "type": "object",
+        "properties": {
+          "insideIpv4Cidr": {
+            "type": "string",
+            "example": "example string"
+          },
+          "insideIpv6Cidr": {
+            "type": "string",
+            "example": "example string"
+          },
+          "localIkePeerIdentity": {
+            "type": "string",
+            "example": "example string"
+          },
+          "psk": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayPeersConfig": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Name of the IPsec gateway service"
+          },
+          "remotePeers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2IPsecGatewayRemotePeer"
+            }
+          },
+          "routing": {
+            "$ref": "#/components/schemas/manaV2IpsecRoutingConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2IPsecGatewayRemotePeer": {
+        "type": "object",
+        "properties": {
+          "destinationAddress": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeInitiator": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, Graphiant initiates IKE for this peer"
+          },
+          "mtu": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional display name or label for this peer; used when generating tunnel names"
+          },
+          "remoteIkePeerIdentity": {
+            "type": "string",
+            "example": "example string",
+            "description": "IKE identity of the remote peer"
+          },
+          "tcpMss": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "tunnel1": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "tunnel2": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
+          },
+          "vpnProfile": {
+            "type": "string",
+            "example": "example string",
+            "description": "Enterprise IPsec VPN profile name for this peer"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdConsumerPostResponse": {
+        "type": "object",
+        "properties": {
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          },
+          "serviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Producer service id being consumed"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse": {
+        "type": "object",
+        "properties": {
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersCustomerIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "globalObjectDeviceSummaries": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2GlobalObjectServiceSummaries"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "ipsecTunnelConfig": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/v1ExtranetB2bConsumersCustomerIdGetResponseIpsecVpnTunnelConfig"
+            }
+          },
+          "matchDetails": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetMatchConsumerDetails"
+          },
+          "matchId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "peerType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          },
+          "siteToSiteVpn": {
+            "$ref": "#/components/schemas/manaV2GuestConsumerSiteToSiteVpnConfig"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersCustomerIdGetResponseIpsecVpnTunnelConfig": {
+        "type": "object",
+        "properties": {
+          "bgpGraphiantAsn": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "bgpLocalAsn": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "bgpNeighborHoldTime": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "bgpNeighborIpv4": {
+            "type": "string",
+            "example": "example string"
+          },
+          "bgpNeighborIpv6": {
+            "type": "string",
+            "example": "example string"
+          },
+          "dpdInterval": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "dpdRetries": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "graphiantDestinationIp": {
+            "type": "string",
+            "example": "example string"
+          },
+          "graphiantIkeId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "graphiantOuterTunnelIp": {
+            "type": "string",
+            "example": "example string"
+          },
+          "graphiantTunnelIp": {
+            "type": "string",
+            "example": "example string"
+          },
+          "graphiantTunnelIpv6": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeAuthenticationAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeAuthenticationMethod": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeDhAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeEncryptionAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeLifetime": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikePresharedKey": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ikeVersion": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123
+          },
+          "ipsecAuthenticationAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ipsecEncryptionAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ipsecExtendedSequenceNumber": {
+            "type": "boolean",
+            "example": true
+          },
+          "ipsecLifetime": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ipsecMode": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ipsecPfsAlgorithm": {
+            "type": "string",
+            "example": "example string"
+          },
+          "ipsecProtocol": {
+            "type": "string",
+            "example": "example string"
+          },
+          "localIkeId": {
+            "type": "string",
+            "example": "example string"
+          },
+          "localOuterTunnelIp": {
+            "type": "string",
+            "example": "example string"
+          },
+          "localTunnelIp": {
+            "type": "string",
+            "example": "example string"
+          },
+          "localTunnelIpv6": {
+            "type": "string",
+            "example": "example string"
+          },
+          "tcpMss": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "tunnelMtu": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "policy": {
+            "$ref": "#/components/schemas/manaV2ExtranetServiceConsumerPolicy"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdPrefixesPutRequest": {
+        "type": "object",
+        "properties": {
+          "natTranslationMode": {
+            "$ref": "#/components/schemas/manaV2ExtranetNatTranslationMode"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdPrefixesPutResponse": {
+        "type": "object",
+        "properties": {
+          "consumerActivityId": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bProducerIdDeviceStatusGetResponse": {
+        "type": "object",
+        "properties": {
+          "summary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetStatusSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2B2bExtranetStatusSummary": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "deviceId": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "deviceStatus": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "location": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bConsumersIdDeviceStatusGetResponse": {
+        "type": "object",
+        "properties": {
+          "serviceStatus": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "summary": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetStatusSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bServicesSummaryGetResponse": {
+        "type": "object",
+        "properties": {
+          "services": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServiceSummary": {
+        "type": "object",
+        "properties": {
+          "createdAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "isPublisher": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when this enterprise publishes the service; false when consuming a remote producer"
+          },
+          "lanSegment": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Service LAN segment when is_publisher and VRF exists"
+          },
+          "lastUpdated": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "serverPrefixes": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Producer prefix tags (legacy ServerIpAddress on publisher rows)"
+            }
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "serviceType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "sites": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "totalCustomers": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetB2bCustomersSummaryGetResponse": {
+        "type": "object",
+        "properties": {
+          "customers": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2ExtranetServiceCustomerSummary"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2ExtranetServiceCustomerSummary": {
+        "type": "object",
+        "properties": {
+          "adminEmails": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "matchedServices": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "name": {
+            "type": "string",
+            "example": "example string"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1ExtranetsB2bPeeringProducerPostRequest": {
+        "type": "object",
+        "properties": {
+          "policy": {
+            "$ref": "#/components/schemas/manaV2B2bExtranetPeeringServiceProducerPolicy"
+          },
+          "serviceName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Type of the service whether it is application or peering (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "policy",
+          "type"
+        ]
+      },
+      "manaV2B2bExtranetPeeringServiceProducerPolicy": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Description for the service"
+          },
+          "globalObjectOps": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2GlobalObjectServiceOps"
+            }
+          },
+          "prefixTags": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bExtranetPrefixTag"
+            }
+          },
+          "serviceLanSegment": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "LAN segment ID for the service (required)"
+          },
+          "site": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2B2bSiteInformation"
+            }
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Type of the service whether it is application or peering (required)"
+          }
+        },
+        "additionalProperties": false,
+        "required": [
+          "prefixTags",
+          "serviceLanSegment",
+          "site",
+          "type"
         ]
       },
       "v1ExtranetsB2bPeeringProducerPostResponse": {
@@ -19631,101 +21394,6 @@
           "type"
         ]
       },
-      "manaV2GlobalObjectServiceSummaries": {
-        "type": "object",
-        "properties": {
-          "routingPolicies": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2GlobalObjectSummary"
-            }
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2GlobalObjectSummary": {
-        "type": "object",
-        "properties": {
-          "attachPoint": {
-            "type": "string",
-            "example": "ENUM_VALUE"
-          },
-          "id": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "ipVersion": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "name": {
-            "type": "string",
-            "example": "example string"
-          },
-          "numAttachedDevices": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numAttachedSites": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numFailures": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numInSyncDevices": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numOverrideDevices": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numPolicies": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numPrefixes": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numRules": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "numStatements": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "trafficPolicyType": {
-            "type": "string",
-            "example": "ENUM_VALUE"
-          }
-        },
-        "additionalProperties": false
-      },
       "manaV2ApplicationProfile": {
         "type": "object",
         "properties": {
@@ -19988,33 +21656,6 @@
             "items": {
               "$ref": "#/components/schemas/manaV2B2bExtranetStatusSummary"
             }
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2B2bExtranetStatusSummary": {
-        "type": "object",
-        "properties": {
-          "createdAt": {
-            "$ref": "#/components/schemas/googleProtobufTimestamp"
-          },
-          "deviceId": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "deviceStatus": {
-            "type": "string",
-            "example": "ENUM_VALUE"
-          },
-          "location": {
-            "type": "integer",
-            "format": "int64",
-            "example": 1234567891011
-          },
-          "status": {
-            "type": "string",
-            "example": "ENUM_VALUE"
           }
         },
         "additionalProperties": false
@@ -20399,167 +22040,6 @@
             "type": "integer",
             "format": "int64",
             "example": 1234567891011
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2GuestConsumerSiteToSiteVpnConfig": {
-        "type": "object",
-        "properties": {
-          "emails": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "example": "example string"
-            }
-          },
-          "ipsecGatewayDetails": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayDetails"
-          },
-          "ipsecGatewayPeers": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayPeersConfig"
-          },
-          "regionId": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2IPsecGatewayDetails": {
-        "type": "object",
-        "properties": {
-          "destinationAddress": {
-            "type": "string",
-            "example": "example string"
-          },
-          "ikeInitiator": {
-            "type": "boolean",
-            "example": true
-          },
-          "mtu": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "name": {
-            "type": "string",
-            "example": "example string"
-          },
-          "remoteIkePeerIdentity": {
-            "type": "string",
-            "example": "example string"
-          },
-          "routing": {
-            "$ref": "#/components/schemas/manaV2IpsecRoutingConfig"
-          },
-          "tcpMss": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "tunnel1": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
-          },
-          "tunnel2": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
-          },
-          "vpnProfile": {
-            "type": "string",
-            "example": "example string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2IPsecGatewayTunnelDetails": {
-        "type": "object",
-        "properties": {
-          "insideIpv4Cidr": {
-            "type": "string",
-            "example": "example string"
-          },
-          "insideIpv6Cidr": {
-            "type": "string",
-            "example": "example string"
-          },
-          "localIkePeerIdentity": {
-            "type": "string",
-            "example": "example string"
-          },
-          "psk": {
-            "type": "string",
-            "example": "example string"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2IPsecGatewayPeersConfig": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "example": "example string",
-            "description": "Name of the IPsec gateway service"
-          },
-          "remotePeers": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/manaV2IPsecGatewayRemotePeer"
-            }
-          },
-          "routing": {
-            "$ref": "#/components/schemas/manaV2IpsecRoutingConfig"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2IPsecGatewayRemotePeer": {
-        "type": "object",
-        "properties": {
-          "destinationAddress": {
-            "type": "string",
-            "example": "example string"
-          },
-          "ikeInitiator": {
-            "type": "boolean",
-            "example": true,
-            "description": "When true, Graphiant initiates IKE for this peer"
-          },
-          "mtu": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "name": {
-            "type": "string",
-            "example": "example string",
-            "description": "Optional display name or label for this peer; used when generating tunnel names"
-          },
-          "remoteIkePeerIdentity": {
-            "type": "string",
-            "example": "example string",
-            "description": "IKE identity of the remote peer"
-          },
-          "tcpMss": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          },
-          "tunnel1": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
-          },
-          "tunnel2": {
-            "$ref": "#/components/schemas/manaV2IPsecGatewayTunnelDetails"
-          },
-          "vpnProfile": {
-            "type": "string",
-            "example": "example string",
-            "description": "Enterprise IPsec VPN profile name for this peer"
           }
         },
         "additionalProperties": false
@@ -23171,6 +24651,9 @@
           },
           "ipsecGateway": {
             "$ref": "#/components/schemas/manaV2IPsecGatewayDetails"
+          },
+          "ipsecGatewayPeers": {
+            "$ref": "#/components/schemas/manaV2IPsecGatewayPeersConfig"
           },
           "oci": {
             "$ref": "#/components/schemas/manaV2OciGatewayDetails"
@@ -41660,6 +43143,60 @@
         }
       }
     },
+    "/v1/extranet/b2b/matches/{matchId}/consumer/check": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "Match id (URL path :matchId)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdConsumerCheckPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdConsumerCheckPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Check extranet service consumer configuration"
+      }
+    },
     "/v1/global/config": {
       "patch": {
         "security": [
@@ -42361,6 +43898,232 @@
         }
       }
     },
+    "/v1/extranet/b2b/producer": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bProducerPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create an inter-enterprise extranet service (peering, client-to-server, …)"
+      }
+    },
+    "/v1/extranet/b2b/matches/{matchId}/consumer": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "Match id (URL path :matchId)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdConsumerPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdConsumerPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Consumer accepts an extranet service match"
+      }
+    },
+    "/v1/extranet/b2b/customers": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bCustomersPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Create an extranet service customer (partner directory entry)"
+      }
+    },
+    "/v1/extranet/b2b/matches": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Match an extranet service to a customer"
+      }
+    },
+    "/v1/extranet/b2b/matches/customers": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesCustomersPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesCustomersPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Bulk subscribe customers to an extranet service"
+      }
+    },
     "/v1/gateways": {
       "post": {
         "security": [
@@ -42689,6 +44452,17 @@
               "type": "string"
             },
             "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "filterExtranetProducers",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": true
+            },
+            "example": true
           }
         ],
         "responses": {
@@ -43926,6 +45700,474 @@
             }
           }
         }
+      }
+    },
+    "/v1/extranet/b2b/producer/{id}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an inter-enterprise extranet service"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get an inter-enterprise extranet service"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bProducerIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update an inter-enterprise extranet service"
+      }
+    },
+    "/v1/extranet/b2b/consumers/{id}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an extranet service consumer subscription"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Consumer subscription id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update extranet service consumer"
+      }
+    },
+    "/v1/extranet/b2b/customers/{id}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an extranet service customer"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update an extranet service customer"
+      }
+    },
+    "/v1/extranet/b2b/matches/{matchId}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "Match id (URL path :matchId)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdDeleteResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Delete an extranet service match"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "Match id (URL path :matchId)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get extranet service match details"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "Match id (URL path :matchId)",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update extranet service match"
       }
     },
     "/v1/global/apps/custom/{appId}": {
@@ -46477,6 +48719,105 @@
         }
       }
     },
+    "/v1/extranet/b2b/consumers/{customerId}": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "customerId",
+            "in": "path",
+            "required": true,
+            "description": "Partner customer id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          },
+          {
+            "name": "serviceId",
+            "in": "query",
+            "description": "Producer service id",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bConsumersCustomerIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get extranet service consumer subscription"
+      }
+    },
+    "/v1/extranet/b2b/consumers/{id}/device-status": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdDeviceStatusGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get extranet consumer device rollout status"
+      }
+    },
     "/v2/extranets-monitoring/consumers": {
       "post": {
         "security": [
@@ -46518,6 +48859,127 @@
           }
         },
         "description": "Get consumer list for b2b producer service"
+      }
+    },
+    "/v1/extranet/b2b/customers/{id}/details": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdDetailsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get an extranet service customer"
+      }
+    },
+    "/v1/extranet/b2b/customers/{id}/matches/summary": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Customer id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdMatchesSummaryGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get matched services summary for a customer"
+      }
+    },
+    "/v1/extranet/b2b/customers/summary": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersSummaryGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List extranet service customers for the enterprise"
       }
     },
     "/v1/extranets-monitoring/lan-segments": {
@@ -46575,6 +49037,50 @@
         }
       }
     },
+    "/v1/extranet/b2b/matches/{matchId}/details": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdDetailsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get match details for consumer accept flow"
+      }
+    },
     "/v1/extranets-monitoring/nat-usage": {
       "get": {
         "security": [
@@ -46619,6 +49125,94 @@
         }
       }
     },
+    "/v1/extranet/b2b/producer/{id}/customers": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Producer service id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdCustomersGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List customers matched to an extranet producer service"
+      }
+    },
+    "/v1/extranet/b2b/producer/{id}/device-status": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdDeviceStatusGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get extranet producer device rollout status"
+      }
+    },
     "/v1/extranets-monitoring/traffic-security-policy": {
       "post": {
         "security": [
@@ -46660,6 +49254,39 @@
           }
         },
         "description": "Get lists of traffic and security policies"
+      }
+    },
+    "/v1/extranet/b2b/services/summary": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bServicesSummaryGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List inter-enterprise extranet services"
       }
     },
     "/v1/devices/{deviceId}/policy/zonepairs": {
@@ -49222,6 +51849,49 @@
         "description": "Get Zones for the current enterprise"
       }
     },
+    "/v1/extranet/b2b/matches/pause": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesPausePutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesPausePutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pause extranet service matches via customer summary"
+      }
+    },
     "/v1/extranets/resolve-policy-target": {
       "post": {
         "security": [
@@ -49262,6 +51932,146 @@
             }
           }
         }
+      }
+    },
+    "/v1/extranet/b2b/customers/{id}/retry": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdRetryPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bCustomersIdRetryPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Retry extranet service customer invite"
+      }
+    },
+    "/v1/extranet/b2b/producer/review": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bProducerReviewPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerReviewPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Review inter-enterprise extranet service configuration"
+      }
+    },
+    "/v1/extranet/b2b/matches/review": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesReviewPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesReviewPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Review extranet service match"
       }
     },
     "/v1/global/sync": {
@@ -49596,6 +52406,168 @@
           }
         },
         "description": "Update an enterprise (or MSP tenant) to use a new monthly or term-based contract. For MSPs, sets total pool credits and contract shape; per-managed-enterprise allocations are set via IAM CreateEnterprise / UpdateEnterprise."
+      }
+    },
+    "/v1/extranet/b2b/consumers/{id}/prefixes": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "Consumer subscription id",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdPrefixesPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bConsumersIdPrefixesPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update extranet service consumer prefix NAT (peering preset)"
+      }
+    },
+    "/v1/extranet/b2b/matches/{matchId}/status": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "matchId",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdStatusPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bMatchesMatchIdStatusPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pause or resume an extranet service match"
+      }
+    },
+    "/v1/extranet/b2b/producer/{id}/status": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "description": "",
+            "schema": {
+              "type": "integer",
+              "format": "int64",
+              "example": 1234567891011
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1ExtranetB2bProducerIdStatusPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1ExtranetB2bProducerIdStatusPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pause or resume an inter-enterprise extranet service"
       }
     },
     "/v1/gateways/status": {

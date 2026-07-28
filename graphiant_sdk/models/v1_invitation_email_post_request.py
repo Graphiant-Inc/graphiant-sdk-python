@@ -34,7 +34,8 @@ class V1InvitationEmailPostRequest(BaseModel):
     match_id: StrictInt = Field(description=" (required)", alias="matchId", json_schema_extra={"examples": [1234567891011]})
     service_id: StrictInt = Field(description=" (required)", alias="serviceId", json_schema_extra={"examples": [1234567891011]})
     service_name: StrictStr = Field(description=" (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["adminEmail", "customerId", "customerName", "isGraphiant", "matchId", "serviceId", "serviceName"]
+    service_type: Optional[StrictStr] = Field(default=None, description="Extranet service type URL segment (e.g. peering_service, client_to_server)", alias="serviceType", json_schema_extra={"examples": ["example string"]})
+    __properties: ClassVar[List[str]] = ["adminEmail", "customerId", "customerName", "isGraphiant", "matchId", "serviceId", "serviceName", "serviceType"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,7 +94,8 @@ class V1InvitationEmailPostRequest(BaseModel):
             "isGraphiant": obj.get("isGraphiant"),
             "matchId": obj.get("matchId"),
             "serviceId": obj.get("serviceId"),
-            "serviceName": obj.get("serviceName")
+            "serviceName": obj.get("serviceName"),
+            "serviceType": obj.get("serviceType")
         })
         return _obj
 

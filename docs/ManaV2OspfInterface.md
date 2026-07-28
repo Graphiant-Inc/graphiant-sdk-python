@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**authentication** | [**ManaV2OspfAuthentication**](ManaV2OspfAuthentication.md) |  | [optional] 
 **bfd** | [**ManaV2BfdInstance**](ManaV2BfdInstance.md) |  | [optional] 
 **bfd_neighbors** | [**List[ManaV2BfdNeighbor]**](ManaV2BfdNeighbor.md) |  | [optional] 
 **cost** | **int** |  | [optional] 

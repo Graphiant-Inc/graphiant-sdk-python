@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_nullable_bfd_instance_config import ManaV2NullableBfdInstanceConfig
+from graphiant_sdk.models.mana_v2_nullable_ospf_authentication_config import ManaV2NullableOspfAuthenticationConfig
 from graphiant_sdk.models.mana_v2_nullable_ospf_dead_interval_value import ManaV2NullableOspfDeadIntervalValue
 from graphiant_sdk.models.mana_v2_nullable_ospf_hello_interval_value import ManaV2NullableOspfHelloIntervalValue
 from graphiant_sdk.models.mana_v2_nullable_ospf_retransmit_interval_value import ManaV2NullableOspfRetransmitIntervalValue
@@ -32,6 +33,7 @@ class ManaV2OspfInterfaceConfig(BaseModel):
     """
     ManaV2OspfInterfaceConfig
     """ # noqa: E501
+    authentication: Optional[ManaV2NullableOspfAuthenticationConfig] = None
     bfd: Optional[ManaV2NullableBfdInstanceConfig] = None
     cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
     dead_interval_value: Optional[ManaV2NullableOspfDeadIntervalValue] = Field(default=None, alias="deadIntervalValue")
@@ -43,7 +45,7 @@ class ManaV2OspfInterfaceConfig(BaseModel):
     prefix_sid: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="prefixSid", json_schema_extra={"examples": [123]})
     retransmit_interval_value: Optional[ManaV2NullableOspfRetransmitIntervalValue] = Field(default=None, alias="retransmitIntervalValue")
     type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    __properties: ClassVar[List[str]] = ["bfd", "cost", "deadIntervalValue", "drPriority", "helloIntervalValue", "interfaceName", "mtu", "mtuIgnore", "prefixSid", "retransmitIntervalValue", "type"]
+    __properties: ClassVar[List[str]] = ["authentication", "bfd", "cost", "deadIntervalValue", "drPriority", "helloIntervalValue", "interfaceName", "mtu", "mtuIgnore", "prefixSid", "retransmitIntervalValue", "type"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -84,6 +86,9 @@ class ManaV2OspfInterfaceConfig(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of authentication
+        if self.authentication:
+            _dict['authentication'] = self.authentication.to_dict()
         # override the default output from pydantic by calling `to_dict()` of bfd
         if self.bfd:
             _dict['bfd'] = self.bfd.to_dict()
@@ -108,6 +113,7 @@ class ManaV2OspfInterfaceConfig(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "authentication": ManaV2NullableOspfAuthenticationConfig.from_dict(obj["authentication"]) if obj.get("authentication") is not None else None,
             "bfd": ManaV2NullableBfdInstanceConfig.from_dict(obj["bfd"]) if obj.get("bfd") is not None else None,
             "cost": obj.get("cost"),
             "deadIntervalValue": ManaV2NullableOspfDeadIntervalValue.from_dict(obj["deadIntervalValue"]) if obj.get("deadIntervalValue") is not None else None,

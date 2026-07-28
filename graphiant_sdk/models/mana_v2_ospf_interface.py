@@ -22,6 +22,7 @@ from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_bfd_instance import ManaV2BfdInstance
 from graphiant_sdk.models.mana_v2_bfd_neighbor import ManaV2BfdNeighbor
+from graphiant_sdk.models.mana_v2_ospf_authentication import ManaV2OspfAuthentication
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -30,6 +31,7 @@ class ManaV2OspfInterface(BaseModel):
     """
     ManaV2OspfInterface
     """ # noqa: E501
+    authentication: Optional[ManaV2OspfAuthentication] = None
     bfd: Optional[ManaV2BfdInstance] = None
     bfd_neighbors: Optional[List[ManaV2BfdNeighbor]] = Field(default=None, alias="bfdNeighbors")
     cost: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
@@ -47,7 +49,7 @@ class ManaV2OspfInterface(BaseModel):
     retransmit_interval: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="retransmitInterval", json_schema_extra={"examples": [123]})
     retransmit_interval_value: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="retransmitIntervalValue", json_schema_extra={"examples": [123]})
     type: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
-    __properties: ClassVar[List[str]] = ["bfd", "bfdNeighbors", "cost", "deadInterval", "deadIntervalValue", "drPriority", "helloInterval", "helloIntervalValue", "id", "ifIndex", "interface", "maxTransmissionUnit", "mtuIgnore", "prefixSid", "retransmitInterval", "retransmitIntervalValue", "type"]
+    __properties: ClassVar[List[str]] = ["authentication", "bfd", "bfdNeighbors", "cost", "deadInterval", "deadIntervalValue", "drPriority", "helloInterval", "helloIntervalValue", "id", "ifIndex", "interface", "maxTransmissionUnit", "mtuIgnore", "prefixSid", "retransmitInterval", "retransmitIntervalValue", "type"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,6 +90,9 @@ class ManaV2OspfInterface(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of authentication
+        if self.authentication:
+            _dict['authentication'] = self.authentication.to_dict()
         # override the default output from pydantic by calling `to_dict()` of bfd
         if self.bfd:
             _dict['bfd'] = self.bfd.to_dict()
@@ -110,6 +115,7 @@ class ManaV2OspfInterface(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "authentication": ManaV2OspfAuthentication.from_dict(obj["authentication"]) if obj.get("authentication") is not None else None,
             "bfd": ManaV2BfdInstance.from_dict(obj["bfd"]) if obj.get("bfd") is not None else None,
             "bfdNeighbors": [ManaV2BfdNeighbor.from_dict(_item) for _item in obj["bfdNeighbors"]] if obj.get("bfdNeighbors") is not None else None,
             "cost": obj.get("cost"),

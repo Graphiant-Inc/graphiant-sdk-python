@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **str** |  | [optional] 
 **gcp** | [**ManaV2GcpGatewayDetails**](ManaV2GcpGatewayDetails.md) |  | [optional] 
 **ipsec_gateway** | [**ManaV2IPsecGatewayDetails**](ManaV2IPsecGatewayDetails.md) |  | [optional] 
+**ipsec_gateway_peers** | [**ManaV2IPsecGatewayPeersConfig**](ManaV2IPsecGatewayPeersConfig.md) |  | [optional] 
 **oci** | [**ManaV2OciGatewayDetails**](ManaV2OciGatewayDetails.md) |  | [optional] 
 **region_id** | **int** |  | [optional] 
 **speed** | **str** |  | [optional] 

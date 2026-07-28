@@ -27,12 +27,14 @@ class AssuranceUserDefinition(BaseModel):
     """
     AssuranceUserDefinition
     """ # noqa: E501
-    data_sent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="data sent by the user (required)", alias="dataSent", json_schema_extra={"examples": [123.45]})
+    data_sent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="tokens sent by the user (required)", alias="dataSent", json_schema_extra={"examples": [123.45]})
     managed: Optional[StrictBool] = Field(default=None, description="whether the user is managed (required)", json_schema_extra={"examples": [True]})
     sessions_day: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="daily sessions for the user (required)", alias="sessionsDay", json_schema_extra={"examples": [123.45]})
+    tokens_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="token usage (required)", alias="tokensUsage", json_schema_extra={"examples": [123.45]})
+    tokens_usage_days: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="token usage per day (required)", alias="tokensUsageDays", json_schema_extra={"examples": [123.45]})
     user: Optional[StrictStr] = Field(default=None, description="user identifier (required)", json_schema_extra={"examples": ["example string"]})
     vrf: Optional[StrictStr] = Field(default=None, description="VRF associated with the user (required)", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["dataSent", "managed", "sessionsDay", "user", "vrf"]
+    __properties: ClassVar[List[str]] = ["dataSent", "managed", "sessionsDay", "tokensUsage", "tokensUsageDays", "user", "vrf"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -88,6 +90,8 @@ class AssuranceUserDefinition(BaseModel):
             "dataSent": obj.get("dataSent"),
             "managed": obj.get("managed"),
             "sessionsDay": obj.get("sessionsDay"),
+            "tokensUsage": obj.get("tokensUsage"),
+            "tokensUsageDays": obj.get("tokensUsageDays"),
             "user": obj.get("user"),
             "vrf": obj.get("vrf")
         })

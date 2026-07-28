@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **match_id** | **int** |  (required) | 
 **service_id** | **int** |  (required) | 
 **service_name** | **str** |  (required) | 
+**service_type** | **str** | Extranet service type URL segment (e.g. peering_service, client_to_server) | [optional] 
 
 ## Example
 

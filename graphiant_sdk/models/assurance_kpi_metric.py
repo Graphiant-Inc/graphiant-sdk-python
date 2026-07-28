@@ -31,8 +31,9 @@ class AssuranceKpiMetric(BaseModel):
     name: Optional[StrictStr] = Field(default=None, description="name of the metric", json_schema_extra={"examples": ["example string"]})
     percent: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="AI adoption percent for the metric", json_schema_extra={"examples": [123.45]})
     tag: Optional[StrictStr] = Field(default=None, description="AI adoption tag for the metric", json_schema_extra={"examples": ["ENUM_VALUE"]})
+    token_usage: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="AI adoption token usage value", alias="tokenUsage", json_schema_extra={"examples": [123.45]})
     value: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="metric value (required)", json_schema_extra={"examples": [123.45]})
-    __properties: ClassVar[List[str]] = ["delta", "name", "percent", "tag", "value"]
+    __properties: ClassVar[List[str]] = ["delta", "name", "percent", "tag", "tokenUsage", "value"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -89,6 +90,7 @@ class AssuranceKpiMetric(BaseModel):
             "name": obj.get("name"),
             "percent": obj.get("percent"),
             "tag": obj.get("tag"),
+            "tokenUsage": obj.get("tokenUsage"),
             "value": obj.get("value")
         })
         return _obj

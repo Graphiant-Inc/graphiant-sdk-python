@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
@@ -27,7 +27,7 @@ class V1AuthRefreshGet403Response(BaseModel):
     """
     V1AuthRefreshGet403Response
     """ # noqa: E501
-    error: Optional[StrictStr] = None
+    error: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["Could not refresh token"]})
     __properties: ClassVar[List[str]] = ["error"]
 
     model_config = ConfigDict(
