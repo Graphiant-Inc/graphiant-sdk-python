@@ -129,6 +129,19 @@ make generate
 
 Review `git diff` carefully after generation — pay particular attention to files in `.openapi-generator-ignore` to confirm they were not overwritten.
 
+### Checking for breaking API changes (oasdiff)
+
+Any PR that touches `api/graphiant_api_docs_*.json` automatically gets an [oasdiff](https://github.com/oasdiff/oasdiff) breaking-change report — a job summary and inline annotations on the spec file from `OpenAPI Diff (oasdiff)` (`.github/workflows/oasdiff.yml`), plus a sticky PR comment (updated in place on each push, not duplicated) from a follow-up job, `OpenAPI Diff Comment` (`.github/workflows/oasdiff-comment.yml`). That job is split out and triggered via `workflow_run` specifically so it can safely get a write-capable token for PRs from forks, without ever needing to check out or execute anything from the PR itself — see the comments in that file for the reasoning. No need to run any of this manually before opening a PR, but you can reproduce it locally while drafting the `CHANGELOG.md` entry:
+
+```bash
+make oasdiff             # breaking-change report
+make oasdiff-changelog   # full markdown changelog of every spec change
+```
+
+Requires Docker (pulls `tufin/oasdiff`). By default it diffs the two highest-versioned specs found in `api/` if you've dropped a new one in alongside the old one, otherwise the latest local spec against the version committed on `origin/main`.
+
+The CI check is informational, not a merge gate — the Graphiant API doesn't follow strict semver, so a spec bump can legitimately include breaking changes. If oasdiff flags something, call it out explicitly in the PR description and `CHANGELOG.md` entry rather than silently letting the generated SDK diff speak for itself.
+
 ## Code Standards
 
 ### Python Code
@@ -299,6 +312,13 @@ If tests fail:
 1. Run with verbose output: `pytest -v tests/`
 2. Run specific test: `pytest tests/test_file.py::test_function -v`
 3. Check test coverage: `pytest --cov=graphiant_sdk --cov-report=term tests/`
+
+### Unexpected model changes after `make generate`
+
+`openapi-generator` deduplicates inline anonymous response schemas (e.g. simple `{"error": "string"}` error bodies reused across several endpoints) by content hash, and which model name "wins" the dedup is not stable across runs — even with an unchanged spec and the same generator version. If `git diff` after regenerating shows response model classes disappearing from `graphiant_sdk/__init__.py` / `graphiant_sdk/models/__init__.py` or being renamed in `default_api.py`'s `_response_types_map`, for endpoints your spec change didn't touch:
+
+1. Confirm it's not a real spec change: diff the specific path's `responses` block between old and new spec JSON directly.
+2. If unchanged, it's generator nondeterminism — restore the class names/exports that are on `main` today rather than let them silently drop from the SDK's public API as a side effect of an unrelated spec update.
 
 ### Merge Conflicts
 

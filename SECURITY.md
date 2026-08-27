@@ -6,8 +6,9 @@ We actively support the following versions with security updates:
 
 | Version | Supported          | Notes                                        |
 |---------| ------------------ |----------------------------------------------|
-| 26.7.x  | :white_check_mark: | Current stable release (latest: **26.7.0**)  |
-| 26.6.x  | :white_check_mark: | Previous stable release (latest: **26.6.0**) |
+| 26.8.x  | :white_check_mark: | Current stable release (latest: **26.8.0**)  |
+| 26.7.x  | :white_check_mark: | Previous stable release (latest: **26.7.0**) |
+| 26.6.x  | :white_check_mark: | Older release line (latest: **26.6.0**)      |
 | 26.5.x  | :white_check_mark: | Older release line (latest: **26.5.0**)      |
 | 26.4.x  | :white_check_mark: | Older supported release (latest: **26.4.0**) |
 | 26.3.x  | :white_check_mark: | Older supported release (latest: **26.3.3**) |
@@ -278,4 +279,4 @@ For security concerns, please contact: **security@graphiant.com**
 
 ---
 
-**Last Updated**: 2026-07-27
+**Last Updated**: 2026-08-26

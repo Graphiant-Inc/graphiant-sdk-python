@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.8.0] - 2026-08-26
+
+> **⚠️ Breaking change in the underlying API** (flagged by [oasdiff](https://github.com/oasdiff/oasdiff); not a SemVer-major bump since this API doesn't follow strict SemVer): the Zendesk integration endpoints (`POST /v2/integration/`, `PUT /v2/integration/{integrationId}`, `GET /v2/integration/getall/{enterpriseId}`) now **require** `zendeskClientId`/`zendeskClientSecret` in the request body in place of `zendeskApiToken`/`zendeskEmail`. See `AlertserviceZendeskDetails` below.
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.8.0.json`
+- **Adaptive FEC:** **`PUT /v1/adaptive-fec`** — update adaptive FEC settings for an enterprise; models **`V1AdaptiveFecPutRequest`**, **`ManaV2AdaptiveFecConfiguration`** (`adaptive_fec_enabled`, `sla_classes`)
+- **`V1EnterpriseConfigurationGetResponse`**: added `adaptive_fec_config` field (**`ManaV2AdaptiveFecConfiguration`**)
+- **`AlertserviceZendeskDetails`**: added `zendesk_client_id` and `zendesk_client_secret` fields (Zendesk OAuth credentials) — now **required** in place of the deprecated `zendesk_api_token`/`zendesk_email`
+- **`GET /v1/extranet/b2b/services/summary`**: added optional `serviceType` query parameter
+- **CI/tooling:** `OpenAPI Diff (oasdiff)` workflow — [oasdiff](https://github.com/oasdiff/oasdiff) breaking-change report on any PR touching `api/graphiant_api_docs_*.json`; `make oasdiff` / `make oasdiff-changelog` reproduce it locally
+
+### Changed
+- **Version:** Package **26.8.0**; OpenAPI bundle **`graphiant_api_docs_v26.8.0.json`** (replaces **26.7.0** bundle in-repo).
+- **`AlertserviceZendeskDetails`**: `zendesk_api_token` and `zendesk_email` are now optional in the schema (deprecated in favor of `zendesk_client_secret`/`zendesk_client_id`), but the underlying `/v2/integration/*` endpoints now require the new OAuth fields — see breaking-change note above.
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.8.0** spec.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.7.0.json`** (superseded by **26.8.0** bundle).
+
 ## [26.7.0] - 2026-07-27
 
 ### Added

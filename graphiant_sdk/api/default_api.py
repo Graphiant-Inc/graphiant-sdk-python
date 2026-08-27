@@ -28,6 +28,7 @@ from graphiant_sdk.models.v1_account_mfa_put_response import V1AccountMfaPutResp
 from graphiant_sdk.models.v1_account_password_patch_request import V1AccountPasswordPatchRequest
 from graphiant_sdk.models.v1_activity_logs_post_request import V1ActivityLogsPostRequest
 from graphiant_sdk.models.v1_activity_logs_post_response import V1ActivityLogsPostResponse
+from graphiant_sdk.models.v1_adaptive_fec_put_request import V1AdaptiveFecPutRequest
 from graphiant_sdk.models.v1_apps_app_summary_post_request import V1AppsAppSummaryPostRequest
 from graphiant_sdk.models.v1_apps_app_summary_post_response import V1AppsAppSummaryPostResponse
 from graphiant_sdk.models.v1_apps_bandwidth_post_request import V1AppsBandwidthPostRequest
@@ -2904,6 +2905,295 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='POST',
             resource_path='/v1/activity/logs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_adaptive_fec_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> object:
+        """v1_adaptive_fec_put
+
+        Update adaptive FEC settings for an enterprise
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_adaptive_fec_put_request: (required)
+        :type v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_adaptive_fec_put_serialize(
+            authorization=authorization,
+            v1_adaptive_fec_put_request=v1_adaptive_fec_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_adaptive_fec_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[object]:
+        """v1_adaptive_fec_put
+
+        Update adaptive FEC settings for an enterprise
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_adaptive_fec_put_request: (required)
+        :type v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_adaptive_fec_put_serialize(
+            authorization=authorization,
+            v1_adaptive_fec_put_request=v1_adaptive_fec_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_adaptive_fec_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_adaptive_fec_put
+
+        Update adaptive FEC settings for an enterprise
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_adaptive_fec_put_request: (required)
+        :type v1_adaptive_fec_put_request: V1AdaptiveFecPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_adaptive_fec_put_serialize(
+            authorization=authorization,
+            v1_adaptive_fec_put_request=v1_adaptive_fec_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_adaptive_fec_put_serialize(
+        self,
+        authorization,
+        v1_adaptive_fec_put_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_adaptive_fec_put_request is not None:
+            _body_params = v1_adaptive_fec_put_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/adaptive-fec',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,
@@ -62667,6 +62957,7 @@ class DefaultApi:
     def v1_extranet_b2b_services_summary_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        service_type: Annotated[Optional[StrictStr], Field(description="Optional filter by branded service type")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62686,6 +62977,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param service_type: Optional filter by branded service type
+        :type service_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -62710,6 +63003,7 @@ class DefaultApi:
 
         _param = self._v1_extranet_b2b_services_summary_get_serialize(
             authorization=authorization,
+            service_type=service_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -62734,6 +63028,7 @@ class DefaultApi:
     def v1_extranet_b2b_services_summary_get_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        service_type: Annotated[Optional[StrictStr], Field(description="Optional filter by branded service type")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62753,6 +63048,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param service_type: Optional filter by branded service type
+        :type service_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -62777,6 +63074,7 @@ class DefaultApi:
 
         _param = self._v1_extranet_b2b_services_summary_get_serialize(
             authorization=authorization,
+            service_type=service_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -62801,6 +63099,7 @@ class DefaultApi:
     def v1_extranet_b2b_services_summary_get_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        service_type: Annotated[Optional[StrictStr], Field(description="Optional filter by branded service type")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -62820,6 +63119,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param service_type: Optional filter by branded service type
+        :type service_type: str
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -62844,6 +63145,7 @@ class DefaultApi:
 
         _param = self._v1_extranet_b2b_services_summary_get_serialize(
             authorization=authorization,
+            service_type=service_type,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -62863,6 +63165,7 @@ class DefaultApi:
     def _v1_extranet_b2b_services_summary_get_serialize(
         self,
         authorization,
+        service_type,
         _request_auth,
         _content_type,
         _headers,
@@ -62885,6 +63188,10 @@ class DefaultApi:
 
         # process the path parameters
         # process the query parameters
+        if service_type is not None:
+            
+            _query_params.append(('serviceType', service_type))
+            
         # process the header parameters
         if authorization is not None:
             _header_params['Authorization'] = authorization

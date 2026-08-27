@@ -1,4 +1,4 @@
-.PHONY: install test lint type-check build generate clean help
+.PHONY: install test lint type-check build generate oasdiff oasdiff-changelog clean help
 
 ## install: Install package in editable mode with dev dependencies
 install:
@@ -29,6 +29,14 @@ build:
 ## generate: Regenerate SDK from the OpenAPI spec
 generate:
 	@bash scripts/generate.sh
+
+## oasdiff: Check the OpenAPI spec diff for breaking changes (requires Docker)
+oasdiff:
+	@bash scripts/oasdiff.sh
+
+## oasdiff-changelog: Full markdown changelog of OpenAPI spec changes (requires Docker)
+oasdiff-changelog:
+	@MODE=changelog bash scripts/oasdiff.sh
 
 ## clean: Remove build artifacts
 clean:

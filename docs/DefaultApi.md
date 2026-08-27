@@ -12,6 +12,7 @@ Method | HTTP request | Description
 [**v1_account_mfa_put**](DefaultApi.md#v1_account_mfa_put) | **PUT** /v1/account/mfa | 
 [**v1_account_password_patch**](DefaultApi.md#v1_account_password_patch) | **PATCH** /v1/account/password | 
 [**v1_activity_logs_post**](DefaultApi.md#v1_activity_logs_post) | **POST** /v1/activity/logs | 
+[**v1_adaptive_fec_put**](DefaultApi.md#v1_adaptive_fec_put) | **PUT** /v1/adaptive-fec | 
 [**v1_apps_app_summary_post**](DefaultApi.md#v1_apps_app_summary_post) | **POST** /v1/apps/app-summary | 
 [**v1_apps_bandwidth_post**](DefaultApi.md#v1_apps_bandwidth_post) | **POST** /v1/apps/bandwidth | 
 [**v1_apps_device_device_id_top_post**](DefaultApi.md#v1_apps_device_device_id_top_post) | **POST** /v1/apps/device/{deviceId}/top | 
@@ -1125,6 +1126,84 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V1ActivityLogsPostResponse**](V1ActivityLogsPostResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_adaptive_fec_put**
+> object v1_adaptive_fec_put(authorization, v1_adaptive_fec_put_request)
+
+Update adaptive FEC settings for an enterprise
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v1_adaptive_fec_put_request import V1AdaptiveFecPutRequest
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    v1_adaptive_fec_put_request = graphiant_sdk.V1AdaptiveFecPutRequest() # V1AdaptiveFecPutRequest | 
+
+    try:
+        api_response = api_instance.v1_adaptive_fec_put(authorization, v1_adaptive_fec_put_request)
+        print("The response of DefaultApi->v1_adaptive_fec_put:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_adaptive_fec_put: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1_adaptive_fec_put_request** | [**V1AdaptiveFecPutRequest**](V1AdaptiveFecPutRequest.md)|  | 
+
+### Return type
+
+**object**
 
 ### Authorization
 
@@ -17401,7 +17480,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_extranet_b2b_services_summary_get**
-> V1ExtranetB2bServicesSummaryGetResponse v1_extranet_b2b_services_summary_get(authorization)
+> V1ExtranetB2bServicesSummaryGetResponse v1_extranet_b2b_services_summary_get(authorization, service_type=service_type)
 
 List inter-enterprise extranet services
 
@@ -17437,9 +17516,10 @@ with graphiant_sdk.ApiClient(configuration) as api_client:
     # Create an instance of the API class
     api_instance = graphiant_sdk.DefaultApi(api_client)
     authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    service_type = 'ENUM_VALUE' # str | Optional filter by branded service type (optional)
 
     try:
-        api_response = api_instance.v1_extranet_b2b_services_summary_get(authorization)
+        api_response = api_instance.v1_extranet_b2b_services_summary_get(authorization, service_type=service_type)
         print("The response of DefaultApi->v1_extranet_b2b_services_summary_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -17454,6 +17534,7 @@ with graphiant_sdk.ApiClient(configuration) as api_client:
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **service_type** | **str**| Optional filter by branded service type | [optional] 
 
 ### Return type
 

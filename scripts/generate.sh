@@ -8,7 +8,7 @@
 #
 # Usage:
 #   bash scripts/generate.sh                    # uses api/openapi.yaml
-#   OPENAPI_SPEC=api/graphiant_api_docs_v26.7.0.json bash scripts/generate.sh
+#   OPENAPI_SPEC=api/graphiant_api_docs_v26.8.0.json bash scripts/generate.sh
 
 set -euo pipefail
 
