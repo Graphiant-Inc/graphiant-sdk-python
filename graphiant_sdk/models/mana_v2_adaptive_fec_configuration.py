@@ -17,21 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
-from graphiant_sdk.models.mana_v2_adaptive_fec_configuration import ManaV2AdaptiveFecConfiguration
-from graphiant_sdk.models.mana_v2_enterprise_configuration import ManaV2EnterpriseConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class V1EnterpriseConfigurationGetResponse(BaseModel):
+class ManaV2AdaptiveFecConfiguration(BaseModel):
     """
-    V1EnterpriseConfigurationGetResponse
+    ManaV2AdaptiveFecConfiguration
     """ # noqa: E501
-    adaptive_fec_config: Optional[ManaV2AdaptiveFecConfiguration] = Field(default=None, alias="adaptiveFecConfig")
-    configuration: Optional[ManaV2EnterpriseConfiguration] = None
-    __properties: ClassVar[List[str]] = ["adaptiveFecConfig", "configuration"]
+    adaptive_fec_enabled: Optional[StrictBool] = Field(default=None, alias="adaptiveFecEnabled", json_schema_extra={"examples": [True]})
+    sla_classes: Optional[List[StrictStr]] = Field(default=None, alias="slaClasses")
+    __properties: ClassVar[List[str]] = ["adaptiveFecEnabled", "slaClasses"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +49,7 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1EnterpriseConfigurationGetResponse from a JSON string"""
+        """Create an instance of ManaV2AdaptiveFecConfiguration from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,17 +70,11 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of adaptive_fec_config
-        if self.adaptive_fec_config:
-            _dict['adaptiveFecConfig'] = self.adaptive_fec_config.to_dict()
-        # override the default output from pydantic by calling `to_dict()` of configuration
-        if self.configuration:
-            _dict['configuration'] = self.configuration.to_dict()
         return _dict
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1EnterpriseConfigurationGetResponse from a dict"""
+        """Create an instance of ManaV2AdaptiveFecConfiguration from a dict"""
         if obj is None:
             return None
 
@@ -90,8 +82,8 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "adaptiveFecConfig": ManaV2AdaptiveFecConfiguration.from_dict(obj["adaptiveFecConfig"]) if obj.get("adaptiveFecConfig") is not None else None,
-            "configuration": ManaV2EnterpriseConfiguration.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None
+            "adaptiveFecEnabled": obj.get("adaptiveFecEnabled"),
+            "slaClasses": obj.get("slaClasses")
         })
         return _obj
 

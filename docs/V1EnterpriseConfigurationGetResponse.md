@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**adaptive_fec_config** | [**ManaV2AdaptiveFecConfiguration**](ManaV2AdaptiveFecConfiguration.md) |  | [optional] 
 **configuration** | [**ManaV2EnterpriseConfiguration**](ManaV2EnterpriseConfiguration.md) |  | [optional] 
 
 ## Example

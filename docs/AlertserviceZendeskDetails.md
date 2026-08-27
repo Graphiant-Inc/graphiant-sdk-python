@@ -5,10 +5,12 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**zendesk_api_token** | **str** | zendesk api token (required) | 
+**zendesk_api_token** | **str** | zendesk api token (deprecated, use zendesk_client_secret) | [optional] 
 **zendesk_assignee_id** | **str** | zendesk assignee id (required) | 
 **zendesk_base_url** | **str** | zendesk base url (required) | 
-**zendesk_email** | **str** | zendesk email (required) | 
+**zendesk_client_id** | **str** | zendesk oauth client id (required) | 
+**zendesk_client_secret** | **str** | zendesk oauth client secret (required) | 
+**zendesk_email** | **str** | zendesk email (deprecated, use zendesk_client_id) | [optional] 
 
 ## Example
 

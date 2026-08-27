@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "26.7.0"
+__version__ = "26.8.0"
 
 # Define package exports
 __all__ = [
@@ -158,6 +158,7 @@ __all__ = [
     "IpfixTwampMetrics",
     "ManaV2AWSGatewayDetailsTransitConnection",
     "ManaV2AWSTransitGatewayVpc",
+    "ManaV2AdaptiveFecConfiguration",
     "ManaV2AllocationConversionHolder",
     "ManaV2AllocationConversionHolderBin",
     "ManaV2App",
@@ -787,6 +788,7 @@ __all__ = [
     "V1ActivityLogsPostRequest",
     "V1ActivityLogsPostResponse",
     "V1ActivityLogsPostResponseActivityItems",
+    "V1AdaptiveFecPutRequest",
     "V1AppsAppSummaryPostRequest",
     "V1AppsAppSummaryPostResponse",
     "V1AppsBandwidthPostRequest",
@@ -1674,6 +1676,7 @@ from graphiant_sdk.models.ipfix_time_window import IpfixTimeWindow as IpfixTimeW
 from graphiant_sdk.models.ipfix_twamp_metrics import IpfixTwampMetrics as IpfixTwampMetrics
 from graphiant_sdk.models.mana_v2_aws_gateway_details_transit_connection import ManaV2AWSGatewayDetailsTransitConnection as ManaV2AWSGatewayDetailsTransitConnection
 from graphiant_sdk.models.mana_v2_aws_transit_gateway_vpc import ManaV2AWSTransitGatewayVpc as ManaV2AWSTransitGatewayVpc
+from graphiant_sdk.models.mana_v2_adaptive_fec_configuration import ManaV2AdaptiveFecConfiguration as ManaV2AdaptiveFecConfiguration
 from graphiant_sdk.models.mana_v2_allocation_conversion_holder import ManaV2AllocationConversionHolder as ManaV2AllocationConversionHolder
 from graphiant_sdk.models.mana_v2_allocation_conversion_holder_bin import ManaV2AllocationConversionHolderBin as ManaV2AllocationConversionHolderBin
 from graphiant_sdk.models.mana_v2_app import ManaV2App as ManaV2App
@@ -2303,6 +2306,7 @@ from graphiant_sdk.models.v1_account_password_patch_request import V1AccountPass
 from graphiant_sdk.models.v1_activity_logs_post_request import V1ActivityLogsPostRequest as V1ActivityLogsPostRequest
 from graphiant_sdk.models.v1_activity_logs_post_response import V1ActivityLogsPostResponse as V1ActivityLogsPostResponse
 from graphiant_sdk.models.v1_activity_logs_post_response_activity_items import V1ActivityLogsPostResponseActivityItems as V1ActivityLogsPostResponseActivityItems
+from graphiant_sdk.models.v1_adaptive_fec_put_request import V1AdaptiveFecPutRequest as V1AdaptiveFecPutRequest
 from graphiant_sdk.models.v1_apps_app_summary_post_request import V1AppsAppSummaryPostRequest as V1AppsAppSummaryPostRequest
 from graphiant_sdk.models.v1_apps_app_summary_post_response import V1AppsAppSummaryPostResponse as V1AppsAppSummaryPostResponse
 from graphiant_sdk.models.v1_apps_bandwidth_post_request import V1AppsBandwidthPostRequest as V1AppsBandwidthPostRequest

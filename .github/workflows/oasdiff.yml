@@ -1,0 +1,115 @@
+name: OpenAPI Diff (oasdiff)
+
+# Deliberately plain `pull_request` (not `_target`), so this job never gets a write-capable
+# GITHUB_TOKEN and never needs one — it only reads spec JSON and writes a report. GitHub always
+# gives `pull_request` a read-only token for fork PRs regardless of `permissions:` below, which
+# is exactly what we want here: this job has nothing to write. Posting the sticky PR comment is
+# the separate, privileged job in .github/workflows/oasdiff-comment.yml (triggered by
+# `workflow_run` once this one finishes), which never checks out or executes anything from the
+# PR — see that file for why that split exists.
+on:
+  pull_request:
+    paths:
+      - 'api/**'
+      - '.github/workflows/oasdiff.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  oasdiff:
+    name: oasdiff breaking-change report
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve base/head OpenAPI spec files
+        id: specs
+        run: |
+          set -euo pipefail
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          mkdir -p /tmp/oasdiff
+
+          base_spec=$(git ls-tree -r --name-only "$BASE_SHA" -- api | grep -E '^api/graphiant_api_docs_v[0-9.]+\.json$' | sort -V | tail -1 || true)
+          head_spec=$(git ls-tree -r --name-only "$HEAD_SHA" -- api | grep -E '^api/graphiant_api_docs_v[0-9.]+\.json$' | sort -V | tail -1 || true)
+
+          if [ -z "$base_spec" ] || [ -z "$head_spec" ]; then
+            echo "No versioned OpenAPI spec found on one side of the diff — skipping oasdiff." | tee /tmp/oasdiff/report.md >> "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          git show "$BASE_SHA:$base_spec" > /tmp/oasdiff/base.json
+          git show "$HEAD_SHA:$head_spec" > /tmp/oasdiff/head.json
+
+          if cmp -s /tmp/oasdiff/base.json /tmp/oasdiff/head.json; then
+            echo "OpenAPI spec content unchanged — skipping oasdiff." | tee /tmp/oasdiff/report.md >> "$GITHUB_STEP_SUMMARY"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
+          echo "base_spec=$base_spec" >> "$GITHUB_OUTPUT"
+          echo "head_spec=$head_spec" >> "$GITHUB_OUTPUT"
+
+      # Emits ::error:: workflow commands, which GitHub renders as inline
+      # annotations on the "Files changed" tab and in the job's Checks output.
+      - name: Annotate breaking changes
+        if: steps.specs.outputs.skip != 'true'
+        run: |
+          docker run --rm --mount type=bind,src=/tmp/oasdiff,dst=/data tufin/oasdiff breaking \
+            --format githubactions /data/base.json /data/head.json \
+            | sed 's#/data/head\.json#${{ steps.specs.outputs.head_spec }}#g'
+
+      - name: Build oasdiff report
+        if: steps.specs.outputs.skip != 'true'
+        run: |
+          {
+            echo "## oasdiff: \`${{ steps.specs.outputs.base_spec }}\` → \`${{ steps.specs.outputs.head_spec }}\`"
+            echo
+            docker run --rm --mount type=bind,src=/tmp/oasdiff,dst=/data tufin/oasdiff breaking \
+              --format text /data/base.json /data/head.json > /tmp/oasdiff/breaking.txt || true
+
+            # Each breaking-change finding is a line starting with "error" (tab-separated); the
+            # summary/no-change lines never start a line that way, so this is more robust than
+            # matching oasdiff's exact wording, which differs between "no changes at all" and
+            # "changes, but none breaking".
+            if ! grep -qE '^error\b' /tmp/oasdiff/breaking.txt; then
+              echo "✅ **No breaking changes** detected by [oasdiff](https://github.com/oasdiff/oasdiff)."
+            else
+              echo "⚠️ **oasdiff reports non-backward-compatible changes** in this spec update — review before releasing:"
+              echo
+              echo '```'
+              cat /tmp/oasdiff/breaking.txt
+              echo '```'
+            fi
+
+            echo
+            echo "<details><summary>Full spec changelog (oasdiff)</summary>"
+            echo
+            docker run --rm --mount type=bind,src=/tmp/oasdiff,dst=/data tufin/oasdiff changelog \
+              --format markdown /data/base.json /data/head.json || true
+            echo
+            echo "</details>"
+            echo
+            echo "_Run \`bash scripts/oasdiff.sh\` locally to reproduce, or \`make oasdiff-changelog\` for the full changelog (requires Docker)._"
+          } | tee /tmp/oasdiff/report.md >> "$GITHUB_STEP_SUMMARY"
+
+      # Always runs (report.md exists whether or not oasdiff itself ran — the resolve step above
+      # writes a short placeholder report in the skip case) so oasdiff-comment.yml can always
+      # find an artifact to download, with no special-casing on its end.
+      - name: Save PR number
+        run: echo "${{ github.event.pull_request.number }}" > /tmp/oasdiff/pr_number.txt
+
+      - name: Upload report artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: oasdiff-report
+          path: |
+            /tmp/oasdiff/report.md
+            /tmp/oasdiff/pr_number.txt
+          retention-days: 1

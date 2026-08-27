@@ -17,21 +17,19 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, Field
+from pydantic import BaseModel, ConfigDict
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.mana_v2_adaptive_fec_configuration import ManaV2AdaptiveFecConfiguration
-from graphiant_sdk.models.mana_v2_enterprise_configuration import ManaV2EnterpriseConfiguration
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
 
-class V1EnterpriseConfigurationGetResponse(BaseModel):
+class V1AdaptiveFecPutRequest(BaseModel):
     """
-    V1EnterpriseConfigurationGetResponse
+    V1AdaptiveFecPutRequest
     """ # noqa: E501
-    adaptive_fec_config: Optional[ManaV2AdaptiveFecConfiguration] = Field(default=None, alias="adaptiveFecConfig")
-    configuration: Optional[ManaV2EnterpriseConfiguration] = None
-    __properties: ClassVar[List[str]] = ["adaptiveFecConfig", "configuration"]
+    configuration: Optional[ManaV2AdaptiveFecConfiguration] = None
+    __properties: ClassVar[List[str]] = ["configuration"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -51,7 +49,7 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
 
     @classmethod
     def from_json(cls, json_str: str) -> Optional[Self]:
-        """Create an instance of V1EnterpriseConfigurationGetResponse from a JSON string"""
+        """Create an instance of V1AdaptiveFecPutRequest from a JSON string"""
         return cls.from_dict(json.loads(json_str))
 
     def to_dict(self) -> Dict[str, Any]:
@@ -72,9 +70,6 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
-        # override the default output from pydantic by calling `to_dict()` of adaptive_fec_config
-        if self.adaptive_fec_config:
-            _dict['adaptiveFecConfig'] = self.adaptive_fec_config.to_dict()
         # override the default output from pydantic by calling `to_dict()` of configuration
         if self.configuration:
             _dict['configuration'] = self.configuration.to_dict()
@@ -82,7 +77,7 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
 
     @classmethod
     def from_dict(cls, obj: Optional[Dict[str, Any]]) -> Optional[Self]:
-        """Create an instance of V1EnterpriseConfigurationGetResponse from a dict"""
+        """Create an instance of V1AdaptiveFecPutRequest from a dict"""
         if obj is None:
             return None
 
@@ -90,8 +85,7 @@ class V1EnterpriseConfigurationGetResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "adaptiveFecConfig": ManaV2AdaptiveFecConfiguration.from_dict(obj["adaptiveFecConfig"]) if obj.get("adaptiveFecConfig") is not None else None,
-            "configuration": ManaV2EnterpriseConfiguration.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None
+            "configuration": ManaV2AdaptiveFecConfiguration.from_dict(obj["configuration"]) if obj.get("configuration") is not None else None
         })
         return _obj
 

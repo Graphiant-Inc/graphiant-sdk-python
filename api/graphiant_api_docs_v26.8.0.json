@@ -682,7 +682,7 @@
           "zendeskApiToken": {
             "type": "string",
             "example": "example string",
-            "description": "zendesk api token (required)"
+            "description": "zendesk api token (deprecated, use zendesk_client_secret)"
           },
           "zendeskAssigneeId": {
             "type": "string",
@@ -694,18 +694,28 @@
             "example": "example string",
             "description": "zendesk base url (required)"
           },
+          "zendeskClientId": {
+            "type": "string",
+            "example": "example string",
+            "description": "zendesk oauth client id (required)"
+          },
+          "zendeskClientSecret": {
+            "type": "string",
+            "example": "example string",
+            "description": "zendesk oauth client secret (required)"
+          },
           "zendeskEmail": {
             "type": "string",
             "example": "example string",
-            "description": "zendesk email (required)"
+            "description": "zendesk email (deprecated, use zendesk_client_id)"
           }
         },
         "additionalProperties": false,
         "required": [
-          "zendeskApiToken",
           "zendeskAssigneeId",
           "zendeskBaseUrl",
-          "zendeskEmail"
+          "zendeskClientId",
+          "zendeskClientSecret"
         ]
       },
       "v2IntegrationPostResponse": {
@@ -26744,8 +26754,28 @@
       "v1EnterpriseConfigurationGetResponse": {
         "type": "object",
         "properties": {
+          "adaptiveFecConfig": {
+            "$ref": "#/components/schemas/manaV2AdaptiveFecConfiguration"
+          },
           "configuration": {
             "$ref": "#/components/schemas/manaV2EnterpriseConfiguration"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2AdaptiveFecConfiguration": {
+        "type": "object",
+        "properties": {
+          "adaptiveFecEnabled": {
+            "type": "boolean",
+            "example": true
+          },
+          "slaClasses": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "ENUM_VALUE"
+            }
           }
         },
         "additionalProperties": false
@@ -28045,6 +28075,20 @@
         "additionalProperties": false
       },
       "v1DevicesDeviceIdControllerPeersPutResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1AdaptiveFecPutRequest": {
+        "type": "object",
+        "properties": {
+          "configuration": {
+            "$ref": "#/components/schemas/manaV2AdaptiveFecConfiguration"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1AdaptiveFecPutResponse": {
         "type": "object",
         "properties": {},
         "additionalProperties": false
@@ -49272,6 +49316,16 @@
               "type": "string"
             },
             "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "serviceType",
+            "in": "query",
+            "description": "Optional filter by branded service type",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "ENUM_VALUE"
+            }
           }
         ],
         "responses": {
@@ -52115,6 +52169,49 @@
           }
         },
         "description": "Tries synching device with the global objects"
+      }
+    },
+    "/v1/adaptive-fec": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1AdaptiveFecPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1AdaptiveFecPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Update adaptive FEC settings for an enterprise"
       }
     },
     "/v1/extranets-b2b-peering/consumer/{id}/prefixes": {

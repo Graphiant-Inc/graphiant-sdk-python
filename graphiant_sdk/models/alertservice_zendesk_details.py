@@ -18,7 +18,7 @@ import re  # noqa: F401
 import json
 
 from pydantic import BaseModel, ConfigDict, Field, StrictStr
-from typing import Any, ClassVar, Dict, List
+from typing import Any, ClassVar, Dict, List, Optional
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -27,11 +27,13 @@ class AlertserviceZendeskDetails(BaseModel):
     """
     AlertserviceZendeskDetails
     """ # noqa: E501
-    zendesk_api_token: StrictStr = Field(description="zendesk api token (required)", alias="zendeskApiToken", json_schema_extra={"examples": ["example string"]})
+    zendesk_api_token: Optional[StrictStr] = Field(default=None, description="zendesk api token (deprecated, use zendesk_client_secret)", alias="zendeskApiToken", json_schema_extra={"examples": ["example string"]})
     zendesk_assignee_id: StrictStr = Field(description="zendesk assignee id (required)", alias="zendeskAssigneeId", json_schema_extra={"examples": ["example string"]})
     zendesk_base_url: StrictStr = Field(description="zendesk base url (required)", alias="zendeskBaseUrl", json_schema_extra={"examples": ["example string"]})
-    zendesk_email: StrictStr = Field(description="zendesk email (required)", alias="zendeskEmail", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["zendeskApiToken", "zendeskAssigneeId", "zendeskBaseUrl", "zendeskEmail"]
+    zendesk_client_id: StrictStr = Field(description="zendesk oauth client id (required)", alias="zendeskClientId", json_schema_extra={"examples": ["example string"]})
+    zendesk_client_secret: StrictStr = Field(description="zendesk oauth client secret (required)", alias="zendeskClientSecret", json_schema_extra={"examples": ["example string"]})
+    zendesk_email: Optional[StrictStr] = Field(default=None, description="zendesk email (deprecated, use zendesk_client_id)", alias="zendeskEmail", json_schema_extra={"examples": ["example string"]})
+    __properties: ClassVar[List[str]] = ["zendeskApiToken", "zendeskAssigneeId", "zendeskBaseUrl", "zendeskClientId", "zendeskClientSecret", "zendeskEmail"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -87,6 +89,8 @@ class AlertserviceZendeskDetails(BaseModel):
             "zendeskApiToken": obj.get("zendeskApiToken"),
             "zendeskAssigneeId": obj.get("zendeskAssigneeId"),
             "zendeskBaseUrl": obj.get("zendeskBaseUrl"),
+            "zendeskClientId": obj.get("zendeskClientId"),
+            "zendeskClientSecret": obj.get("zendeskClientSecret"),
             "zendeskEmail": obj.get("zendeskEmail")
         })
         return _obj
