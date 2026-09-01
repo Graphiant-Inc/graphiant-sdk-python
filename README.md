@@ -627,6 +627,7 @@ This project is licensed under the MIT License - see the [LICENSE](https://githu
 
 - [Graphiant SDK Go](https://github.com/Graphiant-Inc/graphiant-sdk-go)
 - [Graphiant Playbooks](https://github.com/Graphiant-Inc/graphiant-playbooks)
+- [Graphiant Terraform Provider](https://github.com/Graphiant-Inc/terraform-provider-graphiant)
 
 ---
 
