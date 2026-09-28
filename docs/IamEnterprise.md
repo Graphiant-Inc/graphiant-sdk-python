@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **accept_eula** | **bool** |  | [optional] 
 **account_type** | **str** |  | [optional] 
 **admin_email** | **str** |  | [optional] 
+**backbone_apis_enabled** | **bool** |  | [optional] 
 **cloud_provider** | **str** |  | [optional] 
 **company_name** | **str** |  | [optional] 
 **counts** | [**IamCounts**](IamCounts.md) |  | [optional] 

@@ -6,6 +6,26 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.9.0] - 2026-09-24
+
+No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.9.0.json`
+- **SDK Automation (playbooks):** new endpoint set under `/v1/sdk-automation/playbook/...` — catalog bundles (**`GET /bundles`**), module slots (**`GET /module-slots`**), templates (**`GET /templates`**), config CRUD + staging (**`GET`/`POST /configs`**, **`GET`/`PUT`/`DELETE /configs/{configId}`**, **`GET`/`POST /configs/{configId}/dry-run`**, **`PUT /configs/{configId}/stage`**), and job lifecycle (**`GET /jobs`**, **`GET /jobs/{jobId}`**, **`GET /jobs/{jobId}/logs`**, **`POST /jobs/{jobId}/run`**, **`PUT /jobs/{jobId}/approve`**, **`POST /jobs/{jobId}/resume`**, **`PUT /jobs/{jobId}/abort`**); models **`SdkAutomationCatalogBundle`**, **`SdkAutomationCatalogModuleSlot`**, **`SdkAutomationModuleFile`**, **`SdkAutomationTemplateFile`**, **`SdkAutomationPlaybookConfig`**, **`SdkAutomationPlaybookConfigSummary`**, **`SdkAutomationPlaybookJob`**, **`SdkAutomationValidationError`**
+- **FEC monitoring:** **`GET /v2/monitoring/fec-stats`** — adaptive FEC repair-level/QoE stats for a device; models **`V2MonitoringFecStatsGetResponse`** (`current_repair_level`, `effective_qoe`, `unrepairable_rate`, rx/tx histograms and stats), **`StatsmonV2FecRxStats`**, **`StatsmonV2FecTxStats`**, **`StatsmonV2FecRxRepairLevel`**, **`StatsmonV2FecTxRepairLevel`**, **`StatsmonV2RepairLevel`**, **`StatsmonV2RepairLevelScore`**
+- **`GET`/`POST /v1/edges-summary`, `GET /v1/devices-summary`**: added optional `showExcluded` query/request parameter to include devices excluded from Graphiant API lists (default `false`)
+- **`IamEnterprise`**, **`V1EnterprisesPatchRequest`**: added `backbone_apis_enabled` field, surfaced on **`GET /v1/enterprises`**, **`GET /v1/enterprises/managed`**, and **`GET /v1/users/{id}/enterprises`**
+- **`CommonUserInfo`**: added `bearer_token` field, surfaced in device/enterprise snapshot responses (**`GET /v1/device/snapshot`**, **`GET /v1/device/snapshot/{deviceId}`**, **`GET /v1/enterprise/snapshot`**)
+
+### Changed
+- **Version:** Package **26.9.0**; OpenAPI bundle **`graphiant_api_docs_v26.9.0.json`** (replaces **26.8.0** bundle in-repo).
+- **`ManaV2PublicVifGatewayWriteRequest`**, **`V1PvifPostRequest`**, **`V1ExtranetB2bProducerPostRequest`**, **`V1ExtranetB2bProducerReviewPostRequest`**: clarified `service_name` description — producer service name must be letters, digits, or hyphens only (no schema/type change)
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.9.0** spec.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.8.0.json`** (superseded by **26.9.0** bundle).
+
 ## [26.8.0] - 2026-08-26
 
 > **⚠️ Breaking change in the underlying API** (flagged by [oasdiff](https://github.com/oasdiff/oasdiff); not a SemVer-major bump since this API doesn't follow strict SemVer): the Zendesk integration endpoints (`POST /v2/integration/`, `PUT /v2/integration/{integrationId}`, `GET /v2/integration/getall/{enterpriseId}`) now **require** `zendeskClientId`/`zendeskClientSecret` in the request body in place of `zendeskApiToken`/`zendeskEmail`. See `AlertserviceZendeskDetails` below.

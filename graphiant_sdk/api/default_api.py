@@ -468,6 +468,30 @@ from graphiant_sdk.models.v1_pvif_summary_get_response import V1PvifSummaryGetRe
 from graphiant_sdk.models.v1_qos_circuit_profiles_get_response import V1QosCircuitProfilesGetResponse
 from graphiant_sdk.models.v1_regions_get_response import V1RegionsGetResponse
 from graphiant_sdk.models.v1_regions_region_id_gateways_get_response import V1RegionsRegionIdGatewaysGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_bundles_get_response import V1SdkAutomationPlaybookBundlesGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_get_response import V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_post_request import V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_post_response import V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_get_response import V1SdkAutomationPlaybookConfigsConfigIdGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_put_request import V1SdkAutomationPlaybookConfigsConfigIdPutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_put_response import V1SdkAutomationPlaybookConfigsConfigIdPutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_stage_put_request import V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_stage_put_response import V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_get_response import V1SdkAutomationPlaybookConfigsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_post_request import V1SdkAutomationPlaybookConfigsPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_post_response import V1SdkAutomationPlaybookConfigsPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_get_response import V1SdkAutomationPlaybookJobsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_abort_put_response import V1SdkAutomationPlaybookJobsJobIdAbortPutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_approve_put_request import V1SdkAutomationPlaybookJobsJobIdApprovePutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_approve_put_response import V1SdkAutomationPlaybookJobsJobIdApprovePutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_get_response import V1SdkAutomationPlaybookJobsJobIdGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_logs_get_response import V1SdkAutomationPlaybookJobsJobIdLogsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_request import V1SdkAutomationPlaybookJobsJobIdResumePostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_response import V1SdkAutomationPlaybookJobsJobIdResumePostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_request import V1SdkAutomationPlaybookJobsJobIdRunPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_response import V1SdkAutomationPlaybookJobsJobIdRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_module_slots_get_response import V1SdkAutomationPlaybookModuleSlotsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_templates_get_response import V1SdkAutomationPlaybookTemplatesGetResponse
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse
 from graphiant_sdk.models.v1_site_details_sitelists_post_request import V1SiteDetailsSitelistsPostRequest
 from graphiant_sdk.models.v1_site_details_sitelists_post_response import V1SiteDetailsSitelistsPostResponse
@@ -639,6 +663,7 @@ from graphiant_sdk.models.v2_monitoring_extranet_service_status_details_get_resp
 from graphiant_sdk.models.v2_monitoring_extranet_service_status_get_response import V2MonitoringExtranetServiceStatusGetResponse
 from graphiant_sdk.models.v2_monitoring_extranet_site_status_get_response import V2MonitoringExtranetSiteStatusGetResponse
 from graphiant_sdk.models.v2_monitoring_extranet_status_details_get_response import V2MonitoringExtranetStatusDetailsGetResponse
+from graphiant_sdk.models.v2_monitoring_fec_stats_get_response import V2MonitoringFecStatsGetResponse
 from graphiant_sdk.models.v2_monitoring_ike_error_history_post_request import V2MonitoringIkeErrorHistoryPostRequest
 from graphiant_sdk.models.v2_monitoring_ike_error_history_post_response import V2MonitoringIkeErrorHistoryPostResponse
 from graphiant_sdk.models.v2_monitoring_interface_post_request import V2MonitoringInterfacePostRequest
@@ -5818,7 +5843,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthLoginCallbackPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5890,7 +5915,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthLoginCallbackPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5962,7 +5987,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthLoginCallbackPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6666,8 +6691,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthLoginSamlGet401Response",
-            '500': "V1AuthLoginSamlGet500Response",
+            '401': "V1AuthMfaPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6738,8 +6763,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthLoginSamlGet401Response",
-            '500': "V1AuthLoginSamlGet500Response",
+            '401': "V1AuthMfaPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6810,8 +6835,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthLoginSamlGet401Response",
-            '500': "V1AuthLoginSamlGet500Response",
+            '401': "V1AuthMfaPost500Response",
+            '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9143,8 +9168,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthRefreshGet403Response",
-            '422': "V1AuthRefreshGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9216,8 +9241,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthRefreshGet403Response",
-            '422': "V1AuthRefreshGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9289,8 +9314,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthRefreshGet403Response",
-            '422': "V1AuthRefreshGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9427,8 +9452,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9500,8 +9525,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9573,8 +9598,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9707,8 +9732,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9776,8 +9801,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9845,8 +9870,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthSessionGet403Response",
-            '422': "V1AuthSessionGet422Response",
+            '403': "V1AuthMfaPost500Response",
+            '422': "V1AuthMfaPost500Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -40690,6 +40715,7 @@ class DefaultApi:
     def v1_devices_summary_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -40709,6 +40735,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -40733,6 +40761,7 @@ class DefaultApi:
 
         _param = self._v1_devices_summary_get_serialize(
             authorization=authorization,
+            show_excluded=show_excluded,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -40757,6 +40786,7 @@ class DefaultApi:
     def v1_devices_summary_get_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -40776,6 +40806,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -40800,6 +40832,7 @@ class DefaultApi:
 
         _param = self._v1_devices_summary_get_serialize(
             authorization=authorization,
+            show_excluded=show_excluded,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -40824,6 +40857,7 @@ class DefaultApi:
     def v1_devices_summary_get_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -40843,6 +40877,8 @@ class DefaultApi:
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -40867,6 +40903,7 @@ class DefaultApi:
 
         _param = self._v1_devices_summary_get_serialize(
             authorization=authorization,
+            show_excluded=show_excluded,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -40886,6 +40923,7 @@ class DefaultApi:
     def _v1_devices_summary_get_serialize(
         self,
         authorization,
+        show_excluded,
         _request_auth,
         _content_type,
         _headers,
@@ -40908,6 +40946,10 @@ class DefaultApi:
 
         # process the path parameters
         # process the query parameters
+        if show_excluded is not None:
+            
+            _query_params.append(('showExcluded', show_excluded))
+            
         # process the header parameters
         if authorization is not None:
             _header_params['Authorization'] = authorization
@@ -48102,6 +48144,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         enterprise_id: Optional[StrictInt] = None,
         is_requested: Optional[StrictBool] = None,
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         upgrade_summary: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -48125,6 +48168,8 @@ class DefaultApi:
         :type enterprise_id: int
         :param is_requested: 
         :type is_requested: bool
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param upgrade_summary: 
         :type upgrade_summary: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -48153,6 +48198,7 @@ class DefaultApi:
             authorization=authorization,
             enterprise_id=enterprise_id,
             is_requested=is_requested,
+            show_excluded=show_excluded,
             upgrade_summary=upgrade_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -48180,6 +48226,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         enterprise_id: Optional[StrictInt] = None,
         is_requested: Optional[StrictBool] = None,
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         upgrade_summary: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -48203,6 +48250,8 @@ class DefaultApi:
         :type enterprise_id: int
         :param is_requested: 
         :type is_requested: bool
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param upgrade_summary: 
         :type upgrade_summary: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -48231,6 +48280,7 @@ class DefaultApi:
             authorization=authorization,
             enterprise_id=enterprise_id,
             is_requested=is_requested,
+            show_excluded=show_excluded,
             upgrade_summary=upgrade_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -48258,6 +48308,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         enterprise_id: Optional[StrictInt] = None,
         is_requested: Optional[StrictBool] = None,
+        show_excluded: Annotated[Optional[StrictBool], Field(description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.")] = None,
         upgrade_summary: Optional[StrictBool] = None,
         _request_timeout: Union[
             None,
@@ -48281,6 +48332,8 @@ class DefaultApi:
         :type enterprise_id: int
         :param is_requested: 
         :type is_requested: bool
+        :param show_excluded: Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.
+        :type show_excluded: bool
         :param upgrade_summary: 
         :type upgrade_summary: bool
         :param _request_timeout: timeout setting for this request. If one
@@ -48309,6 +48362,7 @@ class DefaultApi:
             authorization=authorization,
             enterprise_id=enterprise_id,
             is_requested=is_requested,
+            show_excluded=show_excluded,
             upgrade_summary=upgrade_summary,
             _request_auth=_request_auth,
             _content_type=_content_type,
@@ -48331,6 +48385,7 @@ class DefaultApi:
         authorization,
         enterprise_id,
         is_requested,
+        show_excluded,
         upgrade_summary,
         _request_auth,
         _content_type,
@@ -48361,6 +48416,10 @@ class DefaultApi:
         if is_requested is not None:
             
             _query_params.append(('isRequested', is_requested))
+            
+        if show_excluded is not None:
+            
+            _query_params.append(('showExcluded', show_excluded))
             
         if upgrade_summary is not None:
             
@@ -106244,6 +106303,5256 @@ class DefaultApi:
 
 
     @validate_call
+    def v1_sdk_automation_playbook_bundles_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookBundlesGetResponse:
+        """v1_sdk_automation_playbook_bundles_get
+
+        List catalog bundles for the UI picklist
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_bundles_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookBundlesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_bundles_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookBundlesGetResponse]:
+        """v1_sdk_automation_playbook_bundles_get
+
+        List catalog bundles for the UI picklist
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_bundles_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookBundlesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_bundles_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_bundles_get
+
+        List catalog bundles for the UI picklist
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_bundles_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookBundlesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_bundles_get_serialize(
+        self,
+        authorization,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/bundles',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_delete(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> None:
+        """v1_sdk_automation_playbook_configs_config_id_delete
+
+        Delete a playbook config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to delete (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_delete_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_delete_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[None]:
+        """v1_sdk_automation_playbook_configs_config_id_delete
+
+        Delete a playbook config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to delete (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_delete_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_delete_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to delete")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_delete
+
+        Delete a playbook config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to delete (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_delete_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '204': None,
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_delete_serialize(
+        self,
+        authorization,
+        config_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='DELETE',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id whose latest dry-run job status is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_get
+
+        Get the latest dry-run / pipeline job status for a config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id whose latest dry-run job status is requested (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id whose latest dry-run job status is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse]:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_get
+
+        Get the latest dry-run / pipeline job status for a config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id whose latest dry-run job status is requested (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id whose latest dry-run job status is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_get
+
+        Get the latest dry-run / pipeline job status for a config
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id whose latest dry-run job status is requested (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_dry_run_get_serialize(
+        self,
+        authorization,
+        config_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}/dry-run',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Staged config id to dry-run")],
+        v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_post
+
+        Mandatory dry-run; creates a job, runs ansible --check
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Staged config id to dry-run (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_post_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_dry_run_post_request=v1_sdk_automation_playbook_configs_config_id_dry_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Staged config id to dry-run")],
+        v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse]:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_post
+
+        Mandatory dry-run; creates a job, runs ansible --check
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Staged config id to dry-run (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_post_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_dry_run_post_request=v1_sdk_automation_playbook_configs_config_id_dry_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_dry_run_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Staged config id to dry-run")],
+        v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_dry_run_post
+
+        Mandatory dry-run; creates a job, runs ansible --check
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Staged config id to dry-run (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_dry_run_post_request: V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_dry_run_post_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_dry_run_post_request=v1_sdk_automation_playbook_configs_config_id_dry_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_dry_run_post_serialize(
+        self,
+        authorization,
+        config_id,
+        v1_sdk_automation_playbook_configs_config_id_dry_run_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_configs_config_id_dry_run_post_request is not None:
+            _body_params = v1_sdk_automation_playbook_configs_config_id_dry_run_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}/dry-run',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsConfigIdGetResponse:
+        """v1_sdk_automation_playbook_configs_config_id_get
+
+        Get a playbook config including its module YAML files
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to fetch (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsConfigIdGetResponse]:
+        """v1_sdk_automation_playbook_configs_config_id_get
+
+        Get a playbook config including its module YAML files
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to fetch (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_get
+
+        Get a playbook config including its module YAML files
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to fetch (required)
+        :type config_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_get_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_get_serialize(
+        self,
+        authorization,
+        config_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id from the URL path (:configId)")],
+        v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsConfigIdPutResponse:
+        """v1_sdk_automation_playbook_configs_config_id_put
+
+        Validate & update config YAML
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id from the URL path (:configId) (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_put_request=v1_sdk_automation_playbook_configs_config_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id from the URL path (:configId)")],
+        v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsConfigIdPutResponse]:
+        """v1_sdk_automation_playbook_configs_config_id_put
+
+        Validate & update config YAML
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id from the URL path (:configId) (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_put_request=v1_sdk_automation_playbook_configs_config_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id from the URL path (:configId)")],
+        v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_put
+
+        Validate & update config YAML
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id from the URL path (:configId) (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_put_request: V1SdkAutomationPlaybookConfigsConfigIdPutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_put_request=v1_sdk_automation_playbook_configs_config_id_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_put_serialize(
+        self,
+        authorization,
+        config_id,
+        v1_sdk_automation_playbook_configs_config_id_put_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_configs_config_id_put_request is not None:
+            _body_params = v1_sdk_automation_playbook_configs_config_id_put_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_stage_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to stage")],
+        v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse:
+        """v1_sdk_automation_playbook_configs_config_id_stage_put
+
+        Save name + notes and mark config as staged (must already be validated)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to stage (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_stage_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_stage_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_stage_put_request=v1_sdk_automation_playbook_configs_config_id_stage_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_stage_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to stage")],
+        v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse]:
+        """v1_sdk_automation_playbook_configs_config_id_stage_put
+
+        Save name + notes and mark config as staged (must already be validated)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to stage (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_stage_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_stage_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_stage_put_request=v1_sdk_automation_playbook_configs_config_id_stage_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_config_id_stage_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        config_id: Annotated[StrictStr, Field(description="Config id to stage")],
+        v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_config_id_stage_put
+
+        Save name + notes and mark config as staged (must already be validated)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param config_id: Config id to stage (required)
+        :type config_id: str
+        :param v1_sdk_automation_playbook_configs_config_id_stage_put_request: (required)
+        :type v1_sdk_automation_playbook_configs_config_id_stage_put_request: V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_config_id_stage_put_serialize(
+            authorization=authorization,
+            config_id=config_id,
+            v1_sdk_automation_playbook_configs_config_id_stage_put_request=v1_sdk_automation_playbook_configs_config_id_stage_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_config_id_stage_put_serialize(
+        self,
+        authorization,
+        config_id,
+        v1_sdk_automation_playbook_configs_config_id_stage_put_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if config_id is not None:
+            _path_params['configId'] = config_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_configs_config_id_stage_put_request is not None:
+            _body_params = v1_sdk_automation_playbook_configs_config_id_stage_put_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/sdk-automation/playbook/configs/{configId}/stage',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
+        after: Optional[StrictStr] = None,
+        first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
+        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsGetResponse:
+        """v1_sdk_automation_playbook_configs_get
+
+        Pending Executions table
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on config display name; empty returns all
+        :type name_contains: str
+        :param after: 
+        :type after: str
+        :param first: 
+        :type first: int
+        :param status: Optional status filter (e.g. STAGED, PAUSED); empty returns all
+        :type status: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            after=after,
+            first=first,
+            status=status,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
+        after: Optional[StrictStr] = None,
+        first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
+        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsGetResponse]:
+        """v1_sdk_automation_playbook_configs_get
+
+        Pending Executions table
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on config display name; empty returns all
+        :type name_contains: str
+        :param after: 
+        :type after: str
+        :param first: 
+        :type first: int
+        :param status: Optional status filter (e.g. STAGED, PAUSED); empty returns all
+        :type status: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            after=after,
+            first=first,
+            status=status,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
+        after: Optional[StrictStr] = None,
+        first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
+        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_get
+
+        Pending Executions table
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on config display name; empty returns all
+        :type name_contains: str
+        :param after: 
+        :type after: str
+        :param first: 
+        :type first: int
+        :param status: Optional status filter (e.g. STAGED, PAUSED); empty returns all
+        :type status: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            after=after,
+            first=first,
+            status=status,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_get_serialize(
+        self,
+        authorization,
+        name_contains,
+        after,
+        first,
+        status,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'status': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if name_contains is not None:
+            
+            _query_params.append(('nameContains', name_contains))
+            
+        if after is not None:
+            
+            _query_params.append(('after', after))
+            
+        if first is not None:
+            
+            _query_params.append(('first', first))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/configs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookConfigsPostResponse:
+        """v1_sdk_automation_playbook_configs_post
+
+        Validate & create a config (validate_only=true skips persist for Validate Bundle)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_sdk_automation_playbook_configs_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_post_serialize(
+            authorization=authorization,
+            v1_sdk_automation_playbook_configs_post_request=v1_sdk_automation_playbook_configs_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookConfigsPostResponse]:
+        """v1_sdk_automation_playbook_configs_post
+
+        Validate & create a config (validate_only=true skips persist for Validate Bundle)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_sdk_automation_playbook_configs_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_post_serialize(
+            authorization=authorization,
+            v1_sdk_automation_playbook_configs_post_request=v1_sdk_automation_playbook_configs_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_configs_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_configs_post
+
+        Validate & create a config (validate_only=true skips persist for Validate Bundle)
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v1_sdk_automation_playbook_configs_post_request: (required)
+        :type v1_sdk_automation_playbook_configs_post_request: V1SdkAutomationPlaybookConfigsPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_configs_post_serialize(
+            authorization=authorization,
+            v1_sdk_automation_playbook_configs_post_request=v1_sdk_automation_playbook_configs_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookConfigsPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_configs_post_serialize(
+        self,
+        authorization,
+        v1_sdk_automation_playbook_configs_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_configs_post_request is not None:
+            _body_params = v1_sdk_automation_playbook_configs_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/sdk-automation/playbook/configs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsGetResponse:
+        """v1_sdk_automation_playbook_jobs_get
+
+        List playbook job history
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
+        :type name_contains: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsGetResponse]:
+        """v1_sdk_automation_playbook_jobs_get
+
+        List playbook job history
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
+        :type name_contains: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_get
+
+        List playbook job history
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
+        :type name_contains: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
+            authorization=authorization,
+            name_contains=name_contains,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_get_serialize(
+        self,
+        authorization,
+        name_contains,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if name_contains is not None:
+            
+            _query_params.append(('nameContains', name_contains))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/jobs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_abort_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="In-progress job id to abort")],
+        body: Dict[str, Any],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdAbortPutResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_abort_put
+
+        Abort an in-progress playbook job
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: In-progress job id to abort (required)
+        :type job_id: str
+        :param body: (required)
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_abort_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdAbortPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_abort_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="In-progress job id to abort")],
+        body: Dict[str, Any],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdAbortPutResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_abort_put
+
+        Abort an in-progress playbook job
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: In-progress job id to abort (required)
+        :type job_id: str
+        :param body: (required)
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_abort_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdAbortPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_abort_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="In-progress job id to abort")],
+        body: Dict[str, Any],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_abort_put
+
+        Abort an in-progress playbook job
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: In-progress job id to abort (required)
+        :type job_id: str
+        :param body: (required)
+        :type body: object
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_abort_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            body=body,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdAbortPutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_abort_put_serialize(
+        self,
+        authorization,
+        job_id,
+        body,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if body is not None:
+            _body_params = body
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/abort',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_approve_put(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id in DRY_RUN_COMPLETE to approve for deploy")],
+        v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdApprovePutResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_approve_put
+
+        Gate: execute play (deploy) after dry-run passes
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id in DRY_RUN_COMPLETE to approve for deploy (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_approve_put_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_approve_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_approve_put_request=v1_sdk_automation_playbook_jobs_job_id_approve_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdApprovePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_approve_put_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id in DRY_RUN_COMPLETE to approve for deploy")],
+        v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdApprovePutResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_approve_put
+
+        Gate: execute play (deploy) after dry-run passes
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id in DRY_RUN_COMPLETE to approve for deploy (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_approve_put_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_approve_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_approve_put_request=v1_sdk_automation_playbook_jobs_job_id_approve_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdApprovePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_approve_put_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id in DRY_RUN_COMPLETE to approve for deploy")],
+        v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_approve_put
+
+        Gate: execute play (deploy) after dry-run passes
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id in DRY_RUN_COMPLETE to approve for deploy (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_approve_put_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_approve_put_request: V1SdkAutomationPlaybookJobsJobIdApprovePutRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_approve_put_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_approve_put_request=v1_sdk_automation_playbook_jobs_job_id_approve_put_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdApprovePutResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_approve_put_serialize(
+        self,
+        authorization,
+        job_id,
+        v1_sdk_automation_playbook_jobs_job_id_approve_put_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_jobs_job_id_approve_put_request is not None:
+            _body_params = v1_sdk_automation_playbook_jobs_job_id_approve_put_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='PUT',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/approve',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdGetResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_get
+
+        Get a playbook job by id
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id to fetch (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdGetResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_get
+
+        Get a playbook job by id
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id to fetch (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id to fetch")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_get
+
+        Get a playbook job by id
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id to fetch (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_get_serialize(
+        self,
+        authorization,
+        job_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_logs_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose logs are requested")],
+        phase: Annotated[Optional[StrictStr], Field(description="Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdLogsGetResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_logs_get
+
+        Get masked ansible logs for a job, optionally filtered by phase
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose logs are requested (required)
+        :type job_id: str
+        :param phase: Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all
+        :type phase: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_logs_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            phase=phase,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdLogsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_logs_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose logs are requested")],
+        phase: Annotated[Optional[StrictStr], Field(description="Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdLogsGetResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_logs_get
+
+        Get masked ansible logs for a job, optionally filtered by phase
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose logs are requested (required)
+        :type job_id: str
+        :param phase: Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all
+        :type phase: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_logs_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            phase=phase,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdLogsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_logs_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose logs are requested")],
+        phase: Annotated[Optional[StrictStr], Field(description="Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_logs_get
+
+        Get masked ansible logs for a job, optionally filtered by phase
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose logs are requested (required)
+        :type job_id: str
+        :param phase: Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all
+        :type phase: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_logs_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            phase=phase,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdLogsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_logs_get_serialize(
+        self,
+        authorization,
+        job_id,
+        phase,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        if phase is not None:
+            
+            _query_params.append(('phase', phase))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/logs',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_resume_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id parked in AWAITING_REAUTH to resume")],
+        v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdResumePostResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_resume_post
+
+        Resume a run parked in awaiting_reauth with the caller's re-authed token
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id parked in AWAITING_REAUTH to resume (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_resume_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_resume_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_resume_post_request=v1_sdk_automation_playbook_jobs_job_id_resume_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdResumePostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_resume_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id parked in AWAITING_REAUTH to resume")],
+        v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdResumePostResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_resume_post
+
+        Resume a run parked in awaiting_reauth with the caller's re-authed token
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id parked in AWAITING_REAUTH to resume (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_resume_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_resume_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_resume_post_request=v1_sdk_automation_playbook_jobs_job_id_resume_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdResumePostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_resume_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id parked in AWAITING_REAUTH to resume")],
+        v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_resume_post
+
+        Resume a run parked in awaiting_reauth with the caller's re-authed token
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id parked in AWAITING_REAUTH to resume (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_resume_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_resume_post_request: V1SdkAutomationPlaybookJobsJobIdResumePostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_resume_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_resume_post_request=v1_sdk_automation_playbook_jobs_job_id_resume_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdResumePostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_resume_post_serialize(
+        self,
+        authorization,
+        job_id,
+        v1_sdk_automation_playbook_jobs_job_id_resume_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_jobs_job_id_resume_post_request is not None:
+            _body_params = v1_sdk_automation_playbook_jobs_job_id_resume_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/resume',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_run_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Prior job id whose config is re-run")],
+        v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdRunPostResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_run_post
+
+        Re-run; starts from dry-run unless skip_dry_run=true
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Prior job id whose config is re-run (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_run_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_run_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_run_post_request=v1_sdk_automation_playbook_jobs_job_id_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_run_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Prior job id whose config is re-run")],
+        v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdRunPostResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_run_post
+
+        Re-run; starts from dry-run unless skip_dry_run=true
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Prior job id whose config is re-run (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_run_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_run_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_run_post_request=v1_sdk_automation_playbook_jobs_job_id_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_run_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Prior job id whose config is re-run")],
+        v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_run_post
+
+        Re-run; starts from dry-run unless skip_dry_run=true
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Prior job id whose config is re-run (required)
+        :type job_id: str
+        :param v1_sdk_automation_playbook_jobs_job_id_run_post_request: (required)
+        :type v1_sdk_automation_playbook_jobs_job_id_run_post_request: V1SdkAutomationPlaybookJobsJobIdRunPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_run_post_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            v1_sdk_automation_playbook_jobs_job_id_run_post_request=v1_sdk_automation_playbook_jobs_job_id_run_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdRunPostResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_run_post_serialize(
+        self,
+        authorization,
+        job_id,
+        v1_sdk_automation_playbook_jobs_job_id_run_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v1_sdk_automation_playbook_jobs_job_id_run_post_request is not None:
+            _body_params = v1_sdk_automation_playbook_jobs_job_id_run_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/run',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_module_slots_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookModuleSlotsGetResponse:
+        """v1_sdk_automation_playbook_module_slots_get
+
+        List module slots for a catalog bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_module_slots_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookModuleSlotsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_module_slots_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookModuleSlotsGetResponse]:
+        """v1_sdk_automation_playbook_module_slots_get
+
+        List module slots for a catalog bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_module_slots_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookModuleSlotsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_module_slots_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_module_slots_get
+
+        List module slots for a catalog bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_module_slots_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookModuleSlotsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_module_slots_get_serialize(
+        self,
+        authorization,
+        bundle_key,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if bundle_key is not None:
+            
+            _query_params.append(('bundleKey', bundle_key))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/module-slots',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_templates_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookTemplatesGetResponse:
+        """v1_sdk_automation_playbook_templates_get
+
+        Download starter playbook & sample config templates for a bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param module_keys: Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)
+        :type module_keys: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_templates_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            module_keys=module_keys,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookTemplatesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_templates_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookTemplatesGetResponse]:
+        """v1_sdk_automation_playbook_templates_get
+
+        Download starter playbook & sample config templates for a bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param module_keys: Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)
+        :type module_keys: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_templates_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            module_keys=module_keys,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookTemplatesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_templates_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
+        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_templates_get
+
+        Download starter playbook & sample config templates for a bundle
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param bundle_key: Catalog key from playbook_catalog_playbook (e.g. system_bundle)
+        :type bundle_key: str
+        :param module_keys: Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)
+        :type module_keys: List[str]
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_templates_get_serialize(
+            authorization=authorization,
+            bundle_key=bundle_key,
+            module_keys=module_keys,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookTemplatesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_templates_get_serialize(
+        self,
+        authorization,
+        bundle_key,
+        module_keys,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+            'moduleKeys': 'multi',
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        if bundle_key is not None:
+            
+            _query_params.append(('bundleKey', bundle_key))
+            
+        if module_keys is not None:
+            
+            _query_params.append(('moduleKeys', module_keys))
+            
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/templates',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v1_search_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -119442,7 +124751,7 @@ class DefaultApi:
     ) -> V1ZtagentAgentsGetResponse:
         """v1_ztagent_agents_get
 
-        List Conceal agents (devices) with pagination and filters.
+        List ZTAgent agents (devices) with pagination and filters.
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -119549,7 +124858,7 @@ class DefaultApi:
     ) -> ApiResponse[V1ZtagentAgentsGetResponse]:
         """v1_ztagent_agents_get
 
-        List Conceal agents (devices) with pagination and filters.
+        List ZTAgent agents (devices) with pagination and filters.
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -119656,7 +124965,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """v1_ztagent_agents_get
 
-        List Conceal agents (devices) with pagination and filters.
+        List ZTAgent agents (devices) with pagination and filters.
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -143072,6 +148381,267 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v2/monitoring/extranet/status-details',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v2_monitoring_fec_stats_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2MonitoringFecStatsGetResponse:
+        """v2_monitoring_fec_stats_get
+
+        Returns the FEC stats for the given device
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_monitoring_fec_stats_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2MonitoringFecStatsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_monitoring_fec_stats_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2MonitoringFecStatsGetResponse]:
+        """v2_monitoring_fec_stats_get
+
+        Returns the FEC stats for the given device
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_monitoring_fec_stats_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2MonitoringFecStatsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_monitoring_fec_stats_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_monitoring_fec_stats_get
+
+        Returns the FEC stats for the given device
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_monitoring_fec_stats_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2MonitoringFecStatsGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_monitoring_fec_stats_get_serialize(
+        self,
+        authorization,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/monitoring/fec-stats',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

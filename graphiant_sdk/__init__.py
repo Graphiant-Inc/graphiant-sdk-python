@@ -14,7 +14,7 @@
 """  # noqa: E501
 
 
-__version__ = "26.8.0"
+__version__ = "26.9.0"
 
 # Define package exports
 __all__ = [
@@ -667,6 +667,14 @@ __all__ = [
     "RoutingVrrpEntry",
     "RoutingbgpCounter",
     "Routingprefix",
+    "SdkAutomationCatalogBundle",
+    "SdkAutomationCatalogModuleSlot",
+    "SdkAutomationModuleFile",
+    "SdkAutomationPlaybookConfig",
+    "SdkAutomationPlaybookConfigSummary",
+    "SdkAutomationPlaybookJob",
+    "SdkAutomationTemplateFile",
+    "SdkAutomationValidationError",
     "SearchEdgeSummary",
     "SearchSearchFilter",
     "SearchSearchResult",
@@ -741,6 +749,10 @@ __all__ = [
     "StatsmonV2DeviceSegments",
     "StatsmonV2Edge",
     "StatsmonV2EdgeedgeCircuitInfo",
+    "StatsmonV2FecRxRepairLevel",
+    "StatsmonV2FecRxStats",
+    "StatsmonV2FecTxRepairLevel",
+    "StatsmonV2FecTxStats",
     "StatsmonV2InterfaceStatsSelector",
     "StatsmonV2IpSecStatsSelector",
     "StatsmonV2Node",
@@ -750,6 +762,8 @@ __all__ = [
     "StatsmonV2PolicyStatsSelector",
     "StatsmonV2QueueInstantStatsSelector",
     "StatsmonV2QueueUtilization",
+    "StatsmonV2RepairLevel",
+    "StatsmonV2RepairLevelScore",
     "StatsmonV2StatsSample",
     "StatsmonV2SystemStatsSelector",
     "StatsmonV2TimeWindow",
@@ -804,12 +818,9 @@ __all__ = [
     "V1AuthErrorPostResponse",
     "V1AuthGcsPostRequest",
     "V1AuthGetResponse",
-    "V1AuthLoginCallbackPost500Response",
     "V1AuthLoginPostRequest",
     "V1AuthLoginPostResponse",
     "V1AuthLoginPreGetResponse",
-    "V1AuthLoginSamlGet401Response",
-    "V1AuthLoginSamlGet500Response",
     "V1AuthLoginTempPostRequest",
     "V1AuthMfaPatchRequest",
     "V1AuthMfaPost500Response",
@@ -819,11 +830,7 @@ __all__ = [
     "V1AuthPatchRequest",
     "V1AuthPutRequest",
     "V1AuthRefreshGet200Response",
-    "V1AuthRefreshGet403Response",
-    "V1AuthRefreshGet422Response",
     "V1AuthRefreshGetEntryPointResponse",
-    "V1AuthSessionGet403Response",
-    "V1AuthSessionGet422Response",
     "V1AuthUserGetResponse",
     "V1BackboneHealthDeviceDeviceIdPostRequest",
     "V1BackboneHealthDeviceDeviceIdPostResponse",
@@ -1289,6 +1296,30 @@ __all__ = [
     "V1RegionsGetResponse",
     "V1RegionsRegionIdGatewaysGetResponse",
     "V1RegionsRegionIdGatewaysGetResponseGateway",
+    "V1SdkAutomationPlaybookBundlesGetResponse",
+    "V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse",
+    "V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest",
+    "V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse",
+    "V1SdkAutomationPlaybookConfigsConfigIdGetResponse",
+    "V1SdkAutomationPlaybookConfigsConfigIdPutRequest",
+    "V1SdkAutomationPlaybookConfigsConfigIdPutResponse",
+    "V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest",
+    "V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse",
+    "V1SdkAutomationPlaybookConfigsGetResponse",
+    "V1SdkAutomationPlaybookConfigsPostRequest",
+    "V1SdkAutomationPlaybookConfigsPostResponse",
+    "V1SdkAutomationPlaybookJobsGetResponse",
+    "V1SdkAutomationPlaybookJobsJobIdAbortPutResponse",
+    "V1SdkAutomationPlaybookJobsJobIdApprovePutRequest",
+    "V1SdkAutomationPlaybookJobsJobIdApprovePutResponse",
+    "V1SdkAutomationPlaybookJobsJobIdGetResponse",
+    "V1SdkAutomationPlaybookJobsJobIdLogsGetResponse",
+    "V1SdkAutomationPlaybookJobsJobIdResumePostRequest",
+    "V1SdkAutomationPlaybookJobsJobIdResumePostResponse",
+    "V1SdkAutomationPlaybookJobsJobIdRunPostRequest",
+    "V1SdkAutomationPlaybookJobsJobIdRunPostResponse",
+    "V1SdkAutomationPlaybookModuleSlotsGetResponse",
+    "V1SdkAutomationPlaybookTemplatesGetResponse",
     "V1SearchGetResponse",
     "V1SiteDetailsSitelistsPostRequest",
     "V1SiteDetailsSitelistsPostResponse",
@@ -1480,6 +1511,7 @@ __all__ = [
     "V2MonitoringExtranetServiceStatusGetResponse",
     "V2MonitoringExtranetSiteStatusGetResponse",
     "V2MonitoringExtranetStatusDetailsGetResponse",
+    "V2MonitoringFecStatsGetResponse",
     "V2MonitoringIkeErrorHistoryPostRequest",
     "V2MonitoringIkeErrorHistoryPostResponse",
     "V2MonitoringIkeErrorHistoryPostResponseData",
@@ -2185,6 +2217,14 @@ from graphiant_sdk.models.routing_prefix_filter import RoutingPrefixFilter as Ro
 from graphiant_sdk.models.routing_vrrp_entry import RoutingVrrpEntry as RoutingVrrpEntry
 from graphiant_sdk.models.routingbgp_counter import RoutingbgpCounter as RoutingbgpCounter
 from graphiant_sdk.models.routingprefix import Routingprefix as Routingprefix
+from graphiant_sdk.models.sdk_automation_catalog_bundle import SdkAutomationCatalogBundle as SdkAutomationCatalogBundle
+from graphiant_sdk.models.sdk_automation_catalog_module_slot import SdkAutomationCatalogModuleSlot as SdkAutomationCatalogModuleSlot
+from graphiant_sdk.models.sdk_automation_module_file import SdkAutomationModuleFile as SdkAutomationModuleFile
+from graphiant_sdk.models.sdk_automation_playbook_config import SdkAutomationPlaybookConfig as SdkAutomationPlaybookConfig
+from graphiant_sdk.models.sdk_automation_playbook_config_summary import SdkAutomationPlaybookConfigSummary as SdkAutomationPlaybookConfigSummary
+from graphiant_sdk.models.sdk_automation_playbook_job import SdkAutomationPlaybookJob as SdkAutomationPlaybookJob
+from graphiant_sdk.models.sdk_automation_template_file import SdkAutomationTemplateFile as SdkAutomationTemplateFile
+from graphiant_sdk.models.sdk_automation_validation_error import SdkAutomationValidationError as SdkAutomationValidationError
 from graphiant_sdk.models.search_edge_summary import SearchEdgeSummary as SearchEdgeSummary
 from graphiant_sdk.models.search_search_filter import SearchSearchFilter as SearchSearchFilter
 from graphiant_sdk.models.search_search_result import SearchSearchResult as SearchSearchResult
@@ -2259,6 +2299,10 @@ from graphiant_sdk.models.statsmon_v2_connection import StatsmonV2Connection as 
 from graphiant_sdk.models.statsmon_v2_device_segments import StatsmonV2DeviceSegments as StatsmonV2DeviceSegments
 from graphiant_sdk.models.statsmon_v2_edge import StatsmonV2Edge as StatsmonV2Edge
 from graphiant_sdk.models.statsmon_v2_edgeedge_circuit_info import StatsmonV2EdgeedgeCircuitInfo as StatsmonV2EdgeedgeCircuitInfo
+from graphiant_sdk.models.statsmon_v2_fec_rx_repair_level import StatsmonV2FecRxRepairLevel as StatsmonV2FecRxRepairLevel
+from graphiant_sdk.models.statsmon_v2_fec_rx_stats import StatsmonV2FecRxStats as StatsmonV2FecRxStats
+from graphiant_sdk.models.statsmon_v2_fec_tx_repair_level import StatsmonV2FecTxRepairLevel as StatsmonV2FecTxRepairLevel
+from graphiant_sdk.models.statsmon_v2_fec_tx_stats import StatsmonV2FecTxStats as StatsmonV2FecTxStats
 from graphiant_sdk.models.statsmon_v2_interface_stats_selector import StatsmonV2InterfaceStatsSelector as StatsmonV2InterfaceStatsSelector
 from graphiant_sdk.models.statsmon_v2_ip_sec_stats_selector import StatsmonV2IpSecStatsSelector as StatsmonV2IpSecStatsSelector
 from graphiant_sdk.models.statsmon_v2_node import StatsmonV2Node as StatsmonV2Node
@@ -2268,6 +2312,8 @@ from graphiant_sdk.models.statsmon_v2_node_device_info import StatsmonV2NodeDevi
 from graphiant_sdk.models.statsmon_v2_policy_stats_selector import StatsmonV2PolicyStatsSelector as StatsmonV2PolicyStatsSelector
 from graphiant_sdk.models.statsmon_v2_queue_instant_stats_selector import StatsmonV2QueueInstantStatsSelector as StatsmonV2QueueInstantStatsSelector
 from graphiant_sdk.models.statsmon_v2_queue_utilization import StatsmonV2QueueUtilization as StatsmonV2QueueUtilization
+from graphiant_sdk.models.statsmon_v2_repair_level import StatsmonV2RepairLevel as StatsmonV2RepairLevel
+from graphiant_sdk.models.statsmon_v2_repair_level_score import StatsmonV2RepairLevelScore as StatsmonV2RepairLevelScore
 from graphiant_sdk.models.statsmon_v2_stats_sample import StatsmonV2StatsSample as StatsmonV2StatsSample
 from graphiant_sdk.models.statsmon_v2_system_stats_selector import StatsmonV2SystemStatsSelector as StatsmonV2SystemStatsSelector
 from graphiant_sdk.models.statsmon_v2_time_window import StatsmonV2TimeWindow as StatsmonV2TimeWindow
@@ -2322,12 +2368,9 @@ from graphiant_sdk.models.v1_audit_logs_post_response import V1AuditLogsPostResp
 from graphiant_sdk.models.v1_auth_error_post_response import V1AuthErrorPostResponse as V1AuthErrorPostResponse
 from graphiant_sdk.models.v1_auth_gcs_post_request import V1AuthGcsPostRequest as V1AuthGcsPostRequest
 from graphiant_sdk.models.v1_auth_get_response import V1AuthGetResponse as V1AuthGetResponse
-from graphiant_sdk.models.v1_auth_login_callback_post500_response import V1AuthLoginCallbackPost500Response as V1AuthLoginCallbackPost500Response
 from graphiant_sdk.models.v1_auth_login_post_request import V1AuthLoginPostRequest as V1AuthLoginPostRequest
 from graphiant_sdk.models.v1_auth_login_post_response import V1AuthLoginPostResponse as V1AuthLoginPostResponse
 from graphiant_sdk.models.v1_auth_login_pre_get_response import V1AuthLoginPreGetResponse as V1AuthLoginPreGetResponse
-from graphiant_sdk.models.v1_auth_login_saml_get401_response import V1AuthLoginSamlGet401Response as V1AuthLoginSamlGet401Response
-from graphiant_sdk.models.v1_auth_login_saml_get500_response import V1AuthLoginSamlGet500Response as V1AuthLoginSamlGet500Response
 from graphiant_sdk.models.v1_auth_login_temp_post_request import V1AuthLoginTempPostRequest as V1AuthLoginTempPostRequest
 from graphiant_sdk.models.v1_auth_mfa_patch_request import V1AuthMfaPatchRequest as V1AuthMfaPatchRequest
 from graphiant_sdk.models.v1_auth_mfa_post500_response import V1AuthMfaPost500Response as V1AuthMfaPost500Response
@@ -2337,11 +2380,7 @@ from graphiant_sdk.models.v1_auth_mfa_types_put_request import V1AuthMfaTypesPut
 from graphiant_sdk.models.v1_auth_patch_request import V1AuthPatchRequest as V1AuthPatchRequest
 from graphiant_sdk.models.v1_auth_put_request import V1AuthPutRequest as V1AuthPutRequest
 from graphiant_sdk.models.v1_auth_refresh_get200_response import V1AuthRefreshGet200Response as V1AuthRefreshGet200Response
-from graphiant_sdk.models.v1_auth_refresh_get403_response import V1AuthRefreshGet403Response as V1AuthRefreshGet403Response
-from graphiant_sdk.models.v1_auth_refresh_get422_response import V1AuthRefreshGet422Response as V1AuthRefreshGet422Response
 from graphiant_sdk.models.v1_auth_refresh_get_entry_point_response import V1AuthRefreshGetEntryPointResponse as V1AuthRefreshGetEntryPointResponse
-from graphiant_sdk.models.v1_auth_session_get403_response import V1AuthSessionGet403Response as V1AuthSessionGet403Response
-from graphiant_sdk.models.v1_auth_session_get422_response import V1AuthSessionGet422Response as V1AuthSessionGet422Response
 from graphiant_sdk.models.v1_auth_user_get_response import V1AuthUserGetResponse as V1AuthUserGetResponse
 from graphiant_sdk.models.v1_backbone_health_device_device_id_post_request import V1BackboneHealthDeviceDeviceIdPostRequest as V1BackboneHealthDeviceDeviceIdPostRequest
 from graphiant_sdk.models.v1_backbone_health_device_device_id_post_response import V1BackboneHealthDeviceDeviceIdPostResponse as V1BackboneHealthDeviceDeviceIdPostResponse
@@ -2807,6 +2846,30 @@ from graphiant_sdk.models.v1_qos_circuit_profiles_get_response import V1QosCircu
 from graphiant_sdk.models.v1_regions_get_response import V1RegionsGetResponse as V1RegionsGetResponse
 from graphiant_sdk.models.v1_regions_region_id_gateways_get_response import V1RegionsRegionIdGatewaysGetResponse as V1RegionsRegionIdGatewaysGetResponse
 from graphiant_sdk.models.v1_regions_region_id_gateways_get_response_gateway import V1RegionsRegionIdGatewaysGetResponseGateway as V1RegionsRegionIdGatewaysGetResponseGateway
+from graphiant_sdk.models.v1_sdk_automation_playbook_bundles_get_response import V1SdkAutomationPlaybookBundlesGetResponse as V1SdkAutomationPlaybookBundlesGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_get_response import V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse as V1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_post_request import V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest as V1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_dry_run_post_response import V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse as V1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_get_response import V1SdkAutomationPlaybookConfigsConfigIdGetResponse as V1SdkAutomationPlaybookConfigsConfigIdGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_put_request import V1SdkAutomationPlaybookConfigsConfigIdPutRequest as V1SdkAutomationPlaybookConfigsConfigIdPutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_put_response import V1SdkAutomationPlaybookConfigsConfigIdPutResponse as V1SdkAutomationPlaybookConfigsConfigIdPutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_stage_put_request import V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest as V1SdkAutomationPlaybookConfigsConfigIdStagePutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_config_id_stage_put_response import V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse as V1SdkAutomationPlaybookConfigsConfigIdStagePutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_get_response import V1SdkAutomationPlaybookConfigsGetResponse as V1SdkAutomationPlaybookConfigsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_post_request import V1SdkAutomationPlaybookConfigsPostRequest as V1SdkAutomationPlaybookConfigsPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_configs_post_response import V1SdkAutomationPlaybookConfigsPostResponse as V1SdkAutomationPlaybookConfigsPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_get_response import V1SdkAutomationPlaybookJobsGetResponse as V1SdkAutomationPlaybookJobsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_abort_put_response import V1SdkAutomationPlaybookJobsJobIdAbortPutResponse as V1SdkAutomationPlaybookJobsJobIdAbortPutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_approve_put_request import V1SdkAutomationPlaybookJobsJobIdApprovePutRequest as V1SdkAutomationPlaybookJobsJobIdApprovePutRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_approve_put_response import V1SdkAutomationPlaybookJobsJobIdApprovePutResponse as V1SdkAutomationPlaybookJobsJobIdApprovePutResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_get_response import V1SdkAutomationPlaybookJobsJobIdGetResponse as V1SdkAutomationPlaybookJobsJobIdGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_logs_get_response import V1SdkAutomationPlaybookJobsJobIdLogsGetResponse as V1SdkAutomationPlaybookJobsJobIdLogsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_request import V1SdkAutomationPlaybookJobsJobIdResumePostRequest as V1SdkAutomationPlaybookJobsJobIdResumePostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_response import V1SdkAutomationPlaybookJobsJobIdResumePostResponse as V1SdkAutomationPlaybookJobsJobIdResumePostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_request import V1SdkAutomationPlaybookJobsJobIdRunPostRequest as V1SdkAutomationPlaybookJobsJobIdRunPostRequest
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_response import V1SdkAutomationPlaybookJobsJobIdRunPostResponse as V1SdkAutomationPlaybookJobsJobIdRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_module_slots_get_response import V1SdkAutomationPlaybookModuleSlotsGetResponse as V1SdkAutomationPlaybookModuleSlotsGetResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_templates_get_response import V1SdkAutomationPlaybookTemplatesGetResponse as V1SdkAutomationPlaybookTemplatesGetResponse
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse as V1SearchGetResponse
 from graphiant_sdk.models.v1_site_details_sitelists_post_request import V1SiteDetailsSitelistsPostRequest as V1SiteDetailsSitelistsPostRequest
 from graphiant_sdk.models.v1_site_details_sitelists_post_response import V1SiteDetailsSitelistsPostResponse as V1SiteDetailsSitelistsPostResponse
@@ -2998,6 +3061,7 @@ from graphiant_sdk.models.v2_monitoring_extranet_service_status_details_get_resp
 from graphiant_sdk.models.v2_monitoring_extranet_service_status_get_response import V2MonitoringExtranetServiceStatusGetResponse as V2MonitoringExtranetServiceStatusGetResponse
 from graphiant_sdk.models.v2_monitoring_extranet_site_status_get_response import V2MonitoringExtranetSiteStatusGetResponse as V2MonitoringExtranetSiteStatusGetResponse
 from graphiant_sdk.models.v2_monitoring_extranet_status_details_get_response import V2MonitoringExtranetStatusDetailsGetResponse as V2MonitoringExtranetStatusDetailsGetResponse
+from graphiant_sdk.models.v2_monitoring_fec_stats_get_response import V2MonitoringFecStatsGetResponse as V2MonitoringFecStatsGetResponse
 from graphiant_sdk.models.v2_monitoring_ike_error_history_post_request import V2MonitoringIkeErrorHistoryPostRequest as V2MonitoringIkeErrorHistoryPostRequest
 from graphiant_sdk.models.v2_monitoring_ike_error_history_post_response import V2MonitoringIkeErrorHistoryPostResponse as V2MonitoringIkeErrorHistoryPostResponse
 from graphiant_sdk.models.v2_monitoring_ike_error_history_post_response_data import V2MonitoringIkeErrorHistoryPostResponseData as V2MonitoringIkeErrorHistoryPostResponseData

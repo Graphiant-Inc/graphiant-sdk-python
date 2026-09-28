@@ -30,6 +30,7 @@ class V1EnterprisesPatchRequest(BaseModel):
     V1EnterprisesPatchRequest
     """ # noqa: E501
     admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
+    backbone_apis_enabled: Optional[StrictBool] = Field(default=None, alias="backboneApisEnabled", json_schema_extra={"examples": [True]})
     cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
     company_name: Optional[StrictStr] = Field(default=None, alias="companyName", json_schema_extra={"examples": ["example string"]})
     credit_limit: Optional[StrictInt] = Field(default=None, alias="creditLimit", json_schema_extra={"examples": [123]})
@@ -43,7 +44,7 @@ class V1EnterprisesPatchRequest(BaseModel):
     proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId", json_schema_extra={"examples": [1234567891011]})
     small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo", json_schema_extra={"examples": ["example string"]})
     token_expiry: Optional[V1EnterprisesPatchRequestTokenExpiry] = Field(default=None, alias="tokenExpiry")
-    __properties: ClassVar[List[str]] = ["adminEmail", "cloudProvider", "companyName", "creditLimit", "description", "enterpriseContract", "enterpriseId", "impersonationEnabled", "logo", "marketplaceId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
+    __properties: ClassVar[List[str]] = ["adminEmail", "backboneApisEnabled", "cloudProvider", "companyName", "creditLimit", "description", "enterpriseContract", "enterpriseId", "impersonationEnabled", "logo", "marketplaceId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -103,6 +104,7 @@ class V1EnterprisesPatchRequest(BaseModel):
 
         _obj = cls.model_validate({
             "adminEmail": obj.get("adminEmail"),
+            "backboneApisEnabled": obj.get("backboneApisEnabled"),
             "cloudProvider": obj.get("cloudProvider"),
             "companyName": obj.get("companyName"),
             "creditLimit": obj.get("creditLimit"),

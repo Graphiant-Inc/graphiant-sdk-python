@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **admin_email** | **str** |  | [optional] 
+**backbone_apis_enabled** | **bool** |  | [optional] 
 **cloud_provider** | **str** |  | [optional] 
 **company_name** | **str** |  | [optional] 
 **credit_limit** | **int** |  | [optional] 

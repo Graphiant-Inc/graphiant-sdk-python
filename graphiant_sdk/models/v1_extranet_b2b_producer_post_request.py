@@ -29,7 +29,7 @@ class V1ExtranetB2bProducerPostRequest(BaseModel):
     V1ExtranetB2bProducerPostRequest
     """ # noqa: E501
     policy: ManaV2ExtranetServiceProducerPolicy
-    service_name: StrictStr = Field(description=" (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
+    service_name: StrictStr = Field(description="Producer service name (letters, digits, hyphens only) (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
     service_type: StrictStr = Field(description="Branded extranet service type (peering_service, client_to_server, …) (required)", alias="serviceType", json_schema_extra={"examples": ["ENUM_VALUE"]})
     __properties: ClassVar[List[str]] = ["policy", "serviceName", "serviceType"]
 

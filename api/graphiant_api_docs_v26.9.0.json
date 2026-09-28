@@ -5927,6 +5927,10 @@
             "type": "string",
             "example": "example string"
           },
+          "backboneApisEnabled": {
+            "type": "boolean",
+            "example": true
+          },
           "cloudProvider": {
             "type": "string",
             "example": "ENUM_VALUE"
@@ -6128,6 +6132,10 @@
           "adminEmail": {
             "type": "string",
             "example": "example string"
+          },
+          "backboneApisEnabled": {
+            "type": "boolean",
+            "example": true
           },
           "cloudProvider": {
             "type": "string",
@@ -18879,7 +18887,7 @@
           "serviceName": {
             "type": "string",
             "example": "example string",
-            "description": " (required)"
+            "description": "Producer service name (letters, digits, hyphens only) (required)"
           },
           "serviceType": {
             "type": "string",
@@ -19253,7 +19261,7 @@
           "serviceName": {
             "type": "string",
             "example": "example string",
-            "description": " (required)"
+            "description": "Producer service name (letters, digits, hyphens only) (required)"
           },
           "serviceType": {
             "type": "string",
@@ -22864,7 +22872,7 @@
           "serviceName": {
             "type": "string",
             "example": "example string",
-            "description": "Service display name (required)"
+            "description": "Producer service name (letters, digits, hyphens only) (required)"
           },
           "storageProvider": {
             "type": "string",
@@ -23084,7 +23092,7 @@
           "serviceName": {
             "type": "string",
             "example": "example string",
-            "description": "Service display name (required)"
+            "description": "Producer service name (letters, digits, hyphens only) (required)"
           },
           "storageProvider": {
             "type": "string",
@@ -26896,6 +26904,10 @@
       "commonUserInfo": {
         "type": "object",
         "properties": {
+          "bearerToken": {
+            "type": "string",
+            "example": "example string"
+          },
           "enterpriseId": {
             "type": "integer",
             "format": "int64",
@@ -29892,6 +29904,668 @@
         },
         "additionalProperties": false
       },
+      "v1SdkAutomationPlaybookBundlesGetResponse": {
+        "type": "object",
+        "properties": {
+          "bundles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationCatalogBundle"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationCatalogBundle": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Short description of the bundle"
+          },
+          "key": {
+            "type": "string",
+            "example": "example string",
+            "description": "Stable catalog key (e.g. system_bundle); used as CreatePlaybookConfigRequest.bundle_key"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name for the UI picklist"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookModuleSlotsGetResponse": {
+        "type": "object",
+        "properties": {
+          "modules": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationCatalogModuleSlot"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationCatalogModuleSlot": {
+        "type": "object",
+        "properties": {
+          "bundleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Owning catalog playbook key (e.g. system_bundle)"
+          },
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Short description of the module slot"
+          },
+          "fileDistinguisher": {
+            "type": "string",
+            "example": "example string",
+            "description": "Top-level YAML key from playbook_catalog_module the UI uses to map an uploaded file to this module (e.g. device_system, interfaces, circuits)"
+          },
+          "isRequired": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, create/validate must include this module_key"
+          },
+          "moduleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Stable catalog key from playbook_catalog_module (e.g. system_config_file); used as ModuleFile.module_key"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name for the module slot"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookTemplatesGetResponse": {
+        "type": "object",
+        "properties": {
+          "collectionVersion": {
+            "type": "string",
+            "example": "example string",
+            "description": "graphiant.naas collection version the files were read from"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationTemplateFile"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationTemplateFile": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": "example string",
+            "description": "File contents, verbatim from the collection"
+          },
+          "filename": {
+            "type": "string",
+            "example": "example string",
+            "description": "Suggested download name (e.g. sample_interface_config.yaml)"
+          },
+          "moduleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog module key; empty for the bundle-level playbook not scoped to a slot"
+          },
+          "sourcePath": {
+            "type": "string",
+            "example": "example string",
+            "description": "Path within the collection for provenance (e.g. playbooks/interface_management.yml)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsPostRequest": {
+        "type": "object",
+        "properties": {
+          "bundleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog key from playbook_catalog_playbook (e.g. system_bundle)"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationModuleFile"
+            }
+          },
+          "validateOnly": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, validate without persisting (Validate Bundle); when false, create on success"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationModuleFile": {
+        "type": "object",
+        "properties": {
+          "content": {
+            "type": "string",
+            "example": "example string",
+            "description": "YAML file contents"
+          },
+          "filename": {
+            "type": "string",
+            "example": "example string",
+            "description": "Original upload filename (informational; not used for routing)"
+          },
+          "moduleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog key from playbook_catalog_module (e.g. system_config_file)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsPostResponse": {
+        "type": "object",
+        "properties": {
+          "configId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Created config id when validation succeeds and validate_only is false; empty otherwise"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationValidationError"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationValidationError": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "example": "example string",
+            "description": "Human-readable validation error detail"
+          },
+          "moduleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog module key when the error is scoped to a module; unset otherwise"
+          },
+          "type": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Error category (syntax or schema)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsGetResponse": {
+        "type": "object",
+        "properties": {
+          "configs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationPlaybookConfigSummary"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/commonPageInfo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationPlaybookConfigSummary": {
+        "type": "object",
+        "properties": {
+          "configId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config id"
+          },
+          "createdByUserId": {
+            "type": "string",
+            "example": "example string",
+            "description": "IAM user id of the config creator; UI resolves the display name"
+          },
+          "jobStatus": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Latest run status; unset when the config has no run yet"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name"
+          },
+          "runId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Latest job id for this config; empty if never run"
+          },
+          "runNumber": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Per-config run counter; 0 if never run"
+          },
+          "startedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "startedByUserId": {
+            "type": "string",
+            "example": "example string",
+            "description": "IAM user id of who launched the latest run"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Config lifecycle status"
+          },
+          "updatedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "config": {
+            "$ref": "#/components/schemas/sdkAutomationPlaybookConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationPlaybookConfig": {
+        "type": "object",
+        "properties": {
+          "bundleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog key from playbook_catalog_playbook (e.g. system_bundle)"
+          },
+          "configId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config id"
+          },
+          "createdByUserId": {
+            "type": "string",
+            "example": "example string",
+            "description": "IAM user id of the config creator; UI resolves the display name"
+          },
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Description / deployment notes"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationModuleFile"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Display name"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Config lifecycle status (draft / staged / paused)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdPutRequest": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional description / notes update"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationModuleFile"
+            }
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Optional display name update"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdPutResponse": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationValidationError"
+            }
+          },
+          "isValid": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when validation succeeded and the update was applied"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Deployment notes shown in the pending-executions UI"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Required display name for the staged config"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdStagePutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Config status after staging (typically STAGED)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest": {
+        "type": "object",
+        "properties": {
+          "verboseLogs": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, request ansible -vvv for this dry-run"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Created job id for the dry-run"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Initial job status after enqueue (typically QUEUED or DRY_RUNNING)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/sdkAutomationPlaybookJob"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationPlaybookJob": {
+        "type": "object",
+        "properties": {
+          "collectionVersion": {
+            "type": "string",
+            "example": "example string",
+            "description": "graphiant.naas collection version used for this run"
+          },
+          "configDescription": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config description / notes frozen at job creation (from config_snapshot); empty for older jobs"
+          },
+          "configId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Owning playbook config id"
+          },
+          "configName": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config display name frozen at job creation (from config_snapshot); empty for older jobs"
+          },
+          "deployEndedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "deployStartedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "dryRunEndedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "dryRunStartedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "failedPhase": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "When status is FAILED, which phase failed; unset when not failed"
+          },
+          "jobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Unique id of this playbook job run"
+          },
+          "logsAvailable": {
+            "type": "boolean",
+            "example": true,
+            "description": "True when ansible logs are available for this run"
+          },
+          "postDeployCheckStartedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "runDurationMs": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011,
+            "description": "Wall-clock duration in milliseconds from dry_run_started_at to run_ended_at; unset until run_ended_at is set"
+          },
+          "runEndedAt": {
+            "$ref": "#/components/schemas/googleProtobufTimestamp"
+          },
+          "runNumber": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "description": "Per-config run counter (1-based for started runs)"
+          },
+          "runnerJobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "External ansible runner job id, if the backend assigned one"
+          },
+          "sdkVersion": {
+            "type": "string",
+            "example": "example string",
+            "description": "SDK version used for this run"
+          },
+          "startedByUserId": {
+            "type": "string",
+            "example": "example string",
+            "description": "IAM UserInfo.user_id of who started this run; UI resolves the display name"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Gated pipeline state (dry-run / deploy / post-deploy-check)"
+          },
+          "verboseLogs": {
+            "type": "boolean",
+            "example": true,
+            "description": "Whether ansible -vvv was requested for the latest phase of this run"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdApprovePutRequest": {
+        "type": "object",
+        "properties": {
+          "verboseLogs": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, request ansible -vvv for the deploy phase"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdApprovePutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Job status after approve was accepted"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsGetResponse": {
+        "type": "object",
+        "properties": {
+          "jobs": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationPlaybookJob"
+            }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/commonPageInfo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdGetResponse": {
+        "type": "object",
+        "properties": {
+          "job": {
+            "$ref": "#/components/schemas/sdkAutomationPlaybookJob"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdRunPostRequest": {
+        "type": "object",
+        "properties": {
+          "skipDryRun": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, skip dry-run and gate and deploy directly"
+          },
+          "verboseLogs": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, request ansible -vvv for the new run"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdRunPostResponse": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Newly created job id for the re-run"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Initial status of the new job"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdAbortPutRequest": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdAbortPutResponse": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Job status after abort (typically ABORTED)"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdResumePostRequest": {
+        "type": "object",
+        "properties": {
+          "isDeploy": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, resume straight into deploy; otherwise resume as a dry-run"
+          },
+          "verboseLogs": {
+            "type": "boolean",
+            "example": true,
+            "description": "When true, request ansible -vvv for the resumed phase"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdResumePostResponse": {
+        "type": "object",
+        "properties": {
+          "jobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Resumed job id"
+          },
+          "status": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "Job status after resume was accepted"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdLogsGetResponse": {
+        "type": "object",
+        "properties": {
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string",
+              "description": "Masked ansible log lines for the job (and optional phase)"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
       "searchSearchFilter": {
         "type": "object",
         "properties": {
@@ -30204,6 +30878,11 @@
         "properties": {
           "filter": {
             "$ref": "#/components/schemas/v1EdgesSummaryPostRequestFilter"
+          },
+          "showExcluded": {
+            "type": "boolean",
+            "example": true,
+            "description": "Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false."
           }
         },
         "additionalProperties": false
@@ -34748,6 +35427,154 @@
         },
         "additionalProperties": false
       },
+      "v2MonitoringFecStatsGetResponse": {
+        "type": "object",
+        "properties": {
+          "currentRepairLevel": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "effectiveQoe": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "rxRepairLevelHistogram": {
+            "$ref": "#/components/schemas/statsmonV2FecRxRepairLevel"
+          },
+          "rxStats": {
+            "$ref": "#/components/schemas/statsmonV2FecRxStats"
+          },
+          "txRepairLevelHistogram": {
+            "$ref": "#/components/schemas/statsmonV2FecTxRepairLevel"
+          },
+          "txStats": {
+            "$ref": "#/components/schemas/statsmonV2FecTxStats"
+          },
+          "unrepairableRate": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2FecRxRepairLevel": {
+        "type": "object",
+        "properties": {
+          "repairLevel": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/statsmonV2RepairLevel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2RepairLevel": {
+        "type": "object",
+        "properties": {
+          "sample": {
+            "$ref": "#/components/schemas/statsmonV2StatsSample"
+          },
+          "score": {
+            "$ref": "#/components/schemas/statsmonV2RepairLevelScore"
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2RepairLevelScore": {
+        "type": "object",
+        "properties": {
+          "jitter": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "latency": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "loss": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2FecRxStats": {
+        "type": "object",
+        "properties": {
+          "erasureRecoveredPackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          },
+          "erasureUnrepairablePackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          },
+          "repairLevel": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "repairPackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2FecTxRepairLevel": {
+        "type": "object",
+        "properties": {
+          "repairLevel": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/statsmonV2RepairLevel"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2FecTxStats": {
+        "type": "object",
+        "properties": {
+          "protectedPackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          },
+          "repairLevel": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "sentRepairPackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          },
+          "unprotectedPackets": {
+            "type": "integer",
+            "format": "int64",
+            "example": 12345678910,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
       "v1LogsPostRequest": {
         "type": "object",
         "properties": {
@@ -39099,7 +39926,7 @@
             }
           }
         },
-        "description": "List Conceal agents (devices) with pagination and filters."
+        "description": "List ZTAgent agents (devices) with pagination and filters."
       }
     },
     "/v1/ztagent/bindings": {
@@ -48596,6 +49423,17 @@
               "type": "string"
             },
             "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "showExcluded",
+            "in": "query",
+            "description": "Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": true
+            },
+            "example": true
           }
         ],
         "responses": {
@@ -55423,6 +56261,893 @@
         "description": "Get VRRP monitoring table for a device"
       }
     },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/abort": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "In-progress job id to abort",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdAbortPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdAbortPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Abort an in-progress playbook job"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/approve": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Job id in DRY_RUN_COMPLETE to approve for deploy",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdApprovePutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdApprovePutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Gate: execute play (deploy) after dry-run passes"
+      }
+    },
+    "/v1/sdk-automation/playbook/configs": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Validate & create a config (validate_only=true skips persist for Validate Bundle)"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "nameContains",
+            "in": "query",
+            "description": "Optional filter: case-insensitive substring match on config display name; empty returns all",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "after",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "first",
+            "in": "query",
+            "description": "",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "format": "int32",
+              "example": 123,
+              "minimum": 0
+            }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Optional status filter (e.g. STAGED, PAUSED); empty returns all",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "ENUM_VALUE"
+              },
+              "example": [
+                "example"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Pending Executions table"
+      }
+    },
+    "/v1/sdk-automation/playbook/configs/{configId}": {
+      "delete": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Config id to delete",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          }
+        },
+        "description": "Delete a playbook config"
+      },
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Config id to fetch",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a playbook config including its module YAML files"
+      },
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Config id from the URL path (:configId)",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdPutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdPutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Validate & update config YAML"
+      }
+    },
+    "/v1/sdk-automation/playbook/templates": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "bundleKey",
+            "in": "query",
+            "description": "Catalog key from playbook_catalog_playbook (e.g. system_bundle)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "moduleKeys",
+            "in": "query",
+            "description": "Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "example string"
+              },
+              "example": [
+                "example"
+              ]
+            },
+            "style": "form",
+            "explode": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookTemplatesGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Download starter playbook & sample config templates for a bundle"
+      }
+    },
+    "/v1/sdk-automation/playbook/configs/{configId}/dry-run": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Config id whose latest dry-run job status is requested",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the latest dry-run / pipeline job status for a config"
+      },
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Staged config id to dry-run",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdDryRunPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Mandatory dry-run; creates a job, runs ansible --check"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Job id to fetch",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get a playbook job by id"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/logs": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Job id whose logs are requested",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          {
+            "name": "phase",
+            "in": "query",
+            "description": "Optional phase filter (dry_run / deploy / post_deploy_check); unset returns all",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "ENUM_VALUE"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdLogsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get masked ansible logs for a job, optionally filtered by phase"
+      }
+    },
+    "/v1/sdk-automation/playbook/bundles": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookBundlesGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List catalog bundles for the UI picklist"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "nameContains",
+            "in": "query",
+            "description": "Optional filter: case-insensitive substring match on the owning config's display name; empty returns all",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List playbook job history"
+      }
+    },
+    "/v1/sdk-automation/playbook/module-slots": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "bundleKey",
+            "in": "query",
+            "description": "Catalog key from playbook_catalog_playbook (e.g. system_bundle)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookModuleSlotsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "List module slots for a catalog bundle"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/run": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Prior job id whose config is re-run",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdRunPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdRunPostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Re-run; starts from dry-run unless skip_dry_run=true"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/resume": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Job id parked in AWAITING_REAUTH to resume",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdResumePostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdResumePostResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Resume a run parked in awaiting_reauth with the caller's re-authed token"
+      }
+    },
+    "/v1/sdk-automation/playbook/configs/{configId}/stage": {
+      "put": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "configId",
+            "in": "path",
+            "required": true,
+            "description": "Config id to stage",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdStagePutRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookConfigsConfigIdStagePutResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Save name + notes and mark config as staged (must already be validated)"
+      }
+    },
     "/v1/edges-hardware/assigned": {
       "get": {
         "security": [
@@ -55498,6 +57223,17 @@
             "name": "isRequested",
             "in": "query",
             "description": "",
+            "required": false,
+            "schema": {
+              "type": "boolean",
+              "example": true
+            },
+            "example": true
+          },
+          {
+            "name": "showExcluded",
+            "in": "query",
+            "description": "Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.",
             "required": false,
             "schema": {
               "type": "boolean",
@@ -57393,6 +59129,39 @@
           }
         },
         "description": "Returns a list of Statuses objects indicating the availability/reachability of the Server IP addresses from the Sites configured to the Provider or Consumer of the service.Healthy status indicates the Site can reach all the Server IP Addresses.Impaired status indicates that the Site can reach only a subset of Server IP addresses.Down status indicates the Site can reach none of the Server IP addresses."
+      }
+    },
+    "/v2/monitoring/fec-stats": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2MonitoringFecStatsGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Returns the FEC stats for the given device"
       }
     },
     "/v2/monitoring/ipsec": {

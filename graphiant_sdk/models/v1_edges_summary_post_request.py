@@ -17,7 +17,7 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict
+from pydantic import BaseModel, ConfigDict, Field, StrictBool
 from typing import Any, ClassVar, Dict, List, Optional
 from graphiant_sdk.models.v1_edges_summary_post_request_filter import V1EdgesSummaryPostRequestFilter
 from typing import Optional, Set
@@ -29,7 +29,8 @@ class V1EdgesSummaryPostRequest(BaseModel):
     V1EdgesSummaryPostRequest
     """ # noqa: E501
     filter: Optional[V1EdgesSummaryPostRequestFilter] = None
-    __properties: ClassVar[List[str]] = ["filter"]
+    show_excluded: Optional[StrictBool] = Field(default=None, description="Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false.", alias="showExcluded", json_schema_extra={"examples": [True]})
+    __properties: ClassVar[List[str]] = ["filter", "showExcluded"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,7 +86,8 @@ class V1EdgesSummaryPostRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "filter": V1EdgesSummaryPostRequestFilter.from_dict(obj["filter"]) if obj.get("filter") is not None else None
+            "filter": V1EdgesSummaryPostRequestFilter.from_dict(obj["filter"]) if obj.get("filter") is not None else None,
+            "showExcluded": obj.get("showExcluded")
         })
         return _obj
 

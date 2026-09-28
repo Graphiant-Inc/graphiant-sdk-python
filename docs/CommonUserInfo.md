@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**bearer_token** | **str** |  | [optional] 
 **enterprise_id** | **int** |  | [optional] 
 **exp** | **int** |  | [optional] 
 **original_enterprise_id** | **int** |  | [optional] 

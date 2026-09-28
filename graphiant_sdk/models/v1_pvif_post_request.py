@@ -38,7 +38,7 @@ class V1PvifPostRequest(BaseModel):
     lan_segment_id: StrictInt = Field(description="Producer LAN segment (VRF) on gateway appliances (required)", alias="lanSegmentId", json_schema_extra={"examples": [1234567891011]})
     nat_prefix_strategy: ManaV2PublicVifGatewayNatPrefixStrategy = Field(alias="natPrefixStrategy")
     region_id: StrictInt = Field(description="Graphiant region for gateway appliances (required)", alias="regionId", json_schema_extra={"examples": [123]})
-    service_name: StrictStr = Field(description="Service display name (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
+    service_name: StrictStr = Field(description="Producer service name (letters, digits, hyphens only) (required)", alias="serviceName", json_schema_extra={"examples": ["example string"]})
     storage_provider: StrictStr = Field(description="Storage provider; each gateway appliance must match region and provider (required)", alias="storageProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
     __properties: ClassVar[List[str]] = ["advertisement", "consumerLanSegments", "coveringPrefixes", "gatewayBgpNeighbors", "lanSegmentId", "natPrefixStrategy", "regionId", "serviceName", "storageProvider"]
 

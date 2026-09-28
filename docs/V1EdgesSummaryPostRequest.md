@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **filter** | [**V1EdgesSummaryPostRequestFilter**](V1EdgesSummaryPostRequestFilter.md) |  | [optional] 
+**show_excluded** | **bool** | Include devices excluded from Graphiant API lists. Ignored for non-Graphiant callers. Default false. | [optional] 
 
 ## Example
 

@@ -33,6 +33,7 @@ class IamEnterprise(BaseModel):
     accept_eula: Optional[StrictBool] = Field(default=None, alias="acceptEula", json_schema_extra={"examples": [True]})
     account_type: Optional[StrictStr] = Field(default=None, alias="accountType", json_schema_extra={"examples": ["ENUM_VALUE"]})
     admin_email: Optional[StrictStr] = Field(default=None, alias="adminEmail", json_schema_extra={"examples": ["example string"]})
+    backbone_apis_enabled: Optional[StrictBool] = Field(default=None, alias="backboneApisEnabled", json_schema_extra={"examples": [True]})
     cloud_provider: Optional[StrictStr] = Field(default=None, alias="cloudProvider", json_schema_extra={"examples": ["ENUM_VALUE"]})
     company_name: Optional[StrictStr] = Field(default=None, alias="companyName", json_schema_extra={"examples": ["example string"]})
     counts: Optional[IamCounts] = None
@@ -50,7 +51,7 @@ class IamEnterprise(BaseModel):
     proxy_tenant_id: Optional[StrictInt] = Field(default=None, alias="proxyTenantId", json_schema_extra={"examples": [1234567891011]})
     small_logo: Optional[StrictStr] = Field(default=None, alias="smallLogo", json_schema_extra={"examples": ["example string"]})
     token_expiry: Optional[StrictStr] = Field(default=None, alias="tokenExpiry", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["acceptEula", "accountType", "adminEmail", "cloudProvider", "companyName", "counts", "creditLimit", "customers", "description", "enterpriseId", "eulaAgreementDate", "impersonationEnabled", "logo", "marketplaceId", "parentCompanyName", "parentEnterpriseId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
+    __properties: ClassVar[List[str]] = ["acceptEula", "accountType", "adminEmail", "backboneApisEnabled", "cloudProvider", "companyName", "counts", "creditLimit", "customers", "description", "enterpriseId", "eulaAgreementDate", "impersonationEnabled", "logo", "marketplaceId", "parentCompanyName", "parentEnterpriseId", "portalBanner", "proxyTenantId", "smallLogo", "tokenExpiry"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -119,6 +120,7 @@ class IamEnterprise(BaseModel):
             "acceptEula": obj.get("acceptEula"),
             "accountType": obj.get("accountType"),
             "adminEmail": obj.get("adminEmail"),
+            "backboneApisEnabled": obj.get("backboneApisEnabled"),
             "cloudProvider": obj.get("cloudProvider"),
             "companyName": obj.get("companyName"),
             "counts": IamCounts.from_dict(obj["counts"]) if obj.get("counts") is not None else None,
