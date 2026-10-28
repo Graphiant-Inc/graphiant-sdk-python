@@ -23,6 +23,7 @@ from graphiant_sdk.models.statsmon_v2_fec_rx_repair_level import StatsmonV2FecRx
 from graphiant_sdk.models.statsmon_v2_fec_rx_stats import StatsmonV2FecRxStats
 from graphiant_sdk.models.statsmon_v2_fec_tx_repair_level import StatsmonV2FecTxRepairLevel
 from graphiant_sdk.models.statsmon_v2_fec_tx_stats import StatsmonV2FecTxStats
+from graphiant_sdk.models.statsmon_v2_repair_level_score import StatsmonV2RepairLevelScore
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -32,13 +33,15 @@ class V2MonitoringFecStatsGetResponse(BaseModel):
     V2MonitoringFecStatsGetResponse
     """ # noqa: E501
     current_repair_level: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="currentRepairLevel", json_schema_extra={"examples": [12.34]})
+    current_rx_sla_metrics_with_repair: Optional[StatsmonV2RepairLevelScore] = Field(default=None, alias="currentRxSlaMetricsWithRepair")
+    current_tx_sla_metrics_with_repair: Optional[StatsmonV2RepairLevelScore] = Field(default=None, alias="currentTxSlaMetricsWithRepair")
     effective_qoe: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="effectiveQoe", json_schema_extra={"examples": [12.34]})
     rx_repair_level_histogram: Optional[StatsmonV2FecRxRepairLevel] = Field(default=None, alias="rxRepairLevelHistogram")
     rx_stats: Optional[StatsmonV2FecRxStats] = Field(default=None, alias="rxStats")
     tx_repair_level_histogram: Optional[StatsmonV2FecTxRepairLevel] = Field(default=None, alias="txRepairLevelHistogram")
     tx_stats: Optional[StatsmonV2FecTxStats] = Field(default=None, alias="txStats")
     unrepairable_rate: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, alias="unrepairableRate", json_schema_extra={"examples": [12.34]})
-    __properties: ClassVar[List[str]] = ["currentRepairLevel", "effectiveQoe", "rxRepairLevelHistogram", "rxStats", "txRepairLevelHistogram", "txStats", "unrepairableRate"]
+    __properties: ClassVar[List[str]] = ["currentRepairLevel", "currentRxSlaMetricsWithRepair", "currentTxSlaMetricsWithRepair", "effectiveQoe", "rxRepairLevelHistogram", "rxStats", "txRepairLevelHistogram", "txStats", "unrepairableRate"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -79,6 +82,12 @@ class V2MonitoringFecStatsGetResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of current_rx_sla_metrics_with_repair
+        if self.current_rx_sla_metrics_with_repair:
+            _dict['currentRxSlaMetricsWithRepair'] = self.current_rx_sla_metrics_with_repair.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of current_tx_sla_metrics_with_repair
+        if self.current_tx_sla_metrics_with_repair:
+            _dict['currentTxSlaMetricsWithRepair'] = self.current_tx_sla_metrics_with_repair.to_dict()
         # override the default output from pydantic by calling `to_dict()` of rx_repair_level_histogram
         if self.rx_repair_level_histogram:
             _dict['rxRepairLevelHistogram'] = self.rx_repair_level_histogram.to_dict()
@@ -104,6 +113,8 @@ class V2MonitoringFecStatsGetResponse(BaseModel):
 
         _obj = cls.model_validate({
             "currentRepairLevel": obj.get("currentRepairLevel"),
+            "currentRxSlaMetricsWithRepair": StatsmonV2RepairLevelScore.from_dict(obj["currentRxSlaMetricsWithRepair"]) if obj.get("currentRxSlaMetricsWithRepair") is not None else None,
+            "currentTxSlaMetricsWithRepair": StatsmonV2RepairLevelScore.from_dict(obj["currentTxSlaMetricsWithRepair"]) if obj.get("currentTxSlaMetricsWithRepair") is not None else None,
             "effectiveQoe": obj.get("effectiveQoe"),
             "rxRepairLevelHistogram": StatsmonV2FecRxRepairLevel.from_dict(obj["rxRepairLevelHistogram"]) if obj.get("rxRepairLevelHistogram") is not None else None,
             "rxStats": StatsmonV2FecRxStats.from_dict(obj["rxStats"]) if obj.get("rxStats") is not None else None,

@@ -23,6 +23,7 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **oper_updated_at** | [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **parent_mac_address** | **str** |  | [optional] 
+**pppoe_interfaces** | [**List[ManaV2Interface]**](ManaV2Interface.md) |  | [optional] 
 **security_zone** | **str** |  | [optional] 
 **speed_mbps** | **int** |  | [optional] 
 **tcp_mss** | **int** |  | [optional] 

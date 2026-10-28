@@ -22,6 +22,7 @@ Name | Type | Description | Notes
 **ipsec** | [**ManaV2InterfaceIPsecConfig**](ManaV2InterfaceIPsecConfig.md) |  | [optional] 
 **ipv4** | [**ManaV2InterfaceIpConfig**](ManaV2InterfaceIpConfig.md) |  | [optional] 
 **ipv6** | [**ManaV2InterfaceIpConfig**](ManaV2InterfaceIpConfig.md) |  | [optional] 
+**is_maintenance_wan** | **bool** |  | [optional] 
 **lan** | **str** |  | [optional] 
 **lldp_enabled** | **bool** |  | [optional] 
 **loopback** | **bool** |  | [optional] 

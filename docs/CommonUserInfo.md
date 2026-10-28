@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**account_type** | **str** |  | [optional] 
 **bearer_token** | **str** |  | [optional] 
 **enterprise_id** | **int** |  | [optional] 
 **exp** | **int** |  | [optional] 

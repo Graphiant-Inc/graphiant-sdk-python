@@ -24,6 +24,7 @@ from graphiant_sdk.models.mana_v2_interface_i_psec_config import ManaV2Interface
 from graphiant_sdk.models.mana_v2_interface_ip_config import ManaV2InterfaceIpConfig
 from graphiant_sdk.models.mana_v2_nullable_interface_vlan_config import ManaV2NullableInterfaceVlanConfig
 from graphiant_sdk.models.mana_v2_nullable_ma_csec_configuration import ManaV2NullableMaCsecConfiguration
+from graphiant_sdk.models.mana_v2_nullable_pp_po_e_interface_config import ManaV2NullablePpPoEInterfaceConfig
 from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v4 import ManaV2NullableTcpMssV4
 from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v6 import ManaV2NullableTcpMssV6
 from typing import Optional, Set
@@ -47,6 +48,7 @@ class ManaV2InterfaceConfig(BaseModel):
     loopback: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
     macsec: Optional[ManaV2NullableMaCsecConfiguration] = None
     max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
+    pppoe_interfaces: Optional[Dict[str, ManaV2NullablePpPoEInterfaceConfig]] = Field(default=None, alias="pppoeInterfaces")
     security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
     speed: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
     subinterfaces: Optional[Dict[str, ManaV2NullableInterfaceVlanConfig]] = None
@@ -55,7 +57,7 @@ class ManaV2InterfaceConfig(BaseModel):
     tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
     v4_tcp_mss: Optional[ManaV2NullableTcpMssV4] = Field(default=None, alias="v4TcpMss")
     v6_tcp_mss: Optional[ManaV2NullableTcpMssV6] = Field(default=None, alias="v6TcpMss")
-    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "description", "duplex", "ipsec", "ipv4", "ipv6", "lan", "lldpEnabled", "loopback", "macsec", "maxTransmissionUnit", "securityZone", "speed", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "v4TcpMss", "v6TcpMss"]
+    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "description", "duplex", "ipsec", "ipv4", "ipv6", "lan", "lldpEnabled", "loopback", "macsec", "maxTransmissionUnit", "pppoeInterfaces", "securityZone", "speed", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "v4TcpMss", "v6TcpMss"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -108,6 +110,13 @@ class ManaV2InterfaceConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of macsec
         if self.macsec:
             _dict['macsec'] = self.macsec.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each value in pppoe_interfaces (dict)
+        _field_dict = {}
+        if self.pppoe_interfaces:
+            for _key_pppoe_interfaces in self.pppoe_interfaces:
+                if self.pppoe_interfaces[_key_pppoe_interfaces]:
+                    _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict()
+            _dict['pppoeInterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in subinterfaces (dict)
         _field_dict = {}
         if self.subinterfaces:
@@ -146,6 +155,12 @@ class ManaV2InterfaceConfig(BaseModel):
             "loopback": obj.get("loopback"),
             "macsec": ManaV2NullableMaCsecConfiguration.from_dict(obj["macsec"]) if obj.get("macsec") is not None else None,
             "maxTransmissionUnit": obj.get("maxTransmissionUnit"),
+            "pppoeInterfaces": dict(
+                (_k, ManaV2NullablePpPoEInterfaceConfig.from_dict(_v))
+                for _k, _v in obj["pppoeInterfaces"].items()
+            )
+            if obj.get("pppoeInterfaces") is not None
+            else None,
             "securityZone": obj.get("securityZone"),
             "speed": obj.get("speed"),
             "subinterfaces": dict(

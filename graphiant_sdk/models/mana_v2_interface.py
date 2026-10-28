@@ -25,8 +25,8 @@ from graphiant_sdk.models.mana_v2_interface_address import ManaV2InterfaceAddres
 from graphiant_sdk.models.mana_v2_interface_i_psec import ManaV2InterfaceIPsec
 from graphiant_sdk.models.mana_v2_interface_ma_csec import ManaV2InterfaceMaCsec
 from graphiant_sdk.models.mana_v2_interface_sfp_optical_strength import ManaV2InterfaceSfpOpticalStrength
-from graphiant_sdk.models.mana_v2_interface_vlan import ManaV2InterfaceVlan
 from graphiant_sdk.models.mana_v2_lag_interface import ManaV2LagInterface
+from graphiant_sdk.models.mana_v2_pp_po_e_interface import ManaV2PpPoEInterface
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -58,6 +58,8 @@ class ManaV2Interface(BaseModel):
     name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     oper_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="operUpdatedAt")
     phy_address: Optional[StrictStr] = Field(default=None, alias="phyAddress", json_schema_extra={"examples": ["example string"]})
+    pppoe_interface: Optional[ManaV2PpPoEInterface] = Field(default=None, alias="pppoeInterface")
+    pppoe_interfaces: Optional[List[ManaV2Interface]] = Field(default=None, alias="pppoeInterfaces")
     protocol: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["ENUM_VALUE"]})
     security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
     sfp_optical_strength: Optional[List[ManaV2InterfaceSfpOpticalStrength]] = Field(default=None, alias="sfpOpticalStrength")
@@ -70,7 +72,7 @@ class ManaV2Interface(BaseModel):
     up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
     vrf_function_id: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="vrfFunctionId", json_schema_extra={"examples": [123]})
     vrf_name: Optional[StrictStr] = Field(default=None, alias="vrfName", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["alias", "circuit", "circuitName", "configUpdatedAt", "configuredMaxTransmissionUnit", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipSec", "ipv4", "ipv6", "ipv6Addresses", "lagInterface", "lan", "lldpEnabled", "macsec", "maxTransmissionUnit", "name", "operUpdatedAt", "phyAddress", "protocol", "securityZone", "sfpOpticalStrength", "speedMbps", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "type", "up", "vrfFunctionId", "vrfName"]
+    __properties: ClassVar[List[str]] = ["alias", "circuit", "circuitName", "configUpdatedAt", "configuredMaxTransmissionUnit", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipSec", "ipv4", "ipv6", "ipv6Addresses", "lagInterface", "lan", "lldpEnabled", "macsec", "maxTransmissionUnit", "name", "operUpdatedAt", "phyAddress", "pppoeInterface", "pppoeInterfaces", "protocol", "securityZone", "sfpOpticalStrength", "speedMbps", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "type", "up", "vrfFunctionId", "vrfName"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -139,6 +141,16 @@ class ManaV2Interface(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of oper_updated_at
         if self.oper_updated_at:
             _dict['operUpdatedAt'] = self.oper_updated_at.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of pppoe_interface
+        if self.pppoe_interface:
+            _dict['pppoeInterface'] = self.pppoe_interface.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in pppoe_interfaces (list)
+        _items = []
+        if self.pppoe_interfaces:
+            for _item_pppoe_interfaces in self.pppoe_interfaces:
+                if _item_pppoe_interfaces:
+                    _items.append(_item_pppoe_interfaces.to_dict())
+            _dict['pppoeInterfaces'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sfp_optical_strength (list)
         _items = []
         if self.sfp_optical_strength:
@@ -188,6 +200,8 @@ class ManaV2Interface(BaseModel):
             "name": obj.get("name"),
             "operUpdatedAt": GoogleProtobufTimestamp.from_dict(obj["operUpdatedAt"]) if obj.get("operUpdatedAt") is not None else None,
             "phyAddress": obj.get("phyAddress"),
+            "pppoeInterface": ManaV2PpPoEInterface.from_dict(obj["pppoeInterface"]) if obj.get("pppoeInterface") is not None else None,
+            "pppoeInterfaces": [ManaV2Interface.from_dict(_item) for _item in obj["pppoeInterfaces"]] if obj.get("pppoeInterfaces") is not None else None,
             "protocol": obj.get("protocol"),
             "securityZone": obj.get("securityZone"),
             "sfpOpticalStrength": [ManaV2InterfaceSfpOpticalStrength.from_dict(_item) for _item in obj["sfpOpticalStrength"]] if obj.get("sfpOpticalStrength") is not None else None,
@@ -203,4 +217,7 @@ class ManaV2Interface(BaseModel):
         })
         return _obj
 
+from graphiant_sdk.models.mana_v2_interface_vlan import ManaV2InterfaceVlan
+# TODO: Rewrite to not use raise_errors
+ManaV2Interface.model_rebuild(raise_errors=False)
 

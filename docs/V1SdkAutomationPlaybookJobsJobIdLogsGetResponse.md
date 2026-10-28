@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **lines** | **List[str]** |  | [optional] 
+**page_info** | [**CommonPageInfo**](CommonPageInfo.md) |  | [optional] 
 
 ## Example
 

@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **loopback** | **bool** |  | [optional] 
 **macsec** | [**ManaV2NullableMaCsecConfiguration**](ManaV2NullableMaCsecConfiguration.md) |  | [optional] 
 **max_transmission_unit** | **int** |  | [optional] 
+**pppoe_interfaces** | [**Dict[str, ManaV2NullablePpPoEInterfaceConfig]**](ManaV2NullablePpPoEInterfaceConfig.md) |  | [optional] 
 **security_zone** | **str** |  | [optional] 
 **speed** | **int** |  | [optional] 
 **subinterfaces** | [**Dict[str, ManaV2NullableInterfaceVlanConfig]**](ManaV2NullableInterfaceVlanConfig.md) |  | [optional] 

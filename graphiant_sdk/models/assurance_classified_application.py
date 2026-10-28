@@ -28,11 +28,12 @@ class AssuranceClassifiedApplication(BaseModel):
     AssuranceClassifiedApplication
     """ # noqa: E501
     app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
+    category: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     classification_entry_id: Optional[StrictStr] = Field(default=None, alias="classificationEntryId", json_schema_extra={"examples": ["example string"]})
     ip_prefix_list: Optional[List[StrictStr]] = Field(default=None, alias="ipPrefixList")
     port_list: Optional[List[StrictStr]] = Field(default=None, alias="portList")
     protocol_list: Optional[List[StrictStr]] = Field(default=None, alias="protocolList")
-    __properties: ClassVar[List[str]] = ["appName", "classificationEntryId", "ipPrefixList", "portList", "protocolList"]
+    __properties: ClassVar[List[str]] = ["appName", "category", "classificationEntryId", "ipPrefixList", "portList", "protocolList"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +87,7 @@ class AssuranceClassifiedApplication(BaseModel):
 
         _obj = cls.model_validate({
             "appName": obj.get("appName"),
+            "category": obj.get("category"),
             "classificationEntryId": obj.get("classificationEntryId"),
             "ipPrefixList": obj.get("ipPrefixList"),
             "portList": obj.get("portList"),

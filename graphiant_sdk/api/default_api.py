@@ -490,6 +490,7 @@ from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_req
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_response import V1SdkAutomationPlaybookJobsJobIdResumePostResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_request import V1SdkAutomationPlaybookJobsJobIdRunPostRequest
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_response import V1SdkAutomationPlaybookJobsJobIdRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_snapshot_get_response import V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_module_slots_get_response import V1SdkAutomationPlaybookModuleSlotsGetResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_templates_get_response import V1SdkAutomationPlaybookTemplatesGetResponse
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse
@@ -580,6 +581,7 @@ from graphiant_sdk.models.v2_assurance_bucket_topologies_post_request import V2A
 from graphiant_sdk.models.v2_assurance_bucket_topologies_post_response import V2AssuranceBucketTopologiesPostResponse
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_request import V2AssuranceBucketdetailsPostRequest
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_response import V2AssuranceBucketdetailsPostResponse
+from graphiant_sdk.models.v2_assurance_categorize_ai_app_post_request import V2AssuranceCategorizeAiAppPostRequest
 from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_request import V2AssuranceCreateAiAdoptionApproveEntryPostRequest
 from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_response import V2AssuranceCreateAiAdoptionApproveEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_request import V2AssuranceCreateDnsproxyEntryPostRequest
@@ -595,6 +597,7 @@ from graphiant_sdk.models.v2_assurance_get_app_names_post_request import V2Assur
 from graphiant_sdk.models.v2_assurance_get_app_names_post_response import V2AssuranceGetAppNamesPostResponse
 from graphiant_sdk.models.v2_assurance_getclassifiedapplicationlist_get_response import V2AssuranceGetclassifiedapplicationlistGetResponse
 from graphiant_sdk.models.v2_assurance_read_ai_adoption_approve_entries_get_response import V2AssuranceReadAiAdoptionApproveEntriesGetResponse
+from graphiant_sdk.models.v2_assurance_read_ai_adoption_category_entries_get_response import V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
 from graphiant_sdk.models.v2_assurance_read_dnsproxy_list_get_response import V2AssuranceReadDnsproxyListGetResponse
 from graphiant_sdk.models.v2_assurance_read_user_report_list_get_response import V2AssuranceReadUserReportListGetResponse
 from graphiant_sdk.models.v2_assurance_scoredetails_post_request import V2AssuranceScoredetailsPostRequest
@@ -5843,7 +5846,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthMfaPost500Response",
+            '500': "V1AuthLoginCallbackPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5915,7 +5918,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthMfaPost500Response",
+            '500': "V1AuthLoginCallbackPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -5987,7 +5990,7 @@ class DefaultApi:
         _response_types_map: Dict[str, Optional[str]] = {
             '302': None,
             '401': "V1AuthErrorPostResponse",
-            '500': "V1AuthMfaPost500Response",
+            '500': "V1AuthLoginCallbackPost500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6691,8 +6694,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthMfaPost500Response",
-            '500': "V1AuthMfaPost500Response",
+            '401': "V1AuthLoginSamlGet401Response",
+            '500': "V1AuthLoginSamlGet500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6763,8 +6766,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthMfaPost500Response",
-            '500': "V1AuthMfaPost500Response",
+            '401': "V1AuthLoginSamlGet401Response",
+            '500': "V1AuthLoginSamlGet500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -6835,8 +6838,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': None,
-            '401': "V1AuthMfaPost500Response",
-            '500': "V1AuthMfaPost500Response",
+            '401': "V1AuthLoginSamlGet401Response",
+            '500': "V1AuthLoginSamlGet500Response",
         }
         response_data = self.api_client.call_api(
             *_param,
@@ -9168,8 +9171,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthRefreshGet403Response",
+            '422': "V1AuthRefreshGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9241,8 +9244,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthRefreshGet403Response",
+            '422': "V1AuthRefreshGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9314,8 +9317,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "V1AuthRefreshGet200Response",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthRefreshGet403Response",
+            '422': "V1AuthRefreshGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9452,8 +9455,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9525,8 +9528,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9598,8 +9601,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9732,8 +9735,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9801,8 +9804,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -9870,8 +9873,8 @@ class DefaultApi:
 
         _response_types_map: Dict[str, Optional[str]] = {
             '200': "object",
-            '403': "V1AuthMfaPost500Response",
-            '422': "V1AuthMfaPost500Response",
+            '403': "V1AuthSessionGet403Response",
+            '422': "V1AuthSessionGet422Response",
             '500': "V1AuthMfaPost500Response",
         }
         response_data = self.api_client.call_api(
@@ -23098,7 +23101,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23173,7 +23176,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23248,7 +23251,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -23328,7 +23331,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'vrfNames': 'multi',
+            'vrfNames': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -25317,7 +25320,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25392,7 +25395,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25467,7 +25470,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_names: Annotated[List[StrictStr], Field(description="Valid configured VRF name")],
+        vrf_names: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF name")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -25547,7 +25550,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'vrfNames': 'multi',
+            'vrfNames': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -25613,7 +25616,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_name: Annotated[List[StrictStr], Field(description="Valid configured VRF names")],
+        vrf_name: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF names")],
         body: Dict[str, Any],
         _request_timeout: Union[
             None,
@@ -25692,7 +25695,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_name: Annotated[List[StrictStr], Field(description="Valid configured VRF names")],
+        vrf_name: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF names")],
         body: Dict[str, Any],
         _request_timeout: Union[
             None,
@@ -25771,7 +25774,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        vrf_name: Annotated[List[StrictStr], Field(description="Valid configured VRF names")],
+        vrf_name: Annotated[List[List[StrictStr]], Field(description="Valid configured VRF names")],
         body: Dict[str, Any],
         _request_timeout: Union[
             None,
@@ -25856,7 +25859,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'vrfName': 'multi',
+            'vrfName': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -30169,7 +30172,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: StrictInt,
-        circuit_names: Annotated[Optional[List[StrictStr]], Field(description="Circuit name configured of wan interface")] = None,
+        circuit_names: Annotated[Optional[List[List[StrictStr]]], Field(description="Circuit name configured of wan interface")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30244,7 +30247,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: StrictInt,
-        circuit_names: Annotated[Optional[List[StrictStr]], Field(description="Circuit name configured of wan interface")] = None,
+        circuit_names: Annotated[Optional[List[List[StrictStr]]], Field(description="Circuit name configured of wan interface")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30319,7 +30322,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: StrictInt,
-        circuit_names: Annotated[Optional[List[StrictStr]], Field(description="Circuit name configured of wan interface")] = None,
+        circuit_names: Annotated[Optional[List[List[StrictStr]]], Field(description="Circuit name configured of wan interface")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -30399,7 +30402,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'circuitNames': 'multi',
+            'circuitNames': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -38373,7 +38376,7 @@ class DefaultApi:
     def v1_devices_inventory_serial_num_delete(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        device_serials: Optional[List[StrictStr]] = None,
+        device_serials: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38443,7 +38446,7 @@ class DefaultApi:
     def v1_devices_inventory_serial_num_delete_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        device_serials: Optional[List[StrictStr]] = None,
+        device_serials: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38513,7 +38516,7 @@ class DefaultApi:
     def v1_devices_inventory_serial_num_delete_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        device_serials: Optional[List[StrictStr]] = None,
+        device_serials: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -38588,7 +38591,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'deviceSerials': 'multi',
+            'deviceSerials': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -39828,7 +39831,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        protocols: Annotated[List[StrictStr], Field(description="List of protocols names for which route count is needed")],
+        protocols: Annotated[List[List[StrictStr]], Field(description="List of protocols names for which route count is needed")],
         vrf_name: Annotated[StrictStr, Field(description="Valid configured VRF names")],
         _request_timeout: Union[
             None,
@@ -39907,7 +39910,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        protocols: Annotated[List[StrictStr], Field(description="List of protocols names for which route count is needed")],
+        protocols: Annotated[List[List[StrictStr]], Field(description="List of protocols names for which route count is needed")],
         vrf_name: Annotated[StrictStr, Field(description="Valid configured VRF names")],
         _request_timeout: Union[
             None,
@@ -39986,7 +39989,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Annotated[StrictInt, Field(description="Valid configured device ID > 0")],
-        protocols: Annotated[List[StrictStr], Field(description="List of protocols names for which route count is needed")],
+        protocols: Annotated[List[List[StrictStr]], Field(description="List of protocols names for which route count is needed")],
         vrf_name: Annotated[StrictStr, Field(description="Valid configured VRF names")],
         _request_timeout: Union[
             None,
@@ -40071,7 +40074,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'protocols': 'multi',
+            'protocols': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -51232,7 +51235,7 @@ class DefaultApi:
     def v1_enterprises_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        enterprise_ids: Annotated[Optional[List[StrictInt]], Field(description="Lists enterprises")] = None,
+        enterprise_ids: Annotated[Optional[List[List[StrictInt]]], Field(description="Lists enterprises")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51303,7 +51306,7 @@ class DefaultApi:
     def v1_enterprises_get_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        enterprise_ids: Annotated[Optional[List[StrictInt]], Field(description="Lists enterprises")] = None,
+        enterprise_ids: Annotated[Optional[List[List[StrictInt]]], Field(description="Lists enterprises")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51374,7 +51377,7 @@ class DefaultApi:
     def v1_enterprises_get_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        enterprise_ids: Annotated[Optional[List[StrictInt]], Field(description="Lists enterprises")] = None,
+        enterprise_ids: Annotated[Optional[List[List[StrictInt]]], Field(description="Lists enterprises")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -51450,7 +51453,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'enterpriseIds': 'multi',
+            'enterpriseIds': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -98860,7 +98863,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Optional[StrictInt] = None,
-        device_ids: Optional[List[StrictInt]] = None,
+        device_ids: Optional[List[List[StrictInt]]] = None,
         filter: Optional[StrictStr] = None,
         gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -98943,7 +98946,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Optional[StrictInt] = None,
-        device_ids: Optional[List[StrictInt]] = None,
+        device_ids: Optional[List[List[StrictInt]]] = None,
         filter: Optional[StrictStr] = None,
         gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -99026,7 +99029,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         device_id: Optional[StrictInt] = None,
-        device_ids: Optional[List[StrictInt]] = None,
+        device_ids: Optional[List[List[StrictInt]]] = None,
         filter: Optional[StrictStr] = None,
         gateway_cloud_provider: Optional[StrictStr] = None,
         _request_timeout: Union[
@@ -99116,7 +99119,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'deviceIds': 'multi',
+            'deviceIds': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -108303,7 +108306,7 @@ class DefaultApi:
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
         after: Optional[StrictStr] = None,
         first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
-        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -108386,7 +108389,7 @@ class DefaultApi:
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
         after: Optional[StrictStr] = None,
         first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
-        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -108469,7 +108472,7 @@ class DefaultApi:
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on config display name; empty returns all")] = None,
         after: Optional[StrictStr] = None,
         first: Optional[Annotated[int, Field(strict=True, ge=0)]] = None,
-        status: Annotated[Optional[List[StrictStr]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. STAGED, PAUSED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -108557,7 +108560,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'status': 'multi',
+            'status': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -108920,6 +108923,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. COMPLETE, FAILED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -108941,6 +108945,8 @@ class DefaultApi:
         :type authorization: str
         :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
         :type name_contains: str
+        :param status: Optional status filter (e.g. COMPLETE, FAILED); empty returns all
+        :type status: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -108966,6 +108972,7 @@ class DefaultApi:
         _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
             authorization=authorization,
             name_contains=name_contains,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -108991,6 +108998,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. COMPLETE, FAILED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -109012,6 +109020,8 @@ class DefaultApi:
         :type authorization: str
         :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
         :type name_contains: str
+        :param status: Optional status filter (e.g. COMPLETE, FAILED); empty returns all
+        :type status: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -109037,6 +109047,7 @@ class DefaultApi:
         _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
             authorization=authorization,
             name_contains=name_contains,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109062,6 +109073,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         name_contains: Annotated[Optional[StrictStr], Field(description="Optional filter: case-insensitive substring match on the owning config's display name; empty returns all")] = None,
+        status: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional status filter (e.g. COMPLETE, FAILED); empty returns all")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -109083,6 +109095,8 @@ class DefaultApi:
         :type authorization: str
         :param name_contains: Optional filter: case-insensitive substring match on the owning config's display name; empty returns all
         :type name_contains: str
+        :param status: Optional status filter (e.g. COMPLETE, FAILED); empty returns all
+        :type status: List[str]
         :param _request_timeout: timeout setting for this request. If one
                                  number provided, it will be total request
                                  timeout. It can also be a pair (tuple) of
@@ -109108,6 +109122,7 @@ class DefaultApi:
         _param = self._v1_sdk_automation_playbook_jobs_get_serialize(
             authorization=authorization,
             name_contains=name_contains,
+            status=status,
             _request_auth=_request_auth,
             _content_type=_content_type,
             _headers=_headers,
@@ -109128,6 +109143,7 @@ class DefaultApi:
         self,
         authorization,
         name_contains,
+        status,
         _request_auth,
         _content_type,
         _headers,
@@ -109137,6 +109153,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
+            'status': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -109153,6 +109170,10 @@ class DefaultApi:
         if name_contains is not None:
             
             _query_params.append(('nameContains', name_contains))
+            
+        if status is not None:
+            
+            _query_params.append(('status', status))
             
         # process the header parameters
         if authorization is not None:
@@ -110098,7 +110119,7 @@ class DefaultApi:
     ) -> V1SdkAutomationPlaybookJobsJobIdLogsGetResponse:
         """v1_sdk_automation_playbook_jobs_job_id_logs_get
 
-        Get masked ansible logs for a job, optionally filtered by phase
+        Get masked ansible logs for a job, optionally filtered by phase and paged with first / after
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -110173,7 +110194,7 @@ class DefaultApi:
     ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdLogsGetResponse]:
         """v1_sdk_automation_playbook_jobs_job_id_logs_get
 
-        Get masked ansible logs for a job, optionally filtered by phase
+        Get masked ansible logs for a job, optionally filtered by phase and paged with first / after
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -110248,7 +110269,7 @@ class DefaultApi:
     ) -> RESTResponseType:
         """v1_sdk_automation_playbook_jobs_job_id_logs_get
 
-        Get masked ansible logs for a job, optionally filtered by phase
+        Get masked ansible logs for a job, optionally filtered by phase and paged with first / after
 
         :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
         :type authorization: str
@@ -110979,6 +111000,282 @@ class DefaultApi:
 
 
     @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_snapshot_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose snapshot is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse:
+        """v1_sdk_automation_playbook_jobs_job_id_snapshot_get
+
+        Get the frozen config inputs captured for this job at creation
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose snapshot is requested (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_snapshot_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_snapshot_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose snapshot is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse]:
+        """v1_sdk_automation_playbook_jobs_job_id_snapshot_get
+
+        Get the frozen config inputs captured for this job at creation
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose snapshot is requested (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_snapshot_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v1_sdk_automation_playbook_jobs_job_id_snapshot_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        job_id: Annotated[StrictStr, Field(description="Job id whose snapshot is requested")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v1_sdk_automation_playbook_jobs_job_id_snapshot_get
+
+        Get the frozen config inputs captured for this job at creation
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param job_id: Job id whose snapshot is requested (required)
+        :type job_id: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v1_sdk_automation_playbook_jobs_job_id_snapshot_get_serialize(
+            authorization=authorization,
+            job_id=job_id,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v1_sdk_automation_playbook_jobs_job_id_snapshot_get_serialize(
+        self,
+        authorization,
+        job_id,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        if job_id is not None:
+            _path_params['jobId'] = job_id
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v1/sdk-automation/playbook/jobs/{jobId}/snapshot',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v1_sdk_automation_playbook_module_slots_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -111261,7 +111558,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
-        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        module_keys: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -111336,7 +111633,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
-        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        module_keys: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -111411,7 +111708,7 @@ class DefaultApi:
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         bundle_key: Annotated[Optional[StrictStr], Field(description="Catalog key from playbook_catalog_playbook (e.g. system_bundle)")] = None,
-        module_keys: Annotated[Optional[List[StrictStr]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
+        module_keys: Annotated[Optional[List[List[StrictStr]]], Field(description="Optional catalog module keys to narrow the response; empty returns the whole bundle (playbook + every module sample)")] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -111491,7 +111788,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'moduleKeys': 'multi',
+            'moduleKeys': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -112935,9 +113232,9 @@ class DefaultApi:
     def v1_sites_map_details_get(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        lan_segment_ids: Optional[List[StrictInt]] = None,
-        site_ids: Optional[List[StrictInt]] = None,
-        site_list_ids: Optional[List[StrictInt]] = None,
+        lan_segment_ids: Optional[List[List[StrictInt]]] = None,
+        site_ids: Optional[List[List[StrictInt]]] = None,
+        site_list_ids: Optional[List[List[StrictInt]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113014,9 +113311,9 @@ class DefaultApi:
     def v1_sites_map_details_get_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        lan_segment_ids: Optional[List[StrictInt]] = None,
-        site_ids: Optional[List[StrictInt]] = None,
-        site_list_ids: Optional[List[StrictInt]] = None,
+        lan_segment_ids: Optional[List[List[StrictInt]]] = None,
+        site_ids: Optional[List[List[StrictInt]]] = None,
+        site_list_ids: Optional[List[List[StrictInt]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113093,9 +113390,9 @@ class DefaultApi:
     def v1_sites_map_details_get_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        lan_segment_ids: Optional[List[StrictInt]] = None,
-        site_ids: Optional[List[StrictInt]] = None,
-        site_list_ids: Optional[List[StrictInt]] = None,
+        lan_segment_ids: Optional[List[List[StrictInt]]] = None,
+        site_ids: Optional[List[List[StrictInt]]] = None,
+        site_list_ids: Optional[List[List[StrictInt]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -113179,9 +113476,9 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'lanSegmentIds': 'multi',
-            'siteIds': 'multi',
-            'siteListIds': 'multi',
+            'lanSegmentIds': 'csv',
+            'siteIds': 'csv',
+            'siteListIds': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -124728,7 +125025,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         created_date_end: Optional[StrictStr] = None,
         created_date_start: Optional[StrictStr] = None,
-        endpoints: Optional[List[StrictStr]] = None,
+        endpoints: Optional[List[List[StrictStr]]] = None,
         hostname: Optional[StrictStr] = None,
         limit: Optional[StrictInt] = None,
         machine_id: Optional[StrictStr] = None,
@@ -124835,7 +125132,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         created_date_end: Optional[StrictStr] = None,
         created_date_start: Optional[StrictStr] = None,
-        endpoints: Optional[List[StrictStr]] = None,
+        endpoints: Optional[List[List[StrictStr]]] = None,
         hostname: Optional[StrictStr] = None,
         limit: Optional[StrictInt] = None,
         machine_id: Optional[StrictStr] = None,
@@ -124942,7 +125239,7 @@ class DefaultApi:
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
         created_date_end: Optional[StrictStr] = None,
         created_date_start: Optional[StrictStr] = None,
-        endpoints: Optional[List[StrictStr]] = None,
+        endpoints: Optional[List[List[StrictStr]]] = None,
         hostname: Optional[StrictStr] = None,
         limit: Optional[StrictInt] = None,
         machine_id: Optional[StrictStr] = None,
@@ -125061,7 +125358,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'endpoints': 'multi',
+            'endpoints': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -132736,6 +133033,292 @@ class DefaultApi:
 
 
     @validate_call
+    def v2_assurance_categorize_ai_app_post(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> object:
+        """v2_assurance_categorize_ai_app_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_categorize_ai_app_post_request: (required)
+        :type v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_categorize_ai_app_post_serialize(
+            authorization=authorization,
+            v2_assurance_categorize_ai_app_post_request=v2_assurance_categorize_ai_app_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_categorize_ai_app_post_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[object]:
+        """v2_assurance_categorize_ai_app_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_categorize_ai_app_post_request: (required)
+        :type v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_categorize_ai_app_post_serialize(
+            authorization=authorization,
+            v2_assurance_categorize_ai_app_post_request=v2_assurance_categorize_ai_app_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_categorize_ai_app_post_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest,
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_categorize_ai_app_post
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param v2_assurance_categorize_ai_app_post_request: (required)
+        :type v2_assurance_categorize_ai_app_post_request: V2AssuranceCategorizeAiAppPostRequest
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_categorize_ai_app_post_serialize(
+            authorization=authorization,
+            v2_assurance_categorize_ai_app_post_request=v2_assurance_categorize_ai_app_post_request,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "object",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_categorize_ai_app_post_serialize(
+        self,
+        authorization,
+        v2_assurance_categorize_ai_app_post_request,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+        if v2_assurance_categorize_ai_app_post_request is not None:
+            _body_params = v2_assurance_categorize_ai_app_post_request
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+        # set the HTTP header `Content-Type`
+        if _content_type:
+            _header_params['Content-Type'] = _content_type
+        else:
+            _default_content_type = (
+                self.api_client.select_header_content_type(
+                    [
+                        'application/json'
+                    ]
+                )
+            )
+            if _default_content_type is not None:
+                _header_params['Content-Type'] = _default_content_type
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='POST',
+            resource_path='/v2/assurance/categorize-ai-app',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
     def v2_assurance_create_ai_adoption_approve_entry_post(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
@@ -133883,7 +134466,7 @@ class DefaultApi:
     def v2_assurance_delete_ai_adoption_approve_entry_delete(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        id_list: Annotated[List[List[StrictStr]], Field(description="list of approved app entry identifiers to delete")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -133953,7 +134536,7 @@ class DefaultApi:
     def v2_assurance_delete_ai_adoption_approve_entry_delete_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        id_list: Annotated[List[List[StrictStr]], Field(description="list of approved app entry identifiers to delete")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134023,7 +134606,7 @@ class DefaultApi:
     def v2_assurance_delete_ai_adoption_approve_entry_delete_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        id_list: Annotated[List[StrictStr], Field(description="list of approved app entry identifiers to delete")],
+        id_list: Annotated[List[List[StrictStr]], Field(description="list of approved app entry identifiers to delete")],
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134098,7 +134681,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'idList': 'multi',
+            'idList': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -134692,7 +135275,7 @@ class DefaultApi:
     def v2_assurance_deleteclassifiedapplication_delete(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        classification_entry_id_list: Optional[List[StrictStr]] = None,
+        classification_entry_id_list: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134762,7 +135345,7 @@ class DefaultApi:
     def v2_assurance_deleteclassifiedapplication_delete_with_http_info(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        classification_entry_id_list: Optional[List[StrictStr]] = None,
+        classification_entry_id_list: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134832,7 +135415,7 @@ class DefaultApi:
     def v2_assurance_deleteclassifiedapplication_delete_without_preload_content(
         self,
         authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
-        classification_entry_id_list: Optional[List[StrictStr]] = None,
+        classification_entry_id_list: Optional[List[List[StrictStr]]] = None,
         _request_timeout: Union[
             None,
             Annotated[StrictFloat, Field(gt=0)],
@@ -134907,7 +135490,7 @@ class DefaultApi:
         _host = None
 
         _collection_formats: Dict[str, str] = {
-            'classificationEntryIdList': 'multi',
+            'classificationEntryIdList': 'csv',
         }
 
         _path_params: Dict[str, str] = {}
@@ -136295,6 +136878,264 @@ class DefaultApi:
         return self.api_client.param_serialize(
             method='GET',
             resource_path='/v2/assurance/read-ai-adoption-approve-entries',
+            path_params=_path_params,
+            query_params=_query_params,
+            header_params=_header_params,
+            body=_body_params,
+            post_params=_form_params,
+            files=_files,
+            auth_settings=_auth_settings,
+            collection_formats=_collection_formats,
+            _host=_host,
+            _request_auth=_request_auth
+        )
+
+
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_category_entries_get(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> V2AssuranceReadAiAdoptionCategoryEntriesGetResponse:
+        """v2_assurance_read_ai_adoption_category_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_category_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionCategoryEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        ).data
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_category_entries_get_with_http_info(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> ApiResponse[V2AssuranceReadAiAdoptionCategoryEntriesGetResponse]:
+        """v2_assurance_read_ai_adoption_category_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_category_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionCategoryEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        response_data.read()
+        return self.api_client.response_deserialize(
+            response_data=response_data,
+            response_types_map=_response_types_map,
+        )
+
+
+    @validate_call
+    def v2_assurance_read_ai_adoption_category_entries_get_without_preload_content(
+        self,
+        authorization: Annotated[StrictStr, Field(description="Bearer token. Format: Bearer <your_token_here>")],
+        _request_timeout: Union[
+            None,
+            Annotated[StrictFloat, Field(gt=0)],
+            Tuple[
+                Annotated[StrictFloat, Field(gt=0)],
+                Annotated[StrictFloat, Field(gt=0)]
+            ]
+        ] = None,
+        _request_auth: Optional[Dict[StrictStr, Any]] = None,
+        _content_type: Optional[StrictStr] = None,
+        _headers: Optional[Dict[StrictStr, Any]] = None,
+        _host_index: Annotated[StrictInt, Field(ge=0, le=0)] = 0,
+    ) -> RESTResponseType:
+        """v2_assurance_read_ai_adoption_category_entries_get
+
+
+        :param authorization: Bearer token. Format: Bearer <your_token_here> (required)
+        :type authorization: str
+        :param _request_timeout: timeout setting for this request. If one
+                                 number provided, it will be total request
+                                 timeout. It can also be a pair (tuple) of
+                                 (connection, read) timeouts.
+        :type _request_timeout: int, tuple(int, int), optional
+        :param _request_auth: set to override the auth_settings for an a single
+                              request; this effectively ignores the
+                              authentication in the spec for a single request.
+        :type _request_auth: dict, optional
+        :param _content_type: force content-type for the request.
+        :type _content_type: str, Optional
+        :param _headers: set to override the headers for a single
+                         request; this effectively ignores the headers
+                         in the spec for a single request.
+        :type _headers: dict, optional
+        :param _host_index: set to override the host_index for a single
+                            request; this effectively ignores the host_index
+                            in the spec for a single request.
+        :type _host_index: int, optional
+        :return: Returns the result object.
+        """ # noqa: E501
+
+        _param = self._v2_assurance_read_ai_adoption_category_entries_get_serialize(
+            authorization=authorization,
+            _request_auth=_request_auth,
+            _content_type=_content_type,
+            _headers=_headers,
+            _host_index=_host_index
+        )
+
+        _response_types_map: Dict[str, Optional[str]] = {
+            '200': "V2AssuranceReadAiAdoptionCategoryEntriesGetResponse",
+        }
+        response_data = self.api_client.call_api(
+            *_param,
+            _request_timeout=_request_timeout
+        )
+        return response_data.response
+
+
+    def _v2_assurance_read_ai_adoption_category_entries_get_serialize(
+        self,
+        authorization,
+        _request_auth,
+        _content_type,
+        _headers,
+        _host_index,
+    ) -> RequestSerialized:
+
+        _host = None
+
+        _collection_formats: Dict[str, str] = {
+        }
+
+        _path_params: Dict[str, str] = {}
+        _query_params: List[Tuple[str, str]] = []
+        _header_params: Dict[str, Optional[str]] = _headers or {}
+        _form_params: List[Tuple[str, str]] = []
+        _files: Dict[
+            str, Union[str, bytes, List[str], List[bytes], List[Tuple[str, bytes]]]
+        ] = {}
+        _body_params: Optional[bytes] = None
+
+        # process the path parameters
+        # process the query parameters
+        # process the header parameters
+        if authorization is not None:
+            _header_params['Authorization'] = authorization
+        # process the form parameters
+        # process the body parameter
+
+
+        # set the HTTP header `Accept`
+        if 'Accept' not in _header_params:
+            _header_params['Accept'] = self.api_client.select_header_accept(
+                [
+                    'application/json'
+                ]
+            )
+
+
+        # authentication setting
+        _auth_settings: List[str] = [
+            'jwtAuth'
+        ]
+
+        return self.api_client.param_serialize(
+            method='GET',
+            resource_path='/v2/assurance/read-ai-adoption-category-entries',
             path_params=_path_params,
             query_params=_query_params,
             header_params=_header_params,

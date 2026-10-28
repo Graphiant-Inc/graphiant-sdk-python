@@ -44,10 +44,11 @@ class AssuranceAppNameRecord(BaseModel):
     exchange_service: Optional[List[AssuranceExchangeServiceIdentifier]] = Field(default=None, alias="exchangeService")
     flex_algo: Optional[List[AssuranceFlexAlgoIdentifier]] = Field(default=None, alias="flexAlgo")
     flows_analyzed: Optional[StrictInt] = Field(default=None, alias="flowsAnalyzed", json_schema_extra={"examples": [1234567891011]})
+    is_ai_app: Optional[StrictBool] = Field(default=None, alias="isAiApp", json_schema_extra={"examples": [True]})
     recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
     threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore", json_schema_extra={"examples": [1234567891011]})
-    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "recommendation", "riskStatus", "threatScore"]
+    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "isAiApp", "recommendation", "riskStatus", "threatScore"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -135,6 +136,7 @@ class AssuranceAppNameRecord(BaseModel):
             "exchangeService": [AssuranceExchangeServiceIdentifier.from_dict(_item) for _item in obj["exchangeService"]] if obj.get("exchangeService") is not None else None,
             "flexAlgo": [AssuranceFlexAlgoIdentifier.from_dict(_item) for _item in obj["flexAlgo"]] if obj.get("flexAlgo") is not None else None,
             "flowsAnalyzed": obj.get("flowsAnalyzed"),
+            "isAiApp": obj.get("isAiApp"),
             "recommendation": obj.get("recommendation"),
             "riskStatus": obj.get("riskStatus"),
             "threatScore": obj.get("threatScore")

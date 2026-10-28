@@ -2037,6 +2037,10 @@
             "format": "int64",
             "example": 1234567891011
           },
+          "isAiApp": {
+            "type": "boolean",
+            "example": true
+          },
           "recommendation": {
             "type": "string",
             "example": "example string"
@@ -2124,6 +2128,10 @@
             "type": "string",
             "example": "example string"
           },
+          "category": {
+            "type": "string",
+            "example": "example string"
+          },
           "ipPrefixList": {
             "type": "array",
             "items": {
@@ -2177,6 +2185,10 @@
             "type": "string",
             "example": "example string"
           },
+          "category": {
+            "type": "string",
+            "example": "example string"
+          },
           "classificationEntryId": {
             "type": "string",
             "example": "example string"
@@ -2223,6 +2235,32 @@
         "additionalProperties": false
       },
       "v2AssuranceDeleteclassifiedapplicationDeleteResponse": {
+        "type": "object",
+        "properties": {},
+        "additionalProperties": false
+      },
+      "v2AssuranceCategorizeAiAppPostRequest": {
+        "type": "object",
+        "properties": {
+          "appName": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "bucketId": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "isAiApp": {
+            "type": "boolean",
+            "example": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2AssuranceCategorizeAiAppPostResponse": {
         "type": "object",
         "properties": {},
         "additionalProperties": false
@@ -3884,6 +3922,11 @@
             "example": 1234567891011,
             "description": "number of active users (required)"
           },
+          "bucketId": {
+            "type": "string",
+            "example": "ENUM_VALUE",
+            "description": "bucket id"
+          },
           "category": {
             "type": "string",
             "example": "example string",
@@ -3934,6 +3977,18 @@
               "type": "string",
               "example": "example string",
               "description": "app names returned (required)"
+            }
+          }
+        },
+        "additionalProperties": false
+      },
+      "v2AssuranceReadAiAdoptionCategoryEntriesGetResponse": {
+        "type": "object",
+        "properties": {
+          "aiCategorizedAppList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/assuranceApprovedAppEntry"
             }
           }
         },
@@ -10236,6 +10291,15 @@
             "type": "string",
             "example": "example string"
           },
+          "pppoeInterface": {
+            "$ref": "#/components/schemas/manaV2PpPoEInterface"
+          },
+          "pppoeInterfaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2Interface"
+            }
+          },
           "protocol": {
             "type": "string",
             "example": "ENUM_VALUE"
@@ -10776,6 +10840,98 @@
         },
         "additionalProperties": false
       },
+      "manaV2PpPoEInterface": {
+        "type": "object",
+        "properties": {
+          "authenticationType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "dnsServers": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "example": "example string"
+            }
+          },
+          "id": {
+            "type": "integer",
+            "format": "int64",
+            "example": 1234567891011
+          },
+          "lastIpcpCloseReason": {
+            "type": "string",
+            "example": "example string"
+          },
+          "lastIpv6CpCloseReason": {
+            "type": "string",
+            "example": "example string"
+          },
+          "lastLcpCloseReason": {
+            "type": "string",
+            "example": "example string"
+          },
+          "lcpEchoFailure": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "lcpEchoInterval": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "maximumReceiveUnit": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "password": {
+            "type": "string",
+            "example": "example string"
+          },
+          "peerIpv4Address": {
+            "type": "string",
+            "example": "example string"
+          },
+          "peerIpv6Address": {
+            "type": "string",
+            "example": "example string"
+          },
+          "pppConnectTimeout": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "serverMacAddress": {
+            "type": "string",
+            "example": "example string"
+          },
+          "serverName": {
+            "type": "string",
+            "example": "example string"
+          },
+          "sessionId": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "state": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "username": {
+            "type": "string",
+            "example": "example string"
+          }
+        },
+        "additionalProperties": false
+      },
       "manaV2InterfaceSfpOpticalStrength": {
         "type": "object",
         "properties": {
@@ -10883,6 +11039,12 @@
           "parentMacAddress": {
             "type": "string",
             "example": "example string"
+          },
+          "pppoeInterfaces": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/manaV2Interface"
+            }
           },
           "securityZone": {
             "type": "string",
@@ -14772,6 +14934,10 @@
           "ipv6": {
             "$ref": "#/components/schemas/manaV2InterfaceIpConfig"
           },
+          "isMaintenanceWan": {
+            "type": "boolean",
+            "example": true
+          },
           "lan": {
             "type": "string",
             "example": "example string"
@@ -17120,6 +17286,12 @@
             "example": 123,
             "minimum": 0
           },
+          "pppoeInterfaces": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2NullablePpPoEInterfaceConfig"
+            }
+          },
           "securityZone": {
             "type": "string",
             "example": "example string"
@@ -17255,6 +17427,103 @@
         },
         "additionalProperties": false
       },
+      "manaV2NullablePpPoEInterfaceConfig": {
+        "type": "object",
+        "properties": {
+          "interface": {
+            "$ref": "#/components/schemas/manaV2PpPoEInterfaceConfig"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2PpPoEInterfaceConfig": {
+        "type": "object",
+        "properties": {
+          "adminStatus": {
+            "type": "boolean",
+            "example": true
+          },
+          "alias": {
+            "type": "string",
+            "example": "example string"
+          },
+          "authenticationType": {
+            "type": "string",
+            "example": "ENUM_VALUE"
+          },
+          "circuit": {
+            "type": "string",
+            "example": "example string"
+          },
+          "description": {
+            "type": "string",
+            "example": "example string"
+          },
+          "lcpEchoFailure": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "lcpEchoInterval": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "maxTransmissionUnit": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "password": {
+            "type": "string",
+            "example": "example string"
+          },
+          "pppConnectTimeout": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          },
+          "username": {
+            "type": "string",
+            "example": "example string"
+          },
+          "v4TcpMss": {
+            "$ref": "#/components/schemas/manaV2NullableTcpMssV4"
+          },
+          "v6TcpMss": {
+            "$ref": "#/components/schemas/manaV2NullableTcpMssV6"
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2NullableTcpMssV4": {
+        "type": "object",
+        "properties": {
+          "tcpMssV4": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
+      "manaV2NullableTcpMssV6": {
+        "type": "object",
+        "properties": {
+          "tcpMssV6": {
+            "type": "integer",
+            "format": "int32",
+            "example": 123,
+            "minimum": 0
+          }
+        },
+        "additionalProperties": false
+      },
       "manaV2NullableInterfaceVlanConfig": {
         "type": "object",
         "properties": {
@@ -17303,6 +17572,12 @@
             "example": 123,
             "minimum": 0
           },
+          "pppoeInterfaces": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/components/schemas/manaV2NullablePpPoEInterfaceConfig"
+            }
+          },
           "securityZone": {
             "type": "string",
             "example": "example string"
@@ -17339,30 +17614,6 @@
           },
           "vrrp": {
             "$ref": "#/components/schemas/manaV2NullableVrrpGroupConfig"
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2NullableTcpMssV4": {
-        "type": "object",
-        "properties": {
-          "tcpMssV4": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
-          }
-        },
-        "additionalProperties": false
-      },
-      "manaV2NullableTcpMssV6": {
-        "type": "object",
-        "properties": {
-          "tcpMssV6": {
-            "type": "integer",
-            "format": "int32",
-            "example": 123,
-            "minimum": 0
           }
         },
         "additionalProperties": false
@@ -26904,6 +27155,10 @@
       "commonUserInfo": {
         "type": "object",
         "properties": {
+          "accountType": {
+            "type": "string",
+            "example": "example string"
+          },
           "bearerToken": {
             "type": "string",
             "example": "example string"
@@ -30562,6 +30817,65 @@
               "example": "example string",
               "description": "Masked ansible log lines for the job (and optional phase)"
             }
+          },
+          "pageInfo": {
+            "$ref": "#/components/schemas/commonPageInfo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "v1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse": {
+        "type": "object",
+        "properties": {
+          "snapshot": {
+            "$ref": "#/components/schemas/sdkAutomationPlaybookJobSnapshot"
+          }
+        },
+        "additionalProperties": false
+      },
+      "sdkAutomationPlaybookJobSnapshot": {
+        "type": "object",
+        "properties": {
+          "bundleKey": {
+            "type": "string",
+            "example": "example string",
+            "description": "Catalog bundle key frozen at job creation"
+          },
+          "configId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config id that owned this run when the snapshot was taken"
+          },
+          "description": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config notes frozen at job creation; empty for older jobs"
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/sdkAutomationModuleFile"
+            }
+          },
+          "jobId": {
+            "type": "string",
+            "example": "example string",
+            "description": "Owning job id"
+          },
+          "name": {
+            "type": "string",
+            "example": "example string",
+            "description": "Config display name frozen at job creation; empty for older jobs"
+          },
+          "playbook": {
+            "type": "string",
+            "example": "example string",
+            "description": "Playbook filename frozen at job creation (e.g. network_bundle.yml); empty for older jobs"
+          },
+          "tags": {
+            "type": "string",
+            "example": "example string",
+            "description": "Ansible --tags frozen at job creation (union of present modules' associated_tags); empty for older jobs or when no tags were applied"
           }
         },
         "additionalProperties": false
@@ -35435,6 +35749,12 @@
             "format": "float",
             "example": 12.34
           },
+          "currentRxSlaMetricsWithRepair": {
+            "$ref": "#/components/schemas/statsmonV2RepairLevelScore"
+          },
+          "currentTxSlaMetricsWithRepair": {
+            "$ref": "#/components/schemas/statsmonV2RepairLevelScore"
+          },
           "effectiveQoe": {
             "type": "number",
             "format": "float",
@@ -35453,6 +35773,27 @@
             "$ref": "#/components/schemas/statsmonV2FecTxStats"
           },
           "unrepairableRate": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          }
+        },
+        "additionalProperties": false
+      },
+      "statsmonV2RepairLevelScore": {
+        "type": "object",
+        "properties": {
+          "jitter": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "latency": {
+            "type": "number",
+            "format": "float",
+            "example": 12.34
+          },
+          "loss": {
             "type": "number",
             "format": "float",
             "example": 12.34
@@ -35480,27 +35821,6 @@
           },
           "score": {
             "$ref": "#/components/schemas/statsmonV2RepairLevelScore"
-          }
-        },
-        "additionalProperties": false
-      },
-      "statsmonV2RepairLevelScore": {
-        "type": "object",
-        "properties": {
-          "jitter": {
-            "type": "number",
-            "format": "float",
-            "example": 12.34
-          },
-          "latency": {
-            "type": "number",
-            "format": "float",
-            "example": 12.34
-          },
-          "loss": {
-            "type": "number",
-            "format": "float",
-            "example": 12.34
           }
         },
         "additionalProperties": false
@@ -35809,6 +36129,11 @@
       "upgradeInventoryKey": {
         "type": "object",
         "properties": {
+          "container": {
+            "type": "string",
+            "example": "example string",
+            "description": "Blob storage container this image was indexed from. Same model + version can exist in more than one container Empty for rows indexed before multi-container support."
+          },
           "model": {
             "type": "integer",
             "format": "int32",
@@ -38233,6 +38558,48 @@
         }
       }
     },
+    "/v2/assurance/categorize-ai-app": {
+      "post": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/v2AssuranceCategorizeAiAppPostRequest"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceCategorizeAiAppPostResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/create-ai-adoption-approve-entry": {
       "post": {
         "security": [
@@ -38433,7 +38800,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -38483,7 +38850,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -39470,6 +39837,38 @@
         }
       }
     },
+    "/v2/assurance/read-ai-adoption-category-entries": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v2AssuranceReadAiAdoptionCategoryEntriesGetResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v2/assurance/read-dnsproxy-list": {
       "get": {
         "security": [
@@ -39838,7 +40237,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           },
           {
@@ -41430,7 +41829,7 @@
                 0
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -52463,7 +52862,7 @@
                 0
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           },
           {
@@ -52482,7 +52881,7 @@
                 0
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           },
           {
@@ -52501,7 +52900,7 @@
                 0
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -52606,7 +53005,7 @@
                 "isp"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -52669,7 +53068,7 @@
                 0
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           },
           {
@@ -54270,7 +54669,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -54983,7 +55382,7 @@
                 "[OSPF,BGP,connected]"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           },
           {
@@ -55057,7 +55456,7 @@
                 "management"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -55676,7 +56075,7 @@
                 "management"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -56174,7 +56573,7 @@
                 "management"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -56472,7 +56871,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -56661,7 +57060,7 @@
                 "example"
               ]
             },
-            "style": "form",
+            "style": "deepObject",
             "explode": true
           }
         ],
@@ -56867,7 +57266,50 @@
             }
           }
         },
-        "description": "Get masked ansible logs for a job, optionally filtered by phase"
+        "description": "Get masked ansible logs for a job, optionally filtered by phase and paged with first / after"
+      }
+    },
+    "/v1/sdk-automation/playbook/jobs/{jobId}/snapshot": {
+      "get": {
+        "security": [
+          {
+            "jwtAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "Authorization",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Bearer token. Format: Bearer <your_token_here>"
+          },
+          {
+            "name": "jobId",
+            "in": "path",
+            "required": true,
+            "description": "Job id whose snapshot is requested",
+            "schema": {
+              "type": "string",
+              "example": "example string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/v1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse"
+                }
+              }
+            }
+          }
+        },
+        "description": "Get the frozen config inputs captured for this job at creation"
       }
     },
     "/v1/sdk-automation/playbook/bundles": {
@@ -56929,6 +57371,24 @@
               "type": "string",
               "example": "example string"
             }
+          },
+          {
+            "name": "status",
+            "in": "query",
+            "description": "Optional status filter (e.g. COMPLETE, FAILED); empty returns all",
+            "required": false,
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "example": "ENUM_VALUE"
+              },
+              "example": [
+                "example"
+              ]
+            },
+            "style": "deepObject",
+            "explode": true
           }
         ],
         "responses": {

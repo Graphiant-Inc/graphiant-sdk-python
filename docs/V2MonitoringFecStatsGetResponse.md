@@ -6,6 +6,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **current_repair_level** | **float** |  | [optional] 
+**current_rx_sla_metrics_with_repair** | [**StatsmonV2RepairLevelScore**](StatsmonV2RepairLevelScore.md) |  | [optional] 
+**current_tx_sla_metrics_with_repair** | [**StatsmonV2RepairLevelScore**](StatsmonV2RepairLevelScore.md) |  | [optional] 
 **effective_qoe** | **float** |  | [optional] 
 **rx_repair_level_histogram** | [**StatsmonV2FecRxRepairLevel**](StatsmonV2FecRxRepairLevel.md) |  | [optional] 
 **rx_stats** | [**StatsmonV2FecRxStats**](StatsmonV2FecRxStats.md) |  | [optional] 

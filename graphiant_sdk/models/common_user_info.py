@@ -28,6 +28,7 @@ class CommonUserInfo(BaseModel):
     """
     CommonUserInfo
     """ # noqa: E501
+    account_type: Optional[StrictStr] = Field(default=None, alias="accountType", json_schema_extra={"examples": ["example string"]})
     bearer_token: Optional[StrictStr] = Field(default=None, alias="bearerToken", json_schema_extra={"examples": ["example string"]})
     enterprise_id: Optional[StrictInt] = Field(default=None, alias="enterpriseId", json_schema_extra={"examples": [1234567891011]})
     exp: Optional[StrictInt] = Field(default=None, json_schema_extra={"examples": [1234567891011]})
@@ -35,7 +36,7 @@ class CommonUserInfo(BaseModel):
     permissions: Optional[CommonPermissions] = None
     time_zone: Optional[StrictStr] = Field(default=None, alias="timeZone", json_schema_extra={"examples": ["example string"]})
     user_id: Optional[StrictStr] = Field(default=None, alias="userId", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["bearerToken", "enterpriseId", "exp", "originalEnterpriseId", "permissions", "timeZone", "userId"]
+    __properties: ClassVar[List[str]] = ["accountType", "bearerToken", "enterpriseId", "exp", "originalEnterpriseId", "permissions", "timeZone", "userId"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -91,6 +92,7 @@ class CommonUserInfo(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "accountType": obj.get("accountType"),
             "bearerToken": obj.get("bearerToken"),
             "enterpriseId": obj.get("enterpriseId"),
             "exp": obj.get("exp"),
