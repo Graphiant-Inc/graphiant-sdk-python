@@ -7,7 +7,7 @@ authors = [
 ]
 readme = "README.md"
 keywords = ["OpenAPI", "OpenAPI-Generator", "Graphiant APIs"]
-requires-python = ">=3.10"
+requires-python = ">=3.11"
 
 dependencies = [
   "urllib3 (>=2.8.0,<3.0.0)",
@@ -33,8 +33,7 @@ dev = [
   "types-python-dateutil>=2.8.19.14",
   "types-click>=7.1.8",
   "mypy>=1.5",
-  "filelock>=4.2.1; python_version >= '3.11'",
-  "filelock>=4.0.9,<4.1; python_version < '3.11'",
+  "filelock>=4.2.1",
   "virtualenv>=21.14.13",
   "build>=1.0.0",
   "wheel",
@@ -53,10 +52,7 @@ tox = ">= 3.9.0"
 flake8 = ">= 4.0.0"
 types-python-dateutil = ">= 2.8.19.14"
 mypy = ">= 1.5"
-filelock = [
-  { version = ">=4.2.1", python = ">=3.11" },
-  { version = ">=4.0.9,<4.1", python = "<3.11" },
-]
+filelock = ">=4.2.1"
 virtualenv = ">=21.14.13"
 
 

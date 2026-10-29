@@ -11,7 +11,7 @@ Comprehensive linting workflow that runs multiple code quality checks in paralle
 
 ### `test.yml` - Testing
 Runs all tests for the SDK:
-- **`test` job** - Matrix job testing against Python 3.10, 3.11, 3.12, 3.13:
+- **`test` job** - Matrix job testing against Python 3.11, 3.12, 3.13:
   - Unit tests with pytest
   - Code coverage reporting
   - Coverage reports uploaded to Codecov (Python 3.12 only)

@@ -83,7 +83,7 @@ pytest tests/test_default_api.py::test_function_name
 
 - `tests/` directory contains all test files (hand-written; listed in `.openapi-generator-ignore`)
 - Tests use the `pytest` framework
-- Tests are automatically run in CI/CD across Python 3.10, 3.11, 3.12, and 3.13
+- Tests are automatically run in CI/CD across Python 3.11, 3.12, and 3.13
 
 ### Writing Tests
 

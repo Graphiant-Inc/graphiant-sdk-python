@@ -9,7 +9,13 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### Security
 - **urllib3** minimum raised to **≥ 2.8.0** (`pyproject.toml`, `setup.py`, `requirements.txt`) to fix unbounded chunk-size line buffering in `HTTPResponse.stream()`/`read_chunked()`, HTTPS proxy TLS configuration being ignored or overridden, and an infinite loop in chunked Deflate streaming.
 - **virtualenv** (dev, pulled in by **tox**): minimum **≥ 21.14.13** to fix activation-script command injection (bash, fish, zsh, xonsh, batch), unverified seed wheels, `pyvenv.cfg` prompt injection, and symlink-following issues during environment creation.
-- **filelock** (dev, pulled in by the **tox** / **virtualenv** stack): minimum **≥ 4.2.1** on Python **3.11+** to fix multiple `ReadWriteLock`, `SoftFileLock`, `UnixFileLock` and `WindowsFileLock` issues (symlink/hard-link following, stale-lock breaking, lock-database hangs, permission handling). filelock **4.2.1+** requires Python **≥ 3.11**, so Python **3.10** is pinned to **4.0.x (≥ 4.0.9)**, which fixes the `ReadWriteLock` symlink issue; the remaining filelock advisories have no Python 3.10 fix upstream.
+- **filelock** (dev, pulled in by the **tox** / **virtualenv** stack): minimum **≥ 4.2.1** on Python **3.11+** to fix multiple `ReadWriteLock`, `SoftFileLock`, `UnixFileLock` and `WindowsFileLock` issues (symlink/hard-link following, stale-lock breaking, lock-database hangs, permission handling). filelock **4.2.1+** requires Python **≥ 3.11**, and no release that supports Python 3.10 contains these fixes.
+
+### Changed
+- **Python:** Minimum supported version is now **3.11** (`requires-python`, `setup.py`, CI, and contributor docs). Python 3.10 reached end of life in October 2026, and the filelock security fixes above are only available on Python 3.11+. **filelock ≥ 4.2.1** now applies to all supported Python versions.
+
+### Documentation
+- README, CONTRIBUTING, SECURITY, GitHub Actions workflow docs, issue template, and `.travis.yml` updated for Python **3.11+** only (removed **3.10** from test matrices and examples).
 
 ## [26.10.0] - 2026-10-28
 
