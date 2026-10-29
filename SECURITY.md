@@ -27,7 +27,7 @@ We actively support the following versions with security updates:
 
 ### Development tooling (`filelock`)
 
-Tools such as **tox** and **virtualenv** depend on **filelock**. Older **filelock** versions were affected by a **time-of-check–time-of-use (TOCTOU)** issue in **SoftFileLock**, including a race that could allow **symlink attacks** during lock file creation. This package declares **Python ≥ 3.10** and **filelock ≥ 3.20.3** for Poetry dev dependencies so installs resolve **filelock** releases that include the relevant fixes.
+Tools such as **tox** and **virtualenv** depend on **filelock**. **filelock** releases through **4.2.0** are affected by multiple local-attacker issues in `ReadWriteLock`, `SoftFileLock`, `StrictSoftFileLock`, `UnixFileLock` and `WindowsFileLock` (symlink and hard-link following, stale-lock breaking, lock-database hangs, permission handling), and older releases by a **time-of-check–time-of-use (TOCTOU)** symlink race in **SoftFileLock**. The fixes are only available in **filelock ≥ 4.2.1**, which requires **Python ≥ 3.11**, so this package declares **Python ≥ 3.11** and **filelock ≥ 4.2.1** for dev / test dependencies.
 
 ### Development tooling (`pytest`)
 

@@ -1,7 +1,7 @@
 # Graphiant SDK Python
 
 [![PyPI version](https://badge.fury.io/py/graphiant-sdk.svg)](https://badge.fury.io/py/graphiant-sdk)
-[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Documentation](https://img.shields.io/badge/docs-latest-brightgreen.svg)](https://docs.graphiant.com/docs/graphiant-sdk-python)
 [![CI/CD](https://github.com/Graphiant-Inc/graphiant-sdk-python/actions/workflows/test.yml/badge.svg)](https://github.com/Graphiant-Inc/graphiant-sdk-python/actions)
@@ -423,7 +423,7 @@ def get_device_info(api, bearer_token, device_id):
 
 ### Prerequisites
 
-- Python 3.10+ (3.13 recommended)
+- Python 3.11+ (3.13 recommended)
 - Git
 - OpenAPI Generator **>= 7.23.0** (for code generation) — `brew install openapi-generator` or `npm install -g @openapitools/openapi-generator-cli`
 
@@ -432,7 +432,7 @@ def get_device_info(api, bearer_token, device_id):
 This repository uses GitHub Actions for continuous integration and deployment:
 
 - **Linting** ([lint.yml](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/.github/workflows/lint.yml)): Runs Flake8 and MyPy type checking on pull requests and pushes
-- **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/.github/workflows/test.yml)): Runs pytest with coverage across Python 3.10, 3.11, 3.12, and 3.13; coverage uploaded on 3.13
+- **Testing** ([test.yml](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/.github/workflows/test.yml)): Runs pytest with coverage across Python 3.11, 3.12, and 3.13; coverage uploaded on 3.13
 - **Building** ([build.yml](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/.github/workflows/build.yml)): Builds wheel and source distributions
 - **Releasing** ([release.yml](https://github.com/Graphiant-Inc/graphiant-sdk-python/blob/main/.github/workflows/release.yml)): Publishes to PyPI (manual trigger, admin-only)
 
