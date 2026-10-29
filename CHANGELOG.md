@@ -4,22 +4,9 @@ All notable changes to the Graphiant SDK Python package will be documented in th
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## [Unreleased]
-
-### Security
-- **urllib3** minimum raised to **≥ 2.8.0** (`pyproject.toml`, `setup.py`, `requirements.txt`) to fix unbounded chunk-size line buffering in `HTTPResponse.stream()`/`read_chunked()`, HTTPS proxy TLS configuration being ignored or overridden, and an infinite loop in chunked Deflate streaming.
-- **virtualenv** (dev, pulled in by **tox**): minimum **≥ 21.14.13** to fix activation-script command injection (bash, fish, zsh, xonsh, batch), unverified seed wheels, `pyvenv.cfg` prompt injection, and symlink-following issues during environment creation.
-- **filelock** (dev, pulled in by the **tox** / **virtualenv** stack): minimum **≥ 4.2.1** on Python **3.11+** to fix multiple `ReadWriteLock`, `SoftFileLock`, `UnixFileLock` and `WindowsFileLock` issues (symlink/hard-link following, stale-lock breaking, lock-database hangs, permission handling). filelock **4.2.1+** requires Python **≥ 3.11**, and no release that supports Python 3.10 contains these fixes.
-
-### Changed
-- **Python:** Minimum supported version is now **3.11** (`requires-python`, `setup.py`, CI, and contributor docs). Python 3.10 reached end of life in October 2026, and the filelock security fixes above are only available on Python 3.11+. **filelock ≥ 4.2.1** now applies to all supported Python versions.
-
-### Documentation
-- README, CONTRIBUTING, SECURITY, GitHub Actions workflow docs, issue template, and `.travis.yml` updated for Python **3.11+** only (removed **3.10** from test matrices and examples).
-
 ## [26.10.0] - 2026-10-28
 
-No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum supported Python is now **3.11** (see *Changed*).
 
 ### Added
 - **API spec:** `graphiant_api_docs_v26.10.0.json`
@@ -39,9 +26,18 @@ No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
   - **`V1SdkAutomationPlaybookJobsJobIdLogsGetResponse`**: added `page_info` field
   - **`V2MonitoringFecStatsGetResponse`**: added `current_rx_sla_metrics_with_repair` and `current_tx_sla_metrics_with_repair` fields
 - **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.10.0** spec.
+- **Python:** Minimum supported version is now **3.11** (`requires-python`, `setup.py`, CI, and contributor docs). Python 3.10 reached end of life in October 2026, and the filelock security fixes above are only available on Python 3.11+. **filelock ≥ 4.2.1** now applies to all supported Python versions.
 
 ### Removed
 - **API spec:** removed **`graphiant_api_docs_v26.9.0.json`** (superseded by **26.10.0** bundle).
+
+### Security
+- **urllib3** minimum raised to **≥ 2.8.0** (`pyproject.toml`, `setup.py`, `requirements.txt`) to fix unbounded chunk-size line buffering in `HTTPResponse.stream()`/`read_chunked()`, HTTPS proxy TLS configuration being ignored or overridden, and an infinite loop in chunked Deflate streaming.
+- **virtualenv** (dev, pulled in by **tox**): minimum **≥ 21.14.13** to fix activation-script command injection (bash, fish, zsh, xonsh, batch), unverified seed wheels, `pyvenv.cfg` prompt injection, and symlink-following issues during environment creation.
+- **filelock** (dev, pulled in by the **tox** / **virtualenv** stack): minimum **≥ 4.2.1** on Python **3.11+** to fix multiple `ReadWriteLock`, `SoftFileLock`, `UnixFileLock` and `WindowsFileLock` issues (symlink/hard-link following, stale-lock breaking, lock-database hangs, permission handling). filelock **4.2.1+** requires Python **≥ 3.11**, and no release that supports Python 3.10 contains these fixes.
+
+### Documentation
+- README, CONTRIBUTING, SECURITY, GitHub Actions workflow docs, issue template, and `.travis.yml` updated for Python **3.11+** only (removed **3.10** from test matrices and examples).
 
 ## [26.9.0] - 2026-09-24
 
