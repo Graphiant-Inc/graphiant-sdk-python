@@ -29,7 +29,7 @@ PYTHON_REQUIRES = ">= 3.11"
 REQUIRES = [
     "urllib3 >= 2.8.0, < 3.0.0",
     "python-dateutil >= 2.8.2",
-    "pydantic >= 2",
+    "pydantic >= 2.11",
     "typing-extensions >= 4.7.1",
     "typer >= 0.9.0, < 1.0.0",
     "shellingham >= 1.3.0",
