@@ -28,11 +28,12 @@ class AssuranceApprovedAppEntry(BaseModel):
     AssuranceApprovedAppEntry
     """ # noqa: E501
     active_users: Optional[StrictInt] = Field(default=None, description="number of active users (required)", alias="activeUsers", json_schema_extra={"examples": [1234567891011]})
+    bucket_id: Optional[StrictStr] = Field(default=None, description="bucket id", alias="bucketId", json_schema_extra={"examples": ["ENUM_VALUE"]})
     category: Optional[StrictStr] = Field(default=None, description="approved AI tool category (required)", json_schema_extra={"examples": ["example string"]})
     data_sent_kbps: Optional[Union[StrictFloat, StrictInt]] = Field(default=None, description="data sent in kbps (required)", alias="dataSentKbps", json_schema_extra={"examples": [123.45]})
     id: Optional[StrictStr] = Field(default=None, description="approved app entry identifier (required)", json_schema_extra={"examples": ["example string"]})
     tool: Optional[StrictStr] = Field(default=None, description="approved AI tool name (required)", json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["activeUsers", "category", "dataSentKbps", "id", "tool"]
+    __properties: ClassVar[List[str]] = ["activeUsers", "bucketId", "category", "dataSentKbps", "id", "tool"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,6 +87,7 @@ class AssuranceApprovedAppEntry(BaseModel):
 
         _obj = cls.model_validate({
             "activeUsers": obj.get("activeUsers"),
+            "bucketId": obj.get("bucketId"),
             "category": obj.get("category"),
             "dataSentKbps": obj.get("dataSentKbps"),
             "id": obj.get("id"),

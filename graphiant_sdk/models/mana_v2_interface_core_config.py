@@ -57,6 +57,7 @@ class ManaV2InterfaceCoreConfig(BaseModel):
     ipsec: Optional[ManaV2InterfaceIPsecConfig] = None
     ipv4: Optional[ManaV2InterfaceIpConfig] = None
     ipv6: Optional[ManaV2InterfaceIpConfig] = None
+    is_maintenance_wan: Optional[StrictBool] = Field(default=None, alias="isMaintenanceWan", json_schema_extra={"examples": [True]})
     lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
     loopback: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
@@ -78,7 +79,7 @@ class ManaV2InterfaceCoreConfig(BaseModel):
     wan: Optional[ManaV2InterfaceWanConfig] = None
     wan_management: Optional[Dict[str, Any]] = Field(default=None, alias="wanManagement")
     x_talk_filter: Optional[StrictBool] = Field(default=None, alias="xTalkFilter", json_schema_extra={"examples": [True]})
-    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "coreNeighbor", "coreToCoreTunnel", "createLinkLocalAddress", "default", "description", "duplex", "dynamic", "flexAlgos", "gatewayNeighbor", "gw", "interfaceType", "ipsec", "ipv4", "ipv6", "lan", "lldpEnabled", "loopback", "maxTransmissionUnit", "mplsEnabled", "ospfCost", "ospfInterface", "peerDeviceId", "peerHostname", "securityZone", "speed", "static", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "tunnelInterface", "tunnelUnderlay", "wan", "wanManagement", "xTalkFilter"]
+    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "coreNeighbor", "coreToCoreTunnel", "createLinkLocalAddress", "default", "description", "duplex", "dynamic", "flexAlgos", "gatewayNeighbor", "gw", "interfaceType", "ipsec", "ipv4", "ipv6", "isMaintenanceWan", "lan", "lldpEnabled", "loopback", "maxTransmissionUnit", "mplsEnabled", "ospfCost", "ospfInterface", "peerDeviceId", "peerHostname", "securityZone", "speed", "static", "subinterfaces", "tcpMss", "tcpMssV4", "tcpMssV6", "tunnelInterface", "tunnelUnderlay", "wan", "wanManagement", "xTalkFilter"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -191,6 +192,7 @@ class ManaV2InterfaceCoreConfig(BaseModel):
             "ipsec": ManaV2InterfaceIPsecConfig.from_dict(obj["ipsec"]) if obj.get("ipsec") is not None else None,
             "ipv4": ManaV2InterfaceIpConfig.from_dict(obj["ipv4"]) if obj.get("ipv4") is not None else None,
             "ipv6": ManaV2InterfaceIpConfig.from_dict(obj["ipv6"]) if obj.get("ipv6") is not None else None,
+            "isMaintenanceWan": obj.get("isMaintenanceWan"),
             "lan": obj.get("lan"),
             "lldpEnabled": obj.get("lldpEnabled"),
             "loopback": obj.get("loopback"),

@@ -48,6 +48,7 @@ class ManaV2InterfaceVlan(BaseModel):
     name: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     oper_updated_at: Optional[GoogleProtobufTimestamp] = Field(default=None, alias="operUpdatedAt")
     parent_mac_address: Optional[StrictStr] = Field(default=None, alias="parentMacAddress", json_schema_extra={"examples": ["example string"]})
+    pppoe_interfaces: Optional[List[ManaV2Interface]] = Field(default=None, alias="pppoeInterfaces")
     security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
     speed_mbps: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="speedMbps", json_schema_extra={"examples": [123]})
     tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
@@ -55,7 +56,7 @@ class ManaV2InterfaceVlan(BaseModel):
     tcp_mss_v6: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV6", json_schema_extra={"examples": [123]})
     up: Optional[StrictBool] = Field(default=None, json_schema_extra={"examples": [True]})
     vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
-    __properties: ClassVar[List[str]] = ["alias", "circuit", "configUpdatedAt", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipv4", "ipv6", "ipv6Addresses", "lan", "macAddress", "maxTransmissionUnit", "name", "operUpdatedAt", "parentMacAddress", "securityZone", "speedMbps", "tcpMss", "tcpMssV4", "tcpMssV6", "up", "vlan"]
+    __properties: ClassVar[List[str]] = ["alias", "circuit", "configUpdatedAt", "description", "duplex", "enabled", "gatewayAddressV4", "gatewayAddressV6", "id", "ipv4", "ipv6", "ipv6Addresses", "lan", "macAddress", "maxTransmissionUnit", "name", "operUpdatedAt", "parentMacAddress", "pppoeInterfaces", "securityZone", "speedMbps", "tcpMss", "tcpMssV4", "tcpMssV6", "up", "vlan"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -115,6 +116,13 @@ class ManaV2InterfaceVlan(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of oper_updated_at
         if self.oper_updated_at:
             _dict['operUpdatedAt'] = self.oper_updated_at.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each item in pppoe_interfaces (list)
+        _items = []
+        if self.pppoe_interfaces:
+            for _item_pppoe_interfaces in self.pppoe_interfaces:
+                if _item_pppoe_interfaces:
+                    _items.append(_item_pppoe_interfaces.to_dict())
+            _dict['pppoeInterfaces'] = _items
         return _dict
 
     @classmethod
@@ -145,6 +153,7 @@ class ManaV2InterfaceVlan(BaseModel):
             "name": obj.get("name"),
             "operUpdatedAt": GoogleProtobufTimestamp.from_dict(obj["operUpdatedAt"]) if obj.get("operUpdatedAt") is not None else None,
             "parentMacAddress": obj.get("parentMacAddress"),
+            "pppoeInterfaces": [ManaV2Interface.from_dict(_item) for _item in obj["pppoeInterfaces"]] if obj.get("pppoeInterfaces") is not None else None,
             "securityZone": obj.get("securityZone"),
             "speedMbps": obj.get("speedMbps"),
             "tcpMss": obj.get("tcpMss"),
@@ -155,4 +164,7 @@ class ManaV2InterfaceVlan(BaseModel):
         })
         return _obj
 
+from graphiant_sdk.models.mana_v2_interface import ManaV2Interface
+# TODO: Rewrite to not use raise_errors
+ManaV2InterfaceVlan.model_rebuild(raise_errors=False)
 

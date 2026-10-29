@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **active_users** | **int** | number of active users (required) | [optional] 
+**bucket_id** | **str** | bucket id | [optional] 
 **category** | **str** | approved AI tool category (required) | [optional] 
 **data_sent_kbps** | **float** | data sent in kbps (required) | [optional] 
 **id** | **str** | approved app entry identifier (required) | [optional] 

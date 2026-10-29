@@ -14,6 +14,7 @@ Name | Type | Description | Notes
 **lan** | **str** |  | [optional] 
 **lldp_enabled** | **bool** |  | [optional] 
 **max_transmission_unit** | **int** |  | [optional] 
+**pppoe_interfaces** | [**Dict[str, ManaV2NullablePpPoEInterfaceConfig]**](ManaV2NullablePpPoEInterfaceConfig.md) |  | [optional] 
 **security_zone** | **str** |  | [optional] 
 **tcp_mss** | **int** |  | [optional] 
 **tcp_mss_v4** | **int** |  | [optional] 

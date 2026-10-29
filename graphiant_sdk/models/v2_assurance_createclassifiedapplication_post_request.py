@@ -28,10 +28,11 @@ class V2AssuranceCreateclassifiedapplicationPostRequest(BaseModel):
     V2AssuranceCreateclassifiedapplicationPostRequest
     """ # noqa: E501
     app_name: Optional[StrictStr] = Field(default=None, alias="appName", json_schema_extra={"examples": ["example string"]})
+    category: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     ip_prefix_list: Optional[List[StrictStr]] = Field(default=None, alias="ipPrefixList")
     port_list: Optional[List[StrictStr]] = Field(default=None, alias="portList")
     protocol_list: Optional[List[StrictStr]] = Field(default=None, alias="protocolList")
-    __properties: ClassVar[List[str]] = ["appName", "ipPrefixList", "portList", "protocolList"]
+    __properties: ClassVar[List[str]] = ["appName", "category", "ipPrefixList", "portList", "protocolList"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -85,6 +86,7 @@ class V2AssuranceCreateclassifiedapplicationPostRequest(BaseModel):
 
         _obj = cls.model_validate({
             "appName": obj.get("appName"),
+            "category": obj.get("category"),
             "ipPrefixList": obj.get("ipPrefixList"),
             "portList": obj.get("portList"),
             "protocolList": obj.get("protocolList")

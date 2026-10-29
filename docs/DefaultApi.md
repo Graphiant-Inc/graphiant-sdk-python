@@ -391,6 +391,7 @@ Method | HTTP request | Description
 [**v1_sdk_automation_playbook_jobs_job_id_logs_get**](DefaultApi.md#v1_sdk_automation_playbook_jobs_job_id_logs_get) | **GET** /v1/sdk-automation/playbook/jobs/{jobId}/logs | 
 [**v1_sdk_automation_playbook_jobs_job_id_resume_post**](DefaultApi.md#v1_sdk_automation_playbook_jobs_job_id_resume_post) | **POST** /v1/sdk-automation/playbook/jobs/{jobId}/resume | 
 [**v1_sdk_automation_playbook_jobs_job_id_run_post**](DefaultApi.md#v1_sdk_automation_playbook_jobs_job_id_run_post) | **POST** /v1/sdk-automation/playbook/jobs/{jobId}/run | 
+[**v1_sdk_automation_playbook_jobs_job_id_snapshot_get**](DefaultApi.md#v1_sdk_automation_playbook_jobs_job_id_snapshot_get) | **GET** /v1/sdk-automation/playbook/jobs/{jobId}/snapshot | 
 [**v1_sdk_automation_playbook_module_slots_get**](DefaultApi.md#v1_sdk_automation_playbook_module_slots_get) | **GET** /v1/sdk-automation/playbook/module-slots | 
 [**v1_sdk_automation_playbook_templates_get**](DefaultApi.md#v1_sdk_automation_playbook_templates_get) | **GET** /v1/sdk-automation/playbook/templates | 
 [**v1_search_get**](DefaultApi.md#v1_search_get) | **GET** /v1/search | 
@@ -468,6 +469,7 @@ Method | HTTP request | Description
 [**v2_assurance_bucket_services_post**](DefaultApi.md#v2_assurance_bucket_services_post) | **POST** /v2/assurance/bucket-services | 
 [**v2_assurance_bucket_topologies_post**](DefaultApi.md#v2_assurance_bucket_topologies_post) | **POST** /v2/assurance/bucket-topologies | 
 [**v2_assurance_bucketdetails_post**](DefaultApi.md#v2_assurance_bucketdetails_post) | **POST** /v2/assurance/bucketdetails | 
+[**v2_assurance_categorize_ai_app_post**](DefaultApi.md#v2_assurance_categorize_ai_app_post) | **POST** /v2/assurance/categorize-ai-app | 
 [**v2_assurance_create_ai_adoption_approve_entry_post**](DefaultApi.md#v2_assurance_create_ai_adoption_approve_entry_post) | **POST** /v2/assurance/create-ai-adoption-approve-entry | 
 [**v2_assurance_create_dnsproxy_entry_post**](DefaultApi.md#v2_assurance_create_dnsproxy_entry_post) | **POST** /v2/assurance/create-dnsproxy-entry | 
 [**v2_assurance_create_user_report_post**](DefaultApi.md#v2_assurance_create_user_report_post) | **POST** /v2/assurance/create-user-report | 
@@ -481,6 +483,7 @@ Method | HTTP request | Description
 [**v2_assurance_get_app_names_post**](DefaultApi.md#v2_assurance_get_app_names_post) | **POST** /v2/assurance/get-app-names | 
 [**v2_assurance_getclassifiedapplicationlist_get**](DefaultApi.md#v2_assurance_getclassifiedapplicationlist_get) | **GET** /v2/assurance/getclassifiedapplicationlist | 
 [**v2_assurance_read_ai_adoption_approve_entries_get**](DefaultApi.md#v2_assurance_read_ai_adoption_approve_entries_get) | **GET** /v2/assurance/read-ai-adoption-approve-entries | 
+[**v2_assurance_read_ai_adoption_category_entries_get**](DefaultApi.md#v2_assurance_read_ai_adoption_category_entries_get) | **GET** /v2/assurance/read-ai-adoption-category-entries | 
 [**v2_assurance_read_dnsproxy_list_get**](DefaultApi.md#v2_assurance_read_dnsproxy_list_get) | **GET** /v2/assurance/read-dnsproxy-list | 
 [**v2_assurance_read_user_report_list_get**](DefaultApi.md#v2_assurance_read_user_report_list_get) | **GET** /v2/assurance/read-user-report-list | 
 [**v2_assurance_scoredetails_post**](DefaultApi.md#v2_assurance_scoredetails_post) | **POST** /v2/assurance/scoredetails | 
@@ -30214,7 +30217,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
 # **v1_sdk_automation_playbook_jobs_get**
-> V1SdkAutomationPlaybookJobsGetResponse v1_sdk_automation_playbook_jobs_get(authorization, name_contains=name_contains)
+> V1SdkAutomationPlaybookJobsGetResponse v1_sdk_automation_playbook_jobs_get(authorization, name_contains=name_contains, status=status)
 
 List playbook job history
 
@@ -30251,9 +30254,10 @@ with graphiant_sdk.ApiClient(configuration) as api_client:
     api_instance = graphiant_sdk.DefaultApi(api_client)
     authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
     name_contains = 'example string' # str | Optional filter: case-insensitive substring match on the owning config's display name; empty returns all (optional)
+    status = ['[\"example\"]'] # List[str] | Optional status filter (e.g. COMPLETE, FAILED); empty returns all (optional)
 
     try:
-        api_response = api_instance.v1_sdk_automation_playbook_jobs_get(authorization, name_contains=name_contains)
+        api_response = api_instance.v1_sdk_automation_playbook_jobs_get(authorization, name_contains=name_contains, status=status)
         print("The response of DefaultApi->v1_sdk_automation_playbook_jobs_get:\n")
         pprint(api_response)
     except Exception as e:
@@ -30269,6 +30273,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
  **name_contains** | **str**| Optional filter: case-insensitive substring match on the owning config&#39;s display name; empty returns all | [optional] 
+ **status** | [**List[str]**](str.md)| Optional status filter (e.g. COMPLETE, FAILED); empty returns all | [optional] 
 
 ### Return type
 
@@ -30533,7 +30538,7 @@ Name | Type | Description  | Notes
 # **v1_sdk_automation_playbook_jobs_job_id_logs_get**
 > V1SdkAutomationPlaybookJobsJobIdLogsGetResponse v1_sdk_automation_playbook_jobs_job_id_logs_get(authorization, job_id, phase=phase)
 
-Get masked ansible logs for a job, optionally filtered by phase
+Get masked ansible logs for a job, optionally filtered by phase and paged with first / after
 
 ### Example
 
@@ -30762,6 +30767,84 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_sdk_automation_playbook_jobs_job_id_snapshot_get**
+> V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse v1_sdk_automation_playbook_jobs_job_id_snapshot_get(authorization, job_id)
+
+Get the frozen config inputs captured for this job at creation
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_snapshot_get_response import V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    job_id = 'example string' # str | Job id whose snapshot is requested
+
+    try:
+        api_response = api_instance.v1_sdk_automation_playbook_jobs_job_id_snapshot_get(authorization, job_id)
+        print("The response of DefaultApi->v1_sdk_automation_playbook_jobs_job_id_snapshot_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_sdk_automation_playbook_jobs_job_id_snapshot_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **job_id** | **str**| Job id whose snapshot is requested | 
+
+### Return type
+
+[**V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse**](V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 
 ### HTTP response details
@@ -36719,6 +36802,82 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
+# **v2_assurance_categorize_ai_app_post**
+> object v2_assurance_categorize_ai_app_post(authorization, v2_assurance_categorize_ai_app_post_request)
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v2_assurance_categorize_ai_app_post_request import V2AssuranceCategorizeAiAppPostRequest
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    v2_assurance_categorize_ai_app_post_request = graphiant_sdk.V2AssuranceCategorizeAiAppPostRequest() # V2AssuranceCategorizeAiAppPostRequest | 
+
+    try:
+        api_response = api_instance.v2_assurance_categorize_ai_app_post(authorization, v2_assurance_categorize_ai_app_post_request)
+        print("The response of DefaultApi->v2_assurance_categorize_ai_app_post:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v2_assurance_categorize_ai_app_post: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v2_assurance_categorize_ai_app_post_request** | [**V2AssuranceCategorizeAiAppPostRequest**](V2AssuranceCategorizeAiAppPostRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
 # **v2_assurance_create_ai_adoption_approve_entry_post**
 > V2AssuranceCreateAiAdoptionApproveEntryPostResponse v2_assurance_create_ai_adoption_approve_entry_post(authorization, v2_assurance_create_ai_adoption_approve_entry_post_request)
 
@@ -37683,6 +37842,80 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**V2AssuranceReadAiAdoptionApproveEntriesGetResponse**](V2AssuranceReadAiAdoptionApproveEntriesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v2_assurance_read_ai_adoption_category_entries_get**
+> V2AssuranceReadAiAdoptionCategoryEntriesGetResponse v2_assurance_read_ai_adoption_category_entries_get(authorization)
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v2_assurance_read_ai_adoption_category_entries_get_response import V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+
+    try:
+        api_response = api_instance.v2_assurance_read_ai_adoption_category_entries_get(authorization)
+        print("The response of DefaultApi->v2_assurance_read_ai_adoption_category_entries_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v2_assurance_read_ai_adoption_category_entries_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V2AssuranceReadAiAdoptionCategoryEntriesGetResponse**](V2AssuranceReadAiAdoptionCategoryEntriesGetResponse.md)
 
 ### Authorization
 

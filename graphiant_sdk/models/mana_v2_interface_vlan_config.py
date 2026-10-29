@@ -21,6 +21,7 @@ from pydantic import BaseModel, ConfigDict, Field, StrictBool, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
 from typing_extensions import Annotated
 from graphiant_sdk.models.mana_v2_interface_ip_config import ManaV2InterfaceIpConfig
+from graphiant_sdk.models.mana_v2_nullable_pp_po_e_interface_config import ManaV2NullablePpPoEInterfaceConfig
 from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v4 import ManaV2NullableTcpMssV4
 from graphiant_sdk.models.mana_v2_nullable_tcp_mss_v6 import ManaV2NullableTcpMssV6
 from graphiant_sdk.models.mana_v2_nullable_vrrp_group_config import ManaV2NullableVrrpGroupConfig
@@ -41,6 +42,7 @@ class ManaV2InterfaceVlanConfig(BaseModel):
     lan: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     lldp_enabled: Optional[StrictBool] = Field(default=None, alias="lldpEnabled", json_schema_extra={"examples": [True]})
     max_transmission_unit: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="maxTransmissionUnit", json_schema_extra={"examples": [123]})
+    pppoe_interfaces: Optional[Dict[str, ManaV2NullablePpPoEInterfaceConfig]] = Field(default=None, alias="pppoeInterfaces")
     security_zone: Optional[StrictStr] = Field(default=None, alias="securityZone", json_schema_extra={"examples": ["example string"]})
     tcp_mss: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMss", json_schema_extra={"examples": [123]})
     tcp_mss_v4: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, alias="tcpMssV4", json_schema_extra={"examples": [123]})
@@ -49,7 +51,7 @@ class ManaV2InterfaceVlanConfig(BaseModel):
     v6_tcp_mss: Optional[ManaV2NullableTcpMssV6] = Field(default=None, alias="v6TcpMss")
     vlan: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
     vrrp: Optional[ManaV2NullableVrrpGroupConfig] = None
-    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "description", "ipv4", "ipv6", "lan", "lldpEnabled", "maxTransmissionUnit", "securityZone", "tcpMss", "tcpMssV4", "tcpMssV6", "v4TcpMss", "v6TcpMss", "vlan", "vrrp"]
+    __properties: ClassVar[List[str]] = ["adminStatus", "alias", "circuit", "description", "ipv4", "ipv6", "lan", "lldpEnabled", "maxTransmissionUnit", "pppoeInterfaces", "securityZone", "tcpMss", "tcpMssV4", "tcpMssV6", "v4TcpMss", "v6TcpMss", "vlan", "vrrp"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -96,6 +98,13 @@ class ManaV2InterfaceVlanConfig(BaseModel):
         # override the default output from pydantic by calling `to_dict()` of ipv6
         if self.ipv6:
             _dict['ipv6'] = self.ipv6.to_dict()
+        # override the default output from pydantic by calling `to_dict()` of each value in pppoe_interfaces (dict)
+        _field_dict = {}
+        if self.pppoe_interfaces:
+            for _key_pppoe_interfaces in self.pppoe_interfaces:
+                if self.pppoe_interfaces[_key_pppoe_interfaces]:
+                    _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict()
+            _dict['pppoeInterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of v4_tcp_mss
         if self.v4_tcp_mss:
             _dict['v4TcpMss'] = self.v4_tcp_mss.to_dict()
@@ -126,6 +135,12 @@ class ManaV2InterfaceVlanConfig(BaseModel):
             "lan": obj.get("lan"),
             "lldpEnabled": obj.get("lldpEnabled"),
             "maxTransmissionUnit": obj.get("maxTransmissionUnit"),
+            "pppoeInterfaces": dict(
+                (_k, ManaV2NullablePpPoEInterfaceConfig.from_dict(_v))
+                for _k, _v in obj["pppoeInterfaces"].items()
+            )
+            if obj.get("pppoeInterfaces") is not None
+            else None,
             "securityZone": obj.get("securityZone"),
             "tcpMss": obj.get("tcpMss"),
             "tcpMssV4": obj.get("tcpMssV4"),

@@ -17,8 +17,9 @@ import pprint
 import re  # noqa: F401
 import json
 
-from pydantic import BaseModel, ConfigDict, StrictStr
+from pydantic import BaseModel, ConfigDict, Field, StrictStr
 from typing import Any, ClassVar, Dict, List, Optional
+from graphiant_sdk.models.common_page_info import CommonPageInfo
 from typing import Optional, Set
 from typing_extensions import Self
 from pydantic_core import to_jsonable_python
@@ -28,7 +29,8 @@ class V1SdkAutomationPlaybookJobsJobIdLogsGetResponse(BaseModel):
     V1SdkAutomationPlaybookJobsJobIdLogsGetResponse
     """ # noqa: E501
     lines: Optional[List[StrictStr]] = None
-    __properties: ClassVar[List[str]] = ["lines"]
+    page_info: Optional[CommonPageInfo] = Field(default=None, alias="pageInfo")
+    __properties: ClassVar[List[str]] = ["lines", "pageInfo"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -69,6 +71,9 @@ class V1SdkAutomationPlaybookJobsJobIdLogsGetResponse(BaseModel):
             exclude=excluded_fields,
             exclude_none=True,
         )
+        # override the default output from pydantic by calling `to_dict()` of page_info
+        if self.page_info:
+            _dict['pageInfo'] = self.page_info.to_dict()
         return _dict
 
     @classmethod
@@ -81,7 +86,8 @@ class V1SdkAutomationPlaybookJobsJobIdLogsGetResponse(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "lines": obj.get("lines")
+            "lines": obj.get("lines"),
+            "pageInfo": CommonPageInfo.from_dict(obj["pageInfo"]) if obj.get("pageInfo") is not None else None
         })
         return _obj
 

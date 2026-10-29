@@ -6,6 +6,32 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+## [26.10.0] - 2026-10-28
+
+No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.10.0.json`
+- **PPPoE interfaces:** new models **`ManaV2PpPoEInterface`**, **`ManaV2PpPoEInterfaceConfig`** (`admin_status`, `alias`, `authentication_type`, `circuit`, `description`, `lcp_echo_failure`, `lcp_echo_interval`, `max_transmission_unit`, `password`, `ppp_connect_timeout`, `username`, `v4_tcp_mss`, `v6_tcp_mss`), and **`ManaV2NullablePpPoEInterfaceConfig`**; **`ManaV2Interface`** gains `pppoe_interface`/`pppoe_interfaces`, and `pppoe_interfaces` added to **`ManaV2InterfaceConfig`**, **`ManaV2InterfaceVlan`**, **`ManaV2InterfaceVlanConfig`**
+- **AI adoption / app categorization:** **`POST /v2/assurance/categorize-ai-app`** (models **`V2AssuranceCategorizeAiAppPostRequest`** with `app_name`/`bucket_id`/`is_ai_app`, **`V2AssuranceCategorizeAiAppPostResponse`**) and **`GET /v2/assurance/read-ai-adoption-category-entries`** (model **`V2AssuranceReadAiAdoptionCategoryEntriesGetResponse`** with `ai_categorized_app_list`)
+- **SDK Automation (playbooks):** **`GET /v1/sdk-automation/playbook/jobs/{jobId}/snapshot`** — frozen config inputs captured for a job at creation; models **`SdkAutomationPlaybookJobSnapshot`** (`bundle_key`, `config_id`, `description`, `files`, `job_id`, `name`, `playbook`, `tags`) and **`V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse`**
+
+### Changed
+- **Version:** Package **26.10.0**; OpenAPI bundle **`graphiant_api_docs_v26.10.0.json`** (replaces **26.9.0** bundle in-repo).
+- **Schemas / docs (updated):**
+  - **`AssuranceAppNameRecord`**: added `is_ai_app` field
+  - **`AssuranceApprovedAppEntry`**: added `bucket_id` field
+  - **`AssuranceClassifiedApplication`**, **`V2AssuranceCreateclassifiedapplicationPostRequest`**: added `category` field
+  - **`CommonUserInfo`**: added `account_type` field
+  - **`ManaV2InterfaceCoreConfig`**: added `is_maintenance_wan` field
+  - **`UpgradeInventoryKey`**: added `container` field
+  - **`V1SdkAutomationPlaybookJobsJobIdLogsGetResponse`**: added `page_info` field
+  - **`V2MonitoringFecStatsGetResponse`**: added `current_rx_sla_metrics_with_repair` and `current_tx_sla_metrics_with_repair` fields
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.10.0** spec.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.9.0.json`** (superseded by **26.10.0** bundle).
+
 ## [26.9.0] - 2026-09-24
 
 No breaking changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).

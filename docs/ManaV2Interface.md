@@ -28,6 +28,8 @@ Name | Type | Description | Notes
 **name** | **str** |  | [optional] 
 **oper_updated_at** | [**GoogleProtobufTimestamp**](GoogleProtobufTimestamp.md) |  | [optional] 
 **phy_address** | **str** |  | [optional] 
+**pppoe_interface** | [**ManaV2PpPoEInterface**](ManaV2PpPoEInterface.md) |  | [optional] 
+**pppoe_interfaces** | [**List[ManaV2Interface]**](ManaV2Interface.md) |  | [optional] 
 **protocol** | **str** |  | [optional] 
 **security_zone** | **str** |  | [optional] 
 **sfp_optical_strength** | [**List[ManaV2InterfaceSfpOpticalStrength]**](ManaV2InterfaceSfpOpticalStrength.md) |  | [optional] 

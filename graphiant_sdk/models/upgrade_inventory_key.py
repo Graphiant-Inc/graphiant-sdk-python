@@ -28,9 +28,10 @@ class UpgradeInventoryKey(BaseModel):
     """
     UpgradeInventoryKey
     """ # noqa: E501
+    container: Optional[StrictStr] = Field(default=None, description="Blob storage container this image was indexed from. Same model + version can exist in more than one container Empty for rows indexed before multi-container support.", json_schema_extra={"examples": ["example string"]})
     model: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
     version: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["model", "version"]
+    __properties: ClassVar[List[str]] = ["container", "model", "version"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -83,6 +84,7 @@ class UpgradeInventoryKey(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
+            "container": obj.get("container"),
             "model": obj.get("model"),
             "version": obj.get("version")
         })

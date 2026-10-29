@@ -450,6 +450,7 @@ __all__ = [
     "ManaV2NullableOspfRedistributeProtocolConfig",
     "ManaV2NullableOspfRetransmitIntervalValue",
     "ManaV2NullablePolicyName",
+    "ManaV2NullablePpPoEInterfaceConfig",
     "ManaV2NullablePrefixSet",
     "ManaV2NullablePrefixSetConfig",
     "ManaV2NullablePrometheusRemoteWriteSinkConfig",
@@ -514,6 +515,8 @@ __all__ = [
     "ManaV2PolicyTargetInput",
     "ManaV2PortRange",
     "ManaV2PortRangeConfig",
+    "ManaV2PpPoEInterface",
+    "ManaV2PpPoEInterfaceConfig",
     "ManaV2PrefixSet",
     "ManaV2PrefixSetConfig",
     "ManaV2PrefixSetConfigNullableEntry",
@@ -673,6 +676,7 @@ __all__ = [
     "SdkAutomationPlaybookConfig",
     "SdkAutomationPlaybookConfigSummary",
     "SdkAutomationPlaybookJob",
+    "SdkAutomationPlaybookJobSnapshot",
     "SdkAutomationTemplateFile",
     "SdkAutomationValidationError",
     "SearchEdgeSummary",
@@ -818,9 +822,12 @@ __all__ = [
     "V1AuthErrorPostResponse",
     "V1AuthGcsPostRequest",
     "V1AuthGetResponse",
+    "V1AuthLoginCallbackPost500Response",
     "V1AuthLoginPostRequest",
     "V1AuthLoginPostResponse",
     "V1AuthLoginPreGetResponse",
+    "V1AuthLoginSamlGet401Response",
+    "V1AuthLoginSamlGet500Response",
     "V1AuthLoginTempPostRequest",
     "V1AuthMfaPatchRequest",
     "V1AuthMfaPost500Response",
@@ -830,7 +837,11 @@ __all__ = [
     "V1AuthPatchRequest",
     "V1AuthPutRequest",
     "V1AuthRefreshGet200Response",
+    "V1AuthRefreshGet403Response",
+    "V1AuthRefreshGet422Response",
     "V1AuthRefreshGetEntryPointResponse",
+    "V1AuthSessionGet403Response",
+    "V1AuthSessionGet422Response",
     "V1AuthUserGetResponse",
     "V1BackboneHealthDeviceDeviceIdPostRequest",
     "V1BackboneHealthDeviceDeviceIdPostResponse",
@@ -1318,6 +1329,7 @@ __all__ = [
     "V1SdkAutomationPlaybookJobsJobIdResumePostResponse",
     "V1SdkAutomationPlaybookJobsJobIdRunPostRequest",
     "V1SdkAutomationPlaybookJobsJobIdRunPostResponse",
+    "V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse",
     "V1SdkAutomationPlaybookModuleSlotsGetResponse",
     "V1SdkAutomationPlaybookTemplatesGetResponse",
     "V1SearchGetResponse",
@@ -1416,6 +1428,7 @@ __all__ = [
     "V2AssuranceBucketTopologiesPostResponse",
     "V2AssuranceBucketdetailsPostRequest",
     "V2AssuranceBucketdetailsPostResponse",
+    "V2AssuranceCategorizeAiAppPostRequest",
     "V2AssuranceCreateAiAdoptionApproveEntryPostRequest",
     "V2AssuranceCreateAiAdoptionApproveEntryPostResponse",
     "V2AssuranceCreateDnsproxyEntryPostRequest",
@@ -1431,6 +1444,7 @@ __all__ = [
     "V2AssuranceGetAppNamesPostResponse",
     "V2AssuranceGetclassifiedapplicationlistGetResponse",
     "V2AssuranceReadAiAdoptionApproveEntriesGetResponse",
+    "V2AssuranceReadAiAdoptionCategoryEntriesGetResponse",
     "V2AssuranceReadDnsproxyListGetResponse",
     "V2AssuranceReadUserReportListGetResponse",
     "V2AssuranceScoredetailsPostRequest",
@@ -2000,6 +2014,7 @@ from graphiant_sdk.models.mana_v2_nullable_ospf_process_config import ManaV2Null
 from graphiant_sdk.models.mana_v2_nullable_ospf_redistribute_protocol_config import ManaV2NullableOspfRedistributeProtocolConfig as ManaV2NullableOspfRedistributeProtocolConfig
 from graphiant_sdk.models.mana_v2_nullable_ospf_retransmit_interval_value import ManaV2NullableOspfRetransmitIntervalValue as ManaV2NullableOspfRetransmitIntervalValue
 from graphiant_sdk.models.mana_v2_nullable_policy_name import ManaV2NullablePolicyName as ManaV2NullablePolicyName
+from graphiant_sdk.models.mana_v2_nullable_pp_po_e_interface_config import ManaV2NullablePpPoEInterfaceConfig as ManaV2NullablePpPoEInterfaceConfig
 from graphiant_sdk.models.mana_v2_nullable_prefix_set import ManaV2NullablePrefixSet as ManaV2NullablePrefixSet
 from graphiant_sdk.models.mana_v2_nullable_prefix_set_config import ManaV2NullablePrefixSetConfig as ManaV2NullablePrefixSetConfig
 from graphiant_sdk.models.mana_v2_nullable_prometheus_remote_write_sink_config import ManaV2NullablePrometheusRemoteWriteSinkConfig as ManaV2NullablePrometheusRemoteWriteSinkConfig
@@ -2064,6 +2079,8 @@ from graphiant_sdk.models.mana_v2_policy_target import ManaV2PolicyTarget as Man
 from graphiant_sdk.models.mana_v2_policy_target_input import ManaV2PolicyTargetInput as ManaV2PolicyTargetInput
 from graphiant_sdk.models.mana_v2_port_range import ManaV2PortRange as ManaV2PortRange
 from graphiant_sdk.models.mana_v2_port_range_config import ManaV2PortRangeConfig as ManaV2PortRangeConfig
+from graphiant_sdk.models.mana_v2_pp_po_e_interface import ManaV2PpPoEInterface as ManaV2PpPoEInterface
+from graphiant_sdk.models.mana_v2_pp_po_e_interface_config import ManaV2PpPoEInterfaceConfig as ManaV2PpPoEInterfaceConfig
 from graphiant_sdk.models.mana_v2_prefix_set import ManaV2PrefixSet as ManaV2PrefixSet
 from graphiant_sdk.models.mana_v2_prefix_set_config import ManaV2PrefixSetConfig as ManaV2PrefixSetConfig
 from graphiant_sdk.models.mana_v2_prefix_set_config_nullable_entry import ManaV2PrefixSetConfigNullableEntry as ManaV2PrefixSetConfigNullableEntry
@@ -2223,6 +2240,7 @@ from graphiant_sdk.models.sdk_automation_module_file import SdkAutomationModuleF
 from graphiant_sdk.models.sdk_automation_playbook_config import SdkAutomationPlaybookConfig as SdkAutomationPlaybookConfig
 from graphiant_sdk.models.sdk_automation_playbook_config_summary import SdkAutomationPlaybookConfigSummary as SdkAutomationPlaybookConfigSummary
 from graphiant_sdk.models.sdk_automation_playbook_job import SdkAutomationPlaybookJob as SdkAutomationPlaybookJob
+from graphiant_sdk.models.sdk_automation_playbook_job_snapshot import SdkAutomationPlaybookJobSnapshot as SdkAutomationPlaybookJobSnapshot
 from graphiant_sdk.models.sdk_automation_template_file import SdkAutomationTemplateFile as SdkAutomationTemplateFile
 from graphiant_sdk.models.sdk_automation_validation_error import SdkAutomationValidationError as SdkAutomationValidationError
 from graphiant_sdk.models.search_edge_summary import SearchEdgeSummary as SearchEdgeSummary
@@ -2368,9 +2386,12 @@ from graphiant_sdk.models.v1_audit_logs_post_response import V1AuditLogsPostResp
 from graphiant_sdk.models.v1_auth_error_post_response import V1AuthErrorPostResponse as V1AuthErrorPostResponse
 from graphiant_sdk.models.v1_auth_gcs_post_request import V1AuthGcsPostRequest as V1AuthGcsPostRequest
 from graphiant_sdk.models.v1_auth_get_response import V1AuthGetResponse as V1AuthGetResponse
+from graphiant_sdk.models.v1_auth_login_callback_post500_response import V1AuthLoginCallbackPost500Response as V1AuthLoginCallbackPost500Response
 from graphiant_sdk.models.v1_auth_login_post_request import V1AuthLoginPostRequest as V1AuthLoginPostRequest
 from graphiant_sdk.models.v1_auth_login_post_response import V1AuthLoginPostResponse as V1AuthLoginPostResponse
 from graphiant_sdk.models.v1_auth_login_pre_get_response import V1AuthLoginPreGetResponse as V1AuthLoginPreGetResponse
+from graphiant_sdk.models.v1_auth_login_saml_get401_response import V1AuthLoginSamlGet401Response as V1AuthLoginSamlGet401Response
+from graphiant_sdk.models.v1_auth_login_saml_get500_response import V1AuthLoginSamlGet500Response as V1AuthLoginSamlGet500Response
 from graphiant_sdk.models.v1_auth_login_temp_post_request import V1AuthLoginTempPostRequest as V1AuthLoginTempPostRequest
 from graphiant_sdk.models.v1_auth_mfa_patch_request import V1AuthMfaPatchRequest as V1AuthMfaPatchRequest
 from graphiant_sdk.models.v1_auth_mfa_post500_response import V1AuthMfaPost500Response as V1AuthMfaPost500Response
@@ -2380,7 +2401,11 @@ from graphiant_sdk.models.v1_auth_mfa_types_put_request import V1AuthMfaTypesPut
 from graphiant_sdk.models.v1_auth_patch_request import V1AuthPatchRequest as V1AuthPatchRequest
 from graphiant_sdk.models.v1_auth_put_request import V1AuthPutRequest as V1AuthPutRequest
 from graphiant_sdk.models.v1_auth_refresh_get200_response import V1AuthRefreshGet200Response as V1AuthRefreshGet200Response
+from graphiant_sdk.models.v1_auth_refresh_get403_response import V1AuthRefreshGet403Response as V1AuthRefreshGet403Response
+from graphiant_sdk.models.v1_auth_refresh_get422_response import V1AuthRefreshGet422Response as V1AuthRefreshGet422Response
 from graphiant_sdk.models.v1_auth_refresh_get_entry_point_response import V1AuthRefreshGetEntryPointResponse as V1AuthRefreshGetEntryPointResponse
+from graphiant_sdk.models.v1_auth_session_get403_response import V1AuthSessionGet403Response as V1AuthSessionGet403Response
+from graphiant_sdk.models.v1_auth_session_get422_response import V1AuthSessionGet422Response as V1AuthSessionGet422Response
 from graphiant_sdk.models.v1_auth_user_get_response import V1AuthUserGetResponse as V1AuthUserGetResponse
 from graphiant_sdk.models.v1_backbone_health_device_device_id_post_request import V1BackboneHealthDeviceDeviceIdPostRequest as V1BackboneHealthDeviceDeviceIdPostRequest
 from graphiant_sdk.models.v1_backbone_health_device_device_id_post_response import V1BackboneHealthDeviceDeviceIdPostResponse as V1BackboneHealthDeviceDeviceIdPostResponse
@@ -2868,6 +2893,7 @@ from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_req
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_resume_post_response import V1SdkAutomationPlaybookJobsJobIdResumePostResponse as V1SdkAutomationPlaybookJobsJobIdResumePostResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_request import V1SdkAutomationPlaybookJobsJobIdRunPostRequest as V1SdkAutomationPlaybookJobsJobIdRunPostRequest
 from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_run_post_response import V1SdkAutomationPlaybookJobsJobIdRunPostResponse as V1SdkAutomationPlaybookJobsJobIdRunPostResponse
+from graphiant_sdk.models.v1_sdk_automation_playbook_jobs_job_id_snapshot_get_response import V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse as V1SdkAutomationPlaybookJobsJobIdSnapshotGetResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_module_slots_get_response import V1SdkAutomationPlaybookModuleSlotsGetResponse as V1SdkAutomationPlaybookModuleSlotsGetResponse
 from graphiant_sdk.models.v1_sdk_automation_playbook_templates_get_response import V1SdkAutomationPlaybookTemplatesGetResponse as V1SdkAutomationPlaybookTemplatesGetResponse
 from graphiant_sdk.models.v1_search_get_response import V1SearchGetResponse as V1SearchGetResponse
@@ -2966,6 +2992,7 @@ from graphiant_sdk.models.v2_assurance_bucket_topologies_post_request import V2A
 from graphiant_sdk.models.v2_assurance_bucket_topologies_post_response import V2AssuranceBucketTopologiesPostResponse as V2AssuranceBucketTopologiesPostResponse
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_request import V2AssuranceBucketdetailsPostRequest as V2AssuranceBucketdetailsPostRequest
 from graphiant_sdk.models.v2_assurance_bucketdetails_post_response import V2AssuranceBucketdetailsPostResponse as V2AssuranceBucketdetailsPostResponse
+from graphiant_sdk.models.v2_assurance_categorize_ai_app_post_request import V2AssuranceCategorizeAiAppPostRequest as V2AssuranceCategorizeAiAppPostRequest
 from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_request import V2AssuranceCreateAiAdoptionApproveEntryPostRequest as V2AssuranceCreateAiAdoptionApproveEntryPostRequest
 from graphiant_sdk.models.v2_assurance_create_ai_adoption_approve_entry_post_response import V2AssuranceCreateAiAdoptionApproveEntryPostResponse as V2AssuranceCreateAiAdoptionApproveEntryPostResponse
 from graphiant_sdk.models.v2_assurance_create_dnsproxy_entry_post_request import V2AssuranceCreateDnsproxyEntryPostRequest as V2AssuranceCreateDnsproxyEntryPostRequest
@@ -2981,6 +3008,7 @@ from graphiant_sdk.models.v2_assurance_get_app_names_post_request import V2Assur
 from graphiant_sdk.models.v2_assurance_get_app_names_post_response import V2AssuranceGetAppNamesPostResponse as V2AssuranceGetAppNamesPostResponse
 from graphiant_sdk.models.v2_assurance_getclassifiedapplicationlist_get_response import V2AssuranceGetclassifiedapplicationlistGetResponse as V2AssuranceGetclassifiedapplicationlistGetResponse
 from graphiant_sdk.models.v2_assurance_read_ai_adoption_approve_entries_get_response import V2AssuranceReadAiAdoptionApproveEntriesGetResponse as V2AssuranceReadAiAdoptionApproveEntriesGetResponse
+from graphiant_sdk.models.v2_assurance_read_ai_adoption_category_entries_get_response import V2AssuranceReadAiAdoptionCategoryEntriesGetResponse as V2AssuranceReadAiAdoptionCategoryEntriesGetResponse
 from graphiant_sdk.models.v2_assurance_read_dnsproxy_list_get_response import V2AssuranceReadDnsproxyListGetResponse as V2AssuranceReadDnsproxyListGetResponse
 from graphiant_sdk.models.v2_assurance_read_user_report_list_get_response import V2AssuranceReadUserReportListGetResponse as V2AssuranceReadUserReportListGetResponse
 from graphiant_sdk.models.v2_assurance_scoredetails_post_request import V2AssuranceScoredetailsPostRequest as V2AssuranceScoredetailsPostRequest

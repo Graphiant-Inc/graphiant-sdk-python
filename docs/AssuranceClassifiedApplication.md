@@ -6,6 +6,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **app_name** | **str** |  | [optional] 
+**category** | **str** |  | [optional] 
 **classification_entry_id** | **str** |  | [optional] 
 **ip_prefix_list** | **List[str]** |  | [optional] 
 **port_list** | **List[str]** |  | [optional] 

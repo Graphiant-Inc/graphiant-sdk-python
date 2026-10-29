@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**container** | **str** | Blob storage container this image was indexed from. Same model + version can exist in more than one container Empty for rows indexed before multi-container support. | [optional] 
 **model** | **int** |  | [optional] 
 **version** | **str** |  | [optional] 
 

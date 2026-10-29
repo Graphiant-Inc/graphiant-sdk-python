@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **exchange_service** | [**List[AssuranceExchangeServiceIdentifier]**](AssuranceExchangeServiceIdentifier.md) |  | [optional] 
 **flex_algo** | [**List[AssuranceFlexAlgoIdentifier]**](AssuranceFlexAlgoIdentifier.md) |  | [optional] 
 **flows_analyzed** | **int** |  | [optional] 
+**is_ai_app** | **bool** |  | [optional] 
 **recommendation** | **str** |  | [optional] 
 **risk_status** | **str** |  | [optional] 
 **threat_score** | **int** |  | [optional] 
