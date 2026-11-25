@@ -88,8 +88,7 @@ class AuditAuditEntry(BaseModel):
         _items = []
         if self.failed_target_results:
             for _item_failed_target_results in self.failed_target_results:
-                if _item_failed_target_results:
-                    _items.append(_item_failed_target_results.to_dict())
+                _items.append(_item_failed_target_results.to_dict() if _item_failed_target_results is not None else None)
             _dict['failedTargetResults'] = _items
         # override the default output from pydantic by calling `to_dict()` of start
         if self.start:
@@ -98,8 +97,7 @@ class AuditAuditEntry(BaseModel):
         _items = []
         if self.targets:
             for _item_targets in self.targets:
-                if _item_targets:
-                    _items.append(_item_targets.to_dict())
+                _items.append(_item_targets.to_dict() if _item_targets is not None else None)
             _dict['targets'] = _items
         return _dict
 

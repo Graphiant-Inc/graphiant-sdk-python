@@ -74,8 +74,7 @@ class V2AllowlistByEnterpriseGetResponse(BaseModel):
         _items = []
         if self.records:
             for _item_records in self.records:
-                if _item_records:
-                    _items.append(_item_records.to_dict())
+                _items.append(_item_records.to_dict() if _item_records is not None else None)
             _dict['records'] = _items
         return _dict
 

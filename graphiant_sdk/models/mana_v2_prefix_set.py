@@ -85,15 +85,13 @@ class ManaV2PrefixSet(BaseModel):
         _items = []
         if self.entries:
             for _item_entries in self.entries:
-                if _item_entries:
-                    _items.append(_item_entries.to_dict())
+                _items.append(_item_entries.to_dict() if _item_entries is not None else None)
             _dict['entries'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in policies (list)
         _items = []
         if self.policies:
             for _item_policies in self.policies:
-                if _item_policies:
-                    _items.append(_item_policies.to_dict())
+                _items.append(_item_policies.to_dict() if _item_policies is not None else None)
             _dict['policies'] = _items
         return _dict
 

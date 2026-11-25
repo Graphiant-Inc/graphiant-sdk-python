@@ -83,15 +83,13 @@ class V1EnterpriseAllocationGetResponse(BaseModel):
         _field_dict = {}
         if self.conversion_holders:
             for _key_conversion_holders in self.conversion_holders:
-                if self.conversion_holders[_key_conversion_holders]:
-                    _field_dict[_key_conversion_holders] = self.conversion_holders[_key_conversion_holders].to_dict()
+                _field_dict[_key_conversion_holders] = self.conversion_holders[_key_conversion_holders].to_dict() if self.conversion_holders[_key_conversion_holders] is not None else None
             _dict['conversionHolders'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in regional_allocations (list)
         _items = []
         if self.regional_allocations:
             for _item_regional_allocations in self.regional_allocations:
-                if _item_regional_allocations:
-                    _items.append(_item_regional_allocations.to_dict())
+                _items.append(_item_regional_allocations.to_dict() if _item_regional_allocations is not None else None)
             _dict['regionalAllocations'] = _items
         # override the default output from pydantic by calling `to_dict()` of zero_trust_summary
         if self.zero_trust_summary:

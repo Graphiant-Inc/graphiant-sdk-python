@@ -81,8 +81,7 @@ class SdkAutomationPlaybookJobSnapshot(BaseModel):
         _items = []
         if self.files:
             for _item_files in self.files:
-                if _item_files:
-                    _items.append(_item_files.to_dict())
+                _items.append(_item_files.to_dict() if _item_files is not None else None)
             _dict['files'] = _items
         return _dict
 

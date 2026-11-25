@@ -82,8 +82,7 @@ class AuditmonActivityLogsSelector(BaseModel):
         _items = []
         if self.target_ids:
             for _item_target_ids in self.target_ids:
-                if _item_target_ids:
-                    _items.append(_item_target_ids.to_dict())
+                _items.append(_item_target_ids.to_dict() if _item_target_ids is not None else None)
             _dict['targetIds'] = _items
         return _dict
 

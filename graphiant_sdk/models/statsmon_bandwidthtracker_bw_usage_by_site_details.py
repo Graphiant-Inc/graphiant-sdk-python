@@ -76,15 +76,13 @@ class StatsmonBandwidthtrackerBwUsageBySiteDetails(BaseModel):
         _items = []
         if self.bwuage_edge_provider:
             for _item_bwuage_edge_provider in self.bwuage_edge_provider:
-                if _item_bwuage_edge_provider:
-                    _items.append(_item_bwuage_edge_provider.to_dict())
+                _items.append(_item_bwuage_edge_provider.to_dict() if _item_bwuage_edge_provider is not None else None)
             _dict['bwuageEdgeProvider'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in bwuage_provider (list)
         _items = []
         if self.bwuage_provider:
             for _item_bwuage_provider in self.bwuage_provider:
-                if _item_bwuage_provider:
-                    _items.append(_item_bwuage_provider.to_dict())
+                _items.append(_item_bwuage_provider.to_dict() if _item_bwuage_provider is not None else None)
             _dict['bwuageProvider'] = _items
         return _dict
 

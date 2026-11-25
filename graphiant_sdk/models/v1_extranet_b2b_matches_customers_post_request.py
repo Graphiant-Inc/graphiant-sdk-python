@@ -75,8 +75,7 @@ class V1ExtranetB2bMatchesCustomersPostRequest(BaseModel):
         _items = []
         if self.customers:
             for _item_customers in self.customers:
-                if _item_customers:
-                    _items.append(_item_customers.to_dict())
+                _items.append(_item_customers.to_dict() if _item_customers is not None else None)
             _dict['customers'] = _items
         return _dict
 

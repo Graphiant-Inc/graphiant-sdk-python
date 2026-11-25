@@ -75,8 +75,7 @@ class ManaV2DeviceSnapshotList(BaseModel):
         _items = []
         if self.snapshots:
             for _item_snapshots in self.snapshots:
-                if _item_snapshots:
-                    _items.append(_item_snapshots.to_dict())
+                _items.append(_item_snapshots.to_dict() if _item_snapshots is not None else None)
             _dict['snapshots'] = _items
         return _dict
 

@@ -99,8 +99,7 @@ class IamEnterprise(BaseModel):
         _field_dict = {}
         if self.customers:
             for _key_customers in self.customers:
-                if self.customers[_key_customers]:
-                    _field_dict[_key_customers] = self.customers[_key_customers].to_dict()
+                _field_dict[_key_customers] = self.customers[_key_customers].to_dict() if self.customers[_key_customers] is not None else None
             _dict['customers'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of eula_agreement_date
         if self.eula_agreement_date:

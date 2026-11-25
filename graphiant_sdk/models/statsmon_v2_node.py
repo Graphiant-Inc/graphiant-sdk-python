@@ -84,15 +84,13 @@ class StatsmonV2Node(BaseModel):
         _items = []
         if self.circuit_info:
             for _item_circuit_info in self.circuit_info:
-                if _item_circuit_info:
-                    _items.append(_item_circuit_info.to_dict())
+                _items.append(_item_circuit_info.to_dict() if _item_circuit_info is not None else None)
             _dict['circuitInfo'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in connections (list)
         _items = []
         if self.connections:
             for _item_connections in self.connections:
-                if _item_connections:
-                    _items.append(_item_connections.to_dict())
+                _items.append(_item_connections.to_dict() if _item_connections is not None else None)
             _dict['connections'] = _items
         # override the default output from pydantic by calling `to_dict()` of node_info
         if self.node_info:

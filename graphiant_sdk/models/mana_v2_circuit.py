@@ -109,8 +109,7 @@ class ManaV2Circuit(BaseModel):
         _items = []
         if self.bgp_aggregations:
             for _item_bgp_aggregations in self.bgp_aggregations:
-                if _item_bgp_aggregations:
-                    _items.append(_item_bgp_aggregations.to_dict())
+                _items.append(_item_bgp_aggregations.to_dict() if _item_bgp_aggregations is not None else None)
             _dict['bgpAggregations'] = _items
         # override the default output from pydantic by calling `to_dict()` of bgp_multipath
         if self.bgp_multipath:
@@ -119,8 +118,7 @@ class ManaV2Circuit(BaseModel):
         _items = []
         if self.bgp_neighbors:
             for _item_bgp_neighbors in self.bgp_neighbors:
-                if _item_bgp_neighbors:
-                    _items.append(_item_bgp_neighbors.to_dict())
+                _items.append(_item_bgp_neighbors.to_dict() if _item_bgp_neighbors is not None else None)
             _dict['bgpNeighbors'] = _items
         # override the default output from pydantic by calling `to_dict()` of bgp_redistributions
         if self.bgp_redistributions:
@@ -129,8 +127,7 @@ class ManaV2Circuit(BaseModel):
         _items = []
         if self.core_logical_interfaces_v2:
             for _item_core_logical_interfaces_v2 in self.core_logical_interfaces_v2:
-                if _item_core_logical_interfaces_v2:
-                    _items.append(_item_core_logical_interfaces_v2.to_dict())
+                _items.append(_item_core_logical_interfaces_v2.to_dict() if _item_core_logical_interfaces_v2 is not None else None)
             _dict['coreLogicalInterfacesV2'] = _items
         # override the default output from pydantic by calling `to_dict()` of profile
         if self.profile:
@@ -139,8 +136,7 @@ class ManaV2Circuit(BaseModel):
         _items = []
         if self.static_routes:
             for _item_static_routes in self.static_routes:
-                if _item_static_routes:
-                    _items.append(_item_static_routes.to_dict())
+                _items.append(_item_static_routes.to_dict() if _item_static_routes is not None else None)
             _dict['staticRoutes'] = _items
         # override the default output from pydantic by calling `to_dict()` of wan_interface_v2
         if self.wan_interface_v2:

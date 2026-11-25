@@ -79,15 +79,13 @@ class V1LogsPostResponse(BaseModel):
         _items = []
         if self.histogram:
             for _item_histogram in self.histogram:
-                if _item_histogram:
-                    _items.append(_item_histogram.to_dict())
+                _items.append(_item_histogram.to_dict() if _item_histogram is not None else None)
             _dict['histogram'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in logs (list)
         _items = []
         if self.logs:
             for _item_logs in self.logs:
-                if _item_logs:
-                    _items.append(_item_logs.to_dict())
+                _items.append(_item_logs.to_dict() if _item_logs is not None else None)
             _dict['logs'] = _items
         return _dict
 

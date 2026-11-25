@@ -90,50 +90,43 @@ class V1GlobalConfigPatchRequest(BaseModel):
         _field_dict = {}
         if self.global_prefix_sets:
             for _key_global_prefix_sets in self.global_prefix_sets:
-                if self.global_prefix_sets[_key_global_prefix_sets]:
-                    _field_dict[_key_global_prefix_sets] = self.global_prefix_sets[_key_global_prefix_sets].to_dict()
+                _field_dict[_key_global_prefix_sets] = self.global_prefix_sets[_key_global_prefix_sets].to_dict() if self.global_prefix_sets[_key_global_prefix_sets] is not None else None
             _dict['globalPrefixSets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in ipfix_exporters (dict)
         _field_dict = {}
         if self.ipfix_exporters:
             for _key_ipfix_exporters in self.ipfix_exporters:
-                if self.ipfix_exporters[_key_ipfix_exporters]:
-                    _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict()
+                _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict() if self.ipfix_exporters[_key_ipfix_exporters] is not None else None
             _dict['ipfixExporters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in ntps (dict)
         _field_dict = {}
         if self.ntps:
             for _key_ntps in self.ntps:
-                if self.ntps[_key_ntps]:
-                    _field_dict[_key_ntps] = self.ntps[_key_ntps].to_dict()
+                _field_dict[_key_ntps] = self.ntps[_key_ntps].to_dict() if self.ntps[_key_ntps] is not None else None
             _dict['ntps'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in prefix_sets (dict)
         _field_dict = {}
         if self.prefix_sets:
             for _key_prefix_sets in self.prefix_sets:
-                if self.prefix_sets[_key_prefix_sets]:
-                    _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict()
+                _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict() if self.prefix_sets[_key_prefix_sets] is not None else None
             _dict['prefixSets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in routing_policies (dict)
         _field_dict = {}
         if self.routing_policies:
             for _key_routing_policies in self.routing_policies:
-                if self.routing_policies[_key_routing_policies]:
-                    _field_dict[_key_routing_policies] = self.routing_policies[_key_routing_policies].to_dict()
+                _field_dict[_key_routing_policies] = self.routing_policies[_key_routing_policies].to_dict() if self.routing_policies[_key_routing_policies] is not None else None
             _dict['routingPolicies'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in snmps (dict)
         _field_dict = {}
         if self.snmps:
             for _key_snmps in self.snmps:
-                if self.snmps[_key_snmps]:
-                    _field_dict[_key_snmps] = self.snmps[_key_snmps].to_dict()
+                _field_dict[_key_snmps] = self.snmps[_key_snmps].to_dict() if self.snmps[_key_snmps] is not None else None
             _dict['snmps'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in syslog_servers (dict)
         _field_dict = {}
         if self.syslog_servers:
             for _key_syslog_servers in self.syslog_servers:
-                if self.syslog_servers[_key_syslog_servers]:
-                    _field_dict[_key_syslog_servers] = self.syslog_servers[_key_syslog_servers].to_dict()
+                _field_dict[_key_syslog_servers] = self.syslog_servers[_key_syslog_servers].to_dict() if self.syslog_servers[_key_syslog_servers] is not None else None
             _dict['syslogServers'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of traffic_policies
         if self.traffic_policies:
@@ -142,8 +135,7 @@ class V1GlobalConfigPatchRequest(BaseModel):
         _field_dict = {}
         if self.vpn_profiles:
             for _key_vpn_profiles in self.vpn_profiles:
-                if self.vpn_profiles[_key_vpn_profiles]:
-                    _field_dict[_key_vpn_profiles] = self.vpn_profiles[_key_vpn_profiles].to_dict()
+                _field_dict[_key_vpn_profiles] = self.vpn_profiles[_key_vpn_profiles].to_dict() if self.vpn_profiles[_key_vpn_profiles] is not None else None
             _dict['vpnProfiles'] = _field_dict
         return _dict
 

@@ -82,8 +82,7 @@ class DiagnosticToolsTracerouteResult(BaseModel):
         _items = []
         if self.hops:
             for _item_hops in self.hops:
-                if _item_hops:
-                    _items.append(_item_hops.to_dict())
+                _items.append(_item_hops.to_dict() if _item_hops is not None else None)
             _dict['hops'] = _items
         # override the default output from pydantic by calling `to_dict()` of stopped_time
         if self.stopped_time:

@@ -74,8 +74,7 @@ class StatsmonBandwidthtrackerBwUsageCsvDetails(BaseModel):
         _items = []
         if self.bwusage_csv_record:
             for _item_bwusage_csv_record in self.bwusage_csv_record:
-                if _item_bwusage_csv_record:
-                    _items.append(_item_bwusage_csv_record.to_dict())
+                _items.append(_item_bwusage_csv_record.to_dict() if _item_bwusage_csv_record is not None else None)
             _dict['bwusageCsvRecord'] = _items
         return _dict
 

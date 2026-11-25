@@ -75,8 +75,7 @@ class ManaV2SnmpVacmViewConfig(BaseModel):
         _field_dict = {}
         if self.include_exclude_list:
             for _key_include_exclude_list in self.include_exclude_list:
-                if self.include_exclude_list[_key_include_exclude_list]:
-                    _field_dict[_key_include_exclude_list] = self.include_exclude_list[_key_include_exclude_list].to_dict()
+                _field_dict[_key_include_exclude_list] = self.include_exclude_list[_key_include_exclude_list].to_dict() if self.include_exclude_list[_key_include_exclude_list] is not None else None
             _dict['includeExcludeList'] = _field_dict
         return _dict
 

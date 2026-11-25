@@ -102,8 +102,7 @@ class ManaV2BgpNeighbor(BaseModel):
         _items = []
         if self.address_families:
             for _item_address_families in self.address_families:
-                if _item_address_families:
-                    _items.append(_item_address_families.to_dict())
+                _items.append(_item_address_families.to_dict() if _item_address_families is not None else None)
             _dict['addressFamilies'] = _items
         # override the default output from pydantic by calling `to_dict()` of bfd
         if self.bfd:
@@ -115,8 +114,7 @@ class ManaV2BgpNeighbor(BaseModel):
         _items = []
         if self.dynamic_neighbor_peers:
             for _item_dynamic_neighbor_peers in self.dynamic_neighbor_peers:
-                if _item_dynamic_neighbor_peers:
-                    _items.append(_item_dynamic_neighbor_peers.to_dict())
+                _items.append(_item_dynamic_neighbor_peers.to_dict() if _item_dynamic_neighbor_peers is not None else None)
             _dict['dynamicNeighborPeers'] = _items
         # override the default output from pydantic by calling `to_dict()` of time_since_last_oper_change
         if self.time_since_last_oper_change:

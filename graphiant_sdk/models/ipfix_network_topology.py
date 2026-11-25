@@ -86,15 +86,13 @@ class IpfixNetworkTopology(BaseModel):
         _items = []
         if self.edges:
             for _item_edges in self.edges:
-                if _item_edges:
-                    _items.append(_item_edges.to_dict())
+                _items.append(_item_edges.to_dict() if _item_edges is not None else None)
             _dict['edges'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in nodes (list)
         _items = []
         if self.nodes:
             for _item_nodes in self.nodes:
-                if _item_nodes:
-                    _items.append(_item_nodes.to_dict())
+                _items.append(_item_nodes.to_dict() if _item_nodes is not None else None)
             _dict['nodes'] = _items
         # override the default output from pydantic by calling `to_dict()` of time_window
         if self.time_window:

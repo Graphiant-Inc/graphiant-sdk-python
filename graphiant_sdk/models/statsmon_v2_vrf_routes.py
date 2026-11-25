@@ -79,8 +79,7 @@ class StatsmonV2VrfRoutes(BaseModel):
         _items = []
         if self.vrf_route:
             for _item_vrf_route in self.vrf_route:
-                if _item_vrf_route:
-                    _items.append(_item_vrf_route.to_dict())
+                _items.append(_item_vrf_route.to_dict() if _item_vrf_route is not None else None)
             _dict['vrfRoute'] = _items
         return _dict
 

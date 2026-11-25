@@ -76,8 +76,7 @@ class AssuranceTopologyEdge(BaseModel):
         _items = []
         if self.performance:
             for _item_performance in self.performance:
-                if _item_performance:
-                    _items.append(_item_performance.to_dict())
+                _items.append(_item_performance.to_dict() if _item_performance is not None else None)
             _dict['performance'] = _items
         return _dict
 

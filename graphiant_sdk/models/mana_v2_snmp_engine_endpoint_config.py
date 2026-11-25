@@ -79,8 +79,7 @@ class ManaV2SnmpEngineEndpointConfig(BaseModel):
         _field_dict = {}
         if self.addresses:
             for _key_addresses in self.addresses:
-                if self.addresses[_key_addresses]:
-                    _field_dict[_key_addresses] = self.addresses[_key_addresses].to_dict()
+                _field_dict[_key_addresses] = self.addresses[_key_addresses].to_dict() if self.addresses[_key_addresses] is not None else None
             _dict['addresses'] = _field_dict
         return _dict
 

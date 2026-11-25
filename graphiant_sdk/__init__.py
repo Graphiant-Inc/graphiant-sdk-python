@@ -240,6 +240,7 @@ __all__ = [
     "ManaV2CustomerMatchInfo",
     "ManaV2DNSConfigDynamic",
     "ManaV2DNSConfigStatic",
+    "ManaV2DestinationRegionLatencies",
     "ManaV2Device",
     "ManaV2DeviceFilter",
     "ManaV2DeviceSnapshot",
@@ -327,6 +328,7 @@ __all__ = [
     "ManaV2IPsecProfile",
     "ManaV2IPsecStaticRouteConfig",
     "ManaV2IPsecTunnel",
+    "ManaV2InterRegionLatencyMatrix",
     "ManaV2Interface",
     "ManaV2InterfaceAddress",
     "ManaV2InterfaceConfig",
@@ -1284,6 +1286,9 @@ __all__ = [
     "V1LogsPostRequest",
     "V1LogsPostResponse",
     "V1MspManagedEnterpriseContractInfoGetResponse",
+    "V1MspRegionsExpectedInterRegionLatenciesGetResponse",
+    "V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions",
+    "V1MspRegionsExpectedInterRegionLatenciesPatchRequest",
     "V1NatEntriesDeviceIdGetResponse",
     "V1NatUtilizationDeviceIdGetResponse",
     "V1OnboardingCloudinitGetResponse",
@@ -1804,6 +1809,7 @@ from graphiant_sdk.models.mana_v2_core_vlan_interface_config import ManaV2CoreVl
 from graphiant_sdk.models.mana_v2_customer_match_info import ManaV2CustomerMatchInfo as ManaV2CustomerMatchInfo
 from graphiant_sdk.models.mana_v2_dns_config_dynamic import ManaV2DNSConfigDynamic as ManaV2DNSConfigDynamic
 from graphiant_sdk.models.mana_v2_dns_config_static import ManaV2DNSConfigStatic as ManaV2DNSConfigStatic
+from graphiant_sdk.models.mana_v2_destination_region_latencies import ManaV2DestinationRegionLatencies as ManaV2DestinationRegionLatencies
 from graphiant_sdk.models.mana_v2_device import ManaV2Device as ManaV2Device
 from graphiant_sdk.models.mana_v2_device_filter import ManaV2DeviceFilter as ManaV2DeviceFilter
 from graphiant_sdk.models.mana_v2_device_snapshot import ManaV2DeviceSnapshot as ManaV2DeviceSnapshot
@@ -1891,6 +1897,7 @@ from graphiant_sdk.models.mana_v2_i_psec_gateway_tunnel_details import ManaV2IPs
 from graphiant_sdk.models.mana_v2_i_psec_profile import ManaV2IPsecProfile as ManaV2IPsecProfile
 from graphiant_sdk.models.mana_v2_i_psec_static_route_config import ManaV2IPsecStaticRouteConfig as ManaV2IPsecStaticRouteConfig
 from graphiant_sdk.models.mana_v2_i_psec_tunnel import ManaV2IPsecTunnel as ManaV2IPsecTunnel
+from graphiant_sdk.models.mana_v2_inter_region_latency_matrix import ManaV2InterRegionLatencyMatrix as ManaV2InterRegionLatencyMatrix
 from graphiant_sdk.models.mana_v2_interface import ManaV2Interface as ManaV2Interface
 from graphiant_sdk.models.mana_v2_interface_address import ManaV2InterfaceAddress as ManaV2InterfaceAddress
 from graphiant_sdk.models.mana_v2_interface_config import ManaV2InterfaceConfig as ManaV2InterfaceConfig
@@ -2848,6 +2855,9 @@ from graphiant_sdk.models.v1_lldp_interface_id_vendors_get_response import V1Lld
 from graphiant_sdk.models.v1_logs_post_request import V1LogsPostRequest as V1LogsPostRequest
 from graphiant_sdk.models.v1_logs_post_response import V1LogsPostResponse as V1LogsPostResponse
 from graphiant_sdk.models.v1_msp_managed_enterprise_contract_info_get_response import V1MspManagedEnterpriseContractInfoGetResponse as V1MspManagedEnterpriseContractInfoGetResponse
+from graphiant_sdk.models.v1_msp_regions_expected_inter_region_latencies_get_response import V1MspRegionsExpectedInterRegionLatenciesGetResponse as V1MspRegionsExpectedInterRegionLatenciesGetResponse
+from graphiant_sdk.models.v1_msp_regions_expected_inter_region_latencies_get_response_missing_destination_regions import V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions as V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions
+from graphiant_sdk.models.v1_msp_regions_expected_inter_region_latencies_patch_request import V1MspRegionsExpectedInterRegionLatenciesPatchRequest as V1MspRegionsExpectedInterRegionLatenciesPatchRequest
 from graphiant_sdk.models.v1_nat_entries_device_id_get_response import V1NatEntriesDeviceIdGetResponse as V1NatEntriesDeviceIdGetResponse
 from graphiant_sdk.models.v1_nat_utilization_device_id_get_response import V1NatUtilizationDeviceIdGetResponse as V1NatUtilizationDeviceIdGetResponse
 from graphiant_sdk.models.v1_onboarding_cloudinit_get_response import V1OnboardingCloudinitGetResponse as V1OnboardingCloudinitGetResponse

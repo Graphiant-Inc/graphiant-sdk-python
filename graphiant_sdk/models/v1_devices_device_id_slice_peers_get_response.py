@@ -74,8 +74,7 @@ class V1DevicesDeviceIdSlicePeersGetResponse(BaseModel):
         _items = []
         if self.slices:
             for _item_slices in self.slices:
-                if _item_slices:
-                    _items.append(_item_slices.to_dict())
+                _items.append(_item_slices.to_dict() if _item_slices is not None else None)
             _dict['slices'] = _items
         return _dict
 

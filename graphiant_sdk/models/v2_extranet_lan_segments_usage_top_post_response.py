@@ -74,8 +74,7 @@ class V2ExtranetLanSegmentsUsageTopPostResponse(BaseModel):
         _items = []
         if self.top_vrfs:
             for _item_top_vrfs in self.top_vrfs:
-                if _item_top_vrfs:
-                    _items.append(_item_top_vrfs.to_dict())
+                _items.append(_item_top_vrfs.to_dict() if _item_top_vrfs is not None else None)
             _dict['topVrfs'] = _items
         return _dict
 

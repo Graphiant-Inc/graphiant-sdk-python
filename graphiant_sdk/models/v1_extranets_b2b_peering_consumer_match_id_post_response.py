@@ -79,15 +79,13 @@ class V1ExtranetsB2bPeeringConsumerMatchIdPostResponse(BaseModel):
         _items = []
         if self.nat:
             for _item_nat in self.nat:
-                if _item_nat:
-                    _items.append(_item_nat.to_dict())
+                _items.append(_item_nat.to_dict() if _item_nat is not None else None)
             _dict['nat'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in site_information (list)
         _items = []
         if self.site_information:
             for _item_site_information in self.site_information:
-                if _item_site_information:
-                    _items.append(_item_site_information.to_dict())
+                _items.append(_item_site_information.to_dict() if _item_site_information is not None else None)
             _dict['siteInformation'] = _items
         return _dict
 

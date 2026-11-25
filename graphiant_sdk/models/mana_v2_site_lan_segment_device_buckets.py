@@ -75,15 +75,13 @@ class ManaV2SiteLanSegmentDeviceBuckets(BaseModel):
         _items = []
         if self.lan_segment_exists:
             for _item_lan_segment_exists in self.lan_segment_exists:
-                if _item_lan_segment_exists:
-                    _items.append(_item_lan_segment_exists.to_dict())
+                _items.append(_item_lan_segment_exists.to_dict() if _item_lan_segment_exists is not None else None)
             _dict['lanSegmentExists'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in lan_segment_missing (list)
         _items = []
         if self.lan_segment_missing:
             for _item_lan_segment_missing in self.lan_segment_missing:
-                if _item_lan_segment_missing:
-                    _items.append(_item_lan_segment_missing.to_dict())
+                _items.append(_item_lan_segment_missing.to_dict() if _item_lan_segment_missing is not None else None)
             _dict['lanSegmentMissing'] = _items
         return _dict
 

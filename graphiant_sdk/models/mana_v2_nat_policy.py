@@ -74,8 +74,7 @@ class ManaV2NatPolicy(BaseModel):
         _items = []
         if self.nat_policy_rulesets:
             for _item_nat_policy_rulesets in self.nat_policy_rulesets:
-                if _item_nat_policy_rulesets:
-                    _items.append(_item_nat_policy_rulesets.to_dict())
+                _items.append(_item_nat_policy_rulesets.to_dict() if _item_nat_policy_rulesets is not None else None)
             _dict['natPolicyRulesets'] = _items
         return _dict
 

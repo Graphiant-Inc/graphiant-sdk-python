@@ -74,8 +74,7 @@ class V1GlobalSummaryPostResponse(BaseModel):
         _items = []
         if self.summaries:
             for _item_summaries in self.summaries:
-                if _item_summaries:
-                    _items.append(_item_summaries.to_dict())
+                _items.append(_item_summaries.to_dict() if _item_summaries is not None else None)
             _dict['summaries'] = _items
         return _dict
 

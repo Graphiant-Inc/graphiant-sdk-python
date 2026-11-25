@@ -74,8 +74,7 @@ class V1GlobalIpsecProfileVpnProfileIdSiteToSiteGetResponse(BaseModel):
         _items = []
         if self.site_to_site_vpn:
             for _item_site_to_site_vpn in self.site_to_site_vpn:
-                if _item_site_to_site_vpn:
-                    _items.append(_item_site_to_site_vpn.to_dict())
+                _items.append(_item_site_to_site_vpn.to_dict() if _item_site_to_site_vpn is not None else None)
             _dict['siteToSiteVpn'] = _items
         return _dict
 

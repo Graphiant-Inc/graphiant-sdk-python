@@ -74,8 +74,7 @@ class V1ExtranetsB2bPeeringProducerIdMatchingCustomersSummaryGetResponse(BaseMod
         _items = []
         if self.info:
             for _item_info in self.info:
-                if _item_info:
-                    _items.append(_item_info.to_dict())
+                _items.append(_item_info.to_dict() if _item_info is not None else None)
             _dict['info'] = _items
         return _dict
 

@@ -76,8 +76,7 @@ class ManaV2FirewallZonePair(BaseModel):
         _items = []
         if self.security_rulesets:
             for _item_security_rulesets in self.security_rulesets:
-                if _item_security_rulesets:
-                    _items.append(_item_security_rulesets.to_dict())
+                _items.append(_item_security_rulesets.to_dict() if _item_security_rulesets is not None else None)
             _dict['securityRulesets'] = _items
         return _dict
 

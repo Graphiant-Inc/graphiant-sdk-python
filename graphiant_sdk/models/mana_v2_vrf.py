@@ -104,8 +104,7 @@ class ManaV2Vrf(BaseModel):
         _items = []
         if self.bgp_aggregations:
             for _item_bgp_aggregations in self.bgp_aggregations:
-                if _item_bgp_aggregations:
-                    _items.append(_item_bgp_aggregations.to_dict())
+                _items.append(_item_bgp_aggregations.to_dict() if _item_bgp_aggregations is not None else None)
             _dict['bgpAggregations'] = _items
         # override the default output from pydantic by calling `to_dict()` of bgp_multipath
         if self.bgp_multipath:
@@ -114,8 +113,7 @@ class ManaV2Vrf(BaseModel):
         _items = []
         if self.bgp_neighbors:
             for _item_bgp_neighbors in self.bgp_neighbors:
-                if _item_bgp_neighbors:
-                    _items.append(_item_bgp_neighbors.to_dict())
+                _items.append(_item_bgp_neighbors.to_dict() if _item_bgp_neighbors is not None else None)
             _dict['bgpNeighbors'] = _items
         # override the default output from pydantic by calling `to_dict()` of bgp_redistributions
         if self.bgp_redistributions:
@@ -124,15 +122,13 @@ class ManaV2Vrf(BaseModel):
         _items = []
         if self.dhcp_subnets:
             for _item_dhcp_subnets in self.dhcp_subnets:
-                if _item_dhcp_subnets:
-                    _items.append(_item_dhcp_subnets.to_dict())
+                _items.append(_item_dhcp_subnets.to_dict() if _item_dhcp_subnets is not None else None)
             _dict['dhcpSubnets'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ipfix_exporters (list)
         _items = []
         if self.ipfix_exporters:
             for _item_ipfix_exporters in self.ipfix_exporters:
-                if _item_ipfix_exporters:
-                    _items.append(_item_ipfix_exporters.to_dict())
+                _items.append(_item_ipfix_exporters.to_dict() if _item_ipfix_exporters is not None else None)
             _dict['ipfixExporters'] = _items
         # override the default output from pydantic by calling `to_dict()` of ospfv2_process
         if self.ospfv2_process:
@@ -147,15 +143,13 @@ class ManaV2Vrf(BaseModel):
         _items = []
         if self.static_routes:
             for _item_static_routes in self.static_routes:
-                if _item_static_routes:
-                    _items.append(_item_static_routes.to_dict())
+                _items.append(_item_static_routes.to_dict() if _item_static_routes is not None else None)
             _dict['staticRoutes'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in syslog_targets (list)
         _items = []
         if self.syslog_targets:
             for _item_syslog_targets in self.syslog_targets:
-                if _item_syslog_targets:
-                    _items.append(_item_syslog_targets.to_dict())
+                _items.append(_item_syslog_targets.to_dict() if _item_syslog_targets is not None else None)
             _dict['syslogTargets'] = _items
         return _dict
 

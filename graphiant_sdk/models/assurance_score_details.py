@@ -74,8 +74,7 @@ class AssuranceScoreDetails(BaseModel):
         _items = []
         if self.score_bucket_list:
             for _item_score_bucket_list in self.score_bucket_list:
-                if _item_score_bucket_list:
-                    _items.append(_item_score_bucket_list.to_dict())
+                _items.append(_item_score_bucket_list.to_dict() if _item_score_bucket_list is not None else None)
             _dict['scoreBucketList'] = _items
         return _dict
 

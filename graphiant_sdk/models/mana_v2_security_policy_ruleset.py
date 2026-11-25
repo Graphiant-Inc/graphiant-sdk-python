@@ -82,8 +82,7 @@ class ManaV2SecurityPolicyRuleset(BaseModel):
         _items = []
         if self.rules:
             for _item_rules in self.rules:
-                if _item_rules:
-                    _items.append(_item_rules.to_dict())
+                _items.append(_item_rules.to_dict() if _item_rules is not None else None)
             _dict['rules'] = _items
         return _dict
 

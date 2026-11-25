@@ -80,8 +80,7 @@ class V2MonitoringCircuitsBandwidthPostResponseData(BaseModel):
         _items = []
         if self.dl_bw_kbps_samples:
             for _item_dl_bw_kbps_samples in self.dl_bw_kbps_samples:
-                if _item_dl_bw_kbps_samples:
-                    _items.append(_item_dl_bw_kbps_samples.to_dict())
+                _items.append(_item_dl_bw_kbps_samples.to_dict() if _item_dl_bw_kbps_samples is not None else None)
             _dict['dlBwKbpsSamples'] = _items
         # override the default output from pydantic by calling `to_dict()` of selector
         if self.selector:
@@ -90,8 +89,7 @@ class V2MonitoringCircuitsBandwidthPostResponseData(BaseModel):
         _items = []
         if self.ul_bw_kbps_samples:
             for _item_ul_bw_kbps_samples in self.ul_bw_kbps_samples:
-                if _item_ul_bw_kbps_samples:
-                    _items.append(_item_ul_bw_kbps_samples.to_dict())
+                _items.append(_item_ul_bw_kbps_samples.to_dict() if _item_ul_bw_kbps_samples is not None else None)
             _dict['ulBwKbpsSamples'] = _items
         return _dict
 

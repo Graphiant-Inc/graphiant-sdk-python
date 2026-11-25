@@ -81,15 +81,13 @@ class ManaV2Dns(BaseModel):
         _items = []
         if self.cloudflare_servers:
             for _item_cloudflare_servers in self.cloudflare_servers:
-                if _item_cloudflare_servers:
-                    _items.append(_item_cloudflare_servers.to_dict())
+                _items.append(_item_cloudflare_servers.to_dict() if _item_cloudflare_servers is not None else None)
             _dict['cloudflareServers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in dynamic_servers (list)
         _items = []
         if self.dynamic_servers:
             for _item_dynamic_servers in self.dynamic_servers:
-                if _item_dynamic_servers:
-                    _items.append(_item_dynamic_servers.to_dict())
+                _items.append(_item_dynamic_servers.to_dict() if _item_dynamic_servers is not None else None)
             _dict['dynamicServers'] = _items
         # override the default output from pydantic by calling `to_dict()` of dynamic_servers_v2
         if self.dynamic_servers_v2:
@@ -98,8 +96,7 @@ class ManaV2Dns(BaseModel):
         _items = []
         if self.static_servers:
             for _item_static_servers in self.static_servers:
-                if _item_static_servers:
-                    _items.append(_item_static_servers.to_dict())
+                _items.append(_item_static_servers.to_dict() if _item_static_servers is not None else None)
             _dict['staticServers'] = _items
         # override the default output from pydantic by calling `to_dict()` of static_servers_v2
         if self.static_servers_v2:

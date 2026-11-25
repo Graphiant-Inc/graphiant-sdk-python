@@ -76,8 +76,7 @@ class V2ExtranetConsumersUsageTopPostResponse(BaseModel):
         _items = []
         if self.top_consumers:
             for _item_top_consumers in self.top_consumers:
-                if _item_top_consumers:
-                    _items.append(_item_top_consumers.to_dict())
+                _items.append(_item_top_consumers.to_dict() if _item_top_consumers is not None else None)
             _dict['topConsumers'] = _items
         return _dict
 

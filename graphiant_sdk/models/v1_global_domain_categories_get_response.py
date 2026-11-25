@@ -74,8 +74,7 @@ class V1GlobalDomainCategoriesGetResponse(BaseModel):
         _items = []
         if self.domain_categories:
             for _item_domain_categories in self.domain_categories:
-                if _item_domain_categories:
-                    _items.append(_item_domain_categories.to_dict())
+                _items.append(_item_domain_categories.to_dict() if _item_domain_categories is not None else None)
             _dict['domainCategories'] = _items
         return _dict
 

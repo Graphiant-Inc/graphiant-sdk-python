@@ -77,8 +77,7 @@ class UpgradeGcsReleaseDetails(BaseModel):
         _items = []
         if self.category:
             for _item_category in self.category:
-                if _item_category:
-                    _items.append(_item_category.to_dict())
+                _items.append(_item_category.to_dict() if _item_category is not None else None)
             _dict['category'] = _items
         # override the default output from pydantic by calling `to_dict()` of release_ts
         if self.release_ts:

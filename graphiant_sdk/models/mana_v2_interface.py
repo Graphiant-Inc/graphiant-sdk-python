@@ -129,8 +129,7 @@ class ManaV2Interface(BaseModel):
         _items = []
         if self.ipv6_addresses:
             for _item_ipv6_addresses in self.ipv6_addresses:
-                if _item_ipv6_addresses:
-                    _items.append(_item_ipv6_addresses.to_dict())
+                _items.append(_item_ipv6_addresses.to_dict() if _item_ipv6_addresses is not None else None)
             _dict['ipv6Addresses'] = _items
         # override the default output from pydantic by calling `to_dict()` of lag_interface
         if self.lag_interface:
@@ -148,22 +147,19 @@ class ManaV2Interface(BaseModel):
         _items = []
         if self.pppoe_interfaces:
             for _item_pppoe_interfaces in self.pppoe_interfaces:
-                if _item_pppoe_interfaces:
-                    _items.append(_item_pppoe_interfaces.to_dict())
+                _items.append(_item_pppoe_interfaces.to_dict() if _item_pppoe_interfaces is not None else None)
             _dict['pppoeInterfaces'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sfp_optical_strength (list)
         _items = []
         if self.sfp_optical_strength:
             for _item_sfp_optical_strength in self.sfp_optical_strength:
-                if _item_sfp_optical_strength:
-                    _items.append(_item_sfp_optical_strength.to_dict())
+                _items.append(_item_sfp_optical_strength.to_dict() if _item_sfp_optical_strength is not None else None)
             _dict['sfpOpticalStrength'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in subinterfaces (list)
         _items = []
         if self.subinterfaces:
             for _item_subinterfaces in self.subinterfaces:
-                if _item_subinterfaces:
-                    _items.append(_item_subinterfaces.to_dict())
+                _items.append(_item_subinterfaces.to_dict() if _item_subinterfaces is not None else None)
             _dict['subinterfaces'] = _items
         return _dict
 

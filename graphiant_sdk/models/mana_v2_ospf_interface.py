@@ -100,8 +100,7 @@ class ManaV2OspfInterface(BaseModel):
         _items = []
         if self.bfd_neighbors:
             for _item_bfd_neighbors in self.bfd_neighbors:
-                if _item_bfd_neighbors:
-                    _items.append(_item_bfd_neighbors.to_dict())
+                _items.append(_item_bfd_neighbors.to_dict() if _item_bfd_neighbors is not None else None)
             _dict['bfdNeighbors'] = _items
         return _dict
 

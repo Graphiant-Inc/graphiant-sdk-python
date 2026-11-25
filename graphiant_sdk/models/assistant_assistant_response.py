@@ -83,8 +83,7 @@ class AssistantAssistantResponse(BaseModel):
         _items = []
         if self.dataframe_dictionary:
             for _item_dataframe_dictionary in self.dataframe_dictionary:
-                if _item_dataframe_dictionary:
-                    _items.append(_item_dataframe_dictionary.to_dict())
+                _items.append(_item_dataframe_dictionary.to_dict() if _item_dataframe_dictionary is not None else None)
             _dict['dataframeDictionary'] = _items
         # override the default output from pydantic by calling `to_dict()` of original_question
         if self.original_question:

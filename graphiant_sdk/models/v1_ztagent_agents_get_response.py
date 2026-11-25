@@ -75,8 +75,7 @@ class V1ZtagentAgentsGetResponse(BaseModel):
         _items = []
         if self.agents:
             for _item_agents in self.agents:
-                if _item_agents:
-                    _items.append(_item_agents.to_dict())
+                _items.append(_item_agents.to_dict() if _item_agents is not None else None)
             _dict['agents'] = _items
         return _dict
 

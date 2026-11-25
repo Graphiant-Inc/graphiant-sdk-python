@@ -34,6 +34,7 @@ class AssuranceAppNameRecord(BaseModel):
     affected_regions: Optional[StrictInt] = Field(default=None, alias="affectedRegions", json_schema_extra={"examples": [1234567891011]})
     affected_sites: Optional[StrictInt] = Field(default=None, alias="affectedSites", json_schema_extra={"examples": [1234567891011]})
     affected_vrfs: Optional[StrictInt] = Field(default=None, alias="affectedVrfs", json_schema_extra={"examples": [1234567891011]})
+    ai_endpoint_tag: Optional[StrictStr] = Field(default=None, alias="aiEndpointTag", json_schema_extra={"examples": ["ENUM_VALUE"]})
     app_ai_tag: Optional[StrictStr] = Field(default=None, alias="appAiTag", json_schema_extra={"examples": ["ENUM_VALUE"]})
     app_id: Optional[StrictInt] = Field(default=None, alias="appId", json_schema_extra={"examples": [1234567891011]})
     app_id_records: Optional[List[AssuranceAppIdRecord]] = Field(default=None, alias="appIdRecords")
@@ -48,7 +49,7 @@ class AssuranceAppNameRecord(BaseModel):
     recommendation: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     risk_status: Optional[StrictStr] = Field(default=None, alias="riskStatus", json_schema_extra={"examples": ["ENUM_VALUE"]})
     threat_score: Optional[StrictInt] = Field(default=None, alias="threatScore", json_schema_extra={"examples": [1234567891011]})
-    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "isAiApp", "recommendation", "riskStatus", "threatScore"]
+    __properties: ClassVar[List[str]] = ["affectedHosts", "affectedRegions", "affectedSites", "affectedVrfs", "aiEndpointTag", "appAiTag", "appId", "appIdRecords", "appName", "appType", "category", "daClassified", "exchangeService", "flexAlgo", "flowsAnalyzed", "isAiApp", "recommendation", "riskStatus", "threatScore"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -93,22 +94,19 @@ class AssuranceAppNameRecord(BaseModel):
         _items = []
         if self.app_id_records:
             for _item_app_id_records in self.app_id_records:
-                if _item_app_id_records:
-                    _items.append(_item_app_id_records.to_dict())
+                _items.append(_item_app_id_records.to_dict() if _item_app_id_records is not None else None)
             _dict['appIdRecords'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in exchange_service (list)
         _items = []
         if self.exchange_service:
             for _item_exchange_service in self.exchange_service:
-                if _item_exchange_service:
-                    _items.append(_item_exchange_service.to_dict())
+                _items.append(_item_exchange_service.to_dict() if _item_exchange_service is not None else None)
             _dict['exchangeService'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in flex_algo (list)
         _items = []
         if self.flex_algo:
             for _item_flex_algo in self.flex_algo:
-                if _item_flex_algo:
-                    _items.append(_item_flex_algo.to_dict())
+                _items.append(_item_flex_algo.to_dict() if _item_flex_algo is not None else None)
             _dict['flexAlgo'] = _items
         return _dict
 
@@ -126,6 +124,7 @@ class AssuranceAppNameRecord(BaseModel):
             "affectedRegions": obj.get("affectedRegions"),
             "affectedSites": obj.get("affectedSites"),
             "affectedVrfs": obj.get("affectedVrfs"),
+            "aiEndpointTag": obj.get("aiEndpointTag"),
             "appAiTag": obj.get("appAiTag"),
             "appId": obj.get("appId"),
             "appIdRecords": [AssuranceAppIdRecord.from_dict(_item) for _item in obj["appIdRecords"]] if obj.get("appIdRecords") is not None else None,

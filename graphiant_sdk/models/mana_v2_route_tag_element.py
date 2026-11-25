@@ -76,8 +76,7 @@ class ManaV2RouteTagElement(BaseModel):
         _items = []
         if self.next_set:
             for _item_next_set in self.next_set:
-                if _item_next_set:
-                    _items.append(_item_next_set.to_dict())
+                _items.append(_item_next_set.to_dict() if _item_next_set is not None else None)
             _dict['nextSet'] = _items
         return _dict
 

@@ -79,22 +79,19 @@ class V1ExtranetsB2bConsumerPostResponse(BaseModel):
         _items = []
         if self.device:
             for _item_device in self.device:
-                if _item_device:
-                    _items.append(_item_device.to_dict())
+                _items.append(_item_device.to_dict() if _item_device is not None else None)
             _dict['device'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in policy (list)
         _items = []
         if self.policy:
             for _item_policy in self.policy:
-                if _item_policy:
-                    _items.append(_item_policy.to_dict())
+                _items.append(_item_policy.to_dict() if _item_policy is not None else None)
             _dict['policy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in site_information (list)
         _items = []
         if self.site_information:
             for _item_site_information in self.site_information:
-                if _item_site_information:
-                    _items.append(_item_site_information.to_dict())
+                _items.append(_item_site_information.to_dict() if _item_site_information is not None else None)
             _dict['siteInformation'] = _items
         return _dict
 

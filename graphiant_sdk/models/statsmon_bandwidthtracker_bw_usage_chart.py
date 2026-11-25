@@ -75,8 +75,7 @@ class StatsmonBandwidthtrackerBwUsageChart(BaseModel):
         _items = []
         if self.bwusage_chart:
             for _item_bwusage_chart in self.bwusage_chart:
-                if _item_bwusage_chart:
-                    _items.append(_item_bwusage_chart.to_dict())
+                _items.append(_item_bwusage_chart.to_dict() if _item_bwusage_chart is not None else None)
             _dict['bwusageChart'] = _items
         return _dict
 

@@ -143,8 +143,7 @@ class ManaV2Device(BaseModel):
         _items = []
         if self.circuits:
             for _item_circuits in self.circuits:
-                if _item_circuits:
-                    _items.append(_item_circuits.to_dict())
+                _items.append(_item_circuits.to_dict() if _item_circuits is not None else None)
             _dict['circuits'] = _items
         # override the default output from pydantic by calling `to_dict()` of config_updated_at
         if self.config_updated_at:
@@ -159,22 +158,19 @@ class ManaV2Device(BaseModel):
         _items = []
         if self.interfaces:
             for _item_interfaces in self.interfaces:
-                if _item_interfaces:
-                    _items.append(_item_interfaces.to_dict())
+                _items.append(_item_interfaces.to_dict() if _item_interfaces is not None else None)
             _dict['interfaces'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ipfix_exporters (list)
         _items = []
         if self.ipfix_exporters:
             for _item_ipfix_exporters in self.ipfix_exporters:
-                if _item_ipfix_exporters:
-                    _items.append(_item_ipfix_exporters.to_dict())
+                _items.append(_item_ipfix_exporters.to_dict() if _item_ipfix_exporters is not None else None)
             _dict['ipfixExporters'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ipsec_tunnels (list)
         _items = []
         if self.ipsec_tunnels:
             for _item_ipsec_tunnels in self.ipsec_tunnels:
-                if _item_ipsec_tunnels:
-                    _items.append(_item_ipsec_tunnels.to_dict())
+                _items.append(_item_ipsec_tunnels.to_dict() if _item_ipsec_tunnels is not None else None)
             _dict['ipsecTunnels'] = _items
         # override the default output from pydantic by calling `to_dict()` of last_booted_at
         if self.last_booted_at:
@@ -201,8 +197,7 @@ class ManaV2Device(BaseModel):
         _items = []
         if self.prefix_sets:
             for _item_prefix_sets in self.prefix_sets:
-                if _item_prefix_sets:
-                    _items.append(_item_prefix_sets.to_dict())
+                _items.append(_item_prefix_sets.to_dict() if _item_prefix_sets is not None else None)
             _dict['prefixSets'] = _items
         # override the default output from pydantic by calling `to_dict()` of region
         if self.region:
@@ -214,15 +209,13 @@ class ManaV2Device(BaseModel):
         _items = []
         if self.routing_policies:
             for _item_routing_policies in self.routing_policies:
-                if _item_routing_policies:
-                    _items.append(_item_routing_policies.to_dict())
+                _items.append(_item_routing_policies.to_dict() if _item_routing_policies is not None else None)
             _dict['routingPolicies'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in segments (list)
         _items = []
         if self.segments:
             for _item_segments in self.segments:
-                if _item_segments:
-                    _items.append(_item_segments.to_dict())
+                _items.append(_item_segments.to_dict() if _item_segments is not None else None)
             _dict['segments'] = _items
         # override the default output from pydantic by calling `to_dict()` of site
         if self.site:

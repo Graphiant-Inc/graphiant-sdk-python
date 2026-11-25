@@ -83,8 +83,7 @@ class ManaV2StaticRoute(BaseModel):
         _items = []
         if self.next_hops:
             for _item_next_hops in self.next_hops:
-                if _item_next_hops:
-                    _items.append(_item_next_hops.to_dict())
+                _items.append(_item_next_hops.to_dict() if _item_next_hops is not None else None)
             _dict['nextHops'] = _items
         return _dict
 

@@ -74,8 +74,7 @@ class V1DevicesInventoryPostRequest(BaseModel):
         _items = []
         if self.hardware_inventory_list:
             for _item_hardware_inventory_list in self.hardware_inventory_list:
-                if _item_hardware_inventory_list:
-                    _items.append(_item_hardware_inventory_list.to_dict())
+                _items.append(_item_hardware_inventory_list.to_dict() if _item_hardware_inventory_list is not None else None)
             _dict['hardwareInventoryList'] = _items
         return _dict
 

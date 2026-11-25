@@ -74,8 +74,7 @@ class V2AssuranceReadAiAdoptionCategoryEntriesGetResponse(BaseModel):
         _items = []
         if self.ai_categorized_app_list:
             for _item_ai_categorized_app_list in self.ai_categorized_app_list:
-                if _item_ai_categorized_app_list:
-                    _items.append(_item_ai_categorized_app_list.to_dict())
+                _items.append(_item_ai_categorized_app_list.to_dict() if _item_ai_categorized_app_list is not None else None)
             _dict['aiCategorizedAppList'] = _items
         return _dict
 

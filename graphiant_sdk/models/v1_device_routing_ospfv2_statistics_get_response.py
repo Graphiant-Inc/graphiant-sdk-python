@@ -74,8 +74,7 @@ class V1DeviceRoutingOspfv2StatisticsGetResponse(BaseModel):
         _field_dict = {}
         if self.statistics:
             for _key_statistics in self.statistics:
-                if self.statistics[_key_statistics]:
-                    _field_dict[_key_statistics] = self.statistics[_key_statistics].to_dict()
+                _field_dict[_key_statistics] = self.statistics[_key_statistics].to_dict() if self.statistics[_key_statistics] is not None else None
             _dict['statistics'] = _field_dict
         return _dict
 

@@ -74,8 +74,7 @@ class V1SoftwareRolloutsGetResponse(BaseModel):
         _items = []
         if self.rollouts:
             for _item_rollouts in self.rollouts:
-                if _item_rollouts:
-                    _items.append(_item_rollouts.to_dict())
+                _items.append(_item_rollouts.to_dict() if _item_rollouts is not None else None)
             _dict['rollouts'] = _items
         return _dict
 

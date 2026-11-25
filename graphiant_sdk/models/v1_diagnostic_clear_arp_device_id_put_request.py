@@ -74,8 +74,7 @@ class V1DiagnosticClearArpDeviceIdPutRequest(BaseModel):
         _items = []
         if self.entry:
             for _item_entry in self.entry:
-                if _item_entry:
-                    _items.append(_item_entry.to_dict())
+                _items.append(_item_entry.to_dict() if _item_entry is not None else None)
             _dict['entry'] = _items
         return _dict
 

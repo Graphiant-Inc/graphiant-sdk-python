@@ -77,8 +77,7 @@ class V1DeviceRoutingOspfv2AreaNbrGetResponse(BaseModel):
         _items = []
         if self.nbrs:
             for _item_nbrs in self.nbrs:
-                if _item_nbrs:
-                    _items.append(_item_nbrs.to_dict())
+                _items.append(_item_nbrs.to_dict() if _item_nbrs is not None else None)
             _dict['nbrs'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

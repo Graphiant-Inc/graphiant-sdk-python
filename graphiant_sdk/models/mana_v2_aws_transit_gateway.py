@@ -77,8 +77,7 @@ class ManaV2AwsTransitGateway(BaseModel):
         _items = []
         if self.vpcs:
             for _item_vpcs in self.vpcs:
-                if _item_vpcs:
-                    _items.append(_item_vpcs.to_dict())
+                _items.append(_item_vpcs.to_dict() if _item_vpcs is not None else None)
             _dict['vpcs'] = _items
         return _dict
 

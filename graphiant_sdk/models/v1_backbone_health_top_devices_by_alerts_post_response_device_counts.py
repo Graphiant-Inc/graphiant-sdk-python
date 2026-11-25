@@ -74,8 +74,7 @@ class V1BackboneHealthTopDevicesByAlertsPostResponseDeviceCounts(BaseModel):
         _items = []
         if self.device_counts:
             for _item_device_counts in self.device_counts:
-                if _item_device_counts:
-                    _items.append(_item_device_counts.to_dict())
+                _items.append(_item_device_counts.to_dict() if _item_device_counts is not None else None)
             _dict['deviceCounts'] = _items
         return _dict
 

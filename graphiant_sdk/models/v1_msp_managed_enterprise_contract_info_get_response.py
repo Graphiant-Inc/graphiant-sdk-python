@@ -77,8 +77,7 @@ class V1MspManagedEnterpriseContractInfoGetResponse(BaseModel):
         _items = []
         if self.enterprises:
             for _item_enterprises in self.enterprises:
-                if _item_enterprises:
-                    _items.append(_item_enterprises.to_dict())
+                _items.append(_item_enterprises.to_dict() if _item_enterprises is not None else None)
             _dict['enterprises'] = _items
         # override the default output from pydantic by calling `to_dict()` of msp_contract
         if self.msp_contract:

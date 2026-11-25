@@ -74,8 +74,7 @@ class V1EnterprisesEnterpriseIdDeviceStatusGetResponse(BaseModel):
         _items = []
         if self.mappings:
             for _item_mappings in self.mappings:
-                if _item_mappings:
-                    _items.append(_item_mappings.to_dict())
+                _items.append(_item_mappings.to_dict() if _item_mappings is not None else None)
             _dict['mappings'] = _items
         return _dict
 

@@ -80,8 +80,7 @@ class ManaV2RoutingPolicyConfig(BaseModel):
         _field_dict = {}
         if self.statements:
             for _key_statements in self.statements:
-                if self.statements[_key_statements]:
-                    _field_dict[_key_statements] = self.statements[_key_statements].to_dict()
+                _field_dict[_key_statements] = self.statements[_key_statements].to_dict() if self.statements[_key_statements] is not None else None
             _dict['statements'] = _field_dict
         return _dict
 

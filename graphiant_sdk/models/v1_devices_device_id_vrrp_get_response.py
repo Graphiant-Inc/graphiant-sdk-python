@@ -74,8 +74,7 @@ class V1DevicesDeviceIdVrrpGetResponse(BaseModel):
         _items = []
         if self.vrrp_entry:
             for _item_vrrp_entry in self.vrrp_entry:
-                if _item_vrrp_entry:
-                    _items.append(_item_vrrp_entry.to_dict())
+                _items.append(_item_vrrp_entry.to_dict() if _item_vrrp_entry is not None else None)
             _dict['vrrpEntry'] = _items
         return _dict
 

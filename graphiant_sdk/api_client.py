@@ -22,7 +22,7 @@ import tempfile
 import uuid
 
 from urllib.parse import quote
-from typing import Tuple, Optional, List, Dict, Union
+from typing import Any, Tuple, Optional, List, Dict, Union
 from pydantic import SecretStr
 
 from graphiant_sdk.configuration import Configuration
@@ -106,6 +106,37 @@ class ApiClient:
 
     def set_default_header(self, header_name, header_value):
         self.default_headers[header_name] = header_value
+
+    # Header helpers called by the generated ``*_serialize`` methods in
+    # ``graphiant_sdk/api/default_api.py`` (openapi-generator >= 7.27.0
+    # ``api.mustache``). Signatures match the upstream ``api_client.mustache``.
+    # They only build the per-request header dict; precedence of
+    # ``default_headers``/``cookie``, auth injection and sanitization still
+    # happen in ``param_serialize`` exactly as before.
+    @staticmethod
+    def _set_header(headers: Dict[str, Any], name: str, value: Any) -> None:
+        """Set a header, replacing any existing key that differs only by case.
+
+        The spelling passed in ``name`` is the one kept.
+        """
+        for key in list(headers):
+            if key.lower() == name.lower():
+                del headers[key]
+        headers[name] = value
+
+    @classmethod
+    def _merge_headers(cls, *sources: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        """Return a new header dict merged from ``sources``.
+
+        ``None`` sources are skipped. Later sources (and later entries within
+        a source) win, compared case-insensitively. The inputs are never
+        mutated, so a caller's ``_headers`` dict is safe to reuse.
+        """
+        headers: Dict[str, Any] = {}
+        for source in sources:
+            for name, value in (source or {}).items():
+                cls._set_header(headers, name, value)
+        return headers
 
     _default = None
 

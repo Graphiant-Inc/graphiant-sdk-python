@@ -76,22 +76,19 @@ class AssuranceWhatWidget(BaseModel):
         _items = []
         if self.bubble_categories:
             for _item_bubble_categories in self.bubble_categories:
-                if _item_bubble_categories:
-                    _items.append(_item_bubble_categories.to_dict())
+                _items.append(_item_bubble_categories.to_dict() if _item_bubble_categories is not None else None)
             _dict['bubbleCategories'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in top_tools_by_active_users (list)
         _items = []
         if self.top_tools_by_active_users:
             for _item_top_tools_by_active_users in self.top_tools_by_active_users:
-                if _item_top_tools_by_active_users:
-                    _items.append(_item_top_tools_by_active_users.to_dict())
+                _items.append(_item_top_tools_by_active_users.to_dict() if _item_top_tools_by_active_users is not None else None)
             _dict['topToolsByActiveUsers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in top_tools_by_data_transferred (list)
         _items = []
         if self.top_tools_by_data_transferred:
             for _item_top_tools_by_data_transferred in self.top_tools_by_data_transferred:
-                if _item_top_tools_by_data_transferred:
-                    _items.append(_item_top_tools_by_data_transferred.to_dict())
+                _items.append(_item_top_tools_by_data_transferred.to_dict() if _item_top_tools_by_data_transferred is not None else None)
             _dict['topToolsByDataTransferred'] = _items
         return _dict
 

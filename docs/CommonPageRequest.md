@@ -5,11 +5,11 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**after** | **str** |  | [optional] 
 **before** | **str** |  | [optional] 
-**first** | **int** |  | [optional] 
 **last** | **int** |  | [optional] 
 **token** | **str** |  | [optional] 
+**after** | **str** |  | [optional] 
+**first** | **int** |  | [optional] 
 
 ## Example
 

@@ -74,8 +74,7 @@ class V1TroubleshootingTopSitesByAlertsPostResponseSiteCounts(BaseModel):
         _items = []
         if self.site_counts:
             for _item_site_counts in self.site_counts:
-                if _item_site_counts:
-                    _items.append(_item_site_counts.to_dict())
+                _items.append(_item_site_counts.to_dict() if _item_site_counts is not None else None)
             _dict['siteCounts'] = _items
         return _dict
 

@@ -76,8 +76,7 @@ class V1PolicyApplicationsGetResponse(BaseModel):
         _items = []
         if self.applications:
             for _item_applications in self.applications:
-                if _item_applications:
-                    _items.append(_item_applications.to_dict())
+                _items.append(_item_applications.to_dict() if _item_applications is not None else None)
             _dict['applications'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

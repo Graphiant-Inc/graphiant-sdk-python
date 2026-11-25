@@ -78,8 +78,7 @@ class ManaV2AwsDirectConnectGateway(BaseModel):
         _items = []
         if self.transit_gateways:
             for _item_transit_gateways in self.transit_gateways:
-                if _item_transit_gateways:
-                    _items.append(_item_transit_gateways.to_dict())
+                _items.append(_item_transit_gateways.to_dict() if _item_transit_gateways is not None else None)
             _dict['transitGateways'] = _items
         return _dict
 

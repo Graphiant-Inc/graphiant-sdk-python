@@ -74,8 +74,7 @@ class ManaV2NullableDhcpipRangeList(BaseModel):
         _items = []
         if self.ip_range:
             for _item_ip_range in self.ip_range:
-                if _item_ip_range:
-                    _items.append(_item_ip_range.to_dict())
+                _items.append(_item_ip_range.to_dict() if _item_ip_range is not None else None)
             _dict['ipRange'] = _items
         return _dict
 

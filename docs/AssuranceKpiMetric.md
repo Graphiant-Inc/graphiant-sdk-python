@@ -5,6 +5,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**ai_endpoint_tag** | **str** | AI endpoint tag for the metric | [optional] 
 **delta** | **float** | delta value for the metric | [optional] 
 **name** | **str** | name of the metric | [optional] 
 **percent** | **float** | AI adoption percent for the metric | [optional] 

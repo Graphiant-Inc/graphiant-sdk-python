@@ -86,8 +86,7 @@ class AssuranceBucketSummary(BaseModel):
         _items = []
         if self.child_bucket_stats_list:
             for _item_child_bucket_stats_list in self.child_bucket_stats_list:
-                if _item_child_bucket_stats_list:
-                    _items.append(_item_child_bucket_stats_list.to_dict())
+                _items.append(_item_child_bucket_stats_list.to_dict() if _item_child_bucket_stats_list is not None else None)
             _dict['childBucketStatsList'] = _items
         return _dict
 

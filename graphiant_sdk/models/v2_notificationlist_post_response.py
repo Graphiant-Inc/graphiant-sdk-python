@@ -74,8 +74,7 @@ class V2NotificationlistPostResponse(BaseModel):
         _items = []
         if self.notification_list:
             for _item_notification_list in self.notification_list:
-                if _item_notification_list:
-                    _items.append(_item_notification_list.to_dict())
+                _items.append(_item_notification_list.to_dict() if _item_notification_list is not None else None)
             _dict['notificationList'] = _items
         return _dict
 

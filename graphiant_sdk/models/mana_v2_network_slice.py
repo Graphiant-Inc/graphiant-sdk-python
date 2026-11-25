@@ -77,8 +77,7 @@ class ManaV2NetworkSlice(BaseModel):
         _items = []
         if self.peers:
             for _item_peers in self.peers:
-                if _item_peers:
-                    _items.append(_item_peers.to_dict())
+                _items.append(_item_peers.to_dict() if _item_peers is not None else None)
             _dict['peers'] = _items
         return _dict
 

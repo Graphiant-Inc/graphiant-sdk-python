@@ -102,29 +102,25 @@ class ManaV2CoreDeviceConfig(BaseModel):
         _field_dict = {}
         if self.interfaces:
             for _key_interfaces in self.interfaces:
-                if self.interfaces[_key_interfaces]:
-                    _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict()
+                _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict() if self.interfaces[_key_interfaces] is not None else None
             _dict['interfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in ipfix_exporters (dict)
         _field_dict = {}
         if self.ipfix_exporters:
             for _key_ipfix_exporters in self.ipfix_exporters:
-                if self.ipfix_exporters[_key_ipfix_exporters]:
-                    _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict()
+                _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict() if self.ipfix_exporters[_key_ipfix_exporters] is not None else None
             _dict['ipfixExporters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in isp_vrfs (dict)
         _field_dict = {}
         if self.isp_vrfs:
             for _key_isp_vrfs in self.isp_vrfs:
-                if self.isp_vrfs[_key_isp_vrfs]:
-                    _field_dict[_key_isp_vrfs] = self.isp_vrfs[_key_isp_vrfs].to_dict()
+                _field_dict[_key_isp_vrfs] = self.isp_vrfs[_key_isp_vrfs].to_dict() if self.isp_vrfs[_key_isp_vrfs] is not None else None
             _dict['ispVrfs'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in prefix_sets (dict)
         _field_dict = {}
         if self.prefix_sets:
             for _key_prefix_sets in self.prefix_sets:
-                if self.prefix_sets[_key_prefix_sets]:
-                    _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict()
+                _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict() if self.prefix_sets[_key_prefix_sets] is not None else None
             _dict['prefixSets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of prometheus
         if self.prometheus:
@@ -133,8 +129,7 @@ class ManaV2CoreDeviceConfig(BaseModel):
         _field_dict = {}
         if self.route_policies:
             for _key_route_policies in self.route_policies:
-                if self.route_policies[_key_route_policies]:
-                    _field_dict[_key_route_policies] = self.route_policies[_key_route_policies].to_dict()
+                _field_dict[_key_route_policies] = self.route_policies[_key_route_policies].to_dict() if self.route_policies[_key_route_policies] is not None else None
             _dict['routePolicies'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of site
         if self.site:
@@ -146,8 +141,7 @@ class ManaV2CoreDeviceConfig(BaseModel):
         _field_dict = {}
         if self.vrfs:
             for _key_vrfs in self.vrfs:
-                if self.vrfs[_key_vrfs]:
-                    _field_dict[_key_vrfs] = self.vrfs[_key_vrfs].to_dict()
+                _field_dict[_key_vrfs] = self.vrfs[_key_vrfs].to_dict() if self.vrfs[_key_vrfs] is not None else None
             _dict['vrfs'] = _field_dict
         return _dict
 

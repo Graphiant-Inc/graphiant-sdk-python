@@ -101,8 +101,7 @@ class ManaV2BgpNeighborConfig(BaseModel):
         _field_dict = {}
         if self.address_families:
             for _key_address_families in self.address_families:
-                if self.address_families[_key_address_families]:
-                    _field_dict[_key_address_families] = self.address_families[_key_address_families].to_dict()
+                _field_dict[_key_address_families] = self.address_families[_key_address_families].to_dict() if self.address_families[_key_address_families] is not None else None
             _dict['addressFamilies'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of allow_as_in
         if self.allow_as_in:

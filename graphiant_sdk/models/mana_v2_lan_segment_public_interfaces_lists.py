@@ -75,15 +75,13 @@ class ManaV2LanSegmentPublicInterfacesLists(BaseModel):
         _items = []
         if self.private_interfaces:
             for _item_private_interfaces in self.private_interfaces:
-                if _item_private_interfaces:
-                    _items.append(_item_private_interfaces.to_dict())
+                _items.append(_item_private_interfaces.to_dict() if _item_private_interfaces is not None else None)
             _dict['privateInterfaces'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in public_interfaces (list)
         _items = []
         if self.public_interfaces:
             for _item_public_interfaces in self.public_interfaces:
-                if _item_public_interfaces:
-                    _items.append(_item_public_interfaces.to_dict())
+                _items.append(_item_public_interfaces.to_dict() if _item_public_interfaces is not None else None)
             _dict['publicInterfaces'] = _items
         return _dict
 

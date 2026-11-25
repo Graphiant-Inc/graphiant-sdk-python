@@ -108,57 +108,49 @@ class ManaV2SnmpConfig(BaseModel):
         _field_dict = {}
         if self.communities:
             for _key_communities in self.communities:
-                if self.communities[_key_communities]:
-                    _field_dict[_key_communities] = self.communities[_key_communities].to_dict()
+                _field_dict[_key_communities] = self.communities[_key_communities].to_dict() if self.communities[_key_communities] is not None else None
             _dict['communities'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in engine_endpoints (dict)
         _field_dict = {}
         if self.engine_endpoints:
             for _key_engine_endpoints in self.engine_endpoints:
-                if self.engine_endpoints[_key_engine_endpoints]:
-                    _field_dict[_key_engine_endpoints] = self.engine_endpoints[_key_engine_endpoints].to_dict()
+                _field_dict[_key_engine_endpoints] = self.engine_endpoints[_key_engine_endpoints].to_dict() if self.engine_endpoints[_key_engine_endpoints] is not None else None
             _dict['engineEndpoints'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in notify_filter_profiles (dict)
         _field_dict = {}
         if self.notify_filter_profiles:
             for _key_notify_filter_profiles in self.notify_filter_profiles:
-                if self.notify_filter_profiles[_key_notify_filter_profiles]:
-                    _field_dict[_key_notify_filter_profiles] = self.notify_filter_profiles[_key_notify_filter_profiles].to_dict()
+                _field_dict[_key_notify_filter_profiles] = self.notify_filter_profiles[_key_notify_filter_profiles].to_dict() if self.notify_filter_profiles[_key_notify_filter_profiles] is not None else None
             _dict['notifyFilterProfiles'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in targets (dict)
         _field_dict = {}
         if self.targets:
             for _key_targets in self.targets:
-                if self.targets[_key_targets]:
-                    _field_dict[_key_targets] = self.targets[_key_targets].to_dict()
+                _field_dict[_key_targets] = self.targets[_key_targets].to_dict() if self.targets[_key_targets] is not None else None
             _dict['targets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in usm_local_users (dict)
         _field_dict = {}
         if self.usm_local_users:
             for _key_usm_local_users in self.usm_local_users:
-                if self.usm_local_users[_key_usm_local_users]:
-                    _field_dict[_key_usm_local_users] = self.usm_local_users[_key_usm_local_users].to_dict()
+                _field_dict[_key_usm_local_users] = self.usm_local_users[_key_usm_local_users].to_dict() if self.usm_local_users[_key_usm_local_users] is not None else None
             _dict['usmLocalUsers'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in usm_remote_users (dict)
         _field_dict = {}
         if self.usm_remote_users:
             for _key_usm_remote_users in self.usm_remote_users:
-                if self.usm_remote_users[_key_usm_remote_users]:
-                    _field_dict[_key_usm_remote_users] = self.usm_remote_users[_key_usm_remote_users].to_dict()
+                _field_dict[_key_usm_remote_users] = self.usm_remote_users[_key_usm_remote_users].to_dict() if self.usm_remote_users[_key_usm_remote_users] is not None else None
             _dict['usmRemoteUsers'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in vacm_groups (dict)
         _field_dict = {}
         if self.vacm_groups:
             for _key_vacm_groups in self.vacm_groups:
-                if self.vacm_groups[_key_vacm_groups]:
-                    _field_dict[_key_vacm_groups] = self.vacm_groups[_key_vacm_groups].to_dict()
+                _field_dict[_key_vacm_groups] = self.vacm_groups[_key_vacm_groups].to_dict() if self.vacm_groups[_key_vacm_groups] is not None else None
             _dict['vacmGroups'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in vacm_views (dict)
         _field_dict = {}
         if self.vacm_views:
             for _key_vacm_views in self.vacm_views:
-                if self.vacm_views[_key_vacm_views]:
-                    _field_dict[_key_vacm_views] = self.vacm_views[_key_vacm_views].to_dict()
+                _field_dict[_key_vacm_views] = self.vacm_views[_key_vacm_views].to_dict() if self.vacm_views[_key_vacm_views] is not None else None
             _dict['vacmViews'] = _field_dict
         return _dict
 

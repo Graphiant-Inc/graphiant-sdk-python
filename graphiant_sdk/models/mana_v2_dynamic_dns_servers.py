@@ -75,8 +75,7 @@ class ManaV2DynamicDnsServers(BaseModel):
         _field_dict = {}
         if self.servers:
             for _key_servers in self.servers:
-                if self.servers[_key_servers]:
-                    _field_dict[_key_servers] = self.servers[_key_servers].to_dict()
+                _field_dict[_key_servers] = self.servers[_key_servers].to_dict() if self.servers[_key_servers] is not None else None
             _dict['servers'] = _field_dict
         return _dict
 

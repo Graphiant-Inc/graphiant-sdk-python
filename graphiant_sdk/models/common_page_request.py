@@ -28,12 +28,12 @@ class CommonPageRequest(BaseModel):
     """
     CommonPageRequest
     """ # noqa: E501
-    after: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
     before: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    first: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
     last: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
     token: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
-    __properties: ClassVar[List[str]] = ["after", "before", "first", "last", "token"]
+    after: Optional[StrictStr] = Field(default=None, json_schema_extra={"examples": ["example string"]})
+    first: Optional[Annotated[int, Field(strict=True, ge=0)]] = Field(default=None, json_schema_extra={"examples": [123]})
+    __properties: ClassVar[List[str]] = ["before", "last", "token", "after", "first"]
 
     model_config = ConfigDict(
         validate_by_name=True,
@@ -86,11 +86,11 @@ class CommonPageRequest(BaseModel):
             return cls.model_validate(obj)
 
         _obj = cls.model_validate({
-            "after": obj.get("after"),
             "before": obj.get("before"),
-            "first": obj.get("first"),
             "last": obj.get("last"),
-            "token": obj.get("token")
+            "token": obj.get("token"),
+            "after": obj.get("after"),
+            "first": obj.get("first")
         })
         return _obj
 

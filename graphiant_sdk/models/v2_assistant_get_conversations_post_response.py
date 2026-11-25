@@ -75,8 +75,7 @@ class V2AssistantGetConversationsPostResponse(BaseModel):
         _items = []
         if self.conversation_list:
             for _item_conversation_list in self.conversation_list:
-                if _item_conversation_list:
-                    _items.append(_item_conversation_list.to_dict())
+                _items.append(_item_conversation_list.to_dict() if _item_conversation_list is not None else None)
             _dict['conversationList'] = _items
         return _dict
 

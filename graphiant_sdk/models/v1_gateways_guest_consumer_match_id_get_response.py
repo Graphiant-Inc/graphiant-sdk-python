@@ -77,8 +77,7 @@ class V1GatewaysGuestConsumerMatchIdGetResponse(BaseModel):
         _items = []
         if self.ipsec_tunnel_config:
             for _item_ipsec_tunnel_config in self.ipsec_tunnel_config:
-                if _item_ipsec_tunnel_config:
-                    _items.append(_item_ipsec_tunnel_config.to_dict())
+                _items.append(_item_ipsec_tunnel_config.to_dict() if _item_ipsec_tunnel_config is not None else None)
             _dict['ipsecTunnelConfig'] = _items
         # override the default output from pydantic by calling `to_dict()` of site_to_site_vpn
         if self.site_to_site_vpn:

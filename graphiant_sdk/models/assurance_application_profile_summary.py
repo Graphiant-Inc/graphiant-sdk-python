@@ -74,8 +74,7 @@ class AssuranceApplicationProfileSummary(BaseModel):
         _items = []
         if self.bucket_summary_list:
             for _item_bucket_summary_list in self.bucket_summary_list:
-                if _item_bucket_summary_list:
-                    _items.append(_item_bucket_summary_list.to_dict())
+                _items.append(_item_bucket_summary_list.to_dict() if _item_bucket_summary_list is not None else None)
             _dict['bucketSummaryList'] = _items
         return _dict
 

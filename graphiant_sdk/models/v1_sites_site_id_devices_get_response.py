@@ -74,8 +74,7 @@ class V1SitesSiteIdDevicesGetResponse(BaseModel):
         _items = []
         if self.device:
             for _item_device in self.device:
-                if _item_device:
-                    _items.append(_item_device.to_dict())
+                _items.append(_item_device.to_dict() if _item_device is not None else None)
             _dict['device'] = _items
         return _dict
 

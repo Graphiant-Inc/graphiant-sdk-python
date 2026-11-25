@@ -84,8 +84,7 @@ class AssuranceClientSessionEndpointDetails(BaseModel):
         _items = []
         if self.edges:
             for _item_edges in self.edges:
-                if _item_edges:
-                    _items.append(_item_edges.to_dict())
+                _items.append(_item_edges.to_dict() if _item_edges is not None else None)
             _dict['edges'] = _items
         # override the default output from pydantic by calling `to_dict()` of jitter
         if self.jitter:

@@ -78,8 +78,7 @@ class V2MonitoringExtranetStatusDetailsGetResponse(BaseModel):
         _items = []
         if self.edge_statuses:
             for _item_edge_statuses in self.edge_statuses:
-                if _item_edge_statuses:
-                    _items.append(_item_edge_statuses.to_dict())
+                _items.append(_item_edge_statuses.to_dict() if _item_edge_statuses is not None else None)
             _dict['edgeStatuses'] = _items
         # override the default output from pydantic by calling `to_dict()` of site_status
         if self.site_status:

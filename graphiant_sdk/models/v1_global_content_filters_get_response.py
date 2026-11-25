@@ -74,8 +74,7 @@ class V1GlobalContentFiltersGetResponse(BaseModel):
         _items = []
         if self.rows:
             for _item_rows in self.rows:
-                if _item_rows:
-                    _items.append(_item_rows.to_dict())
+                _items.append(_item_rows.to_dict() if _item_rows is not None else None)
             _dict['rows'] = _items
         return _dict
 

@@ -75,8 +75,7 @@ class StatsmonBackbonehealthTransitions(BaseModel):
         _items = []
         if self.transitions:
             for _item_transitions in self.transitions:
-                if _item_transitions:
-                    _items.append(_item_transitions.to_dict())
+                _items.append(_item_transitions.to_dict() if _item_transitions is not None else None)
             _dict['transitions'] = _items
         return _dict
 

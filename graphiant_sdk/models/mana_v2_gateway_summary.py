@@ -87,8 +87,7 @@ class ManaV2GatewaySummary(BaseModel):
         _items = []
         if self.gateway_device_summary:
             for _item_gateway_device_summary in self.gateway_device_summary:
-                if _item_gateway_device_summary:
-                    _items.append(_item_gateway_device_summary.to_dict())
+                _items.append(_item_gateway_device_summary.to_dict() if _item_gateway_device_summary is not None else None)
             _dict['gatewayDeviceSummary'] = _items
         # override the default output from pydantic by calling `to_dict()` of updated_at
         if self.updated_at:

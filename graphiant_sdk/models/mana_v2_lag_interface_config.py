@@ -99,8 +99,7 @@ class ManaV2LagInterfaceConfig(BaseModel):
         _field_dict = {}
         if self.lag_members:
             for _key_lag_members in self.lag_members:
-                if self.lag_members[_key_lag_members]:
-                    _field_dict[_key_lag_members] = self.lag_members[_key_lag_members].to_dict()
+                _field_dict[_key_lag_members] = self.lag_members[_key_lag_members].to_dict() if self.lag_members[_key_lag_members] is not None else None
             _dict['lagMembers'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of macsec
         if self.macsec:
@@ -109,8 +108,7 @@ class ManaV2LagInterfaceConfig(BaseModel):
         _field_dict = {}
         if self.subinterfaces:
             for _key_subinterfaces in self.subinterfaces:
-                if self.subinterfaces[_key_subinterfaces]:
-                    _field_dict[_key_subinterfaces] = self.subinterfaces[_key_subinterfaces].to_dict()
+                _field_dict[_key_subinterfaces] = self.subinterfaces[_key_subinterfaces].to_dict() if self.subinterfaces[_key_subinterfaces] is not None else None
             _dict['subinterfaces'] = _field_dict
         return _dict
 

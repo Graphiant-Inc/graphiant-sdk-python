@@ -90,22 +90,19 @@ class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse(BaseMode
         _field_dict = {}
         if self.global_object_device_summaries:
             for _key_global_object_device_summaries in self.global_object_device_summaries:
-                if self.global_object_device_summaries[_key_global_object_device_summaries]:
-                    _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict()
+                _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict() if self.global_object_device_summaries[_key_global_object_device_summaries] is not None else None
             _dict['globalObjectDeviceSummaries'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in global_object_summaries (dict)
         _field_dict = {}
         if self.global_object_summaries:
             for _key_global_object_summaries in self.global_object_summaries:
-                if self.global_object_summaries[_key_global_object_summaries]:
-                    _field_dict[_key_global_object_summaries] = self.global_object_summaries[_key_global_object_summaries].to_dict()
+                _field_dict[_key_global_object_summaries] = self.global_object_summaries[_key_global_object_summaries].to_dict() if self.global_object_summaries[_key_global_object_summaries] is not None else None
             _dict['globalObjectSummaries'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in ipsec_tunnel_config (list)
         _items = []
         if self.ipsec_tunnel_config:
             for _item_ipsec_tunnel_config in self.ipsec_tunnel_config:
-                if _item_ipsec_tunnel_config:
-                    _items.append(_item_ipsec_tunnel_config.to_dict())
+                _items.append(_item_ipsec_tunnel_config.to_dict() if _item_ipsec_tunnel_config is not None else None)
             _dict['ipsecTunnelConfig'] = _items
         # override the default output from pydantic by calling `to_dict()` of match_details
         if self.match_details:
@@ -114,15 +111,13 @@ class V1ExtranetsB2bPeeringConsumerCustomerIdConsumerDetailsGetResponse(BaseMode
         _items = []
         if self.policy:
             for _item_policy in self.policy:
-                if _item_policy:
-                    _items.append(_item_policy.to_dict())
+                _items.append(_item_policy.to_dict() if _item_policy is not None else None)
             _dict['policy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in site_information (list)
         _items = []
         if self.site_information:
             for _item_site_information in self.site_information:
-                if _item_site_information:
-                    _items.append(_item_site_information.to_dict())
+                _items.append(_item_site_information.to_dict() if _item_site_information is not None else None)
             _dict['siteInformation'] = _items
         # override the default output from pydantic by calling `to_dict()` of site_to_site_vpn
         if self.site_to_site_vpn:

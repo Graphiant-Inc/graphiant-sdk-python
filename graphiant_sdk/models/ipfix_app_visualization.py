@@ -79,8 +79,7 @@ class IpfixAppVisualization(BaseModel):
         _field_dict = {}
         if self.circuit_map:
             for _key_circuit_map in self.circuit_map:
-                if self.circuit_map[_key_circuit_map]:
-                    _field_dict[_key_circuit_map] = self.circuit_map[_key_circuit_map].to_dict()
+                _field_dict[_key_circuit_map] = self.circuit_map[_key_circuit_map].to_dict() if self.circuit_map[_key_circuit_map] is not None else None
             _dict['circuitMap'] = _field_dict
         return _dict
 

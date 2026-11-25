@@ -79,8 +79,7 @@ class V1ZonesGetResponse(BaseModel):
         _items = []
         if self.zones:
             for _item_zones in self.zones:
-                if _item_zones:
-                    _items.append(_item_zones.to_dict())
+                _items.append(_item_zones.to_dict() if _item_zones is not None else None)
             _dict['zones'] = _items
         return _dict
 

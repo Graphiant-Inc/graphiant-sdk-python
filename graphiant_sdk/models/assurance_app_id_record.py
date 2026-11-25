@@ -101,15 +101,13 @@ class AssuranceAppIdRecord(BaseModel):
         _items = []
         if self.exchange_service:
             for _item_exchange_service in self.exchange_service:
-                if _item_exchange_service:
-                    _items.append(_item_exchange_service.to_dict())
+                _items.append(_item_exchange_service.to_dict() if _item_exchange_service is not None else None)
             _dict['exchangeService'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in flex_algo (list)
         _items = []
         if self.flex_algo:
             for _item_flex_algo in self.flex_algo:
-                if _item_flex_algo:
-                    _items.append(_item_flex_algo.to_dict())
+                _items.append(_item_flex_algo.to_dict() if _item_flex_algo is not None else None)
             _dict['flexAlgo'] = _items
         return _dict
 

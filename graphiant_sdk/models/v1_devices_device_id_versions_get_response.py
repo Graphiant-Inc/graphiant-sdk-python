@@ -74,8 +74,7 @@ class V1DevicesDeviceIdVersionsGetResponse(BaseModel):
         _items = []
         if self.versions:
             for _item_versions in self.versions:
-                if _item_versions:
-                    _items.append(_item_versions.to_dict())
+                _items.append(_item_versions.to_dict() if _item_versions is not None else None)
             _dict['versions'] = _items
         return _dict
 

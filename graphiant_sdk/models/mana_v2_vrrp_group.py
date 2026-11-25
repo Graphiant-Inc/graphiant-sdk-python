@@ -88,15 +88,13 @@ class ManaV2VrrpGroup(BaseModel):
         _items = []
         if self.group_members:
             for _item_group_members in self.group_members:
-                if _item_group_members:
-                    _items.append(_item_group_members.to_dict())
+                _items.append(_item_group_members.to_dict() if _item_group_members is not None else None)
             _dict['groupMembers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in tracked_interfaces (list)
         _items = []
         if self.tracked_interfaces:
             for _item_tracked_interfaces in self.tracked_interfaces:
-                if _item_tracked_interfaces:
-                    _items.append(_item_tracked_interfaces.to_dict())
+                _items.append(_item_tracked_interfaces.to_dict() if _item_tracked_interfaces is not None else None)
             _dict['trackedInterfaces'] = _items
         return _dict
 

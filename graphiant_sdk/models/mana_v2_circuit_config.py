@@ -99,8 +99,7 @@ class ManaV2CircuitConfig(BaseModel):
         _field_dict = {}
         if self.bgp_aggregations:
             for _key_bgp_aggregations in self.bgp_aggregations:
-                if self.bgp_aggregations[_key_bgp_aggregations]:
-                    _field_dict[_key_bgp_aggregations] = self.bgp_aggregations[_key_bgp_aggregations].to_dict()
+                _field_dict[_key_bgp_aggregations] = self.bgp_aggregations[_key_bgp_aggregations].to_dict() if self.bgp_aggregations[_key_bgp_aggregations] is not None else None
             _dict['bgpAggregations'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of bgp_multipath
         if self.bgp_multipath:
@@ -109,15 +108,13 @@ class ManaV2CircuitConfig(BaseModel):
         _field_dict = {}
         if self.bgp_neighbors:
             for _key_bgp_neighbors in self.bgp_neighbors:
-                if self.bgp_neighbors[_key_bgp_neighbors]:
-                    _field_dict[_key_bgp_neighbors] = self.bgp_neighbors[_key_bgp_neighbors].to_dict()
+                _field_dict[_key_bgp_neighbors] = self.bgp_neighbors[_key_bgp_neighbors].to_dict() if self.bgp_neighbors[_key_bgp_neighbors] is not None else None
             _dict['bgpNeighbors'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in bgp_redistribution (dict)
         _field_dict = {}
         if self.bgp_redistribution:
             for _key_bgp_redistribution in self.bgp_redistribution:
-                if self.bgp_redistribution[_key_bgp_redistribution]:
-                    _field_dict[_key_bgp_redistribution] = self.bgp_redistribution[_key_bgp_redistribution].to_dict()
+                _field_dict[_key_bgp_redistribution] = self.bgp_redistribution[_key_bgp_redistribution].to_dict() if self.bgp_redistribution[_key_bgp_redistribution] is not None else None
             _dict['bgpRedistribution'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of pat_addresses
         if self.pat_addresses:
@@ -126,8 +123,7 @@ class ManaV2CircuitConfig(BaseModel):
         _field_dict = {}
         if self.static_routes:
             for _key_static_routes in self.static_routes:
-                if self.static_routes[_key_static_routes]:
-                    _field_dict[_key_static_routes] = self.static_routes[_key_static_routes].to_dict()
+                _field_dict[_key_static_routes] = self.static_routes[_key_static_routes].to_dict() if self.static_routes[_key_static_routes] is not None else None
             _dict['staticRoutes'] = _field_dict
         return _dict
 

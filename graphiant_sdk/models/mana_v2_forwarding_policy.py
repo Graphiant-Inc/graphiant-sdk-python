@@ -86,50 +86,43 @@ class ManaV2ForwardingPolicy(BaseModel):
         _items = []
         if self.dpi_applications:
             for _item_dpi_applications in self.dpi_applications:
-                if _item_dpi_applications:
-                    _items.append(_item_dpi_applications.to_dict())
+                _items.append(_item_dpi_applications.to_dict() if _item_dpi_applications is not None else None)
             _dict['dpiApplications'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in network_lists (list)
         _items = []
         if self.network_lists:
             for _item_network_lists in self.network_lists:
-                if _item_network_lists:
-                    _items.append(_item_network_lists.to_dict())
+                _items.append(_item_network_lists.to_dict() if _item_network_lists is not None else None)
             _dict['networkLists'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in port_lists (list)
         _items = []
         if self.port_lists:
             for _item_port_lists in self.port_lists:
-                if _item_port_lists:
-                    _items.append(_item_port_lists.to_dict())
+                _items.append(_item_port_lists.to_dict() if _item_port_lists is not None else None)
             _dict['portLists'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in security_rulesets (list)
         _items = []
         if self.security_rulesets:
             for _item_security_rulesets in self.security_rulesets:
-                if _item_security_rulesets:
-                    _items.append(_item_security_rulesets.to_dict())
+                _items.append(_item_security_rulesets.to_dict() if _item_security_rulesets is not None else None)
             _dict['securityRulesets'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in traffic_rulesets (list)
         _items = []
         if self.traffic_rulesets:
             for _item_traffic_rulesets in self.traffic_rulesets:
-                if _item_traffic_rulesets:
-                    _items.append(_item_traffic_rulesets.to_dict())
+                _items.append(_item_traffic_rulesets.to_dict() if _item_traffic_rulesets is not None else None)
             _dict['trafficRulesets'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in zone_firewalls (list)
         _items = []
         if self.zone_firewalls:
             for _item_zone_firewalls in self.zone_firewalls:
-                if _item_zone_firewalls:
-                    _items.append(_item_zone_firewalls.to_dict())
+                _items.append(_item_zone_firewalls.to_dict() if _item_zone_firewalls is not None else None)
             _dict['zoneFirewalls'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in zone_pairs (list)
         _items = []
         if self.zone_pairs:
             for _item_zone_pairs in self.zone_pairs:
-                if _item_zone_pairs:
-                    _items.append(_item_zone_pairs.to_dict())
+                _items.append(_item_zone_pairs.to_dict() if _item_zone_pairs is not None else None)
             _dict['zonePairs'] = _items
         return _dict
 

@@ -76,15 +76,13 @@ class StatsmonTroubleshootingControlPlane(BaseModel):
         _items = []
         if self.control_transitions:
             for _item_control_transitions in self.control_transitions:
-                if _item_control_transitions:
-                    _items.append(_item_control_transitions.to_dict())
+                _items.append(_item_control_transitions.to_dict() if _item_control_transitions is not None else None)
             _dict['controlTransitions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in management_transitions (list)
         _items = []
         if self.management_transitions:
             for _item_management_transitions in self.management_transitions:
-                if _item_management_transitions:
-                    _items.append(_item_management_transitions.to_dict())
+                _items.append(_item_management_transitions.to_dict() if _item_management_transitions is not None else None)
             _dict['managementTransitions'] = _items
         return _dict
 

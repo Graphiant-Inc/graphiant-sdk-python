@@ -74,8 +74,7 @@ class V1SitesMapDetailsGetResponse(BaseModel):
         _field_dict = {}
         if self.lan_segment_ids:
             for _key_lan_segment_ids in self.lan_segment_ids:
-                if self.lan_segment_ids[_key_lan_segment_ids]:
-                    _field_dict[_key_lan_segment_ids] = self.lan_segment_ids[_key_lan_segment_ids].to_dict()
+                _field_dict[_key_lan_segment_ids] = self.lan_segment_ids[_key_lan_segment_ids].to_dict() if self.lan_segment_ids[_key_lan_segment_ids] is not None else None
             _dict['lanSegmentIds'] = _field_dict
         return _dict
 

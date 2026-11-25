@@ -76,15 +76,13 @@ class V1ExtranetsMonitoringTrafficSecurityPolicyPostResponse(BaseModel):
         _items = []
         if self.security_rules:
             for _item_security_rules in self.security_rules:
-                if _item_security_rules:
-                    _items.append(_item_security_rules.to_dict())
+                _items.append(_item_security_rules.to_dict() if _item_security_rules is not None else None)
             _dict['securityRules'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in traffic_rules (list)
         _items = []
         if self.traffic_rules:
             for _item_traffic_rules in self.traffic_rules:
-                if _item_traffic_rules:
-                    _items.append(_item_traffic_rules.to_dict())
+                _items.append(_item_traffic_rules.to_dict() if _item_traffic_rules is not None else None)
             _dict['trafficRules'] = _items
         return _dict
 

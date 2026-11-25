@@ -110,8 +110,7 @@ class ManaV2InterfaceVlan(BaseModel):
         _items = []
         if self.ipv6_addresses:
             for _item_ipv6_addresses in self.ipv6_addresses:
-                if _item_ipv6_addresses:
-                    _items.append(_item_ipv6_addresses.to_dict())
+                _items.append(_item_ipv6_addresses.to_dict() if _item_ipv6_addresses is not None else None)
             _dict['ipv6Addresses'] = _items
         # override the default output from pydantic by calling `to_dict()` of oper_updated_at
         if self.oper_updated_at:
@@ -120,8 +119,7 @@ class ManaV2InterfaceVlan(BaseModel):
         _items = []
         if self.pppoe_interfaces:
             for _item_pppoe_interfaces in self.pppoe_interfaces:
-                if _item_pppoe_interfaces:
-                    _items.append(_item_pppoe_interfaces.to_dict())
+                _items.append(_item_pppoe_interfaces.to_dict() if _item_pppoe_interfaces is not None else None)
             _dict['pppoeInterfaces'] = _items
         return _dict
 

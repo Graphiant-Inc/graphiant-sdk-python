@@ -85,15 +85,13 @@ class AuditmonActivityDetailsTarget(BaseModel):
         _items = []
         if self.events:
             for _item_events in self.events:
-                if _item_events:
-                    _items.append(_item_events.to_dict())
+                _items.append(_item_events.to_dict() if _item_events is not None else None)
             _dict['events'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ids (list)
         _items = []
         if self.ids:
             for _item_ids in self.ids:
-                if _item_ids:
-                    _items.append(_item_ids.to_dict())
+                _items.append(_item_ids.to_dict() if _item_ids is not None else None)
             _dict['ids'] = _items
         # override the default output from pydantic by calling `to_dict()` of start_ts
         if self.start_ts:

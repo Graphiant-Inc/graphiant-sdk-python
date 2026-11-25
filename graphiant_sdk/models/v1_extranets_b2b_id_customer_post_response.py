@@ -74,8 +74,7 @@ class V1ExtranetsB2bIdCustomerPostResponse(BaseModel):
         _items = []
         if self.responses:
             for _item_responses in self.responses:
-                if _item_responses:
-                    _items.append(_item_responses.to_dict())
+                _items.append(_item_responses.to_dict() if _item_responses is not None else None)
             _dict['responses'] = _items
         return _dict
 

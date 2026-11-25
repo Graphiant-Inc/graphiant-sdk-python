@@ -74,8 +74,7 @@ class V1DiagnosticSpeedtestServersGetResponse(BaseModel):
         _items = []
         if self.server:
             for _item_server in self.server:
-                if _item_server:
-                    _items.append(_item_server.to_dict())
+                _items.append(_item_server.to_dict() if _item_server is not None else None)
             _dict['server'] = _items
         return _dict
 

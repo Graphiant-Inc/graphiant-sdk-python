@@ -74,8 +74,7 @@ class V1GlobalPrefixSetsPostResponse(BaseModel):
         _items = []
         if self.prefix_sets:
             for _item_prefix_sets in self.prefix_sets:
-                if _item_prefix_sets:
-                    _items.append(_item_prefix_sets.to_dict())
+                _items.append(_item_prefix_sets.to_dict() if _item_prefix_sets is not None else None)
             _dict['prefixSets'] = _items
         return _dict
 

@@ -74,8 +74,7 @@ class V1GlobalNtpsDeviceGetResponse(BaseModel):
         _items = []
         if self.ntps:
             for _item_ntps in self.ntps:
-                if _item_ntps:
-                    _items.append(_item_ntps.to_dict())
+                _items.append(_item_ntps.to_dict() if _item_ntps is not None else None)
             _dict['ntps'] = _items
         return _dict
 

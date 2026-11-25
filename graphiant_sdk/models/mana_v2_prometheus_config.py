@@ -78,8 +78,7 @@ class ManaV2PrometheusConfig(BaseModel):
         _field_dict = {}
         if self.rule_groups:
             for _key_rule_groups in self.rule_groups:
-                if self.rule_groups[_key_rule_groups]:
-                    _field_dict[_key_rule_groups] = self.rule_groups[_key_rule_groups].to_dict()
+                _field_dict[_key_rule_groups] = self.rule_groups[_key_rule_groups].to_dict() if self.rule_groups[_key_rule_groups] is not None else None
             _dict['ruleGroups'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of sink
         if self.sink:
@@ -88,8 +87,7 @@ class ManaV2PrometheusConfig(BaseModel):
         _field_dict = {}
         if self.sysdb_monitors:
             for _key_sysdb_monitors in self.sysdb_monitors:
-                if self.sysdb_monitors[_key_sysdb_monitors]:
-                    _field_dict[_key_sysdb_monitors] = self.sysdb_monitors[_key_sysdb_monitors].to_dict()
+                _field_dict[_key_sysdb_monitors] = self.sysdb_monitors[_key_sysdb_monitors].to_dict() if self.sysdb_monitors[_key_sysdb_monitors] is not None else None
             _dict['sysdbMonitors'] = _field_dict
         return _dict
 

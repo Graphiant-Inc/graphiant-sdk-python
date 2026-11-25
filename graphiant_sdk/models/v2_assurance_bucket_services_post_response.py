@@ -74,8 +74,7 @@ class V2AssuranceBucketServicesPostResponse(BaseModel):
         _items = []
         if self.services:
             for _item_services in self.services:
-                if _item_services:
-                    _items.append(_item_services.to_dict())
+                _items.append(_item_services.to_dict() if _item_services is not None else None)
             _dict['services'] = _items
         return _dict
 

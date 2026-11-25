@@ -85,15 +85,13 @@ class IpfixAppStateSummaryCount(BaseModel):
         _items = []
         if self.circuits_incidents:
             for _item_circuits_incidents in self.circuits_incidents:
-                if _item_circuits_incidents:
-                    _items.append(_item_circuits_incidents.to_dict())
+                _items.append(_item_circuits_incidents.to_dict() if _item_circuits_incidents is not None else None)
             _dict['circuitsIncidents'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in circuits_incidentsv2 (list)
         _items = []
         if self.circuits_incidentsv2:
             for _item_circuits_incidentsv2 in self.circuits_incidentsv2:
-                if _item_circuits_incidentsv2:
-                    _items.append(_item_circuits_incidentsv2.to_dict())
+                _items.append(_item_circuits_incidentsv2.to_dict() if _item_circuits_incidentsv2 is not None else None)
             _dict['circuitsIncidentsv2'] = _items
         return _dict
 

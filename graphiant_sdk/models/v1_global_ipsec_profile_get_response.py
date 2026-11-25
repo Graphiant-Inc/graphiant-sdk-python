@@ -74,8 +74,7 @@ class V1GlobalIpsecProfileGetResponse(BaseModel):
         _items = []
         if self.ipsec_profiles:
             for _item_ipsec_profiles in self.ipsec_profiles:
-                if _item_ipsec_profiles:
-                    _items.append(_item_ipsec_profiles.to_dict())
+                _items.append(_item_ipsec_profiles.to_dict() if _item_ipsec_profiles is not None else None)
             _dict['ipsecProfiles'] = _items
         return _dict
 

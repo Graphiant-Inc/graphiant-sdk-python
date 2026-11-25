@@ -24,7 +24,7 @@ SOFTWARE.
 from setuptools import setup, find_packages  # noqa: H301
 
 NAME = "graphiant_sdk"
-VERSION = "26.10.0"
+VERSION = "26.11.0"
 PYTHON_REQUIRES = ">= 3.11"
 REQUIRES = [
     "urllib3 >= 2.8.0, < 3.0.0",

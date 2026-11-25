@@ -78,8 +78,7 @@ class StatsmonBandwidthtrackerBwUsageBySiteSummary(BaseModel):
         _items = []
         if self.bwuage_region:
             for _item_bwuage_region in self.bwuage_region:
-                if _item_bwuage_region:
-                    _items.append(_item_bwuage_region.to_dict())
+                _items.append(_item_bwuage_region.to_dict() if _item_bwuage_region is not None else None)
             _dict['bwuageRegion'] = _items
         return _dict
 

@@ -74,8 +74,7 @@ class V1ExtranetsSourceSegmentsPostResponse(BaseModel):
         _items = []
         if self.vrfs:
             for _item_vrfs in self.vrfs:
-                if _item_vrfs:
-                    _items.append(_item_vrfs.to_dict())
+                _items.append(_item_vrfs.to_dict() if _item_vrfs is not None else None)
             _dict['vrfs'] = _items
         return _dict
 

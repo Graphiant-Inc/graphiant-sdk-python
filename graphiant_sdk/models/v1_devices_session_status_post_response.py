@@ -76,22 +76,19 @@ class V1DevicesSessionStatusPostResponse(BaseModel):
         _field_dict = {}
         if self.bgp_session_data_map:
             for _key_bgp_session_data_map in self.bgp_session_data_map:
-                if self.bgp_session_data_map[_key_bgp_session_data_map]:
-                    _field_dict[_key_bgp_session_data_map] = self.bgp_session_data_map[_key_bgp_session_data_map].to_dict()
+                _field_dict[_key_bgp_session_data_map] = self.bgp_session_data_map[_key_bgp_session_data_map].to_dict() if self.bgp_session_data_map[_key_bgp_session_data_map] is not None else None
             _dict['bgpSessionDataMap'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in bgp_session_map (dict)
         _field_dict = {}
         if self.bgp_session_map:
             for _key_bgp_session_map in self.bgp_session_map:
-                if self.bgp_session_map[_key_bgp_session_map]:
-                    _field_dict[_key_bgp_session_map] = self.bgp_session_map[_key_bgp_session_map].to_dict()
+                _field_dict[_key_bgp_session_map] = self.bgp_session_map[_key_bgp_session_map].to_dict() if self.bgp_session_map[_key_bgp_session_map] is not None else None
             _dict['bgpSessionMap'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in bgp_session_states (list)
         _items = []
         if self.bgp_session_states:
             for _item_bgp_session_states in self.bgp_session_states:
-                if _item_bgp_session_states:
-                    _items.append(_item_bgp_session_states.to_dict())
+                _items.append(_item_bgp_session_states.to_dict() if _item_bgp_session_states is not None else None)
             _dict['bgpSessionStates'] = _items
         return _dict
 

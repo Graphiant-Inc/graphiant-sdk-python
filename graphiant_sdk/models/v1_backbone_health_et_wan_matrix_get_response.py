@@ -76,15 +76,13 @@ class V1BackboneHealthEtWanMatrixGetResponse(BaseModel):
         _items = []
         if self.device_etwan_summary:
             for _item_device_etwan_summary in self.device_etwan_summary:
-                if _item_device_etwan_summary:
-                    _items.append(_item_device_etwan_summary.to_dict())
+                _items.append(_item_device_etwan_summary.to_dict() if _item_device_etwan_summary is not None else None)
             _dict['deviceEtwanSummary'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in region_sla_status (list)
         _items = []
         if self.region_sla_status:
             for _item_region_sla_status in self.region_sla_status:
-                if _item_region_sla_status:
-                    _items.append(_item_region_sla_status.to_dict())
+                _items.append(_item_region_sla_status.to_dict() if _item_region_sla_status is not None else None)
             _dict['regionSlaStatus'] = _items
         return _dict
 

@@ -355,6 +355,8 @@ Method | HTTP request | Description
 [**v1_lldp_interface_id_vendors_get**](DefaultApi.md#v1_lldp_interface_id_vendors_get) | **GET** /v1/lldp/{interfaceId}/vendors | 
 [**v1_logs_post**](DefaultApi.md#v1_logs_post) | **POST** /v1/logs | 
 [**v1_msp_managed_enterprise_contract_info_get**](DefaultApi.md#v1_msp_managed_enterprise_contract_info_get) | **GET** /v1/msp/managed-enterprise-contract-info | 
+[**v1_msp_regions_expected_inter_region_latencies_get**](DefaultApi.md#v1_msp_regions_expected_inter_region_latencies_get) | **GET** /v1/msp/regions/expected-inter-region-latencies | 
+[**v1_msp_regions_expected_inter_region_latencies_patch**](DefaultApi.md#v1_msp_regions_expected_inter_region_latencies_patch) | **PATCH** /v1/msp/regions/expected-inter-region-latencies | 
 [**v1_nat_entries_device_id_get**](DefaultApi.md#v1_nat_entries_device_id_get) | **GET** /v1/nat/entries/{deviceId} | 
 [**v1_nat_utilization_device_id_get**](DefaultApi.md#v1_nat_utilization_device_id_get) | **GET** /v1/nat/utilization/{deviceId} | 
 [**v1_onboarding_cloudinit_delete**](DefaultApi.md#v1_onboarding_cloudinit_delete) | **DELETE** /v1/onboarding/cloudinit | 
@@ -27948,6 +27950,160 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_msp_regions_expected_inter_region_latencies_get**
+> V1MspRegionsExpectedInterRegionLatenciesGetResponse v1_msp_regions_expected_inter_region_latencies_get(authorization)
+
+Get one-way reference latencies between source-destination region combinations.
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v1_msp_regions_expected_inter_region_latencies_get_response import V1MspRegionsExpectedInterRegionLatenciesGetResponse
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+
+    try:
+        api_response = api_instance.v1_msp_regions_expected_inter_region_latencies_get(authorization)
+        print("The response of DefaultApi->v1_msp_regions_expected_inter_region_latencies_get:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_msp_regions_expected_inter_region_latencies_get: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+
+### Return type
+
+[**V1MspRegionsExpectedInterRegionLatenciesGetResponse**](V1MspRegionsExpectedInterRegionLatenciesGetResponse.md)
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+### HTTP response details
+
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+**200** | OK |  -  |
+
+[[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
+
+# **v1_msp_regions_expected_inter_region_latencies_patch**
+> object v1_msp_regions_expected_inter_region_latencies_patch(authorization, v1_msp_regions_expected_inter_region_latencies_patch_request)
+
+Upsert one-way reference latencies between source-destination region combinations, keeping omitted combinations the same as before.
+
+### Example
+
+* Api Key Authentication (jwtAuth):
+
+```python
+import graphiant_sdk
+from graphiant_sdk.models.v1_msp_regions_expected_inter_region_latencies_patch_request import V1MspRegionsExpectedInterRegionLatenciesPatchRequest
+from graphiant_sdk.rest import ApiException
+from pprint import pprint
+
+# Defining the host is optional and defaults to https://api.graphiant.com
+# See configuration.py for a list of all supported configuration parameters.
+configuration = graphiant_sdk.Configuration(
+    host = "https://api.graphiant.com"
+)
+
+# The client must configure the authentication and authorization parameters
+# in accordance with the API server security policy.
+# Examples for each auth method are provided below, use the example that
+# satisfies your auth use case.
+
+# Configure API key authorization: jwtAuth
+configuration.api_key['jwtAuth'] = os.environ["API_KEY"]
+
+# Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+# configuration.api_key_prefix['jwtAuth'] = 'Bearer'
+
+# Enter a context with an instance of the API client
+with graphiant_sdk.ApiClient(configuration) as api_client:
+    # Create an instance of the API class
+    api_instance = graphiant_sdk.DefaultApi(api_client)
+    authorization = 'authorization_example' # str | Bearer token. Format: Bearer <your_token_here>
+    v1_msp_regions_expected_inter_region_latencies_patch_request = graphiant_sdk.V1MspRegionsExpectedInterRegionLatenciesPatchRequest() # V1MspRegionsExpectedInterRegionLatenciesPatchRequest | 
+
+    try:
+        api_response = api_instance.v1_msp_regions_expected_inter_region_latencies_patch(authorization, v1_msp_regions_expected_inter_region_latencies_patch_request)
+        print("The response of DefaultApi->v1_msp_regions_expected_inter_region_latencies_patch:\n")
+        pprint(api_response)
+    except Exception as e:
+        print("Exception when calling DefaultApi->v1_msp_regions_expected_inter_region_latencies_patch: %s\n" % e)
+```
+
+
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **authorization** | **str**| Bearer token. Format: Bearer &lt;your_token_here&gt; | 
+ **v1_msp_regions_expected_inter_region_latencies_patch_request** | [**V1MspRegionsExpectedInterRegionLatenciesPatchRequest**](V1MspRegionsExpectedInterRegionLatenciesPatchRequest.md)|  | 
+
+### Return type
+
+**object**
+
+### Authorization
+
+[jwtAuth](../README.md#jwtAuth)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
  - **Accept**: application/json
 
 ### HTTP response details

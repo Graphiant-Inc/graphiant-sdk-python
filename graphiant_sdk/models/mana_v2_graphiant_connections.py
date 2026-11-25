@@ -76,22 +76,19 @@ class ManaV2GraphiantConnections(BaseModel):
         _items = []
         if self.control_connection:
             for _item_control_connection in self.control_connection:
-                if _item_control_connection:
-                    _items.append(_item_control_connection.to_dict())
+                _items.append(_item_control_connection.to_dict() if _item_control_connection is not None else None)
             _dict['controlConnection'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in core_connection (list)
         _items = []
         if self.core_connection:
             for _item_core_connection in self.core_connection:
-                if _item_core_connection:
-                    _items.append(_item_core_connection.to_dict())
+                _items.append(_item_core_connection.to_dict() if _item_core_connection is not None else None)
             _dict['coreConnection'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in management_connection (list)
         _items = []
         if self.management_connection:
             for _item_management_connection in self.management_connection:
-                if _item_management_connection:
-                    _items.append(_item_management_connection.to_dict())
+                _items.append(_item_management_connection.to_dict() if _item_management_connection is not None else None)
             _dict['managementConnection'] = _items
         return _dict
 

@@ -75,8 +75,7 @@ class StatsmonV2DeviceSegments(BaseModel):
         _items = []
         if self.vrf_routes:
             for _item_vrf_routes in self.vrf_routes:
-                if _item_vrf_routes:
-                    _items.append(_item_vrf_routes.to_dict())
+                _items.append(_item_vrf_routes.to_dict() if _item_vrf_routes is not None else None)
             _dict['vrfRoutes'] = _items
         return _dict
 

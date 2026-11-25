@@ -74,8 +74,7 @@ class V1OnboardingCloudinitGetResponse(BaseModel):
         _items = []
         if self.cloudinit_tokens:
             for _item_cloudinit_tokens in self.cloudinit_tokens:
-                if _item_cloudinit_tokens:
-                    _items.append(_item_cloudinit_tokens.to_dict())
+                _items.append(_item_cloudinit_tokens.to_dict() if _item_cloudinit_tokens is not None else None)
             _dict['cloudinitTokens'] = _items
         return _dict
 

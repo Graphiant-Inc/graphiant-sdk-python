@@ -77,15 +77,13 @@ class StatsmonBackbonehealthDataPlane(BaseModel):
         _items = []
         if self.down_transitions:
             for _item_down_transitions in self.down_transitions:
-                if _item_down_transitions:
-                    _items.append(_item_down_transitions.to_dict())
+                _items.append(_item_down_transitions.to_dict() if _item_down_transitions is not None else None)
             _dict['downTransitions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in session_slas (list)
         _items = []
         if self.session_slas:
             for _item_session_slas in self.session_slas:
-                if _item_session_slas:
-                    _items.append(_item_session_slas.to_dict())
+                _items.append(_item_session_slas.to_dict() if _item_session_slas is not None else None)
             _dict['sessionSlas'] = _items
         return _dict
 

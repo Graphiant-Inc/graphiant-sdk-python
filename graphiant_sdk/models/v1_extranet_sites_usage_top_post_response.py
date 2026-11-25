@@ -74,8 +74,7 @@ class V1ExtranetSitesUsageTopPostResponse(BaseModel):
         _items = []
         if self.top_sites:
             for _item_top_sites in self.top_sites:
-                if _item_top_sites:
-                    _items.append(_item_top_sites.to_dict())
+                _items.append(_item_top_sites.to_dict() if _item_top_sites is not None else None)
             _dict['topSites'] = _items
         return _dict
 

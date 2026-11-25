@@ -80,8 +80,7 @@ class V1DevicesUpgradeSchedulePutRequest(BaseModel):
         _items = []
         if self.device_versions:
             for _item_device_versions in self.device_versions:
-                if _item_device_versions:
-                    _items.append(_item_device_versions.to_dict())
+                _items.append(_item_device_versions.to_dict() if _item_device_versions is not None else None)
             _dict['deviceVersions'] = _items
         # override the default output from pydantic by calling `to_dict()` of ts
         if self.ts:

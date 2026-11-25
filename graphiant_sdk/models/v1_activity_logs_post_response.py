@@ -80,15 +80,13 @@ class V1ActivityLogsPostResponse(BaseModel):
         _items = []
         if self.details:
             for _item_details in self.details:
-                if _item_details:
-                    _items.append(_item_details.to_dict())
+                _items.append(_item_details.to_dict() if _item_details is not None else None)
             _dict['details'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in filter_entities (dict)
         _field_dict = {}
         if self.filter_entities:
             for _key_filter_entities in self.filter_entities:
-                if self.filter_entities[_key_filter_entities]:
-                    _field_dict[_key_filter_entities] = self.filter_entities[_key_filter_entities].to_dict()
+                _field_dict[_key_filter_entities] = self.filter_entities[_key_filter_entities].to_dict() if self.filter_entities[_key_filter_entities] is not None else None
             _dict['filterEntities'] = _field_dict
         return _dict
 

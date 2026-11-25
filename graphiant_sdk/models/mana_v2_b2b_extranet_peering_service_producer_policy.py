@@ -81,22 +81,19 @@ class ManaV2B2bExtranetPeeringServiceProducerPolicy(BaseModel):
         _field_dict = {}
         if self.global_object_ops:
             for _key_global_object_ops in self.global_object_ops:
-                if self.global_object_ops[_key_global_object_ops]:
-                    _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict()
+                _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict() if self.global_object_ops[_key_global_object_ops] is not None else None
             _dict['globalObjectOps'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in prefix_tags (list)
         _items = []
         if self.prefix_tags:
             for _item_prefix_tags in self.prefix_tags:
-                if _item_prefix_tags:
-                    _items.append(_item_prefix_tags.to_dict())
+                _items.append(_item_prefix_tags.to_dict() if _item_prefix_tags is not None else None)
             _dict['prefixTags'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in site (list)
         _items = []
         if self.site:
             for _item_site in self.site:
-                if _item_site:
-                    _items.append(_item_site.to_dict())
+                _items.append(_item_site.to_dict() if _item_site is not None else None)
             _dict['site'] = _items
         return _dict
 

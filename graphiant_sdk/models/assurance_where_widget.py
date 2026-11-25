@@ -77,22 +77,19 @@ class AssuranceWhereWidget(BaseModel):
         _items = []
         if self.top_sites_by_users:
             for _item_top_sites_by_users in self.top_sites_by_users:
-                if _item_top_sites_by_users:
-                    _items.append(_item_top_sites_by_users.to_dict())
+                _items.append(_item_top_sites_by_users.to_dict() if _item_top_sites_by_users is not None else None)
             _dict['topSitesByUsers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in top_users_by_data_transferred (list)
         _items = []
         if self.top_users_by_data_transferred:
             for _item_top_users_by_data_transferred in self.top_users_by_data_transferred:
-                if _item_top_users_by_data_transferred:
-                    _items.append(_item_top_users_by_data_transferred.to_dict())
+                _items.append(_item_top_users_by_data_transferred.to_dict() if _item_top_users_by_data_transferred is not None else None)
             _dict['topUsersByDataTransferred'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in top_vrfs_by_users (list)
         _items = []
         if self.top_vrfs_by_users:
             for _item_top_vrfs_by_users in self.top_vrfs_by_users:
-                if _item_top_vrfs_by_users:
-                    _items.append(_item_top_vrfs_by_users.to_dict())
+                _items.append(_item_top_vrfs_by_users.to_dict() if _item_top_vrfs_by_users is not None else None)
             _dict['topVrfsByUsers'] = _items
         return _dict
 

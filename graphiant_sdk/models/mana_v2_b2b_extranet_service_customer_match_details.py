@@ -85,8 +85,7 @@ class ManaV2B2bExtranetServiceCustomerMatchDetails(BaseModel):
         _items = []
         if self.old_service_prefixes:
             for _item_old_service_prefixes in self.old_service_prefixes:
-                if _item_old_service_prefixes:
-                    _items.append(_item_old_service_prefixes.to_dict())
+                _items.append(_item_old_service_prefixes.to_dict() if _item_old_service_prefixes is not None else None)
             _dict['oldServicePrefixes'] = _items
         # override the default output from pydantic by calling `to_dict()` of service
         if self.service:
@@ -95,8 +94,7 @@ class ManaV2B2bExtranetServiceCustomerMatchDetails(BaseModel):
         _items = []
         if self.service_prefixes:
             for _item_service_prefixes in self.service_prefixes:
-                if _item_service_prefixes:
-                    _items.append(_item_service_prefixes.to_dict())
+                _items.append(_item_service_prefixes.to_dict() if _item_service_prefixes is not None else None)
             _dict['servicePrefixes'] = _items
         return _dict
 

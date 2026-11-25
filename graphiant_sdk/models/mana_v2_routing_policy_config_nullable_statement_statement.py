@@ -78,15 +78,13 @@ class ManaV2RoutingPolicyConfigNullableStatementStatement(BaseModel):
         _field_dict = {}
         if self.actions:
             for _key_actions in self.actions:
-                if self.actions[_key_actions]:
-                    _field_dict[_key_actions] = self.actions[_key_actions].to_dict()
+                _field_dict[_key_actions] = self.actions[_key_actions].to_dict() if self.actions[_key_actions] is not None else None
             _dict['actions'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in matches (dict)
         _field_dict = {}
         if self.matches:
             for _key_matches in self.matches:
-                if self.matches[_key_matches]:
-                    _field_dict[_key_matches] = self.matches[_key_matches].to_dict()
+                _field_dict[_key_matches] = self.matches[_key_matches].to_dict() if self.matches[_key_matches] is not None else None
             _dict['matches'] = _field_dict
         return _dict
 

@@ -74,8 +74,7 @@ class V1DiagnosticArchivesDeviceIdGetResponse(BaseModel):
         _items = []
         if self.archives:
             for _item_archives in self.archives:
-                if _item_archives:
-                    _items.append(_item_archives.to_dict())
+                _items.append(_item_archives.to_dict() if _item_archives is not None else None)
             _dict['archives'] = _items
         return _dict
 

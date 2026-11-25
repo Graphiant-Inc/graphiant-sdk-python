@@ -78,8 +78,7 @@ class V1AppsVisualizationPostResponse(BaseModel):
         _items = []
         if self.apps_visualization:
             for _item_apps_visualization in self.apps_visualization:
-                if _item_apps_visualization:
-                    _items.append(_item_apps_visualization.to_dict())
+                _items.append(_item_apps_visualization.to_dict() if _item_apps_visualization is not None else None)
             _dict['appsVisualization'] = _items
         return _dict
 

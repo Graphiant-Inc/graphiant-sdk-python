@@ -86,22 +86,19 @@ class StatsmonTroubleshootingSystemPlane(BaseModel):
         _items = []
         if self.cpu:
             for _item_cpu in self.cpu:
-                if _item_cpu:
-                    _items.append(_item_cpu.to_dict())
+                _items.append(_item_cpu.to_dict() if _item_cpu is not None else None)
             _dict['cpu'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in crashes (list)
         _items = []
         if self.crashes:
             for _item_crashes in self.crashes:
-                if _item_crashes:
-                    _items.append(_item_crashes.to_dict())
+                _items.append(_item_crashes.to_dict() if _item_crashes is not None else None)
             _dict['crashes'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in disk (list)
         _items = []
         if self.disk:
             for _item_disk in self.disk:
-                if _item_disk:
-                    _items.append(_item_disk.to_dict())
+                _items.append(_item_disk.to_dict() if _item_disk is not None else None)
             _dict['disk'] = _items
         # override the default output from pydantic by calling `to_dict()` of last_crash
         if self.last_crash:
@@ -110,29 +107,25 @@ class StatsmonTroubleshootingSystemPlane(BaseModel):
         _items = []
         if self.maintenance_windows:
             for _item_maintenance_windows in self.maintenance_windows:
-                if _item_maintenance_windows:
-                    _items.append(_item_maintenance_windows.to_dict())
+                _items.append(_item_maintenance_windows.to_dict() if _item_maintenance_windows is not None else None)
             _dict['maintenanceWindows'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in memory (list)
         _items = []
         if self.memory:
             for _item_memory in self.memory:
-                if _item_memory:
-                    _items.append(_item_memory.to_dict())
+                _items.append(_item_memory.to_dict() if _item_memory is not None else None)
             _dict['memory'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in temperature (list)
         _items = []
         if self.temperature:
             for _item_temperature in self.temperature:
-                if _item_temperature:
-                    _items.append(_item_temperature.to_dict())
+                _items.append(_item_temperature.to_dict() if _item_temperature is not None else None)
             _dict['temperature'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in temperature_series (list)
         _items = []
         if self.temperature_series:
             for _item_temperature_series in self.temperature_series:
-                if _item_temperature_series:
-                    _items.append(_item_temperature_series.to_dict())
+                _items.append(_item_temperature_series.to_dict() if _item_temperature_series is not None else None)
             _dict['temperatureSeries'] = _items
         return _dict
 
