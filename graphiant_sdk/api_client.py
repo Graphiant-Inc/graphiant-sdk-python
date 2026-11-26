@@ -553,6 +553,22 @@ class ApiClient:
                 collection_format = collection_formats[k]
                 if collection_format == 'multi':
                     new_params.extend((k, quote(str(value))) for value in v)
+                elif (
+                    collection_format == 'csv'
+                    and len(v) == 1
+                    and isinstance(v[0], (list, tuple))
+                ):
+                    # openapi-generator's Python templates don't implement style:
+                    # deepObject for array query params (QA-13519): it falls back to
+                    # collection_format "csv" and wraps the real array in an extra
+                    # List[List[...]] layer. The backend only accepts the indexed-bracket
+                    # form these params actually use (k[0]=a&k[1]=b, same as the Go SDK),
+                    # so unwrap that extra layer and index the real elements instead of
+                    # comma-joining the whole thing into one garbled value.
+                    new_params.extend(
+                        (f"{k}[{i}]", quote(str(value)))
+                        for i, value in enumerate(v[0])
+                    )
                 else:
                     if collection_format == 'ssv':
                         delimiter = ' '

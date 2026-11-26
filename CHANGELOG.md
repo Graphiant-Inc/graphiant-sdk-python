@@ -23,6 +23,9 @@ No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
 ### Removed
 - **API spec:** removed **`graphiant_api_docs_v26.10.0.json`** (superseded by **26.11.0** bundle).
 
+### Fixed
+- **Array query parameters (QA-13519):** the 15 operations whose array query params use `style: deepObject` (e.g. **`v1_enterprises_get`** `enterprise_ids`, **`v1_lan_segments_get`** `device_ids`, **`v1_sites_map_details_get`** `lan_segment_ids`/`site_ids`/`site_list_ids`, **`v1_devices_routing_vrf_protocol_route_count_get`** `protocols`, **`v2_assurance_deleteclassifiedapplication_delete`** `classification_entry_id_list`) now send indexed-bracket keys (`enterpriseIds[0]=a&enterpriseIds[1]=b`), the format the backend accepts and the Go SDK already uses. Previously the values were comma-joined into one malformed value and the backend rejected the request with "array expected". openapi-generator's Python templates don't support `deepObject` arrays, so these params are still typed `List[List[...]]`: pass the values as one inner list, e.g. `enterprise_ids=[[10000000335, 10000000336]]`. The fix lives in the hand-written `ApiClient.parameters_to_url_query`, so it survives regeneration.
+
 ## [26.10.0] - 2026-10-28
 
 No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum supported Python is now **3.11** (see *Changed*).
