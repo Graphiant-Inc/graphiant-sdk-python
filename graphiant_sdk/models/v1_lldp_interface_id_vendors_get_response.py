@@ -74,8 +74,7 @@ class V1LldpInterfaceIdVendorsGetResponse(BaseModel):
         _items = []
         if self.vendors:
             for _item_vendors in self.vendors:
-                if _item_vendors:
-                    _items.append(_item_vendors.to_dict())
+                _items.append(_item_vendors.to_dict() if _item_vendors is not None else None)
             _dict['vendors'] = _items
         return _dict
 

@@ -74,8 +74,7 @@ class V1GatewaysRegionsGetResponse(BaseModel):
         _items = []
         if self.regions:
             for _item_regions in self.regions:
-                if _item_regions:
-                    _items.append(_item_regions.to_dict())
+                _items.append(_item_regions.to_dict() if _item_regions is not None else None)
             _dict['regions'] = _items
         return _dict
 

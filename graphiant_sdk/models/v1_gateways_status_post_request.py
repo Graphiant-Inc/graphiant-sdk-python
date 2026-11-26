@@ -77,8 +77,7 @@ class V1GatewaysStatusPostRequest(BaseModel):
         _items = []
         if self.device_info:
             for _item_device_info in self.device_info:
-                if _item_device_info:
-                    _items.append(_item_device_info.to_dict())
+                _items.append(_item_device_info.to_dict() if _item_device_info is not None else None)
             _dict['deviceInfo'] = _items
         return _dict
 

@@ -80,8 +80,7 @@ class ManaV2BucketApp(BaseModel):
         _items = []
         if self.servers:
             for _item_servers in self.servers:
-                if _item_servers:
-                    _items.append(_item_servers.to_dict())
+                _items.append(_item_servers.to_dict() if _item_servers is not None else None)
             _dict['servers'] = _items
         return _dict
 

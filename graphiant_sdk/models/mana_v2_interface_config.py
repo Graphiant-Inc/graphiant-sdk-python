@@ -114,15 +114,13 @@ class ManaV2InterfaceConfig(BaseModel):
         _field_dict = {}
         if self.pppoe_interfaces:
             for _key_pppoe_interfaces in self.pppoe_interfaces:
-                if self.pppoe_interfaces[_key_pppoe_interfaces]:
-                    _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict()
+                _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict() if self.pppoe_interfaces[_key_pppoe_interfaces] is not None else None
             _dict['pppoeInterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in subinterfaces (dict)
         _field_dict = {}
         if self.subinterfaces:
             for _key_subinterfaces in self.subinterfaces:
-                if self.subinterfaces[_key_subinterfaces]:
-                    _field_dict[_key_subinterfaces] = self.subinterfaces[_key_subinterfaces].to_dict()
+                _field_dict[_key_subinterfaces] = self.subinterfaces[_key_subinterfaces].to_dict() if self.subinterfaces[_key_subinterfaces] is not None else None
             _dict['subinterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of v4_tcp_mss
         if self.v4_tcp_mss:

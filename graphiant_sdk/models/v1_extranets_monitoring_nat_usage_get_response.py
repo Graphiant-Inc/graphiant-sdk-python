@@ -77,8 +77,7 @@ class V1ExtranetsMonitoringNatUsageGetResponse(BaseModel):
         _items = []
         if self.allocations:
             for _item_allocations in self.allocations:
-                if _item_allocations:
-                    _items.append(_item_allocations.to_dict())
+                _items.append(_item_allocations.to_dict() if _item_allocations is not None else None)
             _dict['allocations'] = _items
         return _dict
 

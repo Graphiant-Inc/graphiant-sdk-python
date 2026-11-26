@@ -80,8 +80,7 @@ class ManaV2GlobalAppConfig(BaseModel):
         _items = []
         if self.port_ranges:
             for _item_port_ranges in self.port_ranges:
-                if _item_port_ranges:
-                    _items.append(_item_port_ranges.to_dict())
+                _items.append(_item_port_ranges.to_dict() if _item_port_ranges is not None else None)
             _dict['portRanges'] = _items
         return _dict
 

@@ -77,8 +77,7 @@ class ManaV2OspfAreaConfig(BaseModel):
         _field_dict = {}
         if self.interfaces:
             for _key_interfaces in self.interfaces:
-                if self.interfaces[_key_interfaces]:
-                    _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict()
+                _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict() if self.interfaces[_key_interfaces] is not None else None
             _dict['interfaces'] = _field_dict
         return _dict
 

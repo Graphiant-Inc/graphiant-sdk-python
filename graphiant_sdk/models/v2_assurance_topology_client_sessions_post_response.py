@@ -74,8 +74,7 @@ class V2AssuranceTopologyClientSessionsPostResponse(BaseModel):
         _items = []
         if self.sessions:
             for _item_sessions in self.sessions:
-                if _item_sessions:
-                    _items.append(_item_sessions.to_dict())
+                _items.append(_item_sessions.to_dict() if _item_sessions is not None else None)
             _dict['sessions'] = _items
         return _dict
 

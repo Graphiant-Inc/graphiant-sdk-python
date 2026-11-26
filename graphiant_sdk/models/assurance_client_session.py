@@ -103,8 +103,7 @@ class AssuranceClientSession(BaseModel):
         _items = []
         if self.client_links:
             for _item_client_links in self.client_links:
-                if _item_client_links:
-                    _items.append(_item_client_links.to_dict())
+                _items.append(_item_client_links.to_dict() if _item_client_links is not None else None)
             _dict['clientLinks'] = _items
         # override the default output from pydantic by calling `to_dict()` of first_seen_ts
         if self.first_seen_ts:
@@ -116,22 +115,19 @@ class AssuranceClientSession(BaseModel):
         _items = []
         if self.local_dia_links:
             for _item_local_dia_links in self.local_dia_links:
-                if _item_local_dia_links:
-                    _items.append(_item_local_dia_links.to_dict())
+                _items.append(_item_local_dia_links.to_dict() if _item_local_dia_links is not None else None)
             _dict['localDiaLinks'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in pop_links (list)
         _items = []
         if self.pop_links:
             for _item_pop_links in self.pop_links:
-                if _item_pop_links:
-                    _items.append(_item_pop_links.to_dict())
+                _items.append(_item_pop_links.to_dict() if _item_pop_links is not None else None)
             _dict['popLinks'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in remote_dia_links (list)
         _items = []
         if self.remote_dia_links:
             for _item_remote_dia_links in self.remote_dia_links:
-                if _item_remote_dia_links:
-                    _items.append(_item_remote_dia_links.to_dict())
+                _items.append(_item_remote_dia_links.to_dict() if _item_remote_dia_links is not None else None)
             _dict['remoteDiaLinks'] = _items
         # override the default output from pydantic by calling `to_dict()` of server_endpoint
         if self.server_endpoint:
@@ -140,8 +136,7 @@ class AssuranceClientSession(BaseModel):
         _items = []
         if self.server_links:
             for _item_server_links in self.server_links:
-                if _item_server_links:
-                    _items.append(_item_server_links.to_dict())
+                _items.append(_item_server_links.to_dict() if _item_server_links is not None else None)
             _dict['serverLinks'] = _items
         return _dict
 

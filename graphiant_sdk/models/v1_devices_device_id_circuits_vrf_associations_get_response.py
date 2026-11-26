@@ -74,8 +74,7 @@ class V1DevicesDeviceIdCircuitsVrfAssociationsGetResponse(BaseModel):
         _field_dict = {}
         if self.vrf_associations:
             for _key_vrf_associations in self.vrf_associations:
-                if self.vrf_associations[_key_vrf_associations]:
-                    _field_dict[_key_vrf_associations] = self.vrf_associations[_key_vrf_associations].to_dict()
+                _field_dict[_key_vrf_associations] = self.vrf_associations[_key_vrf_associations].to_dict() if self.vrf_associations[_key_vrf_associations] is not None else None
             _dict['vrfAssociations'] = _field_dict
         return _dict
 

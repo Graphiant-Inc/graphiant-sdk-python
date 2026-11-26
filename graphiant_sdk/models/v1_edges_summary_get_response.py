@@ -76,8 +76,7 @@ class V1EdgesSummaryGetResponse(BaseModel):
         _items = []
         if self.edges_summary:
             for _item_edges_summary in self.edges_summary:
-                if _item_edges_summary:
-                    _items.append(_item_edges_summary.to_dict())
+                _items.append(_item_edges_summary.to_dict() if _item_edges_summary is not None else None)
             _dict['edgesSummary'] = _items
         return _dict
 

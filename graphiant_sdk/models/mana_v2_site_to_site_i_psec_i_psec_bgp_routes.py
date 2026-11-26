@@ -80,8 +80,7 @@ class ManaV2SiteToSiteIPsecIPsecBgpRoutes(BaseModel):
         _items = []
         if self.address_families:
             for _item_address_families in self.address_families:
-                if _item_address_families:
-                    _items.append(_item_address_families.to_dict())
+                _items.append(_item_address_families.to_dict() if _item_address_families is not None else None)
             _dict['addressFamilies'] = _items
         return _dict
 

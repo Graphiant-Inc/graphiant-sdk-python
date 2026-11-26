@@ -90,15 +90,13 @@ class V1PvifIdPutResponse(BaseModel):
         _field_dict = {}
         if self.consumer_lan_segments:
             for _key_consumer_lan_segments in self.consumer_lan_segments:
-                if self.consumer_lan_segments[_key_consumer_lan_segments]:
-                    _field_dict[_key_consumer_lan_segments] = self.consumer_lan_segments[_key_consumer_lan_segments].to_dict()
+                _field_dict[_key_consumer_lan_segments] = self.consumer_lan_segments[_key_consumer_lan_segments].to_dict() if self.consumer_lan_segments[_key_consumer_lan_segments] is not None else None
             _dict['consumerLanSegments'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in gateway_bgp_neighbors (dict)
         _field_dict = {}
         if self.gateway_bgp_neighbors:
             for _key_gateway_bgp_neighbors in self.gateway_bgp_neighbors:
-                if self.gateway_bgp_neighbors[_key_gateway_bgp_neighbors]:
-                    _field_dict[_key_gateway_bgp_neighbors] = self.gateway_bgp_neighbors[_key_gateway_bgp_neighbors].to_dict()
+                _field_dict[_key_gateway_bgp_neighbors] = self.gateway_bgp_neighbors[_key_gateway_bgp_neighbors].to_dict() if self.gateway_bgp_neighbors[_key_gateway_bgp_neighbors] is not None else None
             _dict['gatewayBgpNeighbors'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of nat_prefix_strategy
         if self.nat_prefix_strategy:

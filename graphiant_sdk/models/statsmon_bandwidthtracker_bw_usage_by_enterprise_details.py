@@ -77,22 +77,19 @@ class StatsmonBandwidthtrackerBwUsageByEnterpriseDetails(BaseModel):
         _items = []
         if self.bwusage_region:
             for _item_bwusage_region in self.bwusage_region:
-                if _item_bwusage_region:
-                    _items.append(_item_bwusage_region.to_dict())
+                _items.append(_item_bwusage_region.to_dict() if _item_bwusage_region is not None else None)
             _dict['bwusageRegion'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in bwusage_site (list)
         _items = []
         if self.bwusage_site:
             for _item_bwusage_site in self.bwusage_site:
-                if _item_bwusage_site:
-                    _items.append(_item_bwusage_site.to_dict())
+                _items.append(_item_bwusage_site.to_dict() if _item_bwusage_site is not None else None)
             _dict['bwusageSite'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in bwusage_site_gateway (list)
         _items = []
         if self.bwusage_site_gateway:
             for _item_bwusage_site_gateway in self.bwusage_site_gateway:
-                if _item_bwusage_site_gateway:
-                    _items.append(_item_bwusage_site_gateway.to_dict())
+                _items.append(_item_bwusage_site_gateway.to_dict() if _item_bwusage_site_gateway is not None else None)
             _dict['bwusageSiteGateway'] = _items
         return _dict
 

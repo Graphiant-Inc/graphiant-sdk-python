@@ -95,8 +95,7 @@ class V1BackboneHealthDeviceDeviceIdPostResponse(BaseModel):
         _items = []
         if self.issues:
             for _item_issues in self.issues:
-                if _item_issues:
-                    _items.append(_item_issues.to_dict())
+                _items.append(_item_issues.to_dict() if _item_issues is not None else None)
             _dict['issues'] = _items
         # override the default output from pydantic by calling `to_dict()` of qoe_matrix
         if self.qoe_matrix:

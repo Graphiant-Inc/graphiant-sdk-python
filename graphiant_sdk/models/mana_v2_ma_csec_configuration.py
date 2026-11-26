@@ -89,29 +89,25 @@ class ManaV2MaCsecConfiguration(BaseModel):
         _items = []
         if self.psk_configurations:
             for _item_psk_configurations in self.psk_configurations:
-                if _item_psk_configurations:
-                    _items.append(_item_psk_configurations.to_dict())
+                _items.append(_item_psk_configurations.to_dict() if _item_psk_configurations is not None else None)
             _dict['pskConfigurations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in psk_configurations_by_nickname (dict)
         _field_dict = {}
         if self.psk_configurations_by_nickname:
             for _key_psk_configurations_by_nickname in self.psk_configurations_by_nickname:
-                if self.psk_configurations_by_nickname[_key_psk_configurations_by_nickname]:
-                    _field_dict[_key_psk_configurations_by_nickname] = self.psk_configurations_by_nickname[_key_psk_configurations_by_nickname].to_dict()
+                _field_dict[_key_psk_configurations_by_nickname] = self.psk_configurations_by_nickname[_key_psk_configurations_by_nickname].to_dict() if self.psk_configurations_by_nickname[_key_psk_configurations_by_nickname] is not None else None
             _dict['pskConfigurationsByNickname'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in sak_configurations (list)
         _items = []
         if self.sak_configurations:
             for _item_sak_configurations in self.sak_configurations:
-                if _item_sak_configurations:
-                    _items.append(_item_sak_configurations.to_dict())
+                _items.append(_item_sak_configurations.to_dict() if _item_sak_configurations is not None else None)
             _dict['sakConfigurations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in sak_configurations_by_lag_member_interface_id (dict)
         _field_dict = {}
         if self.sak_configurations_by_lag_member_interface_id:
             for _key_sak_configurations_by_lag_member_interface_id in self.sak_configurations_by_lag_member_interface_id:
-                if self.sak_configurations_by_lag_member_interface_id[_key_sak_configurations_by_lag_member_interface_id]:
-                    _field_dict[_key_sak_configurations_by_lag_member_interface_id] = self.sak_configurations_by_lag_member_interface_id[_key_sak_configurations_by_lag_member_interface_id].to_dict()
+                _field_dict[_key_sak_configurations_by_lag_member_interface_id] = self.sak_configurations_by_lag_member_interface_id[_key_sak_configurations_by_lag_member_interface_id].to_dict() if self.sak_configurations_by_lag_member_interface_id[_key_sak_configurations_by_lag_member_interface_id] is not None else None
             _dict['sakConfigurationsByLagMemberInterfaceId'] = _field_dict
         return _dict
 

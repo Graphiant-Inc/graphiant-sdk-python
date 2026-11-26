@@ -84,29 +84,25 @@ class V1ExtranetsB2bPeeringConsumerMatchIdPostRequest(BaseModel):
         _field_dict = {}
         if self.global_object_ops:
             for _key_global_object_ops in self.global_object_ops:
-                if self.global_object_ops[_key_global_object_ops]:
-                    _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict()
+                _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict() if self.global_object_ops[_key_global_object_ops] is not None else None
             _dict['globalObjectOps'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in nat (list)
         _items = []
         if self.nat:
             for _item_nat in self.nat:
-                if _item_nat:
-                    _items.append(_item_nat.to_dict())
+                _items.append(_item_nat.to_dict() if _item_nat is not None else None)
             _dict['nat'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in policy (list)
         _items = []
         if self.policy:
             for _item_policy in self.policy:
-                if _item_policy:
-                    _items.append(_item_policy.to_dict())
+                _items.append(_item_policy.to_dict() if _item_policy is not None else None)
             _dict['policy'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in site_information (list)
         _items = []
         if self.site_information:
             for _item_site_information in self.site_information:
-                if _item_site_information:
-                    _items.append(_item_site_information.to_dict())
+                _items.append(_item_site_information.to_dict() if _item_site_information is not None else None)
             _dict['siteInformation'] = _items
         # override the default output from pydantic by calling `to_dict()` of site_to_site_vpn
         if self.site_to_site_vpn:

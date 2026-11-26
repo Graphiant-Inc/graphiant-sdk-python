@@ -74,8 +74,7 @@ class ManaV2DnsipAddresses(BaseModel):
         _items = []
         if self.dynamic_servers:
             for _item_dynamic_servers in self.dynamic_servers:
-                if _item_dynamic_servers:
-                    _items.append(_item_dynamic_servers.to_dict())
+                _items.append(_item_dynamic_servers.to_dict() if _item_dynamic_servers is not None else None)
             _dict['dynamicServers'] = _items
         return _dict
 

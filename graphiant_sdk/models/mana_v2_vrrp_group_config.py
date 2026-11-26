@@ -83,8 +83,7 @@ class ManaV2VrrpGroupConfig(BaseModel):
         _items = []
         if self.tracked_interfaces:
             for _item_tracked_interfaces in self.tracked_interfaces:
-                if _item_tracked_interfaces:
-                    _items.append(_item_tracked_interfaces.to_dict())
+                _items.append(_item_tracked_interfaces.to_dict() if _item_tracked_interfaces is not None else None)
             _dict['trackedInterfaces'] = _items
         return _dict
 

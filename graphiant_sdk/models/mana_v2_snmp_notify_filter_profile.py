@@ -76,8 +76,7 @@ class ManaV2SnmpNotifyFilterProfile(BaseModel):
         _items = []
         if self.include_exclude_list:
             for _item_include_exclude_list in self.include_exclude_list:
-                if _item_include_exclude_list:
-                    _items.append(_item_include_exclude_list.to_dict())
+                _items.append(_item_include_exclude_list.to_dict() if _item_include_exclude_list is not None else None)
             _dict['includeExcludeList'] = _items
         return _dict
 

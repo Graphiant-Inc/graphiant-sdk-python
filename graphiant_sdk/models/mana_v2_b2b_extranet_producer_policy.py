@@ -91,36 +91,31 @@ class ManaV2B2bExtranetProducerPolicy(BaseModel):
         _field_dict = {}
         if self.global_object_device_summaries:
             for _key_global_object_device_summaries in self.global_object_device_summaries:
-                if self.global_object_device_summaries[_key_global_object_device_summaries]:
-                    _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict()
+                _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict() if self.global_object_device_summaries[_key_global_object_device_summaries] is not None else None
             _dict['globalObjectDeviceSummaries'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in global_object_summaries (dict)
         _field_dict = {}
         if self.global_object_summaries:
             for _key_global_object_summaries in self.global_object_summaries:
-                if self.global_object_summaries[_key_global_object_summaries]:
-                    _field_dict[_key_global_object_summaries] = self.global_object_summaries[_key_global_object_summaries].to_dict()
+                _field_dict[_key_global_object_summaries] = self.global_object_summaries[_key_global_object_summaries].to_dict() if self.global_object_summaries[_key_global_object_summaries] is not None else None
             _dict['globalObjectSummaries'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in prefix_tags (list)
         _items = []
         if self.prefix_tags:
             for _item_prefix_tags in self.prefix_tags:
-                if _item_prefix_tags:
-                    _items.append(_item_prefix_tags.to_dict())
+                _items.append(_item_prefix_tags.to_dict() if _item_prefix_tags is not None else None)
             _dict['prefixTags'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in profiles (list)
         _items = []
         if self.profiles:
             for _item_profiles in self.profiles:
-                if _item_profiles:
-                    _items.append(_item_profiles.to_dict())
+                _items.append(_item_profiles.to_dict() if _item_profiles is not None else None)
             _dict['profiles'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sites (list)
         _items = []
         if self.sites:
             for _item_sites in self.sites:
-                if _item_sites:
-                    _items.append(_item_sites.to_dict())
+                _items.append(_item_sites.to_dict() if _item_sites is not None else None)
             _dict['sites'] = _items
         # override the default output from pydantic by calling `to_dict()` of sla
         if self.sla:

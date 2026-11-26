@@ -75,8 +75,7 @@ class V1ExtranetsB2bPeeringMatchServiceToCustomerPostResponse(BaseModel):
         _items = []
         if self.service:
             for _item_service in self.service:
-                if _item_service:
-                    _items.append(_item_service.to_dict())
+                _items.append(_item_service.to_dict() if _item_service is not None else None)
             _dict['service'] = _items
         return _dict
 

@@ -89,8 +89,7 @@ class ManaV2NewSite(BaseModel):
         _field_dict = {}
         if self.ipfix_exporter_ops_v2:
             for _key_ipfix_exporter_ops_v2 in self.ipfix_exporter_ops_v2:
-                if self.ipfix_exporter_ops_v2[_key_ipfix_exporter_ops_v2]:
-                    _field_dict[_key_ipfix_exporter_ops_v2] = self.ipfix_exporter_ops_v2[_key_ipfix_exporter_ops_v2].to_dict()
+                _field_dict[_key_ipfix_exporter_ops_v2] = self.ipfix_exporter_ops_v2[_key_ipfix_exporter_ops_v2].to_dict() if self.ipfix_exporter_ops_v2[_key_ipfix_exporter_ops_v2] is not None else None
             _dict['ipfixExporterOpsV2'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of location
         if self.location:
@@ -102,8 +101,7 @@ class ManaV2NewSite(BaseModel):
         _field_dict = {}
         if self.syslog_server_ops_v2:
             for _key_syslog_server_ops_v2 in self.syslog_server_ops_v2:
-                if self.syslog_server_ops_v2[_key_syslog_server_ops_v2]:
-                    _field_dict[_key_syslog_server_ops_v2] = self.syslog_server_ops_v2[_key_syslog_server_ops_v2].to_dict()
+                _field_dict[_key_syslog_server_ops_v2] = self.syslog_server_ops_v2[_key_syslog_server_ops_v2].to_dict() if self.syslog_server_ops_v2[_key_syslog_server_ops_v2] is not None else None
             _dict['syslogServerOpsV2'] = _field_dict
         return _dict
 

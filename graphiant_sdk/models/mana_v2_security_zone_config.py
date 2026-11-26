@@ -75,8 +75,7 @@ class ManaV2SecurityZoneConfig(BaseModel):
         _field_dict = {}
         if self.pairs:
             for _key_pairs in self.pairs:
-                if self.pairs[_key_pairs]:
-                    _field_dict[_key_pairs] = self.pairs[_key_pairs].to_dict()
+                _field_dict[_key_pairs] = self.pairs[_key_pairs].to_dict() if self.pairs[_key_pairs] is not None else None
             _dict['pairs'] = _field_dict
         return _dict
 

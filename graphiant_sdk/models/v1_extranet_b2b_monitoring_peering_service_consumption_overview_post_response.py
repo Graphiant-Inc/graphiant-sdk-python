@@ -77,22 +77,19 @@ class V1ExtranetB2bMonitoringPeeringServiceConsumptionOverviewPostResponse(BaseM
         _items = []
         if self.first_level:
             for _item_first_level in self.first_level:
-                if _item_first_level:
-                    _items.append(_item_first_level.to_dict())
+                _items.append(_item_first_level.to_dict() if _item_first_level is not None else None)
             _dict['firstLevel'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in second_level (list)
         _items = []
         if self.second_level:
             for _item_second_level in self.second_level:
-                if _item_second_level:
-                    _items.append(_item_second_level.to_dict())
+                _items.append(_item_second_level.to_dict() if _item_second_level is not None else None)
             _dict['secondLevel'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in third_level (list)
         _items = []
         if self.third_level:
             for _item_third_level in self.third_level:
-                if _item_third_level:
-                    _items.append(_item_third_level.to_dict())
+                _items.append(_item_third_level.to_dict() if _item_third_level is not None else None)
             _dict['thirdLevel'] = _items
         return _dict
 

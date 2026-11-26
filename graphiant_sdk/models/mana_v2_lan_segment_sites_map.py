@@ -75,15 +75,13 @@ class ManaV2LanSegmentSitesMap(BaseModel):
         _field_dict = {}
         if self.site_ids:
             for _key_site_ids in self.site_ids:
-                if self.site_ids[_key_site_ids]:
-                    _field_dict[_key_site_ids] = self.site_ids[_key_site_ids].to_dict()
+                _field_dict[_key_site_ids] = self.site_ids[_key_site_ids].to_dict() if self.site_ids[_key_site_ids] is not None else None
             _dict['siteIds'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in site_list_ids (dict)
         _field_dict = {}
         if self.site_list_ids:
             for _key_site_list_ids in self.site_list_ids:
-                if self.site_list_ids[_key_site_list_ids]:
-                    _field_dict[_key_site_list_ids] = self.site_list_ids[_key_site_list_ids].to_dict()
+                _field_dict[_key_site_list_ids] = self.site_list_ids[_key_site_list_ids].to_dict() if self.site_list_ids[_key_site_list_ids] is not None else None
             _dict['siteListIds'] = _field_dict
         return _dict
 

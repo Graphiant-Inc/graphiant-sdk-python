@@ -74,8 +74,7 @@ class V1GlobalSyslogsDeviceGetResponse(BaseModel):
         _items = []
         if self.collectors:
             for _item_collectors in self.collectors:
-                if _item_collectors:
-                    _items.append(_item_collectors.to_dict())
+                _items.append(_item_collectors.to_dict() if _item_collectors is not None else None)
             _dict['collectors'] = _items
         return _dict
 

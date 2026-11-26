@@ -80,8 +80,7 @@ class ManaV2B2bExtranetPolicyResponse(BaseModel):
         _items = []
         if self.inbound_security_rules:
             for _item_inbound_security_rules in self.inbound_security_rules:
-                if _item_inbound_security_rules:
-                    _items.append(_item_inbound_security_rules.to_dict())
+                _items.append(_item_inbound_security_rules.to_dict() if _item_inbound_security_rules is not None else None)
             _dict['inboundSecurityRules'] = _items
         # override the default output from pydantic by calling `to_dict()` of policy
         if self.policy:
@@ -90,8 +89,7 @@ class ManaV2B2bExtranetPolicyResponse(BaseModel):
         _items = []
         if self.traffic_rules:
             for _item_traffic_rules in self.traffic_rules:
-                if _item_traffic_rules:
-                    _items.append(_item_traffic_rules.to_dict())
+                _items.append(_item_traffic_rules.to_dict() if _item_traffic_rules is not None else None)
             _dict['trafficRules'] = _items
         return _dict
 

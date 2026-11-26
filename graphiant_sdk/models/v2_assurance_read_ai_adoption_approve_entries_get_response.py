@@ -74,8 +74,7 @@ class V2AssuranceReadAiAdoptionApproveEntriesGetResponse(BaseModel):
         _items = []
         if self.approved_app_list:
             for _item_approved_app_list in self.approved_app_list:
-                if _item_approved_app_list:
-                    _items.append(_item_approved_app_list.to_dict())
+                _items.append(_item_approved_app_list.to_dict() if _item_approved_app_list is not None else None)
             _dict['approvedAppList'] = _items
         return _dict
 

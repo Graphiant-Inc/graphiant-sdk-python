@@ -77,8 +77,7 @@ class ManaV2IPsecGatewayPeersConfig(BaseModel):
         _items = []
         if self.remote_peers:
             for _item_remote_peers in self.remote_peers:
-                if _item_remote_peers:
-                    _items.append(_item_remote_peers.to_dict())
+                _items.append(_item_remote_peers.to_dict() if _item_remote_peers is not None else None)
             _dict['remotePeers'] = _items
         # override the default output from pydantic by calling `to_dict()` of routing
         if self.routing:

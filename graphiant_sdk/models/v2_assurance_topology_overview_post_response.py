@@ -83,15 +83,13 @@ class V2AssuranceTopologyOverviewPostResponse(BaseModel):
         _items = []
         if self.topology_change_ts:
             for _item_topology_change_ts in self.topology_change_ts:
-                if _item_topology_change_ts:
-                    _items.append(_item_topology_change_ts.to_dict())
+                _items.append(_item_topology_change_ts.to_dict() if _item_topology_change_ts is not None else None)
             _dict['topologyChangeTs'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in traffic_regions (list)
         _items = []
         if self.traffic_regions:
             for _item_traffic_regions in self.traffic_regions:
-                if _item_traffic_regions:
-                    _items.append(_item_traffic_regions.to_dict())
+                _items.append(_item_traffic_regions.to_dict() if _item_traffic_regions is not None else None)
             _dict['trafficRegions'] = _items
         return _dict
 

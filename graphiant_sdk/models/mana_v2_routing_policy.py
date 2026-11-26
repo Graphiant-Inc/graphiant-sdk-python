@@ -82,8 +82,7 @@ class ManaV2RoutingPolicy(BaseModel):
         _items = []
         if self.statements:
             for _item_statements in self.statements:
-                if _item_statements:
-                    _items.append(_item_statements.to_dict())
+                _items.append(_item_statements.to_dict() if _item_statements is not None else None)
             _dict['statements'] = _items
         return _dict
 

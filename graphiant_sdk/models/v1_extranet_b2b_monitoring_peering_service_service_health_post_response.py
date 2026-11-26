@@ -74,8 +74,7 @@ class V1ExtranetB2bMonitoringPeeringServiceServiceHealthPostResponse(BaseModel):
         _items = []
         if self.service_health:
             for _item_service_health in self.service_health:
-                if _item_service_health:
-                    _items.append(_item_service_health.to_dict())
+                _items.append(_item_service_health.to_dict() if _item_service_health is not None else None)
             _dict['serviceHealth'] = _items
         return _dict
 

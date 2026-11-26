@@ -102,8 +102,7 @@ class ManaV2InterfaceVlanConfig(BaseModel):
         _field_dict = {}
         if self.pppoe_interfaces:
             for _key_pppoe_interfaces in self.pppoe_interfaces:
-                if self.pppoe_interfaces[_key_pppoe_interfaces]:
-                    _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict()
+                _field_dict[_key_pppoe_interfaces] = self.pppoe_interfaces[_key_pppoe_interfaces].to_dict() if self.pppoe_interfaces[_key_pppoe_interfaces] is not None else None
             _dict['pppoeInterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of v4_tcp_mss
         if self.v4_tcp_mss:

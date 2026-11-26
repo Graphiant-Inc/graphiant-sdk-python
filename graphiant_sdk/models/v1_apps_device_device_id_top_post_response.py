@@ -75,8 +75,7 @@ class V1AppsDeviceDeviceIdTopPostResponse(BaseModel):
         _items = []
         if self.apps_utilization:
             for _item_apps_utilization in self.apps_utilization:
-                if _item_apps_utilization:
-                    _items.append(_item_apps_utilization.to_dict())
+                _items.append(_item_apps_utilization.to_dict() if _item_apps_utilization is not None else None)
             _dict['appsUtilization'] = _items
         return _dict
 

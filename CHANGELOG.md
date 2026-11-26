@@ -4,6 +4,28 @@ All notable changes to the Graphiant SDK Python package will be documented in th
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## [26.11.0] - 2026-11-25
+
+No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)).
+
+### Added
+- **API spec:** `graphiant_api_docs_v26.11.0.json`
+- **MSP inter-region latencies:** **`GET /v1/msp/regions/expected-inter-region-latencies`** — get one-way reference latencies between source/destination region pairs, plus the destination regions that have no latency configured for each source region; **`PATCH /v1/msp/regions/expected-inter-region-latencies`** — upsert one-way reference latencies (combinations left out of the request stay unchanged). SDK methods **`v1_msp_regions_expected_inter_region_latencies_get`** / **`v1_msp_regions_expected_inter_region_latencies_patch`**; models **`ManaV2InterRegionLatencyMatrix`** (`source_region_latencies`), **`ManaV2DestinationRegionLatencies`** (`destination_region_latencies`), **`V1MspRegionsExpectedInterRegionLatenciesGetResponse`** (`inter_region_latency_matrix`, `source_region_missing_destinations`), **`V1MspRegionsExpectedInterRegionLatenciesGetResponseMissingDestinationRegions`** (`destination_region_ids`), and **`V1MspRegionsExpectedInterRegionLatenciesPatchRequest`** (`inter_region_latency_matrix`)
+
+### Changed
+- **Version:** Package **26.11.0**; OpenAPI bundle **`graphiant_api_docs_v26.11.0.json`** (replaces **26.10.0** bundle in-repo).
+- **Schemas / docs (updated):**
+  - **`AssuranceAppNameRecord`**: added `ai_endpoint_tag` field
+  - **`AssuranceKpiMetric`**: added `ai_endpoint_tag` field
+- **SDK (generated):** Refreshed **`default_api`**, model exports, and **`docs/`** to match the **26.11.0** spec.
+- **Model serialization:** `to_dict()` on models that hold lists or dicts of nested models now keeps `None` entries (serialized as `null`) instead of silently dropping them, so the output matches the input.
+
+### Removed
+- **API spec:** removed **`graphiant_api_docs_v26.10.0.json`** (superseded by **26.11.0** bundle).
+
+### Fixed
+- **Array query parameters (QA-13519):** the 15 operations whose array query params use `style: deepObject` (e.g. **`v1_enterprises_get`** `enterprise_ids`, **`v1_lan_segments_get`** `device_ids`, **`v1_sites_map_details_get`** `lan_segment_ids`/`site_ids`/`site_list_ids`, **`v1_devices_routing_vrf_protocol_route_count_get`** `protocols`, **`v2_assurance_deleteclassifiedapplication_delete`** `classification_entry_id_list`) now send indexed-bracket keys (`enterpriseIds[0]=a&enterpriseIds[1]=b`), the format the backend accepts and the Go SDK already uses. Previously the values were comma-joined into one malformed value and the backend rejected the request with "array expected". openapi-generator's Python templates don't support `deepObject` arrays, so these params are still typed `List[List[...]]`: pass the values as one inner list, e.g. `enterprise_ids=[[10000000335, 10000000336]]`. The fix lives in the hand-written `ApiClient.parameters_to_url_query`, so it survives regeneration.
+
 ## [26.10.0] - 2026-10-28
 
 No breaking API changes (per [oasdiff](https://github.com/oasdiff/oasdiff)). **Breaking:** minimum supported Python is now **3.11** (see *Changed*).

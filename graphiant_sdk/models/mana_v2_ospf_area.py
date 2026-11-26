@@ -85,15 +85,13 @@ class ManaV2OspfArea(BaseModel):
         _items = []
         if self.bfd_neighbors:
             for _item_bfd_neighbors in self.bfd_neighbors:
-                if _item_bfd_neighbors:
-                    _items.append(_item_bfd_neighbors.to_dict())
+                _items.append(_item_bfd_neighbors.to_dict() if _item_bfd_neighbors is not None else None)
             _dict['bfdNeighbors'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in interfaces (list)
         _items = []
         if self.interfaces:
             for _item_interfaces in self.interfaces:
-                if _item_interfaces:
-                    _items.append(_item_interfaces.to_dict())
+                _items.append(_item_interfaces.to_dict() if _item_interfaces is not None else None)
             _dict['interfaces'] = _items
         return _dict
 

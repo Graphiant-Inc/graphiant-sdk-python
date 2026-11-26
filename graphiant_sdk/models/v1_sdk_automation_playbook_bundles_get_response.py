@@ -74,8 +74,7 @@ class V1SdkAutomationPlaybookBundlesGetResponse(BaseModel):
         _items = []
         if self.bundles:
             for _item_bundles in self.bundles:
-                if _item_bundles:
-                    _items.append(_item_bundles.to_dict())
+                _items.append(_item_bundles.to_dict() if _item_bundles is not None else None)
             _dict['bundles'] = _items
         return _dict
 

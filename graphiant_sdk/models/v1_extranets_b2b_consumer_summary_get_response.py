@@ -74,8 +74,7 @@ class V1ExtranetsB2bConsumerSummaryGetResponse(BaseModel):
         _items = []
         if self.summary:
             for _item_summary in self.summary:
-                if _item_summary:
-                    _items.append(_item_summary.to_dict())
+                _items.append(_item_summary.to_dict() if _item_summary is not None else None)
             _dict['summary'] = _items
         return _dict
 

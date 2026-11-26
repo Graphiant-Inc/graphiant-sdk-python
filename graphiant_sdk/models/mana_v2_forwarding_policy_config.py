@@ -86,50 +86,43 @@ class ManaV2ForwardingPolicyConfig(BaseModel):
         _field_dict = {}
         if self.dpi_applications:
             for _key_dpi_applications in self.dpi_applications:
-                if self.dpi_applications[_key_dpi_applications]:
-                    _field_dict[_key_dpi_applications] = self.dpi_applications[_key_dpi_applications].to_dict()
+                _field_dict[_key_dpi_applications] = self.dpi_applications[_key_dpi_applications].to_dict() if self.dpi_applications[_key_dpi_applications] is not None else None
             _dict['dpiApplications'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in network_lists (dict)
         _field_dict = {}
         if self.network_lists:
             for _key_network_lists in self.network_lists:
-                if self.network_lists[_key_network_lists]:
-                    _field_dict[_key_network_lists] = self.network_lists[_key_network_lists].to_dict()
+                _field_dict[_key_network_lists] = self.network_lists[_key_network_lists].to_dict() if self.network_lists[_key_network_lists] is not None else None
             _dict['networkLists'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in port_lists (dict)
         _field_dict = {}
         if self.port_lists:
             for _key_port_lists in self.port_lists:
-                if self.port_lists[_key_port_lists]:
-                    _field_dict[_key_port_lists] = self.port_lists[_key_port_lists].to_dict()
+                _field_dict[_key_port_lists] = self.port_lists[_key_port_lists].to_dict() if self.port_lists[_key_port_lists] is not None else None
             _dict['portLists'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in security_rulesets (dict)
         _field_dict = {}
         if self.security_rulesets:
             for _key_security_rulesets in self.security_rulesets:
-                if self.security_rulesets[_key_security_rulesets]:
-                    _field_dict[_key_security_rulesets] = self.security_rulesets[_key_security_rulesets].to_dict()
+                _field_dict[_key_security_rulesets] = self.security_rulesets[_key_security_rulesets].to_dict() if self.security_rulesets[_key_security_rulesets] is not None else None
             _dict['securityRulesets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in traffic_rulesets (dict)
         _field_dict = {}
         if self.traffic_rulesets:
             for _key_traffic_rulesets in self.traffic_rulesets:
-                if self.traffic_rulesets[_key_traffic_rulesets]:
-                    _field_dict[_key_traffic_rulesets] = self.traffic_rulesets[_key_traffic_rulesets].to_dict()
+                _field_dict[_key_traffic_rulesets] = self.traffic_rulesets[_key_traffic_rulesets].to_dict() if self.traffic_rulesets[_key_traffic_rulesets] is not None else None
             _dict['trafficRulesets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in zone_firewalls (dict)
         _field_dict = {}
         if self.zone_firewalls:
             for _key_zone_firewalls in self.zone_firewalls:
-                if self.zone_firewalls[_key_zone_firewalls]:
-                    _field_dict[_key_zone_firewalls] = self.zone_firewalls[_key_zone_firewalls].to_dict()
+                _field_dict[_key_zone_firewalls] = self.zone_firewalls[_key_zone_firewalls].to_dict() if self.zone_firewalls[_key_zone_firewalls] is not None else None
             _dict['zoneFirewalls'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in zones (dict)
         _field_dict = {}
         if self.zones:
             for _key_zones in self.zones:
-                if self.zones[_key_zones]:
-                    _field_dict[_key_zones] = self.zones[_key_zones].to_dict()
+                _field_dict[_key_zones] = self.zones[_key_zones].to_dict() if self.zones[_key_zones] is not None else None
             _dict['zones'] = _field_dict
         return _dict
 

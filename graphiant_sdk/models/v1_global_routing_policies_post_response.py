@@ -74,8 +74,7 @@ class V1GlobalRoutingPoliciesPostResponse(BaseModel):
         _items = []
         if self.routing_policies:
             for _item_routing_policies in self.routing_policies:
-                if _item_routing_policies:
-                    _items.append(_item_routing_policies.to_dict())
+                _items.append(_item_routing_policies.to_dict() if _item_routing_policies is not None else None)
             _dict['routingPolicies'] = _items
         return _dict
 

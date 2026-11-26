@@ -80,29 +80,25 @@ class V2AssuranceTopologyInventoryPostResponse(BaseModel):
         _items = []
         if self.client_sites:
             for _item_client_sites in self.client_sites:
-                if _item_client_sites:
-                    _items.append(_item_client_sites.to_dict())
+                _items.append(_item_client_sites.to_dict() if _item_client_sites is not None else None)
             _dict['clientSites'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in regions (list)
         _items = []
         if self.regions:
             for _item_regions in self.regions:
-                if _item_regions:
-                    _items.append(_item_regions.to_dict())
+                _items.append(_item_regions.to_dict() if _item_regions is not None else None)
             _dict['regions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in server_sites (list)
         _items = []
         if self.server_sites:
             for _item_server_sites in self.server_sites:
-                if _item_server_sites:
-                    _items.append(_item_server_sites.to_dict())
+                _items.append(_item_server_sites.to_dict() if _item_server_sites is not None else None)
             _dict['serverSites'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in topology_change_ts (list)
         _items = []
         if self.topology_change_ts:
             for _item_topology_change_ts in self.topology_change_ts:
-                if _item_topology_change_ts:
-                    _items.append(_item_topology_change_ts.to_dict())
+                _items.append(_item_topology_change_ts.to_dict() if _item_topology_change_ts is not None else None)
             _dict['topologyChangeTs'] = _items
         return _dict
 

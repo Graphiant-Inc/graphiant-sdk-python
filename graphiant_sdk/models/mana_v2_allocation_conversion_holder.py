@@ -74,8 +74,7 @@ class ManaV2AllocationConversionHolder(BaseModel):
         _items = []
         if self.bins:
             for _item_bins in self.bins:
-                if _item_bins:
-                    _items.append(_item_bins.to_dict())
+                _items.append(_item_bins.to_dict() if _item_bins is not None else None)
             _dict['bins'] = _items
         return _dict
 

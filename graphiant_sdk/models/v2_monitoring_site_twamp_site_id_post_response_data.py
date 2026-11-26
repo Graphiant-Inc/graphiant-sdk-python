@@ -79,8 +79,7 @@ class V2MonitoringSiteTwampSiteIdPostResponseData(BaseModel):
         _items = []
         if self.samples:
             for _item_samples in self.samples:
-                if _item_samples:
-                    _items.append(_item_samples.to_dict())
+                _items.append(_item_samples.to_dict() if _item_samples is not None else None)
             _dict['samples'] = _items
         # override the default output from pydantic by calling `to_dict()` of selector
         if self.selector:

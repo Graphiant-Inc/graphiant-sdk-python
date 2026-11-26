@@ -82,15 +82,13 @@ class ManaV2ExtranetServiceConsumerPolicy(BaseModel):
         _field_dict = {}
         if self.consumer_lan_segments:
             for _key_consumer_lan_segments in self.consumer_lan_segments:
-                if self.consumer_lan_segments[_key_consumer_lan_segments]:
-                    _field_dict[_key_consumer_lan_segments] = self.consumer_lan_segments[_key_consumer_lan_segments].to_dict()
+                _field_dict[_key_consumer_lan_segments] = self.consumer_lan_segments[_key_consumer_lan_segments].to_dict() if self.consumer_lan_segments[_key_consumer_lan_segments] is not None else None
             _dict['consumerLanSegments'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in global_object_ops (dict)
         _field_dict = {}
         if self.global_object_ops:
             for _key_global_object_ops in self.global_object_ops:
-                if self.global_object_ops[_key_global_object_ops]:
-                    _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict()
+                _field_dict[_key_global_object_ops] = self.global_object_ops[_key_global_object_ops].to_dict() if self.global_object_ops[_key_global_object_ops] is not None else None
             _dict['globalObjectOps'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of nat_translation_mode
         if self.nat_translation_mode:
@@ -102,8 +100,7 @@ class ManaV2ExtranetServiceConsumerPolicy(BaseModel):
         _items = []
         if self.sites:
             for _item_sites in self.sites:
-                if _item_sites:
-                    _items.append(_item_sites.to_dict())
+                _items.append(_item_sites.to_dict() if _item_sites is not None else None)
             _dict['sites'] = _items
         return _dict
 

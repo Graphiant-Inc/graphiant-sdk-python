@@ -79,15 +79,13 @@ class ManaV2RoutingPolicyStatement(BaseModel):
         _items = []
         if self.actions:
             for _item_actions in self.actions:
-                if _item_actions:
-                    _items.append(_item_actions.to_dict())
+                _items.append(_item_actions.to_dict() if _item_actions is not None else None)
             _dict['actions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in matches (list)
         _items = []
         if self.matches:
             for _item_matches in self.matches:
-                if _item_matches:
-                    _items.append(_item_matches.to_dict())
+                _items.append(_item_matches.to_dict() if _item_matches is not None else None)
             _dict['matches'] = _items
         return _dict
 

@@ -86,15 +86,13 @@ class V1ExtranetB2bConsumersCustomerIdGetResponse(BaseModel):
         _field_dict = {}
         if self.global_object_device_summaries:
             for _key_global_object_device_summaries in self.global_object_device_summaries:
-                if self.global_object_device_summaries[_key_global_object_device_summaries]:
-                    _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict()
+                _field_dict[_key_global_object_device_summaries] = self.global_object_device_summaries[_key_global_object_device_summaries].to_dict() if self.global_object_device_summaries[_key_global_object_device_summaries] is not None else None
             _dict['globalObjectDeviceSummaries'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each item in ipsec_tunnel_config (list)
         _items = []
         if self.ipsec_tunnel_config:
             for _item_ipsec_tunnel_config in self.ipsec_tunnel_config:
-                if _item_ipsec_tunnel_config:
-                    _items.append(_item_ipsec_tunnel_config.to_dict())
+                _items.append(_item_ipsec_tunnel_config.to_dict() if _item_ipsec_tunnel_config is not None else None)
             _dict['ipsecTunnelConfig'] = _items
         # override the default output from pydantic by calling `to_dict()` of match_details
         if self.match_details:

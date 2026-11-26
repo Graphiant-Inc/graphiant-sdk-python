@@ -74,8 +74,7 @@ class V2MonitoringCircuitsSummaryPostResponse(BaseModel):
         _items = []
         if self.circuit_summaries:
             for _item_circuit_summaries in self.circuit_summaries:
-                if _item_circuit_summaries:
-                    _items.append(_item_circuit_summaries.to_dict())
+                _items.append(_item_circuit_summaries.to_dict() if _item_circuit_summaries is not None else None)
             _dict['circuitSummaries'] = _items
         return _dict
 

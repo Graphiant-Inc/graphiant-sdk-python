@@ -74,8 +74,7 @@ class V1DevicesDeviceIdPolicyZonepairsGetResponse(BaseModel):
         _items = []
         if self.zone_pairs:
             for _item_zone_pairs in self.zone_pairs:
-                if _item_zone_pairs:
-                    _items.append(_item_zone_pairs.to_dict())
+                _items.append(_item_zone_pairs.to_dict() if _item_zone_pairs is not None else None)
             _dict['zonePairs'] = _items
         return _dict
 

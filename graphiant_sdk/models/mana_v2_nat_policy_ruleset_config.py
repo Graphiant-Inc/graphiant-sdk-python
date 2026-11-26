@@ -76,8 +76,7 @@ class ManaV2NatPolicyRulesetConfig(BaseModel):
         _field_dict = {}
         if self.rules:
             for _key_rules in self.rules:
-                if self.rules[_key_rules]:
-                    _field_dict[_key_rules] = self.rules[_key_rules].to_dict()
+                _field_dict[_key_rules] = self.rules[_key_rules].to_dict() if self.rules[_key_rules] is not None else None
             _dict['rules'] = _field_dict
         return _dict
 

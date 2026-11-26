@@ -74,8 +74,7 @@ class V1ExtranetB2bCustomersIdMatchesSummaryGetResponse(BaseModel):
         _items = []
         if self.matches:
             for _item_matches in self.matches:
-                if _item_matches:
-                    _items.append(_item_matches.to_dict())
+                _items.append(_item_matches.to_dict() if _item_matches is not None else None)
             _dict['matches'] = _items
         return _dict
 

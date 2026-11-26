@@ -74,8 +74,7 @@ class V2AssuranceReadUserReportListGetResponse(BaseModel):
         _items = []
         if self.user_report_list:
             for _item_user_report_list in self.user_report_list:
-                if _item_user_report_list:
-                    _items.append(_item_user_report_list.to_dict())
+                _items.append(_item_user_report_list.to_dict() if _item_user_report_list is not None else None)
             _dict['userReportList'] = _items
         return _dict
 

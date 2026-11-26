@@ -86,15 +86,13 @@ class ManaV2OspfProcessConfig(BaseModel):
         _field_dict = {}
         if self.areas:
             for _key_areas in self.areas:
-                if self.areas[_key_areas]:
-                    _field_dict[_key_areas] = self.areas[_key_areas].to_dict()
+                _field_dict[_key_areas] = self.areas[_key_areas].to_dict() if self.areas[_key_areas] is not None else None
             _dict['areas'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in redistribution (dict)
         _field_dict = {}
         if self.redistribution:
             for _key_redistribution in self.redistribution:
-                if self.redistribution[_key_redistribution]:
-                    _field_dict[_key_redistribution] = self.redistribution[_key_redistribution].to_dict()
+                _field_dict[_key_redistribution] = self.redistribution[_key_redistribution].to_dict() if self.redistribution[_key_redistribution] is not None else None
             _dict['redistribution'] = _field_dict
         return _dict
 

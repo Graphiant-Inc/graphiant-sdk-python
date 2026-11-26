@@ -76,8 +76,7 @@ class V1UsersPasswordsExpirePostResponse(BaseModel):
         _items = []
         if self.failed_users:
             for _item_failed_users in self.failed_users:
-                if _item_failed_users:
-                    _items.append(_item_failed_users.to_dict())
+                _items.append(_item_failed_users.to_dict() if _item_failed_users is not None else None)
             _dict['failedUsers'] = _items
         return _dict
 

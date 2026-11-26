@@ -74,8 +74,7 @@ class V1EnterprisesGetResponse(BaseModel):
         _items = []
         if self.enterprises:
             for _item_enterprises in self.enterprises:
-                if _item_enterprises:
-                    _items.append(_item_enterprises.to_dict())
+                _items.append(_item_enterprises.to_dict() if _item_enterprises is not None else None)
             _dict['enterprises'] = _items
         return _dict
 

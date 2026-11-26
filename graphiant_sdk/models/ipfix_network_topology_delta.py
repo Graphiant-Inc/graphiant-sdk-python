@@ -78,29 +78,25 @@ class IpfixNetworkTopologyDelta(BaseModel):
         _items = []
         if self.edges_added:
             for _item_edges_added in self.edges_added:
-                if _item_edges_added:
-                    _items.append(_item_edges_added.to_dict())
+                _items.append(_item_edges_added.to_dict() if _item_edges_added is not None else None)
             _dict['edgesAdded'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in edges_deleted (list)
         _items = []
         if self.edges_deleted:
             for _item_edges_deleted in self.edges_deleted:
-                if _item_edges_deleted:
-                    _items.append(_item_edges_deleted.to_dict())
+                _items.append(_item_edges_deleted.to_dict() if _item_edges_deleted is not None else None)
             _dict['edgesDeleted'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in nodes_added (list)
         _items = []
         if self.nodes_added:
             for _item_nodes_added in self.nodes_added:
-                if _item_nodes_added:
-                    _items.append(_item_nodes_added.to_dict())
+                _items.append(_item_nodes_added.to_dict() if _item_nodes_added is not None else None)
             _dict['nodesAdded'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in nodes_deleted (list)
         _items = []
         if self.nodes_deleted:
             for _item_nodes_deleted in self.nodes_deleted:
-                if _item_nodes_deleted:
-                    _items.append(_item_nodes_deleted.to_dict())
+                _items.append(_item_nodes_deleted.to_dict() if _item_nodes_deleted is not None else None)
             _dict['nodesDeleted'] = _items
         return _dict
 

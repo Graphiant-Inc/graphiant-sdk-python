@@ -84,8 +84,7 @@ class ManaV2B2bExtranetMatch(BaseModel):
         _items = []
         if self.service_prefixes:
             for _item_service_prefixes in self.service_prefixes:
-                if _item_service_prefixes:
-                    _items.append(_item_service_prefixes.to_dict())
+                _items.append(_item_service_prefixes.to_dict() if _item_service_prefixes is not None else None)
             _dict['servicePrefixes'] = _items
         return _dict
 

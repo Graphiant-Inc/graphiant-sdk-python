@@ -84,8 +84,7 @@ class V1DataAssuranceAssurancesGlobalGetResponseRow(BaseModel):
         _items = []
         if self.apps:
             for _item_apps in self.apps:
-                if _item_apps:
-                    _items.append(_item_apps.to_dict())
+                _items.append(_item_apps.to_dict() if _item_apps is not None else None)
             _dict['apps'] = _items
         # override the default output from pydantic by calling `to_dict()` of created_at
         if self.created_at:
@@ -94,15 +93,13 @@ class V1DataAssuranceAssurancesGlobalGetResponseRow(BaseModel):
         _items = []
         if self.lans:
             for _item_lans in self.lans:
-                if _item_lans:
-                    _items.append(_item_lans.to_dict())
+                _items.append(_item_lans.to_dict() if _item_lans is not None else None)
             _dict['lans'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sites (list)
         _items = []
         if self.sites:
             for _item_sites in self.sites:
-                if _item_sites:
-                    _items.append(_item_sites.to_dict())
+                _items.append(_item_sites.to_dict() if _item_sites is not None else None)
             _dict['sites'] = _items
         # override the default output from pydantic by calling `to_dict()` of updated_at
         if self.updated_at:

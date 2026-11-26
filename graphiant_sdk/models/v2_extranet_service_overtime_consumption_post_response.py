@@ -75,15 +75,13 @@ class V2ExtranetServiceOvertimeConsumptionPostResponse(BaseModel):
         _items = []
         if self.dl_agg_stats:
             for _item_dl_agg_stats in self.dl_agg_stats:
-                if _item_dl_agg_stats:
-                    _items.append(_item_dl_agg_stats.to_dict())
+                _items.append(_item_dl_agg_stats.to_dict() if _item_dl_agg_stats is not None else None)
             _dict['dlAggStats'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ul_agg_stats (list)
         _items = []
         if self.ul_agg_stats:
             for _item_ul_agg_stats in self.ul_agg_stats:
-                if _item_ul_agg_stats:
-                    _items.append(_item_ul_agg_stats.to_dict())
+                _items.append(_item_ul_agg_stats.to_dict() if _item_ul_agg_stats is not None else None)
             _dict['ulAggStats'] = _items
         return _dict
 

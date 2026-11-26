@@ -82,8 +82,7 @@ class ManaV2deviceSnapshotRow(BaseModel):
         _items = []
         if self.snapshots:
             for _item_snapshots in self.snapshots:
-                if _item_snapshots:
-                    _items.append(_item_snapshots.to_dict())
+                _items.append(_item_snapshots.to_dict() if _item_snapshots is not None else None)
             _dict['snapshots'] = _items
         # override the default output from pydantic by calling `to_dict()` of uptime
         if self.uptime:

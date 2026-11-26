@@ -74,8 +74,7 @@ class V1RegionsRegionIdGatewaysGetResponse(BaseModel):
         _items = []
         if self.gateways:
             for _item_gateways in self.gateways:
-                if _item_gateways:
-                    _items.append(_item_gateways.to_dict())
+                _items.append(_item_gateways.to_dict() if _item_gateways is not None else None)
             _dict['gateways'] = _items
         return _dict
 

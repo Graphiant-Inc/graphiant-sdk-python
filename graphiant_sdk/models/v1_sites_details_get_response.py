@@ -74,8 +74,7 @@ class V1SitesDetailsGetResponse(BaseModel):
         _items = []
         if self.sites:
             for _item_sites in self.sites:
-                if _item_sites:
-                    _items.append(_item_sites.to_dict())
+                _items.append(_item_sites.to_dict() if _item_sites is not None else None)
             _dict['sites'] = _items
         return _dict
 

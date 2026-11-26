@@ -74,8 +74,7 @@ class V1TroubleshootingSiteConnectivityStatusGetResponse(BaseModel):
         _items = []
         if self.connectivity_status:
             for _item_connectivity_status in self.connectivity_status:
-                if _item_connectivity_status:
-                    _items.append(_item_connectivity_status.to_dict())
+                _items.append(_item_connectivity_status.to_dict() if _item_connectivity_status is not None else None)
             _dict['connectivityStatus'] = _items
         return _dict
 

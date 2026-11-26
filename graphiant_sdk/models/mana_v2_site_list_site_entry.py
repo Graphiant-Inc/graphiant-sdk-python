@@ -81,8 +81,7 @@ class ManaV2SiteListSiteEntry(BaseModel):
         _items = []
         if self.tag:
             for _item_tag in self.tag:
-                if _item_tag:
-                    _items.append(_item_tag.to_dict())
+                _items.append(_item_tag.to_dict() if _item_tag is not None else None)
             _dict['tag'] = _items
         return _dict
 

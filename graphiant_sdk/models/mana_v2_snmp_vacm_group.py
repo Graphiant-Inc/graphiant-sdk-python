@@ -80,22 +80,19 @@ class ManaV2SnmpVacmGroup(BaseModel):
         _items = []
         if self.accesses:
             for _item_accesses in self.accesses:
-                if _item_accesses:
-                    _items.append(_item_accesses.to_dict())
+                _items.append(_item_accesses.to_dict() if _item_accesses is not None else None)
             _dict['accesses'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in group_members (list)
         _items = []
         if self.group_members:
             for _item_group_members in self.group_members:
-                if _item_group_members:
-                    _items.append(_item_group_members.to_dict())
+                _items.append(_item_group_members.to_dict() if _item_group_members is not None else None)
             _dict['groupMembers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in views (list)
         _items = []
         if self.views:
             for _item_views in self.views:
-                if _item_views:
-                    _items.append(_item_views.to_dict())
+                _items.append(_item_views.to_dict() if _item_views is not None else None)
             _dict['views'] = _items
         return _dict
 

@@ -78,15 +78,13 @@ class AuditmonAuditLogsV2Selector(BaseModel):
         _items = []
         if self.entities:
             for _item_entities in self.entities:
-                if _item_entities:
-                    _items.append(_item_entities.to_dict())
+                _items.append(_item_entities.to_dict() if _item_entities is not None else None)
             _dict['entities'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in targets (list)
         _items = []
         if self.targets:
             for _item_targets in self.targets:
-                if _item_targets:
-                    _items.append(_item_targets.to_dict())
+                _items.append(_item_targets.to_dict() if _item_targets is not None else None)
             _dict['targets'] = _items
         return _dict
 

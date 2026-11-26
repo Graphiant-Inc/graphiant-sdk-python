@@ -79,8 +79,7 @@ class V1ExtranetsGetResponse(BaseModel):
         _items = []
         if self.policies:
             for _item_policies in self.policies:
-                if _item_policies:
-                    _items.append(_item_policies.to_dict())
+                _items.append(_item_policies.to_dict() if _item_policies is not None else None)
             _dict['policies'] = _items
         return _dict
 

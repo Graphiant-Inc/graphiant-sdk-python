@@ -76,8 +76,7 @@ class V2MonitoringSiteTwampSiteIdPostRequest(BaseModel):
         _items = []
         if self.selectors:
             for _item_selectors in self.selectors:
-                if _item_selectors:
-                    _items.append(_item_selectors.to_dict())
+                _items.append(_item_selectors.to_dict() if _item_selectors is not None else None)
             _dict['selectors'] = _items
         # override the default output from pydantic by calling `to_dict()` of time_window
         if self.time_window:

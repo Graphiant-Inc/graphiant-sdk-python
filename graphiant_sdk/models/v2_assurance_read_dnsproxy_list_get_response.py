@@ -74,8 +74,7 @@ class V2AssuranceReadDnsproxyListGetResponse(BaseModel):
         _items = []
         if self.dnsproxy_list:
             for _item_dnsproxy_list in self.dnsproxy_list:
-                if _item_dnsproxy_list:
-                    _items.append(_item_dnsproxy_list.to_dict())
+                _items.append(_item_dnsproxy_list.to_dict() if _item_dnsproxy_list is not None else None)
             _dict['dnsproxyList'] = _items
         return _dict
 

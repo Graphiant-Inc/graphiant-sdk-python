@@ -74,8 +74,7 @@ class V1SdkAutomationPlaybookModuleSlotsGetResponse(BaseModel):
         _items = []
         if self.modules:
             for _item_modules in self.modules:
-                if _item_modules:
-                    _items.append(_item_modules.to_dict())
+                _items.append(_item_modules.to_dict() if _item_modules is not None else None)
             _dict['modules'] = _items
         return _dict
 

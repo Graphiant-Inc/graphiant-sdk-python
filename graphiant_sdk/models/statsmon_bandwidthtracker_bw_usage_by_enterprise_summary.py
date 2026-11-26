@@ -84,15 +84,13 @@ class StatsmonBandwidthtrackerBwUsageByEnterpriseSummary(BaseModel):
         _items = []
         if self.bwusage_role_summary:
             for _item_bwusage_role_summary in self.bwusage_role_summary:
-                if _item_bwusage_role_summary:
-                    _items.append(_item_bwusage_role_summary.to_dict())
+                _items.append(_item_bwusage_role_summary.to_dict() if _item_bwusage_role_summary is not None else None)
             _dict['bwusageRoleSummary'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in bwusage_top_regions (list)
         _items = []
         if self.bwusage_top_regions:
             for _item_bwusage_top_regions in self.bwusage_top_regions:
-                if _item_bwusage_top_regions:
-                    _items.append(_item_bwusage_top_regions.to_dict())
+                _items.append(_item_bwusage_top_regions.to_dict() if _item_bwusage_top_regions is not None else None)
             _dict['bwusageTopRegions'] = _items
         # override the default output from pydantic by calling `to_dict()` of min_time
         if self.min_time:

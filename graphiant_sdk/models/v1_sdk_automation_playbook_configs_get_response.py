@@ -76,8 +76,7 @@ class V1SdkAutomationPlaybookConfigsGetResponse(BaseModel):
         _items = []
         if self.configs:
             for _item_configs in self.configs:
-                if _item_configs:
-                    _items.append(_item_configs.to_dict())
+                _items.append(_item_configs.to_dict() if _item_configs is not None else None)
             _dict['configs'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

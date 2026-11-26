@@ -79,8 +79,7 @@ class V1FlowsFlowTablePostResponse(BaseModel):
         _items = []
         if self.flow_table:
             for _item_flow_table in self.flow_table:
-                if _item_flow_table:
-                    _items.append(_item_flow_table.to_dict())
+                _items.append(_item_flow_table.to_dict() if _item_flow_table is not None else None)
             _dict['flowTable'] = _items
         return _dict
 

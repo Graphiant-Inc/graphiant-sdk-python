@@ -76,8 +76,7 @@ class ManaV2QoSProfile(BaseModel):
         _items = []
         if self.queues:
             for _item_queues in self.queues:
-                if _item_queues:
-                    _items.append(_item_queues.to_dict())
+                _items.append(_item_queues.to_dict() if _item_queues is not None else None)
             _dict['queues'] = _items
         return _dict
 

@@ -114,8 +114,7 @@ class ManaV2ExtranetPolicy(BaseModel):
         _items = []
         if self.target_segments:
             for _item_target_segments in self.target_segments:
-                if _item_target_segments:
-                    _items.append(_item_target_segments.to_dict())
+                _items.append(_item_target_segments.to_dict() if _item_target_segments is not None else None)
             _dict['targetSegments'] = _items
         # override the default output from pydantic by calling `to_dict()` of updated_at
         if self.updated_at:

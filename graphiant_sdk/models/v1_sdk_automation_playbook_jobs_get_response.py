@@ -76,8 +76,7 @@ class V1SdkAutomationPlaybookJobsGetResponse(BaseModel):
         _items = []
         if self.jobs:
             for _item_jobs in self.jobs:
-                if _item_jobs:
-                    _items.append(_item_jobs.to_dict())
+                _items.append(_item_jobs.to_dict() if _item_jobs is not None else None)
             _dict['jobs'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

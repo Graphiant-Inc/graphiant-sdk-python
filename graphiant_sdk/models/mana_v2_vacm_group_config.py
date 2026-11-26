@@ -77,15 +77,13 @@ class ManaV2VacmGroupConfig(BaseModel):
         _field_dict = {}
         if self.accesses:
             for _key_accesses in self.accesses:
-                if self.accesses[_key_accesses]:
-                    _field_dict[_key_accesses] = self.accesses[_key_accesses].to_dict()
+                _field_dict[_key_accesses] = self.accesses[_key_accesses].to_dict() if self.accesses[_key_accesses] is not None else None
             _dict['accesses'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in members (dict)
         _field_dict = {}
         if self.members:
             for _key_members in self.members:
-                if self.members[_key_members]:
-                    _field_dict[_key_members] = self.members[_key_members].to_dict()
+                _field_dict[_key_members] = self.members[_key_members].to_dict() if self.members[_key_members] is not None else None
             _dict['members'] = _field_dict
         return _dict
 

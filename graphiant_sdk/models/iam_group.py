@@ -83,8 +83,7 @@ class IamGroup(BaseModel):
         _field_dict = {}
         if self.enterprise_permissions:
             for _key_enterprise_permissions in self.enterprise_permissions:
-                if self.enterprise_permissions[_key_enterprise_permissions]:
-                    _field_dict[_key_enterprise_permissions] = self.enterprise_permissions[_key_enterprise_permissions].to_dict()
+                _field_dict[_key_enterprise_permissions] = self.enterprise_permissions[_key_enterprise_permissions].to_dict() if self.enterprise_permissions[_key_enterprise_permissions] is not None else None
             _dict['enterprisePermissions'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of permissions
         if self.permissions:

@@ -74,8 +74,7 @@ class V2ParentalertlistPostResponse(BaseModel):
         _items = []
         if self.alert_list:
             for _item_alert_list in self.alert_list:
-                if _item_alert_list:
-                    _items.append(_item_alert_list.to_dict())
+                _items.append(_item_alert_list.to_dict() if _item_alert_list is not None else None)
             _dict['alertList'] = _items
         return _dict
 

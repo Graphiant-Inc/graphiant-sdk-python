@@ -74,8 +74,7 @@ class V2DeviceDeviceIdLanSegmentsPostResponse(BaseModel):
         _items = []
         if self.device_segments:
             for _item_device_segments in self.device_segments:
-                if _item_device_segments:
-                    _items.append(_item_device_segments.to_dict())
+                _items.append(_item_device_segments.to_dict() if _item_device_segments is not None else None)
             _dict['deviceSegments'] = _items
         return _dict
 

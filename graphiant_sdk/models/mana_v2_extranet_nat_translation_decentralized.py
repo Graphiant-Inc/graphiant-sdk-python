@@ -74,8 +74,7 @@ class ManaV2ExtranetNatTranslationDecentralized(BaseModel):
         _field_dict = {}
         if self.prefixes:
             for _key_prefixes in self.prefixes:
-                if self.prefixes[_key_prefixes]:
-                    _field_dict[_key_prefixes] = self.prefixes[_key_prefixes].to_dict()
+                _field_dict[_key_prefixes] = self.prefixes[_key_prefixes].to_dict() if self.prefixes[_key_prefixes] is not None else None
             _dict['prefixes'] = _field_dict
         return _dict
 

@@ -88,22 +88,19 @@ class AssuranceBucketDetails(BaseModel):
         _items = []
         if self.app_id_records:
             for _item_app_id_records in self.app_id_records:
-                if _item_app_id_records:
-                    _items.append(_item_app_id_records.to_dict())
+                _items.append(_item_app_id_records.to_dict() if _item_app_id_records is not None else None)
             _dict['appIdRecords'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in app_name_records (list)
         _items = []
         if self.app_name_records:
             for _item_app_name_records in self.app_name_records:
-                if _item_app_name_records:
-                    _items.append(_item_app_name_records.to_dict())
+                _items.append(_item_app_name_records.to_dict() if _item_app_name_records is not None else None)
             _dict['appNameRecords'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in trend_value_list (list)
         _items = []
         if self.trend_value_list:
             for _item_trend_value_list in self.trend_value_list:
-                if _item_trend_value_list:
-                    _items.append(_item_trend_value_list.to_dict())
+                _items.append(_item_trend_value_list.to_dict() if _item_trend_value_list is not None else None)
             _dict['trendValueList'] = _items
         return _dict
 

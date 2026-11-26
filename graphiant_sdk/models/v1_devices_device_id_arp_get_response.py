@@ -74,8 +74,7 @@ class V1DevicesDeviceIdArpGetResponse(BaseModel):
         _items = []
         if self.arp_entry:
             for _item_arp_entry in self.arp_entry:
-                if _item_arp_entry:
-                    _items.append(_item_arp_entry.to_dict())
+                _items.append(_item_arp_entry.to_dict() if _item_arp_entry is not None else None)
             _dict['arpEntry'] = _items
         return _dict
 

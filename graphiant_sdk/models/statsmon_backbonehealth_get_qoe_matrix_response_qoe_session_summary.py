@@ -80,8 +80,7 @@ class StatsmonBackbonehealthGetQOEMatrixResponseQoeSessionSummary(BaseModel):
         _items = []
         if self.box:
             for _item_box in self.box:
-                if _item_box:
-                    _items.append(_item_box.to_dict())
+                _items.append(_item_box.to_dict() if _item_box is not None else None)
             _dict['box'] = _items
         # override the default output from pydantic by calling `to_dict()` of device_region
         if self.device_region:

@@ -74,8 +74,7 @@ class V1DeviceRoutingBgpNbrsPerAfiPrefixGetResponse(BaseModel):
         _items = []
         if self.prefixes:
             for _item_prefixes in self.prefixes:
-                if _item_prefixes:
-                    _items.append(_item_prefixes.to_dict())
+                _items.append(_item_prefixes.to_dict() if _item_prefixes is not None else None)
             _dict['prefixes'] = _items
         return _dict
 

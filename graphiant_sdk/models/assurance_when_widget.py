@@ -77,29 +77,25 @@ class AssuranceWhenWidget(BaseModel):
         _items = []
         if self.day_of_week:
             for _item_day_of_week in self.day_of_week:
-                if _item_day_of_week:
-                    _items.append(_item_day_of_week.to_dict())
+                _items.append(_item_day_of_week.to_dict() if _item_day_of_week is not None else None)
             _dict['dayOfWeek'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in hour_of_day (list)
         _items = []
         if self.hour_of_day:
             for _item_hour_of_day in self.hour_of_day:
-                if _item_hour_of_day:
-                    _items.append(_item_hour_of_day.to_dict())
+                _items.append(_item_hour_of_day.to_dict() if _item_hour_of_day is not None else None)
             _dict['hourOfDay'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in monthly_active_users (list)
         _items = []
         if self.monthly_active_users:
             for _item_monthly_active_users in self.monthly_active_users:
-                if _item_monthly_active_users:
-                    _items.append(_item_monthly_active_users.to_dict())
+                _items.append(_item_monthly_active_users.to_dict() if _item_monthly_active_users is not None else None)
             _dict['monthlyActiveUsers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in monthly_bandwidth_transferred (list)
         _items = []
         if self.monthly_bandwidth_transferred:
             for _item_monthly_bandwidth_transferred in self.monthly_bandwidth_transferred:
-                if _item_monthly_bandwidth_transferred:
-                    _items.append(_item_monthly_bandwidth_transferred.to_dict())
+                _items.append(_item_monthly_bandwidth_transferred.to_dict() if _item_monthly_bandwidth_transferred is not None else None)
             _dict['monthlyBandwidthTransferred'] = _items
         return _dict
 

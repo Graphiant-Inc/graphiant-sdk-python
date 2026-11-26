@@ -77,22 +77,19 @@ class V2ExtranetSitesConsumptionOverviewPostResponse(BaseModel):
         _items = []
         if self.lan_segments:
             for _item_lan_segments in self.lan_segments:
-                if _item_lan_segments:
-                    _items.append(_item_lan_segments.to_dict())
+                _items.append(_item_lan_segments.to_dict() if _item_lan_segments is not None else None)
             _dict['lanSegments'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in regions (list)
         _items = []
         if self.regions:
             for _item_regions in self.regions:
-                if _item_regions:
-                    _items.append(_item_regions.to_dict())
+                _items.append(_item_regions.to_dict() if _item_regions is not None else None)
             _dict['regions'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sites (list)
         _items = []
         if self.sites:
             for _item_sites in self.sites:
-                if _item_sites:
-                    _items.append(_item_sites.to_dict())
+                _items.append(_item_sites.to_dict() if _item_sites is not None else None)
             _dict['sites'] = _items
         return _dict
 

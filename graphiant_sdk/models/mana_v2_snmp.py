@@ -108,50 +108,43 @@ class ManaV2Snmp(BaseModel):
         _items = []
         if self.communities:
             for _item_communities in self.communities:
-                if _item_communities:
-                    _items.append(_item_communities.to_dict())
+                _items.append(_item_communities.to_dict() if _item_communities is not None else None)
             _dict['communities'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in engine_endpoints (list)
         _items = []
         if self.engine_endpoints:
             for _item_engine_endpoints in self.engine_endpoints:
-                if _item_engine_endpoints:
-                    _items.append(_item_engine_endpoints.to_dict())
+                _items.append(_item_engine_endpoints.to_dict() if _item_engine_endpoints is not None else None)
             _dict['engineEndpoints'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in notify_filter_profiles (list)
         _items = []
         if self.notify_filter_profiles:
             for _item_notify_filter_profiles in self.notify_filter_profiles:
-                if _item_notify_filter_profiles:
-                    _items.append(_item_notify_filter_profiles.to_dict())
+                _items.append(_item_notify_filter_profiles.to_dict() if _item_notify_filter_profiles is not None else None)
             _dict['notifyFilterProfiles'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in targets (list)
         _items = []
         if self.targets:
             for _item_targets in self.targets:
-                if _item_targets:
-                    _items.append(_item_targets.to_dict())
+                _items.append(_item_targets.to_dict() if _item_targets is not None else None)
             _dict['targets'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in usm_local_users (list)
         _items = []
         if self.usm_local_users:
             for _item_usm_local_users in self.usm_local_users:
-                if _item_usm_local_users:
-                    _items.append(_item_usm_local_users.to_dict())
+                _items.append(_item_usm_local_users.to_dict() if _item_usm_local_users is not None else None)
             _dict['usmLocalUsers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in usm_remote_users (list)
         _items = []
         if self.usm_remote_users:
             for _item_usm_remote_users in self.usm_remote_users:
-                if _item_usm_remote_users:
-                    _items.append(_item_usm_remote_users.to_dict())
+                _items.append(_item_usm_remote_users.to_dict() if _item_usm_remote_users is not None else None)
             _dict['usmRemoteUsers'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in vacm_groups (list)
         _items = []
         if self.vacm_groups:
             for _item_vacm_groups in self.vacm_groups:
-                if _item_vacm_groups:
-                    _items.append(_item_vacm_groups.to_dict())
+                _items.append(_item_vacm_groups.to_dict() if _item_vacm_groups is not None else None)
             _dict['vacmGroups'] = _items
         return _dict
 

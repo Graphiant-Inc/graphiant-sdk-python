@@ -82,15 +82,13 @@ class ManaV2OspFv3Process(BaseModel):
         _items = []
         if self.areas:
             for _item_areas in self.areas:
-                if _item_areas:
-                    _items.append(_item_areas.to_dict())
+                _items.append(_item_areas.to_dict() if _item_areas is not None else None)
             _dict['areas'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in redistributed_protocols (list)
         _items = []
         if self.redistributed_protocols:
             for _item_redistributed_protocols in self.redistributed_protocols:
-                if _item_redistributed_protocols:
-                    _items.append(_item_redistributed_protocols.to_dict())
+                _items.append(_item_redistributed_protocols.to_dict() if _item_redistributed_protocols is not None else None)
             _dict['redistributedProtocols'] = _items
         return _dict
 

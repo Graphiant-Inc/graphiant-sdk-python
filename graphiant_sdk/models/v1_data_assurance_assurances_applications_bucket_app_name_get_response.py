@@ -74,8 +74,7 @@ class V1DataAssuranceAssurancesApplicationsBucketAppNameGetResponse(BaseModel):
         _items = []
         if self.assurances:
             for _item_assurances in self.assurances:
-                if _item_assurances:
-                    _items.append(_item_assurances.to_dict())
+                _items.append(_item_assurances.to_dict() if _item_assurances is not None else None)
             _dict['assurances'] = _items
         return _dict
 

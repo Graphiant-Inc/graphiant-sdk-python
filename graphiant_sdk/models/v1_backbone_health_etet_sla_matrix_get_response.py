@@ -78,22 +78,19 @@ class V1BackboneHealthEtetSlaMatrixGetResponse(BaseModel):
         _items = []
         if self.devices:
             for _item_devices in self.devices:
-                if _item_devices:
-                    _items.append(_item_devices.to_dict())
+                _items.append(_item_devices.to_dict() if _item_devices is not None else None)
             _dict['devices'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in region_status (list)
         _items = []
         if self.region_status:
             for _item_region_status in self.region_status:
-                if _item_region_status:
-                    _items.append(_item_region_status.to_dict())
+                _items.append(_item_region_status.to_dict() if _item_region_status is not None else None)
             _dict['regionStatus'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sla_matrix (list)
         _items = []
         if self.sla_matrix:
             for _item_sla_matrix in self.sla_matrix:
-                if _item_sla_matrix:
-                    _items.append(_item_sla_matrix.to_dict())
+                _items.append(_item_sla_matrix.to_dict() if _item_sla_matrix is not None else None)
             _dict['slaMatrix'] = _items
         return _dict
 

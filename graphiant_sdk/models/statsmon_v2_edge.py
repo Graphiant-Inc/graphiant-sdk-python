@@ -81,15 +81,13 @@ class StatsmonV2Edge(BaseModel):
         _items = []
         if self.circuits_info:
             for _item_circuits_info in self.circuits_info:
-                if _item_circuits_info:
-                    _items.append(_item_circuits_info.to_dict())
+                _items.append(_item_circuits_info.to_dict() if _item_circuits_info is not None else None)
             _dict['circuitsInfo'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in connections (list)
         _items = []
         if self.connections:
             for _item_connections in self.connections:
-                if _item_connections:
-                    _items.append(_item_connections.to_dict())
+                _items.append(_item_connections.to_dict() if _item_connections is not None else None)
             _dict['connections'] = _items
         return _dict
 

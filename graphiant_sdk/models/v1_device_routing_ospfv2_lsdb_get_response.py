@@ -77,8 +77,7 @@ class V1DeviceRoutingOspfv2LsdbGetResponse(BaseModel):
         _items = []
         if self.lsas:
             for _item_lsas in self.lsas:
-                if _item_lsas:
-                    _items.append(_item_lsas.to_dict())
+                _items.append(_item_lsas.to_dict() if _item_lsas is not None else None)
             _dict['lsas'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

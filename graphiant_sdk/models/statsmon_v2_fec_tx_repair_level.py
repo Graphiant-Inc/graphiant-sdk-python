@@ -74,8 +74,7 @@ class StatsmonV2FecTxRepairLevel(BaseModel):
         _items = []
         if self.repair_level:
             for _item_repair_level in self.repair_level:
-                if _item_repair_level:
-                    _items.append(_item_repair_level.to_dict())
+                _items.append(_item_repair_level.to_dict() if _item_repair_level is not None else None)
             _dict['repairLevel'] = _items
         return _dict
 

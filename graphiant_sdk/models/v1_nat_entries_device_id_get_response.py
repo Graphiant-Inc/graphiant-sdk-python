@@ -78,8 +78,7 @@ class V1NatEntriesDeviceIdGetResponse(BaseModel):
         _items = []
         if self.nat_entries:
             for _item_nat_entries in self.nat_entries:
-                if _item_nat_entries:
-                    _items.append(_item_nat_entries.to_dict())
+                _items.append(_item_nat_entries.to_dict() if _item_nat_entries is not None else None)
             _dict['natEntries'] = _items
         # override the default output from pydantic by calling `to_dict()` of page_info
         if self.page_info:

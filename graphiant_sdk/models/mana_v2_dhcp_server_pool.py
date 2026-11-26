@@ -94,8 +94,7 @@ class ManaV2DhcpServerPool(BaseModel):
         _items = []
         if self.leases:
             for _item_leases in self.leases:
-                if _item_leases:
-                    _items.append(_item_leases.to_dict())
+                _items.append(_item_leases.to_dict() if _item_leases is not None else None)
             _dict['leases'] = _items
         # override the default output from pydantic by calling `to_dict()` of nameservers
         if self.nameservers:
@@ -104,15 +103,13 @@ class ManaV2DhcpServerPool(BaseModel):
         _items = []
         if self.ranges:
             for _item_ranges in self.ranges:
-                if _item_ranges:
-                    _items.append(_item_ranges.to_dict())
+                _items.append(_item_ranges.to_dict() if _item_ranges is not None else None)
             _dict['ranges'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in static_leases (list)
         _items = []
         if self.static_leases:
             for _item_static_leases in self.static_leases:
-                if _item_static_leases:
-                    _items.append(_item_static_leases.to_dict())
+                _items.append(_item_static_leases.to_dict() if _item_static_leases is not None else None)
             _dict['staticLeases'] = _items
         return _dict
 

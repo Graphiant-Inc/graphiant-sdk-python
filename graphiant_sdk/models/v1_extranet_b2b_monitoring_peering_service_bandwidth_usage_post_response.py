@@ -76,15 +76,13 @@ class V1ExtranetB2bMonitoringPeeringServiceBandwidthUsagePostResponse(BaseModel)
         _items = []
         if self.dl_stats:
             for _item_dl_stats in self.dl_stats:
-                if _item_dl_stats:
-                    _items.append(_item_dl_stats.to_dict())
+                _items.append(_item_dl_stats.to_dict() if _item_dl_stats is not None else None)
             _dict['dlStats'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in ul_stats (list)
         _items = []
         if self.ul_stats:
             for _item_ul_stats in self.ul_stats:
-                if _item_ul_stats:
-                    _items.append(_item_ul_stats.to_dict())
+                _items.append(_item_ul_stats.to_dict() if _item_ul_stats is not None else None)
             _dict['ulStats'] = _items
         return _dict
 

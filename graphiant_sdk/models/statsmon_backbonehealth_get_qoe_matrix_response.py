@@ -76,15 +76,13 @@ class StatsmonBackbonehealthGetQoeMatrixResponse(BaseModel):
         _items = []
         if self.devices:
             for _item_devices in self.devices:
-                if _item_devices:
-                    _items.append(_item_devices.to_dict())
+                _items.append(_item_devices.to_dict() if _item_devices is not None else None)
             _dict['devices'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in qoe_matrix (list)
         _items = []
         if self.qoe_matrix:
             for _item_qoe_matrix in self.qoe_matrix:
-                if _item_qoe_matrix:
-                    _items.append(_item_qoe_matrix.to_dict())
+                _items.append(_item_qoe_matrix.to_dict() if _item_qoe_matrix is not None else None)
             _dict['qoeMatrix'] = _items
         return _dict
 

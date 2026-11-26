@@ -74,8 +74,7 @@ class V1FlowsTopologyPostResponse(BaseModel):
         _items = []
         if self.network_topology:
             for _item_network_topology in self.network_topology:
-                if _item_network_topology:
-                    _items.append(_item_network_topology.to_dict())
+                _items.append(_item_network_topology.to_dict() if _item_network_topology is not None else None)
             _dict['networkTopology'] = _items
         return _dict
 

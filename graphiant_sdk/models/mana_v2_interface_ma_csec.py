@@ -81,15 +81,13 @@ class ManaV2InterfaceMaCsec(BaseModel):
         _items = []
         if self.psk_configurations:
             for _item_psk_configurations in self.psk_configurations:
-                if _item_psk_configurations:
-                    _items.append(_item_psk_configurations.to_dict())
+                _items.append(_item_psk_configurations.to_dict() if _item_psk_configurations is not None else None)
             _dict['pskConfigurations'] = _items
         # override the default output from pydantic by calling `to_dict()` of each item in sak_configurations (list)
         _items = []
         if self.sak_configurations:
             for _item_sak_configurations in self.sak_configurations:
-                if _item_sak_configurations:
-                    _items.append(_item_sak_configurations.to_dict())
+                _items.append(_item_sak_configurations.to_dict() if _item_sak_configurations is not None else None)
             _dict['sakConfigurations'] = _items
         return _dict
 

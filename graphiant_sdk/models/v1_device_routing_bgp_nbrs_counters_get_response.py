@@ -74,8 +74,7 @@ class V1DeviceRoutingBgpNbrsCountersGetResponse(BaseModel):
         _items = []
         if self.counters:
             for _item_counters in self.counters:
-                if _item_counters:
-                    _items.append(_item_counters.to_dict())
+                _items.append(_item_counters.to_dict() if _item_counters is not None else None)
             _dict['counters'] = _items
         return _dict
 

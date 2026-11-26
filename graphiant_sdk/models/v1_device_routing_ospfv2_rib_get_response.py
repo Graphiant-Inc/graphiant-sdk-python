@@ -80,8 +80,7 @@ class V1DeviceRoutingOspfv2RibGetResponse(BaseModel):
         _items = []
         if self.routes:
             for _item_routes in self.routes:
-                if _item_routes:
-                    _items.append(_item_routes.to_dict())
+                _items.append(_item_routes.to_dict() if _item_routes is not None else None)
             _dict['routes'] = _items
         return _dict
 

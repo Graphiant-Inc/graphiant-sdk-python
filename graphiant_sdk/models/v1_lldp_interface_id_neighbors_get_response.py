@@ -74,8 +74,7 @@ class V1LldpInterfaceIdNeighborsGetResponse(BaseModel):
         _items = []
         if self.neighbors:
             for _item_neighbors in self.neighbors:
-                if _item_neighbors:
-                    _items.append(_item_neighbors.to_dict())
+                _items.append(_item_neighbors.to_dict() if _item_neighbors is not None else None)
             _dict['neighbors'] = _items
         return _dict
 

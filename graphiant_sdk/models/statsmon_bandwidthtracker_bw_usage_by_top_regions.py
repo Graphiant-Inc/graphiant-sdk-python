@@ -77,8 +77,7 @@ class StatsmonBandwidthtrackerBwUsageByTopRegions(BaseModel):
         _items = []
         if self.bwusage_role_summary:
             for _item_bwusage_role_summary in self.bwusage_role_summary:
-                if _item_bwusage_role_summary:
-                    _items.append(_item_bwusage_role_summary.to_dict())
+                _items.append(_item_bwusage_role_summary.to_dict() if _item_bwusage_role_summary is not None else None)
             _dict['bwusageRoleSummary'] = _items
         return _dict
 

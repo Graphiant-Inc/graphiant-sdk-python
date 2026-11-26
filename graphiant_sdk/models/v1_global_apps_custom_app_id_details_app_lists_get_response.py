@@ -74,8 +74,7 @@ class V1GlobalAppsCustomAppIdDetailsAppListsGetResponse(BaseModel):
         _items = []
         if self.app_lists:
             for _item_app_lists in self.app_lists:
-                if _item_app_lists:
-                    _items.append(_item_app_lists.to_dict())
+                _items.append(_item_app_lists.to_dict() if _item_app_lists is not None else None)
             _dict['appLists'] = _items
         return _dict
 

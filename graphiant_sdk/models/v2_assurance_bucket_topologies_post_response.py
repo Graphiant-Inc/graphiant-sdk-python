@@ -74,8 +74,7 @@ class V2AssuranceBucketTopologiesPostResponse(BaseModel):
         _items = []
         if self.topologies:
             for _item_topologies in self.topologies:
-                if _item_topologies:
-                    _items.append(_item_topologies.to_dict())
+                _items.append(_item_topologies.to_dict() if _item_topologies is not None else None)
             _dict['topologies'] = _items
         return _dict
 

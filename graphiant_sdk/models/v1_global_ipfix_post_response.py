@@ -74,8 +74,7 @@ class V1GlobalIpfixPostResponse(BaseModel):
         _items = []
         if self.exporters:
             for _item_exporters in self.exporters:
-                if _item_exporters:
-                    _items.append(_item_exporters.to_dict())
+                _items.append(_item_exporters.to_dict() if _item_exporters is not None else None)
             _dict['exporters'] = _items
         return _dict
 

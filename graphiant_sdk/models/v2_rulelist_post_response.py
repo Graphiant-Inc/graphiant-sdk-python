@@ -74,8 +74,7 @@ class V2RulelistPostResponse(BaseModel):
         _items = []
         if self.rule_list:
             for _item_rule_list in self.rule_list:
-                if _item_rule_list:
-                    _items.append(_item_rule_list.to_dict())
+                _items.append(_item_rule_list.to_dict() if _item_rule_list is not None else None)
             _dict['ruleList'] = _items
         return _dict
 

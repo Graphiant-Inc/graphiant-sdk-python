@@ -76,8 +76,7 @@ class V1SitesSiteIdCircuitsGetResponseData(BaseModel):
         _items = []
         if self.circuits:
             for _item_circuits in self.circuits:
-                if _item_circuits:
-                    _items.append(_item_circuits.to_dict())
+                _items.append(_item_circuits.to_dict() if _item_circuits is not None else None)
             _dict['circuits'] = _items
         return _dict
 

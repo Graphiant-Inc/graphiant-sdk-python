@@ -74,8 +74,7 @@ class V1SiteDetailsSitelistsPostResponse(BaseModel):
         _items = []
         if self.site_lists:
             for _item_site_lists in self.site_lists:
-                if _item_site_lists:
-                    _items.append(_item_site_lists.to_dict())
+                _items.append(_item_site_lists.to_dict() if _item_site_lists is not None else None)
             _dict['siteLists'] = _items
         return _dict
 

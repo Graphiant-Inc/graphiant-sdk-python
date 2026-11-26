@@ -76,8 +76,7 @@ class V1EdgesHardwareUnassignedGetResponse(BaseModel):
         _items = []
         if self.inventory:
             for _item_inventory in self.inventory:
-                if _item_inventory:
-                    _items.append(_item_inventory.to_dict())
+                _items.append(_item_inventory.to_dict() if _item_inventory is not None else None)
             _dict['inventory'] = _items
         return _dict
 

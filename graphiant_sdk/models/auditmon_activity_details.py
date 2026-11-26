@@ -93,8 +93,7 @@ class AuditmonActivityDetails(BaseModel):
         _items = []
         if self.attributes:
             for _item_attributes in self.attributes:
-                if _item_attributes:
-                    _items.append(_item_attributes.to_dict())
+                _items.append(_item_attributes.to_dict() if _item_attributes is not None else None)
             _dict['attributes'] = _items
         # override the default output from pydantic by calling `to_dict()` of end_ts
         if self.end_ts:
@@ -103,8 +102,7 @@ class AuditmonActivityDetails(BaseModel):
         _items = []
         if self.job_entities:
             for _item_job_entities in self.job_entities:
-                if _item_job_entities:
-                    _items.append(_item_job_entities.to_dict())
+                _items.append(_item_job_entities.to_dict() if _item_job_entities is not None else None)
             _dict['jobEntities'] = _items
         # override the default output from pydantic by calling `to_dict()` of start_ts
         if self.start_ts:
@@ -113,8 +111,7 @@ class AuditmonActivityDetails(BaseModel):
         _items = []
         if self.targets:
             for _item_targets in self.targets:
-                if _item_targets:
-                    _items.append(_item_targets.to_dict())
+                _items.append(_item_targets.to_dict() if _item_targets is not None else None)
             _dict['targets'] = _items
         return _dict
 

@@ -84,8 +84,7 @@ class ManaV2BandwidthConsumptionSummary(BaseModel):
         _field_dict = {}
         if self.regional_summaries:
             for _key_regional_summaries in self.regional_summaries:
-                if self.regional_summaries[_key_regional_summaries]:
-                    _field_dict[_key_regional_summaries] = self.regional_summaries[_key_regional_summaries].to_dict()
+                _field_dict[_key_regional_summaries] = self.regional_summaries[_key_regional_summaries].to_dict() if self.regional_summaries[_key_regional_summaries] is not None else None
             _dict['regionalSummaries'] = _field_dict
         return _dict
 

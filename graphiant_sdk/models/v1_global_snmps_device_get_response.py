@@ -74,8 +74,7 @@ class V1GlobalSnmpsDeviceGetResponse(BaseModel):
         _items = []
         if self.snmps:
             for _item_snmps in self.snmps:
-                if _item_snmps:
-                    _items.append(_item_snmps.to_dict())
+                _items.append(_item_snmps.to_dict() if _item_snmps is not None else None)
             _dict['snmps'] = _items
         return _dict
 

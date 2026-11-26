@@ -74,8 +74,7 @@ class V2ExtranetsMonitoringConsumersPostResponse(BaseModel):
         _items = []
         if self.consumers:
             for _item_consumers in self.consumers:
-                if _item_consumers:
-                    _items.append(_item_consumers.to_dict())
+                _items.append(_item_consumers.to_dict() if _item_consumers is not None else None)
             _dict['consumers'] = _items
         return _dict
 

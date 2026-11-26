@@ -93,8 +93,7 @@ class ManaV2DhcpSubnetConfig(BaseModel):
         _items = []
         if self.ip_ranges:
             for _item_ip_ranges in self.ip_ranges:
-                if _item_ip_ranges:
-                    _items.append(_item_ip_ranges.to_dict())
+                _items.append(_item_ip_ranges.to_dict() if _item_ip_ranges is not None else None)
             _dict['ipRanges'] = _items
         # override the default output from pydantic by calling `to_dict()` of ip_ranges_v2
         if self.ip_ranges_v2:
@@ -103,8 +102,7 @@ class ManaV2DhcpSubnetConfig(BaseModel):
         _field_dict = {}
         if self.static_leases:
             for _key_static_leases in self.static_leases:
-                if self.static_leases[_key_static_leases]:
-                    _field_dict[_key_static_leases] = self.static_leases[_key_static_leases].to_dict()
+                _field_dict[_key_static_leases] = self.static_leases[_key_static_leases].to_dict() if self.static_leases[_key_static_leases] is not None else None
             _dict['staticLeases'] = _field_dict
         return _dict
 

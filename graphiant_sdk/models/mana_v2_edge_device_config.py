@@ -125,8 +125,7 @@ class ManaV2EdgeDeviceConfig(BaseModel):
         _field_dict = {}
         if self.circuits:
             for _key_circuits in self.circuits:
-                if self.circuits[_key_circuits]:
-                    _field_dict[_key_circuits] = self.circuits[_key_circuits].to_dict()
+                _field_dict[_key_circuits] = self.circuits[_key_circuits].to_dict() if self.circuits[_key_circuits] is not None else None
             _dict['circuits'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of dns
         if self.dns:
@@ -135,22 +134,19 @@ class ManaV2EdgeDeviceConfig(BaseModel):
         _field_dict = {}
         if self.interfaces:
             for _key_interfaces in self.interfaces:
-                if self.interfaces[_key_interfaces]:
-                    _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict()
+                _field_dict[_key_interfaces] = self.interfaces[_key_interfaces].to_dict() if self.interfaces[_key_interfaces] is not None else None
             _dict['interfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in ipfix_exporters (dict)
         _field_dict = {}
         if self.ipfix_exporters:
             for _key_ipfix_exporters in self.ipfix_exporters:
-                if self.ipfix_exporters[_key_ipfix_exporters]:
-                    _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict()
+                _field_dict[_key_ipfix_exporters] = self.ipfix_exporters[_key_ipfix_exporters].to_dict() if self.ipfix_exporters[_key_ipfix_exporters] is not None else None
             _dict['ipfixExporters'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in lag_interfaces (dict)
         _field_dict = {}
         if self.lag_interfaces:
             for _key_lag_interfaces in self.lag_interfaces:
-                if self.lag_interfaces[_key_lag_interfaces]:
-                    _field_dict[_key_lag_interfaces] = self.lag_interfaces[_key_lag_interfaces].to_dict()
+                _field_dict[_key_lag_interfaces] = self.lag_interfaces[_key_lag_interfaces].to_dict() if self.lag_interfaces[_key_lag_interfaces] is not None else None
             _dict['lagInterfaces'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of local_route_tag
         if self.local_route_tag:
@@ -165,29 +161,25 @@ class ManaV2EdgeDeviceConfig(BaseModel):
         _field_dict = {}
         if self.ntp_global_object:
             for _key_ntp_global_object in self.ntp_global_object:
-                if self.ntp_global_object[_key_ntp_global_object]:
-                    _field_dict[_key_ntp_global_object] = self.ntp_global_object[_key_ntp_global_object].to_dict()
+                _field_dict[_key_ntp_global_object] = self.ntp_global_object[_key_ntp_global_object].to_dict() if self.ntp_global_object[_key_ntp_global_object] is not None else None
             _dict['ntpGlobalObject'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in prefix_sets (dict)
         _field_dict = {}
         if self.prefix_sets:
             for _key_prefix_sets in self.prefix_sets:
-                if self.prefix_sets[_key_prefix_sets]:
-                    _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict()
+                _field_dict[_key_prefix_sets] = self.prefix_sets[_key_prefix_sets].to_dict() if self.prefix_sets[_key_prefix_sets] is not None else None
             _dict['prefixSets'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in route_policies (dict)
         _field_dict = {}
         if self.route_policies:
             for _key_route_policies in self.route_policies:
-                if self.route_policies[_key_route_policies]:
-                    _field_dict[_key_route_policies] = self.route_policies[_key_route_policies].to_dict()
+                _field_dict[_key_route_policies] = self.route_policies[_key_route_policies].to_dict() if self.route_policies[_key_route_policies] is not None else None
             _dict['routePolicies'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of each value in segments (dict)
         _field_dict = {}
         if self.segments:
             for _key_segments in self.segments:
-                if self.segments[_key_segments]:
-                    _field_dict[_key_segments] = self.segments[_key_segments].to_dict()
+                _field_dict[_key_segments] = self.segments[_key_segments].to_dict() if self.segments[_key_segments] is not None else None
             _dict['segments'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of site
         if self.site:
@@ -196,8 +188,7 @@ class ManaV2EdgeDeviceConfig(BaseModel):
         _field_dict = {}
         if self.site_to_site_vpn:
             for _key_site_to_site_vpn in self.site_to_site_vpn:
-                if self.site_to_site_vpn[_key_site_to_site_vpn]:
-                    _field_dict[_key_site_to_site_vpn] = self.site_to_site_vpn[_key_site_to_site_vpn].to_dict()
+                _field_dict[_key_site_to_site_vpn] = self.site_to_site_vpn[_key_site_to_site_vpn].to_dict() if self.site_to_site_vpn[_key_site_to_site_vpn] is not None else None
             _dict['siteToSiteVpn'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of sla_conformance
         if self.sla_conformance:
@@ -209,8 +200,7 @@ class ManaV2EdgeDeviceConfig(BaseModel):
         _field_dict = {}
         if self.snmp_global_object:
             for _key_snmp_global_object in self.snmp_global_object:
-                if self.snmp_global_object[_key_snmp_global_object]:
-                    _field_dict[_key_snmp_global_object] = self.snmp_global_object[_key_snmp_global_object].to_dict()
+                _field_dict[_key_snmp_global_object] = self.snmp_global_object[_key_snmp_global_object].to_dict() if self.snmp_global_object[_key_snmp_global_object] is not None else None
             _dict['snmpGlobalObject'] = _field_dict
         # override the default output from pydantic by calling `to_dict()` of traffic_policy
         if self.traffic_policy:

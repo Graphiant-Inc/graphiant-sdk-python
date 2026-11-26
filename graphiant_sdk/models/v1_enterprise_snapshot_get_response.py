@@ -76,15 +76,13 @@ class V1EnterpriseSnapshotGetResponse(BaseModel):
         _items = []
         if self.device_snapshot_records:
             for _item_device_snapshot_records in self.device_snapshot_records:
-                if _item_device_snapshot_records:
-                    _items.append(_item_device_snapshot_records.to_dict())
+                _items.append(_item_device_snapshot_records.to_dict() if _item_device_snapshot_records is not None else None)
             _dict['deviceSnapshotRecords'] = _items
         # override the default output from pydantic by calling `to_dict()` of each value in device_snapshot_map (dict)
         _field_dict = {}
         if self.device_snapshot_map:
             for _key_device_snapshot_map in self.device_snapshot_map:
-                if self.device_snapshot_map[_key_device_snapshot_map]:
-                    _field_dict[_key_device_snapshot_map] = self.device_snapshot_map[_key_device_snapshot_map].to_dict()
+                _field_dict[_key_device_snapshot_map] = self.device_snapshot_map[_key_device_snapshot_map].to_dict() if self.device_snapshot_map[_key_device_snapshot_map] is not None else None
             _dict['deviceSnapshotMap'] = _field_dict
         return _dict
 

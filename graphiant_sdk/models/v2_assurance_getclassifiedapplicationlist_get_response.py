@@ -74,8 +74,7 @@ class V2AssuranceGetclassifiedapplicationlistGetResponse(BaseModel):
         _items = []
         if self.classified_application_list:
             for _item_classified_application_list in self.classified_application_list:
-                if _item_classified_application_list:
-                    _items.append(_item_classified_application_list.to_dict())
+                _items.append(_item_classified_application_list.to_dict() if _item_classified_application_list is not None else None)
             _dict['classifiedApplicationList'] = _items
         return _dict
 

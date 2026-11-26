@@ -74,8 +74,7 @@ class V2MonitoringMacsecDeviceIdStatusGetResponse(BaseModel):
         _items = []
         if self.macsec_statuses:
             for _item_macsec_statuses in self.macsec_statuses:
-                if _item_macsec_statuses:
-                    _items.append(_item_macsec_statuses.to_dict())
+                _items.append(_item_macsec_statuses.to_dict() if _item_macsec_statuses is not None else None)
             _dict['macsecStatuses'] = _items
         return _dict
 

@@ -76,8 +76,7 @@ class ManaV2AppListConfig(BaseModel):
         _items = []
         if self.apps:
             for _item_apps in self.apps:
-                if _item_apps:
-                    _items.append(_item_apps.to_dict())
+                _items.append(_item_apps.to_dict() if _item_apps is not None else None)
             _dict['apps'] = _items
         return _dict
 
